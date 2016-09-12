@@ -10,6 +10,10 @@ Durante o desenvolvimento, o projeto servirá de estudo para o conhecimento da p
 
 Primeiramente as configurações básicas, tais como tema - implicitamente as configurações de pacotes e estruturas.
 
+    * Tema: instalado, falta alterar as configurações para uma combinação de cores melhor.
+    * Sugestão de Atalhos: disponível o Which-key - apresenta automáticamente os atalhos no minibuffer, conforme utilização.
+    * Autocompletar: usar o Company e o Yasnippet.
+
 ### Tema
 
 Estilo ergonômico e sem distrações/ruídos.
