@@ -3,10 +3,10 @@
 ;;
 ;; autor: Marcelo dos Santos
 ;; url  : https://github.com/mdssjc/mds-emacs
-;; 
+;;
 (require 'package)
 
-(setq package-enable-at-startup nil) 
+(setq package-enable-at-startup nil)
 (setq package-archives '(("org"       . "http://orgmode.org/elpa/")
                          ("gnu"       . "http://elpa.gnu.org/packages/")
                          ("melpa"     . "https://melpa.org/packages/")
@@ -15,14 +15,20 @@
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents) 
+  (package-refresh-contents)
   (package-install 'use-package))
 
 (require 'use-package)
 
 ;; Configurações Globais
-(setq coding-system-for-read 'utf-8)
-(setq coding-system-for-write 'utf-8)
+(setq coding-system-for-read 'utf-8
+      coding-system-for-write 'utf-8
+      standard-indent 2
+      tab-width 2
+      indent-tabs-mode nil
+      tab-stop-list '(2  4  6)
+      tab-always-indent 'complete
+      column-number-mode t)
 
 ;; Pacotes
 ;; Solarized Colorscheme for Emacs
@@ -44,6 +50,39 @@
   :ensure t
   :diminish which-key-mode
   :config (which-key-mode))
+
+;; Company
+(use-package company
+  :ensure t
+  :defer t
+  :diminish company-mode
+  :init (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-auto-complete nil
+        company-tooltip-flip-when-above t
+        company-minimum-prefix-length 2
+        company-tooltip-limit 10
+        company-idle-delay 0.5
+        company-show-numbers t
+        company-backends '((
+                            company-abbrev
+                            company-bbdb
+                            company-capf
+                            company-dabbrev-code
+                            company-dabbrev
+                            company-elisp
+                            company-etags
+                            company-files
+                            company-gtags
+                            ;company-ispell
+                            company-keywords
+                            company-oddmuse
+                            ;company-semantic
+                            ;company-template
+                            company-tempo
+                            ;company-yasnippet
+                            ;company-dict
+                            ))))
 
 ;; Automático
 (custom-set-variables
