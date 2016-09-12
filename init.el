@@ -26,12 +26,24 @@
 
 ;; Pacotes
 ;; Solarized Colorscheme for Emacs
-(setq color-themes '())
-(use-package color-theme-solarized
+(use-package solarized-theme
   :ensure t
+  :init
+  (progn
+    (setq solarized-use-less-bold t
+          solarized-use-more-italic t
+          solarized-emphasize-indicators nil
+          solarized-distinct-fringe-background t
+          solarized-high-contrast-mode-line t)
+    (load-theme 'solarized-dark t))
   :config
-  (customize-set-variable 'frame-background-mode 'dark)
-  (load-theme 'solarized t))
+  (setq color-theme-is-global t))
+
+;; Which-key
+(use-package which-key
+  :ensure t
+  :diminish which-key-mode
+  :config (which-key-mode))
 
 ;; Automático
 (custom-set-variables
@@ -39,8 +51,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(frame-background-mode (quote dark))
- '(package-selected-packages (quote (use-package))))
+ '(package-selected-packages (quote (solarized-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
