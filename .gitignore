@@ -1,4 +1,5 @@
 ### Emacs ###
 *~
+*.elc
 auto-save-list
 secrets/secrets.el
