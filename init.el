@@ -18,7 +18,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
 
 ;; Configurações Globais
 (setq coding-system-for-read 'utf-8
@@ -62,11 +63,24 @@
    "<C-return>" 'mds/insert-lines-between))
 
 ;; Pacotes
-;; Spacemacs Theme
+;; Aesthetic
 (use-package spacemacs-theme
   :ensure t
   :defer t
   :init (load-theme 'spacemacs-dark t))
+(use-package powerline
+  :ensure t
+  :defer t
+  :config
+  (powerline-default-theme))
+(use-package mode-icons
+  :ensure t
+  :config
+  (mode-icons-mode))
+;; https://github.com/domtronn/all-the-icons.el/wiki/Mode-Line
+;; (use-package all-the-icons
+;;   :ensure t)
+;; ---
 
 ;; Which-key
 (use-package which-key
@@ -113,7 +127,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (solarized-theme use-package))))
+ '(package-selected-packages
+   (quote
+    (powerline company which-key spacemacs-theme general use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
