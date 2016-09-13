@@ -45,6 +45,7 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
+(add-hook 'window-setup-hook 'toggle-frame-maximized)
 (add-hook 'before-save-hook '(lambda ()
                                (delete-trailing-whitespace)
                                (untabify (point-min) (point-max))))
@@ -100,6 +101,8 @@
         company-minimum-prefix-length 2
         company-tooltip-limit 10
         company-idle-delay 0.1
+        company-echo-delay 0
+        company-begin-commands '(self-insert-command)
         company-show-numbers t
         company-backends '((
                             company-abbrev
@@ -107,7 +110,7 @@
                             company-capf
                             company-dabbrev-code
                             company-dabbrev
-                            company-elisp
+                            ;company-elisp
                             company-etags
                             company-files
                             company-gtags
@@ -121,13 +124,33 @@
                             ;company-dict
                             ))))
 
+;; Linguagem de Programação (Programming Language)
+;; Emacs Lisp (ELisp)
+(use-package emacs-lisp-mode
+  :init
+  (progn
+    (use-package eldoc
+      :init (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode))
+    (use-package macrostep
+      :bind ("C-c e" . macrostep-expand))
+    (use-package ert
+      :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
+    (add-to-list 'company-backends 'company-elisp))
+  :config
+  (progn
+    (setq tab-always-indent 'complete)
+    (add-to-list 'completion-styles 'initials t))
+  :bind (("M-." . find-function-at-point)
+         ("M-&" . complete-symbol))
+  :interpreter (("emacs" . emacs-lisp-mode)))
+
 ;; Linguagem de Marcação (Markup Language)
 ;; Markdown
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
+         ("\\.md\\'"       . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
