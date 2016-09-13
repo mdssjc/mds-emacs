@@ -23,27 +23,50 @@
 ;; Configurações Globais
 (setq coding-system-for-read 'utf-8
       coding-system-for-write 'utf-8
+      column-number-mode t
+      ;; Tabs / Indentation
       standard-indent 2
       tab-width 2
       indent-tabs-mode nil
       tab-stop-list '(2  4  6)
       tab-always-indent 'complete
-      column-number-mode t)
+      ;; Newline
+      require-final-newline t
+      next-line-extends-end-of-buffer nil
+      next-line-add-newlines nil
+      ;; Proxy
+      ;;url-proxy-services '(("https" . "127.0.0.1:1234")
+      ;;                     ("http"  . "127.0.0.1:1234"))
+      )
+
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+
+(add-hook 'before-save-hook '(lambda ()
+                               (delete-trailing-whitespace)
+                               (untabify (point-min) (point-max))))
+
+;; Atalhos
+(load-file "~/.emacs.d/core/funcs.el")
+(use-package general
+  :ensure t
+  :config
+  (general-define-key
+   "M-<up>"     'mds/move-up
+   "M-<down>"   'mds/move-down
+   "M-S-<up>"   'mds/duplicate-up
+   "M-S-<down>" 'mds/duplicate-down
+   "<C-tab>"    'cycle-spacing
+   "<C-return>" 'mds/insert-lines-between))
 
 ;; Pacotes
-;; Solarized Colorscheme for Emacs
-(use-package solarized-theme
+;; Spacemacs Theme
+(use-package spacemacs-theme
   :ensure t
-  :init
-  (progn
-    (setq solarized-use-less-bold t
-          solarized-use-more-italic t
-          solarized-emphasize-indicators nil
-          solarized-distinct-fringe-background t
-          solarized-high-contrast-mode-line t)
-    (load-theme 'solarized-dark t))
-  :config
-  (setq color-theme-is-global t))
+  :defer t
+  :init (load-theme 'spacemacs-dark t))
 
 ;; Which-key
 (use-package which-key
@@ -62,7 +85,7 @@
         company-tooltip-flip-when-above t
         company-minimum-prefix-length 2
         company-tooltip-limit 10
-        company-idle-delay 0.5
+        company-idle-delay 0.1
         company-show-numbers t
         company-backends '((
                             company-abbrev
