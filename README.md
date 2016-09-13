@@ -12,8 +12,8 @@ Durante o desenvolvimento, o projeto servirá de estudo para o conhecimento da p
 
 Primeiramente as configurações básicas, tais como tema - implicitamente as configurações de pacotes e estruturas.
 
-    * Tema: instalado, falta alterar as configurações para uma combinação de cores melhor.
-    * Sugestão de Atalhos: disponível o Which-key - apresenta automáticamente os atalhos no minibuffer, conforme utilização.
+    * Tema: instalado - falta adicionar o powerline e icones.
+    * Sugestão de Atalhos: disponível o Which-key - apresenta automaticamente os atalhos no minibuffer, conforme utilização.
     * Autocompletar: disponível o Company, falta o Yasnippet, Ispell e Abreviação.
     * Linguagens: focar primeiramente no ELisp - por ser a linguagem do projeto.
 
@@ -21,8 +21,13 @@ Primeiramente as configurações básicas, tais como tema - implicitamente as co
 
 Estilo ergonômico e sem distrações/ruídos.
 
-### Camadas
+### Nucleo
 
+    * Cursores: mover/duplicar linha(s), espaçar linha.
+
+### Módulos
+
+    * Estético: tema, icones e etc...
     * Sintaxe: autocompletar, erros de digitação...
     * Semântica: frase e/ou expressão incorreta.
     * Pragmático: org-mode...
@@ -32,3 +37,4 @@ Estilo ergonômico e sem distrações/ruídos.
 ## Comandos
 
     * F1 - Ajuda
+    * ?? - Comando Principal
