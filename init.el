@@ -135,7 +135,8 @@
       :bind ("C-c e" . macrostep-expand))
     (use-package ert
       :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
-    (add-to-list 'company-backends 'company-elisp))
+    (use-package company
+      :config (add-to-list 'company-backends 'company-elisp)))
   :config
   (progn
     (setq tab-always-indent 'complete)
