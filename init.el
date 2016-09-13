@@ -62,15 +62,15 @@
    "<C-tab>"    'cycle-spacing
    "<C-return>" 'mds/insert-lines-between))
 
-;; Pacotes
-;; Aesthetic
+;; Pacotes (Packages)
+;; Estético (Aesthetic)
 (use-package spacemacs-theme
   :ensure t
   :defer t
   :init (load-theme 'spacemacs-dark t))
 (use-package powerline
   :ensure t
-  :defer t
+ ; :defer t
   :config
   (powerline-default-theme))
 (use-package mode-icons
@@ -121,7 +121,17 @@
                             ;company-dict
                             ))))
 
-;; Automático
+;; Linguagem de Marcação (Markup Language)
+;; Markdown
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+;; Automático (Automatic)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
