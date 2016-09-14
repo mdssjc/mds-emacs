@@ -21,7 +21,7 @@
 (eval-when-compile
   (require 'use-package))
 
-;; Configurações Globais
+;; Configurações Globais (Global Settings)
 (setq coding-system-for-read 'utf-8
       coding-system-for-write 'utf-8
       column-number-mode t
@@ -38,15 +38,15 @@
       ;; Proxy
       ;;url-proxy-services '(("https" . "127.0.0.1:1234")
       ;;                     ("http"  . "127.0.0.1:1234"))
-      )
-;; Smooth Scrolling
-(setq redisplay-dont-pause t
+      ;; Smooth Scrolling
+      redisplay-dont-pause t
       scroll-margin 1
       scroll-conservatively 10000
       scroll-step 1
       auto-window-vscroll nil)
 
 (prefer-coding-system 'utf-8)
+
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
@@ -57,20 +57,23 @@
                                (untabify (point-min) (point-max))))
 
 ;; Segredos (Secrets)
-(load-file "~/.emacs.d/secrets/secrets.el")
+(load "~/.emacs.d/secrets/secrets")
 
 ;; Atalhos
-(load-file "~/.emacs.d/core/funcs.el")
+;;(load "~/.emacs.d/core/funcs")
 (use-package general
   :ensure t
+  :defer 2
   :config
-  (general-define-key
-   "M-<up>"     'mds/move-up
-   "M-<down>"   'mds/move-down
-   "M-S-<up>"   'mds/duplicate-up
-   "M-S-<down>" 'mds/duplicate-down
-   "<C-tab>"    'cycle-spacing
-   "<C-return>" 'mds/insert-lines-between))
+  (progn
+    (load "~/.emacs.d/core/funcs")
+    (general-define-key
+     "M-<up>"     'mds/move-up
+     "M-<down>"   'mds/move-down
+     "M-S-<up>"   'mds/duplicate-up
+     "M-S-<down>" 'mds/duplicate-down
+     "<C-tab>"    'cycle-spacing
+     "<C-return>" 'mds/insert-lines-between)))
 
 ;; Pacotes (Packages)
 ;; Estético (Aesthetic)
