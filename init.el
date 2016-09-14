@@ -56,6 +56,9 @@
                                (delete-trailing-whitespace)
                                (untabify (point-min) (point-max))))
 
+;; Segredos (Secrets)
+(load-file "~/.emacs.d/secrets/secrets.el")
+
 ;; Atalhos
 (load-file "~/.emacs.d/core/funcs.el")
 (use-package general
@@ -178,7 +181,7 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'"       . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "markdown"))
 
 ;; Automático (Automatic)
 (custom-set-variables
