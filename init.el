@@ -63,7 +63,6 @@
 ;;(load "~/.emacs.d/core/funcs")
 (use-package general
   :ensure t
-  :defer 2
   :config
   (progn
     (load "~/.emacs.d/core/funcs")
