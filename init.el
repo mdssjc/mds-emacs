@@ -39,6 +39,12 @@
       ;;url-proxy-services '(("https" . "127.0.0.1:1234")
       ;;                     ("http"  . "127.0.0.1:1234"))
       )
+;; Smooth Scrolling
+(setq redisplay-dont-pause t
+      scroll-margin 1
+      scroll-conservatively 10000
+      scroll-step 1
+      auto-window-vscroll nil)
 
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -92,7 +98,7 @@
 ;; Company
 (use-package company
   :ensure t
-  :defer t
+  :defer 5
   :diminish company-mode
   :init (add-hook 'after-init-hook 'global-company-mode)
   :config
@@ -100,7 +106,7 @@
         company-tooltip-flip-when-above t
         company-minimum-prefix-length 2
         company-tooltip-limit 10
-        company-idle-delay 0.1
+        company-idle-delay 0.05
         company-echo-delay 0
         company-begin-commands '(self-insert-command)
         company-show-numbers t
@@ -127,23 +133,42 @@
 ;; Linguagem de Programação (Programming Language)
 ;; Emacs Lisp (ELisp)
 (use-package emacs-lisp-mode
-  :init
+  :config
   (progn
     (use-package eldoc
-      :init (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode))
+      :config (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode))
     (use-package macrostep
       :bind ("C-c e" . macrostep-expand))
     (use-package ert
       :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
     (use-package company
-      :config (add-to-list 'company-backends 'company-elisp)))
-  :config
-  (progn
+      :config (add-to-list 'company-backends 'company-elisp))
     (setq tab-always-indent 'complete)
     (add-to-list 'completion-styles 'initials t))
   :bind (("M-." . find-function-at-point)
          ("M-&" . complete-symbol))
   :interpreter (("emacs" . emacs-lisp-mode)))
+(use-package lispy
+  :ensure t
+  :defer 5
+  :diminish lispy-mode
+  ;; :bind
+  ;; (("s-<right>"   . sp-forward-slurp-sexp)
+  ;;  ("S-s-<right>" . sp-forward-barf-sexp)
+  ;;  ("s-<left>"    . sp-backward-slurp-sexp)
+  ;;  ("S-s-<left>"  . sp-backward-barf-sexp)
+  ;;  ;; ("s-<up>"      . sp-wrap-with-pair "(")
+  ;; ("s-<down>"    . sp-unwrap-sexp))
+  :config
+  (dolist (hook '(emacs-lisp-mode-hook
+                  lisp-interaction-mode-hook
+                  lisp-mode-hook))
+    (add-hook hook (lambda () (lispy-mode 1)))))
+(use-package rainbow-delimiters
+  :ensure t
+  :defer 5
+  :init
+  (add-hook 'emacs-lisp-mode-hook (lambda () (rainbow-delimiters-mode t))))
 
 ;; Linguagem de Marcação (Markup Language)
 ;; Markdown
@@ -163,7 +188,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (powerline company which-key spacemacs-theme general use-package))))
+    (smartparens-config powerline company which-key spacemacs-theme general use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
