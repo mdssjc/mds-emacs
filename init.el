@@ -25,6 +25,7 @@
 (setq coding-system-for-read 'utf-8
       coding-system-for-write 'utf-8
       column-number-mode t
+      visible-bell t
       ;; Tabs / Indentation
       standard-indent 2
       tab-width 2
@@ -46,7 +47,6 @@
       auto-window-vscroll nil)
 
 (prefer-coding-system 'utf-8)
-
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
@@ -64,31 +64,32 @@
 (use-package general
   :ensure t
   :config
-  (progn
-    (load "~/.emacs.d/core/funcs")
-    (general-define-key
-     "M-<up>"     'mds/move-up
-     "M-<down>"   'mds/move-down
-     "M-S-<up>"   'mds/duplicate-up
-     "M-S-<down>" 'mds/duplicate-down
-     "<C-tab>"    'cycle-spacing
-     "<C-return>" 'mds/insert-lines-between)))
+  (load "~/.emacs.d/core/funcs")
+  (general-define-key
+   "M-<up>"     'mds/move-up
+   "M-<down>"   'mds/move-down
+   "M-S-<up>"   'mds/duplicate-up
+   "M-S-<down>" 'mds/duplicate-down
+   "<C-tab>"    'cycle-spacing
+   "<C-return>" 'mds/insert-lines-between
+   "M-/"        'hippie-expand))
+
+(use-package recentf
+  :config
+  (setq recentf-max-saved-items 1000)
+  (recentf-mode 1))
 
 ;; Pacotes (Packages)
 ;; Estético (Aesthetic)
 (use-package spacemacs-theme
   :ensure t
-  :defer t
   :init (load-theme 'spacemacs-dark t))
 (use-package powerline
   :ensure t
- ; :defer t
-  :config
-  (powerline-default-theme))
+  :config (powerline-default-theme))
 (use-package mode-icons
   :ensure t
-  :config
-  (mode-icons-mode))
+  :config (mode-icons-mode))
 ;; https://github.com/domtronn/all-the-icons.el/wiki/Mode-Line
 ;; (use-package all-the-icons
 ;;   :ensure t)
@@ -103,7 +104,7 @@
 ;; Company
 (use-package company
   :ensure t
-  :defer 5
+  :defer 1
   :diminish company-mode
   :init (add-hook 'after-init-hook 'global-company-mode)
   :config
@@ -115,6 +116,7 @@
         company-echo-delay 0
         company-begin-commands '(self-insert-command)
         company-show-numbers t
+        tab-always-indent 'complete
         company-backends '((
                             company-abbrev
                             company-bbdb
@@ -135,6 +137,37 @@
                             ;company-dict
                             ))))
 
+;; Abo-abo
+;; Ivy
+(use-package ivy
+  :ensure t
+  :diminish ivy-mode
+  :bind
+  (:map ivy-mode-map
+   ("C-'" . ivy-avy))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t
+        ivy-height 5
+        ivy-count-format "(%d/%d) "
+        ivy-initial-inputs-alist nil
+        ivy-re-builders-alist '((t . ivy--regex-ignore-order))))
+(use-package counsel
+  :ensure t
+  :bind
+  (("M-x"     . counsel-M-x)
+   ("C-x C-f" . counsel-find-file)
+   ("C-x C-r" . counsel-recentf)
+   ;;("C-c f"   . counsel-git)
+   ;;("C-c s"   . counsel-git-grep)
+   ;;("C-c /"   . counsel-ag)
+   ("C-c l"   . counsel-locate)))
+
+;; Avy
+(use-package avy
+  :ensure t
+  :bind ("C-c j" . avy-goto-char))
+
 ;; Linguagem de Programação (Programming Language)
 ;; Emacs Lisp (ELisp)
 (use-package emacs-lisp-mode
@@ -148,7 +181,6 @@
       :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
     (use-package company
       :config (add-to-list 'company-backends 'company-elisp))
-    (setq tab-always-indent 'complete)
     (add-to-list 'completion-styles 'initials t))
   :bind (("M-." . find-function-at-point)
          ("M-&" . complete-symbol))
@@ -158,7 +190,7 @@
   :defer 5
   :diminish lispy-mode
   ;; :bind
-  ;; (("s-<right>"   . sp-forward-slurp-sexp)
+  ;; (("s-<right>"   . lispy-)
   ;;  ("S-s-<right>" . sp-forward-barf-sexp)
   ;;  ("s-<left>"    . sp-backward-slurp-sexp)
   ;;  ("S-s-<left>"  . sp-backward-barf-sexp)
@@ -174,6 +206,7 @@
   :defer 5
   :init
   (add-hook 'emacs-lisp-mode-hook (lambda () (rainbow-delimiters-mode t))))
+;; ---
 
 ;; Linguagem de Marcação (Markup Language)
 ;; Markdown
@@ -193,7 +226,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (smartparens-config powerline company which-key spacemacs-theme general use-package))))
+    (counsel markdown-mode rainbow-delimiters lispy avy ivy company which-key mode-icons powerline spacemacs-theme general use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
