@@ -212,6 +212,13 @@
   :init (add-hook 'emacs-lisp-mode-hook (lambda () (rainbow-delimiters-mode t))))
 ;; ---
 
+;; Magit
+(use-package magit
+  :ensure t
+  :bind
+  (("C-x g s" . magit-status)
+   ("C-x g g" . magit-dispatch-popup)))
+
 ;; Linguagem de Marcação (Markup Language)
 ;; Markdown
 (use-package markdown-mode
@@ -230,7 +237,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (counsel markdown-mode rainbow-delimiters lispy avy ivy company which-key mode-icons powerline spacemacs-theme general use-package))))
+    (magit counsel markdown-mode rainbow-delimiters lispy avy ivy company which-key mode-icons powerline spacemacs-theme general use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
