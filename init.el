@@ -83,6 +83,7 @@
 ;; Estético (Aesthetic)
 (use-package spacemacs-theme
   :ensure t
+  :defer t
   :init (load-theme 'spacemacs-dark t))
 (use-package powerline
   :ensure t
@@ -104,7 +105,7 @@
 ;; Company
 (use-package company
   :ensure t
-  :defer 1
+  :defer t
   :diminish company-mode
   :init (add-hook 'after-init-hook 'global-company-mode)
   :config
@@ -138,7 +139,14 @@
                             ))))
 
 ;; Abo-abo
-;; Ivy
+(use-package avy
+  :ensure t
+  :bind ("C-:" . avy-goto-char-timer)
+  :config (setq avy-timeout-seconds 0.3))
+(use-package ace-window
+  :ensure t
+  :bind ("M-p" . ace-window)
+  :config (setq aw-dispatch-always t))
 (use-package ivy
   :ensure t
   :diminish ivy-mode
@@ -152,21 +160,18 @@
         ivy-count-format "(%d/%d) "
         ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((t . ivy--regex-ignore-order))))
+(use-package swiper
+  :ensure t
+  :bind (("C-s" . swiper)))
 (use-package counsel
   :ensure t
   :bind
   (("M-x"     . counsel-M-x)
    ("C-x C-f" . counsel-find-file)
    ("C-x C-r" . counsel-recentf)
-   ;;("C-c f"   . counsel-git)
-   ;;("C-c s"   . counsel-git-grep)
-   ;;("C-c /"   . counsel-ag)
+   ("C-c /"   . counsel-ag)
    ("C-c l"   . counsel-locate)))
-
-;; Avy
-(use-package avy
-  :ensure t
-  :bind ("C-c j" . avy-goto-char))
+;; ---
 
 ;; Linguagem de Programação (Programming Language)
 ;; Emacs Lisp (ELisp)
