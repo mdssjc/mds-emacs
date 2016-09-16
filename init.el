@@ -56,6 +56,9 @@
                                (delete-trailing-whitespace)
                                (untabify (point-min) (point-max))))
 
+;; https://github.com/lewang/flx
+(setq gc-cons-threshold 20000000)
+
 ;; Segredos (Secrets)
 (load "~/.emacs.d/secrets/secrets")
 
