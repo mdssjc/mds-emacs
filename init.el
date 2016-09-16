@@ -138,7 +138,7 @@
                             ;company-dict
                             ))))
 
-;; Abo-abo
+;; Abo-abo (https://github.com/abo-abo)
 (use-package avy
   :ensure t
   :bind ("C-:" . avy-goto-char-timer)
@@ -171,10 +171,26 @@
    ("C-x C-r" . counsel-recentf)
    ("C-c /"   . counsel-ag)
    ("C-c l"   . counsel-locate)))
+;; Hydra
 ;; ---
 
 ;; Linguagem de Programação (Programming Language)
 ;; Emacs Lisp (ELisp)
+(use-package lispy
+  :ensure t
+  :defer t
+  :diminish lispy-mode
+  ;; Avaliar a necessidade dos binds
+  :bind
+  (("s-<right>"   . lispy-forward-slurp-sexp)
+   ("S-s-<right>" . lispy-forward-barf-sexp)
+   ("s-<left>"    . lispy-backward-slurp-sexp)
+   ("S-s-<left>"  . lispy-backward-barf-sexp))
+  :init
+  (dolist (hook '(emacs-lisp-mode-hook
+                  lisp-interaction-mode-hook
+                  lisp-mode-hook))
+    (add-hook hook (lambda () (lispy-mode 1)))))
 (use-package emacs-lisp-mode
   :config
   (progn
@@ -190,27 +206,10 @@
   :bind (("M-." . find-function-at-point)
          ("M-&" . complete-symbol))
   :interpreter (("emacs" . emacs-lisp-mode)))
-(use-package lispy
-  :ensure t
-  :defer 5
-  :diminish lispy-mode
-  ;; :bind
-  ;; (("s-<right>"   . lispy-)
-  ;;  ("S-s-<right>" . sp-forward-barf-sexp)
-  ;;  ("s-<left>"    . sp-backward-slurp-sexp)
-  ;;  ("S-s-<left>"  . sp-backward-barf-sexp)
-  ;;  ;; ("s-<up>"      . sp-wrap-with-pair "(")
-  ;; ("s-<down>"    . sp-unwrap-sexp))
-  :config
-  (dolist (hook '(emacs-lisp-mode-hook
-                  lisp-interaction-mode-hook
-                  lisp-mode-hook))
-    (add-hook hook (lambda () (lispy-mode 1)))))
 (use-package rainbow-delimiters
   :ensure t
-  :defer 5
-  :init
-  (add-hook 'emacs-lisp-mode-hook (lambda () (rainbow-delimiters-mode t))))
+  :defer t
+  :init (add-hook 'emacs-lisp-mode-hook (lambda () (rainbow-delimiters-mode t))))
 ;; ---
 
 ;; Linguagem de Marcação (Markup Language)
