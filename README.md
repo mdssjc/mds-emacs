@@ -21,7 +21,7 @@ Durante o desenvolvimento, o projeto servirá de estudo para o conhecimento da p
 Primeiramente as configurações básicas, tais como tema - implicitamente as configurações de pacotes e estruturas.
 
     * Sugestão de Atalhos: Buscar uma opção para facilitar a visualização dos bindings.
-    * Autocompletar: falta o Yasnippet, *Ispell* e Abreviação. Focar no Ispell.
+    * Autocompletar: instalar Abreviação. Melhorar a configuração dos pacotes Yasnippet e *Ispell*.
     * Acompanhar a evolução do Meghanada, disponibilizar uma modo para o Java (provisório JDEE ???).
 
 # Projeto
@@ -34,12 +34,12 @@ Descrição da composição do projeto.
 
 ## Pacotes
 
-    * Estético: estilo ergonômico e sem distrações/ruídos - tema dark, linha de status com icones.
+    * Estético: estilo ergonômico e sem distrações/ruídos - tema dark, linha de status com ícones.
     * Sintaxe: conjuntos de funcionalidades para facilitar a codificação e escrita.
       * Autocompletar: Company
-      * Correção: X
+      * Correção: Ispell
       * Abreviação: X
-      * Template: X
+      * Template: Yasnippet
     * Semântica: frase e/ou expressão incorreta.
     * Pragmático: org-mode...
     * Estrutura: conjunto de facilidades ao editor.
@@ -48,7 +48,7 @@ Descrição da composição do projeto.
       * Cliente Git.
       * Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper e Counsel
     * Linguagens de Programação:
-      * Lisp: dialeto ELisp (Emacs Lisp)
+      * Lisp: dialeto ELisp (Emacs Lisp) e Racket
       * Java: Meghanada (Em teste)
       * C e Web: X
     * Linguagens de Marcação:
@@ -65,4 +65,11 @@ Listagem dos comandos fundamentais do Emacs:
     * F2 - Alterações de coluna
     * F3 - Inicia/Incrementa a gravação de macro
     * F4 - Finaliza/Executa a macro
-    * ?? - Comando Principal
+    * Ctrl + x - configurações e utilitários do ambiente
+    * Ctrl + c - comandos para o modo maior atual
+    * Alt + x - prompt de comandos
+    * Win - comando especial, conforme o modo maior
+    * F5 - ???
+    * F6 - ???
+    * F7 - ???
+    * F8 - ???
