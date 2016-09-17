@@ -211,25 +211,27 @@
 (use-package yasnippet
   :ensure t
   :defer  t
-  :diminish yas-minor-mode)
+  :diminish yas-minor-mode
+  :config  (yas-global-mode t))
 ;; ---
 
 ;; Linguagem de Programação (Programming Language)
-;; Emacs Lisp (ELisp)
+;; Lisp: Emacs Lisp (ELisp) / Racket
 (use-package lispy
   :ensure t
   :defer t
   :diminish lispy-mode
-  ;; Avaliar a necessidade dos binds
   :bind
-  (("s-<right>"   . lispy-forward-slurp-sexp)
-   ("S-s-<right>" . lispy-forward-barf-sexp)
-   ("s-<left>"    . lispy-backward-slurp-sexp)
-   ("S-s-<left>"  . lispy-backward-barf-sexp))
+  (:map lispy-mode-map
+        ("s-<right>"   . lispy-forward-slurp-sexp)
+        ("S-s-<right>" . lispy-forward-barf-sexp)
+        ("s-<left>"    . lispy-backward-slurp-sexp)
+        ("S-s-<left>"  . lispy-backward-barf-sexp))
   :init
   (dolist (hook '(emacs-lisp-mode-hook
                   lisp-interaction-mode-hook
-                  lisp-mode-hook))
+                  lisp-mode-hook
+                  racket-mode-hook))
     (add-hook hook (lambda () (lispy-mode 1)))))
 (use-package emacs-lisp-mode
   :interpreter (("emacs" . emacs-lisp-mode))
@@ -241,7 +243,10 @@
   (use-package ert       :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
   (use-package company   :config (add-to-list 'company-backends 'company-elisp))
   (add-to-list 'completion-styles 'initials t))
-;; TODO: incluir Racket
+(use-package racket-mode
+  :ensure t
+  :mode ("\\.rkt\\'" . racket-mode)
+  :interpreter ("racket" . racket-mode))
 (use-package rainbow-delimiters
   :ensure t
   :defer t
