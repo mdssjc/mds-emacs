@@ -193,7 +193,7 @@
   :config
   (setq company-dict-enable-fuzzy t
         company-dict-enable-yasnippet nil))
-;; Ispell Cadernno
+;; Ispell
 (use-package ispell
   :defer t
   :config
