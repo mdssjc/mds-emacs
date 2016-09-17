@@ -63,7 +63,6 @@
 (load "~/.emacs.d/secrets/secrets")
 
 ;; Atalhos
-;;(load "~/.emacs.d/core/funcs")
 (use-package general
   :ensure t
   :config
@@ -77,34 +76,37 @@
    "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand))
 
-(use-package recentf
-  :config
-  (setq recentf-max-saved-items 1000)
-  (recentf-mode 1))
-
 ;; Pacotes (Packages)
 ;; Estético (Aesthetic)
 (use-package spacemacs-theme
   :ensure t
-  :defer t
-  :init (load-theme 'spacemacs-dark t))
-(use-package powerline
+  :defer  t
+  :init
+  (load-theme 'spacemacs-dark t))
+(use-package spaceline
   :ensure t
-  :config (powerline-default-theme))
+  :init   (require 'spaceline-config)
+  :config (spaceline-emacs-theme))
 (use-package mode-icons
   :ensure t
   :config (mode-icons-mode))
-;; https://github.com/domtronn/all-the-icons.el/wiki/Mode-Line
-;; (use-package all-the-icons
-;;   :ensure t)
 ;; ---
 
+;; Utilitários (Utilities)
+;; Recentf
+(use-package recentf
+  :config
+  (setq recentf-max-saved-items 1000)
+  (recentf-mode 1))
 ;; Which-key
 (use-package which-key
   :ensure t
+  :defer  t
   :diminish which-key-mode
   :config (which-key-mode))
+;; ---
 
+;; Autocompletar (Autocomplete)
 ;; Company
 (use-package company
   :ensure t
@@ -195,24 +197,25 @@
                   lisp-mode-hook))
     (add-hook hook (lambda () (lispy-mode 1)))))
 (use-package emacs-lisp-mode
-  :config
-  (progn
-    (use-package eldoc
-      :config (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode))
-    (use-package macrostep
-      :bind ("C-c e" . macrostep-expand))
-    (use-package ert
-      :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
-    (use-package company
-      :config (add-to-list 'company-backends 'company-elisp))
-    (add-to-list 'completion-styles 'initials t))
+  :interpreter (("emacs" . emacs-lisp-mode))
   :bind (("M-." . find-function-at-point)
          ("M-&" . complete-symbol))
-  :interpreter (("emacs" . emacs-lisp-mode)))
+  :config
+  (use-package eldoc     :config (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode))
+  (use-package macrostep :bind   ("C-c e" . macrostep-expand))
+  (use-package ert       :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
+  (use-package company   :config (add-to-list 'company-backends 'company-elisp))
+  (add-to-list 'completion-styles 'initials t))
 (use-package rainbow-delimiters
   :ensure t
   :defer t
   :init (add-hook 'emacs-lisp-mode-hook (lambda () (rainbow-delimiters-mode t))))
+;; ---
+
+;; Java
+;; (use-package meghanada ; Bug
+;;   :ensure t
+;;   :init (add-hook 'java-mode-hook (lambda () (meghanada-mode t))))
 ;; ---
 
 ;; Magit
@@ -240,7 +243,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit counsel markdown-mode rainbow-delimiters lispy avy ivy company which-key mode-icons powerline spacemacs-theme general use-package))))
+    (spaceline-config markdown-mode magit rainbow-delimiters lispy counsel swiper ivy ace-window avy company which-key mode-icons use-package spacemacs-theme spaceline general))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
