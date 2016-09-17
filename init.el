@@ -55,6 +55,9 @@
                                (delete-trailing-whitespace)
                                (untabify (point-min) (point-max))))
 
+(mouse-avoidance-mode 'animate)
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ;; https://github.com/lewang/flx
 (setq gc-cons-threshold 20000000)
 
@@ -193,6 +196,7 @@
   :config
   (setq company-dict-enable-fuzzy t
         company-dict-enable-yasnippet nil))
+;; Correção (Correction)
 ;; Ispell
 (use-package ispell
   :defer t
@@ -200,6 +204,14 @@
   (setq ispell-program-name "hunspell"
         ispell-dictionary "pt_BR"
         ispell-really-hunspell t))
+;; Abreviação (Abbreviation)
+
+;; Template
+;; Yasnippet
+(use-package yasnippet
+  :ensure t
+  :defer  t
+  :diminish yas-minor-mode)
 ;; ---
 
 ;; Linguagem de Programação (Programming Language)
@@ -229,6 +241,7 @@
   (use-package ert       :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
   (use-package company   :config (add-to-list 'company-backends 'company-elisp))
   (add-to-list 'completion-styles 'initials t))
+;; TODO: incluir Racket
 (use-package rainbow-delimiters
   :ensure t
   :defer t
