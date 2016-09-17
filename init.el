@@ -18,8 +18,7 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(eval-when-compile
-  (require 'use-package))
+(eval-when-compile (require 'use-package))
 
 ;; Configurações Globais (Global Settings)
 (setq coding-system-for-read 'utf-8
@@ -75,6 +74,8 @@
    "<C-tab>"    'cycle-spacing
    "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand))
+;; F5 ao F8: definir funcionalidades
+;; ---
 
 ;; Pacotes (Packages)
 ;; Estético (Aesthetic)
@@ -92,7 +93,7 @@
   :config (mode-icons-mode))
 ;; ---
 
-;; Utilitários (Utilities)
+;; Estrutura (Structure)
 ;; Recentf
 (use-package recentf
   :config
@@ -103,9 +104,54 @@
   :ensure t
   :defer  t
   :diminish which-key-mode
-  :config (which-key-mode))
+  :config  (which-key-mode))
+;; Expand-Region
+(use-package expand-region
+  :ensure t
+  :bind ("C-=" . er/expand-region))
+;; Magit
+(use-package magit
+  :ensure t
+  :bind
+  (("C-x g s" . magit-status)
+   ("C-x g g" . magit-dispatch-popup)))
+;; Abo-abo (https://github.com/abo-abo)
+(use-package avy
+  :ensure t
+  :bind ("C-:" . avy-goto-char-timer)
+  :config (setq avy-timeout-seconds 0.3))
+(use-package ace-window
+  :ensure t
+  :bind ("M-p" . ace-window)
+  :config (setq aw-dispatch-always t))
+(use-package ivy
+  :ensure t
+  :diminish ivy-mode
+  :bind
+  (:map ivy-mode-map
+   ("C-'" . ivy-avy))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t
+        ivy-height 10
+        ivy-count-format "(%d/%d) "
+        ivy-initial-inputs-alist nil
+        ivy-re-builders-alist '((t . ivy--regex-plus))))
+(use-package swiper
+  :ensure t
+  :bind (("C-s" . swiper)))
+(use-package counsel
+  :ensure t
+  :bind
+  (("M-x"     . counsel-M-x)
+   ("C-x C-f" . counsel-find-file)
+   ("C-x C-r" . counsel-recentf)
+   ("C-c /"   . counsel-ag)
+   ("C-c l"   . counsel-locate)))
+;; Hydra
 ;; ---
 
+;; Sintaxe (Sintaxe)
 ;; Autocompletar (Autocomplete)
 ;; Company
 (use-package company
@@ -129,54 +175,31 @@
                             company-capf
                             company-dabbrev-code
                             company-dabbrev
-                            ;company-elisp
+                                        ;company-elisp
                             company-etags
                             company-files
                             company-gtags
-                            ;company-ispell
+                            company-ispell
                             company-keywords
                             company-oddmuse
-                            ;company-semantic
-                            ;company-template
+                                        ;company-semantic
+                                        ;company-template
                             company-tempo
-                            ;company-yasnippet
-                            ;company-dict
-                            ))))
-
-;; Abo-abo (https://github.com/abo-abo)
-(use-package avy
+                            company-yasnippet
+                            company-dict))))
+(use-package company-dict
   :ensure t
-  :bind ("C-:" . avy-goto-char-timer)
-  :config (setq avy-timeout-seconds 0.3))
-(use-package ace-window
-  :ensure t
-  :bind ("M-p" . ace-window)
-  :config (setq aw-dispatch-always t))
-(use-package ivy
-  :ensure t
-  :diminish ivy-mode
-  :bind
-  (:map ivy-mode-map
-   ("C-'" . ivy-avy))
+  :after company
   :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t
-        ivy-height 5
-        ivy-count-format "(%d/%d) "
-        ivy-initial-inputs-alist nil
-        ivy-re-builders-alist '((t . ivy--regex-ignore-order))))
-(use-package swiper
-  :ensure t
-  :bind (("C-s" . swiper)))
-(use-package counsel
-  :ensure t
-  :bind
-  (("M-x"     . counsel-M-x)
-   ("C-x C-f" . counsel-find-file)
-   ("C-x C-r" . counsel-recentf)
-   ("C-c /"   . counsel-ag)
-   ("C-c l"   . counsel-locate)))
-;; Hydra
+  (setq company-dict-enable-fuzzy t
+        company-dict-enable-yasnippet nil))
+;; Ispell Cadernno
+(use-package ispell
+  :defer t
+  :config
+  (setq ispell-program-name "hunspell"
+        ispell-dictionary "pt_BR"
+        ispell-really-hunspell t))
 ;; ---
 
 ;; Linguagem de Programação (Programming Language)
@@ -201,7 +224,7 @@
   :bind (("M-." . find-function-at-point)
          ("M-&" . complete-symbol))
   :config
-  (use-package eldoc     :config (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode))
+  (use-package eldoc     :config (add-hook 'emacs-lisp-mode-hook 'eldoc-mode))
   (use-package macrostep :bind   ("C-c e" . macrostep-expand))
   (use-package ert       :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
   (use-package company   :config (add-to-list 'company-backends 'company-elisp))
@@ -218,13 +241,6 @@
 ;;   :init (add-hook 'java-mode-hook (lambda () (meghanada-mode t))))
 ;; ---
 
-;; Magit
-(use-package magit
-  :ensure t
-  :bind
-  (("C-x g s" . magit-status)
-   ("C-x g g" . magit-dispatch-popup)))
-
 ;; Linguagem de Marcação (Markup Language)
 ;; Markdown
 (use-package markdown-mode
@@ -234,6 +250,7 @@
          ("\\.md\\'"       . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "markdown"))
+;; ---
 
 ;; Automático (Automatic)
 (custom-set-variables
@@ -243,7 +260,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (spaceline-config markdown-mode magit rainbow-delimiters lispy counsel swiper ivy ace-window avy company which-key mode-icons use-package spacemacs-theme spaceline general))))
+    (expand-region company-dict spaceline-config markdown-mode magit rainbow-delimiters lispy counsel swiper ivy ace-window avy company which-key mode-icons use-package spacemacs-theme spaceline general))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
