@@ -20,9 +20,9 @@ Durante o desenvolvimento, o projeto servirá de estudo para o conhecimento da p
 
 Primeiramente as configurações básicas, tais como tema - implicitamente as configurações de pacotes e estruturas.
 
-    * Tema: instalado - falta melhorar os icones, personalizar o powerline.
-    * Sugestão de Atalhos: disponível o Which-key - apresenta automaticamente os atalhos no minibuffer, conforme utilização. Buscar uma opção para facilitar a visualização dos bindings.
-    * Autocompletar: disponível o Company, falta o Yasnippet, *Ispell* e Abreviação. Focar no Ispell.
+    * Sugestão de Atalhos: Buscar uma opção para facilitar a visualização dos bindings.
+    * Autocompletar: falta o Yasnippet, *Ispell* e Abreviação. Focar no Ispell.
+    * Acompanhar a evolução do Meghanada, disponibilizar uma modo para o Java (provisório JDEE ???).
 
 # Projeto
 
@@ -42,17 +42,17 @@ Descrição da composição do projeto.
       * Template: X
     * Semântica: frase e/ou expressão incorreta.
     * Pragmático: org-mode...
-    * Estrutura: conjunto de facilidades.
-      * Sugestão de Atalhos: Which-key
-      * *Git: manipulação das funcionalidades do git.*
+    * Estrutura: conjunto de facilidades ao editor.
+      * Documentos recentes
+      * Sugestão de atalhos
+      * Cliente Git.
       * Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper e Counsel
     * Linguagens de Programação:
       * Lisp: dialeto ELisp (Emacs Lisp)
-        * Lispy
-        * Rainbow-delimiters
-      * C, Java e Web.
+      * Java: Meghanada (Em teste)
+      * C e Web: X
     * Linguagens de Marcação:
-      * Markdown
+      * Markdown: arquivos .md.
       * XML: ...
       * Web: ...
       * Latex: ...
