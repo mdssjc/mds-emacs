@@ -202,6 +202,11 @@
   :config
   (setq company-quickhelp-delay 1)
   (company-quickhelp-mode 1))
+(use-package company-statistics
+  :ensure t
+  :after company
+  :config
+  (company-statistics-mode))
 ;; Correção (Correction)
 ;; Ispell
 (use-package ispell
@@ -283,7 +288,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (expand-region company-dict spaceline-config markdown-mode magit rainbow-delimiters lispy counsel swiper ivy ace-window avy company which-key mode-icons use-package spacemacs-theme spaceline general))))
+    (company-statistics expand-region company-dict spaceline-config markdown-mode magit rainbow-delimiters lispy counsel swiper ivy ace-window avy company which-key mode-icons use-package spacemacs-theme spaceline general))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
