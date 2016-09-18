@@ -105,9 +105,10 @@
 ;; Which-key
 (use-package which-key
   :ensure t
-  :defer  t
   :diminish which-key-mode
-  :config  (which-key-mode))
+  :config
+  (setq which-key-idle-delay 0.1)
+  (which-key-mode))
 ;; Expand-Region
 (use-package expand-region
   :ensure t
