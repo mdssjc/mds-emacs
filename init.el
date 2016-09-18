@@ -196,6 +196,12 @@
   :config
   (setq company-dict-enable-fuzzy t
         company-dict-enable-yasnippet nil))
+(use-package company-quickhelp
+  :ensure t
+  :after company
+  :config
+  (setq company-quickhelp-delay 1)
+  (company-quickhelp-mode 1))
 ;; Correção (Correction)
 ;; Ispell
 (use-package ispell
