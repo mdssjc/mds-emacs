@@ -117,6 +117,7 @@
   :ensure t
   :bind
   (("C-x g s" . magit-status)
+   ("C-x g S" . magit-stage-file)
    ("C-x g g" . magit-dispatch-popup)))
 ;; Abo-abo (https://github.com/abo-abo)
 (use-package avy
