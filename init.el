@@ -45,6 +45,8 @@
       scroll-step 1
       auto-window-vscroll nil)
 
+(add-to-list 'load-path "~/.emacs.d/packages/")
+
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -80,80 +82,10 @@
 ;; F5 ao F8: definir funcionalidades
 ;; ---
 
-;; Pacotes (Packages)
 ;; Estético (Aesthetic)
-(use-package spacemacs-theme
-  :ensure t
-  :defer  t
-  :init
-  (load-theme 'spacemacs-dark t))
-(use-package spaceline
-  :ensure t
-  :init   (require 'spaceline-config)
-  :config (spaceline-emacs-theme))
-(use-package mode-icons
-  :ensure t
-  :config (mode-icons-mode))
-;; ---
-
+(require 'aesthetic)
 ;; Estrutura (Structure)
-;; Recentf
-(use-package recentf
-  :config
-  (setq recentf-max-saved-items 1000)
-  (recentf-mode 1))
-;; Which-key
-(use-package which-key
-  :ensure t
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 0.1)
-  (which-key-mode))
-;; Expand-Region
-(use-package expand-region
-  :ensure t
-  :bind ("C-=" . er/expand-region))
-;; Magit
-(use-package magit
-  :ensure t
-  :bind
-  (("C-x g s" . magit-status)
-   ("C-x g S" . magit-stage-file)
-   ("C-x g g" . magit-dispatch-popup)))
-;; Abo-abo (https://github.com/abo-abo)
-(use-package avy
-  :ensure t
-  :bind ("C-:" . avy-goto-char-timer)
-  :config (setq avy-timeout-seconds 0.3))
-(use-package ace-window
-  :ensure t
-  :bind ("M-p" . ace-window)
-  :config (setq aw-dispatch-always t))
-(use-package ivy
-  :ensure t
-  :diminish ivy-mode
-  :bind
-  (:map ivy-mode-map
-   ("C-'" . ivy-avy))
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t
-        ivy-height 10
-        ivy-count-format "(%d/%d) "
-        ivy-initial-inputs-alist nil
-        ivy-re-builders-alist '((t . ivy--regex-plus))))
-(use-package swiper
-  :ensure t
-  :bind (("C-s" . swiper)))
-(use-package counsel
-  :ensure t
-  :bind
-  (("M-x"     . counsel-M-x)
-   ("C-x C-f" . counsel-find-file)
-   ("C-x C-r" . counsel-recentf)
-   ("C-c /"   . counsel-ag)
-   ("C-c l"   . counsel-locate)))
-;; Hydra
+(require 'structure)
 ;; ---
 
 ;; Sintaxe (Sintaxe)
@@ -161,7 +93,6 @@
 ;; Company
 (use-package company
   :ensure t
-  :defer t
   :diminish company-mode
   :init (add-hook 'after-init-hook 'global-company-mode)
   :config
@@ -185,8 +116,8 @@
                             company-gtags
                             company-keywords
                             company-oddmuse
-                            ;;company-semantic
-                            ;;company-template
+                            company-semantic
+                            ;; company-template
                             company-tempo))))
 (use-package company-dict
   :ensure t
@@ -220,12 +151,12 @@
   :ensure t
   :after company
   :config
-  (add-to-list 'company-backends 'company-ispell)
   (setq ispell-program-name "hunspell"
         ispell-dictionary "pt_BR"
         ispell-really-hunspell t
         ;; ispell-complete-word-dict "/home/mdssjc/.emacs.d/dict/pt_BR.dic"
-        ))
+        )
+  (add-to-list 'company-backends 'company-ispell))
 ;; Abreviação (Abbreviation)
 
 ;; Template
@@ -245,40 +176,7 @@
 ;; ---
 
 ;; Linguagem de Programação (Programming Language)
-;; Pacotes (Packages)
-(use-package lispy
-  :ensure t
-  :diminish lispy-mode
-  :bind
-  (:map lispy-mode-map
-        ("s-<right>" . lispy-forward-slurp-sexp)
-        ("S-s-<right>" . lispy-forward-barf-sexp)
-        ("s-<left>" . lispy-backward-slurp-sexp)
-        ("S-s-<left>" . lispy-backward-barf-sexp)))
-(use-package rainbow-delimiters
-  :ensure t)
-;; Emacs Lisp (ELisp)
-(use-package emacs-lisp-mode
-  :interpreter (("emacs" . emacs-lisp-mode))
-  :bind
-  (("M-." . find-function-at-point)
-   ("M-&" . complete-symbol))
-  :init
-  (use-package macrostep :bind ("C-c e" . macrostep-expand))
-  (use-package eldoc :config (add-hook 'emacs-lisp-mode-hook 'eldoc-mode))
-  (use-package lispy :config (add-hook 'emacs-lisp-mode-hook 'lispy-mode))
-  (use-package ert :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
-  (use-package company :config (add-to-list 'company-backends 'company-elisp))
-  (use-package rainbow-delimiters :config (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
-  (add-to-list 'completion-styles 'initials t))
-;; Racket
-(use-package racket-mode
-  :ensure t
-  :mode ("\\.rkt\\'" . racket-mode)
-  :interpreter ("racket" . racket-mode)
-  :init
-  (use-package lispy :config (add-hook 'racket-mode-hook 'lispy-mode))
-  (use-package rainbow-delimiters :config (add-hook 'racket-mode-hook 'rainbow-delimiters-mode)))
+(require 'programming-language-lisp)
 ;; ---
 
 ;; Java
@@ -306,7 +204,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-statistics expand-region company-dict spaceline-config markdown-mode magit rainbow-delimiters lispy counsel swiper ivy ace-window avy company which-key mode-icons use-package spacemacs-theme spaceline general))))
+    (markdown-mode company-statistics use-package general company-quickhelp company-dict))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
