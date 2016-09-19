@@ -6,7 +6,7 @@
 ;;
 ;; Linguagem de Programação (Programming Language)
 ;; Lisp
-(provide 'mds/lisp)
+;; (provide 'mds/lisp)
 (require 'semantic)
 
 (use-package lispy
