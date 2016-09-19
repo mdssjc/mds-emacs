@@ -6,7 +6,9 @@ Versão do Emacs: 25.1.50
 
 # Instalação
 
-Instalação do Emacs
+Procedimento para a instalação do projeto.
+
+## Instalação do Emacs
 
 ```
 git clone https://github.com/emacs-mirror/emacs
@@ -16,7 +18,13 @@ make
 sudo make install
 ```
 
-Clonagem do Projeto
+## Clonagem do Projeto
+
+```
+mkdir ~/.emacs.d
+cd ~/.emacs.d
+git clone https://github.com/mdssjc/mds-emacs
+```
 
 # O que fazer?
 
