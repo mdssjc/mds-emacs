@@ -175,13 +175,11 @@
         company-show-numbers t
         company-dabbrev-other-buffers 'all
         tab-always-indent 'complete
-        company-backends '((
-                            company-abbrev
+        company-backends '((company-abbrev
                             company-bbdb
                             company-capf
                             company-dabbrev-code
                             company-dabbrev
-                            ;;company-elisp
                             company-etags
                             company-files
                             company-gtags
