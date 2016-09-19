@@ -96,34 +96,33 @@
   :diminish company-mode
   :init (add-hook 'after-init-hook 'global-company-mode)
   :config
-  (setq company-auto-complete nil
+  (setq tab-always-indent 'complete
+        company-tooltip-limit 10
         company-tooltip-flip-when-above t
         company-minimum-prefix-length 2
-        company-tooltip-limit 10
+        company-auto-complete nil
         company-idle-delay 0.05
-        company-echo-delay 0
-        company-begin-commands '(self-insert-command)
         company-show-numbers t
+        company-echo-delay 0
         company-dabbrev-other-buffers 'all
-        tab-always-indent 'complete
-        company-backends '((company-abbrev
-                            company-bbdb
-                            company-capf
+        company-backends '((company-files
+                            company-abbrev
                             company-dabbrev-code
                             company-dabbrev
-                            company-etags
-                            company-files
-                            company-gtags
                             company-keywords
-                            company-oddmuse
+                            company-capf
                             company-semantic
-                            ;; company-template
-                            company-tempo))))
-(use-package company-dict
+                            company-bbdb
+                            company-etags
+                            company-gtags
+                            company-tempo
+                            company-dict
+                            company-yasnippet
+                            company-ispell))))
+(use-package company-dict               ; company-dict
   :ensure t
   :after company
   :config
-  (add-hook 'company-backends 'company-dict)
   (setq company-dict-enable-fuzzy t
         company-dict-enable-yasnippet nil
         company-dict-dir (concat user-emacs-directory "dict/")))
@@ -147,21 +146,19 @@
 ;; - converta a codificação do dicionário com o comando iconv -f ENCODE -t UTF-8 -o XXX
 ;; - configure a variável company-ispell-dictionary com o dicionário
 ;; - avançado: obtenha o dicionário pelo LanguageTool
-(use-package ispell
+(use-package ispell                     ; company-ispell
   :ensure t
   :after company
   :config
   (setq ispell-program-name "hunspell"
         ispell-dictionary "pt_BR"
         ispell-really-hunspell t
-        ;; ispell-complete-word-dict "/home/mdssjc/.emacs.d/dict/pt_BR.dic"
-        )
-  (add-to-list 'company-backends 'company-ispell))
+        ispell-complete-word-dict "/home/mdssjc/.emacs.d/dict/pt_BR.dic"))
 ;; Abreviação (Abbreviation)
 
 ;; Template
 ;; Yasnippet
-(use-package yasnippet
+(use-package yasnippet                  ; company-yasnippet
   :ensure t
   :diminish yas-minor-mode
   :after company
@@ -170,7 +167,6 @@
                                yas-completing-prompt
                                yas-no-prompt
                                yas-x-prompt))
-  (add-hook 'company-backends 'company-yasnippet)
   (yas-global-mode 1)
   (yas-reload-all))
 ;; ---
@@ -204,7 +200,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode company-statistics use-package general company-quickhelp company-dict))))
+    (markdown-mode racket-mode rainbow-delimiters lispy yasnippet company-statistics company-quickhelp company-dict company counsel swiper ivy ace-window avy magit expand-region which-key mode-icons spaceline spacemacs-theme general use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
