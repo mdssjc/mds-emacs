@@ -174,6 +174,8 @@
 ;; Linguagem de Programação (Programming Language)
 (require 'programming-language-lisp)
 (require 'programming-language-java)
+;; (require 'programming-language-c)
+;; (require 'programming-language-web)
 ;; ---
 
 ;; Linguagem de Marcação (Markup Language)
