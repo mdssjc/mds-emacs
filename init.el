@@ -187,15 +187,14 @@
                             company-oddmuse
                             ;;company-semantic
                             ;;company-template
-                            company-tempo
-                            company-yasnippet))))
+                            company-tempo))))
 (use-package company-dict
   :ensure t
   :after company
   :config
   (add-hook 'company-backends 'company-dict)
   (setq company-dict-enable-fuzzy t
-        company-dict-enable-yasnippet t
+        company-dict-enable-yasnippet nil
         company-dict-dir (concat user-emacs-directory "dict/")))
 (use-package company-quickhelp
   :ensure t
@@ -233,9 +232,16 @@
 ;; Yasnippet
 (use-package yasnippet
   :ensure t
-  :defer  t
   :diminish yas-minor-mode
-  :config  (yas-global-mode t))
+  :after company
+  :config
+  (setq yas-prompt-functions '(yas-dropdown-prompt
+                               yas-completing-prompt
+                               yas-no-prompt
+                               yas-x-prompt))
+  (add-hook 'company-backends 'company-yasnippet)
+  (yas-global-mode 1)
+  (yas-reload-all))
 ;; ---
 
 ;; Linguagem de Programação (Programming Language)
