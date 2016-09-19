@@ -29,7 +29,7 @@
       standard-indent 2
       tab-width 2
       indent-tabs-mode nil
-      tab-stop-list '(2  4  6)
+      tab-stop-list '(2 4 6)
       tab-always-indent 'complete
       ;; Newline
       require-final-newline t
@@ -173,6 +173,7 @@
         company-echo-delay 0
         company-begin-commands '(self-insert-command)
         company-show-numbers t
+        company-dabbrev-other-buffers 'all
         tab-always-indent 'complete
         company-backends '((
                             company-abbrev
@@ -180,24 +181,24 @@
                             company-capf
                             company-dabbrev-code
                             company-dabbrev
-                                        ;company-elisp
+                            ;;company-elisp
                             company-etags
                             company-files
                             company-gtags
-                            company-ispell
                             company-keywords
                             company-oddmuse
-                                        ;company-semantic
-                                        ;company-template
+                            ;;company-semantic
+                            ;;company-template
                             company-tempo
-                            company-yasnippet
-                            company-dict))))
+                            company-yasnippet))))
 (use-package company-dict
   :ensure t
   :after company
   :config
+  (add-hook 'company-backends 'company-dict)
   (setq company-dict-enable-fuzzy t
-        company-dict-enable-yasnippet nil))
+        company-dict-enable-yasnippet t
+        company-dict-dir (concat user-emacs-directory "dict/")))
 (use-package company-quickhelp
   :ensure t
   :after company
@@ -211,12 +212,23 @@
   (company-statistics-mode))
 ;; Correção (Correction)
 ;; Ispell
+;; - instale o Hunspell
+;; - entre com o comando Hunspell -D
+;; - escolha a URI do dicionário com a extensão .dic
+;; - entre com o pipe de comandos cat URI/XXX.dic | cut -d"/" -f1 > ~/.emacs.d/dicts/XXX
+;; - converta a codificação do dicionário com o comando iconv -f ENCODE -t UTF-8 -o XXX
+;; - configure a variável company-ispell-dictionary com o dicionário
+;; - avançado: obtenha o dicionário pelo LanguageTool
 (use-package ispell
-  :defer t
+  :ensure t
+  :after company
   :config
+  (add-to-list 'company-backends 'company-ispell)
   (setq ispell-program-name "hunspell"
         ispell-dictionary "pt_BR"
-        ispell-really-hunspell t))
+        ispell-really-hunspell t
+        ;; ispell-complete-word-dict "/home/mdssjc/.emacs.d/dict/pt_BR.dic"
+        ))
 ;; Abreviação (Abbreviation)
 
 ;; Template
