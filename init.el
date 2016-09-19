@@ -6,10 +6,10 @@
 ;;
 (require 'package)
 
-(setq package-enable-at-startup nil)
-(setq package-archives '(("org"       . "http://orgmode.org/elpa/")
-                         ("gnu"       . "http://elpa.gnu.org/packages/")
-                         ("melpa"     . "https://melpa.org/packages/")
+(setq package-enable-at-startup nil
+      package-archives '(("org" . "http://orgmode.org/elpa/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 (package-initialize)
 
@@ -184,7 +184,9 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'"       . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "markdown"))
+  :init (setq markdown-command "markdown")
+  :config
+  (setq tab-width 4))
 ;; ---
 
 ;; Automático (Automatic)
@@ -195,7 +197,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode racket-mode rainbow-delimiters lispy yasnippet company-statistics company-quickhelp company-dict company counsel swiper ivy ace-window avy magit expand-region which-key mode-icons spaceline spacemacs-theme general use-package))))
+    (projectile markdown-mode racket-mode rainbow-delimiters lispy yasnippet company-statistics company-quickhelp company-dict company counsel swiper ivy ace-window avy magit expand-region which-key mode-icons spaceline spacemacs-theme general use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
