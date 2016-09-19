@@ -8,6 +8,14 @@ Versão do Emacs: 25.1.50
 
 Instalação do Emacs
 
+```
+git clone https://github.com/emacs-mirror/emacs
+./autogen.sh all
+./configure
+make
+sudo make install
+```
+
 Clonagem do Projeto
 
 # O que fazer?
@@ -21,8 +29,8 @@ Durante o desenvolvimento, o projeto servirá de estudo para o conhecimento da p
 Primeiramente as configurações básicas, tais como tema - implicitamente as configurações de pacotes e estruturas.
 
     * Sugestão de Atalhos: Buscar uma opção para facilitar a visualização dos bindings.
-    * Autocompletar: instalar Abreviação. Melhorar a configuração dos pacotes Yasnippet e *Ispell*.
-    * Acompanhar a evolução do Meghanada, disponibilizar uma modo para o Java (provisório JDEE ???).
+    * Autocompletar: instalar Abreviação. Melhorar a configuração dos pacotes Yasnippet.
+    * Acompanhar a evolução do Meghanada.
 
 # Projeto
 
@@ -34,14 +42,18 @@ Descrição da composição do projeto.
 
 ## Pacotes
 
+Conjunto de pacotes para o ambiente:
+
     * Estético: estilo ergonômico e sem distrações/ruídos - tema dark, linha de status com ícones.
     * Sintaxe: conjuntos de funcionalidades para facilitar a codificação e escrita.
-      * Autocompletar: Company
-      * Correção: Ispell
+      * Autocompletar: sugestão de texto, conforme modo maior.
+      * Correção: sugestão para palavras selecionadas, conforme dicionário (português por padrão).
       * Abreviação: X
-      * Template: Yasnippet
+      * Template: blocos de construção de texto (linguagens de programação).
     * Semântica: frase e/ou expressão incorreta.
+      * X
     * Pragmático: org-mode...
+      * X
     * Estrutura: conjunto de facilidades ao editor.
       * Documentos recentes
       * Sugestão de atalhos
@@ -49,13 +61,14 @@ Descrição da composição do projeto.
       * Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper e Counsel
     * Linguagens de Programação:
       * Lisp: dialeto ELisp (Emacs Lisp) e Racket
-      * Java: Meghanada (Em teste)
-      * C e Web: X
+      * Java: Meghanada (Pacote novo - em teste)
+      * C: X
+      * Web: X
     * Linguagens de Marcação:
       * Markdown: arquivos .md.
-      * XML: ...
-      * Web: ...
-      * Latex: ...
+      * XML: X
+      * Web: X
+      * Latex: X
 
 ## Comandos
 
@@ -68,8 +81,8 @@ Listagem dos comandos fundamentais do Emacs:
     * Ctrl + x - configurações e utilitários do ambiente
     * Ctrl + c - comandos para o modo maior atual
     * Alt + x - prompt de comandos
-    * Win - comando especial, conforme o modo maior
-    * F5 - ???
+    * Win - comando especial para o modo maior
+    * F5 - Toggle (golden-ratio, centered-cursor, ...)
     * F6 - ???
     * F7 - ???
     * F8 - ???
