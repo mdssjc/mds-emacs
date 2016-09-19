@@ -6,6 +6,9 @@
 ;;
 ;; Linguagem de Programação (Programming Language)
 ;; Lisp
+(provide 'mds/lisp)
+(require 'semantic)
+
 (use-package lispy
   :ensure t
   :diminish lispy-mode
