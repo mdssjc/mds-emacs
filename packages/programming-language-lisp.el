@@ -32,7 +32,21 @@
   (use-package eldoc :config (add-hook 'emacs-lisp-mode-hook 'eldoc-mode))
   (use-package lispy :config (add-hook 'emacs-lisp-mode-hook 'lispy-mode))
   (use-package ert :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
-  (use-package company :config (add-to-list 'company-backends 'company-elisp))
+  (use-package company
+    :config
+    (add-hook 'emacs-lisp-mode-hook
+              (lambda ()
+                (add-to-list (make-local-variable 'company-backends)
+                             '(company-elisp
+                               company-abbrev
+                               company-dabbrev-code
+                               company-dabbrev
+                               company-keywords
+                               company-files
+                               company-capf
+                               company-semantic
+                               company-yasnippet
+                               company-ispell)))))
   (use-package rainbow-delimiters :config (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
   (add-to-list 'completion-styles 'initials t))
 
