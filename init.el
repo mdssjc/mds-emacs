@@ -173,12 +173,7 @@
 
 ;; Linguagem de Programação (Programming Language)
 (require 'programming-language-lisp)
-;; ---
-
-;; Java
-;; (use-package meghanada ; Bug
-;;   :ensure t
-;;   :init (add-hook 'java-mode-hook (lambda () (meghanada-mode t))))
+(require 'programming-language-java)
 ;; ---
 
 ;; Linguagem de Marcação (Markup Language)
