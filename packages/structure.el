@@ -69,4 +69,12 @@
    ("C-c l"   . counsel-locate)))
 ;; Hydra
 
+;; Projectile
+;; TODO -> configurar o pacote
+(use-package projectile
+  :ensure t
+  :diminish projectile-mode
+  :config
+  (projectile-global-mode t))
+
 (provide 'structure)
