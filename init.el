@@ -72,27 +72,30 @@
   :config
   (load "~/.emacs.d/core/funcs")
   (general-define-key
-   "M-<up>"     'mds/move-up
-   "M-<down>"   'mds/move-down
-   "M-S-<up>"   'mds/duplicate-up
+   "M-<up>" 'mds/move-up
+   "M-<down>" 'mds/move-down
+   "M-S-<up>" 'mds/duplicate-up
    "M-S-<down>" 'mds/duplicate-down
-   "<C-tab>"    'cycle-spacing
+   "<C-tab>" 'cycle-spacing
    "<C-return>" 'mds/insert-lines-between
-   "M-/"        'hippie-expand))
-;; F5 ao F8: definir funcionalidades
+   "M-/" 'hippie-expand))
+;; F6 ao F8: definir funcionalidades
+;; F5- Toggles
+(use-package golden-ratio :ensure t :diminish " φ"
+  :bind (("<f5> g" . golden-ratio-mode)))
+(use-package centered-cursor-mode :ensure t :diminish " ⊝"
+  :bind (("<f5> -" . centered-cursor-mode)))
+(use-package boon :ensure t
+  :bind (("<f5> b" . boon-mode))
+  :config
+  (require 'boon-colemak)
+  (add-to-list 'boon-special-mode-list 'emacs-lisp-mode))
 ;; ---
 
 ;; Estético (Aesthetic)
 (require 'aesthetic)
 ;; Estrutura (Structure)
 (require 'structure)
-(use-package boon                       ; em testes
-  :ensure t
-  :bind
-  ("<f5> b" . boon-mode)
-  :config
-  (require 'boon-colemak)
-  (add-to-list 'boon-special-mode-list 'lispy-mode))
 ;; ---
 
 ;; Sintaxe (Sintaxe)
@@ -197,7 +200,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (prompts boon boon-mode projectile markdown-mode racket-mode rainbow-delimiters lispy yasnippet company-statistics company-quickhelp company-dict company counsel swiper ivy ace-window avy magit expand-region which-key mode-icons spaceline spacemacs-theme general use-package))))
+    (golden-ratio prompts boon boon-mode projectile markdown-mode racket-mode rainbow-delimiters lispy yasnippet company-statistics company-quickhelp company-dict company counsel swiper ivy ace-window avy magit expand-region which-key mode-icons spaceline spacemacs-theme general use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
