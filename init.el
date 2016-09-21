@@ -115,7 +115,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode meghanada racket-mode rainbow-delimiters lispy projectile counsel swiper ivy ace-window avy magit which-key mode-icons spaceline spacemacs-theme boon centered-cursor-mode golden-ratio general use-package))))
+    (company-statistics company-quickhelp company-dict markdown-mode meghanada racket-mode rainbow-delimiters lispy projectile counsel swiper ivy ace-window avy magit which-key mode-icons spaceline spacemacs-theme boon centered-cursor-mode golden-ratio general use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
