@@ -43,22 +43,23 @@
   :ensure t
   :bind ("M-p" . ace-window)
   :config (setq aw-dispatch-always t))
+(use-package swiper
+  :ensure t
+  :bind (("C-s" . swiper)))
 (use-package ivy
   :ensure t
   :diminish ivy-mode
   :bind
   (:map ivy-mode-map
-   ("C-'" . ivy-avy))
-  :config
+        ("C-'" . ivy-avy))
+  :init
   (ivy-mode 1)
+  :config
   (setq ivy-use-virtual-buffers t
         ivy-height 10
         ivy-count-format "(%d/%d) "
         ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((t . ivy--regex-plus))))
-(use-package swiper
-  :ensure t
-  :bind (("C-s" . swiper)))
 (use-package counsel
   :ensure t
   :bind
