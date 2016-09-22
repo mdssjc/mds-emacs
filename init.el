@@ -93,18 +93,18 @@
 ;; ---
 
 ;; Estético (Aesthetic)
-(require 'aesthetic)
+(load "aesthetic")
 ;; Estrutura (Structure)
-(require 'structure)
+(load "structure")
 ;; Sintaxe (Syntax)
-(require 'syntax)
+(load "syntax")
 ;; Linguagem de Programação (Programming Language)
-(require 'programming-language-lisp)
-(require 'programming-language-java)
+(load "programming-language-lisp")
+(load "programming-language-java")
 ;; (require 'programming-language-c)
 ;; (require 'programming-language-web)
 ;; Linguagem de Marcação (Markup Language)
-(require 'markup-language-markdown)
+(load "markup-language-markdown")
 ;; ---
 
 ;; Automático (Automatic)
@@ -115,7 +115,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-statistics company-quickhelp company-dict markdown-mode meghanada racket-mode rainbow-delimiters lispy projectile counsel swiper ivy ace-window avy magit which-key mode-icons spaceline spacemacs-theme boon centered-cursor-mode golden-ratio general use-package))))
+    (markdown-mode meghanada rainbow-delimiters lispy racket-mode yasnippet company-statistics which-key use-package spacemacs-theme spaceline mode-icons magit golden-ratio general counsel-projectile company-quickhelp company-dict centered-cursor-mode boon ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
