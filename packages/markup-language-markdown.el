@@ -15,5 +15,3 @@
   :init (setq markdown-command "markdown")
   :config
   (setq tab-width 4))
-
-(provide 'markup-language-markdown)

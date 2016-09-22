@@ -9,7 +9,7 @@
 (use-package company
   :ensure t
   :diminish company-mode
-  :init (add-hook 'after-init-hook 'global-company-mode)
+  :init
   :config
   (setq tab-always-indent 'complete
         company-tooltip-limit 10
@@ -33,7 +33,8 @@
                             company-tempo
                             company-dict
                             company-yasnippet
-                            company-ispell))))
+                            company-ispell)))
+  (global-company-mode t))
 (use-package company-dict               ; company-dict
   :ensure t
   :after company
@@ -84,5 +85,3 @@
                                yas-x-prompt))
   (yas-global-mode 1)
   (yas-reload-all))
-
-(provide 'syntax)
