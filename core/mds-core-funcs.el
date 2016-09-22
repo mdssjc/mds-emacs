@@ -1,9 +1,13 @@
+;;; mds-core-funcs.el --- Funções (Functions)
 ;;
-;; Core/Funcs.el
+;; Copyright (C) 2016-2016 Marcelo dos Santos
 ;;
-;; autor: Marcelo dos Santos
-;; url  : https://github.com/mdssjc/mds-emacs
+;; author: Marcelo dos Santos <mds>
+;; URL: https://github.com/mdssjc/mds-emacs
 ;;
+;; This file is not part of GNU Emacs.
+;;
+;;; License: Unlicense
 (defun mds/insert-lines-between (times)
   "Insert a break line between the cursor."
   (interactive "p")
@@ -71,3 +75,6 @@
   (kill-ring-save (line-beginning-position)
                   (line-beginning-position (+ 1 arg)))
   (yank))
+
+(provide 'mds-core-funcs)
+;;; mds-core-funcs.el ends here

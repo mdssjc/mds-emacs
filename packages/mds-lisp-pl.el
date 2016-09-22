@@ -1,14 +1,15 @@
+;;; mds-lisp-pl.el --- Linguagem de Programação Lisp (Lisp Programming Language)
 ;;
-;; Programming-Language-Lisp.el
+;; Copyright (C) 2016-2016 Marcelo dos Santos
 ;;
-;; autor: Marcelo dos Santos
-;; url  : https://github.com/mdssjc/mds-emacs
+;; author: Marcelo dos Santos <mds>
+;; URL: https://github.com/mdssjc/mds-emacs
 ;;
-;; Linguagem de Programação (Programming Language)
-;; Lisp
+;; This file is not part of GNU Emacs.
+;;
+;;; License: Unlicense
 (require 'semantic)
 
-;; Emacs Lisp (ELisp)
 (use-package emacs-lisp-mode
   :interpreter (("emacs" . emacs-lisp-mode))
   :bind
@@ -34,10 +35,15 @@
                                company-semantic
                                company-yasnippet
                                company-ispell)))))
-  (use-package rainbow-delimiters :config (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
+  (use-package rainbow-delimiters
+    :config
+    (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
+  (use-package flycheck
+    :config
+    (add-hook 'emacs-lisp-mode-hook 'flycheck-mode)
+    (setq flycheck-emacs-lisp-load-path 'inherit))
   (add-to-list 'completion-styles 'initials t))
 
-;; Racket
 (use-package racket-mode
   :ensure t
   :mode ("\\.rkt\\'" . racket-mode)
@@ -54,8 +60,9 @@
         ("s-<right>" . lispy-forward-slurp-sexp)
         ("S-s-<right>" . lispy-forward-barf-sexp)
         ("s-<left>" . lispy-backward-slurp-sexp)
-        ("S-s-<left>" . lispy-backward-barf-sexp))
-)
+        ("S-s-<left>" . lispy-backward-barf-sexp)))
 
-(use-package rainbow-delimiters
-  :ensure t)
+(use-package rainbow-delimiters :ensure t)
+
+(provide 'mds-lisp-pl)
+;;; mds-lisp-pl ends here

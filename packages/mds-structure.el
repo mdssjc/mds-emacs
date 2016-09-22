@@ -1,19 +1,20 @@
+;;; mds-structure.el --- Estrutura (Structure)
 ;;
-;; Structure.el
+;; Copyright (C) 2016-2016 Marcelo dos Santos
 ;;
-;; autor: Marcelo dos Santos
-;; url  : https://github.com/mdssjc/mds-emacs
+;; author: Marcelo dos Santos <mds>
+;; URL: https://github.com/mdssjc/mds-emacs
 ;;
-;; Estrutura (Structure)
+;; This file is not part of GNU Emacs.
+;;
+;;; License: Unlicense
 (require 'semantic)
 
-;; Recentf
 (use-package recentf
   :config
   (setq recentf-max-saved-items 1000)
   (recentf-mode 1))
 
-;; Which-key
 (use-package which-key
   :ensure t
   :diminish which-key-mode
@@ -21,12 +22,10 @@
   (setq which-key-idle-delay 0.1)
   (which-key-mode))
 
-;; Expand-Region
 (use-package expand-region
   :ensure t
   :bind ("C-=" . er/expand-region))
 
-;; Magit
 (use-package magit
   :ensure t
   :bind
@@ -70,7 +69,6 @@
    ("C-c l"   . counsel-locate)))
 ;; Hydra
 
-;; Projectile
 (use-package counsel-projectile
   :ensure t)
 (use-package projectile
@@ -79,3 +77,6 @@
   :config
   (projectile-global-mode t)
   (counsel-projectile-on))
+
+(provide 'mds-structure)
+;;; mds-structure.el ends here

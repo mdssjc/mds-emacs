@@ -1,10 +1,13 @@
+;;; mds-aesthetic.el --- Estético (Aesthetic)
 ;;
-;; Aesthetic.el
+;; Copyright (C) 2016-2016 Marcelo dos Santos
 ;;
-;; autor: Marcelo dos Santos
-;; url  : https://github.com/mdssjc/mds-emacs
+;; author: Marcelo dos Santos <mds>
+;; URL: https://github.com/mdssjc/mds-emacs
 ;;
-;; Estético (Aesthetic)
+;; This file is not part of GNU Emacs.
+;;
+;;; License: Unlicense
 (use-package spacemacs-theme
   :ensure t
   :defer t
@@ -18,3 +21,6 @@
 (use-package mode-icons
   :ensure t
   :config (mode-icons-mode))
+
+(provide 'mds-aesthetic)
+;;; mds-aesthetic.el ends here

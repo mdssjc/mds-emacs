@@ -1,10 +1,13 @@
+;;; mds-syntax.el --- Sintaxe (Syntax)
 ;;
-;; Syntax.el
+;; Copyright (C) 2016-2016 Marcelo dos Santos
 ;;
-;; autor: Marcelo dos Santos
-;; url  : https://github.com/mdssjc/mds-emacs
+;; author: Marcelo dos Santos <mds>
+;; URL: https://github.com/mdssjc/mds-emacs
 ;;
-;; Sintaxe (Syntax)
+;; This file is not part of GNU Emacs.
+;;
+;;; License: Unlicense
 ;; Autocompletar (Autocomplete)
 (use-package company
   :ensure t
@@ -85,3 +88,6 @@
                                yas-x-prompt))
   (yas-global-mode 1)
   (yas-reload-all))
+
+(provide 'mds-syntax)
+;;; mds-syntax.el ends here
