@@ -71,11 +71,11 @@
 ;; Hydra
 
 ;; Projectile
-;; TODO -> configurar o pacote
+(use-package counsel-projectile
+  :ensure t)
 (use-package projectile
   :ensure t
   :diminish projectile-mode
   :config
-  (projectile-global-mode t))
-
-(provide 'structure)
+  (projectile-global-mode t)
+  (counsel-projectile-on))
