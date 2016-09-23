@@ -75,13 +75,14 @@
 
 (use-package lispy
   :ensure t
-  :diminish lispy-mode
+  :diminish lispy-mode " Ⓛ"
   :bind
-  (:map lispy-mode-map
-        ("s-<right>" . lispy-forward-slurp-sexp)
-        ("S-s-<right>" . lispy-forward-barf-sexp)
-        ("s-<left>" . lispy-backward-slurp-sexp)
-        ("S-s-<left>" . lispy-backward-barf-sexp)))
+  (("<f6> l" . lispy-mode)
+   :map lispy-mode-map
+   ("s-<right>" . lispy-forward-slurp-sexp)
+   ("S-s-<right>" . lispy-forward-barf-sexp)
+   ("s-<left>" . lispy-backward-slurp-sexp)
+   ("S-s-<left>" . lispy-backward-barf-sexp)))
 
 (use-package geiser
   :ensure t
