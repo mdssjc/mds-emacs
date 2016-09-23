@@ -47,6 +47,9 @@
     :config
     (add-hook 'emacs-lisp-mode-hook 'flycheck-mode)
     (setq flycheck-emacs-lisp-load-path 'inherit))
+  (use-package litable
+    :ensure t
+    :config (add-hook 'emacs-lisp-mode-hook 'litable-mode t))
   (add-to-list 'completion-styles 'initials t))
 
 (use-package racket-mode
