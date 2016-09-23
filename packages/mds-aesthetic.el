@@ -29,5 +29,7 @@
   :ensure t
   :config (mode-icons-mode))
 
+(use-package all-the-icons :ensure t)
+
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
