@@ -79,9 +79,18 @@
 ;; - avançado: obtenha o dicionário pelo LanguageTool
 (use-package ispell                     ; company-ispell
   :ensure t
-  :after company
+  :preface
+  (defun ispell-enUS ()
+    (interactive)
+    (ispell-change-dictionary "en_US"))
+  (defun ispell-ptBR ()
+    (interactive)
+    (ispell-change-dictionary "pt_BR"))
+  :bind (("<f8> s p" . ispell-ptBR)
+         ("<f8> s e" . ispell-enUS))
   :config
   (setq ispell-program-name "hunspell"
+        ;; ispell-extra-args '("-d pt_BR")
         ispell-dictionary "pt_BR"
         ispell-really-hunspell t
         ispell-complete-word-dict "/home/mdssjc/.emacs.d/dict/pt_BR.dic"))
