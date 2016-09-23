@@ -14,6 +14,7 @@
 ;;  - Documentos recentes;
 ;;  - Visualização da arvore de modificações no documento;
 ;;  - Sugestão de atalhos;
+;;  - Visualizador de arquivos;
 ;;  - Cliente Git;
 ;;  - Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper e Counsel.
 
@@ -41,6 +42,10 @@
 (use-package expand-region
   :ensure t
   :bind ("C-=" . er/expand-region))
+
+(use-package neotree
+  :ensure t
+  :bind (("<f7> t" . neotree-toggle)))
 
 (use-package magit
   :ensure t
