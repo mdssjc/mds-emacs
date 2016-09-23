@@ -8,6 +8,11 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: Unlicense
+
+;;; Commentary:
+;; Configurações e melhorias ao editor
+
+;;; Code:
 (require 'semantic)
 
 (use-package recentf
