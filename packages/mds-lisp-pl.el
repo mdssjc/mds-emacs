@@ -66,7 +66,7 @@
   (use-package litable
     :ensure t
     :diminish litable-mode " Ⓣ"
-    :config (add-hook 'emacs-lisp-mode-hook 'litable-mode t))
+    :bind (("<f6> l" . litable-mode)))
   (add-to-list 'completion-styles 'initials t)
   (prettify-symbols-mode t))
 
