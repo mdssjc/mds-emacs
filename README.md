@@ -92,11 +92,11 @@ Listagem dos comandos fundamentais do Emacs:
     * Ctrl + c - comandos para o modo maior atual
     * Alt + x - prompt de comandos
     * Win - comando especial para o modo maior
-    * F5 - Toggle
+    * F5 - Toggle Global
       * - - centered-cursor
       * b - boon
       * g - golden-ration
-    * F6 - ???
+    * F6 - Toggle do Modo Maior
     * F7 - Aplicações Interna:
       * t - Visualizador de arquivos
     * F8 - Aplicações Externa: ???
