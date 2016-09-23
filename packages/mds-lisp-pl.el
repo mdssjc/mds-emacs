@@ -83,8 +83,13 @@
         ("s-<left>" . lispy-backward-slurp-sexp)
         ("S-s-<left>" . lispy-backward-barf-sexp)))
 
-;; Uso com Racket
-(use-package geiser :ensure t)
+(use-package geiser
+  :ensure t
+  :bind
+  (:map racket-mode-map
+        ("C-c C-c" . geiser-eval-last-sexp))
+  :init
+  (setq geiser-racket-binary "/usr/bin/racket"))
 
 (use-package rainbow-delimiters :ensure t)
 
