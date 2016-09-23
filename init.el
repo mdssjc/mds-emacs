@@ -87,8 +87,9 @@
    "<C-tab>"    'cycle-spacing
    "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand))
-;; F6 ao F8: definir funcionalidades
 ;; F5 - Toggles
+;; F6 - ?
+;; F7 - ?
 ;; F8 - Aplicações
 (use-package golden-ratio :ensure t :diminish " φ"
   :bind (("<f5> g" . golden-ratio-mode)))
