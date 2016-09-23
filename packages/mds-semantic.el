@@ -15,9 +15,13 @@
 ;;; Code:
 (use-package flycheck
   :ensure t
+  :diminish flycheck-mode " ⓢ"
   :pin melpa
   :config
   (use-package flycheck-package :ensure t)
+  (use-package flycheck-pos-tip
+    :ensure t
+    :init (with-eval-after-load 'flycheck (flycheck-pos-tip-mode)))
   (setq flycheck-check-syntax-automatically '(mode-enable save))
   (eval-after-load 'flycheck '(flycheck-package-setup)))
 
