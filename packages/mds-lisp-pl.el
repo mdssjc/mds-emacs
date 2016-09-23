@@ -17,11 +17,12 @@
 
 (setq prettify-symbols-alist
       '(
-        ("lambda" . 955) ; λ
-        ("->" . 8594)    ; →
-        ("=>" . 8658)    ; ⇒
-        ("map" . 8614)   ; ↦
-        ))
+        ("lambda" . 955)                ; λ
+        ("->" . 8594)                   ; →
+        ("=>" . 8658)                   ; ⇒
+        ("map" . 8614)                  ; ↦
+        )
+      prettify-symbols-unprettify-at-point 'right-edge)
 
 (defun config-common ()
   "Configurações comum entre os dialetos."
@@ -68,7 +69,7 @@
     :diminish litable-mode " Ⓣ"
     :bind (("<f6> l" . litable-mode)))
   (add-to-list 'completion-styles 'initials t)
-  (prettify-symbols-mode t))
+  (add-hook 'emacs-lisp-mode-hook  'prettify-symbols-mode))
 
 (use-package racket-mode
   :ensure t
