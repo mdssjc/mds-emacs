@@ -67,6 +67,7 @@
 
 (mouse-avoidance-mode 'animate)
 (fset 'yes-or-no-p 'y-or-n-p)
+(save-place-mode 1)
 
 ;; https://github.com/lewang/flx
 (setq gc-cons-threshold 20000000)
