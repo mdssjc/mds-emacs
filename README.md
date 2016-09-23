@@ -59,14 +59,16 @@ Conjunto de pacotes para o ambiente:
       * Abreviação: X
       * Template: blocos de construção de texto (linguagens de programação).
     * Semântica: frase e/ou expressão incorreta.
-      * X
+      * Analisador de código.
     * Pragmático: org-mode...
       * X
     * Estrutura: conjunto de facilidades ao editor.
-      * Documentos recentes
-      * Sugestão de atalhos
-      * Cliente Git.
-      * Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper e Counsel
+      * Documentos recentes;
+      * Visualização da arvore de modificações no documento;
+      * Sugestão de atalhos;
+      * Visualizador de arquivos;
+      * Cliente Git;
+      * Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper e Counsel.
     * Linguagens de Programação:
       * Lisp: dialeto ELisp (Emacs Lisp) e Racket
       * Java: Meghanada (Pacote novo - em teste)
@@ -90,7 +92,11 @@ Listagem dos comandos fundamentais do Emacs:
     * Ctrl + c - comandos para o modo maior atual
     * Alt + x - prompt de comandos
     * Win - comando especial para o modo maior
-    * F5 - Toggle (golden-ratio, centered-cursor, ...)
+    * F5 - Toggle
+      * - - centered-cursor
+      * b - boon
+      * g - golden-ration
     * F6 - ???
-    * F7 - ???
-    * F8 - ???
+    * F7 - Aplicações Interna:
+      * t - Visualizador de arquivos
+    * F8 - Aplicações Externa: ???
