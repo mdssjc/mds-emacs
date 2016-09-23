@@ -24,6 +24,7 @@
         ))
 
 (defun config-common ()
+  "Configurações comum entre os dialetos."
   (lispy-mode t)
   (rainbow-delimiters-mode t)
   (prettify-symbols-mode t))
