@@ -87,8 +87,8 @@
    "<C-tab>"    'cycle-spacing
    "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand))
-;; F5 - Toggles
-;; F6 - ?
+;; F5 - Toggles Global
+;; F6 - Toggles do Modo Maior
 ;; F7 - Aplicações Interna
 ;; F8 - Aplicações Externa
 (use-package golden-ratio :ensure t :diminish " φ"
