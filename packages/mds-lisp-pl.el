@@ -15,19 +15,20 @@
 ;;; Code:
 (require 'semantic)
 
-(setq prettify-symbols-alist
-      '(
-        ("lambda" . 955)                ; λ
-        ("->" . 8594)                   ; →
-        ("=>" . 8658)                   ; ⇒
-        ("map" . 8614)                  ; ↦
-        )
-      prettify-symbols-unprettify-at-point 'right-edge)
+(setq lisp-prettify-symbols-alist
+      '(("lambda" . ?λ)
+        ("->" . ?→)
+        ("=>" . ?⇒)
+        ("map" . ?↦)))
 
 (defun config-common ()
   "Configurações comum entre os dialetos."
   (require 'lispy)
   (require 'rainbow-delimiters)
+
+  (setq prettify-symbols-alist lisp-prettify-symbols-alist
+        prettify-symbols-unprettify-at-point 'right-edge)
+
   (lispy-mode t)
   (rainbow-delimiters-mode t)
   (prettify-symbols-mode t))
@@ -40,26 +41,21 @@
   :init
   (use-package macrostep :bind ("C-c e" . macrostep-expand))
   (use-package eldoc :config (add-hook 'emacs-lisp-mode-hook 'eldoc-mode))
-  (use-package lispy :config (add-hook 'emacs-lisp-mode-hook 'lispy-mode))
   (use-package ert :config (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
   (use-package company
     :config
-    (add-hook 'emacs-lisp-mode-hook
-              (lambda ()
-                (add-to-list (make-local-variable 'company-backends)
-                             '(company-elisp
-                               company-abbrev
-                               company-dabbrev-code
-                               company-dabbrev
-                               company-keywords
-                               company-files
-                               company-capf
-                               company-semantic
-                               company-yasnippet
-                               company-ispell)))))
-  (use-package rainbow-delimiters
-    :config
-    (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
+    (add-hook 'emacs-lisp-mode-hook (lambda ()
+                                      (add-to-list (make-local-variable 'company-backends)
+                                                   '(company-elisp
+                                                     company-abbrev
+                                                     company-dabbrev-code
+                                                     company-dabbrev
+                                                     company-keywords
+                                                     company-files
+                                                     company-capf
+                                                     company-semantic
+                                                     company-yasnippet
+                                                     company-ispell)))))
   (use-package flycheck
     :config
     (add-hook 'emacs-lisp-mode-hook 'flycheck-mode)
@@ -69,15 +65,13 @@
     :diminish litable-mode " Ⓣ"
     :bind (("<f6> l" . litable-mode)))
   (add-to-list 'completion-styles 'initials t)
-  (add-hook 'emacs-lisp-mode-hook  'prettify-symbols-mode))
+  (add-hook 'emacs-lisp-mode-hook 'config-common))
 
 (use-package racket-mode
   :ensure t
   :mode ("\\.rkt\\'" . racket-mode)
   :interpreter ("racket" . racket-mode)
-  :init
-  (use-package lispy :config (add-hook 'racket-mode-hook 'lispy-mode))
-  (use-package rainbow-delimiters :config (add-hook 'racket-mode-hook 'rainbow-delimiters-mode)))
+  :init (add-hook 'racket-mode-hook 'config-common))
 
 (use-package lispy
   :ensure t
