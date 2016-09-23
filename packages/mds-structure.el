@@ -12,6 +12,7 @@
 ;;; Commentary:
 ;; Conjunto de melhorias ao editor
 ;;  - Documentos recentes;
+;;  - Visualização da arvore de modificações no documento;
 ;;  - Sugestão de atalhos;
 ;;  - Cliente Git;
 ;;  - Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper e Counsel.
@@ -23,6 +24,12 @@
   :config
   (setq recentf-max-saved-items 1000)
   (recentf-mode 1))
+
+(use-package undo-tree
+  :ensure t
+  :diminish undo-tree-mode
+  :config
+  (global-undo-tree-mode))
 
 (use-package which-key
   :ensure t
