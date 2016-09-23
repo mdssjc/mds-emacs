@@ -49,6 +49,7 @@
     (setq flycheck-emacs-lisp-load-path 'inherit))
   (use-package litable
     :ensure t
+    :diminish litable-mode " Ⓣ"
     :config (add-hook 'emacs-lisp-mode-hook 'litable-mode t))
   (add-to-list 'completion-styles 'initials t))
 
@@ -69,6 +70,9 @@
         ("S-s-<right>" . lispy-forward-barf-sexp)
         ("s-<left>" . lispy-backward-slurp-sexp)
         ("S-s-<left>" . lispy-backward-barf-sexp)))
+
+;; Uso com Racket
+(use-package geiser :ensure t)
 
 (use-package rainbow-delimiters :ensure t)
 
