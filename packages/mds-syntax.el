@@ -87,6 +87,12 @@
         ispell-complete-word-dict "/home/mdssjc/.emacs.d/dict/pt_BR.dic"))
 
 ;; Abreviação (Abbreviation)
+(use-package abbrev
+  :diminish abbrev-mode
+  :config
+  (setq save-abbrevs 'silently
+        abbrev-file-name "~/.emacs.d/dict/abbrevs_defs.el")
+  (abbrev-mode t))
 
 ;; Template
 (use-package yasnippet                  ; company-yasnippet
