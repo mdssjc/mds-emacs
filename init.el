@@ -89,9 +89,6 @@
    "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand))
 ;; F5 - Toggles Global
-;; F6 - Toggles do Modo Maior
-;; F7 - Aplicações Interna
-;; F8 - Aplicações Externa
 (use-package golden-ratio :ensure t :diminish " φ"
   :bind (("<f5> g" . golden-ratio-mode)))
 (use-package centered-cursor-mode :ensure t :diminish " ⊝"
@@ -101,6 +98,12 @@
   :config
   (require 'boon-colemak)
   (add-to-list 'boon-special-mode-list 'emacs-lisp-mode))
+(use-package writeroom-mode :ensure t :diminish
+  :bind (("<f5> w" . writeroom-mode)))
+;; F6 - Toggles do Modo Maior
+;; - configurados em cada pacote
+;; F7 - Aplicações Interna
+;; F8 - Aplicações Externa
 ;; ---
 
 ;; Estético (Aesthetic)
@@ -130,7 +133,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (neotree undo-tree geiser flycheck-pos-tip markdown-mode which-key use-package spacemacs-theme spaceline rainbow-delimiters racket-mode mode-icons meghanada magit lispy golden-ratio general flycheck-package counsel-projectile company-statistics company-quickhelp company-dict centered-cursor-mode boon))))
+    (writeroom-mode neotree undo-tree geiser flycheck-pos-tip markdown-mode which-key use-package spacemacs-theme spaceline rainbow-delimiters racket-mode mode-icons meghanada magit lispy golden-ratio general flycheck-package counsel-projectile company-statistics company-quickhelp company-dict centered-cursor-mode boon))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
