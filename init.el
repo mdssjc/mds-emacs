@@ -30,9 +30,7 @@
 (eval-when-compile (require 'use-package))
 
 ;; Configurações Globais (Global Settings)
-(setq coding-system-for-read 'utf-8
-      coding-system-for-write 'utf-8
-      column-number-mode t
+(setq column-number-mode t
       visible-bell t
       ;; Tabs / Indentation
       standard-indent 2
@@ -55,10 +53,12 @@
 (add-to-list 'load-path "~/.emacs.d/core/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
 
-(prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
+;; UTF-8
+(setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 (add-hook 'window-setup-hook 'toggle-frame-maximized)
 (add-hook 'before-save-hook '(lambda ()
