@@ -14,7 +14,7 @@
 ;; Conjuntos de funcionalidades para facilitar a codificação e escrita.
 ;;  - Autocompletar: sugestão de texto, conforme modo maior;
 ;;  - Correção: sugestão para palavras selecionadas, conforme dicionário (português por padrão);
-;;  - Abreviação: X;
+;;  - Abreviação: abreviaturas de texto para expansão;
 ;;  - Template: blocos de construção de texto (linguagens de programação).
 
 ;;; Code:
