@@ -48,11 +48,9 @@
       ;;url-proxy-services '(("https" . "127.0.0.1:1234")
       ;;                     ("http"  . "127.0.0.1:1234"))
       ;; Smooth Scrolling
-      redisplay-dont-pause t
-      scroll-margin 1
-      scroll-conservatively 10000
-      scroll-step 1
-      auto-window-vscroll nil)
+      scroll-conservatively 101
+      scroll-margin 0
+      scroll-preserve-screen-position 't)
 
 (add-to-list 'load-path "~/.emacs.d/core/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
