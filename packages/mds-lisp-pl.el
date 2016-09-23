@@ -15,6 +15,19 @@
 ;;; Code:
 (require 'semantic)
 
+(setq prettify-symbols-alist
+      '(
+        ("lambda" . 955) ; λ
+        ("->" . 8594)    ; →
+        ("=>" . 8658)    ; ⇒
+        ("map" . 8614)   ; ↦
+        ))
+
+(defun config-common ()
+  (lispy-mode t)
+  (rainbow-delimiters-mode t)
+  (prettify-symbols-mode t))
+
 (use-package emacs-lisp-mode
   :interpreter (("emacs" . emacs-lisp-mode))
   :bind
@@ -51,7 +64,8 @@
     :ensure t
     :diminish litable-mode " Ⓣ"
     :config (add-hook 'emacs-lisp-mode-hook 'litable-mode t))
-  (add-to-list 'completion-styles 'initials t))
+  (add-to-list 'completion-styles 'initials t)
+  (prettify-symbols-mode t))
 
 (use-package racket-mode
   :ensure t
