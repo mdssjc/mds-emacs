@@ -10,7 +10,7 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Correção de código.
+;; Analisa o código.
 
 ;;; Code:
 (use-package flycheck
