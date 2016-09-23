@@ -8,6 +8,11 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: Unlicense
+
+;;; Commentary:
+;; Markdown: arquivos .md.
+
+;;; Code:
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)

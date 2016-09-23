@@ -1,9 +1,18 @@
+;;; init.el --- Arquivo init (Init file)
 ;;
-;; Init.el
+;; Copyright (C) 2016-2016 Marcelo dos Santos
 ;;
-;; autor: Marcelo dos Santos
-;; url  : https://github.com/mdssjc/mds-emacs
+;; author: Marcelo dos Santos <mds>
+;; URL: https://github.com/mdssjc/mds-emacs
 ;;
+;; This file is not part of GNU Emacs.
+;;
+;;; License: Unlicense
+
+;;; Commentary:
+;; Arquivo de inicialização do editor.
+
+;;; Code:
 (require 'package)
 
 (setq package-enable-at-startup nil
@@ -45,6 +54,7 @@
       scroll-step 1
       auto-window-vscroll nil)
 
+(add-to-list 'load-path "~/.emacs.d/core/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
 
 (prefer-coding-system 'utf-8)
@@ -70,7 +80,7 @@
 (use-package general
   :ensure t
   :config
-  (load "~/.emacs.d/core/funcs")
+  (load "mds-core-funcs")
   (general-define-key
    "M-<up>"     'mds/move-up
    "M-<down>"   'mds/move-down
@@ -80,7 +90,8 @@
    "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand))
 ;; F6 ao F8: definir funcionalidades
-;; F5- Toggles
+;; F5 - Toggles
+;; F8 - Aplicações
 (use-package golden-ratio :ensure t :diminish " φ"
   :bind (("<f5> g" . golden-ratio-mode)))
 (use-package centered-cursor-mode :ensure t :diminish " ⊝"
@@ -93,22 +104,22 @@
 ;; ---
 
 ;; Estético (Aesthetic)
-(load "aesthetic")
+(load "mds-aesthetic")
 ;; Estrutura (Structure)
-(load "structure")
+(load "mds-structure")
 ;; Sintaxe (Syntax)
-(load "syntax")
+(load "mds-syntax")
 ;; Semântico (Semantic)
-(load "semantic")
+(load "mds-semantic")
 ;; Pragmático (Pragmatic)
-(load "pragmatic")
+(load "mds-pragmatic")
 ;; Linguagem de Programação (Programming Language)
-(load "programming-language-lisp")
-(load "programming-language-java")
-;; (require 'programming-language-c)
-;; (require 'programming-language-web)
+(load "mds-lisp-pl")
+(load "mds-java-pl")
+;; (require 'mds-c-pl)
+;; (require 'mds-web-pl)
 ;; Linguagem de Marcação (Markup Language)
-(load "markup-language-markdown")
+(load "mds-markdown-ml")
 ;; ---
 
 ;; Automático (Automatic)
@@ -119,10 +130,12 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode meghanada rainbow-delimiters lispy racket-mode yasnippet company-statistics which-key use-package spacemacs-theme spaceline mode-icons magit golden-ratio general counsel-projectile company-quickhelp company-dict centered-cursor-mode boon ace-window))))
+    (markdown-mode which-key use-package spacemacs-theme spaceline rainbow-delimiters racket-mode mode-icons meghanada magit lispy golden-ratio general flycheck-package counsel-projectile company-statistics company-quickhelp company-dict centered-cursor-mode boon))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;;; init.el ends here

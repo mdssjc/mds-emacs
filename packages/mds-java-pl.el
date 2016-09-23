@@ -8,7 +8,11 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: Unlicense
+
+;;; Commentary:
 ;; FIXME -> o pacote está em testes
+
+;;; Code:
 (use-package meghanada
   :ensure t
   :init (add-hook 'java-mode-hook (lambda () (meghanada-mode t))))

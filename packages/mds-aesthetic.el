@@ -8,16 +8,23 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: Unlicense
+
+;;; Commentary:
+;; Estilo ergonômico e sem distrações/ruídos - tema dark, linha de status com ícones.
+
+;;; Code:
 (use-package spacemacs-theme
   :ensure t
   :defer t
   :init
   (load-theme 'spacemacs-dark t))
+
 (use-package spaceline
   :ensure t
   :after spacemacs-theme
   :init (require 'spaceline-config)
   :config (spaceline-emacs-theme))
+
 (use-package mode-icons
   :ensure t
   :config (mode-icons-mode))

@@ -9,6 +9,15 @@
 ;;
 ;;; License: Unlicense
 ;; Autocompletar (Autocomplete)
+
+;;; Commentary:
+;; Conjuntos de funcionalidades para facilitar a codificação e escrita.
+;;  - Autocompletar: sugestão de texto, conforme modo maior;
+;;  - Correção: sugestão para palavras selecionadas, conforme dicionário (português por padrão);
+;;  - Abreviação: X;
+;;  - Template: blocos de construção de texto (linguagens de programação).
+
+;;; Code:
 (use-package company
   :ensure t
   :diminish company-mode
@@ -38,6 +47,7 @@
                             company-yasnippet
                             company-ispell)))
   (global-company-mode t))
+
 (use-package company-dict               ; company-dict
   :ensure t
   :after company
@@ -45,12 +55,14 @@
   (setq company-dict-enable-fuzzy t
         company-dict-enable-yasnippet nil
         company-dict-dir (concat user-emacs-directory "dict/")))
+
 (use-package company-quickhelp
   :ensure t
   :after company
   :config
   (setq company-quickhelp-delay 1)
   (company-quickhelp-mode 1))
+
 (use-package company-statistics
   :ensure t
   :after company

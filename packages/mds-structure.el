@@ -10,7 +10,11 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Configurações e melhorias ao editor
+;; Conjunto de melhorias ao editor
+;;  - Documentos recentes;
+;;  - Sugestão de atalhos;
+;;  - Cliente Git;
+;;  - Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper e Counsel.
 
 ;;; Code:
 (require 'semantic)

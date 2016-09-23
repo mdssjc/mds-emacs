@@ -8,6 +8,11 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: Unlicense
+
+;;; Commentary:
+;; Correção de código.
+
+;;; Code:
 (use-package flycheck
   :ensure t
   :pin melpa

@@ -8,6 +8,11 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: Unlicense
+
+;;; Commentary:
+;; Dialeto ELisp (Emacs Lisp) e Racket
+
+;;; Code:
 (require 'semantic)
 
 (use-package emacs-lisp-mode

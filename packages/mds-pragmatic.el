@@ -9,5 +9,10 @@
 ;;
 ;;; License: Unlicense
 
+;;; Commentary:
+;; Em desenvolvimento.
+
+;;; Code:
+
 (provide 'mds-pragmatic)
 ;;; mds-pragmatic.el ends here
