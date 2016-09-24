@@ -20,7 +20,8 @@
 ;;; Code:
 (use-package company
   :ensure t
-  :diminish company-mode
+  :diminish company-mode " ⓐ"
+  :bind (("<f5> a" . company-mode))
   :init
   :config
   (setq tab-always-indent 'complete
