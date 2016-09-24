@@ -131,9 +131,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "423caec5827def4b51faf4e7faf194630b8df539d6f927a822d42d5bf86aa5a7" default)))
  '(package-selected-packages
    (quote
-    (writeroom-mode neotree undo-tree geiser flycheck-pos-tip markdown-mode which-key use-package spacemacs-theme spaceline rainbow-delimiters racket-mode mode-icons meghanada magit lispy golden-ratio general flycheck-package counsel-projectile company-statistics company-quickhelp company-dict centered-cursor-mode boon))))
+    (smart-mode-line writeroom-mode neotree geiser flycheck-pos-tip markdown-mode which-key use-package spacemacs-theme spaceline rainbow-delimiters racket-mode mode-icons meghanada magit lispy golden-ratio general flycheck-package counsel-projectile company-statistics company-quickhelp company-dict centered-cursor-mode boon))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
