@@ -45,7 +45,14 @@
 
 (use-package neotree
   :ensure t
-  :bind (("<f7> t" . neotree-toggle)))
+  :defer t
+  :bind (("<f7> t" . neotree-toggle))
+  :init
+  (setq neo-smart-open t
+        neo-mode-line-type 'neotree
+        neo-show-hidden-files t
+        neo-modern-sidebar t
+        neo-theme 'icons))
 
 (use-package magit
   :ensure t
