@@ -52,6 +52,10 @@
 
 (add-to-list 'load-path "~/.emacs.d/core/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
+(use-package exec-path-from-shell
+  :ensure t
+  :init (when (memq window-system '(mac ns x))
+          (exec-path-from-shell-initialize)))
 
 ;; UTF-8
 (setq locale-coding-system 'utf-8)
