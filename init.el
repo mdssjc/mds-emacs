@@ -34,6 +34,7 @@
       visible-bell t
       ;; Tabs / Indentation
       standard-indent 2
+      c-basic-offset 2
       tab-width 2
       indent-tabs-mode nil
       tab-stop-list '(2 4 6)
