@@ -68,6 +68,7 @@
   :ensure t
   :after company
   :config
+  (setq company-statistics-size 1000)
   (company-statistics-mode))
 
 ;; Correção (Correction)
