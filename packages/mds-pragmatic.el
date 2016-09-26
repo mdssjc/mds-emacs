@@ -10,9 +10,20 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Em desenvolvimento.
+;; Organização do trabalho.
 
 ;;; Code:
+(use-package org
+  :ensure t
+  :mode ("\\.org\\'" . org-mode)
+  :config
+  (use-package org-bullets
+    :ensure t
+    :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  (require 'ob-java)
+  (org-babel-do-load-languages
+   'org-babel-do-load-languages
+   '((java . t))))
 
 (provide 'mds-pragmatic)
 ;;; mds-pragmatic.el ends here
