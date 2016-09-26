@@ -34,6 +34,7 @@
   (prettify-symbols-mode t))
 
 (use-package emacs-lisp-mode
+  :mode ("\\.el$" . emacs-lisp-mode)
   :interpreter (("emacs" . emacs-lisp-mode))
   :bind
   (("M-." . find-function-at-point)
@@ -47,14 +48,13 @@
     (add-hook 'emacs-lisp-mode-hook (lambda ()
                                       (add-to-list (make-local-variable 'company-backends)
                                                    '(company-elisp
+                                                     company-capf
                                                      company-abbrev
+                                                     company-yasnippet
                                                      company-dabbrev-code
                                                      company-dabbrev
                                                      company-keywords
                                                      company-files
-                                                     company-capf
-                                                     company-semantic
-                                                     company-yasnippet
                                                      company-ispell)))))
   (use-package flycheck
     :config
@@ -71,7 +71,19 @@
   :ensure t
   :mode ("\\.rkt\\'" . racket-mode)
   :interpreter ("racket" . racket-mode)
-  :init (add-hook 'racket-mode-hook 'config-common))
+  :init
+  (add-hook 'racket-mode-hook 'config-common)
+  (use-package company
+    :config
+    (add-hook 'racket-mode-hook (lambda ()
+                                      (add-to-list (make-local-variable 'company-backends)
+                                                   '(company-capf
+                                                     company-abbrev
+                                                     company-dabbrev-code
+                                                     company-dabbrev
+                                                     company-keywords
+                                                     company-files
+                                                     company-ispell))))))
 
 (use-package lispy
   :ensure t
@@ -84,8 +96,22 @@
    ("s-<left>" . lispy-backward-slurp-sexp)
    ("S-s-<left>" . lispy-backward-barf-sexp)))
 
+;; Testes com o pacote Parinfer
+(use-package parinfer
+  :ensure t
+  :disabled t
+  :bind
+  (("C-," . parinfer-toggle-mode)
+   ("M-r" . parinfer-raise-sexp)
+   ("M-m" . mark-sexp)
+   ("M-j" . parinfer-transpose-sexps)
+   ("M-k" . parinfer-reverse-transpose-sexps))
+  :init
+  (add-hook 'emacs-lisp-mode-hook #'parinfer-mode))
+
 (use-package geiser
   :ensure t
+  :disabled t
   :bind
   (:map racket-mode-map
         ("C-c C-c" . geiser-eval-last-sexp))
