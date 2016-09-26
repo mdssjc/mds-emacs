@@ -122,13 +122,19 @@
 ;; Template
 (use-package yasnippet                  ; company-yasnippet
   :ensure t
-  :diminish yas-minor-mode
+  :diminish yas-minor-mode " ⓨ"
   :after company
   :config
   (setq yas-prompt-functions '(yas-dropdown-prompt
                                yas-completing-prompt
                                yas-no-prompt
                                yas-x-prompt))
+  (use-package auto-yasnippet
+    :ensure t
+    :bind
+    (("C-c & w" . aya-create)
+     ("C-c & y" . aya-expand)
+     ("C-c & o" . aya-open-line)))
   (yas-global-mode 1)
   (yas-reload-all))
 
