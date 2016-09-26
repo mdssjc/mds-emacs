@@ -71,6 +71,15 @@
   (setq company-statistics-size 1000)
   (company-statistics-mode))
 
+(use-package company-flx
+  :ensure t
+  :disabled t
+  :config
+  (company-flx-mode +1))
+
+(use-package company-emoji
+  :ensure t)
+
 ;; Correção (Correction)
 ;; - instale o Hunspell
 ;; - entre com o comando Hunspell -D

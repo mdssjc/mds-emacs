@@ -30,5 +30,19 @@
 
 (use-package all-the-icons :ensure t)
 
+(use-package beacon
+  :ensure t
+  :diminish beacon-mode
+  :config
+  (setq beacon-blink-when-focused t
+        beacon-blink-when-point-moves-vertically 4
+        beacon-color "#FF0000")
+  (beacon-mode))
+
+(use-package emojify
+  :ensure t
+  :bind (("<f5> e" . global-emojify-mode))
+  :init (add-hook 'after-init-hook 'global-emojify-mode) t)
+
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
