@@ -46,6 +46,7 @@
                             company-tempo
                             company-dict
                             company-yasnippet
+                            company-emoji
                             company-ispell)))
   (global-company-mode t))
 
@@ -78,7 +79,11 @@
   (company-flx-mode +1))
 
 (use-package company-emoji
-  :ensure t)
+  :ensure t
+  :after company
+  :config
+  (set-fontset-font t 'symbol (font-spec :family "Symbola") nil 'prepend)
+  (company-emoji-init))
 
 ;; Correção (Correction)
 ;; - instale o Hunspell
