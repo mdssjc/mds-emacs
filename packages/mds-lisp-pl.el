@@ -10,7 +10,7 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Dialetos Lisp: ELisp (Emacs Lisp) e Racket
+;; Configurações para os dialetos Lisp: ELisp (Emacs Lisp) e Racket
 
 ;;; Code:
 (require 'semantic)
