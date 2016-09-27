@@ -10,27 +10,39 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Ambiente de desenvolvimento Java.
+;; Configurações para a linguagem Java.
 
 ;;; Code:
 (use-package java-mode
+  :mode
+  ("\\.java$" . java-mode)
+  :interpreter
+  ("java" . java-mode)
   :init
   (use-package company
     :config
     (add-hook 'java-mode-hook (lambda () (add-to-list (make-local-variable 'company-backends)
                                                       '(company-meghanada
-                                                        company-abbrev
                                                         company-yasnippet
+                                                        company-abbrev
                                                         company-dabbrev-code
                                                         company-dabbrev
                                                         company-keywords
                                                         company-files
                                                         company-ispell)))))
-  (use-package java-snippets :ensure t)
+  (use-package java-snippets
+    :ensure t)
+  (use-package flycheck
+    :config
+    (add-hook 'java-mode-hook 'flycheck-mode))
+  (use-package jtags
+    :ensure t
+    :init
+    (add-hook 'java-mode-hook 'jtags-mode))
   (use-package meghanada
     :ensure t
-    :config (add-hook 'java-mode-hook (lambda () (meghanada-mode t))))
-  (use-package flycheck-mode :config (flycheck-mode 1)))
+    :config
+    (add-hook 'java-mode-hook (lambda () (meghanada-mode t)))))
 
 (provide 'mds-java-pl)
 ;;; mds-java-pl ends here
