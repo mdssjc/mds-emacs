@@ -10,28 +10,27 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; FIXME -> o pacote está em testes
+;; Ambiente de desenvolvimento Java.
 
 ;;; Code:
 (use-package java-mode
   :init
-  (use-package meghanada
-    :ensure t
-    :init (add-hook 'java-mode-hook (lambda () (meghanada-mode t))))
-  (use-package java-snippets :ensure t)
   (use-package company
     :config
-    (add-hook 'java-mode-hook (lambda ()
-                                (add-to-list (make-local-variable 'company-backends)
-                                             '(company-meghanada
-                                               company-abbrev
-                                               company-dabbrev-code
-                                               company-dabbrev
-                                               company-keywords
-                                               company-files
-                                               company-capf
-                                               company-yasnippet
-                                               company-ispell))))))
+    (add-hook 'java-mode-hook (lambda () (add-to-list (make-local-variable 'company-backends)
+                                                      '(company-meghanada
+                                                        company-abbrev
+                                                        company-yasnippet
+                                                        company-dabbrev-code
+                                                        company-dabbrev
+                                                        company-keywords
+                                                        company-files
+                                                        company-ispell)))))
+  (use-package java-snippets :ensure t)
+  (use-package meghanada
+    :ensure t
+    :config (add-hook 'java-mode-hook (lambda () (meghanada-mode t))))
+  (use-package flycheck-mode :config (flycheck-mode 1)))
 
 (provide 'mds-java-pl)
 ;;; mds-java-pl ends here
