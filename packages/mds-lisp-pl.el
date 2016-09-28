@@ -13,7 +13,7 @@
 ;; Configurações para os dialetos Lisp: ELisp (Emacs Lisp) e Racket
 
 ;;; Code:
-(require 'semantic)
+;; (require 'semantic)
 
 (defun config-common ()
   "Configurações comum entre os dialetos."
@@ -33,6 +33,7 @@
   (prettify-symbols-mode t))
 
 (use-package emacs-lisp-mode
+  :defer t
   :mode
   ("\\.el$" . emacs-lisp-mode)
   :interpreter
@@ -54,7 +55,7 @@
     (add-hook 'emacs-lisp-mode-hook 'eldoc-mode))
   (use-package ert
     :config
-    (add-to-list 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
+    (add-hook 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
   (use-package company
     :config
     (add-hook 'emacs-lisp-mode-hook (lambda ()
@@ -70,8 +71,8 @@
                                                      company-ispell)))))
   (use-package flycheck
     :config
-    (add-hook 'emacs-lisp-mode-hook 'flycheck-mode)
-    (setq flycheck-emacs-lisp-load-path 'inherit))
+    (setq flycheck-emacs-lisp-load-path 'inherit)
+    (add-hook 'emacs-lisp-mode-hook 'flycheck-mode))
   (add-to-list 'completion-styles 'initials t)
   (add-hook 'emacs-lisp-mode-hook 'config-common))
 
@@ -137,7 +138,9 @@
   :config
   (setq geiser-racket-binary "/usr/bin/racket"))
 
-(use-package rainbow-delimiters :ensure t)
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t)
 
 (provide 'mds-lisp-pl)
 ;;; mds-lisp-pl ends here
