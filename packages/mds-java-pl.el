@@ -14,6 +14,7 @@
 
 ;;; Code:
 (use-package java-mode
+  :defer t
   :mode
   ("\\.java$" . java-mode)
   :interpreter
@@ -22,14 +23,14 @@
   (use-package company
     :config
     (add-hook 'java-mode-hook (lambda () (add-to-list (make-local-variable 'company-backends)
-                                                      '(company-meghanada
-                                                        company-yasnippet
-                                                        company-abbrev
-                                                        company-dabbrev-code
-                                                        company-dabbrev
-                                                        company-keywords
-                                                        company-files
-                                                        company-ispell)))))
+                                                 '(company-meghanada
+                                                   company-yasnippet
+                                                   company-abbrev
+                                                   company-dabbrev-code
+                                                   company-dabbrev
+                                                   company-keywords
+                                                   company-files
+                                                   company-ispell)))))
   (use-package java-snippets
     :ensure t)
   (use-package flycheck
