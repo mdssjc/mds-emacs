@@ -19,7 +19,7 @@
 ;;  - Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper, Counsel e Hydra.
 
 ;;; Code:
-(require 'semantic)
+;; (require 'semantic)
 
 (use-package recentf
   :config
