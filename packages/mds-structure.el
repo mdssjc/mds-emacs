@@ -16,7 +16,7 @@
 ;;  - Sugestão de atalhos;
 ;;  - Visualizador de arquivos;
 ;;  - Cliente Git;
-;;  - Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper e Counsel.
+;;  - Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper, Counsel e Hydra.
 
 ;;; Code:
 (require 'semantic)
@@ -41,7 +41,8 @@
 
 (use-package expand-region
   :ensure t
-  :bind ("C-=" . er/expand-region))
+  :bind
+  (("C-=" . er/expand-region)))
 
 (use-package neotree
   :ensure t
@@ -90,12 +91,13 @@
 (use-package counsel
   :ensure t
   :bind
-  (("M-x"     . counsel-M-x)
+  (("M-x" . counsel-M-x)
    ("C-x C-f" . counsel-find-file)
    ("C-x C-r" . counsel-recentf)
-   ("C-c /"   . counsel-ag)
-   ("C-c l"   . counsel-locate)))
-;; Hydra
+   ("C-c /" . counsel-ag)
+   ("C-c l" . counsel-locate)))
+(use-package hydra
+  :ensure t)
 
 (use-package counsel-projectile
   :ensure t)
