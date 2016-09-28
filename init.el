@@ -53,10 +53,16 @@
 
 (add-to-list 'load-path "~/.emacs.d/core/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
+
 (use-package exec-path-from-shell
   :ensure t
+  :defer t
   :init (when (memq window-system '(mac ns x))
           (exec-path-from-shell-initialize)))
+(use-package esup
+  :ensure t
+  :defer t
+  :commands esup)
 
 ;; UTF-8
 (setq locale-coding-system 'utf-8)
@@ -109,7 +115,15 @@
 ;; - configurados em cada pacote
 ;; F7 - Aplicações Interna
 ;; F8 - Aplicações Externa
+;; F9 - Livre
 ;; ---
+
+(defun display-extended-command-shorter (command)
+  "Display information on a shorter way to M-x a command."
+  (interactive (list (read-extended-command)))
+  (message "The command `%s' can be invoked with `M-x %s'"
+           command
+           (execute-extended-command--shorter command command)))
 
 ;; Estético (Aesthetic)
 (load "mds-aesthetic")
@@ -124,6 +138,7 @@
 ;; Linguagem de Programação (Programming Language)
 (load "mds-lisp-pl")
 (load "mds-java-pl")
+;; (require 'mds-java-pl)
 ;; (require 'mds-c-pl)
 ;; (require 'mds-web-pl)
 ;; Linguagem de Marcação (Markup Language)
@@ -136,12 +151,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "423caec5827def4b51faf4e7faf194630b8df539d6f927a822d42d5bf86aa5a7" default)))
  '(package-selected-packages
    (quote
-    (smart-mode-line writeroom-mode neotree geiser flycheck-pos-tip markdown-mode which-key use-package spacemacs-theme spaceline rainbow-delimiters racket-mode mode-icons meghanada magit lispy golden-ratio general flycheck-package counsel-projectile company-statistics company-quickhelp company-dict centered-cursor-mode boon))))
+    (markdown-mode meghanada jtags java-snippets rainbow-delimiters geiser parinfer litable org-bullets lispy racket-mode flycheck-pos-tip flycheck-package flycheck auto-yasnippet yasnippet company-emoji company-statistics writeroom-mode which-key use-package undo-tree spacemacs-theme spaceline neotree mode-icons magit hydra golden-ratio general exec-path-from-shell esup emojify counsel-projectile company-quickhelp company-dict centered-cursor-mode boon beacon all-the-icons ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
