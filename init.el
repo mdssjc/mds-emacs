@@ -27,7 +27,12 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(eval-when-compile (require 'use-package))
+(eval-when-compile
+  (require 'use-package))
+(use-package use-package-chords
+  :ensure t
+  :config
+  (key-chord-mode 1))
 
 ;; Configurações Globais (Global Settings)
 (setq column-number-mode t
@@ -136,8 +141,8 @@
 ;; Pragmático (Pragmatic)
 (load "mds-pragmatic")
 ;; Linguagem de Programação (Programming Language)
-(load "mds-lisp-pl")
-(load "mds-java-pl")
+(require 'mds-lisp-pl)
+(require 'mds-java-pl)
 ;; (require 'mds-java-pl)
 ;; (require 'mds-c-pl)
 ;; (require 'mds-web-pl)
