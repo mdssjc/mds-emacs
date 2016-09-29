@@ -80,6 +80,11 @@
     ("d" er/mark-defun "defun")
     ("q" nil "quit")))
 
+(use-package embrace
+  :ensure t
+  :chords
+  (("ss" . embrace-commander)))
+
 (use-package neotree
   :ensure t
   :bind
