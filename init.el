@@ -32,6 +32,7 @@
 (use-package use-package-chords
   :ensure t
   :config
+  (setq key-chord-two-keys-delay 0.05)
   (key-chord-mode 1))
 
 ;; Configurações Globais (Global Settings)
@@ -61,12 +62,10 @@
 
 (use-package exec-path-from-shell
   :ensure t
-  :defer t
   :init (when (memq window-system '(mac ns x))
           (exec-path-from-shell-initialize)))
 (use-package esup
   :ensure t
-  :defer t
   :commands esup)
 
 ;; UTF-8
@@ -83,7 +82,6 @@
 
 (mouse-avoidance-mode 'animate)
 (fset 'yes-or-no-p 'y-or-n-p)
-(save-place-mode 1)
 
 ;; https://github.com/lewang/flx
 (setq gc-cons-threshold 20000000)
@@ -131,15 +129,15 @@
            (execute-extended-command--shorter command command)))
 
 ;; Estético (Aesthetic)
-(load "mds-aesthetic")
+(require 'mds-aesthetic)
 ;; Estrutura (Structure)
-(load "mds-structure")
+(require 'mds-structure)
 ;; Sintaxe (Syntax)
-(load "mds-syntax")
+(require 'mds-syntax)
 ;; Semântico (Semantic)
-(load "mds-semantic")
+(require 'mds-semantic)
 ;; Pragmático (Pragmatic)
-(load "mds-pragmatic")
+(require 'mds-pragmatic)
 ;; Linguagem de Programação (Programming Language)
 (require 'mds-lisp-pl)
 (require 'mds-java-pl)
@@ -147,7 +145,7 @@
 ;; (require 'mds-c-pl)
 ;; (require 'mds-web-pl)
 ;; Linguagem de Marcação (Markup Language)
-(load "mds-markdown-ml")
+(require 'mds-markdown-ml)
 ;; ---
 
 ;; Automático (Automatic)
