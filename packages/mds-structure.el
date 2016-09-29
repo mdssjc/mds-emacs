@@ -11,8 +11,10 @@
 
 ;;; Commentary:
 ;; Conjunto de melhorias ao editor
+;;  - Salva a última posição da seção;
 ;;  - Documentos recentes;
 ;;  - Visualização da arvore de modificações no documento;
+;;  - Seleção de partes do buffer
 ;;  - Sugestão de atalhos;
 ;;  - Visualizador de arquivos;
 ;;  - Cliente Git;
@@ -20,6 +22,10 @@
 
 ;;; Code:
 ;; (require 'semantic)
+
+(use-package saveplace
+  :config
+  (save-place-mode 1))
 
 (use-package recentf
   :config
@@ -62,7 +68,7 @@
     ("u" er/mark-url "url")
     ("e" er/mark-email "email")
     ("d" er/mark-defun "defun")
-    ("q" nil "quit" :color red)))
+    ("q" nil "quit")))
 
 (use-package neotree
   :ensure t
@@ -127,6 +133,11 @@
   :config
   (projectile-global-mode t)
   (counsel-projectile-on))
+
+(use-package ripgrep
+  :ensure t
+  :bind
+  (("<f8> r" . ripgrep-regexp)))
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
