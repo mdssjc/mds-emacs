@@ -91,7 +91,7 @@
 (use-package general
   :ensure t
   :config
-  (load "mds-core-funcs")
+  (require 'mds-core-funcs)
   (general-define-key
    "M-<up>"     'mds/move-up
    "M-<down>"   'mds/move-down
@@ -139,7 +139,6 @@
 ;; Linguagem de Programação (Programming Language)
 (require 'mds-lisp-pl)
 (require 'mds-java-pl)
-;; (require 'mds-java-pl)
 ;; (require 'mds-c-pl)
 ;; (require 'mds-web-pl)
 ;; Linguagem de Marcação (Markup Language)

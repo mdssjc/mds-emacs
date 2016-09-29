@@ -16,13 +16,23 @@
 (use-package spacemacs-theme
   :ensure t
   :defer t
-  :init (load-theme 'spacemacs-dark t))
+  :init
+  (load-theme 'spacemacs-dark t))
 
 (use-package spaceline
   :ensure t
   :after spacemacs-theme
-  :init (require 'spaceline-config)
-  :config (spaceline-emacs-theme))
+  :init
+  (require 'spaceline-config)
+  :config
+  (use-package info+
+    :ensure t
+    :config
+    (with-eval-after-load 'info
+      (require 'info+))
+    (setq Info-fontify-angle-bracketed-flag nil))
+  (spaceline-emacs-theme)
+  (spaceline-info-mode 1))
 
 (use-package mode-icons
   :ensure t
@@ -37,12 +47,14 @@
   (setq beacon-blink-when-focused t
         beacon-blink-when-point-moves-vertically 4
         beacon-color "#FF0000")
-  (beacon-mode))
+  (beacon-mode 1))
 
 (use-package emojify
   :ensure t
-  :bind (("<f5> e" . global-emojify-mode))
-  :init (add-hook 'after-init-hook 'global-emojify-mode) t)
+  :bind
+  (("<f5> e" . global-emojify-mode))
+  :init
+  (add-hook 'after-init-hook 'global-emojify-mode) t)
 
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here

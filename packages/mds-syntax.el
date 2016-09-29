@@ -20,6 +20,7 @@
 ;;; Code:
 (use-package company
   :ensure t
+  :defer 3
   :diminish company-mode " ⓐ"
   :bind (("<f5> a" . company-mode))
   :init
@@ -67,6 +68,7 @@
 
 (use-package company-statistics
   :ensure t
+  :defer t
   :after company
   :config
   (setq company-statistics-size 1000)
