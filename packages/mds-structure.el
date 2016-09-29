@@ -42,7 +42,27 @@
 (use-package expand-region
   :ensure t
   :bind
-  (("C-=" . er/expand-region)))
+  (("C-=" . er/expand-region))
+  :chords
+  (("vv" . hydra-expand-region/body))
+  :init
+  (require 'expand-region)
+  (defhydra hydra-expand-region (:columns 4 :color blue)
+    "Mark"
+    ("w" er/mark-word "word")
+    ("s" er/mark-symbol "symbol")
+    ("S" er/mark-symbol-with-prefix "symbol-with-prefix")
+    ("n" er/mark-next-accessor "next-accessor")
+    ("m" er/mark-method-call "method-call")
+    ("i" er/mark-inside-quotes "inside-quotes")
+    ("I" er/mark-outside-quotes "outside-quotes")
+    ("p" er/mark-inside-pairs "inside-pairs")
+    ("P" er/mark-outside-pairs "outside-pairs")
+    ("c" er/mark-comment "comment")
+    ("u" er/mark-url "url")
+    ("e" er/mark-email "email")
+    ("d" er/mark-defun "defun")
+    ("q" nil "quit" :color red)))
 
 (use-package neotree
   :ensure t
