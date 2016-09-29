@@ -12,13 +12,14 @@
 ;;; Commentary:
 ;; Conjunto de melhorias ao editor
 ;;  - Salva a última posição da seção;
-;;  - Documentos recentes;
-;;  - Visualização da arvore de modificações no documento;
+;;  - Listagem dos documentos recentes;
+;;  - Visualização da árvore de modificações no documento;
+;;  - Sugestão e rótulo de atalhos;
 ;;  - Seleção de partes do buffer
-;;  - Sugestão de atalhos;
 ;;  - Visualizador de arquivos;
 ;;  - Cliente Git;
-;;  - Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper, Counsel e Hydra.
+;;  - Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper, Counsel e Hydra;
+;;  - Ferramenta Ripgrep.
 
 ;;; Code:
 ;; (require 'semantic)
@@ -32,6 +33,12 @@
   (setq recentf-max-saved-items 1000)
   (recentf-mode 1))
 
+(use-package restart-emacs
+  :ensure t
+  :chords
+  (("qq" . save-buffers-kill-terminal)
+   ("qr" . restart-emacs)))
+
 (use-package undo-tree
   :ensure t
   :diminish undo-tree-mode
@@ -43,7 +50,10 @@
   :diminish which-key-mode
   :config
   (setq which-key-idle-delay 0.1)
-  (which-key-mode))
+  (which-key-add-key-based-replacements
+    "<f8> g" "Magit"
+    "<f8> s" "Ispell")
+  (which-key-mode 1))
 
 (use-package expand-region
   :ensure t
@@ -72,8 +82,8 @@
 
 (use-package neotree
   :ensure t
-  :defer t
-  :bind (("<f7> t" . neotree-toggle))
+  :bind
+  (("<f7> t" . neotree-toggle))
   :init
   (setq neo-smart-open t
         neo-mode-line-type 'neotree
@@ -84,22 +94,27 @@
 (use-package magit
   :ensure t
   :bind
-  (("C-x g s" . magit-status)
-   ("C-x g S" . magit-stage-file)
-   ("C-x g g" . magit-dispatch-popup)))
+  (("<f8> g s" . magit-status)
+   ("<f8> g S" . magit-stage-file)
+   ("<f8> g g" . magit-dispatch-popup)))
 
 ;; Abo-abo (https://github.com/abo-abo)
 (use-package avy
   :ensure t
-  :bind ("C-:" . avy-goto-char-timer)
-  :config (setq avy-timeout-seconds 0.3))
+  :bind
+  ("C-:" . avy-goto-char-timer)
+  :config
+  (setq avy-timeout-seconds 0.3))
 (use-package ace-window
   :ensure t
-  :bind ("M-p" . ace-window)
-  :config (setq aw-dispatch-always t))
+  :bind
+  ("M-p" . ace-window)
+  :config
+  (setq aw-dispatch-always t))
 (use-package swiper
   :ensure t
-  :bind (("C-s" . swiper)))
+  :bind
+  (("C-s" . swiper)))
 (use-package ivy
   :ensure t
   :diminish ivy-mode
