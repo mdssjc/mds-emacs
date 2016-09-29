@@ -35,7 +35,8 @@
 (use-package emacs-lisp-mode
   :defer t
   :mode
-  ("\\.el$" . emacs-lisp-mode)
+  (("*scratch*" . emacs-lisp-mode)
+   ("\\.el$" . emacs-lisp-mode))
   :interpreter
   ("emacs" . emacs-lisp-mode)
   :bind
@@ -109,7 +110,9 @@
         ("s-<right>" . lispy-forward-slurp-sexp)
         ("S-s-<right>" . lispy-forward-barf-sexp)
         ("s-<left>" . lispy-backward-slurp-sexp)
-        ("S-s-<left>" . lispy-backward-barf-sexp)))
+        ("S-s-<left>" . lispy-backward-barf-sexp))
+  :config
+  (parinfer-mode 0))
 
 (use-package litable
   :ensure t
@@ -120,13 +123,18 @@
   :ensure t
   :defer t
   :diminish parinfer " Ⓟ"
-  :bind
-  (:map parinfer-mode-map
-        ("C-," . parinfer-toggle-mode)
-        ("M-r" . parinfer-raise-sexp)
-        ("M-m" . mark-sexp)
-        ("M-j" . parinfer-transpose-sexps)
-        ("M-k" . parinfer-reverse-transpose-sexps)))
+  :init
+  (use-package paredit
+    :ensure t)
+  ;; :bind
+  ;; (:map parinfer-mode-map
+  ;;       ("C-," . parinfer-toggle-mode)
+  ;;       ("M-r" . parinfer-raise-sexp)
+  ;;       ("M-m" . mark-sexp)
+  ;;       ("M-j" . parinfer-transpose-sexps)
+  ;;       ("M-k" . parinfer-reverse-transpose-sexps))
+  :config
+  (lispy-mode 0))
 
 (use-package geiser
   :ensure t
