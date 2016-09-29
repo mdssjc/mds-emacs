@@ -46,13 +46,11 @@
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
 
 (define-abbrev-table 'global-abbrev-table
-  '(
-    ("qn" "Marcelo dos Santos" nil 1)
+  '(("qn" "Marcelo dos Santos" nil 1)
     ("mds" "Marcelo dos Santos" nil 1)
     ("qw" "http://mdssjc.github.io/" nil 1)
     ("qb" "https://mdssjc.gitbooks.io/mds/content/" nil 1)
-    ("qr" "https://github.com/mdssjc/" nil 1)
-    ))
+    ("qr" "https://github.com/mdssjc/" nil 1)))
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
@@ -63,6 +61,15 @@
 (define-abbrev-table 'ivy-occur-grep-mode-abbrev-table '())
 
 (define-abbrev-table 'ivy-occur-mode-abbrev-table '())
+
+(define-abbrev-table 'java-mode-abbrev-table
+  '(("p" "public" nil 1)
+    ("ps" "public static" nil 1)
+    ("pr" "private" nil 1)
+    ("prs" "private static" nil 1)
+    ("po" "protect" nil 1)
+    ("pos" "protect static" nil 1)
+    ("s" "static" nil 1)))
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
