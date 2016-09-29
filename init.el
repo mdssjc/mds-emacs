@@ -36,7 +36,8 @@
   (key-chord-mode 1))
 
 ;; Configurações Globais (Global Settings)
-(setq column-number-mode t
+(setq gc-cons-threshold 50000000
+      column-number-mode t
       visible-bell t
       ;; Tabs / Indentation
       standard-indent 2
@@ -82,9 +83,6 @@
 
 (mouse-avoidance-mode 'animate)
 (fset 'yes-or-no-p 'y-or-n-p)
-
-;; https://github.com/lewang/flx
-(setq gc-cons-threshold 20000000)
 
 ;; Segredos (Secrets)
 (load "~/.emacs.d/secrets/secrets")
