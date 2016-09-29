@@ -96,7 +96,9 @@
   :bind
   (("<f8> g s" . magit-status)
    ("<f8> g S" . magit-stage-file)
-   ("<f8> g g" . magit-dispatch-popup)))
+   ("<f8> g g" . magit-dispatch-popup))
+  :init
+  (defalias 'gs 'magit-status "Magit status"))
 
 ;; Abo-abo (https://github.com/abo-abo)
 (use-package avy
