@@ -13,6 +13,7 @@
 ;; Arquivo de inicialização do editor.
 
 ;;; Code:
+;; Bootstrap `use-package'
 (require 'package)
 
 (setq package-enable-at-startup nil
@@ -22,18 +23,13 @@
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 (package-initialize)
 
-;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
 (eval-when-compile
   (require 'use-package))
-(use-package use-package-chords
-  :ensure t
-  :config
-  (setq key-chord-two-keys-delay 0.05)
-  (key-chord-mode 1))
+;; ---
 
 ;; Configurações Globais (Global Settings)
 (setq gc-cons-threshold 50000000
@@ -58,23 +54,29 @@
       scroll-margin 0
       scroll-preserve-screen-position 't)
 
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+
 (add-to-list 'load-path "~/.emacs.d/core/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
 
+(use-package use-package-chords
+  :ensure t
+  :config
+  (setq key-chord-two-keys-delay 0.05)
+  (key-chord-mode 1))
+
 (use-package exec-path-from-shell
   :ensure t
-  :init (when (memq window-system '(mac ns x))
-          (exec-path-from-shell-initialize)))
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
 (use-package esup
   :ensure t
   :commands esup)
-
-;; UTF-8
-(setq locale-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
 
 (add-hook 'window-setup-hook 'toggle-frame-maximized)
 (add-hook 'before-save-hook '(lambda ()
@@ -139,8 +141,9 @@
 ;; Linguagem de Programação (Programming Language)
 (require 'mds-lisp-pl)
 (require 'mds-java-pl)
-;; (require 'mds-c-pl)
-;; (require 'mds-web-pl)
+(require 'mds-c-pl)
+;; Linguagem Web (Web Language)
+(require 'mds-web-wl)
 ;; Linguagem de Marcação (Markup Language)
 (require 'mds-markdown-ml)
 ;; ---
@@ -153,12 +156,16 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode meghanada jtags java-snippets rainbow-delimiters geiser parinfer litable org-bullets lispy racket-mode flycheck-pos-tip flycheck-package flycheck auto-yasnippet yasnippet company-emoji company-statistics writeroom-mode which-key use-package undo-tree spacemacs-theme spaceline neotree mode-icons magit hydra golden-ratio general exec-path-from-shell esup emojify counsel-projectile company-quickhelp company-dict centered-cursor-mode boon beacon all-the-icons ace-window))))
+    (markdown-mode writeroom-mode which-key use-package-chords undo-tree spacemacs-theme spaceline ripgrep restart-emacs rainbow-delimiters racket-mode parinfer paredit org-bullets neotree mode-icons meghanada magit litable lispy langtool jtags java-snippets info+ golden-ratio general geiser flycheck-pos-tip flycheck-package exec-path-from-shell esup emojify embrace counsel-projectile company-statistics company-quickhelp company-emoji company-dict centered-cursor-mode boon beacon auto-yasnippet all-the-icons))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
 
 ;;; init.el ends here
