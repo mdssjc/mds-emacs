@@ -62,14 +62,7 @@
 
 (define-abbrev-table 'ivy-occur-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table
-  '(("p" "public" nil 1)
-    ("ps" "public static" nil 1)
-    ("pr" "private" nil 1)
-    ("prs" "private static" nil 1)
-    ("po" "protect" nil 1)
-    ("pos" "protect static" nil 1)
-    ("s" "static" nil 1)))
+(define-abbrev-table 'java-mode-abbrev-table '())
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
