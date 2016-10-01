@@ -19,11 +19,14 @@
   :config
   (use-package org-bullets
     :ensure t
-    :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+    :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
   (require 'ob-java)
   (org-babel-do-load-languages
    'org-babel-do-load-languages
-   '((java . t))))
+   '((emacs-lisp . t)
+     (java . t)
+     (c . t))))
 
 (provide 'mds-pragmatic)
 ;;; mds-pragmatic.el ends here
