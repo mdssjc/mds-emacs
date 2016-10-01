@@ -13,11 +13,14 @@
 ;; Analisa o texto e/ou código.
 
 ;;; Code:
+(defvar langtool-path "/home/mdssjc/Documents/Git/languagetool/languagetool-standalone/target/LanguageTool-3.6-SNAPSHOT/LanguageTool-3.6-SNAPSHOT/")
+
 (use-package flycheck
   :ensure t
   :diminish flycheck-mode " ⓢ"
   :pin melpa
-  :bind (("<f5> s" . flycheck-mode))
+  :bind
+  (("<f5> s" . flycheck-mode))
   :config
   (use-package flycheck-package
     :ensure t)
@@ -45,6 +48,25 @@
     :ensure t
     :bind (:map flyspell-mode-map
                 ("C-c $" . flyspell-correct-previous-word-generic))))
+
+(use-package langtool
+  :ensure t
+  :bind
+  (("<f8> l c" . langtool-check)
+   ("<f8> l d" . langtool-check-done)
+   ("<f8> l b" . langtool-correct-buffer)
+   ("<f8> l s" . langtool-switch-default-language)
+   ("<f8> l ." . langtool-show-message-at-point))
+  :config
+  (setq langtool-language-tool-jar (concat langtool-path "languagetool-commandline.jar")
+        langtool-default-language "pt-BR"
+        langtool-mother-tongue "pt-BR"
+        langtool-autoshow-message-function (lambda (overlays)
+                                             (when (require 'popup nil t)
+                                               (unless (or popup-instances
+                                                           (memq last-command '(keyboard-quit)))
+                                                 (let ((msg (langtool-details-error-message overlays)))
+                                                   (popup-tip msg)))))))
 
 (provide 'mds-semantic)
 ;;; mds-semantic.el ends here
