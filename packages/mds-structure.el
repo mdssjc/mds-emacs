@@ -53,7 +53,8 @@
   (setq which-key-idle-delay 0.1)
   (which-key-add-key-based-replacements
     "<f8> g" "Magit"
-    "<f8> s" "Ispell")
+    "<f8> l" "Langtool")
+    "<f8> s" "Ispell"
   (which-key-mode 1))
 
 (use-package expand-region
