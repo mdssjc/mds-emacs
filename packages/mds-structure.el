@@ -30,7 +30,8 @@
 
 (use-package recentf
   :config
-  (setq recentf-max-saved-items 1000)
+  (setq recentf-max-saved-items 1000
+        recentf-max-menu-items 15)
   (recentf-mode 1))
 
 (use-package restart-emacs
