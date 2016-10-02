@@ -8,6 +8,11 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: Unlicense
+
+;;; Commentary:
+;; Funções personalizadas.
+
+;;; Code:
 (defun mds/insert-lines-between (times)
   "Insert a break line between the cursor."
   (interactive "p")
@@ -75,6 +80,50 @@
   (kill-ring-save (line-beginning-position)
                   (line-beginning-position (+ 1 arg)))
   (yank))
+
+;; Formatação de texto
+(defun mds//text-case (func begin end)
+  (let* ((text-selected (s-trim (buffer-substring-no-properties begin end)))
+         (result (funcall func text-selected)))
+    (message "Changed of %s to %s." text-selected result)
+    (delete-region begin end)
+    (insert result)))
+
+(defun mds//list-to-string (s)
+  (format "%s" (mapconcat 'identity (s-split-words s) " ")))
+
+(defun mds/split-words (begin end)
+  (interactive "r")
+  (mds//text-case #'mds//list-to-string begin end))
+
+(defun mds/lower-camel-case (begin end)
+  (interactive "r")
+  (mds//text-case #'s-lower-camel-case begin end))
+
+(defun mds/upper-camel-case (begin end)
+  (interactive "r")
+  (mds//text-case #'s-upper-camel-case begin end))
+
+(defun mds/snake-case (begin end)
+  (interactive "r")
+  (mds//text-case #'s-snake-case begin end))
+
+(defun mds/dashed-words (begin end)
+  (interactive "r")
+  (mds//text-case #'s-dashed-words begin end))
+
+(defun mds/capitalized-words (begin end)
+  (interactive "r")
+  (mds//text-case #'s-capitalized-words begin end))
+
+(defun mds/titleized-words (begin end)
+  (interactive "r")
+  (mds//text-case #'s-titleized-words begin end))
+
+(defun mds/word-initials (begin end)
+  (interactive "r")
+  (mds//text-case #'s-word-initials begin end))
+;; ---
 
 (provide 'mds-core-funcs)
 ;;; mds-core-funcs.el ends here
