@@ -22,15 +22,20 @@
   :init
   (use-package company
     :config
-    (add-hook 'java-mode-hook (lambda () (add-to-list (make-local-variable 'company-backends)
-                                                 '(company-meghanada
-                                                   company-yasnippet
-                                                   company-abbrev
-                                                   company-dabbrev-code
-                                                   company-dabbrev
-                                                   company-keywords
-                                                   company-files
-                                                   company-ispell)))))
+    (add-hook 'java-mode-hook (lambda ()
+                                (setq-local company-backends
+                                            '(company-meghanada
+                                              company-dict
+                                              company-keywords
+                                              company-yasnippet
+                                              company-abbrev
+                                              company-dabbrev-code
+                                              company-dabbrev
+                                              company-files
+                                              company-ispell)))))
+  (use-package yasnippet
+    :config
+    (add-hook 'java-mode-hook 'yas-global-mode))
   (use-package java-snippets
     :ensure t)
   (use-package flycheck
@@ -38,12 +43,13 @@
     (add-hook 'java-mode-hook 'flycheck-mode))
   (use-package jtags
     :ensure t
-    :init
+    :config
     (add-hook 'java-mode-hook 'jtags-mode))
   (use-package meghanada
     :ensure t
     :config
-    (add-hook 'java-mode-hook (lambda () (meghanada-mode t)))))
+    (add-hook 'java-mode-hook (lambda ()
+                                (meghanada-mode t)))))
 
 (provide 'mds-java-pl)
 ;;; mds-java-pl ends here
