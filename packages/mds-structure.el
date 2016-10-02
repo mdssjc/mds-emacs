@@ -73,14 +73,25 @@
         neo-modern-sidebar t
         neo-theme 'icons))
 
+;; Controle de Versão
+(use-package git-gutter-fringe
+  :ensure t
+  :diminish git-gutter-mode
+  :init
+  (setq git-gutter-fr:side 'right-fringe)
+  :config
+  (global-git-gutter-mode t))
+
 (use-package magit
   :ensure t
+  :commands magit-status
   :bind
   (("<f8> g s" . magit-status)
    ("<f8> g S" . magit-stage-file)
    ("<f8> g g" . magit-dispatch-popup))
   :init
   (defalias 'gs 'magit-status "Magit status"))
+;; ---
 
 ;; Abo-abo (https://github.com/abo-abo)
 (use-package avy
@@ -123,6 +134,7 @@
    ("C-c l" . counsel-locate)))
 (use-package hydra
   :ensure t)
+;; ---
 
 (use-package expand-region
   :ensure t
