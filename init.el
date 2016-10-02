@@ -56,7 +56,7 @@
       scroll-margin 0
       scroll-preserve-screen-position 't
       ;; Backups
-      backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory "backups")))))
+      backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory ".cache/backups")))))
 
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
