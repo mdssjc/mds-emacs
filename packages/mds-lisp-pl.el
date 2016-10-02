@@ -58,7 +58,8 @@
         '(("lambda" . ?λ)
           ("->" . ?→)
           ("=>" . ?⇒)
-          ("map" . ?↦))
+          ("map" . ?↦)
+          ("." . ?•))
         prettify-symbols-alist lisp-prettify-symbols-alist
         prettify-symbols-unprettify-at-point 'right-edge)
 
