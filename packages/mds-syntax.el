@@ -108,10 +108,11 @@
   (abbrev-mode t))
 
 ;; Template
-(use-package yasnippet                  ; company-yasnippet
+(use-package yasnippet
   :ensure t
   :diminish yas-minor-mode " ⓨ"
-  :after company
+  :bind
+  (("<f5> y" . yas-global-mode))
   :config
   (setq yas-prompt-functions '(yas-dropdown-prompt
                                yas-completing-prompt
@@ -123,8 +124,7 @@
     (("C-c & w" . aya-create)
      ("C-c & y" . aya-expand)
      ("C-c & o" . aya-open-line)))
-  (yas-global-mode 1)
-  (yas-reload-all))
+  (add-hook 'yas-global-mode-hook 'yas-reload-all))
 
 (provide 'mds-syntax)
 ;;; mds-syntax.el ends here
