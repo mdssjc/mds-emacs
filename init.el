@@ -29,6 +29,8 @@
 
 (eval-when-compile
   (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
 ;; ---
 
 ;; Configurações Globais (Global Settings)
@@ -52,7 +54,9 @@
       ;; Smooth Scrolling
       scroll-conservatively 101
       scroll-margin 0
-      scroll-preserve-screen-position 't)
+      scroll-preserve-screen-position 't
+      ;; Backups
+      backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory "backups")))))
 
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -61,6 +65,18 @@
 
 (add-to-list 'load-path "~/.emacs.d/core/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
+;; ---
+
+;; Pacotes Essenciais
+(require 'cl)
+
+(use-package dash
+  :ensure t
+  :config
+  (eval-after-load "dash" '(dash-enable-font-lock)))
+
+(use-package s
+  :ensure t)
 
 (use-package use-package-chords
   :ensure t
@@ -80,6 +96,7 @@
 (use-package esup
   :ensure t
   :commands esup)
+;; ---
 
 (add-hook 'window-setup-hook 'toggle-frame-maximized)
 (add-hook 'before-save-hook '(lambda ()
@@ -93,6 +110,11 @@
 (load "~/.emacs.d/secrets/secrets")
 
 ;; Atalhos
+;; F5 - Toggles Global
+;; F6 - Toggles do Modo Maior (em cada pacote)
+;; F7 - Aplicações Interna (em estrutura)
+;; F8 - Aplicações Externa (em estrutura)
+;; F9 - Planejamento
 (use-package general
   :ensure t
   :config
@@ -105,7 +127,6 @@
    "<C-tab>"    'cycle-spacing
    "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand))
-;; F5 - Toggles Global
 (use-package golden-ratio :ensure t :diminish " φ"
   :bind (("<f5> g" . golden-ratio-mode)))
 (use-package centered-cursor-mode :ensure t :diminish " ⊝"
@@ -117,11 +138,6 @@
   (add-to-list 'boon-special-mode-list 'emacs-lisp-mode))
 (use-package writeroom-mode :ensure t :diminish
   :bind (("<f5> w" . writeroom-mode)))
-;; F6 - Toggles do Modo Maior
-;; - configurados em cada pacote
-;; F7 - Aplicações Interna
-;; F8 - Aplicações Externa
-;; F9 - Livre
 ;; ---
 
 (defun display-extended-command-shorter (command)
