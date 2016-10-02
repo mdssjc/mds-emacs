@@ -14,7 +14,6 @@
 
 ;;; Code:
 (use-package java-mode
-  :defer t
   :mode
   ("\\.java$" . java-mode)
   :interpreter
