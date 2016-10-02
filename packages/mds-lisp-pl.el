@@ -10,7 +10,7 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Configurações para os dialetos Lisp: ELisp (Emacs Lisp) e Racket
+;; Configurações para a linguagem Lisp, nos dialetos: ELisp (Emacs Lisp) e Racket.
 
 ;;; Code:
 ;; (require 'semantic)
@@ -60,20 +60,17 @@
   (use-package company
     :config
     (add-hook 'emacs-lisp-mode-hook (lambda ()
-                                      (setq-local company-backends
-                                                  '(company-elisp
-                                                    company-capf
-                                                    company-dict
-                                                    company-keywords
-                                                    company-yasnippet
-                                                    company-abbrev
-                                                    company-dabbrev-code
-                                                    company-dabbrev
-                                                    company-files
-                                                    company-ispell)))))
-  (use-package yasnippet
-    :config
-    (add-hook 'emacs-lisp-mode-hook 'yas-global-mode))
+                                      (set (make-local-variable 'company-backends)
+                                           '((company-elisp
+                                              company-capf
+                                              company-keywords
+                                              company-yasnippet
+                                              company-abbrev
+                                              company-dabbrev-code
+                                              company-dabbrev
+                                              company-dict
+                                              company-files
+                                              company-ispell))))))
   (use-package flycheck
     :config
     (setq flycheck-emacs-lisp-load-path 'inherit)
@@ -95,19 +92,16 @@
   (use-package company
     :config
     (add-hook 'racket-mode-hook (lambda ()
-                                  (setq-local company-backends
-                                              '(company-capf
-                                                company-dict
-                                                company-keywords
-                                                company-yasnippet
-                                                company-abbrev
-                                                company-dabbrev-code
-                                                company-dabbrev
-                                                company-files
-                                                company-ispell)))))
-  (use-package yasnippet
-    :config
-    (add-hook 'racket-mode-hook 'yas-global-mode))
+                                  (set (make-local-variable 'company-backends)
+                                       '((company-capf
+                                          company-keywords
+                                          company-yasnippet
+                                          company-abbrev
+                                          company-dabbrev-code
+                                          company-dabbrev
+                                          company-dict
+                                          company-files
+                                          company-ispell))))))
   (add-hook 'racket-mode-hook 'config-common))
 
 (use-package lispy

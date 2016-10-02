@@ -124,7 +124,8 @@
     (("C-c & w" . aya-create)
      ("C-c & y" . aya-expand)
      ("C-c & o" . aya-open-line)))
-  (add-hook 'yas-global-mode-hook 'yas-reload-all))
+  (yas-global-mode 1)
+  (yas-reload-all))
 
 (provide 'mds-syntax)
 ;;; mds-syntax.el ends here

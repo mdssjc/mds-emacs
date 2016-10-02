@@ -23,19 +23,16 @@
   (use-package company
     :config
     (add-hook 'java-mode-hook (lambda ()
-                                (setq-local company-backends
-                                            '(company-meghanada
-                                              company-dict
-                                              company-keywords
-                                              company-yasnippet
-                                              company-abbrev
-                                              company-dabbrev-code
-                                              company-dabbrev
-                                              company-files
-                                              company-ispell)))))
-  (use-package yasnippet
-    :config
-    (add-hook 'java-mode-hook 'yas-global-mode))
+                                (set (make-local-variable 'company-backends)
+                                     '((company-meghanada
+                                        company-keywords
+                                        company-yasnippet
+                                        company-abbrev
+                                        company-dabbrev-code
+                                        company-dabbrev
+                                        company-dict
+                                        company-files
+                                        company-ispell))))))
   (use-package java-snippets
     :ensure t)
   (use-package flycheck
