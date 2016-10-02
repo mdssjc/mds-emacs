@@ -57,31 +57,6 @@
     "<f8> s" "Ispell"
   (which-key-mode 1))
 
-(use-package expand-region
-  :ensure t
-  :bind
-  (("C-=" . er/expand-region))
-  :chords
-  (("vv" . hydra-expand-region/body))
-  :init
-  (require 'expand-region)
-  (defhydra hydra-expand-region (:columns 4 :color blue)
-    "Mark"
-    ("w" er/mark-word "word")
-    ("s" er/mark-symbol "symbol")
-    ("S" er/mark-symbol-with-prefix "symbol-with-prefix")
-    ("n" er/mark-next-accessor "next-accessor")
-    ("m" er/mark-method-call "method-call")
-    ("i" er/mark-inside-quotes "inside-quotes")
-    ("I" er/mark-outside-quotes "outside-quotes")
-    ("p" er/mark-inside-pairs "inside-pairs")
-    ("P" er/mark-outside-pairs "outside-pairs")
-    ("c" er/mark-comment "comment")
-    ("u" er/mark-url "url")
-    ("e" er/mark-email "email")
-    ("d" er/mark-defun "defun")
-    ("q" nil "quit")))
-
 (use-package embrace
   :ensure t
   :chords
@@ -148,6 +123,32 @@
    ("C-c l" . counsel-locate)))
 (use-package hydra
   :ensure t)
+
+(use-package expand-region
+  :ensure t
+  :after hydra
+  :bind
+  (("C-=" . er/expand-region))
+  :chords
+  (("vv" . hydra-expand-region/body))
+  :init
+  (require 'expand-region)
+  (defhydra hydra-expand-region (:columns 4 :color blue)
+    "Mark"
+    ("w" er/mark-word "word")
+    ("s" er/mark-symbol "symbol")
+    ("S" er/mark-symbol-with-prefix "symbol-with-prefix")
+    ("n" er/mark-next-accessor "next-accessor")
+    ("m" er/mark-method-call "method-call")
+    ("i" er/mark-inside-quotes "inside-quotes")
+    ("I" er/mark-outside-quotes "outside-quotes")
+    ("p" er/mark-inside-pairs "inside-pairs")
+    ("P" er/mark-outside-pairs "outside-pairs")
+    ("c" er/mark-comment "comment")
+    ("u" er/mark-url "url")
+    ("e" er/mark-email "email")
+    ("d" er/mark-defun "defun")
+    ("q" nil "quit")))
 
 (use-package projectile
   :ensure t

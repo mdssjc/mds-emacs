@@ -15,6 +15,40 @@
 ;;; Code:
 ;; (require 'semantic)
 
+(use-package paredit
+  :ensure t)
+
+(use-package parinfer
+  :ensure t
+  :defer t
+  :diminish parinfer " Ⓟ"
+  ;; :bind
+  ;; (:map parinfer-mode-map
+  ;;       ("C-," . parinfer-toggle-mode)
+  ;;       ("M-r" . parinfer-raise-sexp)
+  ;;       ("M-m" . mark-sexp)
+  ;;       ("M-j" . parinfer-transpose-sexps)
+  ;;       ("M-k" . parinfer-reverse-transpose-sexps))
+  :config
+  (lispy-mode 0))
+
+(use-package lispy
+  :ensure t
+  :defer t
+  :diminish lispy-mode " Ⓛ"
+  :bind
+  (:map lispy-mode-map
+        ("s-<right>" . lispy-forward-slurp-sexp)
+        ("S-s-<right>" . lispy-forward-barf-sexp)
+        ("s-<left>" . lispy-backward-slurp-sexp)
+        ("S-s-<left>" . lispy-backward-barf-sexp))
+  :config
+  (parinfer-mode 0))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t)
+
 (defun config-common ()
   "Configurações comum entre os dialetos."
   (require 'lispy)
@@ -104,40 +138,10 @@
                                           company-ispell))))))
   (add-hook 'racket-mode-hook 'config-common))
 
-(use-package lispy
-  :ensure t
-  :defer t
-  :diminish lispy-mode " Ⓛ"
-  :bind
-  (:map lispy-mode-map
-        ("s-<right>" . lispy-forward-slurp-sexp)
-        ("S-s-<right>" . lispy-forward-barf-sexp)
-        ("s-<left>" . lispy-backward-slurp-sexp)
-        ("S-s-<left>" . lispy-backward-barf-sexp))
-  :config
-  (parinfer-mode 0))
-
 (use-package litable
   :ensure t
   :defer t
   :diminish litable-mode " Ⓣ")
-
-(use-package parinfer
-  :ensure t
-  :defer t
-  :diminish parinfer " Ⓟ"
-  :init
-  (use-package paredit
-    :ensure t)
-  ;; :bind
-  ;; (:map parinfer-mode-map
-  ;;       ("C-," . parinfer-toggle-mode)
-  ;;       ("M-r" . parinfer-raise-sexp)
-  ;;       ("M-m" . mark-sexp)
-  ;;       ("M-j" . parinfer-transpose-sexps)
-  ;;       ("M-k" . parinfer-reverse-transpose-sexps))
-  :config
-  (lispy-mode 0))
 
 (use-package geiser
   :ensure t
@@ -148,10 +152,6 @@
         ("C-c C-c" . geiser-eval-last-sexp))
   :config
   (setq geiser-racket-binary "/usr/bin/racket"))
-
-(use-package rainbow-delimiters
-  :ensure t
-  :defer t)
 
 (provide 'mds-lisp-pl)
 ;;; mds-lisp-pl ends here

@@ -74,6 +74,9 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+(use-package powerline
+  :ensure t)
+
 (use-package esup
   :ensure t
   :commands esup)
@@ -156,16 +159,13 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode writeroom-mode which-key use-package-chords undo-tree spacemacs-theme spaceline ripgrep restart-emacs rainbow-delimiters racket-mode parinfer paredit org-bullets neotree mode-icons meghanada magit litable lispy langtool jtags java-snippets info+ golden-ratio general geiser flycheck-pos-tip flycheck-package exec-path-from-shell esup emojify embrace counsel-projectile company-statistics company-quickhelp company-emoji company-dict centered-cursor-mode boon beacon auto-yasnippet all-the-icons))))
+    (markdown-mode emmet-mode web-mode meghanada jtags auto-yasnippet java-snippets rainbow-delimiters geiser litable racket-mode lispy parinfer paredit org-bullets langtool flycheck-pos-tip flycheck-package flycheck yasnippet company-math company-emoji company-flx company-statistics company-quickhelp company-dict company ripgrep projectile hydra counsel swiper ace-window avy magit neotree embrace which-key undo-tree restart-emacs emojify beacon all-the-icons mode-icons info+ spaceline spacemacs-theme writeroom-mode boon centered-cursor-mode golden-ratio general esup powerline exec-path-from-shell use-package-chords use-package))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
 
 ;;; init.el ends here
