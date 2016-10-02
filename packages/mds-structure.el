@@ -149,14 +149,17 @@
 (use-package hydra
   :ensure t)
 
-(use-package counsel-projectile
-  :ensure t)
 (use-package projectile
   :ensure t
   :diminish projectile-mode
+  :bind
+  (("<f7> p" . projectile-command-map))
   :config
-  (projectile-global-mode t)
-  (counsel-projectile-on))
+  (use-package counsel-projectile
+    :ensure t
+    :config
+    (counsel-projectile-on))
+  (projectile-global-mode t))
 
 (use-package ripgrep
   :ensure t
