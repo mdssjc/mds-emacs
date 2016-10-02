@@ -24,8 +24,7 @@
   :bind
   (("<f5> a" . company-mode))
   :config
-  (setq tab-always-indent 'complete
-        company-tooltip-limit 10
+  (setq company-tooltip-limit 10
         company-tooltip-minimum 5
         company-tooltip-flip-when-above t
         company-minimum-prefix-length 3
