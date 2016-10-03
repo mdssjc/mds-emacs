@@ -180,9 +180,13 @@
         ("d" . mds/dashed-words)
         ("c" . mds/capitalized-words)
         ("t" . mds/titleized-words)
-        ("i" . mds/word-initials))
+        ("i" . mds/word-initials)
+        :map selected-org-mode-map
+        ("e" . org-emphasize))
   :chords
-  (("xx" . selected-minor-mode)))
+  (("xx" . selected-minor-mode))
+  :init
+  (defvar selected-org-mode-map (make-sparse-keymap)))
 ;; ---
 
 (use-package projectile
