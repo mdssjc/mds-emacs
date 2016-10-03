@@ -57,11 +57,6 @@
     "<f8> s" "Ispell"
   (which-key-mode 1))
 
-(use-package embrace
-  :ensure t
-  :chords
-  (("ss" . embrace-commander)))
-
 (use-package neotree
   :ensure t
   :bind
@@ -163,8 +158,14 @@
     ("d" er/mark-defun "defun")
     ("q" nil "quit")))
 
+(use-package embrace
+  :ensure t
+  :chords
+  (("ss" . embrace-commander)))
+
 (use-package selected
   :ensure t
+  :commands selected-minor-mode
   :bind
   (:map selected-keymap
         ("q" . selected-off)
@@ -180,8 +181,8 @@
         ("c" . mds/capitalized-words)
         ("t" . mds/titleized-words)
         ("i" . mds/word-initials))
-  :config
-  (selected-global-mode 1))
+  :chords
+  (("xx" . selected-minor-mode)))
 ;; ---
 
 (use-package projectile
