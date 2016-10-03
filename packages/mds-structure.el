@@ -136,6 +136,7 @@
   :ensure t)
 ;; ---
 
+;; Seleção
 (use-package expand-region
   :ensure t
   :after hydra
@@ -161,6 +162,27 @@
     ("e" er/mark-email "email")
     ("d" er/mark-defun "defun")
     ("q" nil "quit")))
+
+(use-package selected
+  :ensure t
+  :bind
+  (:map selected-keymap
+        ("q" . selected-off)
+        ("U" . upcase-region)
+        ("D" . downcase-region)
+        ("W" . count-words-region)
+        ("m" . apply-macro-to-region-lines)
+        ("w" . mds/split-words)
+        ("l" . mds/lower-camel-case)
+        ("u" . mds/upper-camel-case)
+        ("s" . mds/snake-case)
+        ("d" . mds/dashed-words)
+        ("c" . mds/capitalized-words)
+        ("t" . mds/titleized-words)
+        ("i" . mds/word-initials))
+  :config
+  (selected-global-mode 1))
+;; ---
 
 (use-package projectile
   :ensure t
