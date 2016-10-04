@@ -27,9 +27,10 @@
   (setq company-tooltip-limit 10
         company-tooltip-minimum 5
         company-tooltip-flip-when-above t
-        company-minimum-prefix-length 3
+        company-minimum-prefix-length 2
         company-idle-delay 0.1
         company-show-numbers t
+        company-transformers '(company-sort-by-backend-importance)
         company-backends '((company-abbrev
                             company-dabbrev
                             company-files
@@ -57,11 +58,6 @@
   :config
   (setq company-statistics-size 2000)
   (company-statistics-mode 1))
-
-(use-package company-flx
-  :ensure t
-  :config
-  (company-flx-mode 1))
 
 (use-package company-emoji
   :ensure t

@@ -22,6 +22,7 @@
   (use-package company
     :config
     (add-hook 'java-mode-hook (lambda ()
+                                (set (make-local-variable 'company-transformers) '(company-sort-by-backend-importance company-sort-by-statistics))
                                 (set (make-local-variable 'company-backends)
                                      '((company-meghanada
                                         company-keywords
