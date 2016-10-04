@@ -105,7 +105,7 @@
                                               company-dabbrev
                                               company-dict
                                               company-files
-                                              company-ispell))))))
+                                              :with company-ispell))))))
   (use-package flycheck
     :config
     (setq flycheck-emacs-lisp-load-path 'inherit)
@@ -136,7 +136,7 @@
                                           company-dabbrev
                                           company-dict
                                           company-files
-                                          company-ispell))))))
+                                          :with company-ispell))))))
   (add-hook 'racket-mode-hook 'config-common))
 
 (use-package litable

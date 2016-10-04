@@ -36,7 +36,7 @@
                             company-files
                             company-math-symbols-unicode
                             company-emoji
-                            company-ispell)))
+                            :with company-ispell)))
   (global-company-mode t))
 
 (use-package company-dict
@@ -56,7 +56,8 @@
 (use-package company-statistics
   :ensure t
   :config
-  (setq company-statistics-size 2000)
+  (setq company-statistics-size 2000
+        company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el"))
   (company-statistics-mode 1))
 
 (use-package company-emoji

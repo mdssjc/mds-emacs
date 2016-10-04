@@ -32,7 +32,7 @@
                                         company-dabbrev
                                         company-dict
                                         company-files
-                                        company-ispell))))))
+                                        :with company-ispell))))))
   (use-package java-snippets
     :ensure t)
   (use-package flycheck
