@@ -52,9 +52,13 @@
   :config
   (setq which-key-idle-delay 0.1)
   (which-key-add-key-based-replacements
-    "<f8> g" "Magit"
-    "<f8> l" "Langtool")
-    "<f8> s" "Ispell"
+    "<f7> p" "projectile"
+    "<f7> t" "neotree"
+    "<f8> g" "magit"
+    "<f8> l" "langtool"
+    "<f8> r" "ripgrep"
+    "<f8> s" "ispell")
+  (which-key-setup-minibuffer)
   (which-key-mode 1))
 
 (use-package neotree
