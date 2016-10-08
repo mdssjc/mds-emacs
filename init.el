@@ -130,16 +130,23 @@
    "<C-tab>"    'cycle-spacing
    "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand))
-(use-package golden-ratio :ensure t :diminish " φ"
+(use-package golden-ratio
+  :ensure t
+  :diminish " φ"
   :bind (("<f5> g" . golden-ratio-mode)))
-(use-package centered-cursor-mode :ensure t :diminish " ⊝"
+(use-package centered-cursor-mode
+  :ensure t
+  :diminish " ⊝"
   :bind (("<f5> -" . centered-cursor-mode)))
-(use-package boon :ensure t
+(use-package boon
+  :ensure t
   :bind (("<f5> b" . boon-mode))
   :config
   (require 'boon-colemak)
   (add-to-list 'boon-special-mode-list 'emacs-lisp-mode))
-(use-package writeroom-mode :ensure t :diminish
+(use-package writeroom-mode
+  :ensure t
+  :diminish
   :bind (("<f5> w" . writeroom-mode)))
 ;; ---
 
@@ -178,7 +185,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (selected markdown-mode emmet-mode web-mode meghanada jtags auto-yasnippet java-snippets rainbow-delimiters geiser litable racket-mode lispy parinfer paredit org-bullets langtool flycheck-pos-tip flycheck-package flycheck yasnippet company-math company-emoji company-flx company-statistics company-quickhelp company-dict company ripgrep projectile hydra counsel swiper ace-window avy magit neotree embrace which-key undo-tree restart-emacs emojify beacon all-the-icons mode-icons info+ spaceline spacemacs-theme writeroom-mode boon centered-cursor-mode golden-ratio general esup powerline exec-path-from-shell use-package-chords use-package))))
+    (visual-regexp visual-reexp counsel-projectile markdown-mode emmet-mode web-mode meghanada jtags auto-yasnippet java-snippets geiser litable racket-mode rainbow-delimiters lispy parinfer paredit org-bullets langtool flycheck-pos-tip flycheck-package flycheck yasnippet company-math company-emoji company-statistics company-quickhelp company-dict company ripgrep projectile selected embrace hydra counsel swiper ace-window avy magit git-gutter-fringe neotree undo-tree restart-emacs emojify beacon all-the-icons mode-icons info+ spaceline spacemacs-theme writeroom-mode boon centered-cursor-mode golden-ratio general esup powerline exec-path-from-shell use-package-chords f s dash which-key use-package))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
