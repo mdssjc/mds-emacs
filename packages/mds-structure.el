@@ -37,8 +37,7 @@
 (use-package restart-emacs
   :ensure t
   :chords
-  (("qq" . save-buffers-kill-terminal)
-   ("qr" . restart-emacs)))
+  (("qr" . restart-emacs)))
 
 (use-package undo-tree
   :ensure t

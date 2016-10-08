@@ -121,6 +121,8 @@
 ;; F9 - Planejamento
 (use-package general
   :ensure t
+  :chords
+  (("qq" . save-buffers-kill-terminal))
   :config
   (general-define-key
    "M-<up>"     'mds/move-up
