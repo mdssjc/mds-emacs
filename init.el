@@ -94,9 +94,6 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
-(use-package powerline
-  :ensure t)
-
 (use-package esup
   :ensure t
   :commands esup)
@@ -113,45 +110,6 @@
 ;; Segredos (Secrets)
 (load "~/.emacs.d/secrets/secrets")
 
-;; Atalhos
-;; F5 - Toggles Global
-;; F6 - Toggles do Modo Maior (em cada pacote)
-;; F7 - Aplicações Interna (em estrutura)
-;; F8 - Aplicações Externa (em estrutura)
-;; F9 - Planejamento
-(use-package general
-  :ensure t
-  :chords
-  (("qq" . save-buffers-kill-terminal))
-  :config
-  (general-define-key
-   "M-<up>"     'mds/move-up
-   "M-<down>"   'mds/move-down
-   "M-S-<up>"   'mds/duplicate-up
-   "M-S-<down>" 'mds/duplicate-down
-   "<C-tab>"    'cycle-spacing
-   "<C-return>" 'mds/insert-lines-between
-   "M-/"        'hippie-expand))
-(use-package golden-ratio
-  :ensure t
-  :diminish " φ"
-  :bind (("<f5> g" . golden-ratio-mode)))
-(use-package centered-cursor-mode
-  :ensure t
-  :diminish " ⊝"
-  :bind (("<f5> -" . centered-cursor-mode)))
-(use-package boon
-  :ensure t
-  :bind (("<f5> b" . boon-mode))
-  :config
-  (require 'boon-colemak)
-  (add-to-list 'boon-special-mode-list 'emacs-lisp-mode))
-(use-package writeroom-mode
-  :ensure t
-  :diminish
-  :bind (("<f5> w" . writeroom-mode)))
-;; ---
-
 (defun display-extended-command-shorter (command)
   "Display information on a shorter way to M-x a command."
   (interactive (list (read-extended-command)))
@@ -163,6 +121,8 @@
 (require 'mds-aesthetic)
 ;; Estrutura (Structure)
 (require 'mds-structure)
+;; Atalhos (Shortcuts)
+(require 'mds-shortcuts)
 ;; Sintaxe (Syntax)
 (require 'mds-syntax)
 ;; Semântico (Semantic)
