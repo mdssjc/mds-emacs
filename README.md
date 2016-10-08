@@ -2,7 +2,7 @@
 
 O projeto tem como objetivo ser um modelo de configuração do *Emacs* para o dia a dia do programador nas seguintes tecnologias: *Lisp*, *Java*, *C*, *Web* e Escrita (*Latex*, *Markdown*, Texto e etc...) - voltado para os amantes em personalização de ferramentas.
 
-Versão do *Emacs*: 25.1.50
+Versão do *Emacs*: 26.0.50
 
 # Instalação
 
@@ -13,7 +13,7 @@ Procedimento para a instalação do projeto.
 ```
 git clone https://github.com/emacs-mirror/emacs
 ./autogen.sh all
-./configure
+./configure --with-modules
 make
 sudo make install
 ```
@@ -38,6 +38,8 @@ Próximas evoluções:
 
 * Acompanhar a evolução do *Meghanada*.
 * Evoluir o *Org-mode*.
+* Melhorar a legibilidade do código.
+* Melhorar o *Lisp*.
 
 # Projeto
 
@@ -58,6 +60,7 @@ Conjunto de pacotes para o ambiente:
    * Correção: sugestão para palavras selecionadas, conforme dicionário (português por padrão).
    * Abreviação: abreviaturas de texto para expansão.
    * Template: blocos de construção de texto (linguagens de programação).
+* Atalhos: atalhos utilizados no ambiente.
 * Semântica: frase e/ou expressão incorreta.
    * Analisa o texto e/ou código.
 * Pragmático: *org-mode*...
@@ -74,7 +77,7 @@ Conjunto de pacotes para o ambiente:
    * Ferramenta *Ripgrep*.
 * Linguagens de Programação:
    * *Lisp*: dialetos *ELisp* (*Emacs Lisp*) e *Racket*.
-   * *Java*: *Meghanada* (em teste).
+   * *Java*: servidor *Meghanada*.
    * *C*: (sem configurações).
 * Linguagens de Marcação:
    * *Markdown*: arquivos .md.
