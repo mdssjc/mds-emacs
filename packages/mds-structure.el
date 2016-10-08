@@ -210,5 +210,11 @@
   :bind
   (("<f8> r" . ripgrep-regexp)))
 
+(use-package visual-regexp
+  :ensure t
+  :bind
+  (("C-c r" . vr/replace)
+   ("C-c q" . vr/query-replace)))
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
