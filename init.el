@@ -109,6 +109,7 @@
 
 (mouse-avoidance-mode 'animate)
 (fset 'yes-or-no-p 'y-or-n-p)
+(fset 'display-buffer-in-major-side-window 'window--make-major-side-window)
 
 (defun display-extended-command-shorter (command)
   "Display information on a shorter way to M-x a command."

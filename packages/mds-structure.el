@@ -57,7 +57,6 @@
     "<f8> l" "langtool"
     "<f8> r" "ripgrep"
     "<f8> s" "ispell")
-  (which-key-setup-minibuffer)
   (which-key-mode 1))
 
 (use-package neotree
