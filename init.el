@@ -10,7 +10,7 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Arquivo de inicialização do editor.
+;; Arquivo de inicialização do ambiente.
 
 ;;; Code:
 ;; Bootstrap `use-package'
@@ -56,7 +56,8 @@
       scroll-margin 0
       scroll-preserve-screen-position 't
       ;; Backups
-      backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory ".cache/backups")))))
+      backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory
+                                                                 ".cache/backups")))))
 
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -67,9 +68,8 @@
 (add-to-list 'load-path "~/.emacs.d/packages/")
 ;; ---
 
-;; Pacotes Essenciais
+;; Pacotes Essenciais (Essential Packages)
 (require 'cl)
-(require 'mds-core-funcs)
 
 (use-package dash
   :ensure t
@@ -81,6 +81,8 @@
 
 (use-package f
   :ensure t)
+
+(require 'mds-core-funcs)
 
 (use-package use-package-chords
   :ensure t
@@ -99,6 +101,7 @@
   :commands esup)
 ;; ---
 
+;; Hooks
 (add-hook 'window-setup-hook 'toggle-frame-maximized)
 (add-hook 'before-save-hook '(lambda ()
                                (delete-trailing-whitespace)
@@ -107,16 +110,19 @@
 (mouse-avoidance-mode 'animate)
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; Segredos (Secrets)
-(load "~/.emacs.d/secrets/secrets")
-
 (defun display-extended-command-shorter (command)
   "Display information on a shorter way to M-x a command."
   (interactive (list (read-extended-command)))
   (message "The command `%s' can be invoked with `M-x %s'"
            command
            (execute-extended-command--shorter command command)))
+;; ---
 
+;; Segredos (Secrets)
+(load "~/.emacs.d/secrets/secrets")
+;; ---
+
+;; Pacotes (Packages)
 ;; Estético (Aesthetic)
 (require 'mds-aesthetic)
 ;; Estrutura (Structure)
@@ -155,5 +161,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+;; ---
 
 ;;; init.el ends here
