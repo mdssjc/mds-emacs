@@ -88,7 +88,8 @@
 (use-package use-package-chords
   :ensure t
   :config
-  (setq key-chord-two-keys-delay 0.05)
+  (setq key-chord-two-keys-delay 0.15
+        key-chord-one-key-delay 0.15)
   (key-chord-mode 1))
 
 (use-package exec-path-from-shell
