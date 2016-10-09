@@ -196,12 +196,13 @@
   :diminish projectile-mode
   :bind
   (("<f7> p" . projectile-command-map))
+  :init
+  (projectile-global-mode t)
   :config
   (use-package counsel-projectile
     :ensure t
     :config
-    (counsel-projectile-on))
-  (projectile-global-mode t))
+    (counsel-projectile-on)))
 
 (use-package ripgrep
   :ensure t
