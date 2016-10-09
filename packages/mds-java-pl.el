@@ -19,10 +19,15 @@
   :interpreter
   ("java" . java-mode)
   :init
+  (use-package java-snippets
+    :ensure t
+    :defer t)
   (use-package company
     :config
     (add-hook 'java-mode-hook (lambda ()
-                                (set (make-local-variable 'company-transformers) '(company-sort-by-backend-importance company-sort-by-statistics))
+                                (set (make-local-variable 'company-transformers)
+                                     '(company-sort-by-backend-importance
+                                       company-sort-by-statistics))
                                 (set (make-local-variable 'company-backends)
                                      '((company-meghanada
                                         company-keywords
@@ -33,18 +38,19 @@
                                         company-dict
                                         company-files
                                         :with company-ispell))))))
-  (use-package java-snippets
-    :ensure t)
+  (use-package yasnippet
+    :config
+    (add-hook 'java-mode-hook '(lambda ()
+                                 (progn (yas-minor-mode)
+                                        (yas-reload-all)))))
   (use-package flycheck
     :config
     (add-hook 'java-mode-hook 'flycheck-mode))
-  (use-package jtags
-    :ensure t
-    :config
-    (add-hook 'java-mode-hook 'jtags-mode))
   (use-package meghanada
     :ensure t
     :config
+    (setq meghanada-server-install-dir (concat user-emacs-directory
+                                               ".cache/meghanada/"))
     (add-hook 'java-mode-hook (lambda ()
                                 (meghanada-mode t)))))
 
