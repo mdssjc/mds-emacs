@@ -68,7 +68,6 @@
   (prettify-symbols-mode t))
 
 (use-package emacs-lisp-mode
-  :defer t
   :mode
   (("\\.el$" . emacs-lisp-mode))
   :interpreter
@@ -105,6 +104,11 @@
                                               company-dict
                                               company-files
                                               :with company-ispell))))))
+  (use-package yasnippet
+    :config
+    (add-hook 'emacs-lisp-mode-hook '(lambda ()
+                                       (progn (yas-minor-mode)
+                                              (yas-reload-all)))))
   (use-package flycheck
     :config
     (setq flycheck-emacs-lisp-load-path 'inherit)
@@ -133,7 +137,7 @@
                                   (set (make-local-variable 'company-backends)
                                        '((company-capf
                                           company-keywords
-                                          company-yasnippet
+                                          ;; company-yasnippet
                                           company-abbrev
                                           company-dabbrev-code
                                           company-dabbrev
