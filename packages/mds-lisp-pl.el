@@ -70,8 +70,7 @@
 (use-package emacs-lisp-mode
   :defer t
   :mode
-  (("*scratch*" . emacs-lisp-mode)
-   ("\\.el$" . emacs-lisp-mode))
+  (("\\.el$" . emacs-lisp-mode))
   :interpreter
   ("emacs" . emacs-lisp-mode)
   :bind

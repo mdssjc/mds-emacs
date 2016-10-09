@@ -37,6 +37,7 @@
 (setq gc-cons-threshold 50000000
       column-number-mode t
       visible-bell t
+      initial-major-mode 'fundamental-mode
       ;; Tabs / Indentation
       standard-indent 2
       c-basic-offset 2
