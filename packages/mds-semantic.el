@@ -15,6 +15,7 @@
 ;;; Code:
 (defvar langtool-path "/home/mdssjc/Documents/Git/languagetool/languagetool-standalone/target/LanguageTool-3.6-SNAPSHOT/LanguageTool-3.6-SNAPSHOT/")
 
+;; Flycheck
 (use-package flycheck
   :ensure t
   :diminish flycheck-mode " ⓢ"
@@ -22,12 +23,19 @@
   :bind
   (("<f5> s" . flycheck-mode))
   :config
-  (use-package flycheck-pos-tip
-    :ensure t
-    :config
-    (with-eval-after-load 'flycheck (flycheck-pos-tip-mode)))
-  (setq flycheck-check-syntax-automatically '(mode-enable save)))
+  (setq flycheck-check-syntax-automatically '(mode-enable
+                                              save
+                                              idle-change)
+        flycheck-idle-change-delay 3))
 
+(use-package flycheck-pos-tip
+  :ensure t
+  :after flycheck
+  :config
+  (flycheck-pos-tip-mode))
+;; ---
+
+;; Flyspell
 (use-package flyspell
   :ensure t
   :diminish flyspell-mode " Ⓢ"
@@ -36,15 +44,21 @@
   :config
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
   (add-hook 'text-mode-hook 'flyspell-mode)
-  (add-hook 'org-mode-hook 'flycheck-mode)
-  (use-package flyspell-correct-popup
-    :ensure t
-    :config
-    (setq flyspell-correct-interface 'flyspell-correct-popup))
-  (use-package flyspell-correct-ivy
-    :ensure t
-    :bind (:map flyspell-mode-map
-                ("C-c $" . flyspell-correct-previous-word-generic))))
+  (add-hook 'org-mode-hook 'flyspell-mode))
+
+(use-package flyspell-correct-popup
+  :ensure t
+  :after flyspell
+  :config
+  (setq flyspell-correct-interface 'flyspell-correct-popup))
+
+(use-package flyspell-correct-ivy
+  :ensure t
+  :after flyspell
+  :bind
+  (:map flyspell-mode-map
+        ("C-c $" . flyspell-correct-previous-word-generic)))
+;; ---
 
 (use-package langtool
   :ensure t
