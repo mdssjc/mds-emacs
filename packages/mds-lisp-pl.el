@@ -109,6 +109,10 @@
   (use-package flycheck
     :config
     (setq flycheck-emacs-lisp-load-path 'inherit)
+    (use-package flycheck-package
+      :ensure t
+      :config
+      (add-hook 'emacs-lisp-hode-hook 'flycheck-package-setup))
     (add-hook 'emacs-lisp-mode-hook 'flycheck-mode))
   (add-to-list 'completion-styles 'initials t)
   (add-hook 'emacs-lisp-mode-hook 'config-common))

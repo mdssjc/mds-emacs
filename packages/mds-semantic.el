@@ -22,14 +22,11 @@
   :bind
   (("<f5> s" . flycheck-mode))
   :config
-  (use-package flycheck-package
-    :ensure t)
   (use-package flycheck-pos-tip
     :ensure t
-    :init
+    :config
     (with-eval-after-load 'flycheck (flycheck-pos-tip-mode)))
-  (setq flycheck-check-syntax-automatically '(mode-enable save))
-  (eval-after-load 'flycheck '(flycheck-package-setup)))
+  (setq flycheck-check-syntax-automatically '(mode-enable save)))
 
 (use-package flyspell
   :ensure t
