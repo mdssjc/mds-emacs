@@ -52,7 +52,13 @@
     (setq meghanada-server-install-dir (concat user-emacs-directory
                                                ".cache/meghanada/"))
     (add-hook 'java-mode-hook (lambda ()
-                                (meghanada-mode t)))))
+                                (meghanada-mode t))))
+  (use-package counsel-dash
+    :config
+    (add-hook 'java-mode-hook (lambda ()
+                                (setq-local counsel-dash-docsets '("Java_SE8"
+                                                                   "Java_EE7"
+                                                                   "JavaFX"))))))
 
 (provide 'mds-java-pl)
 ;;; mds-java-pl ends here

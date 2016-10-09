@@ -117,6 +117,10 @@
       :config
       (add-hook 'emacs-lisp-hode-hook 'flycheck-package-setup))
     (add-hook 'emacs-lisp-mode-hook 'flycheck-mode))
+  (use-package counsel-dash
+    :config
+    (add-hook 'emacs-lisp-mode-hook (lambda ()
+                                      (setq-local counsel-dash-docsets '("Emacs_Lisp")))))
   (add-to-list 'completion-styles 'initials t)
   (add-hook 'emacs-lisp-mode-hook 'config-common))
 
@@ -144,6 +148,10 @@
                                           company-dict
                                           company-files
                                           :with company-ispell))))))
+  (use-package counsel-dash
+    :config
+    (add-hook 'racket-mode-hook (lambda ()
+                                  (setq-local counsel-dash-docsets '("Racket")))))
   (add-hook 'racket-mode-hook 'config-common))
 
 (use-package litable
