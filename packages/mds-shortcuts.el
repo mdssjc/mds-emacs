@@ -52,5 +52,10 @@
   :bind
   (("<f5> w" . writeroom-mode)))
 
+(use-package focus
+  :ensure t
+  :bind
+  (("<f5> f" . focus-mode)))
+
 (provide 'mds-shortcuts)
 ;;; mds-shortcuts ends here
