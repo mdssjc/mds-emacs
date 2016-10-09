@@ -107,6 +107,7 @@
 (use-package yasnippet
   :ensure t
   :diminish yas-minor-mode " ⓨ"
+  :commands yas-global-mode yas-minor-mode
   :bind
   (("<f5> y" . yas-global-mode))
   :config
@@ -120,8 +121,9 @@
     (("C-c & w" . aya-create)
      ("C-c & y" . aya-expand)
      ("C-c & o" . aya-open-line)))
-  (yas-global-mode 1)
-  (yas-reload-all))
+  ;; (yas-reload-all)
+  ;; (yas-global-mode 1)
+  )
 
 (provide 'mds-syntax)
 ;;; mds-syntax.el ends here
