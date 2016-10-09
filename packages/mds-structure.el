@@ -59,6 +59,19 @@
     "<f8> s" "ispell")
   (which-key-mode 1))
 
+(use-package keyfreq
+  :ensure t
+  :bind
+  (("<f7> f" . keyfreq-show))
+  :init
+  (setq keyfreq-file (concat user-emacs-directory
+                             ".cache/.emacs.keyfreq")
+        keyfreq-file-lock (concat user-emacs-directory
+                                  ".cache/.emacs.keyfreq.lock"))
+  :config
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1))
+
 (use-package neotree
   :ensure t
   :bind
