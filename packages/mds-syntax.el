@@ -120,10 +120,7 @@
     :bind
     (("C-c & w" . aya-create)
      ("C-c & y" . aya-expand)
-     ("C-c & o" . aya-open-line)))
-  ;; (yas-reload-all)
-  ;; (yas-global-mode 1)
-  )
+     ("C-c & o" . aya-open-line))))
 
 (provide 'mds-syntax)
 ;;; mds-syntax.el ends here
