@@ -101,48 +101,97 @@
    ("<f8> g S" . magit-stage-file)
    ("<f8> g g" . magit-dispatch-popup))
   :init
-  (defalias 'gs 'magit-status "Magit status"))
+  (defalias 'gs 'magit-status "Magit status")
+  :config
+  (setq magit-completing-read-function 'ivy-completing-read))
 ;; ---
 
 ;; Abo-abo (https://github.com/abo-abo)
 (use-package avy
   :ensure t
   :bind
-  ("C-:" . avy-goto-char-timer)
+  (("C-:" . avy-goto-char-timer))
   :config
-  (setq avy-timeout-seconds 0.3))
+  (setq avy-timeout-seconds 0.3
+        avy-background t))
+
 (use-package ace-window
   :ensure t
+  :defer 1
   :bind
-  ("M-p" . ace-window)
+  (("M-p" . ace-window))
   :config
-  (setq aw-dispatch-always t))
-(use-package swiper
-  :ensure t
-  :bind
-  (("C-s" . swiper)))
+  (set-face-attribute 'aw-leading-char-face nil
+                      :foreground "deep sky blue"
+                      :weight 'bold
+                      :height 3.0)
+  (set-face-attribute 'aw-mode-line-face nil
+                      :inherit 'mode-line-buffer-id
+                      :foreground "lawn green")
+  (setq aw-keys '(?a ?s ?d ?f ?j ?k ?l)
+        aw-dispatch-always t
+        aw-dispatch-alist '((?x aw-delete-window     "Ace - Delete Window")
+                            (?c aw-swap-window       "Ace - Swap Window")
+                            (?n aw-flip-window)
+                            (?v aw-split-window-vert "Ace - Split Vert Window")
+                            (?h aw-split-window-horz "Ace - Split Horz Window")
+                            (?m delete-other-windows "Ace - Maximize Window")
+                            (?g delete-other-windows)
+                            (?b balance-windows)
+                            (?u winner-undo)
+                            (?r winner-redo))
+        aw-background t)
+  (use-package hydra
+    :config
+    (defhydra hydra-window-size (:color red)
+      "Windows size"
+      ("h" shrink-window-horizontally  "shrink horizontal")
+      ("j" shrink-window               "shrink vertical")
+      ("k" enlarge-window              "enlarge vertical")
+      ("l" enlarge-window-horizontally "enlarge horizontal"))
+    (defhydra hydra-window-frame (:color red)
+      "Frame"
+      ("f" make-frame   "new frame")
+      ("x" delete-frame "delete frame"))
+    (defhydra hydra-window-scroll (:color red)
+      "Scroll other window"
+      ("n" joe-scroll-other-window      "scroll")
+      ("p" joe-scroll-other-window-down "scroll down"))
+    (add-to-list 'aw-dispatch-alist '(?w hydra-window-size/body) t)
+    (add-to-list 'aw-dispatch-alist '(?o hydra-window-scroll/body) t)
+    (add-to-list 'aw-dispatch-alist '(?\; hydra-window-frame/body) t))
+  (ace-window-display-mode t))
+
 (use-package ivy
   :ensure t
   :diminish ivy-mode
-  :bind
-  (:map ivy-mode-map
-        ("C-'" . ivy-avy))
-  :init
-  (ivy-mode 1)
+  :chords
+  ("xn" . ivy-switch-buffer)
   :config
   (setq ivy-use-virtual-buffers t
         ivy-height 10
         ivy-count-format "(%d/%d) "
         ivy-initial-inputs-alist nil
-        ivy-re-builders-alist '((t . ivy--regex-plus))))
+        ivy-re-builders-alist '((t . ivy--regex-plus)))
+  (ivy-mode 1))
+
+(use-package swiper
+  :ensure t
+  :bind
+  (("C-s"   . swiper)
+   ("C-S-f" . swiper-multi)))
+
 (use-package counsel
   :ensure t
   :bind
-  (("M-x" . counsel-M-x)
+  (("M-x"     . counsel-M-x)
+   ("M-y"     . counsel-yank-pop)
    ("C-x C-f" . counsel-find-file)
    ("C-x C-r" . counsel-recentf)
-   ("C-c /" . counsel-ag)
-   ("C-c l" . counsel-locate)))
+   ("C-c /"   . counsel-ag))
+  :chords
+  ("xm" . counsel-M-x))
+
 (use-package hydra
   :ensure t)
 ;; ---
@@ -216,7 +265,8 @@
   (use-package counsel-projectile
     :ensure t
     :config
-    (counsel-projectile-on)))
+    (counsel-projectile-on))
+  (setq projectile-completion-system 'ivy))
 
 (use-package ripgrep
   :ensure t
