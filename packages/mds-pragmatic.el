@@ -28,29 +28,5 @@
      (java . t)
      (c . t))))
 
-(use-package zeal-at-point
-  :ensure t
-  :defer t)
-
-(use-package counsel-dash
-  :ensure t
-  :bind
-  (("C-." . counsel-dash-at-point))
-  :preface
-  (defun counsel-dash-at-point ()
-    "Counsel dash with selected point"
-    (interactive)
-    (counsel-dash
-     (if (use-region-p)
-         (buffer-substring-no-properties (region-beginning) (region-end))
-       (substring-no-properties (or (thing-at-point 'symbol) "")))))
-  ;; (defun counsel-dash-at-point ()
-  ;;   (interactive)
-  ;;   (counsel-dash (thing-at-point 'symbol)))
-  :config
-  (setq counsel-dash-docsets-path "~/.local/share/Zeal/Zeal/docsets"
-        counsel-dash-browser-func 'eww
-        counsel-dash-enable-debugging nil))
-
 (provide 'mds-pragmatic)
 ;;; mds-pragmatic.el ends here
