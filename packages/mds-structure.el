@@ -229,5 +229,13 @@
   (("C-c r" . vr/replace)
    ("C-c q" . vr/query-replace)))
 
+(use-package eww
+  :commands eww eww-mode
+  :bind
+  (("<f7> b e" . eww))
+  :config
+  (setq url-configuration-directory (concat user-emacs-directory
+                                            ".cache/url")))
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
