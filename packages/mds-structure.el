@@ -51,6 +51,7 @@
   :config
   (setq which-key-idle-delay 0.1)
   (which-key-add-key-based-replacements
+    "<f7> b" "browser"
     "<f7> p" "projectile"
     "<f7> t" "neotree"
     "<f8> g" "magit"

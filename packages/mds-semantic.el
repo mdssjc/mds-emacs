@@ -79,5 +79,38 @@
                                                  (let ((msg (langtool-details-error-message overlays)))
                                                    (popup-tip msg)))))))
 
+(use-package engine-mode
+  :ensure t
+  :bind
+  (("<f7> b a" . engine/search-amazon)
+   ("<f7> b G" . engine/search-github)
+   ("<f7> b g" . engine/search-google)
+   ("<f7> b s" . engine/search-stack-overflow)
+   ("<f7> b t" . engine/search-twitter)
+   ("<f7> b w" . engine/search-wikipedia)
+   ("<f7> b W" . engine/search-wikipedia-pt)
+   ("<f7> b d" . engine/search-wiktionary)
+   ("<f7> b D" . engine/search-wiktionary-pt))
+  :config
+  (defengine amazon
+    "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s")
+  (defengine github
+    "https://github.com/search?q=%s")
+  (defengine google
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s")
+  (defengine stack-overflow
+    "https://stackoverflow.com/search?q=%s")
+  (defengine twitter
+    "https://twitter.com/search?q=%s")
+  (defengine wikipedia
+    "https://en.wikipedia.org/wiki/%s")
+  (defengine wikipedia-pt
+    "https://pt.wikipedia.org/wiki/%s")
+  (defengine wiktionary
+    "https://en.wiktionary.org/wiki/%s")
+  (defengine wiktionary-pt
+    "https://pt.wiktionary.org/wiki/%s")
+  (setq engine/browser-function 'eww-browse-url))
+
 (provide 'mds-semantic)
 ;;; mds-semantic.el ends here
