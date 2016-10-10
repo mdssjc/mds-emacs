@@ -94,6 +94,9 @@
 
 (use-package exec-path-from-shell
   :ensure t
+  :demand t
+  :init
+  (setq exec-path-from-shell-check-startup-files nil)
   :config
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
@@ -156,7 +159,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (visual-regexp visual-reexp counsel-projectile markdown-mode emmet-mode web-mode meghanada jtags auto-yasnippet java-snippets geiser litable racket-mode rainbow-delimiters lispy parinfer paredit org-bullets langtool flycheck-pos-tip flycheck-package flycheck yasnippet company-math company-emoji company-statistics company-quickhelp company-dict company ripgrep projectile selected embrace hydra counsel swiper ace-window avy magit git-gutter-fringe neotree undo-tree restart-emacs emojify beacon all-the-icons mode-icons info+ spaceline spacemacs-theme writeroom-mode boon centered-cursor-mode golden-ratio general esup powerline exec-path-from-shell use-package-chords f s dash which-key use-package))))
+    (engine-mode engine counsel-dash zeal-at-point javadoc-lookup visual-regexp visual-reexp counsel-projectile markdown-mode emmet-mode web-mode meghanada jtags auto-yasnippet java-snippets geiser litable racket-mode rainbow-delimiters lispy parinfer paredit org-bullets langtool flycheck-pos-tip flycheck-package flycheck yasnippet company-math company-emoji company-statistics company-quickhelp company-dict company ripgrep projectile selected embrace hydra counsel swiper ace-window avy magit git-gutter-fringe neotree undo-tree restart-emacs emojify beacon all-the-icons mode-icons info+ spaceline spacemacs-theme writeroom-mode boon centered-cursor-mode golden-ratio general esup powerline exec-path-from-shell use-package-chords f s dash which-key use-package))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
