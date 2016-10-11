@@ -153,7 +153,8 @@
   (add-hook 'racket-mode-hook 'config-common))
 
 (use-package clojuse-mode
-  :ensure t)
+  :ensure t
+  :disabled t)
 
 (use-package litable
   :ensure t
