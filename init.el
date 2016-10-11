@@ -56,9 +56,11 @@
       scroll-conservatively 101
       scroll-margin 0
       scroll-preserve-screen-position 't
-      ;; Backups
+      ;; Backups and Autosave
       backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory
-                                                                 ".cache/backups")))))
+                                                                 ".cache/backups"))))
+      auto-save-file-name-transforms `(("." . ,(expand-file-name (concat user-emacs-directory
+                                                                         ".cache/auto-save")))))
 
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)

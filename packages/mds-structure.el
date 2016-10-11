@@ -26,6 +26,8 @@
 
 (use-package saveplace
   :config
+  (setq save-place-file (expand-file-name (concat user-emacs-directory
+                                                  ".cache/places")))
   (save-place-mode 1))
 
 (use-package recentf
