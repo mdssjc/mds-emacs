@@ -89,14 +89,6 @@
         neo-theme 'icons))
 
 ;; Controle de Versão
-(use-package git-gutter-fringe
-  :ensure t
-  :diminish git-gutter-mode
-  :init
-  (setq git-gutter-fr:side 'right-fringe)
-  :config
-  (global-git-gutter-mode t))
-
 (use-package magit
   :ensure t
   :commands magit-status
@@ -110,6 +102,14 @@
   (defalias 'gs 'magit-status "Magit status")
   :config
   (setq magit-completing-read-function 'ivy-completing-read))
+
+(use-package git-gutter-fringe
+  :ensure t
+  :diminish git-gutter-mode
+  :init
+  (setq git-gutter-fr:side 'right-fringe)
+  :config
+  (global-git-gutter-mode t))
 ;; ---
 
 ;; Abo-abo (https://github.com/abo-abo)
