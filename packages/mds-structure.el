@@ -104,6 +104,8 @@
   (("<f8> g s" . magit-status)
    ("<f8> g S" . magit-stage-file)
    ("<f8> g g" . magit-dispatch-popup))
+  :chords
+  ("gs" . magit-status)
   :init
   (defalias 'gs 'magit-status "Magit status")
   :config
