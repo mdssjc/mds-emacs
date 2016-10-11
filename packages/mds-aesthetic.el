@@ -31,14 +31,20 @@
     (with-eval-after-load 'info
       (require 'info+))
     (setq Info-fontify-angle-bracketed-flag nil))
+  (setq spaceline-workspace-numbers-unicode t
+        spaceline-window-numbers-unicode t)
   (spaceline-emacs-theme)
-  (spaceline-info-mode 1))
+  (spaceline-info-mode))
 
 (use-package mode-icons
   :ensure t
-  :config (mode-icons-mode))
+  :commands mode-icons-mode
+  :config
+  (mode-icons-mode 1))
 
-(use-package all-the-icons :ensure t)
+(use-package all-the-icons
+  :ensure t
+  :defer t)
 
 (use-package beacon
   :ensure t
