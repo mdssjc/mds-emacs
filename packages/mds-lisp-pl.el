@@ -56,10 +56,10 @@
 
   (setq lisp-prettify-symbols-alist
         '(("lambda" . ?λ)
-          ("->" . ?→)
-          ("=>" . ?⇒)
-          ("map" . ?↦)
-          ("." . ?•))
+          ("->"     . ?→)
+          ("=>"     . ?⇒)
+          ("map"    . ?↦)
+          ("."      . ?•))
         prettify-symbols-alist lisp-prettify-symbols-alist
         prettify-symbols-unprettify-at-point 'right-edge)
 
@@ -77,8 +77,8 @@
         ("<f6> l" . lispy-mode)
         ("<f6> p" . parinfer-mode)
         ("<f6> t" . litable-mode)
-        ("M-." . find-function-at-point)
-        ("M-&" . complete-symbol))
+        ("M-."    . find-function-at-point)
+        ("M-&"    . complete-symbol))
   :init
   (use-package macrostep
     :bind
@@ -132,8 +132,7 @@
   ("racket" . racket-mode)
   :bind
   (:map racket-mode-map
-        ("<f6> l" . lispy-mode)
-        ("<f6> g" . geiser-mode))
+        ("<f6> l" . lispy-mode))
   :init
   (use-package company
     :config
@@ -141,7 +140,6 @@
                                   (set (make-local-variable 'company-backends)
                                        '((company-capf
                                           company-keywords
-                                          ;; company-yasnippet
                                           company-abbrev
                                           company-dabbrev-code
                                           company-dabbrev
@@ -158,16 +156,6 @@
   :ensure t
   :defer t
   :diminish litable-mode " Ⓣ")
-
-(use-package geiser
-  :ensure t
-  :defer t
-  :diminish geiser-mode " Ⓖ"
-  :bind
-  (:map geiser-mode-map
-        ("C-c C-c" . geiser-eval-last-sexp))
-  :config
-  (setq geiser-racket-binary "/usr/bin/racket"))
 
 (provide 'mds-lisp-pl)
 ;;; mds-lisp-pl ends here
