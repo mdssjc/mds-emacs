@@ -10,7 +10,7 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Configurações para a linguagem Lisp, nos dialetos: ELisp (Emacs Lisp) e Racket.
+;; Configurações para a linguagem Lisp, nos dialetos: ELisp (Emacs Lisp), Racket e Clojure.
 
 ;;; Code:
 ;; (require 'semantic)
@@ -121,6 +121,10 @@
     :config
     (add-hook 'emacs-lisp-mode-hook (lambda ()
                                       (setq-local counsel-dash-docsets '("Emacs_Lisp")))))
+  (use-package litable
+    :ensure t
+    :defer t
+    :diminish litable-mode " Ⓣ")
   (add-to-list 'completion-styles 'initials t)
   (add-hook 'emacs-lisp-mode-hook 'config-common))
 
@@ -152,14 +156,9 @@
                                   (setq-local counsel-dash-docsets '("Racket")))))
   (add-hook 'racket-mode-hook 'config-common))
 
-(use-package clojuse-mode
+(use-package clojure-mode
   :ensure t
   :disabled t)
-
-(use-package litable
-  :ensure t
-  :defer t
-  :diminish litable-mode " Ⓣ")
 
 (provide 'mds-lisp-pl)
 ;;; mds-lisp-pl ends here
