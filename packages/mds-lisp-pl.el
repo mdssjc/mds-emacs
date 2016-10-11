@@ -152,6 +152,9 @@
                                   (setq-local counsel-dash-docsets '("Racket")))))
   (add-hook 'racket-mode-hook 'config-common))
 
+(use-package clojuse-mode
+  :ensure t)
+
 (use-package litable
   :ensure t
   :defer t
