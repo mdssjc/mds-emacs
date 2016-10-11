@@ -59,8 +59,8 @@
       ;; Backups and Autosave
       backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory
                                                                  ".cache/backups"))))
-      auto-save-file-name-transforms `(("." . ,(expand-file-name (concat user-emacs-directory
-                                                                         ".cache/auto-save")))))
+      auto-save-file-name-transforms `((".*" ,(expand-file-name (concat user-emacs-directory
+                                                                        ".cache/autosave")))))
 
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
