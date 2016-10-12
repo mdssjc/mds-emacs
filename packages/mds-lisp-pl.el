@@ -123,8 +123,12 @@
                                       (setq-local counsel-dash-docsets '("Emacs_Lisp")))))
   (use-package litable
     :ensure t
-    :defer t
     :diminish litable-mode " Ⓣ")
+  (use-package aggressive-indent
+    :ensure t
+    :diminish aggressive-indent-mode
+    :config
+    (add-hook 'emacs-lisp-mode-hook 'aggressive-indent-mode))
   (add-to-list 'completion-styles 'initials t)
   (add-hook 'emacs-lisp-mode-hook 'config-common))
 
