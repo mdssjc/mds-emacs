@@ -62,5 +62,10 @@
   :init
   (add-hook 'after-init-hook 'global-emojify-mode) t)
 
+(use-package volatile-highlights
+  :ensure t
+  :config
+  (volatile-highlights-mode t))
+
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
