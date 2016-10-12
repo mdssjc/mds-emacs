@@ -91,7 +91,7 @@
         neo-mode-line-type 'neotree
         neo-show-hidden-files t
         neo-modern-sidebar t
-        neo-theme 'icons))
+        neo-theme 'arrow))
 
 ;; Controle de Versão
 (use-package magit
