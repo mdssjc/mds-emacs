@@ -260,6 +260,7 @@
   (defvar selected-org-mode-map (make-sparse-keymap)))
 ;; ---
 
+;; Projeto
 (use-package projectile
   :ensure t
   :diminish projectile-mode
@@ -272,7 +273,13 @@
     :ensure t
     :config
     (counsel-projectile-on))
-  (setq projectile-completion-system 'ivy))
+  (setq projectile-cache-file (expand-file-name (concat user-emacs-directory
+                                                        ".cache/projectile.cache"))
+        projectile-known-projects-file (expand-file-name (concat user-emacs-directory
+                                                                 ".cache/projectile-bookmarks.eld"))
+        projectile-sort-order 'modification-time
+        projectile-completion-system 'ivy))
+;; ---
 
 (use-package ripgrep
   :ensure t
