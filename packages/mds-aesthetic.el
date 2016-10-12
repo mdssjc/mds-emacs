@@ -17,14 +17,13 @@
   :ensure t
   :defer t
   :init
-  (load-theme 'spacemacs-dark t))
+  (add-hook 'after-init-hook '(lambda ()
+                                (load-theme 'spacemacs-dark t))))
 
 (use-package spaceline
   :ensure t
-  :after spacemacs-theme
-  :init
-  (require 'spaceline-config)
   :config
+  (require 'spaceline-config)
   (use-package info+
     :ensure t
     :config
@@ -38,9 +37,9 @@
 
 (use-package mode-icons
   :ensure t
-  :commands mode-icons-mode
-  :config
-  (mode-icons-mode 1))
+  :defer t
+  :init
+  (add-hook 'after-init-hook 'mode-icons-mode))
 
 (use-package all-the-icons
   :ensure t
@@ -48,12 +47,14 @@
 
 (use-package beacon
   :ensure t
+  :defer t
   :diminish beacon-mode
+  :init
+  (add-hook 'after-init-hook 'beacon-mode)
   :config
   (setq beacon-blink-when-focused t
         beacon-blink-when-point-moves-vertically 4
-        beacon-color "#FF0000")
-  (beacon-mode 1))
+        beacon-color "#FF0000"))
 
 (use-package emojify
   :ensure t
@@ -64,9 +65,10 @@
 
 (use-package volatile-highlights
   :ensure t
+  :defer t
   :diminish volatile-highlights-mode
-  :config
-  (volatile-highlights-mode t))
+  :init
+  (add-hook 'after-init-hook 'volatile-highlights-mode))
 
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
