@@ -13,13 +13,18 @@
 ;; Conjunto de melhorias ao editor
 ;;  - Salva a última posição da seção;
 ;;  - Listagem dos documentos recentes;
+;;  - Funcionalidade de reinicialização;
 ;;  - Visualização da árvore de modificações no documento;
 ;;  - Sugestão e rótulo de atalhos;
-;;  - Seleção de partes do buffer
+;;  - Frequência de utilização dos atalhos.
 ;;  - Visualizador de arquivos;
-;;  - Cliente Git;
-;;  - Pacotes Abo-abo: Avy, Ace-Window, Ivy, Swiper, Counsel e Hydra;
-;;  - Ferramenta Ripgrep.
+;;  - Controle de versão pelo Git;
+;;  - Pacotes Abo-abo;
+;;  - Seleção de partes do buffer com funcionalidades;
+;;  - Navegador de projetos;
+;;  - Ferramenta Ripgrep;
+;;  - Busca/Substituição visual;
+;;  - Browser interno.
 
 ;;; Code:
 ;; (require 'semantic)
@@ -214,20 +219,20 @@
   (require 'expand-region)
   (defhydra hydra-expand-region (:columns 4 :color blue)
     "Mark"
-    ("w" er/mark-word "word")
-    ("s" er/mark-symbol "symbol")
+    ("w" er/mark-word               "word")
+    ("s" er/mark-symbol             "symbol")
     ("S" er/mark-symbol-with-prefix "symbol-with-prefix")
-    ("n" er/mark-next-accessor "next-accessor")
-    ("m" er/mark-method-call "method-call")
-    ("i" er/mark-inside-quotes "inside-quotes")
-    ("I" er/mark-outside-quotes "outside-quotes")
-    ("p" er/mark-inside-pairs "inside-pairs")
-    ("P" er/mark-outside-pairs "outside-pairs")
-    ("c" er/mark-comment "comment")
-    ("u" er/mark-url "url")
-    ("e" er/mark-email "email")
-    ("d" er/mark-defun "defun")
-    ("q" nil "quit")))
+    ("n" er/mark-next-accessor      "next-accessor")
+    ("m" er/mark-method-call        "method-call")
+    ("i" er/mark-inside-quotes      "inside-quotes")
+    ("I" er/mark-outside-quotes     "outside-quotes")
+    ("p" er/mark-inside-pairs       "inside-pairs")
+    ("P" er/mark-outside-pairs      "outside-pairs")
+    ("c" er/mark-comment            "comment")
+    ("u" er/mark-url                "url")
+    ("e" er/mark-email              "email")
+    ("d" er/mark-defun              "defun")
+    ("q" nil                        "quit")))
 
 (use-package embrace
   :ensure t
@@ -292,6 +297,7 @@
   (("C-c r" . vr/replace)
    ("C-c q" . vr/query-replace)))
 
+;; Browser
 (use-package eww
   :commands eww eww-mode
   :bind
@@ -299,6 +305,7 @@
   :config
   (setq url-configuration-directory (concat user-emacs-directory
                                             ".cache/url")))
+;; ---
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
