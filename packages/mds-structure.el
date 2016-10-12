@@ -91,7 +91,7 @@
         neo-mode-line-type 'neotree
         neo-show-hidden-files t
         neo-modern-sidebar t
-        neo-theme 'arrow))
+        neo-theme 'nerd))
 
 ;; Controle de Versão
 (use-package magit
@@ -243,28 +243,28 @@
 
 (use-package selected
   :ensure t
-  :commands selected-minor-mode
+  :commands selected-minor-mode selected-global-mode
   :bind
-  (:map selected-keymap
-        ("q" . selected-off)
-        ("U" . upcase-region)
-        ("D" . downcase-region)
-        ("W" . count-words-region)
-        ("m" . apply-macro-to-region-lines)
-        ("w" . mds/split-words)
-        ("l" . mds/lower-camel-case)
-        ("u" . mds/upper-camel-case)
-        ("s" . mds/snake-case)
-        ("d" . mds/dashed-words)
-        ("c" . mds/capitalized-words)
-        ("t" . mds/titleized-words)
-        ("i" . mds/word-initials)
-        :map selected-org-mode-map
-        ("e" . org-emphasize))
+  (("<f5> m" . selected-global-mode)
+   :map selected-keymap
+   ("q" . selected-off)
+   ("U" . upcase-region)
+   ("D" . downcase-region)
+   ("W" . count-words-region)
+   ("m" . apply-macro-to-region-lines)
+   ("w" . mds/split-words)
+   ("l" . mds/lower-camel-case)
+   ("u" . mds/upper-camel-case)
+   ("s" . mds/snake-case)
+   ("d" . mds/dashed-words)
+   ("c" . mds/capitalized-words)
+   ("t" . mds/titleized-words)
+   ("i" . mds/word-initials)
+   :map selected-org-mode-map
+   ("e" . org-emphasize))
   :init
   (defvar selected-org-mode-map (make-sparse-keymap))
-  (add-hook 'activate-mark-hook   '(lambda () (selected-minor-mode t)))
-  (add-hook 'deactivate-mark-hook '(lambda () (selected-minor-mode 0))))
+  (add-hook 'after-init-hook selected-global-mode))
 ;; ---
 
 ;; Projeto
