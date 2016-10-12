@@ -201,7 +201,9 @@
    ("C-x C-r" . counsel-recentf)
    ("C-c /"   . counsel-ag))
   :chords
-  ("xm" . counsel-M-x))
+  ("xm" . counsel-M-x)
+  ("xf" . counsel-find-file)
+  ("xr" . counsel-recentf))
 
 (use-package hydra
   :ensure t)
