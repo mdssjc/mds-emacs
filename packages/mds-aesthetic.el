@@ -64,6 +64,7 @@
 
 (use-package volatile-highlights
   :ensure t
+  :diminish volatile-highlights-mode
   :config
   (volatile-highlights-mode t))
 
