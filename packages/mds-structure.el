@@ -254,10 +254,10 @@
         ("i" . mds/word-initials)
         :map selected-org-mode-map
         ("e" . org-emphasize))
-  :chords
-  (("xx" . selected-minor-mode))
   :init
-  (defvar selected-org-mode-map (make-sparse-keymap)))
+  (defvar selected-org-mode-map (make-sparse-keymap))
+  (add-hook 'activate-mark-hook   '(lambda () (selected-minor-mode t)))
+  (add-hook 'deactivate-mark-hook '(lambda () (selected-minor-mode 0))))
 ;; ---
 
 ;; Projeto
