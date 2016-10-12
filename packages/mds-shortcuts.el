@@ -25,7 +25,10 @@
    "M-S-<down>" 'mds/duplicate-down
    "<C-tab>"    'cycle-spacing
    "<C-return>" 'mds/insert-lines-between
-   "M-/"        'hippie-expand))
+   "M-/"        'hippie-expand
+   "C-c A a"    'align
+   "C-c A c"    'align-current
+   "C-c A r"    'align-regexp))
 
 (use-package golden-ratio
   :ensure t
