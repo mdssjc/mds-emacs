@@ -175,16 +175,20 @@
 
 (use-package ivy
   :ensure t
+  :defer t
   :diminish ivy-mode
   :chords
   ("xn" . ivy-switch-buffer)
+  :init
+  (add-hook 'after-init-hook 'ivy-mode)
   :config
   (setq ivy-use-virtual-buffers t
         ivy-height 10
         ivy-count-format "(%d/%d) "
         ivy-initial-inputs-alist nil
         ivy-re-builders-alist '((t . ivy--regex-plus)))
-  (ivy-mode 1))
+  ;; (ivy-mode 1)
+  )
 
 (use-package swiper
   :ensure t
@@ -264,7 +268,7 @@
    ("e" . org-emphasize))
   :init
   (defvar selected-org-mode-map (make-sparse-keymap))
-  (add-hook 'after-init-hook selected-global-mode))
+  (add-hook 'after-init-hook 'selected-global-mode))
 ;; ---
 
 ;; Projeto
@@ -274,18 +278,20 @@
   :bind
   (("<f7> p" . projectile-command-map))
   :init
-  (projectile-global-mode t)
+  (add-hook 'after-init-hook 'projectile-global-mode)
   :config
-  (use-package counsel-projectile
-    :ensure t
-    :config
-    (counsel-projectile-on))
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory
                                                         ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory
                                                                  ".cache/projectile-bookmarks.eld"))
         projectile-sort-order 'modification-time
         projectile-completion-system 'ivy))
+
+(use-package counsel-projectile
+  :ensure t
+  :commands counsel-projectile-on
+  :init
+  (add-hook 'projectile-mode-hook 'counsel-projectile-on))
 ;; ---
 
 (use-package ripgrep

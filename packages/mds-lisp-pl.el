@@ -13,44 +13,56 @@
 ;; Configurações para a linguagem Lisp, nos dialetos: ELisp (Emacs Lisp), Racket e Clojure.
 
 ;;; Code:
-(use-package lispy
-  :ensure t
-  :commands lispy-mode
-  :diminish lispy-mode " Ⓛ"
-  :init
-  (add-hook 'emacs-lisp-mode-hook 'lispy-mode))
-
-(use-package litable
-  :ensure t
-  :commands litable-mode
-  :diminish litable-mode " Ⓣ")
-
 (use-package parinfer
   :ensure t
   :commands parinfer-mode
   :diminish parinfer " Ⓟ"
   :bind
-  (("C-," . parinfer-toggle-mode))
+  (("<f6> p" . parinfer-toggle-mode))
   :init
   (setq parinfer-extensions '(defaults
                               pretty-parens
                               lispy
                               smart-tab
                               smart-yank))
-  (add-hook 'emacs-lisp-mode-hook #'parinfer-mode))
+  (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+  (add-hook 'racket-mode-hook     #'parinfer-mode)
+  (add-hook 'clojure-mode-hook    #'parinfer-mode))
+
+(use-package lispy
+  :ensure t
+  :commands lispy-mode
+  :diminish lispy-mode " Ⓛ"
+  :init
+  (add-hook 'parinfer-mode-hook 'lispy-mode))
 
 (use-package rainbow-delimiters
   :ensure t
   :commands rainbow-delimiters-mode
   :init
-  (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-  (add-hook 'racket-mode-hook     'rainbow-delimiters-mode))
+  (add-hook 'parinfer-mode-hook 'rainbow-delimiters-mode))
+
+(use-package litable
+  :ensure t
+  :commands litable-mode
+  :diminish litable-mode " Ⓣ")
 
 (use-package eldoc
   :ensure t
   :commands eldoc-mode
   :init
   (add-hook 'emacs-lisp-mode-hook 'eldoc-mode))
+
+(use-package ert
+  :init
+  (add-hook 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
+
+(use-package counsel-dash
+  :defer t
+  :init
+  (add-hook 'emacs-lisp-mode-hook (lambda () (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
+  (add-hook 'racket-mode-hook     (lambda () (setq-local counsel-dash-docsets '("Racket"))))
+  (add-hook 'clojure-mode-hook    (lambda () (setq-local counsel-dash-docsets '("Clojure")))))
 
 (use-package company
   :defer t
@@ -75,22 +87,6 @@
                                              company-dict
                                              company-files
                                              :with company-ispell))))))
-
-(use-package counsel-dash
-  :defer t
-  :init
-  (add-hook 'emacs-lisp-mode-hook (lambda () (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
-  (add-hook 'racket-mode-hook     (lambda () (setq-local counsel-dash-docsets '("Racket")))))
-
-(use-package ert
-  :init
-  (add-hook 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords))
-
-(use-package yasnippet
-  :defer t
-  :init
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (progn (yas-minor-mode)
-                                                (yas-reload-all)))))
 
 (use-package flycheck
   :defer t
@@ -146,7 +142,8 @@
 
 (use-package clojure-mode
   :ensure t
-  :disabled t)
+  :mode
+  ("\\.cjr\\'" . clojure-mode))
 
 (provide 'mds-lisp-pl)
 ;;; mds-lisp-pl ends here

@@ -34,17 +34,17 @@
 ;; ---
 
 ;; Configurações Globais (Global Settings)
+(setq-default tab-always-indent 'complete
+              ;; Indentation
+              indent-tabs-mode nil
+              standard-indent 2
+              tab-width 2
+              c-basic-offset 2
+              tab-stop-list '(2 4 6 8 10 12))
 (setq gc-cons-threshold 50000000
       column-number-mode t
       visible-bell t
       initial-major-mode 'fundamental-mode
-      ;; Tabs / Indentation
-      standard-indent 2
-      c-basic-offset 2
-      tab-width 2
-      indent-tabs-mode nil
-      tab-stop-list '(2 4 6)
-      tab-always-indent 'complete
       ;; Newline
       require-final-newline t
       next-line-extends-end-of-buffer nil
@@ -60,7 +60,9 @@
       backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory
                                                                  ".cache/backups"))))
       auto-save-file-name-transforms `((".*" ,(expand-file-name (concat user-emacs-directory
-                                                                        ".cache/autosave")))))
+                                                                        ".cache/autosave"))))
+      ;; X
+      x-gtk-use-system-tooltips nil)
 
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -89,10 +91,11 @@
 
 (use-package use-package-chords
   :ensure t
+  :init
+  (add-hook 'after-init-hook '(lambda () (key-chord-mode t)))
   :config
   (setq key-chord-two-keys-delay 0.15
-        key-chord-one-key-delay 0.15)
-  (key-chord-mode 1))
+        key-chord-one-key-delay  0.15))
 
 (use-package exec-path-from-shell
   :ensure t
@@ -161,7 +164,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (engine-mode engine counsel-dash zeal-at-point javadoc-lookup visual-regexp visual-reexp counsel-projectile markdown-mode emmet-mode web-mode meghanada jtags auto-yasnippet java-snippets geiser litable racket-mode rainbow-delimiters lispy parinfer paredit org-bullets langtool flycheck-pos-tip flycheck-package flycheck yasnippet company-math company-emoji company-statistics company-quickhelp company-dict company ripgrep projectile selected embrace hydra counsel swiper ace-window avy magit git-gutter-fringe neotree undo-tree restart-emacs emojify beacon all-the-icons mode-icons info+ spaceline spacemacs-theme writeroom-mode boon centered-cursor-mode golden-ratio general esup powerline exec-path-from-shell use-package-chords f s dash which-key use-package))))
+    (volatile-highlights clojure-mode engine-mode engine counsel-dash zeal-at-point javadoc-lookup visual-regexp visual-reexp counsel-projectile markdown-mode emmet-mode web-mode meghanada jtags auto-yasnippet java-snippets geiser litable racket-mode rainbow-delimiters lispy parinfer paredit org-bullets langtool flycheck-pos-tip flycheck-package flycheck yasnippet company-math company-emoji company-statistics company-quickhelp company-dict company ripgrep projectile selected embrace hydra counsel swiper ace-window avy magit git-gutter-fringe neotree undo-tree restart-emacs emojify beacon all-the-icons mode-icons info+ spaceline spacemacs-theme writeroom-mode boon centered-cursor-mode golden-ratio general esup powerline exec-path-from-shell use-package-chords f s dash which-key use-package))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
