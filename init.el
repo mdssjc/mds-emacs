@@ -57,10 +57,8 @@
       scroll-margin 0
       scroll-preserve-screen-position 't
       ;; Backups and Autosave
-      backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory
-                                                                 ".cache/backups"))))
-      auto-save-file-name-transforms `((".*" ,(expand-file-name (concat user-emacs-directory
-                                                                        ".cache/autosave"))))
+      backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory ".cache/backups"))))
+      auto-save-file-name-transforms `((".*" ,(expand-file-name (concat user-emacs-directory ".cache/autosave"))))
       ;; X
       x-gtk-use-system-tooltips nil)
 
@@ -69,8 +67,8 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-(add-to-list 'load-path "~/.emacs.d/core/")
-(add-to-list 'load-path "~/.emacs.d/packages/")
+(add-to-list 'load-path (concat user-emacs-directory "core"))
+(add-to-list 'load-path (concat user-emacs-directory "packages"))
 ;; ---
 
 ;; Pacotes Essenciais (Essential Packages)
@@ -130,7 +128,7 @@
 ;; ---
 
 ;; Segredos (Secrets)
-(load "~/.emacs.d/secrets/secrets")
+(load (concat user-emacs-directory "secrets/secrets"))
 ;; ---
 
 ;; Pacotes (Packages)
