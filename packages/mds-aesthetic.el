@@ -10,15 +10,14 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Estilo ergonômico e sem distrações/ruídos - tema dark, linha de status com ícones.
+;; Estilo ergonômico e sem distrações/ruídos - tema dark e linha de status com ícones.
 
 ;;; Code:
 (use-package spacemacs-theme
   :ensure t
   :defer t
   :init
-  (add-hook 'after-init-hook '(lambda ()
-                                (load-theme 'spacemacs-dark t))))
+  (add-hook 'after-init-hook '(lambda () (load-theme 'spacemacs-dark t))))
 
 (use-package spaceline
   :ensure t
