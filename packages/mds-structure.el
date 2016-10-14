@@ -66,7 +66,8 @@
     "<f8> g" "magit"
     "<f8> l" "langtool"
     "<f8> r" "ripgrep"
-    "<f8> s" "ispell")
+    "<f8> s" "ispell"
+    "C-c /"  "counsel-rg")
   (which-key-mode 1))
 
 (use-package keyfreq
@@ -186,9 +187,7 @@
         ivy-height 10
         ivy-count-format "(%d/%d) "
         ivy-initial-inputs-alist nil
-        ivy-re-builders-alist '((t . ivy--regex-plus)))
-  ;; (ivy-mode 1)
-  )
+        ivy-re-builders-alist '((t . ivy--regex-plus))))
 
 (use-package swiper
   :ensure t
@@ -198,6 +197,8 @@
 
 (use-package counsel
   :ensure t
+  :init
+  (setq counsel-ag-base-command "rg -i --color=never --no-heading %s")
   :bind
   (("M-x"     . counsel-M-x)
    ("M-y"     . counsel-yank-pop)
