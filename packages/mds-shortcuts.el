@@ -42,14 +42,6 @@
   :bind
   (("<f5> -" . centered-cursor-mode)))
 
-(use-package boon
-  :ensure t
-  :bind
-  (("<f5> b" . boon-mode))
-  :config
-  (require 'boon-colemak)
-  (add-to-list 'boon-special-mode-list 'emacs-lisp-mode))
-
 (use-package writeroom-mode
   :ensure t
   :bind
