@@ -15,7 +15,6 @@
 ;;  - Listagem dos documentos recentes;
 ;;  - Funcionalidade de reinicialização;
 ;;  - Visualização da árvore de modificações no documento;
-;;  - Sugestão e rótulo de atalhos;
 ;;  - Frequência de utilização dos atalhos.
 ;;  - Visualizador de arquivos;
 ;;  - Controle de versão pelo Git;
@@ -54,22 +53,6 @@
   :config
   (global-undo-tree-mode))
 
-(use-package which-key
-  :ensure t
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 0.1)
-  (which-key-add-key-based-replacements
-    "<f7> b" "browser"
-    "<f7> p" "projectile"
-    "<f7> t" "neotree"
-    "<f8> g" "magit"
-    "<f8> l" "langtool"
-    "<f8> r" "ripgrep"
-    "<f8> s" "ispell"
-    "C-c /"  "counsel-rg")
-  (which-key-mode 1))
-
 (use-package keyfreq
   :ensure t
   :bind
@@ -83,6 +66,7 @@
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1))
 
+;; Visualizador de arquivos
 (use-package neotree
   :ensure t
   :bind
@@ -93,6 +77,7 @@
         neo-show-hidden-files t
         neo-modern-sidebar t
         neo-theme 'nerd))
+;; ---
 
 ;; Controle de Versão
 (use-package magit
