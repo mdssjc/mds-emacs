@@ -15,7 +15,6 @@
 ;;; Code:
 (use-package spacemacs-theme
   :ensure t
-  :defer t
   :init
   (add-hook 'after-init-hook '(lambda () (load-theme 'spacemacs-dark t))))
 
