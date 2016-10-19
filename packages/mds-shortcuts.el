@@ -17,7 +17,8 @@
   :ensure t
   :chords
   (("qq" . save-buffers-kill-terminal)
-   ("xs" . save-buffer))
+   ("xs" . save-buffer)
+   ("xk" . kill-this-buffer))
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
