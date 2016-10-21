@@ -57,8 +57,10 @@
       scroll-margin 0
       scroll-preserve-screen-position 't
       ;; Backups and Autosave
-      backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory ".cache/backups"))))
-      auto-save-file-name-transforms `((".*" ,(expand-file-name (concat user-emacs-directory ".cache/autosave"))))
+      backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory
+                                                                 ".cache/backups"))))
+      auto-save-file-name-transforms `((".*" ,(expand-file-name (concat user-emacs-directory
+                                                                        ".cache/autosave"))))
       ;; X
       x-gtk-use-system-tooltips nil)
 
@@ -146,6 +148,7 @@
 (require 'mds-pragmatic)
 ;; Linguagem de Programação (Programming Language)
 (require 'mds-lisp-pl)
+(require 'mds-haskell-pl)
 (require 'mds-java-pl)
 (require 'mds-c-pl)
 ;; Linguagem Web (Web Language)
@@ -162,7 +165,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (volatile-highlights clojure-mode engine-mode engine counsel-dash zeal-at-point javadoc-lookup visual-regexp visual-reexp counsel-projectile markdown-mode emmet-mode web-mode meghanada jtags auto-yasnippet java-snippets geiser litable racket-mode rainbow-delimiters lispy parinfer paredit org-bullets langtool flycheck-pos-tip flycheck-package flycheck yasnippet company-math company-emoji company-statistics company-quickhelp company-dict company ripgrep projectile selected embrace hydra counsel swiper ace-window avy magit git-gutter-fringe neotree undo-tree restart-emacs emojify beacon all-the-icons mode-icons info+ spaceline spacemacs-theme writeroom-mode boon centered-cursor-mode golden-ratio general esup powerline exec-path-from-shell use-package-chords f s dash which-key use-package))))
+    (hindent hindent-mode haskell-mode cider ztree volatile-highlights clojure-mode engine-mode engine counsel-dash zeal-at-point javadoc-lookup visual-regexp visual-reexp counsel-projectile markdown-mode emmet-mode web-mode meghanada jtags auto-yasnippet java-snippets geiser litable racket-mode rainbow-delimiters lispy parinfer paredit org-bullets langtool flycheck-pos-tip flycheck-package flycheck yasnippet company-math company-emoji company-statistics company-quickhelp company-dict company ripgrep projectile selected embrace hydra counsel swiper ace-window avy magit git-gutter-fringe neotree undo-tree restart-emacs emojify beacon all-the-icons mode-icons info+ spaceline spacemacs-theme writeroom-mode boon centered-cursor-mode golden-ratio general esup powerline exec-path-from-shell use-package-chords f s dash which-key use-package))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
