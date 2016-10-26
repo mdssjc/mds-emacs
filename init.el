@@ -113,9 +113,7 @@
 
 ;; Hooks
 (add-hook 'window-setup-hook 'toggle-frame-maximized)
-(add-hook 'before-save-hook '(lambda ()
-                               (delete-trailing-whitespace)
-                               (untabify (point-min) (point-max))))
+(add-hook 'before-save-hook  'delete-trailing-whitespace)
 
 (mouse-avoidance-mode 'animate)
 (fset 'yes-or-no-p 'y-or-n-p)
