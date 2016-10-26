@@ -8,7 +8,11 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: Unlicense
+
+;;; Commentary:
 ;; Informações Pessoais (Personal Information)
+
+;;; Code:
 (setq user-full-name    "<seu nome>"
       user-mail-address "<usuario>@<servidor>")
 
