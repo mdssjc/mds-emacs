@@ -33,7 +33,8 @@
    "M-S-<down>" 'mds/duplicate-down
    "<C-tab>"    'cycle-spacing
    ;; "<C-return>" 'mds/insert-lines-between
-   "M-/"        'hippie-expand))
+   "M-/"        'hippie-expand
+   "<f5> w"     'global-whitespace-mode))
 
 (use-package which-key
   :ensure t
@@ -67,7 +68,7 @@
 (use-package writeroom-mode
   :ensure t
   :bind
-  (("<f5> w" . writeroom-mode)))
+  (("<f5> W" . writeroom-mode)))
 
 (use-package focus
   :ensure t
