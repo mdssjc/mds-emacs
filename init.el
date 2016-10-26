@@ -17,10 +17,8 @@
 (require 'package)
 
 (setq package-enable-at-startup nil
-      package-archives '(("org"       . "http://orgmode.org/elpa/")
-                         ("gnu"       . "http://elpa.gnu.org/packages/")
-                         ("melpa"     . "https://melpa.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+      package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -56,11 +54,22 @@
       scroll-conservatively 101
       scroll-margin 0
       scroll-preserve-screen-position 't
-      ;; Backups and Autosave
+      ;; Backups
       backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory
                                                                  ".cache/backups"))))
+      make-backup-files t
+      backup-by-copying t
+      version-control t
+      delete-old-versions t
+      delete-by-moving-to-trash t
+      kept-old-versions 6
+      kept-new-versions 9
+      ;; Autosave
       auto-save-file-name-transforms `((".*" ,(expand-file-name (concat user-emacs-directory
                                                                         ".cache/autosave"))))
+      auto-save-default t
+      auto-save-timeout 60
+      auto-save-interval 200
       ;; X
       x-gtk-use-system-tooltips nil)
 
