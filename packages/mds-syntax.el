@@ -23,51 +23,63 @@
   :diminish company-mode " ⓐ"
   :bind
   (("<f5> a" . company-mode))
-  :config
+  :init
   (setq company-tooltip-limit 10
         company-tooltip-minimum 5
         company-tooltip-flip-when-above t
-        company-minimum-prefix-length 2
+        company-minimum-prefix-length 1
         company-idle-delay 0.1
         company-show-numbers t
-        company-transformers '(company-sort-by-backend-importance)
+        company-require-match nil
+        company-dabbrev-ignore-case nil
+        company-dabbrev-downcase nil
+        company-search-regexp-function 'company-search-words-regexp
+        company-transformers '(company-sort-by-backend-importance
+                               company-sort-prefer-same-case-prefix
+                               company-sort-by-statistics)
         company-backends '((company-abbrev
                             company-dabbrev
                             company-files
                             company-math-symbols-unicode
                             company-emoji
-                            :with company-ispell)))
-  (global-company-mode t))
-
-(use-package company-dict
-  :ensure t
-  :config
-  (setq company-dict-dir (concat user-emacs-directory "dict/")
-        company-dict-enable-fuzzy t
-        company-dict-enable-yasnippet t))
+                            :with
+                            company-ispell)))
+  (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package company-quickhelp
   :ensure t
-  :config
+  :init
   (setq company-quickhelp-delay 1
         company-quickhelp-max-lines 30)
-  (company-quickhelp-mode 1))
+  (add-hook 'company-mode-hook 'company-quickhelp-mode))
 
 (use-package company-statistics
   :ensure t
+  :init
+  (setq company-statistics-size 2500
+        company-statistics-file (concat user-emacs-directory
+                                        ".cache/company-statistics-cache.el"))
+  (add-hook 'company-mode-hook 'company-statistics-mode))
+
+(use-package company-dict
+  :ensure t
+  :after company
   :config
-  (setq company-statistics-size 2000
-        company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el"))
-  (company-statistics-mode 1))
+  (setq company-dict-dir (concat user-emacs-directory
+                                 "dict/")
+        company-dict-enable-fuzzy t
+        company-dict-enable-yasnippet t))
 
 (use-package company-emoji
   :ensure t
+  :after company
   :config
   (set-fontset-font t 'symbol (font-spec :family "Symbola") nil 'prepend)
   (company-emoji-init))
 
 (use-package company-math
-  :ensure t)
+  :ensure t
+  :after company)
 
 ;; Correção (Correction)
 (use-package ispell
@@ -98,10 +110,12 @@
 ;; Abreviação (Abbreviation)
 (use-package abbrev
   :diminish abbrev-mode
+  :init
+  (add-hook 'after-init-hook 'abbrev-mode)
   :config
   (setq save-abbrevs 'silently
-        abbrev-file-name (concat user-emacs-directory "dict/abbrevs_defs.el"))
-  (abbrev-mode t))
+        abbrev-file-name (concat user-emacs-directory
+                                 "dict/abbrevs_defs.el")))
 
 ;; Template
 (use-package yasnippet
@@ -110,17 +124,18 @@
   :commands yas-global-mode yas-minor-mode
   :bind
   (("<f5> y" . yas-global-mode))
+  :init
+  (setq yas-prompt-functions '(yas-x-prompt
+                               yas-dropdown-prompt))
   :config
-  (setq yas-prompt-functions '(yas-dropdown-prompt
-                               yas-completing-prompt
-                               yas-no-prompt
-                               yas-x-prompt))
-  (use-package auto-yasnippet
-    :ensure t
-    :bind
-    (("C-c & w" . aya-create)
-     ("C-c & y" . aya-expand)
-     ("C-c & o" . aya-open-line))))
+  (yas-reload-all))
+
+(use-package auto-yasnippet
+  :ensure t
+  :bind
+  (("C-c & w" . aya-create)
+   ("C-c & y" . aya-expand)
+   ("C-c & o" . aya-open-line)))
 
 (provide 'mds-syntax)
 ;;; mds-syntax.el ends here

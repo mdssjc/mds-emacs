@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: jbabel
+# key: jbabel
+# --
+#+BEGIN_SRC java :classname $1
+  public class $1 {
+    $0
+  }
+#+END_SRC

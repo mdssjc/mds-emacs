@@ -17,8 +17,8 @@
   :ensure t
   :mode "\\.hs\\'"
   :bind
-  (;; ("C-c 8"       . haskell-navigate-imports)
-   ;; ("C-c C-c"     . haskell-compile)
+  ( ;; ("C-c 8"       . haskell-navigate-imports)
+    ;; ("C-c C-c"     . haskell-compile)
    )
   :init
   (use-package haskell-snippets
@@ -31,6 +31,7 @@
   (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
   (add-hook 'haskell-mode-hook '(lambda () (ghc-init)))
+  (add-hook 'haskell-mode-hook 'yas-minor-mode)
   :config
   (setq haskell-tags-on-save t
         haskell-process-suggest-remove-import-lines t
@@ -38,8 +39,7 @@
         haskell-process-log t
         haskell-stylish-on-save t)
   (autoload 'ghc-init "ghc" nil t)
-  (autoload 'ghc-debug "ghc" nil t)
-  )
+  (autoload 'ghc-debug "ghc" nil t))
 
 ;; Travando
 (use-package intero
@@ -89,11 +89,11 @@
                                       '(company-sort-by-backend-importance
                                         company-sort-by-statistics))
                                  (set (make-local-variable 'company-backends)
-                                      '((
-                                         company-capf
+                                      '((company-capf
                                          company-ghc
                                          company-ghci
                                          company-cabal
+                                         :with
                                          company-keywords
                                          company-yasnippet
                                          company-abbrev
@@ -101,7 +101,7 @@
                                          company-dabbrev
                                          company-dict
                                          company-files
-                                         :with company-ispell)))))
+                                         company-ispell)))))
   (add-hook 'haskell-interactive-mode-hook (lambda ())
                                  (set (make-local-variable 'company-transformers)
                                       '(company-sort-by-backend-importance

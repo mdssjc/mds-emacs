@@ -46,6 +46,12 @@
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'org-mode-hook 'flyspell-mode))
 
+;; (use-package flyspell-correct
+;;   :ensure t
+;;   :defer t
+;;   :init
+;;   (add-hook 'flyspell-mode-hook 'flyspell-correct-auto-mode))
+
 (use-package flyspell-correct-popup
   :ensure t
   :after flyspell
@@ -78,6 +84,10 @@
                                                            (memq last-command '(keyboard-quit)))
                                                  (let ((msg (langtool-details-error-message overlays)))
                                                    (popup-tip msg)))))))
+
+(use-package eldoc
+  :ensure t
+  :commands eldoc-mode)
 
 (use-package zeal-at-point
   :ensure t

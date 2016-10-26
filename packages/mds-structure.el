@@ -26,8 +26,6 @@
 ;;  - Browser interno.
 
 ;;; Code:
-;; (require 'semantic)
-
 (use-package saveplace
   :config
   (setq save-place-file (expand-file-name (concat user-emacs-directory
