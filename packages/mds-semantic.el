@@ -44,26 +44,26 @@
   :config
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
   (add-hook 'text-mode-hook 'flyspell-mode)
-  (add-hook 'org-mode-hook 'flyspell-mode))
+  (add-hook 'org-mode-hook  'flyspell-mode))
 
-;; (use-package flyspell-correct
-;;   :ensure t
-;;   :defer t
-;;   :init
-;;   (add-hook 'flyspell-mode-hook 'flyspell-correct-auto-mode))
+(use-package flyspell-correct
+  :ensure t
+  :after flyspell)
 
 (use-package flyspell-correct-popup
   :ensure t
-  :after flyspell
-  :config
-  (setq flyspell-correct-interface 'flyspell-correct-popup))
+  :after flyspell)
 
 (use-package flyspell-correct-ivy
+  :ensure t
+  :after flyspell)
+
+(use-package flyspell-popup
   :ensure t
   :after flyspell
   :bind
   (:map flyspell-mode-map
-        ("C-c $" . flyspell-correct-previous-word-generic)))
+        ("C-;" . flyspell-popup-correct)))
 ;; ---
 
 (use-package langtool
