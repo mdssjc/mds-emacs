@@ -39,6 +39,7 @@
                                company-sort-by-statistics)
         company-backends '((company-abbrev
                             company-dabbrev
+                            company-dict
                             company-files
                             company-math-symbols-unicode
                             company-emoji
