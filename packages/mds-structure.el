@@ -82,7 +82,8 @@
   :ensure t
   :commands magit-status
   :bind
-  (("<f8> g s" . magit-status)
+  (("C-x g"    . magit-status)
+   ("<f8> g s" . magit-status)
    ("<f8> g S" . magit-stage-file)
    ("<f8> g g" . magit-dispatch-popup))
   :chords
@@ -91,6 +92,9 @@
   (defalias 'gs 'magit-status "Magit status")
   :config
   (setq magit-completing-read-function 'ivy-completing-read))
+
+(use-package git-timemachine
+  :ensure t)
 
 (use-package git-gutter-fringe
   :ensure t
