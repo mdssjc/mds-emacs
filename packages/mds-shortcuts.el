@@ -23,9 +23,19 @@
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
+                      ;; Align
                       "a a" 'align
                       "a c" 'align-current
                       "a r" 'align-regexp
+                      ;; File
+                      "f l" 'find-file-literally
+                      "f s" 'save-buffer
+                      ;; Narrow & Widen
+                      "n r" 'narrow-to-region
+                      "n p" 'narrow-to-page
+                      "n f" 'narrow-to-defun
+                      "n w" 'widen
+                      ;; Tabs
                       "t t" 'tabify
                       "t u" 'untabify)
   (general-define-key
@@ -54,6 +64,8 @@
     "<f8> s" "ispell"
     "C-c /"  "counsel-rg"
     "<C-M-return> a" "align"
+    "<C-M-return> f" "file"
+    "<C-M-return> n" "narrow & widen"
     "<C-M-return> t" "tabify")
   (which-key-mode 1))
 
