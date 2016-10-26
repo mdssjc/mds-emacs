@@ -18,15 +18,17 @@
   :chords
   (("qq" . save-buffers-kill-terminal)
    ("xs" . save-buffer)
-   ("xk" . kill-this-buffer))
+   ("xk" . kill-this-buffer)
+   ("xe" . eval-last-sexp))
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
                       "a a" 'align
                       "a c" 'align-current
-                      "a r" 'align-regexp)
+                      "a r" 'align-regexp
+                      "t t" 'tabify
+                      "t u" 'untabify)
   (general-define-key
-   "<f5> l"     'linum-mode
    "M-<up>"     'mds/move-up
    "M-<down>"   'mds/move-down
    "M-S-<up>"   'mds/duplicate-up
@@ -34,6 +36,7 @@
    "<C-tab>"    'cycle-spacing
    ;; "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand
+   "<f5> l"     'linum-mode
    "<f5> w"     'global-whitespace-mode))
 
 (use-package which-key
@@ -50,7 +53,8 @@
     "<f8> r" "ripgrep"
     "<f8> s" "ispell"
     "C-c /"  "counsel-rg"
-    "<C-M-return> a" "align")
+    "<C-M-return> a" "align"
+    "<C-M-return> t" "tabify")
   (which-key-mode 1))
 
 (use-package golden-ratio
