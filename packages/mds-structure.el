@@ -314,6 +314,15 @@
   (use-package flx-ido
     :ensure t)
   (setq popup-imenu-style 'indent))
+
+;; Move-dup
+(use-package move-dup
+  :ensure t
+  :bind
+  (("M-<up>"     . md/move-lines-up)
+   ("M-<down>"   . md/move-lines-down)
+   ("S-M-<up>"   . md/duplicate-up)
+   ("S-M-<down>" . md/duplicate-down)))
 ;; ---
 
 (provide 'mds-structure)
