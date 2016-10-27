@@ -302,6 +302,18 @@
   :config
   (setq url-configuration-directory (concat user-emacs-directory
                                             ".cache/url")))
+
+;; Imenu
+(use-package popup-imenu
+  :ensure t
+  :bind
+  (("C-'" . popup-imenu)
+   :map popup-isearch-keymap
+   ("C-'" . popup-isearch-cancel))
+  :init
+  (use-package flx-ido
+    :ensure t)
+  (setq popup-imenu-style 'indent))
 ;; ---
 
 (provide 'mds-structure)
