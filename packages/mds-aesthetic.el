@@ -14,6 +14,7 @@
 
 ;;; Code:
 (global-hl-line-mode t)
+(set-frame-font "Source Code Pro-10" nil t)
 
 (use-package spacemacs-theme
   :ensure t
