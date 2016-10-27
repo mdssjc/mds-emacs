@@ -66,7 +66,9 @@
       kept-new-versions 9
       ;; Autosave
       auto-save-file-name-transforms `((".*" ,(expand-file-name (concat user-emacs-directory
-                                                                        ".cache/autosave"))))
+                                                                        ".cache/auto-save"))))
+      auto-save-list-file-prefix (concat user-emacs-directory
+                                         ".cache/auto-save-list/.saves-")
       auto-save-default t
       auto-save-timeout 60
       auto-save-interval 200
@@ -172,7 +174,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ztree zeal-at-point writeroom-mode which-key web-mode volatile-highlights visual-regexp use-package-chords undo-tree spacemacs-theme spaceline selected ripgrep restart-emacs rainbow-delimiters racket-mode parinfer org-bullets neotree mode-icons meghanada markdown-mode magit litable lispy langtool keyfreq jdee java-snippets info+ hlinum hindent highlight-current-line haskell-snippets golden-ratio git-gutter-fringe general focus flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-haskell f exec-path-from-shell esup engine-mode emojify emmet-mode embrace counsel-projectile counsel-dash company-statistics company-quickhelp company-math company-ghci company-ghc company-emoji company-dict company-cabal cider centered-cursor-mode boon beacon auto-yasnippet all-the-icons))))
+    (move-dup mode-dup imenu-anywhere imenu-list flx-dio popup-imenu ztree zeal-at-point writeroom-mode which-key web-mode volatile-highlights visual-regexp use-package-chords undo-tree spacemacs-theme spaceline selected ripgrep restart-emacs rainbow-delimiters racket-mode parinfer org-bullets neotree mode-icons meghanada markdown-mode magit litable lispy langtool keyfreq jdee java-snippets info+ hlinum hindent highlight-current-line haskell-snippets golden-ratio git-gutter-fringe general focus flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-haskell f exec-path-from-shell esup engine-mode emojify emmet-mode embrace counsel-projectile counsel-dash company-statistics company-quickhelp company-math company-ghci company-ghc company-emoji company-dict company-cabal cider centered-cursor-mode boon beacon auto-yasnippet all-the-icons))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
