@@ -39,10 +39,6 @@
                       "t t" 'tabify
                       "t u" 'untabify)
   (general-define-key
-   "M-<up>"     'mds/move-up
-   "M-<down>"   'mds/move-down
-   "M-S-<up>"   'mds/duplicate-up
-   "M-S-<down>" 'mds/duplicate-down
    "<C-tab>"    'cycle-spacing
    ;; "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand
