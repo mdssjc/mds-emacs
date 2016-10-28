@@ -325,5 +325,15 @@
    ("S-M-<down>" . md/duplicate-down)))
 ;; ---
 
+;; Swap
+(use-package swap-regions
+  :ensure t
+  :commands swap-regions-mode
+  :bind
+  (("S-M-t" . swap-regions))
+  :init
+  (add-hook 'after-init-hook 'swap-regions-mode))
+;; ---
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
