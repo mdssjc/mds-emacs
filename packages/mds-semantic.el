@@ -41,7 +41,7 @@
   :diminish flyspell-mode " Ⓢ"
   :bind
   (("<f5> S" . flyspell-mode))
-  :config
+  :init
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'org-mode-hook  'flyspell-mode))
