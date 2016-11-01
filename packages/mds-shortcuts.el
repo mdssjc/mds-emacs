@@ -27,6 +27,9 @@
                       "a a" 'align
                       "a c" 'align-current
                       "a r" 'align-regexp
+                      ;; Buffer
+                      "b k" 'kill-this-buffer
+                      "b s" 'save-buffer
                       ;; File
                       "f l" 'find-file-literally
                       "f s" 'save-buffer
@@ -62,6 +65,7 @@
     "<f8> s" "ispell"
     "C-c /"  "counsel-rg"
     "<C-M-return> a" "align"
+    "<C-M-return> b" "buffer"
     "<C-M-return> f" "file"
     "<C-M-return> n" "narrow & widen"
     "<C-M-return> t" "tabify")
