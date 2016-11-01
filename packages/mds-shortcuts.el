@@ -43,6 +43,8 @@
    ;; "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand
    "<f5> l"     'linum-mode
+   "<f5> r"     'read-only-mode
+   "<f5> t"     'toggle-truncate-lines
    "<f5> w"     'global-whitespace-mode))
 
 (use-package which-key
