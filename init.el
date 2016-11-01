@@ -76,9 +76,7 @@
                                          ".cache/auto-save-list/.saves-")
       auto-save-default t
       auto-save-timeout 60
-      auto-save-interval 200
-      ;; X
-      x-gtk-use-system-tooltips nil)
+      auto-save-interval 200)
 
 ;; Sistema de Codificação (Coding System)
 (set-charset-priority        'unicode)
@@ -155,6 +153,11 @@
   :init
   (when (not (server-running-p server-name))
     (server-start)))
+;; --
+
+;; OS
+(when (eq system-type 'gnu/linux)
+  (setq x-gtk-use-system-tooltips t))
 ;; --
 
 ;; Segredos (Secrets)
