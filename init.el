@@ -75,10 +75,15 @@
       ;; X
       x-gtk-use-system-tooltips nil)
 
-(prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
+;; Sistema de Codificação (Coding System)
+(set-charset-priority        'unicode)
+(set-default-coding-systems  'utf-8)
+(set-terminal-coding-system  'utf-8)
+(set-keyboard-coding-system  'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system        'utf-8)
+(setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+;; --
 
 (add-to-list 'load-path (concat user-emacs-directory "core"))
 (add-to-list 'load-path (concat user-emacs-directory "packages"))
@@ -174,7 +179,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (move-dup mode-dup imenu-anywhere imenu-list flx-dio popup-imenu ztree zeal-at-point writeroom-mode which-key web-mode volatile-highlights visual-regexp use-package-chords undo-tree spacemacs-theme spaceline selected ripgrep restart-emacs rainbow-delimiters racket-mode parinfer org-bullets neotree mode-icons meghanada markdown-mode magit litable lispy langtool keyfreq jdee java-snippets info+ hlinum hindent highlight-current-line haskell-snippets golden-ratio git-gutter-fringe general focus flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-haskell f exec-path-from-shell esup engine-mode emojify emmet-mode embrace counsel-projectile counsel-dash company-statistics company-quickhelp company-math company-ghci company-ghc company-emoji company-dict company-cabal cider centered-cursor-mode boon beacon auto-yasnippet all-the-icons))))
+    (clippy wcheck wcheck-mode move-dup mode-dup imenu-anywhere imenu-list flx-dio popup-imenu ztree zeal-at-point writeroom-mode which-key web-mode volatile-highlights visual-regexp use-package-chords undo-tree spacemacs-theme spaceline selected ripgrep restart-emacs rainbow-delimiters racket-mode parinfer org-bullets neotree mode-icons meghanada markdown-mode magit litable lispy langtool keyfreq jdee java-snippets info+ hlinum hindent highlight-current-line haskell-snippets golden-ratio git-gutter-fringe general focus flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-haskell f exec-path-from-shell esup engine-mode emojify emmet-mode embrace counsel-projectile counsel-dash company-statistics company-quickhelp company-math company-ghci company-ghc company-emoji company-dict company-cabal cider centered-cursor-mode boon beacon auto-yasnippet all-the-icons))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
