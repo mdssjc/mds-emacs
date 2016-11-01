@@ -148,6 +148,15 @@
            (execute-extended-command--shorter command command)))
 ;; ---
 
+;; Server
+(require 'server nil t)
+(use-package server
+  :if window-system
+  :init
+  (when (not (server-running-p server-name))
+    (server-start)))
+;; --
+
 ;; Segredos (Secrets)
 (load (concat user-emacs-directory "secrets/secrets"))
 ;; ---
