@@ -39,10 +39,15 @@
               tab-width 2
               c-basic-offset 2
               tab-stop-list '(2 4 6 8 10 12))
-(setq gc-cons-threshold 50000000
+(setq initial-major-mode 'fundamental-mode
       column-number-mode t
       visible-bell t
-      initial-major-mode 'fundamental-mode
+      ;; Garbage Collect
+      gc-cons-threshold (* 100 1024 1024) ; 100 MB
+      jit-lock-defer-time nil
+      jit-lock-stealth-nice 0.1
+      jit-lock-stealth-time 0.2
+      jit-lock-stealth-verbose nil
       ;; Newline
       require-final-newline t
       next-line-extends-end-of-buffer nil
