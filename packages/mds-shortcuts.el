@@ -45,6 +45,7 @@
    "<C-tab>"    'cycle-spacing
    ;; "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand
+   "S-C-j"      'join-line
    "<f5> l"     'linum-mode
    "<f5> r"     'read-only-mode
    "<f5> t"     'toggle-truncate-lines
