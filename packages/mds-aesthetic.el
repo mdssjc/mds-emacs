@@ -15,6 +15,9 @@
 ;;; Code:
 (global-hl-line-mode t)
 (set-frame-font "Source Code Pro-10" nil t)
+(add-hook 'prog-mode-hook '(lambda () (font-lock-add-keywords nil
+                             '(("\\<\\(TODO\\(?:(.*)\\)?:?\\)\\>" 1 'warning prepend)
+                               ("\\<\\(FIXME\\(?:(.*)\\)?:?\\)\\>" 1 'error prepend)))))
 
 (use-package spacemacs-theme
   :ensure t
