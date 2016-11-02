@@ -43,6 +43,7 @@
                       "t u" 'untabify)
   (general-define-key
    "<C-tab>"    'cycle-spacing
+   "S-SPC"      'cycle-spacing
    ;; "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand
    "S-C-j"      'join-line
