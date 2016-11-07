@@ -115,12 +115,14 @@
                                              company-abbrev
                                              company-dabbrev-code
                                              company-dabbrev
-                                             ;; company-dict
                                              company-files)))))
-                                            ;; :separate
-                                            ;; company-ispell
+  (add-hook 'racket-mode-hook 'flyspell-prog-mode)
+  (add-hook 'racket-mode-hook 'dr-racket-like-unicode-mode)
+  ;; (add-hook 'racket-mode-hook 'racket-unicode-input-method-enable)
+  (add-hook 'racket-repl-mode-hook 'racket-unicode-input-method-enable))
 
-  (add-hook 'racket-mode-hook 'flyspell-prog-mode))
+(use-package dr-racket-like-unicode
+  :ensure t)
 
 (use-package clojure-mode
   :ensure t
