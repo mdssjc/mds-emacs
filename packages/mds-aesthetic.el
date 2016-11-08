@@ -67,7 +67,8 @@
 (use-package emojify
   :ensure t
   :bind
-  (("<f5> e" . global-emojify-mode))
+  (("<f5> e" . global-emojify-mode)
+   ("C-c I"  . emojify-insert-emoji))
   :init
   (add-hook 'after-init-hook 'global-emojify-mode) t)
 
