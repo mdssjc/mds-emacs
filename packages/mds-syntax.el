@@ -54,7 +54,7 @@
         company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")
         company-statistics-auto-save nil)
   (add-hook 'company-mode-hook 'company-statistics-mode)
-  (add-hook 'auto-save-hook 'company-statistics--maybe-save))
+  (add-hook 'after-save-hook 'company-statistics--maybe-save))
 
 (use-package company-dict
   :ensure t
