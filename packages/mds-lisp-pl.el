@@ -65,19 +65,15 @@
                                                 (flycheck-mode))))
   (add-hook 'emacs-lisp-mode-hook '(lambda () (add-to-list 'completion-styles 'initials t)))
   (add-hook 'emacs-lisp-mode-hook '(lambda () (set (make-local-variable 'company-backends)
-                                              '((company-elisp
-                                                 company-yasnippet
-                                                 :with
-                                                 company-capf
-                                                 company-keywords
-                                                 company-abbrev
-                                                 company-dabbrev-code
-                                                 company-dabbrev
-                                                 ;; company-dict
-                                                 company-files)))))
-  ;; :separate
-  ;; company-ispell
-
+                                                   '((company-elisp
+                                                      company-yasnippet
+                                                      :with
+                                                      company-capf
+                                                      company-keywords
+                                                      company-abbrev
+                                                      company-dabbrev-code
+                                                      company-dabbrev
+                                                      company-files)))))
   (add-hook 'emacs-lisp-mode-hook 'flycheck-package-setup)
   (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
   (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode))
@@ -138,11 +134,7 @@
                                                    company-abbrev
                                                    company-dabbrev-code
                                                    company-dabbrev
-                                                   ;; company-dict
                                                    company-files)))))
-                                                   ;; :separate
-                                                   ;; company-ispell
-
   (add-hook 'clojure-mode-hook 'flyspell-prog-mode))
 
 (use-package cider
