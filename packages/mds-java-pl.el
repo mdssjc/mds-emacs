@@ -24,7 +24,6 @@
     :defer t)
   (add-hook 'java-mode-hook 'yas-minor-mode)
   (add-hook 'java-mode-hook 'flycheck-mode)
-  (add-hook 'java-mode-hook 'flyspell-prog-mode)
   (add-hook 'java-mode-hook (lambda () (setq-local counsel-dash-docsets '("Java_SE8"
                                                                      "Java_EE7"
                                                                      "JavaFX"))))
@@ -42,19 +41,15 @@
                                        company-dabbrev-code
                                        company-dabbrev
                                        company-dict
-                                       company-files
-                                       ;; company-ispell
-                                       ))))))
+                                       company-files))))))
 
 (use-package meghanada
   :ensure t
-  :defer t
   :bind
   (:map java-mode-map
         ("<f6> m" . meghanada-mode))
   :init
-  (setq meghanada-server-install-dir (concat user-emacs-directory
-                                             ".cache/meghanada/"))
+  (setq meghanada-server-install-dir (concat user-emacs-directory ".cache/meghanada/"))
   (add-hook 'java-mode-hook 'meghanada-mode))
 
 (use-package jdee
@@ -63,8 +58,7 @@
   (:map java-mode-map
         ("<f6> j" . jdee-mode))
   :init
-  (setq jdee-server-dir (concat user-emacs-directory
-                                ".cache/jdee/")))
+  (setq jdee-server-dir (concat user-emacs-directory ".cache/jdee/")))
 
 (provide 'mds-java-pl)
 ;;; mds-java-pl ends here
