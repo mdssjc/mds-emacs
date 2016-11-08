@@ -21,7 +21,7 @@
    ("<f9> a" . org-agenda)
    ("<f9> c" . org-capture)
    ("<f9> b" . org-iswitchb))
-  :config
+  :init
   (setq org-todo-keywords '((sequence "TODO"
                                       "DOING"
                                       "BLOCKED"
@@ -34,15 +34,22 @@
                                  ("DONE"     . "green")
                                  ("ARCHIVED" . "blue")
                                  ("CANCELED" . "red1")))
+  (add-hook 'org-mode-hook '(lambda () (set (make-local-variable 'company-backends)
+                                            '((company-capf
+                                               company-abbrev
+                                               company-yasnippet
+                                               company-ispell)))))
+  (add-hook 'org-mode-hook 'company-mode)
+  (add-hook 'org-mode-hook 'flyspell-mode)
+  :config
   (use-package org-bullets
     :ensure t
     :config
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
   (require 'ob-java)
-  (org-babel-do-load-languages 'org-babel-do-load-languages
-                               '((emacs-lisp . t)
-                                 (java . t)
-                                 (c . t))))
+  (org-babel-do-load-languages 'org-babel-do-load-languages '((emacs-lisp . t)
+                                                              (java . t)
+                                                              (c . t))))
 
 (provide 'mds-pragmatic)
 ;;; mds-pragmatic.el ends here
