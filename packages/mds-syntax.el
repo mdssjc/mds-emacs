@@ -33,19 +33,12 @@
         company-require-match nil
         company-dabbrev-ignore-case nil
         company-dabbrev-downcase nil
+        company-dabbrev-code-everywhere t
         company-search-regexp-function 'company-search-words-regexp
         company-transformers '(company-sort-by-backend-importance
                                company-sort-prefer-same-case-prefix
-                               company-sort-by-statistics)
-        company-backends '((company-abbrev
-                            company-dabbrev
-                            company-dict
-                            company-files
-                            company-math-symbols-unicode
-                            company-emoji
-                            :with
-                            company-ispell)))
-  (add-hook 'after-init-hook 'global-company-mode))
+                               company-sort-by-statistics))
+  (add-hook 'prog-mode-hook 'company-mode))
 
 (use-package company-quickhelp
   :ensure t
@@ -67,21 +60,9 @@
   :ensure t
   :after company
   :config
-  (setq company-dict-dir (concat user-emacs-directory
-                                 "dict/")
+  (setq company-dict-dir (concat user-emacs-directory "dict/")
         company-dict-enable-fuzzy t
         company-dict-enable-yasnippet t))
-
-(use-package company-emoji
-  :ensure t
-  :after company
-  :config
-  (set-fontset-font t 'symbol (font-spec :family "Symbola") nil 'prepend)
-  (company-emoji-init))
-
-(use-package company-math
-  :ensure t
-  :after company)
 
 ;; Correção (Correction)
 (use-package ispell
