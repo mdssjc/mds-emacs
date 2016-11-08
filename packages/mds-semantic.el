@@ -43,8 +43,7 @@
   (("<f5> S" . flyspell-mode))
   :init
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-  (add-hook 'text-mode-hook 'flyspell-mode)
-  (add-hook 'org-mode-hook  'flyspell-mode))
+  (add-hook 'text-mode-hook 'flyspell-mode))
 
 (use-package flyspell-correct
   :ensure t
