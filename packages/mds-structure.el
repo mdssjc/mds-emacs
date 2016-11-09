@@ -10,11 +10,13 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Conjunto de melhorias ao editor
-;;  - Salva a última posição da seção;
-;;  - Listagem dos documentos recentes;
-;;  - Funcionalidade de reinicialização;
-;;  - Visualização da árvore de modificações no documento;
+;; Conjunto de melhorias para o ambiente:
+;;  - saveplace: salva a última posição do buffer;
+;;  - recentf: listagem dos buffers mais recentes;
+;;  - exec-path-from-shell: variáveis ambiente do shell;
+;;  - restart-emacs: funcionalidade de reinicialização;
+;;  - undo-tree: visualização da árvore de modificações do buffer;
+;;
 ;;  - Frequência de utilização dos atalhos.
 ;;  - Visualizador de arquivos;
 ;;  - Controle de versão pelo Git;
@@ -27,29 +29,38 @@
 
 ;;; Code:
 (use-package saveplace
-  :config
-  (setq save-place-file (expand-file-name (concat user-emacs-directory
-                                                  ".cache/places")))
-  (save-place-mode 1))
+  :init
+  (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places")))
+  (add-hook 'after-init-hook 'save-place-mode))
 
 (use-package recentf
-  :config
-  (setq recentf-save-file (expand-file-name (concat user-emacs-directory
-                                                    ".cache/recentf"))
+  :init
+  (setq recentf-save-file (expand-file-name (concat user-emacs-directory ".cache/recentf"))
         recentf-max-saved-items 1000
         recentf-max-menu-items 15)
-  (recentf-mode 1))
+  (add-hook 'after-init-hook 'recentf-mode))
+
+(use-package exec-path-from-shell
+  :ensure t
+  :demand t
+  :init
+  (setq exec-path-from-shell-check-startup-files nil)
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
 
 (use-package restart-emacs
   :ensure t
-  :chords
-  (("qr" . restart-emacs)))
+  :commands restart-emacs)
 
 (use-package undo-tree
   :ensure t
+  :commands global-undo-tree-mode
   :diminish undo-tree-mode
-  :config
-  (global-undo-tree-mode))
+  :init
+  (setq undo-tree-visualizer-timestamps t
+        undo-tree-visualizer-diff t)
+  (add-hook 'after-init-hook 'global-undo-tree-mode))
 
 (use-package keyfreq
   :ensure t
@@ -164,7 +175,7 @@
 
 (use-package ivy
   :ensure t
-  :defer t
+  :commands ivy-mode
   :diminish ivy-mode
   :chords
   ("xn" . ivy-switch-buffer)
@@ -185,8 +196,6 @@
 
 (use-package counsel
   :ensure t
-  :init
-  (setq counsel-ag-base-command "rg -i --color=never --no-heading %s")
   :bind
   (("M-x"     . counsel-M-x)
    ("M-y"     . counsel-yank-pop)
@@ -196,7 +205,9 @@
   :chords
   ("xm" . counsel-M-x)
   ("xf" . counsel-find-file)
-  ("xr" . counsel-recentf))
+  ("xr" . counsel-recentf)
+  :init
+  (setq counsel-ag-base-command "rg -i --color=never --no-heading %s"))
 
 (use-package hydra
   :ensure t)

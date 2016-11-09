@@ -15,8 +15,10 @@
 ;;; Code:
 (use-package general
   :ensure t
+  :defer t
   :chords
   (("qq" . save-buffers-kill-terminal)
+   ("qr" . restart-emacs)
    ("xs" . save-buffer)
    ("xk" . kill-this-buffer)
    ("xe" . eval-last-sexp))
@@ -47,10 +49,14 @@
    ;; "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand
    "S-C-j"      'join-line
+   ;; F5
    "<f5> l"     'linum-mode
    "<f5> r"     'read-only-mode
    "<f5> t"     'toggle-truncate-lines
-   "<f5> w"     'global-whitespace-mode))
+   "<f5> w"     'global-whitespace-mode
+   ;; C-x
+   "C-x Q q"    'save-buffers-kill-terminal
+   "C-x Q r"    'restart-emacs))
 
 (use-package which-key
   :ensure t
@@ -69,6 +75,7 @@
     "C-c &"  "yasnippet"
     "C-c p"  "projectile"
     "C-c /"  "counsel-rg"
+    "C-x Q"  "quit/restart"
     "<C-M-return> a" "align"
     "<C-M-return> b" "buffer"
     "<C-M-return> f" "file"
