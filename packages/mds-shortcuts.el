@@ -15,7 +15,6 @@
 ;;; Code:
 (use-package general
   :ensure t
-  :defer t
   :chords
   (("qq" . save-buffers-kill-terminal)
    ("qr" . restart-emacs)
