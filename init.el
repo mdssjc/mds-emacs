@@ -116,15 +116,6 @@
   (setq key-chord-two-keys-delay 0.15
         key-chord-one-key-delay  0.15))
 
-(use-package exec-path-from-shell
-  :ensure t
-  :demand t
-  :init
-  (setq exec-path-from-shell-check-startup-files nil)
-  :config
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
-
 (use-package esup
   :ensure t
   :commands esup)
