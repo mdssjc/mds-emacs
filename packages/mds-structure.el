@@ -16,8 +16,8 @@
 ;;  - exec-path-from-shell: variáveis ambiente do shell;
 ;;  - restart-emacs: funcionalidade de reinicialização;
 ;;  - undo-tree: visualização da árvore de modificações do buffer;
+;;  - keyfreq-mode: frequência de utilização dos atalhos;
 ;;
-;;  - Frequência de utilização dos atalhos.
 ;;  - Visualizador de arquivos;
 ;;  - Controle de versão pelo Git;
 ;;  - Pacotes Abo-abo;
@@ -64,16 +64,11 @@
 
 (use-package keyfreq
   :ensure t
-  :bind
-  (("<f7> f" . keyfreq-show))
+  :commands keyfreq-show
   :init
-  (setq keyfreq-file (concat user-emacs-directory
-                             ".cache/.emacs.keyfreq")
-        keyfreq-file-lock (concat user-emacs-directory
-                                  ".cache/.emacs.keyfreq.lock"))
-  :config
-  (keyfreq-mode 1)
-  (keyfreq-autosave-mode 1))
+  (setq keyfreq-file      (concat user-emacs-directory ".cache/.emacs.keyfreq")
+        keyfreq-file-lock (concat user-emacs-directory ".cache/.emacs.keyfreq.lock"))
+  (add-hook 'after-init-hook '(lambda () (keyfreq-mode 1) (keyfreq-autosave-mode 1))))
 
 ;; Visualizador de arquivos
 (use-package neotree

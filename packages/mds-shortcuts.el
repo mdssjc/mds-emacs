@@ -53,6 +53,8 @@
    "<f5> r"     'read-only-mode
    "<f5> t"     'toggle-truncate-lines
    "<f5> w"     'global-whitespace-mode
+   ;; F7
+   "<f7> f"     'keyfreq-show
    ;; C-x
    "C-x Q q"    'save-buffers-kill-terminal
    "C-x Q r"    'restart-emacs))
