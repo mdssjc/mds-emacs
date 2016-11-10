@@ -207,6 +207,9 @@
   ("xr" . counsel-recentf)
   :init
   (setq counsel-ag-base-command "rg -i --color=never --no-heading %s"))
+
+(use-package smex
+  :ensure t)
 ;; ---
 
 ;; Seleção
