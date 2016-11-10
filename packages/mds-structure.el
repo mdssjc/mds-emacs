@@ -95,9 +95,7 @@
   :chords
   ("gs" . magit-status)
   :init
-  (defalias 'gs 'magit-status "Magit status")
-  :config
-  (setq magit-completing-read-function 'ivy-completing-read))
+  (defalias 'gs 'magit-status "Magit status"))
 
 (use-package git-timemachine
   :ensure t)
@@ -120,6 +118,9 @@
   :config
   (setq avy-timeout-seconds 0.3
         avy-background t))
+
+(use-package hydra
+  :ensure t)
 
 (use-package ace-window
   :ensure t
@@ -173,15 +174,17 @@
   :commands ivy-mode
   :diminish ivy-mode
   :chords
-  ("xn" . ivy-switch-buffer)
+  ("xb" . ivy-switch-buffer)
   :init
-  (add-hook 'after-init-hook 'ivy-mode)
-  :config
   (setq ivy-use-virtual-buffers t
         ivy-height 10
         ivy-count-format "(%d/%d) "
         ivy-initial-inputs-alist nil
-        ivy-re-builders-alist '((t . ivy--regex-plus))))
+        ivy-re-builders-alist '((t . ivy--regex-plus)))
+  (add-hook 'after-init-hook 'ivy-mode)
+  :config
+  (setq projectile-completion-system   'ivy
+        magit-completing-read-function 'ivy-completing-read))
 
 (use-package swiper
   :ensure t
@@ -203,9 +206,6 @@
   ("xr" . counsel-recentf)
   :init
   (setq counsel-ag-base-command "rg -i --color=never --no-heading %s"))
-
-(use-package hydra
-  :ensure t)
 ;; ---
 
 ;; Seleção
@@ -279,8 +279,7 @@
                                                         ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory
                                                                  ".cache/projectile-bookmarks.eld"))
-        projectile-sort-order 'modification-time
-        projectile-completion-system 'ivy))
+        projectile-sort-order 'modification-time))
 
 (use-package counsel-projectile
   :ensure t
@@ -340,6 +339,11 @@
   :init
   (add-hook 'after-init-hook 'swap-regions-mode))
 ;; ---
+
+(use-package tabbar
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'tabbar-mode))
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
