@@ -15,71 +15,83 @@
 ;;; Code:
 (use-package haskell-mode
   :ensure t
-  :mode "\\.hs\\'"
+  :mode
+  ("\\.hs$"      . haskell-mode)
+  ("\\.lhs\\'"   . haskell-mode)
+  ("\\.hsc\\'"   . haskell-mode)
+  ("\\.cpphs\\'" . haskell-mode)
+  ("\\.c2hs\\'"  . haskell-mode)
   :bind
-  ( ;; ("C-c 8"       . haskell-navigate-imports)
-    ;; ("C-c C-c"     . haskell-compile)
-   )
+  (:map haskell-mode-map
+        ;; Editing
+        ("C-c e j" . haskell-navigate-imports)
+        ("C-c e f" . haskell-mode-format-imports)
+        ("C-c e s" . haskell-sort-imports)
+        ("C-c e a" . haskell-align-imports)
+        ("C-c e S" . haskell-mode-stylish-haskell)
+        ;; Compilation
+        ("C-c c"   . haskell-compile)
+        ;; Interpreter
+        ("C-c i z" . switch-to-haskell)
+        ("C-c i b" . switch-to-haskell)
+        ("C-c i l" . inferior-haskell-load-file)
+        ("C-c i t" . inferior-haskell-type)
+        ("C-c i i" . inferior-haskell-info)
+        ("C-c i d" . inferior-haskell-find-definition))
   :init
   (use-package haskell-snippets
     :ensure t
     :defer t)
-  (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-  (add-hook 'haskell-mode-hook 'turn-on-haskell-unicode-input-method)
-  (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
-  (add-hook 'haskell-mode-hook 'hindent-mode)
-  (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-  (add-hook 'haskell-mode-hook '(lambda () (ghc-init)))
-  (add-hook 'haskell-mode-hook 'yas-minor-mode)
-  :config
-  (setq haskell-tags-on-save t
-        haskell-process-suggest-remove-import-lines t
+  (setq haskell-process-suggest-remove-import-lines t
         haskell-process-auto-import-loaded-modules t
         haskell-process-log t
-        haskell-stylish-on-save t)
-  (autoload 'ghc-init "ghc" nil t)
-  (autoload 'ghc-debug "ghc" nil t))
-
-;; Travando
-(use-package intero
-  :ensure t
-  :disabled t
-  :commands intero-mode
-  :init
-  (add-hook 'haskell-mode-hook 'intero-mode))
-
-(use-package hindent
-  :ensure t
-  :defer t)
+        haskell-tags-on-save t
+        ;; haskell-stylish-on-save t
+        haskell-process-type 'cabal-repl
+        company-ghc-show-info t)
+  (add-hook 'haskell-mode-hook 'structured-haskell-mode)
+  (add-hook 'haskell-mode-hook 'haskell-decl-scan-mode)
+  (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+  (add-hook 'haskell-mode-hook 'flyspell-prog-mode)
+  (add-hook 'haskell-mode-hook 'hindent-mode)
+  (add-hook 'haskell-mode-hook '(lambda () (ghc-init) (hare-init)))
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+  :config
+  (require 'haskell-interactive-mode)
+  (require 'haskell-process)
+  ;; GHC
+  (add-to-list 'load-path "~/.cabal/share/x86_64-linux-ghc-8.0.1/ghc-mod-5.6.0.0/elisp")
+  (autoload 'ghc-init  "ghc" nil t)
+  (autoload 'ghc-debug "ghc" nil t)
+  ;; HaRe
+  (add-to-list 'load-path "~/.cabal/share/x86_64-linux-ghc-8.0.1/HaRe-0.8.3.0/elisp")
+  (require 'hare)
+  (autoload 'hare-init "hare" nil t)
+  ;; Which-key
+  (which-key-add-major-mode-key-based-replacements 'haskell-mode
+    "C-c e" "editing"
+    "C-c i" "interpreter"))
 
 (use-package ghc
+  :ensure t)
+
+(use-package company-ghc
+  :ensure t)
+
+(use-package shm
+  :ensure t)
+
+(use-package rainbow-delimiters
   :ensure t
-  :defer t)
+  :commands rainbow-delimiters-mode
+  :init
+  (add-hook 'haskell-mode-hook 'rainbow-delimiters-mode))
 
 (use-package flycheck-haskell
   :ensure t
   :init
-  (add-hook 'haskell-mode-hook 'flycheck-haskell-setup))
-
-(use-package flycheck
-  :defer t
-  :init
+  (add-hook 'haskell-mode-hook 'flycheck-haskell-setup)
   (add-hook 'haskell-mode-hook 'flycheck-mode))
-
-(use-package company-cabal
-  :ensure t
-  :defer t)
-
-(use-package company-ghc
-  :ensure t
-  :defer t
-  :config
-  (setq company-ghc-show-info t))
-
-(use-package company-ghci
-  :ensure t
-  :defer t)
 
 (use-package company
   :defer t
@@ -87,38 +99,31 @@
   (add-hook 'haskell-mode-hook (lambda ()
                                  (set (make-local-variable 'company-transformers)
                                       '(company-sort-by-backend-importance
+                                        company-sort-prefer-same-case-prefix
                                         company-sort-by-statistics))
                                  (set (make-local-variable 'company-backends)
                                       '((company-capf
                                          company-ghc
-                                         company-ghci
-                                         company-cabal
+                                         company-yasnippet
                                          :with
-                                         company-keywords
-                                         company-yasnippet
                                          company-abbrev
                                          company-dabbrev-code
                                          company-dabbrev
-                                         company-dict
-                                         company-files
-                                         company-ispell)))))
-  (add-hook 'haskell-interactive-mode-hook (lambda ())
-                                 (set (make-local-variable 'company-transformers)
-                                      '(company-sort-by-backend-importance
-                                        company-sort-by-statistics))
-                                 (set (make-local-variable 'company-backends)
-                                      '((
-                                         company-capf
-                                         company-ghc
-                                         company-ghci
-                                         company-cabal
-                                         company-keywords
-                                         company-yasnippet
-                                         company-abbrev
-                                         company-dabbrev-code
-                                         company-dabbrev
-                                         company-dict
                                          company-files)))))
+  (add-hook 'haskell-interactive-mode-hook (lambda ()
+                                             (set (make-local-variable 'company-transformers)
+                                                  '(company-sort-by-backend-importance
+                                                    company-sort-prefer-same-case-prefix
+                                                    company-sort-by-statistics))
+                                             (set (make-local-variable 'company-backends)
+                                                  '((company-capf
+                                                     company-ghc
+                                                     company-yasnippet
+                                                     :with
+                                                     company-abbrev
+                                                     company-dabbrev-code
+                                                     company-dabbrev
+                                                     company-files))))))
 
 (use-package counsel-dash
   :defer t
