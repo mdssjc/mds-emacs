@@ -176,10 +176,9 @@
   :chords
   ("xb" . ivy-switch-buffer)
   :init
-  (setq ivy-use-virtual-buffers t
-        ivy-height 10
+  (setq ivy-height 12
         ivy-count-format "(%d/%d) "
-        ivy-initial-inputs-alist nil
+        ivy-use-virtual-buffers t
         ivy-re-builders-alist '((t . ivy--regex-plus)))
   (add-hook 'after-init-hook 'ivy-mode)
   :config
@@ -190,7 +189,9 @@
   :ensure t
   :bind
   (("C-s"   . swiper)
-   ("C-S-f" . swiper-multi)))
+   ("C-S-f" . swiper-multi))
+  :init
+  (setq swiper-include-line-number-in-search t))
 
 (use-package counsel
   :ensure t
