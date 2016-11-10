@@ -34,11 +34,18 @@
                                  ("DONE"     . "green")
                                  ("ARCHIVED" . "blue")
                                  ("CANCELED" . "red1")))
-  (add-hook 'org-mode-hook '(lambda () (set (make-local-variable 'company-backends)
-                                            '((company-capf
-                                               company-abbrev
-                                               company-yasnippet
-                                               company-ispell)))))
+  (add-hook 'org-mode-hook '(lambda ()
+                              (set (make-local-variable 'company-transformers)
+                                   '(company-sort-by-occurrence
+                                     company-sort-prefer-same-case-prefix
+                                     company-sort-by-statistics))
+                              (set (make-local-variable 'company-backends)
+                                   '((company-capf
+                                      company-abbrev
+                                      company-dabbrev
+                                      company-yasnippet
+                                      :with
+                                      company-ispell)))))
   (add-hook 'org-mode-hook 'company-mode)
   (add-hook 'org-mode-hook 'flyspell-mode)
   :config
