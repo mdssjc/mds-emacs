@@ -17,7 +17,7 @@
   :ensure t
   :mode
   ("\\.hs$"      . haskell-mode)
-  ("\\.lhs\\'"   . haskell-mode)
+  ("\\.lhs\\'"   . literate-haskell-mode)
   ("\\.hsc\\'"   . haskell-mode)
   ("\\.cpphs\\'" . haskell-mode)
   ("\\.c2hs\\'"  . haskell-mode)
@@ -69,9 +69,12 @@
   (require 'hare)
   (autoload 'hare-init "hare" nil t)
   ;; Which-key
-  (which-key-add-major-mode-key-based-replacements 'haskell-mode
-    "C-c e" "editing"
-    "C-c i" "interpreter"))
+  (mapcar
+   '(lambda (mode)
+      (which-key-add-major-mode-key-based-replacements mode
+        "C-c e" "editing"
+        "C-c i" "interpreter"))
+   [haskell-mode literate-haskell-mode]))
 
 (use-package ghc
   :ensure t)
