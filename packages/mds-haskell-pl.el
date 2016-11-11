@@ -42,12 +42,13 @@
   (use-package haskell-snippets
     :ensure t
     :defer t)
+  (add-hook 'haskell-mode-hook (lambda () (setq-local counsel-dash-docsets '("Haskell"))))
   (setq haskell-process-suggest-remove-import-lines t
         haskell-process-auto-import-loaded-modules t
         haskell-process-log t
         haskell-tags-on-save t
         ;; haskell-stylish-on-save t
-        haskell-process-type 'cabal-repl
+        ;; haskell-process-type 'cabal-repl
         company-ghc-show-info t)
   (add-hook 'haskell-mode-hook 'structured-haskell-mode)
   (add-hook 'haskell-mode-hook 'haskell-decl-scan-mode)
@@ -124,11 +125,6 @@
                                                      company-dabbrev-code
                                                      company-dabbrev
                                                      company-files))))))
-
-(use-package counsel-dash
-  :defer t
-  :init
-  (add-hook 'haskell-mode-hook (lambda () (setq-local counsel-dash-docsets '("Haskell")))))
 
 (provide 'mds-haskell-pl)
 ;;; mds-haskell-pl ends here
