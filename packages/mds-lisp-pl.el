@@ -85,7 +85,7 @@
 
 (use-package flycheck-package
   :ensure t
-  :defer t)
+  :commands flycheck-package-setup)
 
 (use-package racket-mode
   :ensure t
@@ -118,7 +118,8 @@
   (add-hook 'racket-repl-mode-hook 'racket-unicode-input-method-enable))
 
 (use-package dr-racket-like-unicode
-  :ensure t)
+  :ensure t
+  :commands dr-racket-like-unicode-mode)
 
 (use-package clojure-mode
   :ensure t
