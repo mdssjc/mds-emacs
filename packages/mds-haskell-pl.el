@@ -113,12 +113,12 @@
   (autoload 'hare-init "hare" nil t)
   ;; Which-key
   (mapcar
-   '(lambda (mode)
-      (which-key-add-major-mode-key-based-replacements mode
-        "C-c e" "editing"
-        "C-c i" "interpreter"
-        "C-c l" "lookup"
-        "C-c h" "hare"))
+   (lambda (mode)
+       (which-key-add-major-mode-key-based-replacements mode
+         "C-c e" "editing"
+         "C-c i" "interpreter"
+         "C-c l" "lookup"
+         "C-c h" "hare"))
    [haskell-mode literate-haskell-mode]))
 
 (use-package ghc
