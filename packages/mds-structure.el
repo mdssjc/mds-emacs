@@ -344,10 +344,12 @@
   (add-hook 'after-init-hook 'swap-regions-mode))
 ;; ---
 
+;; Tabbar
 (use-package tabbar
   :ensure t
   :init
   (add-hook 'after-init-hook 'tabbar-mode))
+;; ---
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
