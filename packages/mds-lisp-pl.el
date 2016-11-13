@@ -115,7 +115,8 @@
   (add-hook 'racket-mode-hook 'flyspell-prog-mode)
   (add-hook 'racket-mode-hook 'dr-racket-like-unicode-mode)
   ;; (add-hook 'racket-mode-hook 'racket-unicode-input-method-enable)
-  (add-hook 'racket-repl-mode-hook 'racket-unicode-input-method-enable))
+  (add-hook 'racket-repl-mode-hook 'racket-unicode-input-method-enable)
+  (add-hook 'racket-mode-hook (lambda () (define-key racket-mode-map (kbd "<f5>") nil))))
 
 (use-package dr-racket-like-unicode
   :ensure t
