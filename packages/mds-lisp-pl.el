@@ -83,8 +83,12 @@
   :commands litable-mode
   :diminish litable-mode " Ⓣ")
 
+(use-package package-lint
+  :ensure t)
+
 (use-package flycheck-package
   :ensure t
+  :after package-lint
   :commands flycheck-package-setup)
 
 (use-package racket-mode
