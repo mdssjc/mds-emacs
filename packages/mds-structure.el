@@ -81,6 +81,8 @@
         neo-show-hidden-files t
         neo-modern-sidebar t
         neo-theme 'nerd))
+
+(use-package tramp)
 ;; ---
 
 ;; Controle de Versão
@@ -189,6 +191,7 @@
   :ensure t
   :bind
   (("C-s"   . swiper)
+   ("S-C-s"   . swiper-all)
    ("C-S-f" . swiper-multi))
   :init
   (setq swiper-include-line-number-in-search t))
