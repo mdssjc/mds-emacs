@@ -68,6 +68,7 @@
     "<f7> b" "browser"
     "<f7> p" "projectile"
     "<f7> t" "neotree"
+    "<f7> u" "package-utils"
     "<f8> g" "magit"
     "<f8> l" "langtool"
     "<f8> r" "ripgrep"

@@ -351,5 +351,14 @@
   (add-hook 'after-init-hook 'tabbar-mode))
 ;; ---
 
+;; Package Utils
+(use-package package-utils
+  :ensure t
+  :bind
+  (("<f7> u a" . package-utils-install-async)
+   ("<f7> u u" . package-utils-upgrade-all)))
+
+;; ---
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
