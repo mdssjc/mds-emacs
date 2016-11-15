@@ -35,6 +35,7 @@
                                  ("ARCHIVED" . "blue")
                                  ("CANCELED" . "red1")))
   (add-hook 'org-mode-hook '(lambda ()
+                              (set (make-local-variable 'company-minimum-prefix-length) 3)
                               (set (make-local-variable 'company-transformers)
                                    '(company-sort-by-occurrence
                                      company-sort-prefer-same-case-prefix
