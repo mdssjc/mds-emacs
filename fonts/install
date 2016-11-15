@@ -1,0 +1,18 @@
+#########################
+# INSTALAÇÃO DAS FONTES #
+#########################
+
+Objetivo:
+  Instalar as fontes no sistema operacional ArchLinux
+
+Entre no diretórios fonts:
+  cd ~/.emacs.d/fonts
+
+Configure os arquivos com o chmod para 755:
+  chmod 755 *.ttf
+
+Copie os arquivos para o diretório /usr/share/fonts/TTF/:
+  sudo cp *.ttf /usr/share/fonts/TTF
+
+Execute o comando fc-cache:
+  sudo fc-cache
