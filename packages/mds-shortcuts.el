@@ -55,6 +55,7 @@
    "<f5> w"     'global-whitespace-mode
    ;; F7
    "<f7> f"     'keyfreq-show
+   "<f7> t"     'neotree-toggle
    ;; C-x
    "C-x Q q"    'save-buffers-kill-terminal
    "C-x Q r"    'restart-emacs))

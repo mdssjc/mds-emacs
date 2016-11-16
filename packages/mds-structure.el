@@ -16,8 +16,8 @@
 ;;  - restart-emacs: funcionalidade de reinicialização;
 ;;  - undo-tree: visualização da árvore de modificações do buffer;
 ;;  - keyfreq-mode: frequência de utilização dos atalhos;
+;;  - neotree: visualização do sistema de arquivos;
 ;;
-;;  - Visualizador de arquivos;
 ;;  - Controle de versão pelo Git;
 ;;  - Pacotes Abo-abo;
 ;;  - Seleção de partes do buffer com funcionalidades;
@@ -61,20 +61,15 @@
         keyfreq-file-lock (concat user-emacs-directory ".cache/.emacs.keyfreq.lock"))
   (add-hook 'after-init-hook '(lambda () (keyfreq-mode 1) (keyfreq-autosave-mode 1))))
 
-;; Visualizador de arquivos
 (use-package neotree
   :ensure t
-  :bind
-  (("<f7> t" . neotree-toggle))
   :init
-  (setq neo-smart-open t
+  (use-package tramp)
+  (setq neo-theme (if window-system 'icons 'nerd)
         neo-mode-line-type 'neotree
+        neo-smart-open t
         neo-show-hidden-files t
-        neo-modern-sidebar t
-        neo-theme 'nerd))
-
-(use-package tramp)
-;; ---
+        neo-keymap-style 'concise))
 
 ;; Controle de Versão
 (use-package magit
@@ -277,7 +272,8 @@
                                                         ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory
                                                                  ".cache/projectile-bookmarks.eld"))
-        projectile-sort-order 'modification-time))
+        projectile-sort-order 'modification-time
+        projectile-switch-project-action 'neotree-projectile-action))
 
 (use-package counsel-projectile
   :ensure t
