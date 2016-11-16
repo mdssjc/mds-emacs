@@ -20,7 +20,8 @@
    ("qr" . restart-emacs)
    ("xs" . save-buffer)
    ("xk" . kill-this-buffer)
-   ("xe" . eval-last-sexp))
+   ("xe" . eval-last-sexp)
+   ("gs" . magit-status))
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
@@ -56,9 +57,15 @@
    ;; F7
    "<f7> f"     'keyfreq-show
    "<f7> t"     'neotree-toggle
+   ;; F8
+   "<f8> g s"   'magit-status
+   "<f8> g S"   'magit-stage-file
+   "<f8> g g"   'magit-dispatch-popup
    ;; C-x
    "C-x Q q"    'save-buffers-kill-terminal
-   "C-x Q r"    'restart-emacs))
+   "C-x Q r"    'restart-emacs
+   "C-x g"      'magit-status)
+  (defalias 'gs 'magit-status "Magit status"))
 
 (use-package which-key
   :ensure t

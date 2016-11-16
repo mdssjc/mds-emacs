@@ -17,8 +17,8 @@
 ;;  - undo-tree: visualização da árvore de modificações do buffer;
 ;;  - keyfreq-mode: frequência de utilização dos atalhos;
 ;;  - neotree: visualização do sistema de arquivos;
+;;  - magit: controle de versão pelo Git;
 ;;
-;;  - Controle de versão pelo Git;
 ;;  - Pacotes Abo-abo;
 ;;  - Seleção de partes do buffer com funcionalidades;
 ;;  - Navegador de projetos;
@@ -71,32 +71,21 @@
         neo-show-hidden-files t
         neo-keymap-style 'concise))
 
-;; Controle de Versão
 (use-package magit
   :ensure t
   :commands magit-status
-  :bind
-  (("C-x g"    . magit-status)
-   ("<f8> g s" . magit-status)
-   ("<f8> g S" . magit-stage-file)
-   ("<f8> g g" . magit-dispatch-popup))
-  :chords
-  ("gs" . magit-status)
   :init
-  (defalias 'gs 'magit-status "Magit status"))
-
-(use-package git-timemachine
-  :ensure t)
-
-(use-package git-gutter-fringe
-  :ensure t
-  :diminish git-gutter-mode
-  :init
-  (setq git-gutter-fr:side 'right-fringe
-        git-gutter:update-interval 5)
-  :config
-  (global-git-gutter-mode t))
-;; ---
+  (use-package git-timemachine
+    :ensure t)
+  (use-package git-gutter-fringe
+    :ensure t
+    :diminish git-gutter-mode
+    :init
+    (setq git-gutter-fr:side 'right-fringe
+          git-gutter:update-interval 5)
+    :config
+    (global-git-gutter-mode t))
+  (setq magit-completing-read-function 'ivy-completing-read))
 
 ;; Abo-abo (https://github.com/abo-abo)
 (use-package avy
