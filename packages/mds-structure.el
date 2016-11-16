@@ -13,7 +13,6 @@
 ;; Conjunto de melhorias para o ambiente:
 ;;  - saveplace: salva a última posição do buffer;
 ;;  - recentf: listagem dos buffers mais recentes;
-;;  - exec-path-from-shell: variáveis ambiente do shell;
 ;;  - restart-emacs: funcionalidade de reinicialização;
 ;;  - undo-tree: visualização da árvore de modificações do buffer;
 ;;  - keyfreq-mode: frequência de utilização dos atalhos;
@@ -25,7 +24,8 @@
 ;;  - Navegador de projetos;
 ;;  - Ferramenta Ripgrep;
 ;;  - Busca/Substituição visual;
-;;  - Browser interno.
+;;  - Browser interno;
+;;  - exec-path-from-shell: variáveis ambiente do shell.
 
 ;;; Code:
 (use-package saveplace
@@ -39,15 +39,6 @@
         recentf-max-saved-items 1000
         recentf-max-menu-items 15)
   (add-hook 'after-init-hook 'recentf-mode))
-
-(use-package exec-path-from-shell
-  :ensure t
-  :demand t
-  :init
-  (setq exec-path-from-shell-check-startup-files nil)
-  :config
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
 
 (use-package restart-emacs
   :ensure t
@@ -360,7 +351,26 @@
   :bind
   (("<f7> u a" . package-utils-install-async)
    ("<f7> u u" . package-utils-upgrade-all)))
+;; ---
 
+;; Purcell (https://github.com/purcell)
+(use-package exec-path-from-shell
+  :ensure t
+  :demand t
+  :init
+  (setq exec-path-from-shell-check-startup-files nil)
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
+;; (add-to-list 'load-path (concat user-emacs-directory "temp/dashboard"))
+(use-package page-break-lines
+  :ensure t
+  :disabled t)
+(use-package dashboard
+  :disabled t
+  :config
+  (dashboard-setup-startup-hook))
 ;; ---
 
 (provide 'mds-structure)
