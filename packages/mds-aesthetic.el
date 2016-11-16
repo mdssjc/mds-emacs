@@ -53,6 +53,11 @@
   :ensure t
   :defer t)
 
+(use-package all-the-icons-dired
+  :ensure t
+  :init
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+
 (use-package beacon
   :ensure t
   :defer t
