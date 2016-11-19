@@ -50,11 +50,10 @@
 (use-package company-statistics
   :ensure t
   :init
-  (setq company-statistics-size 2500
+  (setq company-statistics-size 600
         company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")
-        company-statistics-auto-save nil)
-  (add-hook 'company-mode-hook 'company-statistics-mode)
-  (add-hook 'after-save-hook 'company-statistics--maybe-save))
+        company-statistics-auto-save t)
+  (add-hook 'company-mode-hook 'company-statistics-mode))
 
 (use-package company-dict
   :ensure t
