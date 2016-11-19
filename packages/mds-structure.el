@@ -178,13 +178,11 @@
    ("M-y"     . counsel-yank-pop)
    ("C-x C-f" . counsel-find-file)
    ("C-x C-r" . counsel-recentf)
-   ("C-c /"   . counsel-ag))
+   ("C-c /"   . counsel-rg))
   :chords
   ("xm" . counsel-M-x)
   ("xf" . counsel-find-file)
-  ("xr" . counsel-recentf)
-  :init
-  (setq counsel-ag-base-command "rg -i --color=never --no-heading %s"))
+  ("xr" . counsel-recentf))
 
 (use-package smex
   :ensure t)
