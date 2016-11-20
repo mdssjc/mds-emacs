@@ -346,13 +346,14 @@
     (exec-path-from-shell-initialize)))
 
 ;; (add-to-list 'load-path (concat user-emacs-directory "temp/dashboard"))
-(use-package page-break-lines
-  :ensure t
-  :disabled t)
-(use-package dashboard
-  :disabled t
-  :config
-  (dashboard-setup-startup-hook))
+;; (use-package page-break-lines
+;;   :ensure t
+;;   :disabled t)
+;; (use-package dashboard
+;;   :ensure t
+;;   ;; :disabled t
+;;   :config
+;;   (dashboard-setup-startup-hook))
 ;; ---
 
 (provide 'mds-structure)
