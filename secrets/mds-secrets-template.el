@@ -14,7 +14,8 @@
 
 ;;; Code:
 (setq user-full-name    "<seu nome>"
-      user-mail-address "<usuario>@<servidor>")
+      user-mail-address "<usuario>@<servidor>"
+      user-city         "<sua cidade>")
 
 ;; Tokens
 ;; (setq service-token "---")
