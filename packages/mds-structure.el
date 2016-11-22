@@ -166,7 +166,7 @@
   :ensure t
   :bind
   (("C-s"   . swiper)
-   ("S-C-s"   . swiper-all)
+   ("S-C-s" . swiper-all)
    ("C-S-f" . swiper-multi))
   :init
   (setq swiper-include-line-number-in-search t))
@@ -195,30 +195,51 @@
   :bind
   (("C-=" . er/expand-region))
   :chords
-  (("vv" . hydra-expand-region/body))
+  (("VV" . hydra-expand-region/body))
   :init
-  (require 'expand-region)
   (defhydra hydra-expand-region (:columns 4 :color blue)
     "Mark"
     ("w" er/mark-word               "word")
     ("s" er/mark-symbol             "symbol")
+    ("d" er/mark-defun              "defun")
+    ("P" er/mark-inside-pairs       "inside-pairs")
+    ("p" er/mark-outside-pairs      "outside-pairs")
+    ("Q" er/mark-inside-quotes      "inside-quotes")
+    ("q" er/mark-outside-quotes     "outside-quotes")
+    ("." er/mark-sentence           "sentence")
+    ("h" er/mark-paragraph          "paragraph")
     ("S" er/mark-symbol-with-prefix "symbol-with-prefix")
     ("n" er/mark-next-accessor      "next-accessor")
     ("m" er/mark-method-call        "method-call")
-    ("i" er/mark-inside-quotes      "inside-quotes")
-    ("I" er/mark-outside-quotes     "outside-quotes")
-    ("p" er/mark-inside-pairs       "inside-pairs")
-    ("P" er/mark-outside-pairs      "outside-pairs")
     ("c" er/mark-comment            "comment")
     ("u" er/mark-url                "url")
     ("e" er/mark-email              "email")
-    ("d" er/mark-defun              "defun")
-    ("q" nil                        "quit")))
+    ("0" nil                        "quit")))
 
 (use-package embrace
   :ensure t
   :chords
-  (("ss" . embrace-commander)))
+  (("SS" . embrace-commander))
+  :init
+  (setq semantics-units '((?w . er/mark-word)
+                          (?s . er/mark-symbol)
+                          (?d . er/mark-defun)
+                          (?P . er/mark-inside-pairs)
+                          (?p . er/mark-outside-pairs)
+                          (?Q . er/mark-inside-quotes)
+                          (?q . er/mark-outside-quotes)
+                          (?. . er/mark-sentence)
+                          (?h . er/mark-paragraph)
+                          (?S . er/mark-symbol-with-prefix)
+                          (?n . er/mark-next-accessor)
+                          (?m . er/mark-method-call)
+                          (?c . er/mark-comment)
+                          (?u . er/mark-url)
+                          (?e . er/mark-email)))
+  (add-hook 'text-mode-hook '(lambda () (setq embrace-semantic-units-alist
+                                         (append embrace-semantic-units-alist semantics-units))))
+  (add-hook 'prog-mode-hook '(lambda () (setq embrace-semantic-units-alist
+                                         (append embrace-semantic-units-alist semantics-units)))))
 
 (use-package selected
   :ensure t
@@ -285,8 +306,7 @@
   :bind
   (("<f7> b e" . eww))
   :config
-  (setq url-configuration-directory (concat user-emacs-directory
-                                            ".cache/url")))
+  (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
 
 ;; Imenu
 (use-package popup-imenu
@@ -355,6 +375,19 @@
 ;;   :config
 ;;   (dashboard-setup-startup-hook))
 ;; ---
+
+(use-package boon
+  :ensure t
+  :disabled t
+  :commands boon-mode
+  :bind
+  (:map boon-command-map
+        ("S" . embrace-commander))
+  :init
+  (add-hook 'after-init-hook 'boon-mode)
+  ;; (define-key boon-command-map "S" 'embrace-commander)
+  :config
+  (require 'boon-qwerty))
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
