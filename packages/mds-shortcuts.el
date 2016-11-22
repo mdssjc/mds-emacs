@@ -79,6 +79,7 @@
     "<f7> u" "package-utils"
     "<f8> g" "magit"
     "<f8> l" "langtool"
+    "<f8> n" "news"
     "<f8> r" "ripgrep"
     "<f8> s" "ispell"
     "C-c !"  "flycheck"
