@@ -1,6 +1,6 @@
 # MDS - Emacs
 
-O projeto tem como objetivo ser um modelo de configuração do *Emacs* para o dia a dia do programador nas seguintes tecnologias: *Lisp*, *Java*, *C*, *Web* e Escrita (*Latex*, *Markdown*, Texto e etc...) - voltado para os amantes em personalização de ferramentas.
+O projeto tem como objetivo ser um modelo de configuração do *Emacs* para o dia a dia do programador nas seguintes tecnologias: *Lisp*, *Java*, *Haskell*, *C*, *Web* e Escrita (*Latex*, *Markdown*, Texto e etc...) - voltado para os amantes em personalização de ferramentas.
 
 Versão do *Emacs*: 26.0.50
 
@@ -54,7 +54,7 @@ Descrição da composição do projeto.
 
 Conjunto de pacotes para o ambiente:
 
-* Estético: estilo ergonômico e sem distrações/ruídos - tema *dark*, linha de *status* com ícones.
+* Estético: estilo ergonômico e sem distrações/ruídos - tema *dark* e linha de *status* com ícones.
 * Sintaxe: conjuntos de funcionalidades para facilitar a codificação e escrita.
    * Autocompletar: sugestão de texto, conforme modo maior.
    * Correção: sugestão para palavras selecionadas, conforme dicionário (português por padrão).
@@ -75,9 +75,13 @@ Conjunto de pacotes para o ambiente:
    * Cliente *Git*.
    * Pacotes *Abo-abo*: *Avy*, *Ace-Window*, *Ivy*, *Swiper*, *Counsel* e *Hydra*.
    * Ferramenta *Ripgrep*.
+* Notícias:
+   * *Feeds*:
+   * *Twitter*:
 * Linguagens de Programação:
    * *Lisp*: dialetos *ELisp* (*Emacs Lisp*) e *Racket*.
    * *Java*: servidor *Meghanada*.
+   * *Haskell*: em testes.
    * *C*: (sem configurações).
 * Linguagens de Marcação:
    * *Markdown*: arquivos .md.
