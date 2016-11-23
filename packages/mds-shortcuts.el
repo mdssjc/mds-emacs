@@ -35,6 +35,8 @@
                       ;; File
                       "f l" 'find-file-literally
                       "f s" 'save-buffer
+                      ;; Highlight
+                      "h t h" 'hl-todo-mode
                       ;; Narrow & Widen
                       "n r" 'narrow-to-region
                       "n p" 'narrow-to-page
@@ -43,6 +45,10 @@
                       ;; Tabs
                       "t t" 'tabify
                       "t u" 'untabify)
+  (general-define-key :prefix super-key :keymaps 'hl-todo-mode-map
+                      "h t p" 'hl-todo-previous
+                      "h t n" 'hl-todo-next
+                      "h t o" 'hl-todo-occur)
   (general-define-key
    "<C-tab>"    'cycle-spacing
    "S-SPC"      'cycle-spacing
@@ -50,6 +56,7 @@
    "M-/"        'hippie-expand
    "S-C-j"      'join-line
    ;; F5
+   "<f5> h"     'hl-todo-mode
    "<f5> l"     'linum-mode
    "<f5> r"     'read-only-mode
    "<f5> t"     'toggle-truncate-lines
@@ -87,11 +94,13 @@
     "C-c p"  "projectile"
     "C-c /"  "counsel-rg"
     "C-x Q"  "quit/restart"
-    "<C-M-return> a" "align"
-    "<C-M-return> b" "buffer"
-    "<C-M-return> f" "file"
-    "<C-M-return> n" "narrow & widen"
-    "<C-M-return> t" "tabify")
+    "<C-M-return> a"   "align"
+    "<C-M-return> b"   "buffer"
+    "<C-M-return> f"   "file"
+    "<C-M-return> h"   "highlight"
+    "<C-M-return> h t" "todo"
+    "<C-M-return> n"   "narrow & widen"
+    "<C-M-return> t"   "tabify")
   (which-key-mode 1))
 
 (use-package golden-ratio

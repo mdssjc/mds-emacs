@@ -413,5 +413,11 @@
   :config
   (require 'boon-qwerty))
 
+(use-package hl-todo
+  :ensure t
+  :commands hl-todo-mode
+  :init
+  (add-hook 'prog-mode-hook 'hl-todo-mode))
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
