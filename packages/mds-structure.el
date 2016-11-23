@@ -247,6 +247,7 @@
   :bind
   (("<f5> m" . selected-global-mode)
    :map selected-keymap
+   ("\\" . hydra-selected/body)
    ("q" . selected-off)
    ("U" . upcase-region)
    ("D" . downcase-region)
@@ -264,7 +265,30 @@
    ("e" . org-emphasize))
   :init
   (defvar selected-org-mode-map (make-sparse-keymap))
-  (add-hook 'after-init-hook 'selected-global-mode))
+  (add-hook 'after-init-hook 'selected-global-mode)
+  (defhydra hydra-selected (:color blue :hint nil :post (deactivate-mark))
+    "
+ Selected
+ Case: _U_p | _D_own                          count _W_ords                           ^^^^^^+-^^----------+
+ Camel-case: _l_ower | _u_pper                apply _m_acro                           ^^^^^^| ^^ Org Mode |
+ Transformation: _w_ords | _s_nake | _d_ashed | _c_apitalized | _t_itleized  | _i_nitials   | _e_mphasize |
+^^^^^^^^^^^^                                                                                +-^^----------+
+    "
+    ("<ESC>" nil "quit")
+    ("q" selected-off)
+    ("U" upcase-region)
+    ("D" downcase-region)
+    ("W" count-words-region)
+    ("m" apply-macro-to-region-lines)
+    ("w" mds/split-words)
+    ("l" mds/lower-camel-case)
+    ("u" mds/upper-camel-case)
+    ("s" mds/snake-case)
+    ("d" mds/dashed-words)
+    ("c" mds/capitalized-words)
+    ("t" mds/titleized-words)
+    ("i" mds/word-initials)
+    ("e" org-emphasize)))
 ;; ---
 
 ;; Projeto
