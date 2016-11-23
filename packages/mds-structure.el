@@ -10,7 +10,7 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Conjunto de melhorias para o ambiente:
+;; Conjunto estrutural de melhorias/funcionalidades para o ambiente:
 ;;  - saveplace: salva a última posição do buffer;
 ;;  - recentf: listagem dos buffers mais recentes;
 ;;  - restart-emacs: funcionalidade de reinicialização;
@@ -22,8 +22,8 @@
 ;;  - Pacotes Abo-abo;
 ;;  - Seleção de partes do buffer com funcionalidades;
 ;;  - Navegador de projetos;
-;;  - Ferramenta Ripgrep;
-;;  - Busca/Substituição visual;
+;;  - ripgrep: ferramenta de busca Ripgrep (rg);
+;;  - visual-regexp: busca/substituição com indicação visual;
 ;;  - Browser interno;
 ;;  - exec-path-from-shell: variáveis ambiente do shell.
 
