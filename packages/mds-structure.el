@@ -266,7 +266,7 @@
   :init
   (defvar selected-org-mode-map (make-sparse-keymap))
   (add-hook 'after-init-hook 'selected-global-mode)
-  (defhydra hydra-selected (:color blue :hint nil :post (deactivate-mark))
+  (defhydra hydra-selected (:color blue :hint nil)
     "
  Selected
  Case: _U_p | _D_own                          count _W_ords                           ^^^^^^+-^^----------+
