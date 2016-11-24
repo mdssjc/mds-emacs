@@ -75,7 +75,6 @@
                                                       company-dabbrev
                                                       company-files)))))
   (add-hook 'emacs-lisp-mode-hook 'flycheck-package-setup)
-  (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
   (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode))
 
 (use-package litable
