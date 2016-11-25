@@ -47,6 +47,7 @@
   (add-hook 'c-mode-hook 'yas-minor-mode)
   (add-hook 'c-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook (lambda () (setq-local counsel-dash-docsets '("C"))))
+  (add-hook 'c-mode-hook 'electric-spacing-mode)
   :config
   (add-to-list 'company-c-headers-path-system "/usr/include/c++/6.2.1"))
 

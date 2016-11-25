@@ -419,5 +419,10 @@
   :init
   (add-hook 'prog-mode-hook 'hl-todo-mode))
 
+(use-package electric-spacing
+  :ensure t
+  :diminish electric-spacing-mode
+  :commands electric-spacing-mode)
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
