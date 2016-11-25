@@ -62,6 +62,7 @@
    "<f5> t"     'toggle-truncate-lines
    "<f5> w"     'global-whitespace-mode
    ;; F7
+   "<f7> e"     'eshell
    "<f7> f"     'keyfreq-show
    "<f7> t"     'neotree-toggle
    ;; F8

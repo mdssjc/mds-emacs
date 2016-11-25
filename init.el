@@ -168,6 +168,8 @@
 (require 'mds-semantic)
 ;; Pragmático (Pragmatic)
 (require 'mds-pragmatic)
+;; Terminal (Terminal)
+(require 'mds-terminal)
 ;; Linguagem de Programação (Programming Language)
 (require 'mds-lisp-pl)
 (require 'mds-haskell-pl)
