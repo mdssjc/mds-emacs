@@ -51,7 +51,9 @@
    ("C-TAB"   . nil)
    ("C-;"     . nil)
    ("C-,"     . nil)
-   ("C-."     . nil))
+   ("C-."     . nil)
+   :map flyspell-mode-map
+   ("C-M-$" . flyspell-popup-correct))
   :init
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
   (add-hook 'text-mode-hook 'flyspell-mode))
@@ -70,11 +72,7 @@
 
 (use-package flyspell-popup
   :ensure t
-  :after flyspell
-  ;; :bind
-  ;; (:map flyspell-mode-map
-  ;;       ("C-;" . flyspell-popup-correct))
-  )
+  :after flyspell)
 ;; ---
 
 (use-package langtool
