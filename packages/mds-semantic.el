@@ -40,10 +40,21 @@
   :ensure t
   :diminish flyspell-mode " Ⓢ"
   :bind
-  (("<f5> S" . flyspell-mode))
+  (("<f5> S" . flyspell-mode)
+   :map flyspell-mode-map
+   ("C-$ TAB" . flyspell-auto-correct-word)
+   ("C-$ ;" . flyspell-auto-correct-previous-word)
+   ("C-$ ," . flyspell-goto-next-error)
+   ("C-$ ." . flyspell-auto-correct-word)
+   ("C-$ $" . flyspell-correct-word-before-point))
   :init
+  (setq flyspell-auto-correct-binding nil
+        flyspell-mode-map nil)
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-  (add-hook 'text-mode-hook 'flyspell-mode))
+  (add-hook 'text-mode-hook 'flyspell-mode)
+  :config
+  (define-key flyspell-mode-map (kbd "C-M-i") nil)
+  (define-key flyspell-mode-map (kbd "C-;") nil))
 
 (use-package flyspell-correct
   :ensure t
@@ -60,9 +71,10 @@
 (use-package flyspell-popup
   :ensure t
   :after flyspell
-  :bind
-  (:map flyspell-mode-map
-        ("C-;" . flyspell-popup-correct)))
+  ;; :bind
+  ;; (:map flyspell-mode-map
+  ;;       ("C-;" . flyspell-popup-correct))
+  )
 ;; ---
 
 (use-package langtool
