@@ -43,18 +43,18 @@
   (("<f5> S" . flyspell-mode)
    :map flyspell-mode-map
    ("C-$ TAB" . flyspell-auto-correct-word)
-   ("C-$ ;" . flyspell-auto-correct-previous-word)
-   ("C-$ ," . flyspell-goto-next-error)
-   ("C-$ ." . flyspell-auto-correct-word)
-   ("C-$ $" . flyspell-correct-word-before-point))
+   ("C-$ ;"   . flyspell-auto-correct-previous-word)
+   ("C-$ ,"   . flyspell-goto-next-error)
+   ("C-$ ."   . flyspell-auto-correct-word)
+   ("C-$ $"   . flyspell-correct-word-before-point)
+   ("C-M-i"   . nil)
+   ("C-TAB"   . nil)
+   ("C-;"     . nil)
+   ("C-,"     . nil)
+   ("C-."     . nil))
   :init
-  (setq flyspell-auto-correct-binding nil
-        flyspell-mode-map nil)
   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-  (add-hook 'text-mode-hook 'flyspell-mode)
-  :config
-  (define-key flyspell-mode-map (kbd "C-M-i") nil)
-  (define-key flyspell-mode-map (kbd "C-;") nil))
+  (add-hook 'text-mode-hook 'flyspell-mode))
 
 (use-package flyspell-correct
   :ensure t
