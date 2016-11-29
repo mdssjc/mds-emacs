@@ -84,13 +84,13 @@
     (setq git-gutter-fr:side 'right-fringe
           git-gutter:update-interval 5)
     :config
-    (global-git-gutter-mode t)
-    (setq magit-completing-read-function 'ivy-completing-read)
-    (add-to-list 'load-path (concat user-emacs-directory "temp/magithub"))
-    (use-package magithub
-      :after magit
-      :init
-      (require 'magithub))))
+    (global-git-gutter-mode t))
+  (setq magit-completing-read-function 'ivy-completing-read)
+  (add-to-list 'load-path (concat user-emacs-directory "temp/magithub"))
+  (use-package magithub
+    :after magit
+    :init
+    (require 'magithub)))
 
 ;; Abo-abo (https://github.com/abo-abo)
 (use-package avy
