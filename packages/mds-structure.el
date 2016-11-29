@@ -394,15 +394,10 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
-;; (add-to-list 'load-path (concat user-emacs-directory "temp/dashboard"))
-;; (use-package page-break-lines
-;;   :ensure t
-;;   :disabled t)
-;; (use-package dashboard
-;;   :ensure t
-;;   ;; :disabled t
-;;   :config
-;;   (dashboard-setup-startup-hook))
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
 ;; ---
 
 (use-package boon
