@@ -96,7 +96,11 @@
 (use-package avy
   :ensure t
   :bind
-  (("C-:" . avy-goto-char-timer))
+  (("C-:"   . avy-goto-char-timer)
+   ("M-g f" . avy-goto-line)
+   ("M-g e" . avy-goto-word-0)
+   :map isearch-mode-map
+   ("C-'" . avy-isearch))
   :config
   (setq avy-timeout-seconds 0.3
         avy-background t))
