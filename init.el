@@ -29,6 +29,12 @@
   (require 'use-package))
 (require 'diminish)
 (require 'bind-key)
+
+(use-package async
+  :ensure t
+  :init
+  (setq async-bytecomp-allowed-packages '(all))
+  (add-hook 'after-init-hook 'async-bytecomp-package-mode))
 ;; ---
 
 ;; Configurações Globais (Global Settings)
@@ -191,7 +197,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (electric-spacing company-c-headers hl-todo elfeed twittering-mode wttrin boon dashboard all-the-icons-dired package-utils smex tabbar ido-describe-bindings ido-grid-mode ido-occur flex-isearch markdown-mode emmet-mode web-mode jdee zeal-at-point writeroom-mode which-key volatile-highlights visual-regexp use-package-chords undo-tree swap-regions spacemacs-theme spaceline shm selected ripgrep restart-emacs rainbow-delimiters racket-mode popup-imenu parinfer org-bullets neotree move-dup mode-icons meghanada magit litable lispy langtool keyfreq java-snippets info+ haskell-snippets golden-ratio git-timemachine git-gutter-fringe general focus flyspell-popup flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-haskell f exec-path-from-shell esup engine-mode emojify embrace dr-racket-like-unicode counsel-projectile counsel-dash company-statistics company-quickhelp company-ghc company-dict cider centered-cursor-mode beacon auto-yasnippet all-the-icons))))
+    (emacs-async electric-spacing company-c-headers hl-todo elfeed twittering-mode wttrin boon dashboard all-the-icons-dired package-utils smex tabbar ido-describe-bindings ido-grid-mode ido-occur flex-isearch markdown-mode emmet-mode web-mode jdee zeal-at-point writeroom-mode which-key volatile-highlights visual-regexp use-package-chords undo-tree swap-regions spacemacs-theme spaceline shm selected ripgrep restart-emacs rainbow-delimiters racket-mode popup-imenu parinfer org-bullets neotree move-dup mode-icons meghanada magit litable lispy langtool keyfreq java-snippets info+ haskell-snippets golden-ratio git-timemachine git-gutter-fringe general focus flyspell-popup flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-haskell f exec-path-from-shell esup engine-mode emojify embrace dr-racket-like-unicode counsel-projectile counsel-dash company-statistics company-quickhelp company-ghc company-dict cider centered-cursor-mode beacon auto-yasnippet all-the-icons))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
