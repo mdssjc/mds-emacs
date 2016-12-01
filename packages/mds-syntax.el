@@ -103,21 +103,53 @@
 (use-package yasnippet
   :ensure t
   :diminish yas-minor-mode " ⓨ"
-  :commands yas-global-mode yas-minor-mode
+  :commands yas-minor-mode yas-global-mode
   :bind
-  (("<f5> y" . yas-global-mode))
+  (:map yas-minor-mode-map
+        ("C-&" . hydra-yasnippet/body))
   :init
   (setq yas-prompt-functions '(yas-x-prompt
                                yas-dropdown-prompt))
+  (add-hook 'prog-mode-hook 'yas-minor-mode)
   :config
   (yas-reload-all))
 
 (use-package auto-yasnippet
   :ensure t
+  :after yasnippet
   :bind
-  (("C-c & w" . aya-create)
-   ("C-c & y" . aya-expand)
-   ("C-c & o" . aya-open-line)))
+  (:map yas-minor-mode-map
+        ("C-c & w" . aya-create)
+        ("C-c & y" . aya-expand)
+        ("C-c & o" . aya-open-line)))
+
+(defhydra hydra-yasnippet (:color blue :hint nil)
+  "
+             ^YASnippets^
+--^------^---^-----------^---^--------^--
+  ^Modes:^   ^Load/Visit:^   ^Actions:^
+  _g_lobal   _d_irectory     _i_nsert
+  _m_inor    _f_ile          _t_ryout
+  _e_xtra    _l_ist          _n_ew
+  ^ ^        _a_ll
+---
+Others:
+"
+  ("<ESC>" nil nil)
+  ("q" nil nil)
+  ("g" yas/global-mode)
+  ("m" yas/minor-mode)
+  ("e" yas-activate-extra-mode)
+  ("d" yas-load-directory)
+  ("f" yas-visit-snippet-file :color blue)
+  ("l" yas-describe-tables)
+  ("a" yas-reload-all)
+  ("i" yas-insert-snippet)
+  ("t" yas-tryout-snippet)
+  ("n" yas-new-snippet)
+  ("c" aya-create    "aya-create")
+  ("x" aya-expand    "aya-expand")
+  ("o" aya-open-line "aya-open"))
 
 (provide 'mds-syntax)
 ;;; mds-syntax.el ends here

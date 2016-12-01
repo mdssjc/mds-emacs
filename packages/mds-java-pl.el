@@ -22,7 +22,6 @@
   (use-package java-snippets
     :ensure t
     :defer t)
-  (add-hook 'java-mode-hook 'yas-minor-mode)
   (add-hook 'java-mode-hook 'flycheck-mode)
   (add-hook 'java-mode-hook (lambda () (setq-local counsel-dash-docsets '("Java_SE8"
                                                                      "Java_EE7"

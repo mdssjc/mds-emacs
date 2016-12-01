@@ -74,8 +74,7 @@
                                                       company-dabbrev-code
                                                       company-dabbrev
                                                       company-files)))))
-  (add-hook 'emacs-lisp-mode-hook 'flycheck-package-setup)
-  (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode))
+  (add-hook 'emacs-lisp-mode-hook 'flycheck-package-setup))
 
 (use-package litable
   :ensure t
