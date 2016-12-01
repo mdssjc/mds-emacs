@@ -76,10 +76,12 @@
   :commands magit-status
   :init
   (use-package git-timemachine
-    :ensure t)
+    :ensure t
+    :after magit)
   (use-package git-gutter-fringe
     :ensure t
     :diminish git-gutter-mode
+    :after magit
     :init
     (setq git-gutter-fr:side 'right-fringe
           git-gutter:update-interval 5)
