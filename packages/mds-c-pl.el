@@ -22,11 +22,15 @@
   (setq c-default-style "k&r"
         speedbar-show-unknow-files t
         semanticdb-default-save-directory (concat user-emacs-directory ".cache/semanticdb")
-        semantic-default-submodes '(global-semantic-idle-completions-mode
-                                    global-semantic-idle-scheduler-mode
-                                    global-semantic-idle-summary-mode
+        semantic-default-submodes '(global-semantic-idle-scheduler-mode
                                     global-semanticdb-minor-mode
-                                    global-semantic-stickyfunc-mode))
+                                    global-semantic-idle-summary-mode
+                                    global-semantic-idle-completions-mode
+                                    global-semantic-highlight-func-mode
+                                    global-semantic-decoration-mode
+                                    global-semantic-stickyfunc-mode
+                                    global-semantic-mru-bookmark-mode
+                                    global-semantic-idle-local-symbol-highlight-mode))
   (setq company-backends (remove 'company-clang company-backends))
   (add-hook 'c-mode-hook '(lambda ()
                             (set (make-local-variable 'company-transformers)
