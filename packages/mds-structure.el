@@ -400,10 +400,10 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
-;; (use-package dashboard
-;;   :ensure t
-;;   :config
-;;   (dashboard-setup-startup-hook))
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
 ;; ---
 
 (use-package boon
