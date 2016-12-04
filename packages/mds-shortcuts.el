@@ -26,7 +26,8 @@
    ("xr" . counsel-recentf)
    ("xe" . eval-last-sexp)
    ("gs" . magit-status)
-   ("VV" . hydra-expand-region/body))
+   ("VV" . hydra-expand-region/body)
+   ("SS" . embrace-commander))
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key

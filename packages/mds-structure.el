@@ -171,7 +171,6 @@
 (use-package smex
   :ensure t)
 
-;; Seleção
 (use-package expand-region
   :ensure t
   :commands er/expand-region
@@ -197,8 +196,6 @@
 
 (use-package embrace
   :ensure t
-  :chords
-  (("SS" . embrace-commander))
   :init
   (setq semantics-units '((?w . er/mark-word)
                           (?s . er/mark-symbol)
