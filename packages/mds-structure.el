@@ -309,7 +309,7 @@
   :bind
   (("<f7> p" . projectile-command-map))
   :init
-  (add-hook 'after-init-hook 'projectile-global-mode)
+  (projectile-mode t)
   :config
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
@@ -402,6 +402,10 @@
 
 (use-package dashboard
   :ensure t
+  :init
+  (setq dashboard-items '((recents   . 5)
+                          (bookmarks . 5)
+                          (projects  . 5)))
   :config
   (dashboard-setup-startup-hook))
 ;; ---
