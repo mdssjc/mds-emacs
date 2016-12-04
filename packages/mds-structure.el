@@ -220,28 +220,10 @@
 (use-package selected
   :ensure t
   :commands selected-minor-mode selected-global-mode
-  :bind
-  (("<f5> m" . selected-global-mode)
-   :map selected-keymap
-   ("\\" . hydra-selected/body)
-   ("q" . selected-off)
-   ("U" . upcase-region)
-   ("D" . downcase-region)
-   ("W" . count-words-region)
-   ("m" . apply-macro-to-region-lines)
-   ("w" . mds/split-words)
-   ("l" . mds/lower-camel-case)
-   ("u" . mds/upper-camel-case)
-   ("s" . mds/snake-case)
-   ("d" . mds/dashed-words)
-   ("c" . mds/capitalized-words)
-   ("t" . mds/titleized-words)
-   ("i" . mds/word-initials)
-   :map selected-org-mode-map
-   ("e" . org-emphasize))
   :init
   (defvar selected-org-mode-map (make-sparse-keymap))
   (add-hook 'after-init-hook 'selected-global-mode)
+  :config
   (defhydra hydra-selected (:color blue :hint nil)
     "
  Selected
@@ -265,7 +247,6 @@
     ("t" mds/titleized-words)
     ("i" mds/word-initials)
     ("e" org-emphasize)))
-;; ---
 
 ;; Projeto
 (use-package projectile

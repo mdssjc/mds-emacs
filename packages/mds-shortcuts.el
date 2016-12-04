@@ -57,6 +57,23 @@
                       "h t o" 'hl-todo-occur)
   (general-define-key :keymaps 'isearch-mode-map
                       "<C-'>" 'avy-isearch)
+  (general-define-key :keymaps 'selected-keymap
+                      "\\" 'hydra-selected/body
+                      "q"  'selected-off
+                      "U"  'upcase-region
+                      "D"  'downcase-region
+                      "W"  'count-words-region
+                      "m"  'apply-macro-to-region-lines
+                      "w"  'mds/split-words
+                      "l"  'mds/lower-camel-case
+                      "u"  'mds/upper-camel-case
+                      "s"  'mds/snake-case
+                      "d"  'mds/dashed-words
+                      "c"  'mds/capitalized-words
+                      "t"  'mds/titleized-words
+                      "i"  'mds/word-initials)
+  (general-define-key :keymaps 'selected-org-mode-map
+                      "e" 'org-emphasize)
   (general-define-key
    "<C-tab>"    'cycle-spacing
    "S-SPC"      'cycle-spacing
@@ -79,6 +96,7 @@
    ;; F5
    "<f5> h"     'hl-todo-mode
    "<f5> l"     'linum-mode
+   "<f5> m"     'selected-global-mode
    "<f5> r"     'read-only-mode
    "<f5> t"     'toggle-truncate-lines
    "<f5> w"     'global-whitespace-mode
