@@ -150,8 +150,6 @@
   :ensure t
   :commands ivy-mode
   :diminish ivy-mode
-  :chords
-  ("xb" . ivy-switch-buffer)
   :init
   (setq ivy-height 12
         ivy-count-format "(%d/%d) "

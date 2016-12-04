@@ -18,6 +18,7 @@
   :chords
   (("qq" . save-buffers-kill-terminal)
    ("qr" . restart-emacs)
+   ("xb" . ivy-switch-buffer)
    ("xs" . save-buffer)
    ("xk" . kill-this-buffer)
    ("xe" . eval-last-sexp)
