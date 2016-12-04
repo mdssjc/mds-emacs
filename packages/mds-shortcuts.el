@@ -25,7 +25,8 @@
    ("xf" . counsel-find-file)
    ("xr" . counsel-recentf)
    ("xe" . eval-last-sexp)
-   ("gs" . magit-status))
+   ("gs" . magit-status)
+   ("VV" . hydra-expand-region/body))
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
@@ -73,6 +74,7 @@
    "C-x C-f"    'counsel-find-file
    "C-x C-r"    'counsel-recentf
    "C-c /"      'counsel-rg
+   "C-="        'er/expand-region
    ;; F5
    "<f5> h"     'hl-todo-mode
    "<f5> l"     'linum-mode

@@ -174,12 +174,8 @@
 ;; Seleção
 (use-package expand-region
   :ensure t
-  :after hydra
-  :bind
-  (("C-=" . er/expand-region))
-  :chords
-  (("VV" . hydra-expand-region/body))
-  :init
+  :commands er/expand-region
+  :config
   (defhydra hydra-expand-region (:columns 4 :color blue)
     "Mark"
     ("w" er/mark-word               "word")
