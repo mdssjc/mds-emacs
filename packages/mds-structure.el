@@ -162,10 +162,6 @@
 
 (use-package swiper
   :ensure t
-  :bind
-  (("C-s"   . swiper)
-   ("S-C-s" . swiper-all)
-   ("C-S-f" . swiper-multi))
   :init
   (setq swiper-include-line-number-in-search t))
 

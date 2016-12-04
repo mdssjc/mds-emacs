@@ -62,6 +62,9 @@
    "C-:"        'avy-goto-char-timer
    "M-g f"      'avy-goto-line
    "M-g e"      'avy-goto-word-0
+   "C-s"        'swiper
+   "S-C-s"      'swiper-all
+   "C-S-f"      'swiper-multi
    ;; F5
    "<f5> h"     'hl-todo-mode
    "<f5> l"     'linum-mode
