@@ -13,6 +13,14 @@
 ;; Atalhos do ambiente.
 
 ;;; Code:
+(use-package use-package-chords
+  :ensure t
+  :init
+  (add-hook 'after-init-hook '(lambda () (key-chord-mode t)))
+  :config
+  (setq key-chord-two-keys-delay 0.15
+        key-chord-one-key-delay  0.15))
+
 (use-package general
   :ensure t
   :chords
