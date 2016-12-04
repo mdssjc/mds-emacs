@@ -55,6 +55,7 @@
    "<C-tab>"    'cycle-spacing
    "S-SPC"      'cycle-spacing
    ;; "<C-return>" 'mds/insert-lines-between
+   "M-p"        'ace-window
    "M-/"        'hippie-expand
    "S-C-j"      'join-line
    "C-:"        'avy-goto-char-timer
