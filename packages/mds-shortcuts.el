@@ -21,6 +21,9 @@
    ("xb" . ivy-switch-buffer)
    ("xs" . save-buffer)
    ("xk" . kill-this-buffer)
+   ("xm" . counsel-M-x)
+   ("xf" . counsel-find-file)
+   ("xr" . counsel-recentf)
    ("xe" . eval-last-sexp)
    ("gs" . magit-status))
   :config
@@ -65,6 +68,11 @@
    "C-s"        'swiper
    "S-C-s"      'swiper-all
    "C-S-f"      'swiper-multi
+   "M-x"        'counsel-M-x
+   "M-y"        'counsel-yank-pop
+   "C-x C-f"    'counsel-find-file
+   "C-x C-r"    'counsel-recentf
+   "C-c /"      'counsel-rg
    ;; F5
    "<f5> h"     'hl-todo-mode
    "<f5> l"     'linum-mode

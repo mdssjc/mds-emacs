@@ -166,21 +166,10 @@
   (setq swiper-include-line-number-in-search t))
 
 (use-package counsel
-  :ensure t
-  :bind
-  (("M-x"     . counsel-M-x)
-   ("M-y"     . counsel-yank-pop)
-   ("C-x C-f" . counsel-find-file)
-   ("C-x C-r" . counsel-recentf)
-   ("C-c /"   . counsel-rg))
-  :chords
-  ("xm" . counsel-M-x)
-  ("xf" . counsel-find-file)
-  ("xr" . counsel-recentf))
+  :ensure t)
 
 (use-package smex
   :ensure t)
-;; ---
 
 ;; Seleção
 (use-package expand-region
