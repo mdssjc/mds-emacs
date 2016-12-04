@@ -49,12 +49,17 @@
                       "h t p" 'hl-todo-previous
                       "h t n" 'hl-todo-next
                       "h t o" 'hl-todo-occur)
+  (general-define-key :keymaps 'isearch-mode-map
+                      "<C-'>" 'avy-isearch)
   (general-define-key
    "<C-tab>"    'cycle-spacing
    "S-SPC"      'cycle-spacing
    ;; "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand
    "S-C-j"      'join-line
+   "C-:"        'avy-goto-char-timer
+   "M-g f"      'avy-goto-line
+   "M-g e"      'avy-goto-word-0
    ;; F5
    "<f5> h"     'hl-todo-mode
    "<f5> l"     'linum-mode
