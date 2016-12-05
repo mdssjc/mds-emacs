@@ -324,5 +324,23 @@
   :diminish electric-spacing-mode
   :commands electric-spacing-mode)
 
+(use-package golden-ratio
+  :ensure t
+  :diminish " φ"
+  :commands golden-ratio-mode)
+
+(use-package centered-cursor-mode
+  :ensure t
+  :diminish " ⊝"
+  :commands centered-cursor-mode)
+
+(use-package writeroom-mode
+  :ensure t
+  :commands writeroom-mode)
+
+(use-package focus
+  :ensure t
+  :commands focus-mode)
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here

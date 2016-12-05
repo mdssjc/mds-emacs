@@ -101,25 +101,28 @@
    "C-x C-r"    'counsel-recentf
    "C-c /"      'counsel-rg
    "C-="        'er/expand-region
-   ;; F5
+   "C-x Q q"    'save-buffers-kill-terminal
+   "C-x Q r"    'restart-emacs
+   "C-x g"      'magit-status
+   ;; F5 (Toggle Global)
+   "<f5> -"     'centered-cursor-mode
+   "<f5> f"     'focus-mode
+   "<f5> g"     'golden-ratio-mode
    "<f5> h"     'hl-todo-mode
    "<f5> l"     'linum-mode
    "<f5> m"     'selected-global-mode
    "<f5> r"     'read-only-mode
    "<f5> t"     'toggle-truncate-lines
    "<f5> w"     'global-whitespace-mode
-   ;; F7
+   "<f5> W"     'writeroom-mode
+   ;; F7 (Aplicações Interna - Internal Applications)
    "<f7> e"     'eshell
    "<f7> f"     'keyfreq-show
    "<f7> t"     'neotree-toggle
-   ;; F8
+   ;; F8 (Aplicações Externa - Internal Applications)
    "<f8> g s"   'magit-status
    "<f8> g S"   'magit-stage-file
-   "<f8> g g"   'magit-dispatch-popup
-   ;; C-x
-   "C-x Q q"    'save-buffers-kill-terminal
-   "C-x Q r"    'restart-emacs
-   "C-x g"      'magit-status)
+   "<f8> g g"   'magit-dispatch-popup)
   (defalias 'gs 'magit-status "Magit status"))
 
 (use-package which-key
@@ -150,28 +153,6 @@
     "<C-M-return> n"   "narrow & widen"
     "<C-M-return> t"   "tabify")
   (which-key-mode 1))
-
-(use-package golden-ratio
-  :ensure t
-  :diminish " φ"
-  :bind
-  (("<f5> g" . golden-ratio-mode)))
-
-(use-package centered-cursor-mode
-  :ensure t
-  :diminish " ⊝"
-  :bind
-  (("<f5> -" . centered-cursor-mode)))
-
-(use-package writeroom-mode
-  :ensure t
-  :bind
-  (("<f5> W" . writeroom-mode)))
-
-(use-package focus
-  :ensure t
-  :bind
-  (("<f5> f" . focus-mode)))
 
 (provide 'mds-shortcuts)
 ;;; mds-shortcuts ends here
