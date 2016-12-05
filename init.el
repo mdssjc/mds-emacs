@@ -160,6 +160,7 @@
 (require 'mds-structure)
 ;; Atalhos (Shortcuts)
 (require 'mds-shortcuts)
+(require 'mds-hydra)
 ;; Sintaxe (Syntax)
 (require 'mds-syntax)
 ;; Semântico (Semantic)
