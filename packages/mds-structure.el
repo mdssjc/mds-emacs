@@ -270,6 +270,7 @@
 ;; Tabbar
 (use-package tabbar
   :ensure t
+  :commands tabbar-mode
   :init
   (add-hook 'after-init-hook 'tabbar-mode))
 ;; ---
