@@ -42,7 +42,7 @@
 
 (use-package mode-icons
   :ensure t
-  :defer t
+  :commands mode-icons-mode
   :init
   (add-hook 'after-init-hook 'mode-icons-mode))
 
@@ -52,19 +52,19 @@
 
 (use-package all-the-icons-dired
   :ensure t
+  :commands all-the-icons-dired-mode
   :init
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
 (use-package beacon
   :ensure t
-  :defer t
+  :commands beacon-mode
   :diminish beacon-mode
   :init
-  (add-hook 'after-init-hook 'beacon-mode)
-  :config
   (setq beacon-blink-when-focused t
         beacon-blink-when-point-moves-vertically 4
-        beacon-color "#FF0000"))
+        beacon-color "#FF0000")
+  (add-hook 'after-init-hook 'beacon-mode))
 
 (use-package emojify
   :ensure t
@@ -76,7 +76,7 @@
 
 (use-package volatile-highlights
   :ensure t
-  :defer t
+  :commands volatile-highlights-mode
   :diminish volatile-highlights-mode
   :init
   (add-hook 'after-init-hook 'volatile-highlights-mode))
