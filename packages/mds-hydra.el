@@ -80,4 +80,4 @@
 ;; ---
 
 (provide 'mds-hydra)
-;;; mds-hydra ends here
+;;; mds-hydra.el ends here

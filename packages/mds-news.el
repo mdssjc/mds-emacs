@@ -163,4 +163,4 @@
           ("https://www.reddit.com/r/emacs/.rss" emacs reddit))))
 
 (provide 'mds-news)
-;;; mds-news ends here
+;;; mds-news.el ends here

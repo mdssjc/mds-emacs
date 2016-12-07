@@ -27,4 +27,4 @@
         web-mode-script-padding ers-tab-size))
 
 (provide 'mds-web-wl)
-;;; mds-web-wl ends here
+;;; mds-web-wl.el ends here

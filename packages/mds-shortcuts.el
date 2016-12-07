@@ -141,6 +141,7 @@
     "<f8> r" "ripgrep"
     "<f8> s" "ispell"
     "C-c !"  "flycheck"
+    "C-c @"  "hide blocks"
     "C-c &"  "yasnippet"
     "C-c p"  "projectile"
     "C-c /"  "counsel-rg"
@@ -155,4 +156,4 @@
   (which-key-mode 1))
 
 (provide 'mds-shortcuts)
-;;; mds-shortcuts ends here
+;;; mds-shortcuts.el ends here

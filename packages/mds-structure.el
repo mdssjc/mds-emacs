@@ -233,6 +233,9 @@
   (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
 
 ;; Imenu
+(use-package flx-ido
+    :ensure t)
+
 (use-package popup-imenu
   :ensure t
   :bind
@@ -240,8 +243,8 @@
    :map popup-isearch-keymap
    ("C-'" . popup-isearch-cancel))
   :init
-  (use-package flx-ido
-    :ensure t)
+  ;; (use-package flx-ido
+  ;;   :ensure t)
   (setq popup-imenu-style 'indent))
 
 ;; Move-dup

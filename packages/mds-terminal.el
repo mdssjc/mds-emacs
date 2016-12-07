@@ -36,4 +36,4 @@
   :commands eshell-fringe-status-mode)
 
 (provide 'mds-terminal)
-;;; mds-terminal ends here
+;;; mds-terminal.el ends here

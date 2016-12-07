@@ -147,4 +147,4 @@
   (add-hook 'haskell-mode-hook 'flycheck-mode))
 
 (provide 'mds-haskell-pl)
-;;; mds-haskell-pl ends here
+;;; mds-haskell-pl.el ends here

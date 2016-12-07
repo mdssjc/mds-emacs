@@ -60,4 +60,4 @@
   (setq jdee-server-dir (concat user-emacs-directory ".cache/jdee/")))
 
 (provide 'mds-java-pl)
-;;; mds-java-pl ends here
+;;; mds-java-pl.el ends here

@@ -146,4 +146,4 @@
   :after clojure-mode)
 
 (provide 'mds-lisp-pl)
-;;; mds-lisp-pl ends here
+;;; mds-lisp-pl.el ends here
