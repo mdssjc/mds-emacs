@@ -346,5 +346,12 @@
   :ensure t
   :commands focus-mode)
 
+;; dired
+(use-package dired-icon
+  :ensure t
+  :init
+  (add-hook 'dired-mode-hook 'dired-icon-mode))
+;; ---
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
