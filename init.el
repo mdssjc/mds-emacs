@@ -188,7 +188,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages
+   (quote
+    (irony-eldoc flycheck-irony company-irony irony zeal-at-point wttrin writeroom-mode which-key web-mode volatile-highlights visual-regexp use-package-chords undo-tree twittering-mode tabbar swap-regions srefactor spacemacs-theme spaceline smex shm selected ripgrep restart-emacs rainbow-delimiters racket-mode popup-imenu parinfer package-utils org-bullets neotree move-dup mode-icons meghanada markdown-mode magit litable lispy langtool keyfreq jdee java-snippets info+ indicators hl-todo haskell-snippets golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-haskell f exec-path-from-shell esup eshell-fringe-status engine-mode emojify emmet-mode embrace elfeed dr-racket-like-unicode dashboard counsel-projectile counsel-dash company-statistics company-quickhelp company-ghc company-dict company-c-headers cider centered-cursor-mode c-eldoc beacon auto-yasnippet all-the-icons-dired))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

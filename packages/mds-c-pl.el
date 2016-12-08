@@ -47,7 +47,9 @@
                                    company-sort-prefer-same-case-prefix
                                    company-sort-by-statistics))
                             (set (make-local-variable 'company-backends)
-                                 '((company-semantic
+                                 '((company-irony
+                                    company-irony-c-headers
+                                    company-semantic
                                     company-c-headers
                                     company-yasnippet
                                     :with
@@ -56,12 +58,23 @@
                                     company-dabbrev-code
                                     company-dabbrev
                                     company-files)))))
+  (add-hook 'c-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'semantic-mode)
+  (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+  (add-hook 'irony-mode-hook 'flycheck-irony-setup)
+  (add-hook 'irony-mode-hook 'irony-eldoc)
+  (add-hook 'irony-mode-hook '(lambda ()
+                                (progn
+                                  (define-key irony-mode-map [remap completion-at-point]
+                                    'irony-completion-at-point-async)
+                                  (define-key irony-mode-map [remap complete-symbol]
+                                    'irony-completion-at-point-async))))
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'c-mode-hook 'fa-config-default)
   (add-hook 'c-mode-hook 'ede-enable-generic-projects)
-  (add-hook 'c-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'hs-minor-mode)
-  (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
   ;; (add-hook 'c-mode-hook 'electric-spacing-mode)
   (add-hook 'c-mode-hook (lambda () (setq-local counsel-dash-docsets '("C"))))
   :config
@@ -75,6 +88,25 @@
   (add-to-list 'company-c-headers-path-system "/usr/include/c++/6.2.1")
   (add-to-list 'semantic-lex-c-preprocessor-symbol-file "/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include/stddef.h")
   (semanticdb-enable-gnu-global-databases 'c-mode t))
+
+(use-package irony
+  :ensure t
+  :commands irony-mode)
+
+(use-package company-irony
+  :ensure t
+  :commands company-irony-setup-begin-commands)
+
+(use-package company-irony-c-headers
+  :ensure t)
+
+(use-package flycheck-irony
+  :ensure t
+  :commands flycheck-irony-setup)
+
+(use-package irony-eldoc
+  :ensure t
+  :commands irony-eldoc)
 
 (use-package company-c-headers
   :ensure t)
