@@ -187,6 +187,7 @@
 
 (use-package selected
   :ensure t
+  :diminish selected-minor-mode selected-global-mode
   :commands selected-minor-mode selected-global-mode
   :init
   (defvar selected-org-mode-map (make-sparse-keymap))
