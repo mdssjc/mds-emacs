@@ -63,8 +63,9 @@
 
 (use-package neotree
   :ensure t
+  :commands neotree-toggle
   :init
-  (use-package tramp)
+  ;; (use-package tramp)
   (setq neo-theme (if window-system 'icons 'nerd)
         neo-mode-line-type 'neotree
         neo-smart-open t

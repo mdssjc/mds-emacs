@@ -112,7 +112,8 @@
   :ensure t)
 
 (use-package srefactor
-  :ensure t)
+  :ensure t
+  :commands srefactor-refactor-at-point)
 
 (use-package function-args
   :ensure t)
