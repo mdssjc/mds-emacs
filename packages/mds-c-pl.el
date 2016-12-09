@@ -13,8 +13,7 @@
 ;; Configurações para a linguagem C.
 
 ;;; Code:
-(use-package c-mode
-  :ensure nil
+(use-package cc-mode
   :mode
   ("\\.c$" . c-mode)
   ("\\.h$" . c-mode)
@@ -22,7 +21,7 @@
   (:map c-mode-map
         ("C-c j" . semantic-ia-fast-jump)
         ("C-c ^" . senator-go-to-up-reference)
-        ("<M-return>" . srefactor-refactor-at-point))
+        ("M-RET" . srefactor-refactor-at-point))
   :init
   (setq c-default-style "linux"
         speedbar-show-unknow-files t
@@ -60,6 +59,7 @@
                                     company-files)))))
   (add-hook 'c-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'semantic-mode)
+  (add-hook 'c-mode-hook 'ede-enable-generic-projects)
   (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
@@ -73,7 +73,6 @@
                                     'irony-completion-at-point-async))))
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'c-mode-hook 'fa-config-default)
-  (add-hook 'c-mode-hook 'ede-enable-generic-projects)
   (add-hook 'c-mode-hook 'hs-minor-mode)
   ;; (add-hook 'c-mode-hook 'electric-spacing-mode)
   (add-hook 'c-mode-hook (lambda () (setq-local counsel-dash-docsets '("C"))))
@@ -108,9 +107,6 @@
   :ensure t
   :commands irony-eldoc)
 
-(use-package company-c-headers
-  :ensure t)
-
 (use-package srefactor
   :ensure t
   :commands srefactor-refactor-at-point)
@@ -118,8 +114,12 @@
 (use-package function-args
   :ensure t)
 
-(use-package c-eldoc
+(use-package company-c-headers
   :ensure t)
+
+(use-package c-eldoc
+  :ensure t
+  :disabled t)
 
 (provide 'mds-c-pl)
 ;;; mds-c-pl.el ends here
