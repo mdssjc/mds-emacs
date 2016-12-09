@@ -15,11 +15,10 @@
 ;;  - recentf: listagem dos buffers mais recentes;
 ;;  - restart-emacs: funcionalidade de reinicialização;
 ;;  - undo-tree: visualização da árvore de modificações do buffer;
-;;  - keyfreq-mode: frequência de utilização dos atalhos;
+;;  - keyfreq: sumariza a frequência de utilização dos atalhos;
 ;;  - neotree: visualização do sistema de arquivos;
 ;;  - magit: controle de versão pelo Git;
-;;
-;;  - Pacotes Abo-abo;
+;;  - pacotes Abo-abo: Avy, Hydra, Ace-Window, Ivy, Swiper e Counsel;
 ;;  - Seleção de partes do buffer com funcionalidades;
 ;;  - Navegador de projetos;
 ;;  - ripgrep: ferramenta de busca Ripgrep (rg);
@@ -65,7 +64,6 @@
   :ensure t
   :commands neotree-toggle
   :init
-  ;; (use-package tramp)
   (setq neo-theme (if window-system 'icons 'nerd)
         neo-mode-line-type 'neotree
         neo-smart-open t
@@ -74,26 +72,27 @@
 
 (use-package magit
   :ensure t
-  :commands magit-status
+  :commands magit-status)
+
+(use-package git-timemachine
+  :ensure t
+  :after magit)
+
+(use-package git-gutter-fringe
+  :ensure t
+  :diminish git-gutter-mode
+  :after magit
   :init
-  (use-package git-timemachine
-    :ensure t
-    :after magit)
-  (use-package git-gutter-fringe
-    :ensure t
-    :diminish git-gutter-mode
-    :after magit
-    :init
-    (setq git-gutter-fr:side 'right-fringe
-          git-gutter:update-interval 5)
-    :config
-    (global-git-gutter-mode t))
-  (setq magit-completing-read-function 'ivy-completing-read)
-  (add-to-list 'load-path (concat user-emacs-directory "temp/magithub"))
-  (use-package magithub
-    :after magit
-    :init
-    (require 'magithub)))
+  (setq git-gutter-fr:side 'right-fringe
+        git-gutter:update-interval 5)
+  :config
+  (global-git-gutter-mode t))
+
+(add-to-list 'load-path (concat user-emacs-directory "temp/magithub"))
+(use-package magithub
+  :after magit
+  :init
+  (require 'magithub))
 
 (use-package avy
   :ensure t
