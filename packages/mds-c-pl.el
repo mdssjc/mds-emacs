@@ -19,9 +19,10 @@
   ("\\.h$" . c-mode)
   :bind
   (:map c-mode-map
-        ("C-c j" . semantic-ia-fast-jump)
+        ("C-c ." . semantic-ia-fast-jump)
         ("C-c ^" . senator-go-to-up-reference)
-        ("M-RET" . srefactor-refactor-at-point))
+        ("M-RET" . srefactor-refactor-at-point)
+        (";"     . maio/electric-semicolon))
   :init
   (setq c-default-style "linux"
         speedbar-show-unknow-files t
@@ -74,7 +75,8 @@
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'c-mode-hook 'fa-config-default)
   (add-hook 'c-mode-hook 'hs-minor-mode)
-  ;; (add-hook 'c-mode-hook 'electric-spacing-mode)
+  (add-hook 'c-mode-hook 'electric-spacing-mode)
+  (add-hook 'c-mode-hook 'electric-pair-mode)
   (add-hook 'c-mode-hook (lambda () (setq-local counsel-dash-docsets '("C"))))
   :config
   (require 'semantic)
@@ -120,6 +122,12 @@
 (use-package c-eldoc
   :ensure t
   :disabled t)
+
+(defun maio/electric-semicolon ()
+  (interactive)
+  (end-of-line)
+  (when (not (looking-back ";"))
+    (insert ";")))
 
 (provide 'mds-c-pl)
 ;;; mds-c-pl.el ends here

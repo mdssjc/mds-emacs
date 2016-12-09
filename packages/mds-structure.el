@@ -325,7 +325,6 @@
 
 (use-package electric-spacing
   :ensure t
-  :disabled t
   :diminish electric-spacing-mode
   :commands electric-spacing-mode)
 
