@@ -362,5 +362,8 @@
 (use-package menu-bar+
   :ensure t)
 
+(use-package info+
+  :ensure t)
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
