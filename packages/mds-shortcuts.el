@@ -67,19 +67,26 @@
                       "<C-'>" 'avy-isearch)
   (general-define-key :keymaps 'selected-keymap
                       "\\" 'hydra-selected/body
+                      "$"  'flyspell-region
                       "q"  'selected-off
-                      "U"  'upcase-region
-                      "D"  'downcase-region
-                      "W"  'count-words-region
+                      "k"  'capitalize-region
+                      "u"  'upcase-region
+                      "l"  'downcase-region
+                      "w"  'count-words-region
                       "m"  'apply-macro-to-region-lines
-                      "w"  'mds/split-words
-                      "l"  'mds/lower-camel-case
-                      "u"  'mds/upper-camel-case
-                      "s"  'mds/snake-case
-                      "d"  'mds/dashed-words
-                      "c"  'mds/capitalized-words
-                      "t"  'mds/titleized-words
-                      "i"  'mds/word-initials)
+                      "c"  'kill-ring-save
+                      "x"  'kill-region
+                      "p"  'yank
+                      "C-s s" 'sort-lines
+                      "C-s r" 'reverse-region
+                      "C-x w" 'mds/split-words
+                      "C-x l" 'mds/lower-camel-case
+                      "C-x u" 'mds/upper-camel-case
+                      "C-x s" 'mds/snake-case
+                      "C-x d" 'mds/dashed-words
+                      "C-x c" 'mds/capitalized-words
+                      "C-x t" 'mds/titleized-words
+                      "C-x i" 'mds/word-initials)
   (general-define-key :keymaps 'selected-org-mode-map
                       "e" 'org-emphasize)
   (general-define-key

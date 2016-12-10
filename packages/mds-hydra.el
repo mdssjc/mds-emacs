@@ -34,49 +34,49 @@
 
 ;; Expand-Region
 (defhydra hydra-expand-region (:columns 4 :color blue)
-    "Mark"
-    ("w" er/mark-word               "word")
-    ("s" er/mark-symbol             "symbol")
-    ("d" er/mark-defun              "defun")
-    ("P" er/mark-inside-pairs       "inside-pairs")
-    ("p" er/mark-outside-pairs      "outside-pairs")
-    ("Q" er/mark-inside-quotes      "inside-quotes")
-    ("q" er/mark-outside-quotes     "outside-quotes")
-    ("." er/mark-sentence           "sentence")
-    ("h" er/mark-paragraph          "paragraph")
-    ("S" er/mark-symbol-with-prefix "symbol-with-prefix")
-    ("n" er/mark-next-accessor      "next-accessor")
-    ("m" er/mark-method-call        "method-call")
-    ("c" er/mark-comment            "comment")
-    ("u" er/mark-url                "url")
-    ("e" er/mark-email              "email")
-    ("0" nil                        "quit"))
+  "Mark"
+  ("w" er/mark-word               "word")
+  ("s" er/mark-symbol             "symbol")
+  ("d" er/mark-defun              "defun")
+  ("P" er/mark-inside-pairs       "inside-pairs")
+  ("p" er/mark-outside-pairs      "outside-pairs")
+  ("Q" er/mark-inside-quotes      "inside-quotes")
+  ("q" er/mark-outside-quotes     "outside-quotes")
+  ("." er/mark-sentence           "sentence")
+  ("h" er/mark-paragraph          "paragraph")
+  ("S" er/mark-symbol-with-prefix "symbol-with-prefix")
+  ("n" er/mark-next-accessor      "next-accessor")
+  ("m" er/mark-method-call        "method-call")
+  ("c" er/mark-comment            "comment")
+  ("u" er/mark-url                "url")
+  ("e" er/mark-email              "email")
+  ("0" nil                        "quit"))
 ;; ---
 
 ;; Selected
-(defhydra hydra-selected (:color blue :hint nil)
-    "
- Selected
- Case: _U_p | _D_own                          count _W_ords                           ^^^^^^+-^^----------+
- Camel-case: _l_ower | _u_pper                apply _m_acro                           ^^^^^^| ^^ Org Mode |
- Transformation: _w_ords | _s_nake | _d_ashed | _c_apitalized | _t_itleized  | _i_nitials   | _e_mphasize |
-^^^^^^^^^^^^                                                                                +-^^----------+
-    "
-    ("<ESC>" nil "quit")
-    ("q" selected-off)
-    ("U" upcase-region)
-    ("D" downcase-region)
-    ("W" count-words-region)
-    ("m" apply-macro-to-region-lines)
-    ("w" mds/split-words)
-    ("l" mds/lower-camel-case)
-    ("u" mds/upper-camel-case)
-    ("s" mds/snake-case)
-    ("d" mds/dashed-words)
-    ("c" mds/capitalized-words)
-    ("t" mds/titleized-words)
-    ("i" mds/word-initials)
-    ("e" org-emphasize))
+(defhydra hydra-selected (:color blue :columns 5)
+  "Selected"
+  ("<ESC>" nil "quit")
+  ("$" 'flyspell-region             "Spell")
+  ("q" 'selected-off                "Off")
+  ("k" 'capitalize-region           "Capitalize")
+  ("u" 'upcase-region               "Upcase")
+  ("l" 'downcase-region             "Downcase")
+  ("w" 'count-words-region          "Count Words")
+  ("m" 'apply-macro-to-region-lines "Apply Macro")
+  ("c" 'kill-ring-save              "Copy")
+  ("x" 'kill-region                 "Cut")
+  ("p" 'yank                        "Paste")
+  ("C-s s" 'sort-lines              "Sort Lines")
+  ("C-s r" 'reverse-region          "Reverse Lines")
+  ("C-x w" 'mds/split-words         "Split")
+  ("C-x l" 'mds/lower-camel-case    "Lower")
+  ("C-x u" 'mds/upper-camel-case    "Upper")
+  ("C-x s" 'mds/snake-case          "Snake")
+  ("C-x d" 'mds/dashed-words        "Dashed")
+  ("C-x c" 'mds/capitalized-words   "Capitalized")
+  ("C-x t" 'mds/titleized-words     "Titleized")
+  ("C-x i" 'mds/word-initials       "Initials"))
 ;; ---
 
 (provide 'mds-hydra)
