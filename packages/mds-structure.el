@@ -353,5 +353,14 @@
   (add-hook 'dired-mode-hook 'dired-icon-mode))
 ;; ---
 
+(use-package replace+
+  :ensure t)
+
+(use-package mouse+
+  :ensure t)
+
+(use-package menu-bar+
+  :ensure t)
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
