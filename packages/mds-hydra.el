@@ -54,7 +54,7 @@
 ;; ---
 
 ;; Selected
-(defhydra hydra-selected (:color blue :columns 5)
+(defhydra hydra-selected (:columns 5 :color blue)
   "Selected"
   ("<ESC>" nil "quit")
   ("$" 'flyspell-region             "Spell")
