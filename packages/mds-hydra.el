@@ -35,6 +35,7 @@
 ;; Expand-Region
 (defhydra hydra-expand-region (:columns 4 :color blue)
   "Mark"
+  ("<ESC>" nil "quit")
   ("w" er/mark-word               "word")
   ("s" er/mark-symbol             "symbol")
   ("d" er/mark-defun              "defun")
@@ -49,8 +50,7 @@
   ("m" er/mark-method-call        "method-call")
   ("c" er/mark-comment            "comment")
   ("u" er/mark-url                "url")
-  ("e" er/mark-email              "email")
-  ("0" nil                        "quit"))
+  ("e" er/mark-email              "email"))
 ;; ---
 
 ;; Selected
