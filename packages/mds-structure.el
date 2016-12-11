@@ -140,11 +140,13 @@
   (setq ivy-height 12
         ivy-count-format "(%d/%d) "
         ivy-use-virtual-buffers t
-        ivy-re-builders-alist '((t . ivy--regex-plus)))
-  (add-hook 'after-init-hook 'ivy-mode)
-  :config
-  (setq projectile-completion-system   'ivy
-        magit-completing-read-function 'ivy-completing-read))
+        ivy-re-builders-alist '((t . ivy--regex-plus))
+        projectile-completion-system   'ivy
+        magit-completing-read-function 'ivy-completing-read)
+  (add-hook 'after-init-hook 'ivy-mode))
+
+(use-package ivy-hydra
+  :ensure t)
 
 (use-package swiper
   :ensure t
@@ -363,6 +365,9 @@
   :ensure t)
 
 (use-package info+
+  :ensure t)
+
+(use-package isearch+
   :ensure t)
 
 (provide 'mds-structure)
