@@ -33,8 +33,9 @@
 (use-package async
   :ensure t
   :init
-  (setq async-bytecomp-allowed-packages '(all))
-  (add-hook 'after-init-hook 'async-bytecomp-package-mode))
+  (add-hook 'after-init-hook 'async-bytecomp-package-mode)
+  :config
+  (setq async-bytecomp-allowed-packages '(all)))
 ;; ---
 
 ;; Configurações Globais (Global Settings)
@@ -103,14 +104,17 @@
 
 (use-package dash
   :ensure t
+  :defer t
   :config
   (eval-after-load "dash" '(dash-enable-font-lock)))
 
 (use-package s
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package f
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (require 'mds-core-funcs)
 

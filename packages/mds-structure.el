@@ -28,16 +28,20 @@
 
 ;;; Code:
 (use-package saveplace
+  :commands save-place-mode
   :init
-  (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places")))
-  (add-hook 'after-init-hook 'save-place-mode))
+  (add-hook 'after-init-hook 'save-place-mode)
+  :config
+  (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places"))))
 
 (use-package recentf
+  :commands recentf-mode
   :init
+  (add-hook 'after-init-hook 'recentf-mode)
+  :config
   (setq recentf-save-file (expand-file-name (concat user-emacs-directory ".cache/recentf"))
         recentf-max-saved-items 1000
-        recentf-max-menu-items 15)
-  (add-hook 'after-init-hook 'recentf-mode))
+        recentf-max-menu-items 15))
 
 (use-package restart-emacs
   :ensure t
@@ -45,25 +49,29 @@
 
 (use-package undo-tree
   :ensure t
-  :commands global-undo-tree-mode
   :diminish undo-tree-mode
+  :commands global-undo-tree-mode
   :init
+  (add-hook 'after-init-hook 'global-undo-tree-mode)
+  :config
   (setq undo-tree-visualizer-timestamps t
-        undo-tree-visualizer-diff t)
-  (add-hook 'after-init-hook 'global-undo-tree-mode))
+        undo-tree-visualizer-diff t))
 
 (use-package keyfreq
   :ensure t
   :commands keyfreq-show
   :init
+  (add-hook 'after-init-hook '(lambda ()
+                                (keyfreq-mode 1)
+                                (keyfreq-autosave-mode 1)))
+  :config
   (setq keyfreq-file      (concat user-emacs-directory ".cache/.emacs.keyfreq")
-        keyfreq-file-lock (concat user-emacs-directory ".cache/.emacs.keyfreq.lock"))
-  (add-hook 'after-init-hook '(lambda () (keyfreq-mode 1) (keyfreq-autosave-mode 1))))
+        keyfreq-file-lock (concat user-emacs-directory ".cache/.emacs.keyfreq.lock")))
 
 (use-package neotree
   :ensure t
   :commands neotree-toggle
-  :init
+  :config
   (setq neo-theme (if window-system 'icons 'nerd)
         neo-mode-line-type 'neotree
         neo-smart-open t
@@ -82,10 +90,9 @@
   :ensure t
   :diminish git-gutter-mode
   :after magit
-  :init
+  :config
   (setq git-gutter-fr:side 'right-fringe
         git-gutter:update-interval 5)
-  :config
   (global-git-gutter-mode t))
 
 (add-to-list 'load-path (concat user-emacs-directory "temp/magithub"))
@@ -96,12 +103,14 @@
 
 (use-package avy
   :ensure t
-  :init
+  :commands avy-goto-char-timer
+  :config
   (setq avy-timeout-seconds 0.3
         avy-background t))
 
 (use-package hydra
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package ace-window
   :ensure t
@@ -134,23 +143,25 @@
 
 (use-package ivy
   :ensure t
-  :commands ivy-mode
   :diminish ivy-mode
+  :commands ivy-mode
   :init
+  (add-hook 'after-init-hook 'ivy-mode)
+  :config
   (setq ivy-height 12
         ivy-count-format "(%d/%d) "
         ivy-use-virtual-buffers t
         ivy-re-builders-alist '((t . ivy--regex-plus))
         projectile-completion-system   'ivy
-        magit-completing-read-function 'ivy-completing-read)
-  (add-hook 'after-init-hook 'ivy-mode))
+        magit-completing-read-function 'ivy-completing-read))
 
 (use-package ivy-hydra
-  :ensure t)
+  :ensure t
+  :after ivy)
 
 (use-package swiper
   :ensure t
-  :init
+  :config
   (setq swiper-include-line-number-in-search t))
 
 (use-package counsel
@@ -167,6 +178,11 @@
 (use-package embrace
   :ensure t
   :init
+  (add-hook 'text-mode-hook '(lambda () (setq embrace-semantic-units-alist
+                                         (append embrace-semantic-units-alist semantics-units))))
+  (add-hook 'prog-mode-hook '(lambda () (setq embrace-semantic-units-alist
+                                         (append embrace-semantic-units-alist semantics-units))))
+  :config
   (setq semantics-units '((?w . er/mark-word)
                           (?s . er/mark-symbol)
                           (?d . er/mark-defun)
@@ -181,19 +197,16 @@
                           (?m . er/mark-method-call)
                           (?c . er/mark-comment)
                           (?u . er/mark-url)
-                          (?e . er/mark-email)))
-  (add-hook 'text-mode-hook '(lambda () (setq embrace-semantic-units-alist
-                                         (append embrace-semantic-units-alist semantics-units))))
-  (add-hook 'prog-mode-hook '(lambda () (setq embrace-semantic-units-alist
-                                         (append embrace-semantic-units-alist semantics-units)))))
+                          (?e . er/mark-email))))
 
 (use-package selected
   :ensure t
   :diminish selected-minor-mode selected-global-mode
   :commands selected-minor-mode selected-global-mode
   :init
-  (defvar selected-org-mode-map (make-sparse-keymap))
-  (add-hook 'after-init-hook 'selected-global-mode))
+  (add-hook 'after-init-hook 'selected-global-mode)
+  :config
+  (defvar selected-org-mode-map (make-sparse-keymap)))
 
 ;; Projeto
 (use-package projectile
@@ -219,6 +232,7 @@
 
 (use-package ripgrep
   :ensure t
+  :commands ripgrep-regexp
   :bind
   (("<f8> r" . ripgrep-regexp)))
 
@@ -244,9 +258,7 @@
   (("C-'" . popup-imenu)
    :map popup-isearch-keymap
    ("C-'" . popup-isearch-cancel))
-  :init
-  ;; (use-package flx-ido
-  ;;   :ensure t)
+  :config
   (setq popup-imenu-style 'indent))
 
 ;; Move-dup
@@ -289,19 +301,17 @@
 (use-package exec-path-from-shell
   :ensure t
   :demand t
-  :init
-  (setq exec-path-from-shell-check-startup-files nil)
   :config
+  (setq exec-path-from-shell-check-startup-files nil)
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
 (use-package dashboard
   :ensure t
-  :init
+  :config
   (setq dashboard-items '((recents   . 5)
                           (bookmarks . 5)
                           (projects  . 5)))
-  :config
   (dashboard-setup-startup-hook))
 ;; ---
 
