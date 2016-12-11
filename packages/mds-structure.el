@@ -223,9 +223,7 @@
 
 (use-package visual-regexp
   :ensure t
-  :bind
-  (("C-c r" . vr/replace)
-   ("C-c q" . vr/query-replace)))
+  :commands vr/replace vr/query-replace)
 
 ;; Browser
 (use-package eww

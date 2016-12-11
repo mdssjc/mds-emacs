@@ -103,14 +103,17 @@
    "C-S-f"      'swiper-multi
    "M-x"        'counsel-M-x
    "M-y"        'counsel-yank-pop
-   "C-x w"      'ace-window
    "C-x C-f"    'counsel-find-file
    "C-x C-r"    'counsel-recentf
    "C-c /"      'counsel-rg
    "C-="        'er/expand-region
    "C-x Q q"    'save-buffers-kill-terminal
    "C-x Q r"    'restart-emacs
+   "C-x w"      'ace-window
    "C-x g"      'magit-status
+   "C-x /"      'ripgrep-regexp
+   "M-#"        'vr/replace
+   "C-#"        'vr/query-replace
    ;; F5 (Toggle Global)
    "<f5> -"     'centered-cursor-mode
    "<f5> f"     'focus-mode
