@@ -91,7 +91,7 @@
 (add-to-list 'load-path (concat user-emacs-directory "temp/magithub"))
 (use-package magithub
   :after magit
-  :init
+  :config
   (require 'magithub))
 
 (use-package avy
@@ -354,19 +354,24 @@
 ;; ---
 
 (use-package replace+
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package mouse+
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package menu-bar+
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package info+
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package isearch+
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
