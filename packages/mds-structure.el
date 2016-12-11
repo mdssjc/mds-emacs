@@ -218,7 +218,6 @@
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
         projectile-sort-order 'modification-time
-        projectile-completion-system 'ivy
         projectile-switch-project-action 'neotree-projectile-action))
 
 (use-package counsel-projectile
