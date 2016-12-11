@@ -208,7 +208,6 @@
   :config
   (defvar selected-org-mode-map (make-sparse-keymap)))
 
-;; Projeto
 (use-package projectile
   :ensure t
   :diminish projectile-mode
@@ -225,7 +224,6 @@
   :commands counsel-projectile-on
   :init
   (add-hook 'projectile-mode-hook 'counsel-projectile-on))
-;; ---
 
 (use-package ripgrep
   :ensure t
@@ -235,13 +233,11 @@
   :ensure t
   :commands vr/replace vr/query-replace)
 
-;; Browser
 (use-package eww
   :commands eww eww-mode
   :config
   (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
 
-;; Imenu
 (use-package flx-ido
     :ensure t)
 
@@ -258,7 +254,6 @@
   :ensure t
   :commands md/move-lines-up md/move-lines-down md/duplicate-up md/duplicate-down)
 
-;; Swap
 (use-package swap-regions
   :ensure t
   :commands swap-regions-mode
@@ -266,21 +261,17 @@
   (("S-M-t" . swap-regions))
   :init
   (add-hook 'after-init-hook 'swap-regions-mode))
-;; ---
 
-;; Tabbar
 (use-package tabbar
   :ensure t
   :commands tabbar-mode
   :init
   (add-hook 'after-init-hook 'tabbar-mode))
-;; ---
 
 (use-package package-utils
   :ensure t
   :commands package-utils-install-async package-utils-upgrade-all)
 
-;; Purcell (https://github.com/purcell)
 (use-package exec-path-from-shell
   :ensure t
   :demand t
@@ -296,7 +287,6 @@
                           (bookmarks . 5)
                           (projects  . 5)))
   (dashboard-setup-startup-hook))
-;; ---
 
 (use-package boon
   :ensure t
@@ -340,12 +330,10 @@
   :ensure t
   :commands focus-mode)
 
-;; dired
 (use-package dired-icon
   :ensure t
   :init
   (add-hook 'dired-mode-hook 'dired-icon-mode))
-;; ---
 
 (use-package replace+
   :ensure t)
