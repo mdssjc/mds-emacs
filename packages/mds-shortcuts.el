@@ -153,6 +153,7 @@
     "C-c p"  "projectile"
     "C-c /"  "counsel-rg"
     "C-x Q"  "quit/restart"
+    "M-s h"  "highlight"
     "<C-M-return> a"   "align"
     "<C-M-return> b"   "buffer"
     "<C-M-return> f"   "file"
