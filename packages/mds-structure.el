@@ -212,8 +212,6 @@
 (use-package projectile
   :ensure t
   :diminish projectile-mode
-  :bind
-  (("<f7> p" . projectile-command-map))
   :init
   (projectile-mode t)
   :config
@@ -232,9 +230,7 @@
 
 (use-package ripgrep
   :ensure t
-  :commands ripgrep-regexp
-  :bind
-  (("<f8> r" . ripgrep-regexp)))
+  :commands ripgrep-regexp)
 
 (use-package visual-regexp
   :ensure t
@@ -243,8 +239,6 @@
 ;; Browser
 (use-package eww
   :commands eww eww-mode
-  :bind
-  (("<f7> b e" . eww))
   :config
   (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
 
@@ -261,15 +255,9 @@
   :config
   (setq popup-imenu-style 'indent))
 
-;; Move-dup
 (use-package move-dup
   :ensure t
-  :bind
-  (("M-<up>"     . md/move-lines-up)
-   ("M-<down>"   . md/move-lines-down)
-   ("S-M-<up>"   . md/duplicate-up)
-   ("S-M-<down>" . md/duplicate-down)))
-;; ---
+  :commands md/move-lines-up md/move-lines-down md/duplicate-up md/duplicate-down)
 
 ;; Swap
 (use-package swap-regions
@@ -289,13 +277,9 @@
   (add-hook 'after-init-hook 'tabbar-mode))
 ;; ---
 
-;; Package Utils
 (use-package package-utils
   :ensure t
-  :bind
-  (("<f7> u a" . package-utils-install-async)
-   ("<f7> u u" . package-utils-upgrade-all)))
-;; ---
+  :commands package-utils-install-async package-utils-upgrade-all)
 
 ;; Purcell (https://github.com/purcell)
 (use-package exec-path-from-shell

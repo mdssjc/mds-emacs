@@ -114,6 +114,10 @@
    "C-x /"      'ripgrep-regexp
    "M-#"        'vr/replace
    "C-#"        'vr/query-replace
+   "M-<up>"     'md/move-lines-up
+   "M-<down>"   'md/move-lines-down
+   "S-M-<up>"   'md/duplicate-up
+   "S-M-<down>" 'md/duplicate-down
    ;; F5 (Toggle Global)
    "<f5> -"     'centered-cursor-mode
    "<f5> f"     'focus-mode
@@ -126,13 +130,18 @@
    "<f5> w"     'global-whitespace-mode
    "<f5> W"     'writeroom-mode
    ;; F7 (Aplicações Interna - Internal Applications)
+   "<f7> b e"   'eww
    "<f7> e"     'eshell
    "<f7> f"     'keyfreq-show
+   "<f7> p"     'projectile-command-map
    "<f7> t"     'neotree-toggle
+   "<f7> u a"   'package-utils-install-async
+   "<f7> u u"   'package-utils-upgrade-all
    ;; F8 (Aplicações Externa - Internal Applications)
    "<f8> g s"   'magit-status
    "<f8> g S"   'magit-stage-file
-   "<f8> g g"   'magit-dispatch-popup)
+   "<f8> g g"   'magit-dispatch-popup
+   "<f8> r"     'ripgrep-regexp)
   (defalias 'gs 'magit-status "Magit status"))
 
 (use-package which-key
