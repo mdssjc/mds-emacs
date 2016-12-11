@@ -97,12 +97,16 @@ Listagem dos comandos fundamentais:
 * `F2` - Alterações de coluna
 * `F3` - Inicia/Incrementa a gravação de macro
 * `F4` - Finaliza/Executa a macro
-* `Ctrl + x` - configurações e utilitários do ambiente
-* `Ctrl + c` - comandos para o modo maior atual
-* `Alt  + x` - prompt de comandos
-* `Win` - comando especial para o modo maior (em revisão)
 * `F5` - *Toggle* Global
 * `F6` - *Toggle* do Modo Maior
 * `F7` - Aplicações Interna
 * `F8` - Aplicações Externa
-* `F9` - Planejamento (???)
+* `F9` - Planejamento
+* `F10` - Menu do Modo Maior
+* `F11` - Ativa o *Fullscreen*
+* `F12` - <não definido>
+* `Ctrl + x` - comandos para o ambiente
+* `Ctrl + c` - comandos para o modo maior
+* `Alt  + x` - prompt de comandos
+* `Win` - comando especial para o modo maior
+* `Ctrl + Alt + Enter` - super comando
