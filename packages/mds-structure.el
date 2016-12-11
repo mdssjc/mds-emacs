@@ -154,7 +154,8 @@
   (setq swiper-include-line-number-in-search t))
 
 (use-package counsel
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package smex
   :ensure t)

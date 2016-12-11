@@ -26,15 +26,9 @@
   :ensure t
   :init
   (require 'spaceline-config)
-  (use-package info+
-    :ensure t
-    :defer t
-    :init
-    (with-eval-after-load 'info
-      (require 'info+))
-    (setq Info-fontify-angle-bracketed-flag nil))
   (setq spaceline-workspace-numbers-unicode t
-        spaceline-window-numbers-unicode t)
+        spaceline-window-numbers-unicode t
+        Info-fontify-angle-bracketed-flag nil)
   (spaceline-compile)
   :config
   (spaceline-emacs-theme)

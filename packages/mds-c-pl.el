@@ -114,7 +114,8 @@
   :commands srefactor-refactor-at-point)
 
 (use-package function-args
-  :ensure t)
+  :ensure t
+  :commands fa-config-default)
 
 (use-package company-c-headers
   :ensure t)

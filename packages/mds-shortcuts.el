@@ -138,6 +138,7 @@
 (use-package which-key
   :ensure t
   :diminish which-key-mode
+  :commands which-key-mode
   :config
   (setq which-key-idle-delay 0.1)
   (which-key-add-key-based-replacements
