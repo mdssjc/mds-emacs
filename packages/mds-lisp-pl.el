@@ -45,7 +45,9 @@
         ("<f6> t" . litable-mode)
         ("M-."    . find-function-at-point)
         ("M-&"    . complete-symbol)
-        ("C-c e"  . macrostep-expand))
+        ("C-c e"  . macrostep-expand)
+        ("<s-left>"  . special-lispy-barf)
+        ("<s-right>" . special-lispy-slurp))
   :init
   (require 'ert)
   (add-hook 'emacs-lisp-mode-hook 'parinfer-mode)
@@ -65,15 +67,15 @@
                                                 (flycheck-mode))))
   (add-hook 'emacs-lisp-mode-hook '(lambda () (add-to-list 'completion-styles 'initials t)))
   (add-hook 'emacs-lisp-mode-hook '(lambda () (set (make-local-variable 'company-backends)
-                                                   '((company-elisp
-                                                      company-yasnippet
-                                                      :with
-                                                      company-capf
-                                                      company-keywords
-                                                      company-abbrev
-                                                      company-dabbrev-code
-                                                      company-dabbrev
-                                                      company-files)))))
+                                              '((company-elisp
+                                                 company-yasnippet
+                                                 :with
+                                                 company-capf
+                                                 company-keywords
+                                                 company-abbrev
+                                                 company-dabbrev-code
+                                                 company-dabbrev
+                                                 company-files)))))
   (add-hook 'emacs-lisp-mode-hook 'flycheck-package-setup))
 
 (use-package litable
