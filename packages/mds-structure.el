@@ -365,24 +365,19 @@
 ;; ---
 
 (use-package replace+
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package mouse+
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package menu-bar+
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package info+
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package isearch+
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
