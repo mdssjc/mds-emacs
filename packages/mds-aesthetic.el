@@ -29,7 +29,6 @@
   (setq spaceline-workspace-numbers-unicode t
         spaceline-window-numbers-unicode t
         Info-fontify-angle-bracketed-flag nil)
-  (spaceline-compile)
   :config
   (spaceline-emacs-theme)
   (spaceline-info-mode))
