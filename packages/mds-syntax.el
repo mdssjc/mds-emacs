@@ -18,12 +18,14 @@
 ;;  - Template: blocos de construção de texto (linguagens de programação).
 
 ;;; Code:
+;; Autocompletar (Autocomplete)
 (use-package company
   :ensure t
   :diminish company-mode " ⓐ"
-  :bind
-  (("<f5> a" . company-mode))
+  :commands company-mode
   :init
+  (add-hook 'prog-mode-hook 'company-mode)
+  :config
   (setq company-tooltip-limit 10
         company-tooltip-minimum 5
         company-tooltip-flip-when-above t
@@ -37,23 +39,24 @@
         company-search-regexp-function 'company-search-words-regexp
         company-transformers '(company-sort-by-backend-importance
                                company-sort-prefer-same-case-prefix
-                               company-sort-by-statistics))
-  (add-hook 'prog-mode-hook 'company-mode))
+                               company-sort-by-statistics)))
 
 (use-package company-quickhelp
   :ensure t
   :init
+  (add-hook 'company-mode-hook 'company-quickhelp-mode)
+  :config
   (setq company-quickhelp-delay 1
-        company-quickhelp-max-lines 30)
-  (add-hook 'company-mode-hook 'company-quickhelp-mode))
+        company-quickhelp-max-lines 30))
 
 (use-package company-statistics
   :ensure t
   :init
+  (add-hook 'company-mode-hook 'company-statistics-mode)
+  :config
   (setq company-statistics-size 600
         company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")
-        company-statistics-auto-save t)
-  (add-hook 'company-mode-hook 'company-statistics-mode))
+        company-statistics-auto-save t))
 
 (use-package company-dict
   :ensure t
@@ -62,6 +65,7 @@
   (setq company-dict-dir (concat user-emacs-directory "dict/")
         company-dict-enable-fuzzy t
         company-dict-enable-yasnippet t))
+;; ---
 
 ;; Correção (Correction)
 (use-package ispell

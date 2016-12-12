@@ -120,6 +120,7 @@
    "S-M-<down>" 'md/duplicate-down
    ;; F5 (Toggle Global)
    "<f5> -"     'centered-cursor-mode
+   "<f5> a"     'company-mode
    "<f5> f"     'focus-mode
    "<f5> g"     'golden-ratio-mode
    "<f5> h"     'hl-todo-mode
