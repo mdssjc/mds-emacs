@@ -109,8 +109,7 @@
         avy-background t))
 
 (use-package hydra
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package ace-window
   :ensure t
@@ -348,6 +347,9 @@
   :ensure t)
 
 (use-package isearch+
+  :ensure t)
+
+(use-package bookmark+
   :ensure t)
 
 (provide 'mds-structure)
