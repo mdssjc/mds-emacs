@@ -67,15 +67,15 @@
                                                 (flycheck-mode))))
   (add-hook 'emacs-lisp-mode-hook '(lambda () (add-to-list 'completion-styles 'initials t)))
   (add-hook 'emacs-lisp-mode-hook '(lambda () (set (make-local-variable 'company-backends)
-                                              '((company-elisp
-                                                 company-yasnippet
-                                                 :with
-                                                 company-capf
-                                                 company-keywords
-                                                 company-abbrev
-                                                 company-dabbrev-code
-                                                 company-dabbrev
-                                                 company-files)))))
+                                               '((company-elisp
+                                                  company-yasnippet
+                                                  :with
+                                                  company-capf
+                                                  company-keywords
+                                                  company-abbrev
+                                                  company-dabbrev-code
+                                                  company-dabbrev
+                                                  company-files)))))
   (add-hook 'emacs-lisp-mode-hook 'flycheck-package-setup))
 
 (use-package litable
@@ -110,12 +110,12 @@
                                  (prettify-symbols-mode)))
   (add-hook 'racket-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Racket"))))
   (add-hook 'racket-mode-hook '(lambda () (set (make-local-variable 'company-backends)
-                                          '((company-capf
-                                             :with
-                                             company-abbrev
-                                             company-dabbrev-code
-                                             company-dabbrev
-                                             company-files)))))
+                                           '((company-capf
+                                              :with
+                                              company-abbrev
+                                              company-dabbrev-code
+                                              company-dabbrev
+                                              company-files)))))
   (add-hook 'racket-mode-hook 'flyspell-prog-mode)
   (add-hook 'racket-mode-hook 'dr-racket-like-unicode-mode)
   ;; (add-hook 'racket-mode-hook 'racket-unicode-input-method-enable)
