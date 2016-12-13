@@ -116,6 +116,8 @@
    "C-x w"      'ace-window
    "C-x g"      'magit-status
    "C-x /"      'ripgrep-regexp
+   "C-x S"      'embrace-commander
+   "C-x V"      'hydra-expand-region/body
    "M-#"        'vr/replace
    "C-#"        'vr/query-replace
    "M-<up>"     'md/move-lines-up
