@@ -32,7 +32,6 @@
    ("xm" . counsel-M-x)
    ("xf" . counsel-find-file)
    ("xr" . counsel-recentf)
-   ("xe" . eval-last-sexp)
    ("gs" . magit-status)
    ("VV" . hydra-expand-region/body)
    ("SS" . embrace-commander))
@@ -145,6 +144,7 @@
    "<f8> g S"   'magit-stage-file
    "<f8> g g"   'magit-dispatch-popup
    "<f8> r"     'ripgrep-regexp)
+  (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   (defalias 'gs 'magit-status "Magit status"))
 
 (use-package which-key
