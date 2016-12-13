@@ -90,9 +90,11 @@
   (general-define-key :keymaps 'selected-org-mode-map
                       "e" 'org-emphasize)
   (general-define-key
+   "<C-return>"   'mds/insert-lines-above
+   "<M-return>"   'mds/insert-lines-below
+   "<S-C-return>" 'mds/insert-lines-between
    "<C-tab>"    'cycle-spacing
    "S-SPC"      'cycle-spacing
-   ;; "<C-return>" 'mds/insert-lines-between
    "M-/"        'hippie-expand
    "S-C-j"      'join-line
    "C-:"        'avy-goto-char-timer

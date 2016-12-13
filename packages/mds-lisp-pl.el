@@ -26,8 +26,13 @@
 
 (use-package lispy
   :ensure t
-  :commands lispy-mode
   :diminish lispy-mode " Ⓛ"
+  :commands lispy-mode
+  :bind
+  (:map lispy-mode-map
+        ("C-<return>"   . nil)
+        ("M-<return>"   . nil)
+        ("S-C-<return>" . nil))
   :init
   (add-hook 'parinfer-mode-hook 'lispy-mode))
 

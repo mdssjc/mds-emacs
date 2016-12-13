@@ -13,15 +13,34 @@
 ;; Funções personalizadas.
 
 ;;; Code:
-(defun mds/insert-lines-between (times)
-  "Insert a break line between the cursor."
+;; Quebra de Linha (Break Line)
+(defun mds/insert-lines-above (times)
+  "Insert TIMES break lines above the cursor."
+  (interactive "p")
+  (save-excursion
+    (beginning-of-line)
+    (newline times))
+  (forward-char)
+  (previous-line times))
+
+(defun mds/insert-lines-below (times)
+  "Insert TIMES break lines below the cursor."
   (interactive "p")
   (save-excursion
     (end-of-line)
-    (newline times)
-    (newline times)
-    (beginning-of-line))
-  (dotimes (i times) (mds/move-down)))
+    (newline times))
+  (next-line times))
+
+(defun mds/insert-lines-between (times)
+  "Insert TIMES break lines between the cursor."
+  (interactive "p")
+  (forward-char)
+  (save-excursion
+    (mds/insert-lines-above times)
+    (next-line times)
+    (mds/insert-lines-below times))
+  (backward-char))
+;; ---
 
 ;; Formatação de texto
 (defun mds//text-case (func begin end)
