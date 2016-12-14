@@ -13,18 +13,35 @@
 ;; Conjunto estrutural de melhorias/funcionalidades para o ambiente:
 ;;  - saveplace: salva a última posição do buffer;
 ;;  - recentf: listagem dos buffers mais recentes;
-;;  - restart-emacs: funcionalidade de reinicialização;
+;;  - restart-emacs: reinicialização do ambiente;
 ;;  - undo-tree: visualização da árvore de modificações do buffer;
 ;;  - keyfreq: sumariza a frequência de utilização dos atalhos;
 ;;  - neotree: visualização do sistema de arquivos;
-;;  - magit: controle de versão pelo Git;
+;;  - magit: controle de versão pelo Git com Time Machine, Fringe e Hub;
 ;;  - pacotes Abo-abo: Avy, Hydra, Ace-Window, Ivy, Swiper e Counsel;
-;;  - Seleção de partes do buffer com funcionalidades;
-;;  - Navegador de projetos;
+;;  - smex: histórico de comandos;
+;;  - expand-region: seleção de regiões;
+;;  - embrace: manipulação de símbolos entre seleção;
+;;  - selected: funcionalidades com a seleção ativa;
+;;  - projectile: navegador de projetos;
 ;;  - ripgrep: ferramenta de busca Ripgrep (rg);
 ;;  - visual-regexp: busca/substituição com indicação visual;
-;;  - Browser interno;
-;;  - exec-path-from-shell: variáveis ambiente do shell.
+;;  - eww: browser interno;
+;;  - popup-imenu: popup do imenu;
+;;  - move-dup: move e/ou duplica linhas;
+;;  - swap-regions: intercambia regiões;
+;;  - tabbar: abas com os buffers;
+;;  - package-utils: atualização automática e assíncrona dos pacotes;
+;;  - exec-path-from-shell: variáveis ambiente do shell;
+;;  - dashboard: quadro com o resumo do ambiente;
+;;  - hl-todo: highlight dos labels de todo;
+;;  - electric-spacing: espaço entre operadores, conforme modo maior;
+;;  - golden-ratio: taxa de redimensionamento para o buffer ativo;
+;;  - centered-cursor: manter o cursor no centro do buffer;
+;;  - writeroom: ambiente sem distração visual;
+;;  - focus: prioriza a região de edição ativa;
+;;  - dired-icon: ícones no dired;
+;;  - plus: replace+, mouse+, menu-bar+, info+, isearch+ e bookmark+.
 
 ;;; Code:
 (use-package saveplace
