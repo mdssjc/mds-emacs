@@ -62,6 +62,7 @@
    ("a"         . twittering-toggle-activate-buffer))
   :init
   (add-hook 'twittering-edit-mode-hook (lambda () (flyspell-mode)))
+  :config
   (setq twittering-use-master-password t
         twittering-private-info-file (concat user-emacs-directory ".cache/twittering-mode.gpg")
         twittering-icon-mode t
@@ -141,26 +142,25 @@
    ("j" . next-line)
    ("k" . previous-line)
    ("u" . elfeed-update))
-  :init
+  :config
   (setq elfeed-use-curl t
-        elfeed-feeds
-        '(;; Blogs
-          ("https://emacsgifs.github.io/feed.xml" blog emacs)
-          ;; Emacs
-          ("http://oremacs.com/atom.xml" emacs)
-          ("http://www.lunaryorn.com/feed.atom" emacs)
-          ("http://emacsnyc.org/atom.xml" emacs)
-          ("http://emacsredux.com/atom.xml" emacs)
-          ("http://www.masteringemacs.org/feed/" emacs)
-          ("http://planet.emacsen.org/atom.xml" emacs)
-          ("http://endlessparentheses.com/atom.xml" emacs)
-          ("http://s-expressions.com/feed/" emacs)
-          ;; Clojure
-          ("http://feeds.feedburner.com/ClojureAndMe" clojure)
-          ("http://clojure.com/blog/atom.xml" clojure)
-          ("http://feeds.feedburner.com/disclojure" clojure)
-          ;; Reddit
-          ("https://www.reddit.com/r/emacs/.rss" emacs reddit))))
+        elfeed-feeds '(;; Blogs
+                       ("https://emacsgifs.github.io/feed.xml" blog emacs)
+                       ;; Emacs
+                       ("http://oremacs.com/atom.xml" emacs)
+                       ("http://www.lunaryorn.com/feed.atom" emacs)
+                       ("http://emacsnyc.org/atom.xml" emacs)
+                       ("http://emacsredux.com/atom.xml" emacs)
+                       ("http://www.masteringemacs.org/feed/" emacs)
+                       ("http://planet.emacsen.org/atom.xml" emacs)
+                       ("http://endlessparentheses.com/atom.xml" emacs)
+                       ("http://s-expressions.com/feed/" emacs)
+                       ;; Clojure
+                       ("http://feeds.feedburner.com/ClojureAndMe" clojure)
+                       ("http://clojure.com/blog/atom.xml" clojure)
+                       ("http://feeds.feedburner.com/disclojure" clojure)
+                       ;; Reddit
+                       ("https://www.reddit.com/r/emacs/.rss" emacs reddit))))
 
 (provide 'mds-news)
 ;;; mds-news.el ends here
