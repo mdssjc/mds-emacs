@@ -247,10 +247,7 @@
 
 (use-package popup-imenu
   :ensure t
-  :bind
-  (("C-'" . popup-imenu)
-   :map popup-isearch-keymap
-   ("C-'" . popup-isearch-cancel))
+  :commands popup-imenu
   :config
   (setq popup-imenu-style 'indent))
 
@@ -260,9 +257,7 @@
 
 (use-package swap-regions
   :ensure t
-  :commands swap-regions-mode
-  :bind
-  (("S-M-t" . swap-regions))
+  :commands swap-regions-mode swap-regions
   :init
   (add-hook 'after-init-hook 'swap-regions-mode))
 
@@ -296,12 +291,8 @@
   :ensure t
   :disabled t
   :commands boon-mode
-  :bind
-  (:map boon-command-map
-        ("S" . embrace-commander))
   :init
   (add-hook 'after-init-hook 'boon-mode)
-  ;; (define-key boon-command-map "S" 'embrace-commander)
   :config
   (require 'boon-qwerty))
 

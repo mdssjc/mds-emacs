@@ -86,6 +86,10 @@
                       "C-x i" 'mds/word-initials)
   (general-define-key :keymaps 'selected-org-mode-map
                       "e" 'org-emphasize)
+  (general-define-key :keymaps 'popup-isearch-keymap
+                      "C-'" 'popup-isearch-cancel)
+  (general-define-key :keymaps 'boon-command-map
+                      "S" 'embrace-commander)
   (general-define-key
    "<C-return>"   'mds/insert-lines-above
    "<M-return>"   'mds/insert-lines-below
@@ -96,6 +100,7 @@
    "S-SPC"      'cycle-spacing
    "M-/"        'hippie-expand
    "S-C-j"      'join-line
+   "C-'"        'popup-imenu
    "C-:"        'avy-goto-char-timer
    "M-g f"      'avy-goto-line
    "M-g e"      'avy-goto-word-0
@@ -121,6 +126,7 @@
    "M-<down>"   'md/move-lines-down
    "S-M-<up>"   'md/duplicate-up
    "S-M-<down>" 'md/duplicate-down
+   "S-M-t"      'swap-regions
    ;; F5 (Toggle Global)
    "<f5> -"     'centered-cursor-mode
    "<f5> a"     'company-mode
