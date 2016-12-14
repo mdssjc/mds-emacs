@@ -189,5 +189,10 @@
    "<C-M-return> n"   "narrow & widen"
    "<C-M-return> t"   "tabify"))
 
+(add-to-list 'load-path (concat user-emacs-directory "temp/right-click-context"))
+(use-package right-click-context
+  :init
+  (add-hook 'after-init-hook 'right-click-context-mode))
+
 (provide 'mds-shortcuts)
 ;;; mds-shortcuts.el ends here
