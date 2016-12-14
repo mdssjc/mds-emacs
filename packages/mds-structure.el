@@ -89,11 +89,11 @@
 (use-package git-gutter-fringe
   :ensure t
   :diminish git-gutter-mode
-  :after magit
+  :init
+  (global-git-gutter-mode t)
   :config
   (setq git-gutter-fr:side 'right-fringe
-        git-gutter:update-interval 5)
-  (global-git-gutter-mode t))
+        git-gutter:update-interval 5))
 
 (add-to-list 'load-path (concat user-emacs-directory "temp/magithub"))
 (use-package magithub
