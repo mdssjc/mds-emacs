@@ -17,11 +17,10 @@
 (defun mds/insert-lines-above (times)
   "Insert TIMES break lines above the cursor."
   (interactive "p")
-  (save-excursion
-    (beginning-of-line)
-    (newline times))
-  (forward-char)
-  (previous-line times))
+  (beginning-of-line)
+  (newline times)
+  (previous-line times)
+  (indent-according-to-mode))
 
 (defun mds/insert-lines-below (times)
   "Insert TIMES break lines below the cursor."
@@ -29,17 +28,18 @@
   (save-excursion
     (end-of-line)
     (newline times))
-  (next-line times))
+  (next-line times)
+  (indent-according-to-mode))
 
 (defun mds/insert-lines-between (times)
   "Insert TIMES break lines between the cursor."
   (interactive "p")
-  (forward-char)
-  (save-excursion
+  (let ((position (current-column)))
     (mds/insert-lines-above times)
     (next-line times)
-    (mds/insert-lines-below times))
-  (backward-char))
+    (mds/insert-lines-below times)
+    (previous-line times)
+    (forward-char position)))
 ;; ---
 
 ;; Formatação de texto
