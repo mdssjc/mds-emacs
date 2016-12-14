@@ -89,9 +89,8 @@
 (use-package git-gutter-fringe
   :ensure t
   :diminish git-gutter-mode
-  :init
-  (global-git-gutter-mode t)
   :config
+  (global-git-gutter-mode t)
   (setq git-gutter-fr:side 'right-fringe
         git-gutter:update-interval 5))
 
