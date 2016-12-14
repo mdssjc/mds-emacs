@@ -1,6 +1,6 @@
 # MDS - Emacs
 
-O projeto tem como objetivo ser um modelo de configuração do *Emacs* para o dia a dia do programador nas seguintes tecnologias: *Lisp*, *Java*, *Haskell*, *C*, *Web* e Escrita (*Latex*, *Markdown*, Texto e etc...) - voltado para os amantes em personalização de ferramentas.
+O projeto tem como objetivo ser um modelo de configuração do *Emacs* para o dia a dia do programador nas seguintes tecnologias: *Lisp*, *Haskell*, *C*, *Java*, *Web* e Escrita (*Latex*, *Markdown*, Texto e etc...) - voltado para os amantes em personalização de ferramentas.
 
 Versão do *Emacs*: 26.0.50
 
@@ -36,10 +36,11 @@ Durante o desenvolvimento, o projeto servirá de estudo para o conhecimento da p
 
 Próximas evoluções:
 
-* Acompanhar a evolução do *Meghanada*.
+* Acompanhar a evolução do *Java Meghanada*.
 * Evoluir o *Org-mode*.
 * Melhorar a legibilidade do código.
-* Melhorar o *Lisp*.
+* Melhorar a documentação do *README* e código.
+* Incrementar as funcionalidades dos pacotes *Web* e *Terminal*.
 
 # Projeto
 
@@ -47,7 +48,7 @@ Descrição da composição do projeto.
 
 ## Núcleo
 
-* Cursores: mover/duplicar e espaçar linha(s).
+* Quebra de Linha: acima, abaixo e entre a posição do cursor.
 * Texto: apresentação de formas de cadeias de caracteres.
 
 ## Pacotes
@@ -55,38 +56,18 @@ Descrição da composição do projeto.
 Conjunto de pacotes para o ambiente:
 
 * Estético: estilo ergonômico e sem distrações/ruídos - tema *dark* e linha de *status* com ícones.
-* Sintaxe: conjuntos de funcionalidades para facilitar a codificação e escrita.
-   * Autocompletar: sugestão de texto, conforme modo maior.
-   * Correção: sugestão para palavras selecionadas, conforme dicionário (português por padrão).
-   * Abreviação: abreviaturas de texto para expansão.
-   * Template: blocos de construção de texto (linguagens de programação).
 * Atalhos: atalhos utilizados no ambiente.
-* Semântica: frase e/ou expressão incorreta.
-   * Analisa o texto e/ou código.
-* Pragmático: *org-mode*...
-   * Organização do trabalho (em desenvolvimento).
-* Estrutura: conjunto de facilidades ao editor.
-   * Salva a última posição da seção.
-   * Listagem dos documentos recentes.
-   * Visualização da árvore de modificações no documento.
-   * Sugestão e rótulo de atalhos.
-   * Seleção de partes do *buffer*.
-   * Visualizador de arquivos.
-   * Cliente *Git*.
-   * Pacotes *Abo-abo*: *Avy*, *Ace-Window*, *Ivy*, *Swiper*, *Counsel* e *Hydra*.
-   * Ferramenta *Ripgrep*.
-* Notícias:
-   * *Feeds*:
-   * *Twitter*:
-* Linguagens de Programação:
-   * *Lisp*: dialetos *ELisp* (*Emacs Lisp*) e *Racket*.
-   * *Java*: servidor *Meghanada*.
-   * *Haskell*: em testes.
-   * *C*: (sem configurações).
-* Linguagens de Marcação:
-   * *Markdown*: arquivos .md.
-   * *Latex*: (sem configurações).
-   * *XML*: (sem configurações).
+* Sintaxe: conjuntos de funcionalidades para facilitar a codificação e escrita.
+   * Autocompletar;
+   * Correção;
+   * Abreviação; e
+   * Template.
+* Semântico: analisa o texto e/ou código com frases e/ou expressões incorretas.
+* Pragmático: organização do trabalho com *org-mode*.
+* Estrutura: conjunto estrutural de melhorias/funcionalidades para o ambiente.
+* Notícias: *feeds* e *Twitter*.
+* Linguagens de Programação: *Lisp* (dialetos *ELisp* - *Emacs Lisp*, *Racket* e *Clojure*), *Haskell*, *C* (com *Irony*) e *Java* (com *Meghanada* e *JDEE*).
+* Linguagens de Marcação: *Markdown*.
 * Linguagens *Web*: em desenvolvimento.
 
 ## Comandos
@@ -108,5 +89,5 @@ Listagem dos comandos fundamentais:
 * `Ctrl + x` - comandos para o ambiente
 * `Ctrl + c` - comandos para o modo maior
 * `Alt  + x` - prompt de comandos
-* `Win` - comando especial para o modo maior
+* `Win` - comandos e/ou atalhos especiais ao ambiente/modo maior
 * `Ctrl + Alt + Enter` - super comando
