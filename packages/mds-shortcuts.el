@@ -191,6 +191,7 @@
 
 (add-to-list 'load-path (concat user-emacs-directory "temp/right-click-context"))
 (use-package right-click-context
+  :diminish right-click-context-mode
   :init
   (add-hook 'after-init-hook 'right-click-context-mode))
 
