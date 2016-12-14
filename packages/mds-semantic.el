@@ -56,7 +56,6 @@
    ("C-M-$" . flyspell-popup-correct))
   :init
   (setq flyspell-issue-message-flag nil)
-  (add-hook 'prog-mode-hook 'flyspell-prog-mode)
   (add-hook 'text-mode-hook 'flyspell-mode))
 
 (use-package flyspell-correct
