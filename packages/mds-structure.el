@@ -222,7 +222,12 @@
   :ensure t
   :commands counsel-projectile-on
   :init
-  (add-hook 'projectile-mode-hook 'counsel-projectile-on))
+  (add-hook 'projectile-mode-hook 'counsel-projectile-on)
+  (fset 'projectile-find-file        'counsel-projectile-find-file)
+  (fset 'projectile-find-dir         'counsel-projectile-find-dir)
+  (fset 'projectile-switch-to-buffer 'counsel-projectile-switch-to-buffer)
+  (fset 'projectile-ag               'counsel-projectile-ag)
+  (fset 'projectile-switch-project   'counsel-projectile-switch-project))
 
 (use-package ripgrep
   :ensure t
