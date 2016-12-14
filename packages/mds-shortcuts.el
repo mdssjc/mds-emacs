@@ -151,6 +151,7 @@
    "<f8> g s"   'magit-status
    "<f8> g S"   'magit-stage-file
    "<f8> g g"   'magit-dispatch-popup
+   "<f8> g t"   'git-timemachine-toggle
    "<f8> r"     'ripgrep-regexp)
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   (defalias 'gs 'magit-status "Magit status"))
