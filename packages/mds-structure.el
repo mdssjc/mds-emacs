@@ -366,5 +366,7 @@
   :config
   (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag))
 
+(use-package tramp)
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
