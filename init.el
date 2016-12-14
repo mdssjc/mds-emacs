@@ -140,12 +140,13 @@
 ;; ---
 
 ;; Server
-(require 'server nil t)
 (use-package server
+  :ensure t
   :if window-system
   :init
-  (when (not (server-running-p server-name))
-    (server-start)))
+  (require 'server)
+  (unless (server-running-p)
+    (add-hook 'after-init-hook 'server-start t)))
 ;; --
 
 ;; OS
