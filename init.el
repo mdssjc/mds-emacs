@@ -143,6 +143,7 @@
 (use-package server
   :ensure t
   :if window-system
+  :commands server-start
   :init
   (require 'server)
   (unless (server-running-p)

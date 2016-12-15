@@ -342,28 +342,35 @@
 
 (use-package dired+
   :ensure t
+  :defer 1
   :init
   (use-package tramp)
   :config
   (setq diredp-image-preview-in-tooltip t))
 
 (use-package replace+
-  :ensure t)
+  :ensure t
+  :defer 1)
 
 (use-package mouse+
-  :ensure t)
+  :ensure t
+  :defer 1)
 
 (use-package menu-bar+
-  :ensure t)
+  :ensure t
+  :defer 1)
 
 (use-package info+
-  :ensure t)
+  :ensure t
+  :defer 1)
 
 (use-package isearch+
-  :ensure t)
+  :ensure t
+  :defer 1)
 
 (use-package bookmark+
   :ensure t
+  :defer 1
   :config
   (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag))
 
