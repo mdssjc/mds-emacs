@@ -67,27 +67,27 @@
   (general-define-key :keymaps 'isearch-mode-map
                       "<C-'>" 'avy-isearch)
   (general-define-key :keymaps 'selected-keymap
-                      "\\" 'hydra-selected/body
-                      "$"  'flyspell-region
-                      "q"  'selected-off
-                      "k"  'capitalize-region
-                      "u"  'upcase-region
-                      "l"  'downcase-region
-                      "w"  'count-words-region
-                      "m"  'apply-macro-to-region-lines
-                      "c"  'kill-ring-save
-                      "x"  'kill-region
-                      "p"  'yank
-                      "C-s s" 'sort-lines
+                      "$" 'flyspell-region
                       "C-s r" 'reverse-region
-                      "C-x w" 'mds/split-words
-                      "C-x l" 'mds/lower-camel-case
-                      "C-x u" 'mds/upper-camel-case
-                      "C-x s" 'mds/snake-case
-                      "C-x d" 'mds/dashed-words
+                      "C-s s" 'sort-lines
                       "C-x c" 'mds/capitalized-words
+                      "C-x d" 'mds/dashed-words
+                      "C-x i" 'mds/word-initials
+                      "C-x l" 'mds/lower-camel-case
+                      "C-x s" 'mds/snake-case
                       "C-x t" 'mds/titleized-words
-                      "C-x i" 'mds/word-initials)
+                      "C-x u" 'mds/upper-camel-case
+                      "C-x w" 'mds/split-words
+                      "\\" 'hydra-selected/body
+                      "c" 'kill-ring-save
+                      "k" 'capitalize-region
+                      "l" 'downcase-region
+                      "m" 'apply-macro-to-region-lines
+                      "p" 'yank
+                      "q" 'selected-off
+                      "u" 'upcase-region
+                      "w" 'count-words-region
+                      "x" 'kill-region)
   (general-define-key :keymaps 'selected-org-mode-map
                       "e" 'org-emphasize)
   (general-define-key :keymaps 'popup-isearch-keymap
@@ -96,43 +96,44 @@
                       "S" 'embrace-commander)
   (general-define-key
    "<C-return>"   'mds/insert-lines-above
+   "<C-tab>"      'cycle-spacing
    "<M-return>"   'mds/insert-lines-below
    "<S-C-return>" 'mds/insert-lines-between
-   "s-s"        'embrace-commander
-   "s-v"        'hydra-expand-region/body
-   "<C-tab>"    'cycle-spacing
-   "S-SPC"      'cycle-spacing
-   "M-/"        'hippie-expand
-   "S-C-j"      'join-line
+   "C-#"        'vr/query-replace
    "C-'"        'popup-imenu
    "C-:"        'avy-goto-char-timer
-   "M-g f"      'avy-goto-line
-   "M-g e"      'avy-goto-word-0
-   "C-s"        'swiper
-   "S-C-s"      'swiper-all
+   "C-="        'er/expand-region
    "C-S-f"      'swiper-multi
-   "M-x"        'counsel-M-x
-   "M-y"        'counsel-yank-pop
+   "C-c /"      'counsel-rg
+   "C-s"        'swiper
+   "C-x /"      'ripgrep-regexp
    "C-x C-f"    'counsel-find-file
    "C-x C-r"    'counsel-recentf
-   "C-c /"      'counsel-rg
-   "C-="        'er/expand-region
    "C-x Q q"    'save-buffers-kill-terminal
    "C-x Q r"    'restart-emacs
-   "C-x w"      'ace-window
-   "C-x g"      'magit-status
-   "C-x /"      'ripgrep-regexp
    "C-x S"      'embrace-commander
    "C-x V"      'hydra-expand-region/body
+   "C-x g"      'magit-status
+   "C-x w"      'ace-window
    "M-#"        'vr/replace
-   "C-#"        'vr/query-replace
-   "M-<up>"     'md/move-lines-up
+   "M-/"        'hippie-expand
    "M-<down>"   'md/move-lines-down
-   "S-M-<up>"   'md/duplicate-up
+   "M-<up>"     'md/move-lines-up
+   "M-g e"      'avy-goto-word-0
+   "M-g f"      'avy-goto-line
+   "M-x"        'counsel-M-x
+   "M-y"        'counsel-yank-pop
+   "S-C-j"      'join-line
+   "S-C-s"      'swiper-all
    "S-M-<down>" 'md/duplicate-down
+   "S-M-<up>"   'md/duplicate-up
    "S-M-t"      'swap-regions
+   "S-SPC"      'cycle-spacing
+   "s-s"        'embrace-commander
+   "s-v"        'hydra-expand-region/body
    ;; F5 (Toggle Global)
    "<f5> -"     'centered-cursor-mode
+   "<f5> W"     'writeroom-mode
    "<f5> a"     'company-mode
    "<f5> f"     'focus-mode
    "<f5> g"     'golden-ratio-mode
@@ -142,7 +143,6 @@
    "<f5> r"     'read-only-mode
    "<f5> t"     'toggle-truncate-lines
    "<f5> w"     'global-whitespace-mode
-   "<f5> W"     'writeroom-mode
    ;; F7 (Aplicações Interna - Internal Applications)
    "<f7> b e"   'eww
    "<f7> e"     'eshell
@@ -152,9 +152,9 @@
    "<f7> u a"   'package-utils-install-async
    "<f7> u u"   'package-utils-upgrade-all
    ;; F8 (Aplicações Externa - Internal Applications)
-   "<f8> g s"   'magit-status
    "<f8> g S"   'magit-stage-file
    "<f8> g g"   'magit-dispatch-popup
+   "<f8> g s"   'magit-status
    "<f8> g t"   'git-timemachine-toggle
    "<f8> r"     'ripgrep-regexp)
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
@@ -179,10 +179,10 @@
    "<f8> r" "ripgrep"
    "<f8> s" "ispell"
    "C-c !"  "flycheck"
-   "C-c @"  "hide blocks"
    "C-c &"  "yasnippet"
-   "C-c p"  "projectile"
    "C-c /"  "counsel-rg"
+   "C-c @"  "hide blocks"
+   "C-c p"  "projectile"
    "C-x Q"  "quit/restart"
    "M-s h"  "highlight"
    "<C-M-return> a"   "align"
