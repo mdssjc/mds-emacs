@@ -32,7 +32,11 @@
    ("xm" . counsel-M-x)
    ("xf" . counsel-find-file)
    ("xr" . counsel-recentf)
-   ("gs" . magit-status))
+   ("gs" . magit-status)
+   ("\\s" . embrace-commander)
+   ("/s"  . embrace-commander)
+   ("\\v" . hydra-expand-region/body)
+   ("/v"  . hydra-expand-region/body))
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
