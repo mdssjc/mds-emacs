@@ -58,7 +58,9 @@
   :config
   (setq recentf-save-file (expand-file-name (concat user-emacs-directory ".cache/recentf"))
         recentf-max-saved-items 1000
-        recentf-max-menu-items 15))
+        recentf-max-menu-items 15
+        recentf-auto-cleanup 600)
+  (run-at-time nil (* 10 60) 'recentf-save-list))
 
 (use-package restart-emacs
   :ensure t
