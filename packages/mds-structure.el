@@ -40,8 +40,7 @@
 ;;  - centered-cursor: manter o cursor no centro do buffer;
 ;;  - writeroom: ambiente sem distração visual;
 ;;  - focus: prioriza a região de edição ativa;
-;;  - dired-icon: ícones no dired;
-;;  - plus: replace+, mouse+, menu-bar+, info+, isearch+ e bookmark+.
+;;  - plus: dired+, replace+, mouse+, menu-bar+, info+, isearch+ e bookmark+.
 
 ;;; Code:
 (use-package saveplace
@@ -258,9 +257,6 @@
   :config
   (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
 
-(use-package flx-ido
-    :ensure t)
-
 (use-package popup-imenu
   :ensure t
   :commands popup-imenu
@@ -341,10 +337,12 @@
   :ensure t
   :commands focus-mode)
 
-(use-package dired-icon
+(use-package dired+
   :ensure t
   :init
-  (add-hook 'dired-mode-hook 'dired-icon-mode))
+  (use-package tramp)
+  :config
+  (setq diredp-image-preview-in-tooltip t))
 
 (use-package replace+
   :ensure t)
@@ -365,8 +363,6 @@
   :ensure t
   :config
   (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag))
-
-(use-package tramp)
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here

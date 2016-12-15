@@ -45,6 +45,7 @@
 
 (use-package all-the-icons-dired
   :ensure t
+  :diminish all-the-icons-dired-mode
   :commands all-the-icons-dired-mode
   :init
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
