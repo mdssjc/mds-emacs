@@ -18,10 +18,11 @@
   ("\\.java$" . java-mode)
   :interpreter
   ("java" . java-mode)
+  :bind
+  (:map java-mode-map
+        ("<f6> m" . meghanada-mode)
+        ("<f6> j" . jdee-mode))
   :init
-  (use-package java-snippets
-    :ensure t
-    :defer t)
   (add-hook 'java-mode-hook 'flycheck-mode)
   (add-hook 'java-mode-hook (lambda () (setq-local counsel-dash-docsets '("Java_SE8"
                                                                      "Java_EE7"
@@ -42,21 +43,22 @@
                                        company-dict
                                        company-files))))))
 
+(use-package java-snippets
+  :ensure t
+  :defer t)
+
 (use-package meghanada
   :ensure t
-  :bind
-  (:map java-mode-map
-        ("<f6> m" . meghanada-mode))
+  :commands meghanada-mode
   :init
-  (setq meghanada-server-install-dir (concat user-emacs-directory ".cache/meghanada/"))
-  (add-hook 'java-mode-hook 'meghanada-mode))
+  (add-hook 'java-mode-hook 'meghanada-mode)
+  :config
+  (setq meghanada-server-install-dir (concat user-emacs-directory ".cache/meghanada/")))
 
 (use-package jdee
   :ensure t
-  :bind
-  (:map java-mode-map
-        ("<f6> j" . jdee-mode))
-  :init
+  :commands jdee-mode
+  :config
   (setq jdee-server-dir (concat user-emacs-directory ".cache/jdee/")))
 
 (provide 'mds-java-pl)
