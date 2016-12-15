@@ -183,7 +183,10 @@
   :defer t)
 
 (use-package smex
-  :ensure t)
+  :ensure t
+  :defer t
+  :config
+  (setq smex-save-file (concat user-emacs-directory ".cache/smex-items")))
 
 (use-package expand-region
   :ensure t
