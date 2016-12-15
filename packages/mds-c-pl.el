@@ -19,10 +19,10 @@
   ("\\.h$" . c-mode)
   :bind
   (:map c-mode-map
-        ("C-c ." . semantic-ia-fast-jump)
-        ("C-c ^" . senator-go-to-up-reference)
-        ("M-RET" . srefactor-refactor-at-point)
-        (";"     . maio/electric-semicolon))
+        ("C-c ."      . semantic-ia-fast-jump)
+        ("C-c ^"      . senator-go-to-up-reference)
+        ("s-<return>" . srefactor-refactor-at-point)
+        (";"          . maio/electric-semicolon))
   :init
   (add-hook 'c-mode-hook '(lambda ()
                             (set (make-local-variable 'company-transformers)
