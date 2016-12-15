@@ -17,14 +17,15 @@
   :ensure t
   :mode
   ("\\.\\(html\\|htm\\)$" . web-mode)
-  :init
-  (use-package emmet-mode
-    :ensure t
-    :config
-    (add-hook 'html-mode-hook 'emmet-mode))
   :config
   (setq web-mode-style-padding ers-tab-size
         web-mode-script-padding ers-tab-size))
+
+(use-package emmet-mode
+  :ensure t
+  :commands emmet-mode
+  :init
+  (add-hook 'html-mode-hook 'emmet-mode))
 
 (provide 'mds-web-wl)
 ;;; mds-web-wl.el ends here
