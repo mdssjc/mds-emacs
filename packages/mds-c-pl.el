@@ -24,23 +24,6 @@
         ("M-RET" . srefactor-refactor-at-point)
         (";"     . maio/electric-semicolon))
   :init
-  (setq c-default-style "linux"
-        speedbar-show-unknow-files t
-        semanticdb-default-save-directory (concat user-emacs-directory ".cache/semanticdb")
-        semantic-default-submodes '(global-semantic-idle-scheduler-mode
-                                    global-semanticdb-minor-mode
-                                    global-semantic-idle-summary-mode
-                                    global-semantic-idle-completions-mode
-                                    global-semantic-highlight-func-mode
-                                    global-semantic-decoration-mode
-                                    global-semantic-stickyfunc-mode
-                                    global-semantic-mru-bookmark-mode
-                                    global-semantic-idle-local-symbol-highlight-mode
-                                    global-semantic-highlight-edits-mode
-                                    global-semantic-show-parser-state-mode
-                                    global-semantic-idle-breadcrumbs-mode
-                                    global-semantic-show-unmatched-syntax-mode))
-  (setq company-backends (remove 'company-clang company-backends))
   (add-hook 'c-mode-hook '(lambda ()
                             (set (make-local-variable 'company-transformers)
                                  '(company-sort-by-backend-importance
@@ -60,8 +43,8 @@
                                     company-files)))))
   (add-hook 'c-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'semantic-mode)
-  (add-hook 'c-mode-hook 'ede-enable-generic-projects)
-  (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
+  ;(add-hook 'c-mode-hook 'ede-enable-generic-projects)
+  ;(add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
   (add-hook 'irony-mode-hook 'flycheck-irony-setup)
@@ -86,6 +69,23 @@
   (require 'semantic/bovine)
   (require 'semantic/bovine/c)
   (require 'semantic/bovine/gcc)
+  (setq company-backends (remove 'company-clang company-backends)
+        c-default-style "linux"
+        speedbar-show-unknow-files t
+        semanticdb-default-save-directory (concat user-emacs-directory ".cache/semanticdb")
+        semantic-default-submodes '(global-semantic-idle-scheduler-mode
+                                    global-semanticdb-minor-mode
+                                    global-semantic-idle-summary-mode
+                                    global-semantic-idle-completions-mode
+                                    global-semantic-highlight-func-mode
+                                    global-semantic-decoration-mode
+                                    global-semantic-stickyfunc-mode
+                                    global-semantic-mru-bookmark-mode
+                                    global-semantic-idle-local-symbol-highlight-mode
+                                    global-semantic-highlight-edits-mode
+                                    global-semantic-show-parser-state-mode
+                                    global-semantic-idle-breadcrumbs-mode
+                                    global-semantic-show-unmatched-syntax-mode))
   (add-to-list 'company-c-headers-path-system "/usr/include/c++/6.2.1")
   (add-to-list 'semantic-lex-c-preprocessor-symbol-file "/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include/stddef.h")
   (semanticdb-enable-gnu-global-databases 'c-mode t))
