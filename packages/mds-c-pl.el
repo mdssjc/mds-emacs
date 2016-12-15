@@ -24,6 +24,7 @@
         ("s-<return>" . srefactor-refactor-at-point)
         (";"          . maio/electric-semicolon))
   :init
+  (setq irony-user-dir (concat user-emacs-directory ".cache/irony"))
   (add-hook 'c-mode-hook '(lambda ()
                             (set (make-local-variable 'company-transformers)
                                  '(company-sort-by-backend-importance
@@ -43,8 +44,8 @@
                                     company-files)))))
   (add-hook 'c-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'semantic-mode)
-  ;(add-hook 'c-mode-hook 'ede-enable-generic-projects)
-  ;(add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
+                                        ;(add-hook 'c-mode-hook 'ede-enable-generic-projects)
+                                        ;(add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
   (add-hook 'irony-mode-hook 'flycheck-irony-setup)
