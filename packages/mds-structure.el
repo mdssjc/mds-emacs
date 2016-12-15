@@ -48,7 +48,8 @@
   :init
   (add-hook 'after-init-hook 'save-place-mode)
   :config
-  (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places"))))
+  (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places"))
+        save-place-forget-unreadable-files nil))
 
 (use-package recentf
   :commands recentf-mode
