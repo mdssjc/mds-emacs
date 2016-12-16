@@ -347,6 +347,13 @@
 (use-package async
   :ensure t)
 
+(use-package emr
+  :ensure t
+  :diminish emr-c-mode
+  :commands emr-show-refactor-menu
+  :init
+  (add-hook 'prog-mode-hook 'emr-initialize))
+
 (use-package dired+
   :ensure t
   :defer 1

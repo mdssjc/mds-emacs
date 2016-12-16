@@ -22,6 +22,8 @@
         ("C-c ."      . semantic-ia-fast-jump)
         ("C-c ^"      . senator-go-to-up-reference)
         ("s-<return>" . srefactor-refactor-at-point)
+        ("C-c C-r e"  . emr-show-refactor-menu)
+        ("C-c C-r s"  . srefactor-refactor-at-point)
         (";"          . maio/electric-semicolon))
   :init
   (setq irony-user-dir (concat user-emacs-directory ".cache/irony"))
@@ -44,8 +46,7 @@
                                     company-files)))))
   (add-hook 'c-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'semantic-mode)
-                                        ;(add-hook 'c-mode-hook 'ede-enable-generic-projects)
-                                        ;(add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
+  ;; (add-hook 'c-mode-hook 'ede-enable-generic-projects)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
   (add-hook 'irony-mode-hook 'flycheck-irony-setup)
@@ -57,6 +58,7 @@
                                   (define-key irony-mode-map [remap complete-symbol]
                                     'irony-completion-at-point-async))))
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (add-hook 'c-mode-hook 'function-args-mode)
   (add-hook 'c-mode-hook 'fa-config-default)
   (add-hook 'c-mode-hook 'hs-minor-mode)
   (add-hook 'c-mode-hook 'electric-spacing-mode)
@@ -116,14 +118,10 @@
 
 (use-package function-args
   :ensure t
-  :commands fa-config-default)
+  :commands function-args-mode fa-config-default)
 
 (use-package company-c-headers
   :ensure t)
-
-(use-package c-eldoc
-  :ensure t
-  :disabled t)
 
 (defun maio/electric-semicolon ()
   (interactive)
