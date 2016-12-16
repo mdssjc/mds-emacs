@@ -46,20 +46,21 @@
 (use-package saveplace
   :commands save-place-mode
   :init
+  (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places")))
   (add-hook 'after-init-hook 'save-place-mode)
   :config
-  (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places"))
-        save-place-forget-unreadable-files nil))
+  (setq save-place-forget-unreadable-files nil))
 
 (use-package recentf
   :commands recentf-mode
   :init
+  (setq recentf-save-file (expand-file-name (concat user-emacs-directory ".cache/recentf")))
   (add-hook 'after-init-hook 'recentf-mode)
   :config
-  (setq recentf-save-file (expand-file-name (concat user-emacs-directory ".cache/recentf"))
-        recentf-max-saved-items 1000
+  (setq recentf-max-saved-items 1000
         recentf-max-menu-items 15
-        recentf-auto-cleanup 600)
+        recentf-auto-cleanup 600
+        recentf-exclude '("/elpa/" "/.cache/"))
   (run-at-time nil (* 10 60) 'recentf-save-list))
 
 (use-package restart-emacs
@@ -83,7 +84,6 @@
   (add-hook 'after-init-hook '(lambda ()
                                 (keyfreq-mode 1)
                                 (keyfreq-autosave-mode 1)))
-  :config
   (setq keyfreq-file      (concat user-emacs-directory ".cache/.emacs.keyfreq")
         keyfreq-file-lock (concat user-emacs-directory ".cache/.emacs.keyfreq.lock")))
 
