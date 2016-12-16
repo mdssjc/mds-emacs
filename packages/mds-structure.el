@@ -344,9 +344,6 @@
   :ensure t
   :commands focus-mode)
 
-(use-package async
-  :ensure t)
-
 (use-package emr
   :ensure t
   :diminish emr-c-mode
