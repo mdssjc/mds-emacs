@@ -344,6 +344,9 @@
   :ensure t
   :commands focus-mode)
 
+(use-package async
+  :ensure t)
+
 (use-package dired+
   :ensure t
   :defer 1
