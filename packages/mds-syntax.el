@@ -56,9 +56,7 @@
   :config
   (setq company-statistics-size 1000
         company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")
-        company-statistics-auto-save nil)
-  (run-at-time nil 600 '(lambda () (async-start
-                               (company-statistics--save)))))
+        company-statistics-auto-save t))
 
 (use-package company-dict
   :ensure t
