@@ -346,8 +346,7 @@
 
 (use-package emr
   :ensure t
-  :diminish emr-c-mode
-  :commands emr-show-refactor-menu
+  :commands emr-initialize emr-show-refactor-menu
   :init
   (add-hook 'prog-mode-hook 'emr-initialize))
 

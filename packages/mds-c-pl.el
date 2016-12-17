@@ -45,7 +45,6 @@
                                     company-dabbrev
                                     company-files)))))
   (add-hook 'c-mode-hook 'flycheck-mode)
-  (add-hook 'c-mode-hook 'semantic-mode)
   ;; (add-hook 'c-mode-hook 'ede-enable-generic-projects)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
@@ -58,6 +57,7 @@
                                   (define-key irony-mode-map [remap complete-symbol]
                                     'irony-completion-at-point-async))))
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (add-hook 'c-mode-hook 'semantic-mode)
   (add-hook 'c-mode-hook 'function-args-mode)
   (add-hook 'c-mode-hook 'fa-config-default)
   (add-hook 'c-mode-hook 'hs-minor-mode)
