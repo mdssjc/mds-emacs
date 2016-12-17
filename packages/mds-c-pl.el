@@ -118,6 +118,7 @@
 
 (use-package function-args
   :ensure t
+  :diminish function-args-mode
   :commands function-args-mode fa-config-default)
 
 (use-package company-c-headers
