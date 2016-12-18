@@ -53,8 +53,13 @@
 (use-package emmet-mode
   :ensure t
   :commands emmet-mode
+  :bind
+  (:map emmet-mode-keymap
+   ("<C-return>" . nil))
   :init
-  (add-hook 'web-mode-hook 'emmet-mode))
+  (add-hook 'web-mode-hook 'emmet-mode)
+  :config
+  (setq emmet-indentation 2))
 
 (use-package company-web
   :ensure t)
