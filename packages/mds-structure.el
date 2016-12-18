@@ -61,7 +61,8 @@
         recentf-max-menu-items 15
         recentf-auto-cleanup 600
         recentf-exclude '("/elpa/" "/.cache/"))
-  (run-at-time nil 600 'recentf-save-list))
+  ;; (run-at-time nil 600 'recentf-save-list)
+  )
 
 (use-package restart-emacs
   :ensure t
@@ -353,10 +354,16 @@
 (use-package dumb-jump
   :ensure t
   :bind
-  (("M-g o" . dumb-jump-go-other-window)
-   ("M-g j" . dumb-jump-go)
-   ("M-g b" . dumb-jump-back)
-   ("M-g q" . dumb-jump-quick-look))
+  (:map dumb-jump-mode-map
+        ("M-g o" . dumb-jump-go-other-window)
+        ("M-g j" . dumb-jump-go)
+        ("M-g b" . dumb-jump-back)
+        ("M-g q" . dumb-jump-quick-look)
+        ("C-M-g" . nil)
+        ("C-M-p" . nil)
+        ("C-M-q" . nil))
+  :init
+  (add-hook 'prog-mode-hook 'dumb-jump-mode)
   :config
   (setq dumb-jump-selector 'ivy))
 
