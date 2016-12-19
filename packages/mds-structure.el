@@ -195,7 +195,9 @@
 
 (use-package expand-region
   :ensure t
-  :commands er/expand-region)
+  :commands er/expand-region
+  :config
+  (require 'the-org-mode-expansions))
 
 (use-package embrace
   :ensure t
@@ -205,6 +207,7 @@
   (add-hook 'prog-mode-hook '(lambda () (setq embrace-semantic-units-alist
                                          (append embrace-semantic-units-alist semantics-units))))
   :config
+  (require 'the-org-mode-expansions)
   (setq semantics-units '((?w . er/mark-word)
                           (?s . er/mark-symbol)
                           (?d . er/mark-defun)
