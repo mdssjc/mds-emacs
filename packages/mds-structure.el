@@ -172,7 +172,8 @@
         ivy-use-virtual-buffers t
         ivy-re-builders-alist '((t . ivy--regex-plus))
         projectile-completion-system   'ivy
-        magit-completing-read-function 'ivy-completing-read))
+        magit-completing-read-function 'ivy-completing-read
+        smex-completion-method         'ivy))
 
 (use-package ivy-hydra
   :ensure t
@@ -242,7 +243,8 @@
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
         projectile-sort-order 'modification-time
-        projectile-switch-project-action 'neotree-projectile-action))
+        projectile-switch-project-action 'neotree-projectile-action
+        projectile-enable-caching t))
 
 (use-package counsel-projectile
   :ensure t
