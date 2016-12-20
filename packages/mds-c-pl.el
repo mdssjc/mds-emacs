@@ -20,6 +20,7 @@
   :bind
   (:map c-mode-map
         ("C-c ."      . semantic-ia-fast-jump)
+        ("C-c ?"      . semantic-ia-show-doc)
         ("C-c ^"      . senator-go-to-up-reference)
         ("s-<return>" . srefactor-refactor-at-point)
         ("C-c C-r e"  . emr-show-refactor-menu)
@@ -45,7 +46,9 @@
                                     company-dabbrev
                                     company-files)))))
   (add-hook 'c-mode-hook 'flycheck-mode)
-  ;; (add-hook 'c-mode-hook 'ede-enable-generic-projects)
+  (add-hook 'c-mode-hook 'semantic-mode)
+  (add-hook 'c-mode-hook 'global-ede-mode)
+  ;; (add-hook 'c-mode-hook 'global-srecode-minor-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
   (add-hook 'irony-mode-hook 'flycheck-irony-setup)
@@ -57,7 +60,6 @@
                                   (define-key irony-mode-map [remap complete-symbol]
                                     'irony-completion-at-point-async))))
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  (add-hook 'c-mode-hook 'semantic-mode)
   (add-hook 'c-mode-hook 'function-args-mode)
   (add-hook 'c-mode-hook 'fa-config-default)
   (add-hook 'c-mode-hook 'hs-minor-mode)
@@ -72,6 +74,8 @@
   (require 'semantic/bovine)
   (require 'semantic/bovine/c)
   (require 'semantic/bovine/gcc)
+  ;; (semantic-load-enable-code-helpers)
+  ;; (ede-enable-generic-projects)
   (setq company-backends (remove 'company-clang company-backends)
         c-default-style "linux"
         speedbar-show-unknow-files t
