@@ -171,6 +171,7 @@
         ivy-count-format "(%d/%d) "
         ivy-use-virtual-buffers t
         ivy-re-builders-alist '((t . ivy--regex-plus))
+        ivy-virtual-abbreviate 'full
         projectile-completion-system   'ivy
         magit-completing-read-function 'ivy-completing-read
         smex-completion-method         'ivy))
@@ -178,6 +179,12 @@
 (use-package ivy-hydra
   :ensure t
   :after ivy)
+
+(use-package ivy-rich
+  :ensure t
+  :after ivy
+  :config
+  (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer))
 
 (use-package swiper
   :ensure t
