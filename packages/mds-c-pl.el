@@ -65,6 +65,7 @@
   (add-hook 'c-mode-hook 'hs-minor-mode)
   (add-hook 'c-mode-hook 'electric-spacing-mode)
   (add-hook 'c-mode-hook 'electric-pair-mode)
+  (add-hook 'c-mode-hook 'show-paren-mode)
   (add-hook 'c-mode-hook (lambda () (setq-local counsel-dash-docsets '("C"))))
   :config
   (require 'semantic)
