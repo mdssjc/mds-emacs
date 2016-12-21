@@ -31,8 +31,7 @@
                                      company-sort-prefer-same-case-prefix
                                      company-sort-by-statistics))
                               (set (make-local-variable 'company-backends)
-                                   '((company-web
-                                      company-web-html
+                                   '((company-web-html
                                       company-css
                                       company-yasnippet
                                       :with
