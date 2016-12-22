@@ -100,7 +100,7 @@
    "<M-return>"   'mds/insert-lines-below
    "<S-C-return>" 'mds/insert-lines-between
    "C-#"        'vr/query-replace
-   "C-'"        'popup-imenu
+   "C-'"        'counsel-imenu
    "C-:"        'avy-goto-char-timer
    "C-="        'er/expand-region
    "C-S-f"      'swiper-multi

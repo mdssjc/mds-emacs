@@ -277,12 +277,6 @@
   :config
   (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
 
-(use-package popup-imenu
-  :ensure t
-  :commands popup-imenu
-  :config
-  (setq popup-imenu-style 'indent))
-
 (use-package move-dup
   :ensure t
   :commands md/move-lines-up md/move-lines-down md/duplicate-up md/duplicate-down)
@@ -412,6 +406,15 @@
   :defer 1
   :config
   (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag))
+
+(use-package imenu
+  :defer 1
+  :init
+  (add-hook 'prog-mode-hook 'imenu-add-menubar-index))
+
+(use-package imenu+
+  :ensure t
+  :after imenu)
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
