@@ -170,10 +170,13 @@
   :config
   (setq which-key-idle-delay 0.1)
   (which-key-add-major-mode-key-based-replacements 'c-mode
-    "C-c @" "hide blocks")
+    "C-c ," "semantic"
+    "C-c ." "ede"
+    "C-c @" "hide blocks"
+    "C-c r" "refactor")
   (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
-    "C-c r"   "refactor"
-    "C-c r v" "erefactor")
+    "C-c r v" "erefactor"
+    "C-c r"   "refactor")
   (which-key-add-key-based-replacements
     "<f7> b" "browser"
     "<f7> p" "projectile"
