@@ -142,6 +142,7 @@
 ;; Server
 (use-package server
   :ensure t
+  :disabled t
   :if window-system
   :commands server-start
   :init
