@@ -105,7 +105,7 @@
    "C-="        'er/expand-region
    "C-S-f"      'swiper-multi
    "C-c /"      'counsel-rg
-   "C-s"        'swiper
+   "C-s"        'counsel-grep-or-swiper
    "C-x /"      'ripgrep-regexp
    "C-x C-f"    'counsel-find-file
    "C-x C-r"    'counsel-recentf
@@ -181,7 +181,6 @@
    "<f8> s" "ispell"
    "C-c !"  "flycheck"
    "C-c &"  "yasnippet"
-   "C-c /"  "counsel-rg"
    "C-c @"  "hide blocks"
    "C-c p"  "projectile"
    "C-x Q"  "quit/restart"
