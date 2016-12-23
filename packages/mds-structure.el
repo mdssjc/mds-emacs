@@ -188,6 +188,7 @@
 
 (use-package swiper
   :ensure t
+  :defer t
   :config
   (setq swiper-include-line-number-in-search t))
 
