@@ -54,7 +54,7 @@
         ("M-."    . find-function-at-point)
         ("M-&"    . complete-symbol)
         ("C-c e"  . macrostep-expand)
-        ("C-c C-r e" . emr-show-refactor-menu)
+        ("C-c r e" . emr-show-refactor-menu)
         ("<s-left>"  . special-lispy-barf)
         ("<s-right>" . special-lispy-slurp))
   :init
@@ -102,7 +102,7 @@
   :ensure t
   :defer t
   :config
-  (define-key emacs-lisp-mode-map "\C-c\C-rv" erefactor-map))
+  (define-key emacs-lisp-mode-map "\C-crv" erefactor-map))
 
 (use-package racket-mode
   :ensure t
