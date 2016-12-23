@@ -16,17 +16,18 @@
 (use-package parinfer
   :ensure t
   :commands parinfer-mode
-  :diminish parinfer " Ⓟ"
   :bind
   (:map parinfer-mode-map
         ("C-c <return>" . parinfer-toggle-mode))
-  :init
-  (setq parinfer-extensions '(defaults pretty-parens lispy smart-tab smart-yank)
-        parinfer-auto-switch-indent-mode t))
+  :config
+  (setq parinfer-extensions '(defaults pretty-parens lispy smart-tab smart-yank one)
+        parinfer-auto-switch-indent-mode t
+        parinfer-auto-switch-indent-mode-when-closing t
+        parinfer-preview-cursor-scope t))
 
 (use-package lispy
   :ensure t
-  :diminish lispy-mode " Ⓛ"
+  :diminish lispy-mode
   :commands lispy-mode
   :bind
   (:map lispy-mode-map
@@ -34,7 +35,7 @@
         ("M-<return>"   . nil)
         ("S-C-<return>" . nil))
   :init
-  (add-hook 'parinfer-mode-hook 'lispy-mode))
+  (add-hook 'parinfer-mode-enable-hook 'lispy-mode))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -54,46 +55,43 @@
         ("<s-left>"  . special-lispy-barf)
         ("<s-right>" . special-lispy-slurp))
   :init
-  (require 'ert)
   (add-hook 'emacs-lisp-mode-hook 'parinfer-mode)
-  (add-hook 'emacs-lisp-mode-hook 'ert--activate-font-lock-keywords)
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (setq lisp-prettify-symbols-alist
-                                               '(("lambda" . ?λ)
-                                                 ("->"     . ?→)
-                                                 ("=>"     . ?⇒)
-                                                 ("map"    . ?↦)
-                                                 ("."      . ?•))
-                                               prettify-symbols-alist lisp-prettify-symbols-alist
-                                               prettify-symbols-unprettify-at-point 'right-edge)
-                                     (prettify-symbols-mode)))
+  (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
+  (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
   (add-hook 'emacs-lisp-mode-hook '(lambda () (add-to-list 'completion-styles 'initials t)))
   (add-hook 'emacs-lisp-mode-hook '(lambda () (set (make-local-variable 'company-backends)
-                                               '((company-elisp
-                                                  company-yasnippet
-                                                  :with
-                                                  company-capf
-                                                  company-keywords
-                                                  company-abbrev
-                                                  company-dabbrev-code
-                                                  company-dabbrev
-                                                  company-files)))))
-  (add-hook 'emacs-lisp-mode-hook 'flycheck-package-setup)
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (progn (setq flycheck-emacs-lisp-load-path 'inherit)
-                                                (flycheck-mode))))
-  (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Emacs_Lisp")))))
+                                              '((company-elisp
+                                                 company-yasnippet
+                                                 :with
+                                                 company-capf
+                                                 company-keywords
+                                                 company-abbrev
+                                                 company-dabbrev-code
+                                                 company-dabbrev
+                                                 company-files)))))
+  (add-hook 'emacs-lisp-mode-hook '(lambda () (progn (flycheck-mode)
+                                                (eval-after-load 'flycheck
+                                                  '(flycheck-package-setup)))))
+  (add-hook 'emacs-lisp-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
+  (add-hook 'emacs-lisp-mode-hook '(lambda () (progn (require 'ert)
+                                                (ert--activate-font-lock-keywords))))
+  :config
+  (setq flycheck-emacs-lisp-load-path 'inherit
+        lisp-prettify-symbols-alist '(("lambda" . ?λ)
+                                      ("->"     . ?→)
+                                      ("=>"     . ?⇒)
+                                      ("map"    . ?↦)
+                                      ("."      . ?•))
+        prettify-symbols-alist lisp-prettify-symbols-alist
+        prettify-symbols-unprettify-at-point 'right-edge))
 
 (use-package litable
   :ensure t
   :commands litable-mode
   :diminish litable-mode " Ⓣ")
 
-(use-package package-lint
-  :ensure t)
-
 (use-package flycheck-package
   :ensure t
-  :after package-lint
   :commands flycheck-package-setup)
 
 (use-package racket-mode
