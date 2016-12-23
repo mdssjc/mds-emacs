@@ -300,11 +300,12 @@
 
 (use-package exec-path-from-shell
   :ensure t
-  :demand t
+  :commands exec-path-from-shell-initialize
+  :init
+  (add-hook 'after-init-hook '(lambda () (when (memq window-system '(mac ns x))
+                                      (exec-path-from-shell-initialize))))
   :config
-  (setq exec-path-from-shell-check-startup-files nil)
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
+  (setq exec-path-from-shell-check-startup-files nil))
 
 (use-package dashboard
   :ensure t
