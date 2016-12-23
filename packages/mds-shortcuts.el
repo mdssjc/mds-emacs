@@ -169,29 +169,30 @@
   (add-hook 'after-init-hook 'which-key-mode)
   :config
   (setq which-key-idle-delay 0.1)
+  (which-key-add-major-mode-key-based-replacements 'c-mode
+    "C-c @"  "hide blocks")
   (which-key-add-key-based-replacements
-   "<f7> b" "browser"
-   "<f7> p" "projectile"
-   "<f7> t" "neotree"
-   "<f7> u" "package-utils"
-   "<f8> g" "magit"
-   "<f8> l" "langtool"
-   "<f8> n" "news"
-   "<f8> r" "ripgrep"
-   "<f8> s" "ispell"
-   "C-c !"  "flycheck"
-   "C-c &"  "yasnippet"
-   "C-c @"  "hide blocks"
-   "C-c p"  "projectile"
-   "C-x Q"  "quit/restart"
-   "M-s h"  "highlight"
-   "<C-M-return> a"   "align"
-   "<C-M-return> b"   "buffer"
-   "<C-M-return> f"   "file"
-   "<C-M-return> h"   "highlight"
-   "<C-M-return> h t" "todo"
-   "<C-M-return> n"   "narrow & widen"
-   "<C-M-return> t"   "tabify"))
+    "<f7> b" "browser"
+    "<f7> p" "projectile"
+    "<f7> t" "neotree"
+    "<f7> u" "package-utils"
+    "<f8> g" "magit"
+    "<f8> l" "langtool"
+    "<f8> n" "news"
+    "<f8> r" "ripgrep"
+    "<f8> s" "ispell"
+    "C-c !"  "flycheck"
+    "C-c &"  "yasnippet"
+    "C-c p"  "projectile"
+    "C-x Q"  "quit/restart"
+    "M-s h"  "highlight"
+    "<C-M-return> a"   "align"
+    "<C-M-return> b"   "buffer"
+    "<C-M-return> f"   "file"
+    "<C-M-return> h"   "highlight"
+    "<C-M-return> h t" "todo"
+    "<C-M-return> n"   "narrow & widen"
+    "<C-M-return> t"   "tabify"))
 
 (add-to-list 'load-path (concat user-emacs-directory "temp/right-click-context"))
 (use-package right-click-context
