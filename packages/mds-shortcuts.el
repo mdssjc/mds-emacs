@@ -170,7 +170,7 @@
   :config
   (setq which-key-idle-delay 0.1)
   (which-key-add-major-mode-key-based-replacements 'c-mode
-    "C-c @"  "hide blocks")
+    "C-c @" "hide blocks")
   (which-key-add-key-based-replacements
     "<f7> b" "browser"
     "<f7> p" "projectile"
@@ -197,6 +197,7 @@
 (add-to-list 'load-path (concat user-emacs-directory "temp/right-click-context"))
 (use-package right-click-context
   :diminish right-click-context-mode
+  :commands right-click-context-mode
   :init
   (add-hook 'after-init-hook 'right-click-context-mode))
 
