@@ -22,9 +22,8 @@
         ("C-c ."      . semantic-ia-fast-jump)
         ("C-c ?"      . semantic-ia-show-doc)
         ("C-c ^"      . senator-go-to-up-reference)
-        ("s-<return>" . srefactor-refactor-at-point)
-        ("C-c C-r e"  . emr-show-refactor-menu)
-        ("C-c C-r s"  . srefactor-refactor-at-point)
+        ("C-c r e"    . emr-show-refactor-menu)
+        ("C-c r s"    . srefactor-refactor-at-point)
         (";"          . maio/electric-semicolon))
   :init
   (setq irony-user-dir (concat user-emacs-directory ".cache/irony"))
