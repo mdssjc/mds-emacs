@@ -35,7 +35,9 @@
         ("M-<return>"   . nil)
         ("S-C-<return>" . nil))
   :init
-  (add-hook 'parinfer-mode-enable-hook 'lispy-mode))
+  (add-hook 'parinfer-mode-enable-hook 'lispy-mode)
+  (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression)
+                                            (lispy-mode 1)))))
 
 (use-package rainbow-delimiters
   :ensure t
