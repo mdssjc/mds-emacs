@@ -23,10 +23,8 @@
   :bind
   (("<f5> s" . flycheck-mode))
   :config
-  (setq flycheck-check-syntax-automatically '(mode-enable
-                                              save
-                                              idle-change)
-        flycheck-idle-change-delay 3))
+  (setq flycheck-check-syntax-automatically '(save idle-change)
+        flycheck-idle-change-delay 10))
 
 (use-package flycheck-pos-tip
   :ensure t
