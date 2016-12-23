@@ -172,7 +172,8 @@
   (which-key-add-major-mode-key-based-replacements 'c-mode
     "C-c @" "hide blocks")
   (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
-    "C-c C-v" "erefactor")
+    "C-c C-r"   "refactor"
+    "C-c C-r v" "erefactor")
   (which-key-add-key-based-replacements
     "<f7> b" "browser"
     "<f7> p" "projectile"
