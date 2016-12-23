@@ -77,6 +77,7 @@
   (add-hook 'emacs-lisp-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
   (add-hook 'emacs-lisp-mode-hook '(lambda () (progn (require 'ert)
                                                 (ert--activate-font-lock-keywords))))
+  (add-hook 'emacs-lisp-mode-hook 'erefactor-lazy-highlight-turn-on)
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit
         lisp-prettify-symbols-alist '(("lambda" . ?λ)
@@ -95,6 +96,12 @@
 (use-package flycheck-package
   :ensure t
   :commands flycheck-package-setup)
+
+(use-package erefactor
+  :ensure t
+  :defer t
+  :config
+  (define-key emacs-lisp-mode-map "\C-c\C-v" erefactor-map))
 
 (use-package racket-mode
   :ensure t
@@ -115,12 +122,12 @@
                                  (prettify-symbols-mode)))
   (add-hook 'racket-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Racket"))))
   (add-hook 'racket-mode-hook '(lambda () (set (make-local-variable 'company-backends)
-                                           '((company-capf
-                                              :with
-                                              company-abbrev
-                                              company-dabbrev-code
-                                              company-dabbrev
-                                              company-files)))))
+                                          '((company-capf
+                                             :with
+                                             company-abbrev
+                                             company-dabbrev-code
+                                             company-dabbrev
+                                             company-files)))))
   (add-hook 'racket-mode-hook 'flyspell-prog-mode)
   (add-hook 'racket-mode-hook 'dr-racket-like-unicode-mode)
   ;; (add-hook 'racket-mode-hook 'racket-unicode-input-method-enable)
