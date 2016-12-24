@@ -61,11 +61,9 @@
 
 (use-package emojify
   :ensure t
-  :bind
-  (("<f5> e" . global-emojify-mode)
-   ("C-c I"  . emojify-insert-emoji))
+  :commands global-emojify-mode
   :init
-  (add-hook 'after-init-hook 'global-emojify-mode) t
+  (add-hook 'after-init-hook 'global-emojify-mode)
   :config
   (setq emojify-emojis-dir (concat user-emacs-directory ".cache/emojis")))
 

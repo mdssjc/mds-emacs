@@ -112,6 +112,7 @@
    "C-="        'er/expand-region
    "C-S-f"      'swiper-multi
    "C-c /"      'counsel-rg
+   "C-c I"      'emojify-insert-emoji
    "C-s"        'counsel-grep-or-swiper
    "C-x /"      'ripgrep-regexp
    "C-x C-f"    'counsel-find-file
@@ -146,6 +147,7 @@
    "<f5> -"     'centered-cursor-mode
    "<f5> W"     'writeroom-mode
    "<f5> a"     'company-mode
+   "<f5> e"     'global-emojify-mode
    "<f5> f"     'focus-mode
    "<f5> g"     'golden-ratio-mode
    "<f5> h"     'hl-todo-mode
