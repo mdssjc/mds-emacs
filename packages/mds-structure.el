@@ -292,7 +292,7 @@
   :ensure t
   :commands tabbar-mode
   :init
-  (add-hook 'after-init-hook 'tabbar-mode))
+  (add-hook 'spaceline-pre-hook 'tabbar-mode))
 
 (use-package package-utils
   :ensure t
