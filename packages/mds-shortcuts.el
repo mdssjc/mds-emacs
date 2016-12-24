@@ -117,6 +117,7 @@
    "C-x /"      'ripgrep-regexp
    "C-x C-f"    'counsel-find-file
    "C-x C-r"    'counsel-recentf
+   "C-x F"      'find-file-at-point
    "C-x Q q"    'save-buffers-kill-terminal
    "C-x Q r"    'restart-emacs
    "C-x S"      'embrace-commander
