@@ -13,25 +13,23 @@
 ;; Estilo ergonômico e sem distrações/ruídos - tema dark e linha de status com ícones.
 
 ;;; Code:
-(global-hl-line-mode t)
-(set-frame-font "Source Code Pro-10" nil t)
-
-(use-package spacemacs-theme
-  :ensure t
-  :defer t
-  :init
-  (load-theme 'spacemacs-dark t))
-
 (use-package spaceline
   :ensure t
-  :init
+  :defer 0
+  :config
   (require 'spaceline-config)
   (setq spaceline-workspace-numbers-unicode t
         spaceline-window-numbers-unicode t
         Info-fontify-angle-bracketed-flag nil)
-  :config
   (spaceline-emacs-theme)
-  (spaceline-info-mode))
+  (spaceline-info-mode)
+  (load-theme 'spacemacs-dark t)
+  (global-hl-line-mode t)
+  (set-frame-font "Source Code Pro-10" nil t))
+
+(use-package spacemacs-theme
+  :ensure t
+  :defer t)
 
 (use-package mode-icons
   :ensure t
