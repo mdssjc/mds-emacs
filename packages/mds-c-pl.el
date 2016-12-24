@@ -76,10 +76,14 @@
   (require 'semantic/bovine/gcc)
   ;; (semantic-load-enable-code-helpers)
   ;; (ede-enable-generic-projects)
+  (add-to-list 'company-c-headers-path-system "/usr/include/c++/6.2.1")
+  (add-to-list 'semantic-lex-c-preprocessor-symbol-file "/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include/stddef.h")
   (setq company-backends (remove 'company-clang company-backends)
         c-default-style "linux"
         speedbar-show-unknow-files t
+        srecode-map-save-file (concat user-emacs-directory ".cache/srecode-map.el")
         semanticdb-default-save-directory (concat user-emacs-directory ".cache/semanticdb")
+        semanticdb-find-default-throttle '(file local project)
         semantic-default-submodes '(global-semantic-idle-scheduler-mode
                                     global-semanticdb-minor-mode
                                     global-semantic-idle-summary-mode
@@ -93,9 +97,9 @@
                                     global-semantic-show-parser-state-mode
                                     global-semantic-idle-breadcrumbs-mode
                                     global-semantic-show-unmatched-syntax-mode))
-  (add-to-list 'company-c-headers-path-system "/usr/include/c++/6.2.1")
-  (add-to-list 'semantic-lex-c-preprocessor-symbol-file "/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include/stddef.h")
-  (semanticdb-enable-gnu-global-databases 'c-mode t))
+  (semanticdb-enable-gnu-global-databases 'c-mode t)
+  (unless (file-exists-p semanticdb-default-save-directory)
+    (make-directory semanticdb-default-save-directory)))
 
 (use-package irony
   :ensure t
@@ -127,6 +131,10 @@
 
 (use-package company-c-headers
   :ensure t)
+
+(use-package stickyfunc-enhance
+  :ensure t
+  :defer t)
 
 (defun maio/electric-semicolon ()
   (interactive)
