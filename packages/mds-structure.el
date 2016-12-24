@@ -395,7 +395,9 @@
 
 (use-package imenu
   :init
-  (add-hook 'prog-mode-hook 'imenu-add-menubar-index))
+  (add-hook 'prog-mode-hook 'imenu-add-menubar-index)
+  :config
+  (setq imenu-auto-rescan t))
 (eval-after-load "imenu" '(use-package imenu+ :ensure t))
 
 (provide 'mds-structure)
