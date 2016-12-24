@@ -142,7 +142,7 @@
     :ensure t
     :defer t
     :config
-    (eval-after-load "dash" '(dash-enable-font-lock)))
+    (dash-enable-font-lock))
 
   (use-package s
     :ensure t
