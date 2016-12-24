@@ -60,9 +60,7 @@
   (setq recentf-max-saved-items 1000
         recentf-max-menu-items 15
         recentf-auto-cleanup 600
-        recentf-exclude '("/elpa/" "/.cache/"))
-  ;; (run-at-time nil 600 'recentf-save-list)
-  )
+        recentf-exclude '("/elpa/" "/.cache/")))
 
 (use-package restart-emacs
   :ensure t
