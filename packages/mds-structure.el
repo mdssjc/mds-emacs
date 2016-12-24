@@ -375,48 +375,30 @@
   :config
   (setq dumb-jump-selector 'ivy))
 
-(use-package dired+
-  :ensure t
-  :defer 1
-  :init
-  (use-package tramp)
-  :config
-  (setq diredp-image-preview-in-tooltip t))
+(eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
+                            :init
+                            (use-package tramp)
+                            :config
+                            (setq diredp-image-preview-in-tooltip t)))
 
-(use-package replace+
-  :ensure t
-  :defer 1)
+(eval-after-load "replace" '(use-package replace+ :ensure t :defer 0))
 
-(use-package mouse+
-  :ensure t
-  :defer 1)
+(eval-after-load "mouse" '(use-package mouse+ :ensure t :defer 0))
 
-(use-package menu-bar+
-  :ensure t
-  :defer 1)
+(eval-after-load "menu-bar" '(use-package menu-bar+ :ensure t :defer 0))
 
-(use-package info+
-  :ensure t
-  :defer 1)
+(eval-after-load "info" '(use-package info+ :ensure t :defer 0))
 
-(use-package isearch+
-  :ensure t
-  :defer 1)
+;; (eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0))
 
-(use-package bookmark+
-  :ensure t
-  :defer 1
-  :config
-  (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag))
+(eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
+                               :config
+                               (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
 
 (use-package imenu
-  :defer 1
   :init
   (add-hook 'prog-mode-hook 'imenu-add-menubar-index))
-
-(use-package imenu+
-  :ensure t
-  :after imenu)
+(eval-after-load "imenu" '(use-package imenu+ :ensure t))
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
