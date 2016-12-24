@@ -119,8 +119,11 @@
    "M-/"        'hippie-expand
    "M-<down>"   'md/move-lines-down
    "M-<up>"     'md/move-lines-up
-   "M-g e"      'avy-goto-word-0
-   "M-g f"      'avy-goto-line
+   "M-g c"      'avy-goto-char
+   "M-g i"      'avy-goto-char-in-line
+   "M-g l"      'avy-goto-line
+   "M-g r"      'avy-resume
+   "M-g w"      'avy-goto-word-0
    "M-x"        'counsel-M-x
    "M-y"        'counsel-yank-pop
    "S-C-j"      'join-line
