@@ -111,13 +111,17 @@
    "C-:"        'avy-goto-char-timer
    "C-="        'er/expand-region
    "C-S-f"      'swiper-multi
+   "C-c !"      '(:which-key "flycheck")
+   "C-c &"      '(:which-key "yasnippet")
    "C-c /"      'counsel-rg
    "C-c I"      'emojify-insert-emoji
+   "C-c p"      '(:which-key "projectile")
    "C-s"        'counsel-grep-or-swiper
    "C-x /"      'ripgrep-regexp
    "C-x C-f"    'counsel-find-file
    "C-x C-r"    'counsel-recentf
    "C-x F"      'find-file-at-point
+   "C-x Q"      '(:which-key "quit/restart")
    "C-x Q q"    'save-buffers-kill-terminal
    "C-x Q r"    'restart-emacs
    "C-x S"      'embrace-commander
@@ -133,6 +137,7 @@
    "M-g l"      'avy-goto-line
    "M-g r"      'avy-resume
    "M-g w"      'avy-goto-word-0
+   "M-s h"      '(:which-key "highlight")
    "M-x"        'counsel-M-x
    "M-y"        'counsel-yank-pop
    "S-C-j"      'join-line
@@ -195,13 +200,7 @@
     "C-c r" "refactor")
   (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
     "C-c r v" "erefactor"
-    "C-c r"   "refactor")
-  (which-key-add-key-based-replacements
-    "C-c !"  "flycheck"
-    "C-c &"  "yasnippet"
-    "C-c p"  "projectile"
-    "C-x Q"  "quit/restart"
-    "M-s h"  "highlight"))
+    "C-c r"   "refactor"))
 
 (add-to-list 'load-path (concat user-emacs-directory "temp/right-click-context"))
 (use-package right-click-context
