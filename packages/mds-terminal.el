@@ -17,8 +17,6 @@
   :ensure nil
   :commands eshell
   :init
-  (setq eshell-history-size 10000
-        eshell-save-history-on-exit t)
   (add-hook 'eshell-mode-hook 'eshell-fringe-status-mode)
   (add-hook 'eshell-mode-hook '(lambda ()
                                  (set (make-local-variable 'company-transformers)
@@ -29,7 +27,11 @@
                                          company-abbrev
                                          company-dabbrev
                                          company-files)))
-                                 (company-mode))))
+                                 (company-mode)))
+  :config
+  (setq eshell-history-size 10000
+        eshell-save-history-on-exit t
+        eshell-directory-name (concat user-emacs-directory ".cache/eshell")))
 
 (use-package eshell-fringe-status
   :ensure t
