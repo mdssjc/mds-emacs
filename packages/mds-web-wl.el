@@ -61,7 +61,8 @@
   (setq emmet-indentation 2))
 
 (use-package company-web
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (provide 'mds-web-wl)
 ;;; mds-web-wl.el ends here
