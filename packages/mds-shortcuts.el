@@ -41,23 +41,30 @@
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
                       ;; Align
+                      "a"   '(:which-key "align")
                       "a a" 'align
                       "a c" 'align-current
                       "a r" 'align-regexp
                       ;; Buffer
+                      "b"   '(:which-key "buffer")
                       "b k" 'kill-this-buffer
                       "b s" 'save-buffer
                       ;; File
+                      "f"   '(:which-key "file")
                       "f l" 'find-file-literally
                       "f s" 'save-buffer
                       ;; Highlight
+                      "h"     '(:which-key "highlight")
+                      "h t"   '(:which-key "todo")
                       "h t h" 'hl-todo-mode
                       ;; Narrow & Widen
+                      "n"   '(:which-key "narrow & widen")
                       "n r" 'narrow-to-region
                       "n p" 'narrow-to-page
                       "n f" 'narrow-to-defun
                       "n w" 'widen
                       ;; Tabs
+                      "t"   '(:which-key "tabs")
                       "t t" 'tabify
                       "t u" 'untabify)
   (general-define-key :prefix super-key :keymaps 'hl-todo-mode-map
@@ -194,14 +201,7 @@
     "C-c &"  "yasnippet"
     "C-c p"  "projectile"
     "C-x Q"  "quit/restart"
-    "M-s h"  "highlight"
-    "<C-M-return> a"   "align"
-    "<C-M-return> b"   "buffer"
-    "<C-M-return> f"   "file"
-    "<C-M-return> h"   "highlight"
-    "<C-M-return> h t" "todo"
-    "<C-M-return> n"   "narrow & widen"
-    "<C-M-return> t"   "tabify"))
+    "M-s h"  "highlight"))
 
 (add-to-list 'load-path (concat user-emacs-directory "temp/right-click-context"))
 (use-package right-click-context
