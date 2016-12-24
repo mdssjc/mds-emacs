@@ -158,19 +158,25 @@
    "<f5> t"     'toggle-truncate-lines
    "<f5> w"     'global-whitespace-mode
    ;; F7 (Aplicações Interna - Internal Applications)
+   "<f7> b"     '(:which-key "browser")
    "<f7> b e"   'eww
    "<f7> e"     'eshell
    "<f7> f"     'keyfreq-show
-   "<f7> p"     'projectile-command-map
-   "<f7> t"     'neotree-toggle
+   "<f7> p"     '(projectile-command-map :which-key "projectile")
+   "<f7> t"     '(neotree-toggle :which-key "neotree")
+   "<f7> u"     '(:which-key "package-utils")
    "<f7> u a"   'package-utils-install-async
    "<f7> u u"   'package-utils-upgrade-all
    ;; F8 (Aplicações Externa - Internal Applications)
+   "<f8> g"     '(:which-key "magit")
    "<f8> g S"   'magit-stage-file
    "<f8> g g"   'magit-dispatch-popup
    "<f8> g s"   'magit-status
    "<f8> g t"   'git-timemachine-toggle
-   "<f8> r"     'ripgrep-regexp)
+   "<f8> l"     '(:which-key "langtool")
+   "<f8> n"     '(:which-key "news")
+   "<f8> r"     '(ripgrep-regexp :which-key "ripgrep")
+   "<f8> s"     '(:which-key "ispell"))
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   (defalias 'gs 'magit-status "Magit status"))
 
@@ -191,15 +197,6 @@
     "C-c r v" "erefactor"
     "C-c r"   "refactor")
   (which-key-add-key-based-replacements
-    "<f7> b" "browser"
-    "<f7> p" "projectile"
-    "<f7> t" "neotree"
-    "<f7> u" "package-utils"
-    "<f8> g" "magit"
-    "<f8> l" "langtool"
-    "<f8> n" "news"
-    "<f8> r" "ripgrep"
-    "<f8> s" "ispell"
     "C-c !"  "flycheck"
     "C-c &"  "yasnippet"
     "C-c p"  "projectile"
