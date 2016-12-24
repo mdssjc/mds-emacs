@@ -35,8 +35,17 @@
   (require 'diminish)
   (require 'bind-key)
 
+  (use-package auto-compile
+    :ensure t
+    :defer t
+    :config
+    (setq load-prefer-newer t)
+    (auto-compile-on-load-mode)
+    (auto-compile-on-save-mode))
+
   (use-package async
     :ensure t
+    :commands async-bytecomp-package-mode
     :init
     (add-hook 'after-init-hook 'async-bytecomp-package-mode)
     :config
@@ -102,7 +111,6 @@
   ;; ---
 
   ;; Hooks
-  (add-hook 'window-setup-hook 'toggle-frame-maximized)
   (add-hook 'before-save-hook  'delete-trailing-whitespace)
 
   (mouse-avoidance-mode 'animate)
@@ -196,7 +204,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages
+   (quote
+    (auto-compile zeal-at-point wttrin writeroom-mode which-key web-mode volatile-highlights visual-regexp use-package-chords undo-tree twittering-mode tabbar swap-regions srefactor spacemacs-theme spaceline smex shm selected ripgrep restart-emacs replace+ rainbow-delimiters racket-mode parinfer package-utils org-bullets neotree move-dup mouse+ mode-icons menu-bar+ meghanada markdown-mode magit litable lispy langtool keyfreq jdee java-snippets ivy-rich ivy-hydra irony-eldoc info+ imenu+ hl-todo haskell-snippets golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell exec-path-from-shell esup eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing dumb-jump dr-racket-like-unicode dired+ dashboard counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghc company-dict company-c-headers cider centered-cursor-mode bookmark+ beacon auto-yasnippet all-the-icons-dired))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
