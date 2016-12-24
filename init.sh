@@ -5,4 +5,6 @@
 #
 # autor: Marcelo dos Santos
 #
-git clone https://github.com/rakanalh/emacs-dashboard ~/.emacs.d/temp/dashboard
+mkdir temp
+git clone https://github.com/vermiculus/magithub ~/.emacs.d/temp/magithub
+git clone https://github.com/zonuexe/right-click-context ~/.emacs.d/temp/right-click-context
