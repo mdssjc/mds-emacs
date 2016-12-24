@@ -25,7 +25,8 @@
   (spaceline-info-mode)
   (load-theme 'spacemacs-dark t)
   (global-hl-line-mode t)
-  (set-frame-font "Source Code Pro-10" nil t))
+  (set-frame-font "Source Code Pro-10" nil t)
+  (toggle-frame-maximized))
 
 (use-package spacemacs-theme
   :ensure t
