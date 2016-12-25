@@ -85,11 +85,12 @@ Listagem dos comandos fundamentais:
 * `F9` - Planejamento
 * `F10` - Menu do Modo Maior
 * `F11` - Ativa o *Fullscreen*
-* `F12` - não definido
+* `F12` - *IBuffer*
 * `Ctrl + x` - comandos para o ambiente
 * `Ctrl + c` - comandos para o modo maior
 * `Alt  + x` - prompt de comandos
-* `Win` - comandos e/ou atalhos especiais ao ambiente/modo maior
+* `\` e `/`  - disparador de *key chords*
+* `Win`    - atalhos especiais ao ambiente/modo maior
 * `Alt Gr` - inserção de caracteres especiais
-* `Menu` - prompt de comandos
+* `Menu`   - prompt de comandos
 * `Ctrl + Alt + Enter` - super comando
