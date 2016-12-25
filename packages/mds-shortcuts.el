@@ -15,7 +15,7 @@
 ;;; Code:
 (use-package use-package-chords
   :ensure t
-  :commands key-chord-mode
+  ;:commands key-chord-mode
   :init
   (add-hook 'after-init-hook '(lambda () (key-chord-mode t)))
   :config
