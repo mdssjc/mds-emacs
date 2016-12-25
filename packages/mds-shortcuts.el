@@ -48,11 +48,14 @@
                       "a r" 'align-regexp
                       ;; Buffer
                       "b"   '(:which-key "buffer")
+                      "b b" 'ivy-switch-buffer
                       "b k" 'kill-this-buffer
                       "b s" 'save-buffer
                       ;; File
                       "f"   '(:which-key "file")
+                      "f f" 'counsel-find-file
                       "f l" 'find-file-literally
+                      "f r" 'counsel-recentf
                       "f s" 'save-buffer
                       ;; Highlight
                       "h"     '(:which-key "highlight")
