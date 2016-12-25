@@ -38,10 +38,9 @@
   (use-package auto-compile
     :ensure t
     :defer t
-    :config
+    :init
     (setq load-prefer-newer t)
-    (auto-compile-on-load-mode)
-    (auto-compile-on-save-mode))
+    (auto-compile-on-load-mode))
 
   (use-package async
     :ensure t
