@@ -290,7 +290,9 @@
   :ensure t
   :commands tabbar-mode
   :init
-  (add-hook 'spaceline-pre-hook 'tabbar-mode))
+  (add-hook 'spaceline-pre-hook 'tabbar-mode)
+  :config
+  (setq tabbar-use-images nil))
 
 (use-package package-utils
   :ensure t
