@@ -294,6 +294,16 @@
   :config
   (setq tabbar-use-images nil))
 
+(use-package tabbar-ruler
+  :ensure t
+  :after tabbar
+  :bind
+  (("C-x t" . tabbar-ruler-move))
+  :config
+  (setq tabbar-use-images nil
+        tabbar-ruler-global-tabbar t
+        tabbar-ruler-global-ruler t))
+
 (use-package package-utils
   :ensure t
   :commands package-utils-install-async package-utils-upgrade-all)
