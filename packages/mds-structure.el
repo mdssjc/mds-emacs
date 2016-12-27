@@ -269,7 +269,19 @@
 
 (use-package visual-regexp
   :ensure t
+  :disabled t
   :commands vr/replace vr/query-replace)
+
+(use-package anzu
+  :ensure t
+  :commands global-anzu-mode
+  :bind
+  (("M-%"   . anzu-query-replace)
+   ("C-M-%" . anzu-query-replace-regexp)
+   ("M-#"   . anzu-replace-at-cursor-thing)
+   ("C-M-#" . anzu-query-replace-at-cursor-thing))
+  :init
+  (add-hook 'spaceline-pre-hook 'global-anzu-mode))
 
 (use-package eww
   :commands eww eww-mode
@@ -284,7 +296,7 @@
   :ensure t
   :commands swap-regions-mode swap-regions
   :init
-  (add-hook 'after-init-hook 'swap-regions-mode))
+  (add-hook 'spaceline-pre-hook 'swap-regions-mode))
 
 (use-package tabbar
   :ensure t
