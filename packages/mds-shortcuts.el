@@ -110,7 +110,7 @@
    "<C-tab>"      'cycle-spacing
    "<M-return>"   'mds/insert-lines-below
    "<S-C-return>" 'mds/insert-lines-between
-   "C-#"        'vr/query-replace
+   ;; "C-#"        'vr/query-replace
    "C-'"        'counsel-imenu
    "C-:"        'avy-goto-char-timer
    "C-="        'er/expand-region
@@ -132,7 +132,7 @@
    "C-x V"      'hydra-expand-region/body
    "C-x g"      'magit-status
    "C-x w"      'ace-window
-   "M-#"        'vr/replace
+   ;; "M-#"        'vr/replace
    "M-/"        'hippie-expand
    "M-<down>"   'md/move-lines-down
    "M-<up>"     'md/move-lines-up
