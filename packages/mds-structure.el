@@ -395,6 +395,11 @@
   :config
   (setq dumb-jump-selector 'ivy))
 
+(use-package which-func
+  :commands which-function-mode
+  :init
+  (add-hook 'prog-mode-hook 'which-function-mode))
+
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
                             (use-package tramp)
