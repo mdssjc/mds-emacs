@@ -107,6 +107,10 @@
    "C-x x t"    '(mds/titleized-words   :which-key "Titleized")
    "C-x x u"    '(mds/upper-camel-case  :which-key "Upper")
    "C-x x w"    '(mds/split-words       :which-key "Split")
+   "C-x a"      '(:which-key "align")
+   "C-x a a"    '(align :which-key "align")
+   "C-x a c"    '(align-current :which-key "align current")
+   "C-x a r"    '(align-regexp  :which-key "align regexp")
    "C-'"        'counsel-imenu
    "C-:"        'avy-goto-char-timer
    "C-="        'er/expand-region
