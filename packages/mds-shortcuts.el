@@ -79,30 +79,8 @@
                       "h t o" 'hl-todo-occur)
   (general-define-key :keymaps 'isearch-mode-map
                       "<C-'>" 'avy-isearch)
-  (general-define-key :keymaps 'selected-keymap
-                      "$" 'flyspell-region
-                      "C-s r" 'reverse-region
-                      "C-s s" 'sort-lines
-                      "C-x c" 'mds/capitalized-words
-                      "C-x d" 'mds/dashed-words
-                      "C-x i" 'mds/word-initials
-                      "C-x l" 'mds/lower-camel-case
-                      "C-x s" 'mds/snake-case
-                      "C-x t" 'mds/titleized-words
-                      "C-x u" 'mds/upper-camel-case
-                      "C-x w" 'mds/split-words
-                      "\\" 'hydra-selected/body
-                      "c" 'kill-ring-save
-                      "k" 'capitalize-region
-                      "l" 'downcase-region
-                      "m" 'apply-macro-to-region-lines
-                      "p" 'yank
-                      "q" 'selected-off
-                      "u" 'upcase-region
-                      "w" 'count-words-region
-                      "x" 'kill-region)
-  (general-define-key :keymaps 'selected-org-mode-map
-                      "e" 'org-emphasize)
+  (general-define-key :keymaps 'org-mode-map
+                      "C-x x e" '(org-emphasize :which-key "Emphasize"))
   (general-define-key :keymaps 'popup-isearch-keymap
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'boon-command-map
@@ -112,14 +90,30 @@
    "<C-tab>"      'cycle-spacing
    "<M-return>"   'mds/insert-lines-below
    "<S-C-return>" 'mds/insert-lines-between
+   "C-x x"       '(:which-key "text")
+   "C-x x C-s"   '(:which-key "sorts")
+   "C-x x C-s r" '(reverse-region :which-key "Reverse Lines")
+   "C-x x C-s s" '(sort-lines     :which-key "Sort Lines")
+   "C-x x C-x"   '(:which-key "commands")
+   "C-x x C-x c" '(count-words-region   :which-key "Count Words")
+   "C-x x C"    '(capitalize-region     :which-key "Capitalize")
+   "C-x x L"    '(downcase-region       :which-key "Downcase")
+   "C-x x U"    '(upcase-region         :which-key "Upcase")
+   "C-x x c"    '(mds/capitalized-words :which-key "Capitalized")
+   "C-x x d"    '(mds/dashed-words      :which-key "Dashed")
+   "C-x x i"    '(mds/word-initials     :which-key "Initials")
+   "C-x x l"    '(mds/lower-camel-case  :which-key "Lower")
+   "C-x x s"    '(mds/snake-case        :which-key "Snake")
+   "C-x x t"    '(mds/titleized-words   :which-key "Titleized")
+   "C-x x u"    '(mds/upper-camel-case  :which-key "Upper")
+   "C-x x w"    '(mds/split-words       :which-key "Split")
    "C-'"        'counsel-imenu
    "C-:"        'avy-goto-char-timer
    "C-="        'er/expand-region
    "C-S-f"      'swiper-multi
    "C-c !"      '(:which-key "flycheck")
    "C-c &"      '(:which-key "yasnippet")
-   "C-c /"      'counsel-grep-or-swiper
-   "C-c C-/"    'counsel-rg
+   "C-c /"      'counsel-rg
    "C-c I"      'emojify-insert-emoji
    "C-c p"      '(:which-key "projectile")
    "C-x /"      'ripgrep-regexp
@@ -144,7 +138,7 @@
    "M-x"        'counsel-M-x
    "M-y"        'counsel-yank-pop
    "S-C-j"      'join-line
-   "S-C-s"      'swiper-all
+   "S-C-s"      'counsel-grep-or-swiper
    "S-M-<down>" 'md/duplicate-down
    "S-M-<up>"   'md/duplicate-up
    "S-M-t"      'swap-regions
@@ -186,6 +180,8 @@
    "<f8> n"     '(:which-key "news")
    "<f8> r"     '(ripgrep-regexp :which-key "ripgrep")
    "<f8> s"     '(:which-key "ispell"))
+
+
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   (defalias 'gs 'magit-status "Magit status"))
 
