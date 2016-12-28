@@ -53,31 +53,5 @@
   ("e" er/mark-email              "email"))
 ;; ---
 
-;; Selected
-(defhydra hydra-selected (:columns 5 :color blue)
-  "Selected"
-  ("<ESC>" nil "quit")
-  ("$" 'flyspell-region             "Spell")
-  ("q" 'selected-off                "Off")
-  ("k" 'capitalize-region           "Capitalize")
-  ("u" 'upcase-region               "Upcase")
-  ("l" 'downcase-region             "Downcase")
-  ("w" 'count-words-region          "Count Words")
-  ("m" 'apply-macro-to-region-lines "Apply Macro")
-  ("c" 'kill-ring-save              "Copy")
-  ("x" 'kill-region                 "Cut")
-  ("p" 'yank                        "Paste")
-  ("C-s s" 'sort-lines              "Sort Lines")
-  ("C-s r" 'reverse-region          "Reverse Lines")
-  ("C-x w" 'mds/split-words         "Split")
-  ("C-x l" 'mds/lower-camel-case    "Lower")
-  ("C-x u" 'mds/upper-camel-case    "Upper")
-  ("C-x s" 'mds/snake-case          "Snake")
-  ("C-x d" 'mds/dashed-words        "Dashed")
-  ("C-x c" 'mds/capitalized-words   "Capitalized")
-  ("C-x t" 'mds/titleized-words     "Titleized")
-  ("C-x i" 'mds/word-initials       "Initials"))
-;; ---
-
 (provide 'mds-hydra)
 ;;; mds-hydra.el ends here

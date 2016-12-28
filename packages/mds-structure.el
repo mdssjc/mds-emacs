@@ -22,7 +22,6 @@
 ;;  - smex: histórico de comandos;
 ;;  - expand-region: seleção de regiões;
 ;;  - embrace: manipulação de símbolos entre seleção;
-;;  - selected: funcionalidades com a seleção ativa;
 ;;  - projectile: navegador de projetos;
 ;;  - ripgrep: ferramenta de busca Ripgrep (rg);
 ;;  - eww: browser interno;
@@ -229,15 +228,6 @@
                           (?c . er/mark-comment)
                           (?u . er/mark-url)
                           (?e . er/mark-email))))
-
-(use-package selected
-  :ensure t
-  :diminish selected-minor-mode selected-global-mode
-  :commands selected-minor-mode selected-global-mode
-  :init
-  (add-hook 'after-init-hook 'selected-global-mode)
-  :config
-  (defvar selected-org-mode-map (make-sparse-keymap)))
 
 (use-package projectile
   :ensure t
