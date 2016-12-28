@@ -277,7 +277,8 @@
   :init
   (add-hook 'spaceline-pre-hook 'global-anzu-mode)
   :config
-  (setq anzu-mode-lighter ""))
+  (setq anzu-mode-lighter ""
+        anzu-replace-to-string-separator " => "))
 
 (use-package eww
   :commands eww eww-mode
