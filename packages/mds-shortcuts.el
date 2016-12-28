@@ -110,17 +110,16 @@
    "<C-tab>"      'cycle-spacing
    "<M-return>"   'mds/insert-lines-below
    "<S-C-return>" 'mds/insert-lines-between
-   ;; "C-#"        'vr/query-replace
    "C-'"        'counsel-imenu
    "C-:"        'avy-goto-char-timer
    "C-="        'er/expand-region
    "C-S-f"      'swiper-multi
    "C-c !"      '(:which-key "flycheck")
    "C-c &"      '(:which-key "yasnippet")
-   "C-c /"      'counsel-rg
+   "C-c /"      'counsel-grep-or-swiper
+   "C-c C-/"    'counsel-rg
    "C-c I"      'emojify-insert-emoji
    "C-c p"      '(:which-key "projectile")
-   "C-s"        'counsel-grep-or-swiper
    "C-x /"      'ripgrep-regexp
    "C-x C-f"    'counsel-find-file
    "C-x C-r"    'counsel-recentf
@@ -132,7 +131,6 @@
    "C-x V"      'hydra-expand-region/body
    "C-x g"      'magit-status
    "C-x w"      'ace-window
-   ;; "M-#"        'vr/replace
    "M-/"        'hippie-expand
    "M-<down>"   'md/move-lines-down
    "M-<up>"     'md/move-lines-up
