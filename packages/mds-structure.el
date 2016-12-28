@@ -391,6 +391,10 @@
   :init
   (add-hook 'prog-mode-hook 'which-function-mode))
 
+(use-package icicles
+  :ensure t
+  :defer 5)
+
 (use-package highlight
   :ensure t
   :defer t
