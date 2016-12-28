@@ -414,7 +414,7 @@
 
 (eval-after-load "info" '(use-package info+ :ensure t :defer 0))
 
-;; (eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0))
+(eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0))
 
 (eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
                                :init
