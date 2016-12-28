@@ -341,12 +341,6 @@
   :config
   (require 'boon-qwerty))
 
-(use-package hl-todo
-  :ensure t
-  :commands hl-todo-mode
-  :init
-  (add-hook 'prog-mode-hook 'hl-todo-mode))
-
 (use-package electric-spacing
   :ensure t
   :diminish electric-spacing-mode
@@ -399,7 +393,15 @@
 
 (use-package highlight
   :ensure t
-  :defer 0)
+  :defer t
+  :init
+  (add-hook 'after-init-hook 'global-hi-lock-mode))
+
+(use-package hl-todo
+  :ensure t
+  :commands hl-todo-mode
+  :init
+  (add-hook 'prog-mode-hook 'hl-todo-mode))
 
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
