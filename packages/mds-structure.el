@@ -25,7 +25,6 @@
 ;;  - selected: funcionalidades com a seleção ativa;
 ;;  - projectile: navegador de projetos;
 ;;  - ripgrep: ferramenta de busca Ripgrep (rg);
-;;  - visual-regexp: busca/substituição com indicação visual;
 ;;  - eww: browser interno;
 ;;  - popup-imenu: popup do imenu;
 ;;  - move-dup: move e/ou duplica linhas;
@@ -266,11 +265,6 @@
 (use-package ripgrep
   :ensure t
   :commands ripgrep-regexp)
-
-(use-package visual-regexp
-  :ensure t
-  :disabled t
-  :commands vr/replace vr/query-replace)
 
 (use-package anzu
   :ensure t
