@@ -413,9 +413,13 @@
 
 (eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0))
 
-(eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
-                               :init
-                               (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
+(use-package bookmark
+  :init
+  (eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
+                                 :init
+                                 (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
+  :config
+  (setq bmkp-last-as-first-bookmark-file (concat user-emacs-directory ".cache/bookmarks")))
 
 (use-package imenu
   :init
