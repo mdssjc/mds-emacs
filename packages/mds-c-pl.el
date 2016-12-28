@@ -47,7 +47,7 @@
   (add-hook 'c-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'semantic-mode)
   (add-hook 'c-mode-hook 'global-ede-mode)
-  (add-hook 'c-mode-hook 'global-srecode-minor-mode)
+  ;(add-hook 'c-mode-hook 'global-srecode-minor-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
   (add-hook 'irony-mode-hook 'flycheck-irony-setup)
