@@ -37,7 +37,9 @@
    ("\\s" . embrace-commander)
    ("/s"  . embrace-commander)
    ("\\v" . hydra-expand-region/body)
-   ("/v"  . hydra-expand-region/body))
+   ("/v"  . hydra-expand-region/body)
+   ("\\w" . ace-window)
+   ("/w"  . ace-window))
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
@@ -130,7 +132,6 @@
    "C-x S"      'embrace-commander
    "C-x V"      'hydra-expand-region/body
    "C-x g"      'magit-status
-   "C-x w"      'ace-window
    "M-/"        'hippie-expand
    "M-<down>"   'md/move-lines-down
    "M-<up>"     'md/move-lines-up
@@ -150,6 +151,7 @@
    "S-SPC"      'cycle-spacing
    "s-s"        'embrace-commander
    "s-v"        'hydra-expand-region/body
+   "s-w"        'ace-window
    "<f12>"      'ibuffer
    ;; F5 (Toggle Global)
    "<f5> -"     'centered-cursor-mode
