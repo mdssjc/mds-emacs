@@ -281,7 +281,9 @@
    ("M-#"   . anzu-replace-at-cursor-thing)
    ("C-M-#" . anzu-query-replace-at-cursor-thing))
   :init
-  (add-hook 'spaceline-pre-hook 'global-anzu-mode))
+  (add-hook 'spaceline-pre-hook 'global-anzu-mode)
+  :config
+  (setq anzu-mode-lighter ""))
 
 (use-package eww
   :commands eww eww-mode
