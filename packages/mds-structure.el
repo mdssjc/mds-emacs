@@ -397,6 +397,10 @@
   :init
   (add-hook 'prog-mode-hook 'which-function-mode))
 
+(use-package highlight
+  :ensure t
+  :defer 0)
+
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
                             (use-package tramp)
