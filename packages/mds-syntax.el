@@ -30,12 +30,15 @@
         company-tooltip-minimum 5
         company-tooltip-flip-when-above t
         company-minimum-prefix-length 1
-        company-idle-delay 0.1
+        company-idle-delay 0
         company-show-numbers t
         company-require-match nil
         company-dabbrev-ignore-case nil
         company-dabbrev-downcase nil
         company-dabbrev-code-everywhere t
+        company-frontends '(company-echo-metadata-frontend
+                            company-pseudo-tooltip-unless-just-one-frontend-with-delay
+                            company-preview-if-just-one-frontend)
         company-search-regexp-function 'company-search-words-regexp
         company-transformers '(company-sort-by-backend-importance
                                company-sort-prefer-same-case-prefix)))
@@ -61,7 +64,7 @@
   :init
   (add-hook 'company-mode-hook 'company-statistics-mode)
   :config
-  (setq company-statistics-size 1000
+  (setq company-statistics-size 500
         company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")
         company-statistics-auto-save t))
 
