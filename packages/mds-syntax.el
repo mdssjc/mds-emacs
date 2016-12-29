@@ -38,19 +38,26 @@
         company-dabbrev-code-everywhere t
         company-search-regexp-function 'company-search-words-regexp
         company-transformers '(company-sort-by-backend-importance
-                               company-sort-prefer-same-case-prefix
-                               company-sort-by-statistics)))
+                               company-sort-prefer-same-case-prefix)))
 
 (use-package company-quickhelp
   :ensure t
+  :commands company-quickhelp-mode
   :init
   (add-hook 'company-mode-hook 'company-quickhelp-mode)
   :config
   (setq company-quickhelp-delay 1
         company-quickhelp-max-lines 30))
 
+(use-package company-flx
+  :ensure t
+  :commands company-flx-mode
+  :init
+  (add-hook 'company-mode-hook 'company-flx-mode))
+
 (use-package company-statistics
   :ensure t
+  :commands company-statistics-mode
   :init
   (add-hook 'company-mode-hook 'company-statistics-mode)
   :config
@@ -60,6 +67,7 @@
 
 (use-package company-dict
   :ensure t
+  :defer t
   :after company
   :config
   (setq company-dict-dir (concat user-emacs-directory "dict/")
