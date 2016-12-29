@@ -43,11 +43,6 @@
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
-                      ;; Align
-                      "a"   '(:which-key "align")
-                      "a a" 'align
-                      "a c" 'align-current
-                      "a r" 'align-regexp
                       ;; Buffer
                       "b"   '(:which-key "buffer")
                       "b b" 'ivy-switch-buffer
