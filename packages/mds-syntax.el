@@ -24,7 +24,7 @@
   :diminish company-mode " ⓐ"
   :commands company-mode
   :init
-  (add-hook 'prog-mode-hook 'company-mode)
+  (add-hook 'after-init-hook 'global-company-mode)
   :config
   (setq company-tooltip-limit 10
         company-tooltip-minimum 5
@@ -43,7 +43,10 @@
                             company-pseudo-tooltip-unless-just-one-frontend-with-delay
                             company-preview-if-just-one-frontend)
         company-transformers '(company-sort-by-backend-importance
-                               company-sort-prefer-same-case-prefix)))
+                               company-sort-prefer-same-case-prefix)
+        company-backends '((company-abbrev
+                            company-dabbrev
+                            company-ispell))))
 
 (use-package company-quickhelp
   :ensure t
