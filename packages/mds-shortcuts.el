@@ -120,6 +120,7 @@
    "C-c I"      'emojify-insert-emoji
    "C-c p"      '(:which-key "projectile")
    "C-x /"      'ripgrep-regexp
+   "C-x \\"     'align-regexp
    "C-x C-f"    'counsel-find-file
    "C-x C-r"    'counsel-recentf
    "C-x F"      'find-file-at-point
