@@ -15,7 +15,6 @@
 ;;; Code:
 (use-package use-package-chords
   :ensure t
-  ;:commands key-chord-mode
   :init
   (add-hook 'after-init-hook '(lambda () (key-chord-mode t)))
   :config
@@ -58,12 +57,6 @@
                       "h"     '(:which-key "highlight")
                       "h t"   '(:which-key "todo")
                       "h t h" 'hl-todo-mode
-                      ;; Narrow & Widen
-                      "n"   '(:which-key "narrow & widen")
-                      "n r" 'narrow-to-region
-                      "n p" 'narrow-to-page
-                      "n f" 'narrow-to-defun
-                      "n w" 'widen
                       ;; Tabs
                       "t"   '(:which-key "tabs")
                       "t t" 'tabify
