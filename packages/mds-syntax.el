@@ -115,11 +115,11 @@
 (use-package abbrev
   :diminish abbrev-mode
   :init
-  (add-hook 'after-init-hook 'abbrev-mode)
+  (setq-default abbrev-mode t)
   :config
   (setq save-abbrevs 'silently
-        abbrev-file-name (concat user-emacs-directory
-                                 "dict/abbrevs_defs.el")))
+        abbrev-file-name (concat user-emacs-directory "dict/abbrevs_defs.el")))
+;; ---
 
 ;; Template
 (use-package yasnippet

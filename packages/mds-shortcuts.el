@@ -194,6 +194,8 @@
   (add-hook 'after-init-hook 'which-key-mode)
   :config
   (setq which-key-idle-delay 0.1)
+  (which-key-add-key-based-replacements
+    "C-x a" "abbrev")
   (which-key-add-major-mode-key-based-replacements 'c-mode
     "C-c ," "semantic"
     "C-c ." "ede"
