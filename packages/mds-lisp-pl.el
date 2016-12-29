@@ -67,7 +67,6 @@
                                                  company-yasnippet
                                                  :with
                                                  company-capf
-                                                 company-keywords
                                                  company-abbrev
                                                  company-dabbrev-code
                                                  company-dabbrev
