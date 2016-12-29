@@ -58,7 +58,9 @@
   :ensure t
   :commands company-flx-mode
   :init
-  (add-hook 'company-mode-hook 'company-flx-mode))
+  (add-hook 'company-mode-hook 'company-flx-mode)
+  :config
+  (setq company-flx-limit 50))
 
 (use-package company-statistics
   :ensure t
@@ -122,8 +124,7 @@
   :diminish yas-minor-mode " ⓨ"
   :commands yas-minor-mode yas-global-mode
   :bind
-  (:map yas-minor-mode-map
-        ("C-&" . hydra-yasnippet/body))
+  (("C-&" . hydra-yasnippet/body))
   :init
   (setq yas-prompt-functions '(yas-x-prompt
                                yas-dropdown-prompt))
@@ -142,31 +143,29 @@
 
 (defhydra hydra-yasnippet (:color blue :hint nil)
   "
-             ^YASnippets^
---^------^---^-----------^---^--------^--
-  ^Modes:^   ^Load/Visit:^   ^Actions:^
-  _g_lobal   _d_irectory     _i_nsert
-  _m_inor    _f_ile          _t_ryout
-  _e_xtra    _l_ist          _n_ew
+                  ^^^^YASnippets^^^^
+--^------^---^-----------^---^--------^--^-------^--
+  ^Modes:^   ^Load/Visit:^   ^Actions:^  ^Others:^
+  _g_lobal   _d_irectory     _i_nsert    _c_reate
+  _m_inor    _f_ile          _t_ryout    _e_xpand
+  _e_xtra    _l_ist          _n_ew       _o_pen
   ^ ^        _a_ll
----
-Others:
-"
+  "
   ("<ESC>" nil nil)
   ("q" nil nil)
-  ("g" yas/global-mode)
-  ("m" yas/minor-mode)
+  ("g" yas-global-mode)
+  ("m" yas-minor-mode)
   ("e" yas-activate-extra-mode)
   ("d" yas-load-directory)
-  ("f" yas-visit-snippet-file :color blue)
+  ("f" yas-visit-snippet-file)
   ("l" yas-describe-tables)
   ("a" yas-reload-all)
   ("i" yas-insert-snippet)
   ("t" yas-tryout-snippet)
   ("n" yas-new-snippet)
-  ("c" aya-create    "aya-create")
-  ("x" aya-expand    "aya-expand")
-  ("o" aya-open-line "aya-open"))
+  ("c" aya-create)
+  ("x" aya-expand)
+  ("o" aya-open-line))
 
 (provide 'mds-syntax)
 ;;; mds-syntax.el ends here
