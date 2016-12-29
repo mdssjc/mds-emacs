@@ -33,6 +33,8 @@
    ("xf" . counsel-find-file)
    ("xr" . counsel-recentf)
    ("gs" . magit-status)
+   ("\\7" . hydra-yasnippet/body)
+   ("/7"  . hydra-yasnippet/body)
    ("\\s" . embrace-commander)
    ("/s"  . embrace-commander)
    ("\\v" . hydra-expand-region/body)
@@ -73,6 +75,10 @@
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'boon-command-map
                       "S" 'embrace-commander)
+  (general-define-key :keymaps 'yas-minor-mode-map
+                      "C-c & w" 'aya-create
+                      "C-c & y" 'aya-expand
+                      "C-c & o" 'aya-open-line)
   (general-define-key
    "<C-return>"   'mds/insert-lines-above
    "<C-tab>"      'cycle-spacing
@@ -110,6 +116,7 @@
    "C-x x w t"  '(mds/titleized-words   :which-key "titleized")
    "C-x x w u"  '(mds/upper-camel-case  :which-key "upper")
    "C-x x w w"  '(mds/split-words       :which-key "split")
+   "C-&"        'hydra-yasnippet/body
    "C-'"        'counsel-imenu
    "C-:"        'avy-goto-char-timer
    "C-="        'er/expand-region
@@ -147,6 +154,7 @@
    "S-M-<up>"   'md/duplicate-up
    "S-M-t"      'swap-regions
    "S-SPC"      'cycle-spacing
+   "s-7"        'hydra-yasnippet/body
    "s-s"        'embrace-commander
    "s-v"        'hydra-expand-region/body
    "s-w"        'ace-window

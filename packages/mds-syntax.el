@@ -126,23 +126,16 @@
   :ensure t
   :diminish yas-minor-mode " ⓨ"
   :commands yas-minor-mode yas-global-mode
-  :bind
-  (("C-&" . hydra-yasnippet/body))
   :init
-  (setq yas-prompt-functions '(yas-x-prompt
-                               yas-dropdown-prompt))
   (add-hook 'prog-mode-hook 'yas-minor-mode)
   :config
+  (setq yas-prompt-functions '(yas-x-prompt yas-dropdown-prompt))
   (yas-reload-all))
 
 (use-package auto-yasnippet
   :ensure t
-  :after yasnippet
-  :bind
-  (:map yas-minor-mode-map
-        ("C-c & w" . aya-create)
-        ("C-c & y" . aya-expand)
-        ("C-c & o" . aya-open-line)))
+  :commands aya-create aya-expand aya-open-line)
+;; ---
 
 (provide 'mds-syntax)
 ;;; mds-syntax.el ends here
