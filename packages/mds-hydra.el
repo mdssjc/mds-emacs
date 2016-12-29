@@ -60,7 +60,7 @@
 --^------^---^-----------^---^--------^--^-------^--
   ^Modes:^   ^Load/Visit:^   ^Actions:^  ^Others:^
   _g_lobal   _d_irectory     _i_nsert    _c_reate
-  _m_inor    _f_ile          _t_ryout    _e_xpand
+  _m_inor    _f_ile          _t_ryout    e_x_pand
   _e_xtra    _l_ist          _n_ew       _o_pen
   ^ ^        _a_ll
   "
