@@ -383,7 +383,7 @@
 
 (use-package icicles
   :ensure t
-  :defer 5)
+  :commands icy-mode)
 
 (use-package highlight
   :ensure t
