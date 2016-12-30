@@ -35,6 +35,7 @@
         company-idle-delay 0.1
         company-show-numbers t
         company-require-match nil
+        company-tooltip-idle-delay 0.25
         company-dabbrev-ignore-case nil
         company-dabbrev-downcase nil
         company-dabbrev-code-everywhere t
@@ -57,21 +58,13 @@
   (setq company-quickhelp-delay 1
         company-quickhelp-max-lines 30))
 
-(use-package company-flx
-  :ensure t
-  :commands company-flx-mode
-  :init
-  (add-hook 'company-mode-hook 'company-flx-mode)
-  :config
-  (setq company-flx-limit 50))
-
 (use-package company-statistics
   :ensure t
   :commands company-statistics-mode
   :init
   (add-hook 'company-mode-hook 'company-statistics-mode)
   :config
-  (setq company-statistics-size 500
+  (setq company-statistics-size 600
         company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")
         company-statistics-auto-save t))
 
