@@ -15,7 +15,7 @@
 ;;  - Autocompletar: sugestão de palavras, conforme modo maior;
 ;;  - Correção: sugestão para palavras selecionadas, conforme dicionário (português por padrão);
 ;;  - Abreviação: abreviaturas de texto para expansão;
-;;  - Template: blocos de construção de texto (linguagens de programação).
+;;  - Modelo: blocos de construção de texto (linguagens de programação).
 
 ;;; Code:
 ;; Autocompletar (Autocomplete)
@@ -120,7 +120,7 @@
         abbrev-file-name (concat user-emacs-directory "dict/abbrevs_defs.el")))
 ;; ---
 
-;; Template
+;; Modelo (Template)
 (use-package yasnippet
   :ensure t
   :diminish yas-minor-mode " ⓨ"
