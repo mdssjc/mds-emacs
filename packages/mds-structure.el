@@ -240,6 +240,10 @@
                           (?u . er/mark-url)
                           (?e . er/mark-email))))
 
+(use-package ciel
+  :ensure t
+  :commands ciel-ci ciel-co ciel-copy-to-register)
+
 (use-package projectile
   :ensure t
   :diminish projectile-mode
