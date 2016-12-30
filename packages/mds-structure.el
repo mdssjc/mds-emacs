@@ -217,6 +217,7 @@
 
 (use-package embrace
   :ensure t
+  :commands embrace-commander
   :init
   (add-hook 'text-mode-hook '(lambda () (setq embrace-semantic-units-alist
                                          (append embrace-semantic-units-alist semantics-units))))
