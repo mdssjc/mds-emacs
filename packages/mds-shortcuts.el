@@ -35,6 +35,8 @@
    ("gs" . magit-status)
    ("\\7" . hydra-yasnippet/body)
    ("/7"  . hydra-yasnippet/body)
+   ("\\g" . avy-goto-char-in-line)
+   ("/g"  . avy-goto-char-in-line)
    ("\\s" . embrace-commander)
    ("/s"  . embrace-commander)
    ("\\v" . hydra-expand-region/body)
