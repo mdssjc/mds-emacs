@@ -94,6 +94,17 @@
         neo-show-hidden-files t
         neo-keymap-style 'concise))
 
+(use-package speedbar
+  :defer t
+  :commands speedbar
+  :bind
+  (("<f7> s" . speedbar))
+  :config
+  (add-hook 'speedbar-after-create-hook  '(lambda () (global-set-key (kbd "C-c C-SPC") 'speedbar-get-focus)))
+  (add-hook 'speedbar-before-delete-hook '(lambda () (global-unset-key (kbd "C-c C-SPC"))))
+  (setq speedbar-show-unknown-files t
+        speedbar-use-images nil))
+
 (use-package magit
   :ensure t
   :commands magit-status)
