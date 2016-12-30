@@ -40,13 +40,14 @@
         company-dabbrev-downcase nil
         company-dabbrev-code-everywhere t
         company-search-regexp-function 'company-search-words-regexp
+        company-occurrence-weight-function 'company-occurrence-prefer-any-closest
         company-frontends '(company-echo-metadata-frontend
                             company-pseudo-tooltip-unless-just-one-frontend-with-delay
                             company-preview-if-just-one-frontend)
-        company-transformers '(company-sort-by-backend-importance
-                               company-sort-prefer-same-case-prefix)
+        company-transformers '(company-sort-by-backend-importance)
         company-backends '((company-abbrev
                             company-dabbrev
+                            company-dict
                             company-ispell))))
 
 (use-package company-quickhelp
@@ -64,18 +65,14 @@
   :init
   (add-hook 'company-mode-hook 'company-statistics-mode)
   :config
-  (setq company-statistics-size 600
-        company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")
-        company-statistics-auto-save t))
+  (setq company-statistics-size 1000
+        company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")))
 
 (use-package company-dict
   :ensure t
   :defer t
-  :after company
   :config
-  (setq company-dict-dir (concat user-emacs-directory "dict/")
-        company-dict-enable-fuzzy t
-        company-dict-enable-yasnippet t))
+  (setq company-dict-enable-fuzzy t))
 ;; ---
 
 ;; Correção (Correction)
