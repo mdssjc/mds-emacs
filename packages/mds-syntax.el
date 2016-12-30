@@ -88,28 +88,27 @@
 ;; Correção (Correction)
 (use-package ispell
   :ensure t
+  :commands ispell-pt-br ispell-en-us ispell-en-gb
   :preface
   (defun ispell-pt-br ()
     (interactive)
-    (setq ispell-complete-word-dict "/home/mdssjc/.emacs.d/dict/pt_BR.dic")
+    (setq ispell-complete-word-dict (concat (expand-file-name user-emacs-directory) "dict/pt_BR.dic"))
     (ispell-change-dictionary "pt_BR"))
   (defun ispell-en-us ()
     (interactive)
-    (setq ispell-complete-word-dict "/home/mdssjc/.emacs.d/dict/en_US.dic")
+    (setq ispell-complete-word-dict (concat (expand-file-name user-emacs-directory) "dict/en_US.dic"))
     (ispell-change-dictionary "en_US"))
   (defun ispell-en-gb ()
     (interactive)
-    (setq ispell-complete-word-dict "/home/mdssjc/.emacs.d/dict/en_GB.dic")
+    (setq ispell-complete-word-dict (concat (expand-file-name user-emacs-directory) "dict/en_GB.dic"))
     (ispell-change-dictionary "en_GB"))
-  :bind
-  (("<f8> s p" . ispell-pt-br)
-   ("<f8> s e" . ispell-en-us)
-   ("<f8> s g" . ispell-en-gb))
   :config
   (setq ispell-program-name "hunspell"
         ispell-dictionary "pt_BR"
         ispell-really-hunspell t
-        ispell-complete-word-dict "/home/mdssjc/.emacs.d/dict/pt_BR.dic"))
+        ispell-complete-word-dict (concat (expand-file-name user-emacs-directory) "dict/pt_BR.dic")
+        ispell-choices-win-default-height 5))
+;; ---
 
 ;; Abreviação (Abbreviation)
 (use-package abbrev

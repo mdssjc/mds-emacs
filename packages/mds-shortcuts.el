@@ -191,7 +191,10 @@
    "<f8> l"     '(:which-key "langtool")
    "<f8> n"     '(:which-key "news")
    "<f8> r"     '(ripgrep-regexp :which-key "ripgrep")
-   "<f8> s"     '(:which-key "ispell"))
+   "<f8> s"     '(:which-key "ispell")
+   "<f8> s p"   'ispell-pt-br
+   "<f8> s e"   'ispell-en-us
+   "<f8> s g"   'ispell-en-gb)
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   (defalias 'gs 'magit-status "Magit status"))
 
