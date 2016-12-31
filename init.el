@@ -36,23 +36,6 @@
   (require 'diminish)
   (require 'bind-key)
 
-  (use-package auto-compile
-    :ensure t
-    :disabled t
-    :defer t
-    :init
-    (setq load-prefer-newer t)
-    (auto-compile-on-load-mode))
-
-  (use-package async
-    :ensure t
-    :commands async-bytecomp-package-mode
-    :init
-    (add-hook 'after-init-hook 'async-bytecomp-package-mode)
-    :config
-    (setq async-bytecomp-allowed-packages '(all)))
-  ;; ---
-
   ;; Configurações Globais (Global Settings)
   (setq-default tab-always-indent 'complete
                 ;; Indentation
@@ -210,7 +193,7 @@
  '(custom-enabled-themes (quote (wombat)))
  '(package-selected-packages
    (quote
-    (isearch-prop isearch+ zeal-at-point wttrin writeroom-mode which-key web-mode volatile-highlights visual-regexp use-package-chords undo-tree twittering-mode tabbar-ruler swap-regions stickyfunc-enhance srefactor spacemacs-theme spaceline smex shm selected ripgrep restart-emacs replace+ rainbow-delimiters racket-mode parinfer package-utils org-bullets neotree move-dup mouse+ menu-bar+ meghanada markdown-mode magit litable lispy langtool keyfreq jdee java-snippets ivy-rich ivy-hydra irony-eldoc info+ imenu+ hl-todo haskell-snippets golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell exec-path-from-shell esup eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing dumb-jump dr-racket-like-unicode dired+ dashboard counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghc company-dict company-c-headers cider centered-cursor-mode bookmark+ beacon auto-yasnippet auto-compile all-the-icons-dired))))
+    (zones ciel zeal-at-point wttrin writeroom-mode which-key web-mode volatile-highlights use-package-chords undo-tree twittering-mode tao-theme tabbar-ruler swap-regions stickyfunc-enhance srefactor sr-speedbar spacemacs-theme spaceline smex shm selected ripgrep restart-emacs replace+ rainbow-delimiters racket-mode parinfer package-utils org-bullets neotree move-dup mouse+ menu-bar+ meghanada markdown-mode magit litable lispy langtool lacarte keyfreq jdee java-snippets ivy-rich ivy-hydra isearch-prop isearch+ irony-eldoc info+ imenu+ icicles hl-todo highlight haskell-snippets golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell exec-path-from-shell esup eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing dumb-jump dr-racket-like-unicode doremi-cmd dired+ dashboard counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghc company-flx company-dict company-c-headers cider centered-cursor-mode bookmark+ beacon auto-yasnippet anzu all-the-icons-dired))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
