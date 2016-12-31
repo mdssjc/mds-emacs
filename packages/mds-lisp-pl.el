@@ -20,7 +20,7 @@
   (:map parinfer-mode-map
         ("C-c <return>" . parinfer-toggle-mode))
   :config
-  (setq parinfer-extensions '(defaults pretty-parens lispy smart-tab smart-yank one)
+  (setq parinfer-extensions '(defaults pretty-parens lispy smart-tab smart-yank one paredit)
         parinfer-auto-switch-indent-mode t
         parinfer-auto-switch-indent-mode-when-closing t
         parinfer-preview-cursor-scope t))
@@ -54,9 +54,7 @@
         ("M-."    . find-function-at-point)
         ("M-&"    . complete-symbol)
         ("C-c e"  . macrostep-expand)
-        ("C-c r e" . emr-show-refactor-menu)
-        ("<s-left>"  . special-lispy-barf)
-        ("<s-right>" . special-lispy-slurp))
+        ("C-c r e" . emr-show-refactor-menu))
   :init
   (add-hook 'emacs-lisp-mode-hook 'parinfer-mode)
   (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
