@@ -29,11 +29,6 @@
   :ensure t
   :diminish lispy-mode
   :commands lispy-mode
-  :bind
-  (:map lispy-mode-map
-        ("C-<return>"   . nil)
-        ("M-<return>"   . nil)
-        ("S-C-<return>" . nil))
   :init
   (add-hook 'parinfer-mode-enable-hook 'lispy-mode)
   (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression)
