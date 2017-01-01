@@ -102,30 +102,35 @@
   ("\\.rkt\\'" . racket-mode)
   :interpreter
   ("racket" . racket-mode)
+  :bind
+  (:map racket-mode-map
+        ("<f5>"     . nil)
+        ("M-C-<f5>" . nil)
+        ("C-<f5>"   . nil)
+        ("C-c c"    . racket-run-and-switch-to-repl)
+        ("C-c C-s"  . racket-racket))
   :init
   (add-hook 'racket-mode-hook 'parinfer-mode)
-  (add-hook 'racket-mode-hook '(lambda () (setq lisp-prettify-symbols-alist
-                                           '(("lambda" . ?λ)
-                                             ("->"     . ?→)
-                                             ("=>"     . ?⇒)
-                                             ("map"    . ?↦)
-                                             ("."      . ?•))
-                                           prettify-symbols-alist lisp-prettify-symbols-alist
-                                           prettify-symbols-unprettify-at-point 'right-edge)
-                                 (prettify-symbols-mode)))
-  (add-hook 'racket-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Racket"))))
-  (add-hook 'racket-mode-hook '(lambda () (set (make-local-variable 'company-backends)
-                                          '((company-capf
-                                             :with
-                                             company-abbrev
-                                             company-dabbrev-code
-                                             company-dabbrev
-                                             company-files)))))
-  (add-hook 'racket-mode-hook 'flyspell-prog-mode)
+  (add-hook 'racket-mode-hook 'prettify-symbols-mode)
   (add-hook 'racket-mode-hook 'dr-racket-like-unicode-mode)
-  ;; (add-hook 'racket-mode-hook 'racket-unicode-input-method-enable)
+  (add-hook 'racket-mode-hook 'racket-unicode-input-method-enable)
   (add-hook 'racket-repl-mode-hook 'racket-unicode-input-method-enable)
-  (add-hook 'racket-mode-hook (lambda () (define-key racket-mode-map (kbd "<f5>") nil))))
+  (add-hook 'racket-mode-hook '(lambda () (setq-local company-backends '((company-capf
+                                                                     :with
+                                                                     company-abbrev
+                                                                     company-dabbrev-code
+                                                                     company-dabbrev
+                                                                     company-files)))))
+  (add-hook 'racket-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Racket"))))
+  :config
+  (setq racket-smart-open-bracket-enable t
+        lisp-prettify-symbols-alist '(("lambda" . ?λ)
+                                      ("->"     . ?→)
+                                      ("=>"     . ?⇒)
+                                      ("map"    . ?↦)
+                                      ("."      . ?•))
+        prettify-symbols-alist lisp-prettify-symbols-alist
+        prettify-symbols-unprettify-at-point 'right-edge))
 
 (use-package dr-racket-like-unicode
   :ensure t
