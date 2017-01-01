@@ -54,23 +54,21 @@
   (add-hook 'emacs-lisp-mode-hook 'parinfer-mode)
   (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
   (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (add-to-list 'completion-styles 'initials t)))
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (set (make-local-variable 'company-backends)
-                                              '((company-elisp
-                                                 company-yasnippet
-                                                 :with
-                                                 company-capf
-                                                 company-abbrev
-                                                 company-dabbrev-code
-                                                 company-dabbrev
-                                                 company-files)))))
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (progn (flycheck-mode)
-                                                (eval-after-load 'flycheck
-                                                  '(flycheck-package-setup)))))
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
+  (add-hook 'emacs-lisp-mode-hook 'erefactor-lazy-highlight-turn-on)
   (add-hook 'emacs-lisp-mode-hook '(lambda () (progn (require 'ert)
                                                 (ert--activate-font-lock-keywords))))
-  (add-hook 'emacs-lisp-mode-hook 'erefactor-lazy-highlight-turn-on)
+  (add-hook 'emacs-lisp-mode-hook '(lambda () (add-to-list 'completion-styles 'initials t)))
+  (add-hook 'emacs-lisp-mode-hook '(lambda () (setq-local company-backends '((company-elisp
+                                                                         company-yasnippet
+                                                                         :with
+                                                                         company-capf
+                                                                         company-abbrev
+                                                                         company-dabbrev-code
+                                                                         company-dabbrev
+                                                                         company-files)))))
+  (add-hook 'emacs-lisp-mode-hook '(lambda () (progn (flycheck-mode)
+                                                (eval-after-load 'flycheck '(flycheck-package-setup)))))
+  (add-hook 'emacs-lisp-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit
         lisp-prettify-symbols-alist '(("lambda" . ?λ)
