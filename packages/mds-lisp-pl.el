@@ -140,16 +140,14 @@
   ("\\.cjr\\'" . clojure-mode)
   :init
   (add-hook 'clojure-mode-hook 'parinfer-mode)
+  (add-hook 'clojure-mode-hook '(lambda () (setq-local company-backends '((company-capf
+                                                                      company-yasnippet
+                                                                      :with
+                                                                      company-abbrev
+                                                                      company-dabbrev-code
+                                                                      company-dabbrev
+                                                                      company-files)))))
   (add-hook 'clojure-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Clojure"))))
-  (add-hook 'clojure-mode-hook '(lambda () (set (make-local-variable 'company-backends)
-                                                '((company-capf
-                                                   company-yasnippet
-                                                   :with
-                                                   company-abbrev
-                                                   company-dabbrev-code
-                                                   company-dabbrev
-                                                   company-files)))))
-  (add-hook 'clojure-mode-hook 'flyspell-prog-mode))
 
 (use-package cider
   :ensure t
