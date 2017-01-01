@@ -147,7 +147,7 @@
                                                                       company-dabbrev-code
                                                                       company-dabbrev
                                                                       company-files)))))
-  (add-hook 'clojure-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Clojure"))))
+  (add-hook 'clojure-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Clojure")))))
 
 (use-package cider
   :ensure t
