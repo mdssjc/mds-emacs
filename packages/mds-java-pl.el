@@ -18,30 +18,25 @@
   ("\\.java$" . java-mode)
   :interpreter
   ("java" . java-mode)
-  :bind
-  (:map java-mode-map
-        ("<f6> m" . meghanada-mode)
-        ("<f6> j" . jdee-mode))
   :init
-  (add-hook 'java-mode-hook 'flycheck-mode)
-  (add-hook 'java-mode-hook (lambda () (setq-local counsel-dash-docsets '("Java_SE8"
-                                                                     "Java_EE7"
-                                                                     "JavaFX"))))
-  (add-hook 'java-mode-hook '(lambda ()
-                               (set (make-local-variable 'company-transformers)
-                                    '(company-sort-by-backend-importance
-                                      company-sort-prefer-same-case-prefix
-                                      company-sort-by-statistics))
-                               (set (make-local-variable 'company-backends)
-                                    '((company-meghanada
-                                       company-yasnippet
-                                       :with
-                                       company-keywords
-                                       company-abbrev
-                                       company-dabbrev-code
-                                       company-dabbrev
-                                       company-dict
-                                       company-files))))))
+  (add-hook 'java-mode-hook
+            '(lambda () (progn
+                          (setq-local company-transformers '(company-sort-by-backend-importance
+                                                             company-sort-prefer-same-case-prefix
+                                                             company-sort-by-statistics))
+                          (setq-local company-backends '((company-meghanada
+                                                          company-yasnippet
+                                                          :with
+                                                          company-keywords
+                                                          company-abbrev
+                                                          company-dabbrev-code
+                                                          company-dabbrev
+                                                          company-dict
+                                                          company-files)))
+                          (flycheck-mode)
+                          (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))
+                          (define-key java-mode-map (kbd "<f6> m") 'meghanada-mode)
+                          (define-key java-mode-map (kbd "<f6> j") 'jdee-mode)))))
 
 (use-package java-snippets
   :ensure t
