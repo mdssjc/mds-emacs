@@ -45,30 +45,32 @@
   ("emacs" . emacs-lisp-mode)
   :bind
   (:map emacs-lisp-mode-map
-        ("<f6> t" . litable-mode)
-        ("M-."    . find-function-at-point)
-        ("M-&"    . complete-symbol)
-        ("C-c e"  . macrostep-expand)
+        ("<f6> t"  . litable-mode)
+        ("M-."     . find-function-at-point)
+        ("M-&"     . complete-symbol)
+        ("C-c e"   . macrostep-expand)
         ("C-c r e" . emr-show-refactor-menu))
   :init
-  (add-hook 'emacs-lisp-mode-hook 'parinfer-mode)
-  (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
-  (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-  (add-hook 'emacs-lisp-mode-hook 'erefactor-lazy-highlight-turn-on)
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (progn (require 'ert)
-                                                (ert--activate-font-lock-keywords))))
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (add-to-list 'completion-styles 'initials t)))
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (setq-local company-backends '((company-elisp
-                                                                         company-yasnippet
-                                                                         :with
-                                                                         company-capf
-                                                                         company-abbrev
-                                                                         company-dabbrev-code
-                                                                         company-dabbrev
-                                                                         company-files)))))
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (progn (flycheck-mode)
-                                                (eval-after-load 'flycheck '(flycheck-package-setup)))))
-  (add-hook 'emacs-lisp-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
+  (add-hook 'emacs-lisp-mode-hook
+            '(lambda () (progn
+                          (parinfer-mode)
+                          (prettify-symbols-mode)
+                          (eldoc-mode)
+                          (erefactor-lazy-highlight-turn-on)
+                          (require 'ert)
+                          (ert--activate-font-lock-keywords)
+                          (add-to-list 'completion-styles 'initials t)
+                          (setq-local company-backends '((company-elisp
+                                                          company-yasnippet
+                                                          :with
+                                                          company-capf
+                                                          company-abbrev
+                                                          company-dabbrev-code
+                                                          company-dabbrev
+                                                          company-files)))
+                          (flycheck-mode)
+                          (eval-after-load 'flycheck '(flycheck-package-setup))
+                          (setq-local counsel-dash-docsets '("Emacs_Lisp")))))
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit
         lisp-prettify-symbols-alist '(("lambda" . ?λ)
