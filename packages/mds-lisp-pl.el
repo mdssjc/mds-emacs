@@ -110,18 +110,21 @@
         ("C-c c"    . racket-run-and-switch-to-repl)
         ("C-c C-s"  . racket-racket))
   :init
-  (add-hook 'racket-mode-hook 'parinfer-mode)
-  (add-hook 'racket-mode-hook 'prettify-symbols-mode)
-  (add-hook 'racket-mode-hook 'dr-racket-like-unicode-mode)
-  (add-hook 'racket-mode-hook 'racket-unicode-input-method-enable)
+  (add-hook 'racket-mode-hook
+            '(lambda () (progn
+                          (parinfer-mode)
+                          (prettify-symbols-mode)
+                          (dr-racket-like-unicode-mode)
+                          (racket-unicode-input-method-enable)
+                          (setq-local company-backends '((company-capf
+                                                          :with
+                                                          company-abbrev
+                                                          company-dabbrev-code
+                                                          company-dabbrev
+                                                          company-files)))
+                          (flycheck-mode)
+                          (setq-local counsel-dash-docsets '("Racket")))))
   (add-hook 'racket-repl-mode-hook 'racket-unicode-input-method-enable)
-  (add-hook 'racket-mode-hook '(lambda () (setq-local company-backends '((company-capf
-                                                                     :with
-                                                                     company-abbrev
-                                                                     company-dabbrev-code
-                                                                     company-dabbrev
-                                                                     company-files)))))
-  (add-hook 'racket-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Racket"))))
   :config
   (setq racket-smart-open-bracket-enable t
         lisp-prettify-symbols-alist '(("lambda" . ?λ)
@@ -141,15 +144,17 @@
   :mode
   ("\\.cjr\\'" . clojure-mode)
   :init
-  (add-hook 'clojure-mode-hook 'parinfer-mode)
-  (add-hook 'clojure-mode-hook '(lambda () (setq-local company-backends '((company-capf
-                                                                      company-yasnippet
-                                                                      :with
-                                                                      company-abbrev
-                                                                      company-dabbrev-code
-                                                                      company-dabbrev
-                                                                      company-files)))))
-  (add-hook 'clojure-mode-hook '(lambda () (setq-local counsel-dash-docsets '("Clojure")))))
+  (add-hook 'clojure-mode-hook
+            '(lambda () (progn
+                          (parinfer-mode)
+                          (setq-local company-backends '((company-capf
+                                                          company-yasnippet
+                                                          :with
+                                                          company-abbrev
+                                                          company-dabbrev-code
+                                                          company-dabbrev
+                                                          company-files)))
+                          (setq-local counsel-dash-docsets '("Clojure"))))))
 
 (use-package cider
   :ensure t
