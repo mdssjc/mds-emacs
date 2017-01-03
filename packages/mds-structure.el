@@ -428,6 +428,8 @@
 
 (eval-after-load "menu-bar" '(use-package menu-bar+ :ensure t :defer 0))
 
+(eval-after-load "tool-bar" '(use-package tool-bar+ :ensure t :defer 0))
+
 (eval-after-load "info" '(use-package info+ :ensure t :defer 0))
 
 (eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0))
