@@ -20,7 +20,9 @@
   (("<f9> l" . org-store-link)
    ("<f9> a" . org-agenda)
    ("<f9> c" . org-capture)
-   ("<f9> b" . org-iswitchb))
+   ("<f9> b" . org-iswitchb)
+   ("<f9> p" . org-pomodoro)
+   ("<f9> T" . tomatinho))
   :init
   (add-hook 'org-mode-hook
             '(lambda () (progn)
