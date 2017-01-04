@@ -38,7 +38,7 @@
                                                company-ispell)))
                (company-mode)
                (flyspell-mode)
-               (org-bullets-mode 1)))
+               (org-bullets-mode t)))
   :config
   (require 'ob-java)
   (setq org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "REVIEW"
@@ -51,7 +51,11 @@
                                  ("ARCHIVED" . "blue")
                                  ("CANCELED" . "red1"))
         org-directory (concat user-emacs-directory "org")
-        org-default-notes-file (concat user-emacs-directory "org/notes.org"))
+        org-default-notes-file (concat user-emacs-directory "org/notes.org")
+        org-ellipsis "⤵"
+        org-src-fontify-natively t
+        org-src-tab-acts-natively t
+        org-src-window-setup 'current-window)
   (org-babel-do-load-languages 'org-babel-do-load-languages '((emacs-lisp . t)
                                                               (java . t)
                                                               (c . t))))
