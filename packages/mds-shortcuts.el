@@ -163,7 +163,8 @@
    "s-s"        'embrace-commander
    "s-v"        'hydra-expand-region/body
    "s-w"        'ace-window
-   "<f12>"      'ibuffer
+   "<f12>"      'ivy-switch-buffer
+   "S-<f12>"    'ibuffer
    ;; F5 (Toggle Global)
    "<f5> -"     'centered-cursor-mode
    "<f5> W"     'writeroom-mode
