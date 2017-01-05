@@ -435,7 +435,7 @@
 
 (use-package bookmark
   :init
-  (setq bmkp-last-as-first-bookmark-file (concat user-emacs-directory ".cache/bookmarks"))
+  (setq bookmark-default-file (concat user-emacs-directory ".cache/bookmarks"))
   (eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
                                  :init
                                  (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag))))
