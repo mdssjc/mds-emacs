@@ -64,6 +64,7 @@
                           (structured-haskell-mode)
                           (hlint-refactor-mode)
                           (haskell-decl-scan-mode)
+                          (flyckeck-haskell-configure)
                           (turn-on-haskell-doc-mode)
                           (turn-on-haskell-indent)
                           (electric-indent-local-mode -1)
@@ -141,6 +142,10 @@
 (use-package haskell-snippets
   :ensure t
   :defer t)
+
+(use-package flycheck-haskell
+  :ensure t
+  :commands flycheck-haskell-configure)
 
 (use-package ghc
   :ensure t
