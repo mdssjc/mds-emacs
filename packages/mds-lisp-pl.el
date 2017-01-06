@@ -115,7 +115,7 @@
                           (parinfer-mode)
                           (prettify-symbols-mode)
                           (dr-racket-like-unicode-mode)
-                          (racket-unicode-input-method-enable)
+                          ;; (racket-unicode-input-method-enable)
                           (setq-local company-backends '((company-capf
                                                           :with
                                                           company-abbrev
