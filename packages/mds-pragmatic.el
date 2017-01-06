@@ -51,6 +51,9 @@
                                  ("ARCHIVED" . "blue")
                                  ("CANCELED" . "red1"))
         org-directory (concat user-emacs-directory "org")
+        org-agenda-files (list "~/"
+                               "~/Documents"
+                               (concat user-emacs-directory "org"))
         org-default-notes-file (concat user-emacs-directory "org/notes.org")
         org-ellipsis "⤵"
         org-src-fontify-natively t
