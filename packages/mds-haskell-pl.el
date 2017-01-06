@@ -62,30 +62,37 @@
                           (intero-mode-whitelist)
                           (intero-mode-blacklist)
                           (structured-haskell-mode)
+                          (hlint-refactor-mode)
+                          (haskell-decl-scan-mode)
                           (turn-on-haskell-doc-mode)
                           (turn-on-haskell-indent)
-                          (haskell-decl-scan-mode)
+                          (electric-indent-local-mode -1)
                           (rainbow-delimiters-mode)
                           (speedbar-add-supported-extension ".hs")
                           (lambda () (ghc-init) (hare-init))
                           (setq-local company-transformers '(company-sort-by-backend-importance
                                                              company-sort-prefer-same-case-prefix
                                                              company-sort-by-statistics))
+                          (setq-local counsel-dash-docsets '("Haskell")))))
+  (add-hook 'intero-mode-hook
+            '(lambda () (progn
                           (setq-local company-backends '((company-intero
-                                                          company-capf
                                                           company-yasnippet
                                                           :with
+                                                          company-cabal
+                                                          company-ghci
+                                                          company-ghc
                                                           company-abbrev
                                                           company-dabbrev-code
                                                           company-dabbrev
-                                                          company-files)))
-                          (setq-local counsel-dash-docsets '("Haskell")))))
+                                                          company-files))))))
   (add-hook 'haskell-interactive-mode-hook
             '(lambda () (progn
                           (setq-local company-transformers '(company-sort-by-backend-importance
                                                              company-sort-prefer-same-case-prefix
                                                              company-sort-by-statistics))
-                          (setq-local company-backends '((company-capf
+                          (setq-local company-backends '((company-ghci
+                                                          company-capf
                                                           company-yasnippet
                                                           :with
                                                           company-abbrev
@@ -123,7 +130,13 @@
 
 (use-package shm
   :ensure t
+  :diminish structured-haskell-mode
   :commands structured-haskell-mode)
+
+(use-package hlint-refactor
+  :ensure t
+  :diminish hlint-refactor-mode
+  :commands hlint-refactor-mode)
 
 (use-package haskell-snippets
   :ensure t
@@ -132,6 +145,18 @@
 (use-package ghc
   :ensure t
   :commands ghc-init ghc-debug)
+
+(use-package company-cabal
+  :ensure t
+  :commands company-cabal)
+
+(use-package company-ghci
+  :ensure t
+  :commands company-ghci)
+
+(use-package company-ghc
+  :ensure t
+  :commands company-ghc)
 
 (use-package rainbow-delimiters
   :ensure t
