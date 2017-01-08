@@ -38,7 +38,8 @@
                                                company-ispell)))
                (company-mode)
                (flyspell-mode)
-               (org-bullets-mode t)))
+               (org-bullets-mode t)
+               (worf-mode)))
   :config
   (require 'ob-java)
   (setq org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "REVIEW"
@@ -74,6 +75,10 @@
 (use-package tomatinho
   :ensure t
   :commands tomatinho)
+
+(use-package worf
+  :ensure t
+  :commands worf-mode)
 
 (provide 'mds-pragmatic)
 ;;; mds-pragmatic.el ends here
