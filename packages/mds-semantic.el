@@ -40,35 +40,22 @@
   :bind
   (("<f5> S" . flyspell-mode)
    :map flyspell-mode-map
-   ("C-$ TAB" . flyspell-auto-correct-word)
-   ("C-$ ;"   . flyspell-auto-correct-previous-word)
-   ("C-$ ,"   . flyspell-goto-next-error)
-   ("C-$ ."   . flyspell-auto-correct-word)
-   ("C-$ $"   . flyspell-correct-word-before-point)
-   ("C-M-i"   . nil)
-   ("C-TAB"   . nil)
-   ("C-;"     . nil)
-   ("C-,"     . nil)
-   ("C-."     . nil)
-   :map flyspell-mode-map
-   ("C-M-$" . flyspell-popup-correct))
+   ("C-$"   . flyspell-popup-correct)
+   ("C-M-$" . flyspell-correct-word-generic)
+   ("C-M-i" . nil)
+   ("C-TAB" . nil)
+   ("C-;"   . nil)
+   ("C-,"   . nil)
+   ("C-."   . nil))
   :init
   (setq flyspell-issue-message-flag nil)
   (add-hook 'text-mode-hook 'flyspell-mode))
 
-(use-package flyspell-correct
-  :ensure t
-  :after flyspell)
-
-(use-package flyspell-correct-popup
+(use-package flyspell-popup
   :ensure t
   :after flyspell)
 
 (use-package flyspell-correct-ivy
-  :ensure t
-  :after flyspell)
-
-(use-package flyspell-popup
   :ensure t
   :after flyspell)
 ;; ---
