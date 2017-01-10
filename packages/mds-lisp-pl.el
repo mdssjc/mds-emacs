@@ -21,8 +21,6 @@
         ("C-c <return>" . parinfer-toggle-mode))
   :config
   (setq parinfer-extensions '(defaults pretty-parens lispy smart-tab smart-yank one paredit)
-        parinfer-auto-switch-indent-mode nil
-        parinfer-auto-switch-indent-mode-when-closing t
         parinfer-preview-cursor-scope t))
 
 (use-package lispy
