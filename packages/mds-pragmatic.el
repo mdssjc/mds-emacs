@@ -37,9 +37,9 @@
                                                :with
                                                company-ispell)))
                (company-mode)
-               (flyspell-mode)
                (org-bullets-mode t)
-               (worf-mode)))
+               (worf-mode)
+               (set-face-attribute 'org-table nil :inherit 'fixed-pitch)))
   :config
   (require 'ob-java)
   (setq org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "REVIEW"
@@ -57,6 +57,9 @@
                                (concat user-emacs-directory "org"))
         org-default-notes-file (concat user-emacs-directory "org/notes.org")
         org-ellipsis "⤵"
+        org-pretty-entities t
+        org-hide-emphasis-markers t
+        org-startup-align-all-tables t
         org-src-fontify-natively t
         org-src-tab-acts-natively t
         org-src-window-setup 'current-window)
