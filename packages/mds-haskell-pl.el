@@ -23,9 +23,22 @@
   ("\\.c2hs\\'"  . haskell-mode)
   :bind
   (:map haskell-mode-map
+        ("<f6> s" . structured-haskell-mode)
         ("M-<right>" . haskell-move-nested-right)
         ("M-<left>"  . haskell-move-nested-left)
         ("C-c ."     . counsel-dash-at-point)
+        ;; Debug
+        ("C-c d a" . haskell-debug/abandon)
+        ("C-c d b" . haskell-debug/break-on-function)
+        ("C-c d B" . haskell-debug/delete)
+        ("C-c d c" . haskell-debug/continue)
+        ("C-c d d" . haskell-debug)
+        ("C-c d n" . haskell-debug/next)
+        ("C-c d N" . haskell-debug/previous)
+        ("C-c d p" . haskell-debug/previous)
+        ("C-c d r" . haskell-debug/refresh)
+        ("C-c d s" . haskell-debug/step)
+        ("C-c d t" . haskell-debug/trace)
         ;; Editing
         ("C-c e j" . haskell-navigate-imports)
         ("C-c e f" . haskell-mode-format-imports)
@@ -46,27 +59,26 @@
         ;; Lookup
         ("C-c l t" . haskell-process-do-type)
         ("C-c l i" . haskell-process-do-info)
-        ;; Hare
-        ("C-c h d m" . hare-refactor-demote)
-        ("C-c h d d" . hare-refactor-dupdef)
-        ("C-c h i c" . hare-refactor-iftocase)
-        ("C-c h l o" . hare-refactor-lift-one)
-        ("C-c h l t" . hare-refactor-lifttotop)
-        ("C-c h r"   . hare-refactor-rename)
-        ("C-c h t"   . hare-refactor-roundtrip)
-        ("C-c h s h" . hare-refactor-show))
+        ;; Refactor - Hare
+        ("C-c r d m" . hare-refactor-demote)
+        ("C-c r d d" . hare-refactor-dupdef)
+        ("C-c r i c" . hare-refactor-iftocase)
+        ("C-c r l o" . hare-refactor-lift-one)
+        ("C-c r l t" . hare-refactor-lifttotop)
+        ("C-c r r"   . hare-refactor-rename)
+        ("C-c r t"   . hare-refactor-roundtrip)
+        ("C-c r s h" . hare-refactor-show))
   :init
   (add-hook 'haskell-mode-hook
             '(lambda () (progn
                           (intero-mode)
                           (intero-mode-whitelist)
                           (intero-mode-blacklist)
-                          (structured-haskell-mode)
                           (hlint-refactor-mode)
                           (haskell-decl-scan-mode)
                           (flyckeck-haskell-configure)
                           (turn-on-haskell-doc-mode)
-                          (turn-on-haskell-indent)
+                          (haskell-indentation-mode)
                           (electric-indent-local-mode -1)
                           (rainbow-delimiters-mode)
                           (speedbar-add-supported-extension ".hs")
@@ -119,10 +131,11 @@
         company-ghc-show-info t)
   ;; Which-key
   (mapcar (lambda (mode) (which-key-add-major-mode-key-based-replacements mode
+                      "C-c d" "debug"
                       "C-c e" "editing"
                       "C-c i" "interpreter"
                       "C-c l" "lookup"
-                      "C-c h" "hare"))
+                      "C-c r" "refactor"))
           [haskell-mode literate-haskell-mode]))
 
 (use-package intero
