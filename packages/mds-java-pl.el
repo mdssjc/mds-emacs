@@ -50,7 +50,9 @@
                                     company-dict
                                     company-files)))
     (setq help-at-pt-display-when-idle t
-          help-at-pt-timer-delay 0.1)
+          help-at-pt-timer-delay 0.1
+          eclim-interactive-completion-function 'ivy-completing-read
+          eclim-problems-show-pos t)
     (help-at-pt-set-timer)
     (eclim-mode))
   (add-hook 'jdee-mode-hook
