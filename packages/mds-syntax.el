@@ -31,7 +31,6 @@
         company-tooltip-offset-display 'lines
         company-tooltip-flip-when-above t
         company-minimum-prefix-length 1
-        company-auto-complete t
         company-idle-delay 0.1
         company-show-numbers t
         company-require-match nil
