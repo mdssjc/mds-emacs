@@ -37,11 +37,13 @@
                                                :with
                                                company-ispell)))
                (company-mode)
+               (flyspell-mode -1)
                (org-bullets-mode t)
                (worf-mode)
                (set-face-attribute 'org-table nil :inherit 'fixed-pitch)))
   :config
   (require 'ob-java)
+  (require 'ob-C)
   (setq org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "REVIEW"
                                       "|" "DONE" "ARCHIVED" "CANCELED"))
         org-todo-keyword-faces '(("TODO"     . org-warning)
