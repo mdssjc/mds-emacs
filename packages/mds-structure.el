@@ -416,6 +416,14 @@
   :init
   (add-hook 'prog-mode-hook 'hl-todo-mode))
 
+(use-package ess
+  :ensure t
+  :init
+  (add-to-list 'load-path "~/Documents/Git/ESS/lisp/")
+  (load "ess-site")
+  ;; :config
+  )
+
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
                             (use-package tramp)
