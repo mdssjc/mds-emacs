@@ -160,6 +160,10 @@
    "S-M-t"      'swap-regions
    "S-SPC"      'cycle-spacing
    "s-7"        'hydra-yasnippet/body
+   "s-<down>"   'md/move-lines-down
+   "s-<up>"     'md/move-lines-up
+   "s-S-<down>" 'md/duplicate-down
+   "s-S-<up>"   'md/duplicate-up
    "s-s"        'embrace-commander
    "s-v"        'hydra-expand-region/body
    "s-w"        'ace-window
