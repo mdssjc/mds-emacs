@@ -119,32 +119,7 @@
   ;; ---
 
   ;; Pacotes Essenciais (Essential Packages)
-  (require 'cl)
   (require 'mds-core-funcs)
-
-  (use-package dash
-    :ensure t
-    :defer t
-    :config
-    (dash-enable-font-lock))
-
-  (use-package s
-    :ensure t
-    :defer t)
-
-  (use-package f
-    :ensure t
-    :defer t)
-
-  (use-package server
-    :ensure t
-    :disabled t
-    :if window-system
-    :commands server-start
-    :init
-    (require 'server)
-    (unless (server-running-p)
-      (add-hook 'after-init-hook 'server-start t)))
 
   (use-package esup
     :ensure t
@@ -193,7 +168,7 @@
  '(custom-enabled-themes (quote (wombat)))
  '(package-selected-packages
    (quote
-    (zones zeal-at-point wttrin writeroom-mode worf which-key web-mode volatile-highlights use-package-chords undo-tree twittering-mode tool-bar+ tomatinho tao-theme tabbar-ruler swap-regions stickyfunc-enhance srefactor sr-speedbar spacemacs-theme spaceline smex shm selected ripgrep restart-emacs replace+ rainbow-delimiters racket-mode parinfer package-utils org-pomodoro org-bullets neotree move-dup mouse+ menu-bar+ meghanada markdown-mode magit litable lispy langtool lacarte keyfreq jdee java-snippets ivy-rich ivy-hydra isearch-prop isearch+ irony-eldoc intero info+ imenu+ icicles hlint-refactor hl-todo highlight haskell-snippets golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell exec-path-from-shell esup eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing dumb-jump dr-racket-like-unicode doremi-cmd dired+ dashboard counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghci company-ghc company-flx company-emacs-eclim company-dict company-cabal company-c-headers ciel cider centered-cursor-mode bookmark+ beacon auto-yasnippet anzu all-the-icons-dired))))
+    (ess zones zeal-at-point wttrin writeroom-mode worf which-key web-mode volatile-highlights use-package-chords undo-tree twittering-mode tool-bar+ tomatinho tao-theme tabbar-ruler swap-regions stickyfunc-enhance srefactor sr-speedbar spacemacs-theme spaceline smex shm selected ripgrep restart-emacs replace+ rainbow-delimiters racket-mode parinfer package-utils org-pomodoro org-bullets neotree move-dup mouse+ menu-bar+ meghanada markdown-mode magit litable lispy langtool lacarte keyfreq jdee java-snippets ivy-rich ivy-hydra isearch-prop isearch+ irony-eldoc intero info+ imenu+ icicles hlint-refactor hl-todo highlight haskell-snippets golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell exec-path-from-shell esup eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing dumb-jump dr-racket-like-unicode doremi-cmd dired+ dashboard counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghci company-ghc company-flx company-emacs-eclim company-dict company-cabal company-c-headers ciel cider centered-cursor-mode bookmark+ beacon auto-yasnippet anzu all-the-icons-dired))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
