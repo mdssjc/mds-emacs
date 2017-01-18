@@ -1,6 +1,6 @@
 # MDS - Emacs
 
-O projeto tem como objetivo ser um modelo de configuração do *Emacs* para o dia a dia do programador nas seguintes tecnologias: *Lisp*, *Haskell*, *C*, *Java*, *Web* e Escrita (*Latex*, *Markdown*, Texto e etc...) - voltado para os amantes em personalização de ferramentas.
+O projeto tem como objetivo ser um modelo de configuração do *Emacs* para o dia a dia do programador nas seguintes tecnologias: *Lisp*, *Haskell*, *C*, *Java*, *Web* e Escrita (*Latex*, *R*, *Markdown*, Texto e etc...) - voltado para os amantes em personalização de ferramentas.
 
 Versão do *Emacs*: 26.0.50
 
@@ -10,10 +10,12 @@ Procedimento para a instalação do projeto.
 
 ## Instalação do Emacs
 
+Versão principal:
+
 ```
 git clone https://github.com/emacs-mirror/emacs
 ./autogen.sh all
-./configure --with-modules
+./configure --enable-link-time-optimization --with-modules CFLAGS='-O3'
 make
 sudo make install
 ```
@@ -25,6 +27,14 @@ mkdir ~/.emacs.d
 cd ~/.emacs.d
 git clone https://github.com/mdssjc/mds-emacs
 ```
+
+## Dependências
+
+Alguns pacotes dependem de *softwares* externos:
+
+* *Eclim*: *Eclipse*
+* *LangTool*: *LangTool*
+* *Magit*: *Git*
 
 # O que fazer?
 
@@ -41,6 +51,7 @@ Próximas evoluções:
 * Melhorar a legibilidade do código.
 * Melhorar a documentação do *README* e código.
 * Incrementar as funcionalidades dos pacotes *Web* e *Terminal*.
+* Incluir suporte para *Guile*, *LFE* e *R*.
 
 # Projeto
 
@@ -66,9 +77,9 @@ Conjunto de pacotes para o ambiente:
 * Pragmático: organização do trabalho com *org-mode*.
 * Estrutura: conjunto estrutural de melhorias/funcionalidades para o ambiente.
 * Notícias: *feeds* e *Twitter*.
-* Linguagens de Programação: *Lisp* (dialetos *ELisp* - *Emacs Lisp*, *Racket* e *Clojure*), *Haskell*, *C* (com *Irony*) e *Java* (com *Meghanada* e *JDEE*).
+* Linguagens de Programação: *Lisp* (dialetos *ELisp* - *Emacs Lisp*, *Racket* e *Clojure*), *Haskell*, *C* (com *Irony*) e *Java* (*Meghanada*, *JDEE* ou *Eclim*).
 * Linguagens de Marcação: *Markdown*.
-* Linguagens *Web*: em desenvolvimento.
+* Linguagens *Web*.
 
 ## Comandos
 
