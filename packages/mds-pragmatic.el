@@ -44,6 +44,8 @@
   :config
   (require 'ob-java)
   (require 'ob-C)
+  (require 'ob-ditaa)
+  (require 'ob-plantuml)
   (setq org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "REVIEW"
                                       "|" "DONE" "ARCHIVED" "CANCELED"))
         org-todo-keyword-faces '(("TODO"     . org-warning)
@@ -64,10 +66,14 @@
         org-startup-align-all-tables t
         org-src-fontify-natively t
         org-src-tab-acts-natively t
-        org-src-window-setup 'current-window)
+        org-src-window-setup 'current-window
+        org-ditaa-jar-path    (expand-file-name "~/java/ditaa.jar")
+        org-plantuml-jar-path (expand-file-name "~/java/plantuml.jar"))
   (org-babel-do-load-languages 'org-babel-do-load-languages '((emacs-lisp . t)
-                                                              (java . t)
-                                                              (c . t))))
+                                                              (java       . t)
+                                                              (c          . t)
+                                                              (ditaa      . t)
+                                                              (plantuml   . t))))
 
 (use-package org-bullets
   :ensure t
