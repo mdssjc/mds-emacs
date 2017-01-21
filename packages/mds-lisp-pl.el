@@ -158,5 +158,10 @@
   :ensure t
   :after clojure-mode)
 
+(use-package lfe-mode
+  :ensure t
+  :mode
+  ("\\.lfe\\(s\\|sh\\)?\\'" . lfe-mode))
+
 (provide 'mds-lisp-pl)
 ;;; mds-lisp-pl.el ends here
