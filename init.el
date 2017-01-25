@@ -153,7 +153,7 @@
   ;; Linguagem de Marcação (Markup Language)
   (require 'mds-markdown-ml)
   ;; Linguagem de Domínio Específico (Domain Specific Language)
-  ;; (require 'mds-r-dsl)
+  (require 'mds-r-dsl)
   ;; Serviços
   (require 'mds-news)
   ;; ---
