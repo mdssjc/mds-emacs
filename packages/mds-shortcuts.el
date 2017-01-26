@@ -169,6 +169,7 @@
    "s-s"        'embrace-commander
    "s-v"        'hydra-expand-region/body
    "s-w"        'ace-window
+   "<s-return>" 'icy-mode
    "<f12>"      'ivy-switch-buffer
    "S-<f12>"    'ibuffer
    ;; F5 (Toggle Global)
