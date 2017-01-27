@@ -21,13 +21,14 @@
   (setq spaceline-workspace-numbers-unicode t
         spaceline-window-numbers-unicode t
         Info-fontify-angle-bracketed-flag nil)
+  (tabbar-mode)
   (spaceline-emacs-theme)
   (spaceline-info-mode)
-  (load-theme 'spacemacs-dark t)
   (global-hl-line-mode t)
   (add-hook 'prog-mode-hook 'linum-mode)
   (set-frame-font "Source Code Pro-10" nil t)
-  (toggle-frame-maximized))
+  (toggle-frame-maximized)
+  (load-theme 'spacemacs-dark t))
 
 (use-package spacemacs-theme
   :ensure t

@@ -307,8 +307,9 @@
 (use-package tabbar
   :ensure t
   :commands tabbar-mode
-  :init
-  (add-hook 'spaceline-pre-hook 'tabbar-mode))
+  ;; :init
+  ;; (add-hook 'spaceline-pre-hook 'tabbar-mode)
+  )
 
 (use-package tabbar-ruler
   :ensure t
