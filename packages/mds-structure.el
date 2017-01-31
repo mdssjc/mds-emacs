@@ -11,7 +11,7 @@
 
 ;;; Commentary:
 ;; Conjunto estrutural de melhorias/funcionalidades para o ambiente:
-;;  - saveplace: salva a última posição do buffer;
+;;  - saveplace: automaticamente salva a última posição do arquivo visitado no buffer;
 ;;  - recentf: listagem dos buffers mais recentes;
 ;;  - restart-emacs: reinicialização do ambiente;
 ;;  - undo-tree: visualização da árvore de modificações do buffer;
@@ -47,7 +47,8 @@
   (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places")))
   (add-hook 'after-init-hook 'save-place-mode)
   :config
-  (setq save-place-forget-unreadable-files nil))
+  (setq save-place-forget-unreadable-files nil
+        save-place-limit 500))
 
 (use-package recentf
   :commands recentf-mode
@@ -74,8 +75,10 @@
   (setq undo-tree-visualizer-timestamps t
         undo-tree-visualizer-diff t))
 
+;; Processo de Remoção
 (use-package keyfreq
   :ensure t
+  :disabled t
   :commands keyfreq-show
   :init
   (add-hook 'after-init-hook '(lambda ()
@@ -217,6 +220,7 @@
 
 (use-package embrace
   :ensure t
+  :defer 3
   :init
   (add-hook 'text-mode-hook '(lambda () (setq embrace-semantic-units-alist
                                          (append embrace-semantic-units-alist semantics-units))))
@@ -242,6 +246,7 @@
 
 (use-package zones
   :ensure t
+  :disabled t
   :defer t)
 
 (use-package ciel
@@ -306,10 +311,7 @@
 
 (use-package tabbar
   :ensure t
-  :commands tabbar-mode
-  ;; :init
-  ;; (add-hook 'spaceline-pre-hook 'tabbar-mode)
-  )
+  :commands tabbar-mode)
 
 (use-package tabbar-ruler
   :ensure t
@@ -407,7 +409,7 @@
 
 (use-package highlight
   :ensure t
-  :defer t
+  :commands global-hi-lock-mode
   :init
   (add-hook 'after-init-hook 'global-hi-lock-mode))
 
