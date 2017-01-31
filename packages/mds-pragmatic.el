@@ -73,7 +73,8 @@
                                                               (java       . t)
                                                               (c          . t)
                                                               (ditaa      . t)
-                                                              (plantuml   . t))))
+                                                              (plantuml   . t)))
+  (add-to-list 'org-src-lang-modes '("plantuml" . plantuml)))
 
 (use-package org-bullets
   :ensure t
