@@ -11,7 +11,7 @@
 
 ;;; Commentary:
 ;; Conjunto estrutural de melhorias/funcionalidades para o ambiente:
-;;  - saveplace: automaticamente salva a última posição do arquivo visitado no buffer;
+;;  - saveplace: automaticamente salva a última posição do buffer visitado;
 ;;  - recentf: listagem dos buffers mais recentes;
 ;;  - restart-emacs: reinicialização do ambiente;
 ;;  - undo-tree: visualização da árvore de modificações do buffer;
