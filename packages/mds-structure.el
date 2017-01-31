@@ -73,7 +73,9 @@
   (add-hook 'after-init-hook 'global-undo-tree-mode)
   :config
   (setq undo-tree-visualizer-timestamps t
-        undo-tree-visualizer-diff t))
+        undo-tree-visualizer-diff t
+        undo-tree-auto-save-history t
+        undo-tree-history-directory-alist `(("." . ,(concat user-emacs-directory ".cache/undo-tree")))))
 
 ;; Processo de Remoção
 (use-package keyfreq
