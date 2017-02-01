@@ -15,7 +15,6 @@
 ;;  - recentf: listagem dos buffers mais recentes;
 ;;  - restart-emacs: reinicialização do ambiente;
 ;;  - undo-tree: visualização da árvore de modificações do buffer;
-;;  - keyfreq: sumariza a frequência de utilização dos atalhos;
 ;;  - neotree: visualização do sistema de arquivos;
 ;;  - magit: controle de versão pelo Git com Time Machine, Fringe e Hub;
 ;;  - pacotes Abo-abo: Avy, Hydra, Ace-Window, Ivy, Swiper e Counsel;
@@ -76,18 +75,6 @@
         undo-tree-visualizer-diff t
         undo-tree-auto-save-history t
         undo-tree-history-directory-alist `(("." . ,(concat user-emacs-directory ".cache/undo-tree")))))
-
-;; Processo de Remoção
-(use-package keyfreq
-  :ensure t
-  :disabled t
-  :commands keyfreq-show
-  :init
-  (add-hook 'after-init-hook '(lambda ()
-                                (keyfreq-mode 1)
-                                (keyfreq-autosave-mode 1)))
-  (setq keyfreq-file      (concat user-emacs-directory ".cache/.emacs.keyfreq")
-        keyfreq-file-lock (concat user-emacs-directory ".cache/.emacs.keyfreq.lock")))
 
 (use-package neotree
   :ensure t
