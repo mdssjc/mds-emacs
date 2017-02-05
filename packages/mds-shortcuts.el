@@ -170,6 +170,9 @@
    "s-v"        'hydra-expand-region/body
    "s-w"        'ace-window
    "<s-return>" 'icy-mode
+   "s-C-<return>" 'mds/insert-lines-above
+   "s-M-<return>" 'mds/insert-lines-below
+   "s-S-<return>" 'mds/insert-lines-between
    "<f12>"      'ivy-switch-buffer
    "S-<f12>"    'ibuffer
    ;; F5 (Toggle Global)
