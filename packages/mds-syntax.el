@@ -38,7 +38,7 @@
         company-dabbrev-ignore-case nil
         company-dabbrev-downcase nil
         company-dabbrev-code-everywhere t
-        company-search-regexp-function 'company-search-words-regexp
+        company-search-regexp-function 'company-search-flex-regexp
         company-occurrence-weight-function 'company-occurrence-prefer-any-closest
         company-frontends '(company-echo-metadata-frontend
                             company-pseudo-tooltip-unless-just-one-frontend-with-delay
