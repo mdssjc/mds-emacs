@@ -64,16 +64,14 @@
   :init
   (add-hook 'company-mode-hook 'company-statistics-mode)
   :config
-  (defun mds//company-statistics-save ()
-    (company-statistics--save))
-  (add-hook 'auto-save-hook 'mds//company-statistics-save)
+  (run-with-idle-timer (* 60 1) t 'company-statistics--save)
   (setq company-statistics-size 500
         company-statistics-auto-save nil
         company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")))
 
 (use-package company-dict
   :ensure t
-  :defer t
+  :commands company-dict
   :config
   (setq company-dict-enable-fuzzy t))
 ;; ---
