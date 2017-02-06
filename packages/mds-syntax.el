@@ -23,31 +23,36 @@
   :ensure t
   :diminish company-mode " ⓐ"
   :commands company-mode
+  :defines
+  company-dabbrev-ignore-case
+  company-dabbrev-downcase
+  company-dabbrev-minimum-length
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   :config
-  (setq company-tooltip-limit 10
+  (setq company-frontends '(company-echo-metadata-frontend
+                            company-pseudo-tooltip-unless-just-one-frontend
+                            company-preview-if-just-one-frontend
+                            company-preview-common-frontend)
+        company-tooltip-limit 10
         company-tooltip-minimum 5
         company-tooltip-offset-display 'lines
         company-tooltip-flip-when-above t
-        company-minimum-prefix-length 1
-        company-idle-delay 0
-        company-show-numbers t
-        company-require-match nil
-        company-tooltip-idle-delay 0.25
-        company-dabbrev-ignore-case nil
-        company-dabbrev-downcase nil
-        company-dabbrev-code-everywhere t
-        company-search-regexp-function 'company-search-flex-regexp
-        company-occurrence-weight-function 'company-occurrence-prefer-any-closest
-        company-frontends '(company-echo-metadata-frontend
-                            company-pseudo-tooltip-unless-just-one-frontend-with-delay
-                            company-preview-if-just-one-frontend)
-        company-transformers '(company-sort-by-backend-importance)
         company-backends '((company-abbrev
                             company-dabbrev
                             company-dict
-                            company-ispell))))
+                            company-files))
+        company-transformers '(company-sort-by-occurrence)
+        company-minimum-prefix-length 0
+        company-idle-delay 0.1
+        company-tooltip-idle-delay 0.1
+        company-show-numbers t
+        company-occurrence-weight-function 'company-occurrence-prefer-any-closest
+        company-search-regexp-function 'company-search-flex-regexp
+        company-require-match nil
+        company-dabbrev-ignore-case nil
+        company-dabbrev-downcase nil
+        company-dabbrev-minimum-length 2))
 
 (use-package company-quickhelp
   :ensure t
@@ -55,7 +60,7 @@
   :init
   (add-hook 'company-mode-hook 'company-quickhelp-mode)
   :config
-  (setq company-quickhelp-delay 1
+  (setq company-quickhelp-delay .25
         company-quickhelp-max-lines 30))
 
 (use-package company-statistics
@@ -64,10 +69,10 @@
   :init
   (add-hook 'company-mode-hook 'company-statistics-mode)
   :config
-  (run-with-idle-timer (* 60 1) t 'company-statistics--save)
+  (run-with-idle-timer (* 60 3) t 'company-statistics--save)
   (setq company-statistics-size 500
-        company-statistics-auto-save nil
-        company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")))
+        company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")
+        company-statistics-auto-save nil))
 
 (use-package company-dict
   :ensure t
