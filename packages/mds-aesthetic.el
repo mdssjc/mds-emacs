@@ -17,6 +17,7 @@
   :ensure t
   :defer 0
   :config
+  (use-package spacemacs-theme :ensure t :defer 0)
   (require 'spaceline-config)
   (setq spaceline-workspace-numbers-unicode t
         spaceline-window-numbers-unicode t
@@ -29,10 +30,6 @@
   (set-frame-font "Source Code Pro-10" nil t)
   (load-theme 'spacemacs-dark t)
   (toggle-frame-maximized))
-
-(use-package spacemacs-theme
-  :ensure t
-  :defer t)
 
 (use-package mode-icons
   :ensure t
