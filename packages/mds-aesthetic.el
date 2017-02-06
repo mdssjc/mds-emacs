@@ -27,8 +27,8 @@
   (global-hl-line-mode t)
   (add-hook 'prog-mode-hook 'linum-mode)
   (set-frame-font "Source Code Pro-10" nil t)
-  (toggle-frame-maximized)
-  (load-theme 'spacemacs-dark t))
+  (load-theme 'spacemacs-dark t)
+  (toggle-frame-maximized))
 
 (use-package spacemacs-theme
   :ensure t
