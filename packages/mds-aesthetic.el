@@ -34,10 +34,6 @@
   :ensure t
   :defer t)
 
-(use-package tao-theme
-  :ensure t
-  :defer t)
-
 (use-package mode-icons
   :ensure t
   :commands mode-icons-mode
