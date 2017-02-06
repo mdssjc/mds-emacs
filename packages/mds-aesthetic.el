@@ -33,9 +33,16 @@
 
 (use-package mode-icons
   :ensure t
+  :disabled t
   :commands mode-icons-mode
   :init
   (add-hook 'after-init-hook 'mode-icons-mode))
+
+(use-package major-mode-icons
+  :ensure t
+  :commands major-mode-icons-mode
+  :init
+  (add-hook 'after-init-hook 'major-mode-icons-mode))
 
 (use-package all-the-icons
   :ensure t
