@@ -84,7 +84,7 @@
 ;; Correção (Correction)
 (use-package ispell
   :ensure t
-  :commands ispell-pt-br ispell-en-us ispell-en-gb
+  :commands company-ispell ispell-pt-br ispell-en-us ispell-en-gb
   :preface
   (defun ispell-pt-br ()
     (interactive)
