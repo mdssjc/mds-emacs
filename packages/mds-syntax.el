@@ -85,6 +85,8 @@
 (use-package ispell
   :ensure t
   :commands company-ispell ispell-pt-br ispell-en-us ispell-en-gb
+  :defines
+  ispell-list-command
   :preface
   (defun ispell-pt-br ()
     (interactive)
@@ -99,9 +101,11 @@
     (setq ispell-complete-word-dict (concat (expand-file-name user-emacs-directory) "dict/en_GB.dic"))
     (ispell-change-dictionary "en_GB"))
   :config
-  (setq ispell-program-name "hunspell"
+  (setq ispell-program-name "aspell"
+        ispell-extra-args '("--sug-mode=ultra")
+        ispell-list-command "--list"
         ispell-dictionary "pt_BR"
-        ispell-really-hunspell t
+        ispell-really-aspell t
         ispell-complete-word-dict (concat (expand-file-name user-emacs-directory) "dict/pt_BR.dic")
         ispell-choices-win-default-height 5))
 ;; ---
