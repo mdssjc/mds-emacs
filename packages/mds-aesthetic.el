@@ -40,6 +40,7 @@
 
 (use-package major-mode-icons
   :ensure t
+  :diminish major-mode-icons-mode
   :commands major-mode-icons-mode
   :init
   (add-hook 'after-init-hook 'major-mode-icons-mode))
