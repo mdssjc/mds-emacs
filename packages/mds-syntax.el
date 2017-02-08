@@ -113,6 +113,7 @@
 ;; Abreviação (Abbreviation)
 (use-package abbrev
   :diminish abbrev-mode
+  :commands company-abbrev
   :init
   (setq-default abbrev-mode t)
   :config
