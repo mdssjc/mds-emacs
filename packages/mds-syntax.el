@@ -144,7 +144,7 @@
   (defun autoinsert-yas-expand()
     "Replace text in yasnippet template."
     (yas-expand-snippet (buffer-string) (point-min) (point-max)))
-  (setq auto-insert-directory (concat user-emacs-directory "templates/templates.el")
+  (setq auto-insert-directory (concat user-emacs-directory "templates")
         auto-insert-query nil)
   (define-auto-insert "\\.c$" ["template-c" autoinsert-yas-expand]))
 ;; ---
