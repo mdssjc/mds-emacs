@@ -402,6 +402,11 @@
   :init
   (add-hook 'after-init-hook 'global-hi-lock-mode))
 
+(use-package highlight-thing
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook 'highlight-thing-mode))
+
 (use-package hl-todo
   :ensure t
   :commands hl-todo-mode
