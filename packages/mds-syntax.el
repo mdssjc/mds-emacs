@@ -139,9 +139,14 @@
 (use-package autoinsert
   :init
   (add-hook 'after-init-hook 'auto-insert-mode)
+  (add-hook 'find-file-hook  'auto-insert)
   :config
-  (load-file (concat user-emacs-directory "templates/templates.el"))
-  (define-auto-insert "\\.c\\'" 'c-mode))
+  (defun autoinsert-yas-expand()
+    "Replace text in yasnippet template."
+    (yas-expand-snippet (buffer-string) (point-min) (point-max)))
+  (setq auto-insert-directory (concat user-emacs-directory "templates/templates.el")
+        auto-insert-query nil)
+  (define-auto-insert "\\.c$" ["template-c" autoinsert-yas-expand]))
 ;; ---
 
 (provide 'mds-syntax)
