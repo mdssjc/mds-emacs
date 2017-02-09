@@ -19,13 +19,15 @@
   ("\\.html$" . web-mode)
   ("\\.htm$"  . web-mode)
   ("\\.css$"  . web-mode)
+  ("\\.scss$" . web-mode)
   :bind
   (:map web-mode-map
-        ("<F6> p" . emmet-preview-mode))
+        ("<f6> p" . emmet-preview-mode))
   :init
   (add-hook 'web-mode-hook
             '(lambda () (progn
                      (emmet-mode)
+                     (emmet-preview-mode)
                      (setq-local company-transformers '(company-sort-by-backend-importance
                                                         company-sort-prefer-same-case-prefix
                                                         company-sort-by-statistics))
