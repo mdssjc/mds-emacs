@@ -135,6 +135,13 @@
 (use-package auto-yasnippet
   :ensure t
   :commands aya-create aya-expand aya-open-line)
+
+(use-package autoinsert
+  :init
+  (add-hook 'after-init-hook 'auto-insert-mode)
+  :config
+  (load-file (concat user-emacs-directory "templates/templates.el"))
+  (define-auto-insert "\\.c\\'" 'c-mode))
 ;; ---
 
 (provide 'mds-syntax)
