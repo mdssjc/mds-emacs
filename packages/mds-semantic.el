@@ -62,6 +62,7 @@
 
 (use-package guess-language
   :ensure t
+  :commands guess-language-mode
   :init
   (add-hook 'flyspell-mode-hook 'guess-language-mode)
   :config
