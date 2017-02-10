@@ -60,6 +60,15 @@
   :after flyspell)
 ;; ---
 
+(use-package guess-language
+  :ensure t
+  :init
+  (add-hook 'flyspell-mode-hook 'guess-language-mode)
+  :config
+  (setq guess-language-languages '(en pt)
+        guess-language-langcodes '((en . ("en_US" "English"))
+                                   (pt . ("pt_BR" "Portuguese")))))
+
 (use-package langtool
   :ensure t
   :bind
