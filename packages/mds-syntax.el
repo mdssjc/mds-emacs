@@ -117,8 +117,8 @@
   :init
   (setq-default abbrev-mode t)
   :config
-  (setq save-abbrevs 'silently
-        abbrev-file-name (concat user-emacs-directory "dict/abbrevs_defs.el")))
+  (setq abbrev-file-name (concat user-emacs-directory "dict/abbrevs_defs.el")
+        save-abbrevs 'silently))
 ;; ---
 
 ;; Modelo (Template)
