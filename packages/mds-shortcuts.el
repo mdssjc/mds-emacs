@@ -182,6 +182,7 @@
    "<f5> a"     'company-mode
    "<f5> e"     'global-emojify-mode
    "<f5> f"     'focus-mode
+   "<f5> F"     'follow-mode
    "<f5> g"     'golden-ratio-mode
    "<f5> h"     'hl-todo-mode
    "<f5> l"     'linum-mode
