@@ -167,6 +167,10 @@
    "s-s"        'embrace-commander
    "s-v"        'hydra-expand-region/body
    "<s-return>" 'icy-mode
+   "s-C-<up>"    'shrink-window
+   "s-C-<down>"  'enlarge-window
+   "s-C-<left>"  'shrink-window-horizontally
+   "s-C-<right>" 'enlarge-window-horizontally
    "s-M-<up>"    'windmove-up
    "s-M-<down>"  'windmove-down
    "s-M-<left>"  'windmove-left
