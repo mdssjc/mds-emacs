@@ -167,6 +167,10 @@
    "s-s"        'embrace-commander
    "s-v"        'hydra-expand-region/body
    "<s-return>" 'icy-mode
+   "s-M-<up>"    'windmove-up
+   "s-M-<down>"  'windmove-down
+   "s-M-<left>"  'windmove-left
+   "s-M-<right>" 'windmove-right
    "s-C-<return>" 'mds/insert-lines-above
    "s-M-<return>" 'mds/insert-lines-below
    "s-S-<return>" 'mds/insert-lines-between
