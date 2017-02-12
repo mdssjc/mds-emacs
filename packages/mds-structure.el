@@ -40,6 +40,8 @@
 ;;  - plus: dired+, replace+, mouse+, menu-bar+, info+, isearch+ e bookmark+.
 
 ;;; Code:
+(winner-mode)
+
 (use-package saveplace
   :commands save-place-mode
   :init
