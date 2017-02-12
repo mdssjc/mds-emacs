@@ -40,9 +40,7 @@
    ("\\s" . embrace-commander)
    ("/s"  . embrace-commander)
    ("\\v" . hydra-expand-region/body)
-   ("/v"  . hydra-expand-region/body)
-   ("\\w" . ace-window)
-   ("/w"  . ace-window))
+   ("/v"  . hydra-expand-region/body))
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
@@ -168,7 +166,6 @@
    "s-SPC"      'avy-goto-char-in-line
    "s-s"        'embrace-commander
    "s-v"        'hydra-expand-region/body
-   "s-w"        'ace-window
    "<s-return>" 'icy-mode
    "s-C-<return>" 'mds/insert-lines-above
    "s-M-<return>" 'mds/insert-lines-below

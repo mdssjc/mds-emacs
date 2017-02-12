@@ -13,25 +13,6 @@
 ;; Definições do Hydra.
 
 ;;; Code:
-;; Ace-Window
-(defhydra hydra-window-size (:color red)
-  "Windows size"
-  ("h" shrink-window-horizontally  "shrink horizontal")
-  ("j" shrink-window               "shrink vertical")
-  ("k" enlarge-window              "enlarge vertical")
-  ("l" enlarge-window-horizontally "enlarge horizontal"))
-
-(defhydra hydra-window-frame (:color red)
-  "Frame"
-  ("f" make-frame   "new frame")
-  ("x" delete-frame "delete frame"))
-
-(defhydra hydra-window-scroll (:color red)
-  "Scroll other window"
-  ("n" scroll-other-window      "scroll")
-  ("p" scroll-other-window-down "scroll down"))
-;; ---
-
 ;; Expand-Region
 (defhydra hydra-expand-region (:columns 4 :color blue)
   "Mark"

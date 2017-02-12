@@ -17,7 +17,7 @@
 ;;  - undo-tree: visualização da árvore de modificações do buffer;
 ;;  - neotree: visualização do sistema de arquivos;
 ;;  - magit: controle de versão pelo Git com Time Machine, Fringe e Hub;
-;;  - pacotes Abo-abo: Avy, Hydra, Ace-Window, Ivy, Swiper e Counsel;
+;;  - pacotes Abo-abo: Avy, Hydra, Ivy, Swiper e Counsel;
 ;;  - smex: histórico de comandos;
 ;;  - expand-region: seleção de regiões;
 ;;  - embrace: manipulação de símbolos entre seleção;
@@ -129,35 +129,6 @@
 
 (use-package hydra
   :ensure t)
-
-(use-package ace-window
-  :ensure t
-  :commands ace-window
-  :config
-  (set-face-attribute 'aw-leading-char-face nil
-                      :foreground "deep sky blue"
-                      :weight 'bold
-                      :height 3.0)
-  (set-face-attribute 'aw-mode-line-face nil
-                      :inherit 'mode-line-buffer-id
-                      :foreground "lawn green")
-  (setq aw-keys '(?a ?s ?d ?f ?j ?k ?l)
-        aw-dispatch-always t
-        aw-dispatch-alist '((?x aw-delete-window     "Ace - Delete Window")
-                            (?c aw-swap-window       "Ace - Swap Window")
-                            (?n aw-flip-window)
-                            (?v aw-split-window-vert "Ace - Split Vert Window")
-                            (?h aw-split-window-horz "Ace - Split Horz Window")
-                            (?m delete-other-windows "Ace - Maximize Window")
-                            (?g delete-other-windows)
-                            (?b balance-windows)
-                            (?u winner-undo)
-                            (?r winner-redo))
-        aw-background t)
-  (add-to-list 'aw-dispatch-alist '(?w hydra-window-size/body) t)
-  (add-to-list 'aw-dispatch-alist '(?o hydra-window-scroll/body) t)
-  (add-to-list 'aw-dispatch-alist '(?\; hydra-window-frame/body) t)
-  (ace-window-display-mode t))
 
 (use-package ivy
   :ensure t
