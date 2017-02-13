@@ -175,6 +175,10 @@
    "s-M-<down>"  'windmove-down
    "s-M-<left>"  'windmove-left
    "s-M-<right>" 'windmove-right
+   "s-C-M-<up>"    'buf-move-up
+   "s-C-M-<down>"  'buf-move-down
+   "s-C-M-<left>"  'buf-move-left
+   "s-C-M-<right>" 'buf-move-right
    "s-C-<return>" 'mds/insert-lines-above
    "s-M-<return>" 'mds/insert-lines-below
    "s-S-<return>" 'mds/insert-lines-between
