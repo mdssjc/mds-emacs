@@ -386,6 +386,10 @@
   :init
   (add-hook 'prog-mode-hook 'hl-todo-mode))
 
+(use-package buffer-move
+  :ensure t
+  :commands buf-move-up buf-move-down buf-move-left buf-move-right)
+
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
                             (use-package tramp)
