@@ -27,7 +27,6 @@
   (add-hook 'web-mode-hook
             '(lambda () (progn
                      (emmet-mode)
-                     (emmet-preview-mode)
                      (setq-local company-transformers '(company-sort-by-backend-importance
                                                         company-sort-prefer-same-case-prefix
                                                         company-sort-by-statistics))
