@@ -405,7 +405,6 @@
 (eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0))
 (eval-after-load "isearch" '(use-package isearch-prop :ensure t :defer 0))
 
-(setq bookmark-default-file (concat user-emacs-directory ".cache/bookmarks"))
 (use-package bookmark
   :init
   (eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0

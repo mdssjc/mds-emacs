@@ -78,7 +78,9 @@
         auto-save-list-file-prefix (concat user-emacs-directory ".cache/auto-save-list/.saves-")
         auto-save-default t
         auto-save-timeout 60
-        auto-save-interval 50)
+        auto-save-interval 50
+        ;; Bookmark
+        bookmark-default-file (concat user-emacs-directory ".cache/bookmarks"))
 
   ;; Sistema de Codificação (Coding System)
   (set-charset-priority        'unicode)
