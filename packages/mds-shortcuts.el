@@ -166,6 +166,8 @@
    "s-SPC"      'avy-goto-char-in-line
    "s-s"        'embrace-commander
    "s-v"        'hydra-expand-region/body
+   "s-P"        'projectile-switch-project
+   "s-p"        'projectile-speedbar-open-current-buffer-in-tree
    "<s-return>" 'icy-mode
    "s-C-<up>"    'shrink-window
    "s-C-<down>"  'enlarge-window
