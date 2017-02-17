@@ -55,10 +55,6 @@
                       "f l" 'find-file-literally
                       "f r" 'counsel-recentf
                       "f s" 'save-buffer
-                      ;; Highlight
-                      "h"     '(:which-key "highlight")
-                      "h t"   '(:which-key "todo")
-                      "h t h" 'hl-todo-mode
                       ;; Tabs
                       "t"   '(:which-key "tabs")
                       "t t" 'tabify

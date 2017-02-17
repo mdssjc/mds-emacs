@@ -384,12 +384,6 @@
   :init
   (add-hook 'prog-mode-hook 'highlight-thing-mode))
 
-(use-package hl-todo
-  :ensure t
-  :commands hl-todo-mode
-  :init
-  (add-hook 'prog-mode-hook 'hl-todo-mode))
-
 (use-package buffer-move
   :ensure t
   :commands buf-move-up buf-move-down buf-move-left buf-move-right)
