@@ -212,7 +212,7 @@
   :config
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
-        projectile-sort-order 'modification-time
+        projectile-sort-order 'recentf
         projectile-enable-caching t))
 
 (use-package counsel-projectile
