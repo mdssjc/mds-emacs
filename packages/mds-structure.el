@@ -310,15 +310,6 @@
                           (projects  . 5)))
   (dashboard-setup-startup-hook))
 
-(use-package boon
-  :ensure t
-  :disabled t
-  :commands boon-mode
-  :init
-  (add-hook 'after-init-hook 'boon-mode)
-  :config
-  (require 'boon-qwerty))
-
 (use-package electric-spacing
   :ensure t
   :diminish electric-spacing-mode
