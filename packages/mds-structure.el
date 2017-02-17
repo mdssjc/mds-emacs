@@ -31,7 +31,6 @@
 ;;  - package-utils: atualização automática e assíncrona dos pacotes;
 ;;  - exec-path-from-shell: variáveis ambiente do shell;
 ;;  - dashboard: quadro com o resumo do ambiente;
-;;  - hl-todo: highlight dos labels de todo;
 ;;  - electric-spacing: espaço entre operadores, conforme modo maior;
 ;;  - golden-ratio: taxa de redimensionamento para o buffer ativo;
 ;;  - centered-cursor: manter o cursor no centro do buffer;
