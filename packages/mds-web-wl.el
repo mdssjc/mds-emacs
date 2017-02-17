@@ -38,7 +38,7 @@
                                                      company-dabbrev
                                                      company-files)))
                      (flycheck-mode)
-                     (setq-local counsel-dash-docsets '("HTML" "CSS")))))
+                     (setq-local counsel-dash-docsets '("HTML" "CSS" "Sass")))))
   :config
   (require 'html-mode-expansions)
   (require 'css-mode-expansions)
@@ -52,6 +52,8 @@
         web-mode-enable-css-colorization t
         web-mode-enable-auto-expanding t
         emmet-indentation 2
+        emmet-use-css-transform t
+        emmet-use-sass-syntax t
         company-minimum-prefix-length 0)
   (er/add-html-mode-expansions)
   (er/add-css-mode-expansions))
