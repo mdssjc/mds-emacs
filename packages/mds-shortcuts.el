@@ -238,7 +238,6 @@
     "C-x a" "abbrev")
   (which-key-add-major-mode-key-based-replacements 'c-mode
     "C-c ," "semantic"
-    ;; "C-c ." "ede"
     "C-c @" "hide blocks"
     "C-c r" "refactor")
   (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
