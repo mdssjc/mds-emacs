@@ -88,17 +88,6 @@
         neo-show-hidden-files t
         neo-keymap-style 'concise))
 
-(use-package speedbar
-  :defer t
-  :commands speedbar
-  :bind
-  (("<f7> s" . speedbar))
-  :config
-  (add-hook 'speedbar-after-create-hook  '(lambda () (global-set-key (kbd "C-c C-SPC") 'speedbar-get-focus)))
-  (add-hook 'speedbar-before-delete-hook '(lambda () (global-unset-key (kbd "C-c C-SPC"))))
-  (setq speedbar-show-unknown-files t
-        speedbar-use-images nil))
-
 (use-package magit
   :ensure t
   :commands magit-status)
@@ -117,11 +106,11 @@
         git-gutter:update-interval 5))
 
 (add-to-list 'load-path (concat user-emacs-directory "temp/magithub"))
+
 (use-package magithub
   :after magit
   :config
   (require 'magithub))
-
 (use-package avy
   :ensure t
   :commands avy-goto-char-timer
@@ -224,7 +213,6 @@
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
         projectile-sort-order 'modification-time
-        projectile-switch-project-action 'neotree-projectile-action
         projectile-enable-caching t))
 
 (use-package counsel-projectile
@@ -232,15 +220,31 @@
   :commands counsel-projectile-on
   :init
   (add-hook 'projectile-mode-hook 'counsel-projectile-on)
+  :config
+  (require 'projectile-ripgrep)
   (fset 'projectile-find-file        'counsel-projectile-find-file)
   (fset 'projectile-find-dir         'counsel-projectile-find-dir)
   (fset 'projectile-switch-to-buffer 'counsel-projectile-switch-to-buffer)
   (fset 'projectile-ag               'counsel-projectile-ag)
+  (fset 'projectile-ripgrep          'counsel-projectile-rg)
   (fset 'projectile-switch-project   'counsel-projectile-switch-project))
+
+(use-package projectile-speedbar
+  :ensure t
+  :commands projectile-speedbar-open-current-buffer-in-tree)
+
+(use-package speedbar
+  :defer t
+  :commands speedbar
+  :config
+  (add-hook 'speedbar-after-create-hook  '(lambda () (global-set-key (kbd "C-c C-SPC") 'speedbar-get-focus)))
+  (add-hook 'speedbar-before-delete-hook '(lambda () (global-unset-key (kbd "C-c C-SPC"))))
+  (setq speedbar-show-unknown-files t
+        speedbar-use-images nil))
 
 (use-package ripgrep
   :ensure t
-  :commands ripgrep-regexp)
+  :commands ripgrep-regexp projectile-ripgrep)
 
 (use-package anzu
   :ensure t
