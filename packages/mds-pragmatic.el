@@ -38,8 +38,10 @@
                                                company-ispell)))
                (company-mode)
                (flyspell-mode -1)
+               (yas-minor-mode)
                (org-bullets-mode t)
                (worf-mode)
+               (embrace-org-mode-hook)
                (set-face-attribute 'org-table nil :inherit 'fixed-pitch)))
   :config
   (require 'ob-java)
