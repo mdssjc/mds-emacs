@@ -19,25 +19,24 @@
   ("\\.h$" . c-mode)
   :bind
   (:map c-mode-map
-        ("C-c r e"    . emr-show-refactor-menu)
-        ("C-c r s"    . srefactor-refactor-at-point)
-        (";"          . maio/electric-semicolon))
+        ("C-c r e" . emr-show-refactor-menu)
+        ("C-c r s" . srefactor-refactor-at-point)
+        (";"       . maio/electric-semicolon))
   :init
   (setq irony-user-dir (concat user-emacs-directory ".cache/irony"))
   (add-hook 'c-mode-hook '(lambda ()
-                            (set (make-local-variable 'company-transformers)
-                                 '(company-sort-by-backend-importance
-                                   company-sort-prefer-same-case-prefix
-                                   company-sort-by-statistics))
-                            (set (make-local-variable 'company-backends)
-                                 '((company-irony
-                                    company-irony-c-headers
-                                    company-yasnippet
-                                    :with
-                                    company-abbrev
-                                    company-dabbrev-code
-                                    company-dabbrev
-                                    company-files)))))
+                            (setq-local company-transformers
+                                        '(company-sort-by-backend-importance
+                                          company-sort-prefer-same-case-prefix
+                                          company-sort-by-statistics))
+                            (setq-local company-backends '((company-irony
+                                                            company-irony-c-headers
+                                                            :with
+                                                            company-yasnippet
+                                                            company-abbrev
+                                                            company-dabbrev-code
+                                                            company-dabbrev
+                                                            company-files)))))
   (add-hook 'c-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
