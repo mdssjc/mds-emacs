@@ -88,8 +88,6 @@
    "C-x x a a"  '(align :which-key "align")
    "C-x x a c"  '(align-current :which-key "align current")
    "C-x x a r"  '(align-regexp  :which-key "align regexp")
-   "C-x x i"    'ciel-ci
-   "C-x x o"    'ciel-co
    "C-x x r"    'ciel-copy-to-register
    "C-x x s"    '(:which-key "sorts")
    "C-x x s P"  '(sort-pages   :which-key "sort pages")
