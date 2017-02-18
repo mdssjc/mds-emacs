@@ -19,9 +19,6 @@
   ("\\.h$" . c-mode)
   :bind
   (:map c-mode-map
-        ;; ("C-c ."      . semantic-ia-fast-jump)
-        ;; ("C-c ?"      . semantic-ia-show-doc)
-        ;; ("C-c ^"      . senator-go-to-up-reference)
         ("C-c r e"    . emr-show-refactor-menu)
         ("C-c r s"    . srefactor-refactor-at-point)
         (";"          . maio/electric-semicolon))
@@ -35,19 +32,13 @@
                             (set (make-local-variable 'company-backends)
                                  '((company-irony
                                     company-irony-c-headers
-                                    ;; company-semantic
-                                    company-c-headers
                                     company-yasnippet
                                     :with
-                                    company-keywords
                                     company-abbrev
                                     company-dabbrev-code
                                     company-dabbrev
                                     company-files)))))
   (add-hook 'c-mode-hook 'flycheck-mode)
-  ;; (add-hook 'c-mode-hook 'semantic-mode)
-  ;; (add-hook 'c-mode-hook 'global-ede-mode)
-  ;(add-hook 'c-mode-hook 'global-srecode-minor-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
   (add-hook 'irony-mode-hook 'flycheck-irony-setup)
@@ -67,41 +58,9 @@
   (add-hook 'c-mode-hook 'show-paren-mode)
   (add-hook 'c-mode-hook (lambda () (setq-local counsel-dash-docsets '("C"))))
   :config
-  ;; (require 'semantic)
-  ;; (require 'semantic/ia)
-  ;; (require 'semantic/db)
-  ;; (require 'semantic/sb)
-  ;; (require 'semantic/bovine)
-  ;; (require 'semantic/bovine/c)
-  ;; (require 'semantic/bovine/gcc)
-  ;; (semantic-load-enable-code-helpers)
-  ;; (ede-enable-generic-projects)
-  (add-to-list 'company-c-headers-path-system "/usr/include/c++/6.2.1")
-  ;; (add-to-list 'semantic-lex-c-preprocessor-symbol-file "/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include/stddef.h")
   (setq company-backends (remove 'company-clang company-backends)
         c-default-style "linux"
-        speedbar-show-unknow-files t
-        ;; srecode-map-save-file (concat user-emacs-directory ".cache/srecode-map.el")
-        ;; semanticdb-default-save-directory (concat user-emacs-directory ".cache/semanticdb")
-        ;; semanticdb-find-default-throttle '(file local project)
-        ;; semantic-default-submodes '(global-semantic-idle-scheduler-mode
-        ;;                             global-semanticdb-minor-mode
-        ;;                             global-semantic-idle-summary-mode
-        ;;                             global-semantic-idle-completions-mode
-        ;;                             global-semantic-highlight-func-mode
-        ;;                             global-semantic-decoration-mode
-        ;;                             global-semantic-stickyfunc-mode
-        ;;                             global-semantic-mru-bookmark-mode
-        ;;                             global-semantic-idle-local-symbol-highlight-mode
-        ;;                             global-semantic-highlight-edits-mode
-        ;;                             global-semantic-show-parser-state-mode
-        ;;                             global-semantic-idle-breadcrumbs-mode
-        ;;                             global-semantic-show-unmatched-syntax-mode)
-        )
-  ;; (semanticdb-enable-gnu-global-databases 'c-mode t)
-  ;; (unless (file-exists-p semanticdb-default-save-directory)
-  ;;   (make-directory semanticdb-default-save-directory))
-  )
+        speedbar-show-unknow-files t))
 
 (use-package irony
   :ensure t
@@ -109,10 +68,11 @@
 
 (use-package company-irony
   :ensure t
-  :commands company-irony-setup-begin-commands)
+  :commands company-irony-setup-begin-commands company-irony)
 
 (use-package company-irony-c-headers
-  :ensure t)
+  :ensure t
+  :commands company-irony-c-headers)
 
 (use-package flycheck-irony
   :ensure t
@@ -130,13 +90,6 @@
   :ensure t
   :diminish function-args-mode
   :commands function-args-mode fa-config-default)
-
-(use-package company-c-headers
-  :ensure t)
-
-(use-package stickyfunc-enhance
-  :ensure t
-  :defer t)
 
 (defun maio/electric-semicolon ()
   (interactive)
