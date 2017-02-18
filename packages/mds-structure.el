@@ -164,18 +164,18 @@
 
 (use-package expand-region
   :ensure t
-  :commands er/expand-region
+  :commands er/expand-region hydra-expand-region/body
   :config
   (require 'the-org-mode-expansions))
 
 (use-package embrace
   :ensure t
-  :defer 0
+  :commands embrace-commander hydra-embrace/body
   :init
-  (add-hook 'text-mode-hook '(lambda () (setq embrace-semantic-units-alist
-                                         (append embrace-semantic-units-alist semantics-units))))
-  (add-hook 'prog-mode-hook '(lambda () (setq embrace-semantic-units-alist
-                                         (append embrace-semantic-units-alist semantics-units))))
+  (add-hook 'text-mode-hook
+            '(lambda () (setq embrace-semantic-units-alist semantics-units)))
+  (add-hook 'prog-mode-hook
+            '(lambda () (setq embrace-semantic-units-alist semantics-units)))
   :config
   (require 'the-org-mode-expansions)
   (setq semantics-units '((?w . er/mark-word)
