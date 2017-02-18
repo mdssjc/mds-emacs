@@ -40,7 +40,6 @@
 Add (_a_), change (_c_) or delete (_d_) a pair.
   "
   ("<ESC>" nil "quit")
-  ("q" nil nil)
   ("a" embrace-add)
   ("c" embrace-change)
   ("d" embrace-delete))
@@ -58,7 +57,6 @@ Add (_a_), change (_c_) or delete (_d_) a pair.
   ^ ^        _a_ll
   "
   ("<ESC>" nil nil)
-  ("q" nil nil)
   ("g" yas-global-mode)
   ("m" yas-minor-mode)
   ("e" yas-activate-extra-mode)
