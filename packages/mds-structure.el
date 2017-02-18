@@ -172,12 +172,6 @@
   :ensure t
   :commands embrace-commander hydra-embrace/body
   :init
-  (add-hook 'text-mode-hook
-            '(lambda () (setq embrace-semantic-units-alist semantics-units)))
-  (add-hook 'prog-mode-hook
-            '(lambda () (setq embrace-semantic-units-alist semantics-units)))
-  :config
-  (require 'the-org-mode-expansions)
   (setq semantics-units '((?w . er/mark-word)
                           (?s . er/mark-symbol)
                           (?d . er/mark-defun)
@@ -192,7 +186,13 @@
                           (?m . er/mark-method-call)
                           (?c . er/mark-comment)
                           (?u . er/mark-url)
-                          (?e . er/mark-email))))
+                          (?e . er/mark-email)))
+  (add-hook 'text-mode-hook
+            '(lambda () (setq embrace-semantic-units-alist semantics-units)))
+  (add-hook 'prog-mode-hook
+            '(lambda () (setq embrace-semantic-units-alist semantics-units)))
+  :config
+  (require 'the-org-mode-expansions))
 
 (use-package zones
   :ensure t
