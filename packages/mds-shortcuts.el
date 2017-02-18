@@ -161,6 +161,8 @@
    "s-S-<up>"   'md/duplicate-up
    "s-SPC"      'avy-goto-char-in-line
    "s-s"        'hydra-embrace/body
+   "s-c i"      'ciel-ci
+   "s-c o"      'ciel-co
    "s-v"        'hydra-expand-region/body
    "s-P"        'projectile-switch-project
    "s-p"        'projectile-speedbar-open-current-buffer-in-tree
