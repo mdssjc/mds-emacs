@@ -24,30 +24,30 @@
         (";"       . maio/electric-semicolon))
   :init
   (setq irony-user-dir (concat user-emacs-directory ".cache/irony"))
-  (add-hook 'c-mode-hook '(lambda ()
-                            (setq-local company-transformers
-                                        '(company-sort-by-backend-importance
-                                          company-sort-prefer-same-case-prefix
-                                          company-sort-by-statistics))
-                            (setq-local company-backends '((company-irony
-                                                            company-irony-c-headers
-                                                            :with
-                                                            company-yasnippet
-                                                            company-abbrev
-                                                            company-dabbrev-code
-                                                            company-dabbrev
-                                                            company-files)))))
+  (add-hook 'c-mode-hook
+            '(lambda ()
+               (setq-local company-transformers '(company-sort-by-backend-importance
+                                                  company-sort-prefer-same-case-prefix
+                                                  company-sort-by-statistics))
+               (setq-local company-backends '((company-irony-c-headers
+                                               company-irony
+                                               company-yasnippet
+                                               :with
+                                               company-abbrev
+                                               company-dabbrev-code
+                                               company-dabbrev
+                                               company-files)))))
   (add-hook 'c-mode-hook 'flycheck-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
   (add-hook 'irony-mode-hook 'flycheck-irony-setup)
   (add-hook 'irony-mode-hook 'irony-eldoc)
-  (add-hook 'irony-mode-hook '(lambda ()
-                                (progn
-                                  (define-key irony-mode-map [remap completion-at-point]
-                                    'irony-completion-at-point-async)
-                                  (define-key irony-mode-map [remap complete-symbol]
-                                    'irony-completion-at-point-async))))
+  (add-hook 'irony-mode-hook
+            '(lambda () (progn)
+               (define-key irony-mode-map [remap completion-at-point]
+                 'irony-completion-at-point-async)
+               (define-key irony-mode-map [remap complete-symbol]
+                 'irony-completion-at-point-async)))
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'c-mode-hook 'function-args-mode)
   (add-hook 'c-mode-hook 'fa-config-default)
