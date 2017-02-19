@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: cbabel
+# key: cbabel
+# --
+#+NAME $1
+#+BEGIN_SRC C
+  $2
+#+END_SRC
