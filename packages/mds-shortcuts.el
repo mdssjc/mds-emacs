@@ -44,25 +44,12 @@
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
-                      ;; Buffer
-                      "b"   '(:which-key "buffer")
-                      "b b" 'ivy-switch-buffer
-                      "b k" 'kill-this-buffer
-                      "b s" 'save-buffer
-                      ;; File
-                      "f"   '(:which-key "file")
-                      "f f" 'counsel-find-file
-                      "f l" 'find-file-literally
-                      "f r" 'counsel-recentf
-                      "f s" 'save-buffer
+                      "c" 'calc
+                      "r" 'R
                       ;; Tabs
                       "t"   '(:which-key "tabs")
                       "t t" 'tabify
                       "t u" 'untabify)
-  (general-define-key :prefix super-key :keymaps 'hl-todo-mode-map
-                      "h t p" 'hl-todo-previous
-                      "h t n" 'hl-todo-next
-                      "h t o" 'hl-todo-occur)
   (general-define-key :keymaps 'isearch-mode-map
                       "<C-'>" 'avy-isearch)
   (general-define-key :keymaps 'org-mode-map
