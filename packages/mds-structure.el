@@ -164,13 +164,13 @@
 
 (use-package expand-region
   :ensure t
-  :commands er/expand-region hydra-expand-region/body
+  :defer 0
   :config
   (require 'the-org-mode-expansions))
 
 (use-package embrace
   :ensure t
-  :commands embrace-commander hydra-embrace/body
+  :defer 0
   :init
   (setq semantics-units '((?w . er/mark-word)
                           (?s . er/mark-symbol)
