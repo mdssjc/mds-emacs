@@ -44,6 +44,9 @@
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
+                      "q"   '(:which-key "quit")
+                      "q q" 'save-buffers-kill-terminal
+                      "q r" 'restart-emacs
                       "c" 'calc
                       "r" 'R
                       ;; Tabs
