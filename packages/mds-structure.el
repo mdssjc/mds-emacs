@@ -194,11 +194,6 @@
   :config
   (require 'the-org-mode-expansions))
 
-(use-package zones
-  :ensure t
-  :disabled t
-  :defer t)
-
 (use-package ciel
   :ensure t
   :commands ciel-ci ciel-co ciel-copy-to-register)
