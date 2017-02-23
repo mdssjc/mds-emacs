@@ -207,7 +207,6 @@
   :init
   (add-hook 'projectile-mode-hook 'counsel-projectile-on)
   :config
-  (require 'projectile-ripgrep)
   (fset 'projectile-find-file        'counsel-projectile-find-file)
   (fset 'projectile-find-dir         'counsel-projectile-find-dir)
   (fset 'projectile-switch-to-buffer 'counsel-projectile-switch-to-buffer)
