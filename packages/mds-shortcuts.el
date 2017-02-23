@@ -63,6 +63,8 @@
                       "C-c & w" 'aya-create
                       "C-c & y" 'aya-expand
                       "C-c & o" 'aya-open-line)
+  (general-define-key :keymaps 'projectile-mode-map
+                      "C-c p s r" 'projectile-ripgrep)
   (general-define-key
    "<C-return>"   'mds/insert-lines-above
    "<C-tab>"      'cycle-spacing
@@ -150,7 +152,7 @@
    "s-c i"      'ciel-ci
    "s-c o"      'ciel-co
    "s-v"        'hydra-expand-region/body
-   "s-P"        'projectile-switch-project
+   "s-P"        'projectile-command-map
    "s-p"        'projectile-speedbar-open-current-buffer-in-tree
    "<s-return>" 'icy-mode
    "s-C-<up>"    'shrink-window
@@ -218,7 +220,16 @@
   :config
   (setq which-key-idle-delay 0.1)
   (which-key-add-key-based-replacements
-    "C-x a" "abbrev")
+    "C-x a   " "abbrev"
+    "C-c p 4 " "find"
+    "C-c p s " "search"
+    "C-c p x " "execute"
+    "s-P 4   " "find"
+    "s-P s   " "search"
+    "s-P x   " "execute"
+    "<f8> p 4" "find"
+    "<f8> p s" "search"
+    "<f8> p x" "execute")
   (which-key-add-major-mode-key-based-replacements 'c-mode
     "C-c ," "semantic"
     "C-c @" "hide blocks"
