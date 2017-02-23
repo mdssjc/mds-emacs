@@ -198,6 +198,9 @@
         projectile-sort-order 'recentf
         projectile-enable-caching t))
 
+(use-package projectile-ripgrep
+  :ensure t)
+
 (use-package counsel-projectile
   :ensure t
   :commands counsel-projectile-on
@@ -391,6 +394,8 @@
   (eval-after-load "imenu" '(use-package imenu+ :ensure t))
   :config
   (setq imenu-auto-rescan t))
+
+(eval-after-load "face-remap" '(use-package face-remap+ :ensure t :defer 0))
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
