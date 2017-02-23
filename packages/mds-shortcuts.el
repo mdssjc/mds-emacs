@@ -192,7 +192,6 @@
    "<f7> e"     'eshell
    "<f7> f"     'keyfreq-show
    "<f7> p"     '(projectile-command-map :which-key "projectile")
-   "<f7> t"     '(neotree-toggle :which-key "neotree")
    "<f7> u"     '(:which-key "package-utils")
    "<f7> u a"   'package-utils-install-async
    "<f7> u u"   'package-utils-upgrade-all

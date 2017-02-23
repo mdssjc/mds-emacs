@@ -15,7 +15,6 @@
 ;;  - recentf: listagem dos buffers mais recentes;
 ;;  - restart-emacs: reinicialização do ambiente;
 ;;  - undo-tree: visualização da árvore de modificações do buffer;
-;;  - neotree: visualização do sistema de arquivos;
 ;;  - magit: controle de versão pelo Git com Time Machine, Fringe e Hub;
 ;;  - pacotes Abo-abo: Avy, Hydra, Ivy, Swiper e Counsel;
 ;;  - smex: histórico de comandos;
@@ -76,16 +75,6 @@
         undo-tree-visualizer-diff t
         undo-tree-auto-save-history t
         undo-tree-history-directory-alist `(("." . ,(concat user-emacs-directory ".cache/undo-tree")))))
-
-(use-package neotree
-  :ensure t
-  :commands neotree-toggle
-  :config
-  (setq neo-theme (if window-system 'icons 'nerd)
-        neo-mode-line-type 'neotree
-        neo-smart-open t
-        neo-show-hidden-files t
-        neo-keymap-style 'concise))
 
 (use-package magit
   :ensure t
