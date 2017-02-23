@@ -199,7 +199,8 @@
         projectile-enable-caching t))
 
 (use-package projectile-ripgrep
-  :ensure t)
+  :ensure t
+  :commands projectile-ripgrep)
 
 (use-package counsel-projectile
   :ensure t
@@ -211,7 +212,6 @@
   (fset 'projectile-find-dir         'counsel-projectile-find-dir)
   (fset 'projectile-switch-to-buffer 'counsel-projectile-switch-to-buffer)
   (fset 'projectile-ag               'counsel-projectile-ag)
-  (fset 'projectile-ripgrep          'counsel-projectile-rg)
   (fset 'projectile-switch-project   'counsel-projectile-switch-project))
 
 (use-package projectile-speedbar
