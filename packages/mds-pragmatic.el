@@ -48,8 +48,8 @@
   (require 'ob-C)
   (require 'ob-ditaa)
   (require 'ob-plantuml)
-  (setq org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "REVIEW"
-                                      "|" "DONE" "ARCHIVED" "CANCELED"))
+  (setq org-todo-keywords '((sequence "TODO(t)" "DOING(d)" "BLOCKED(b)" "REVIEW(r)"
+                                      "|" "DONE(e)" "ARCHIVED(a)" "CANCELED(c)"))
         org-todo-keyword-faces '(("TODO"     . org-warning)
                                  ("DOING"    . "yellow")
                                  ("BLOCKED"  . "red")
