@@ -59,8 +59,6 @@
                       "C-x x e" '(org-emphasize :which-key "Emphasize"))
   (general-define-key :keymaps 'popup-isearch-keymap
                       "C-'" 'popup-isearch-cancel)
-  (general-define-key :keymaps 'boon-command-map
-                      "S" 'embrace-commander)
   (general-define-key :keymaps 'yas-minor-mode-map
                       "C-c & w" 'aya-create
                       "C-c & y" 'aya-expand
