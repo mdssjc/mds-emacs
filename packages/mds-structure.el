@@ -381,11 +381,9 @@
 (eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0))
 (eval-after-load "isearch" '(use-package isearch-prop :ensure t :defer 0))
 
-(use-package bookmark
-  :init
-  (eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
-                                 :init
-                                 (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag))))
+(eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
+                               :init
+                               (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
 
 (use-package imenu
   :init
