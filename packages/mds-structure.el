@@ -400,5 +400,7 @@
 
 (eval-after-load "pp" '(use-package pp+ :ensure t :defer 0))
 
+(eval-after-load "simple" '(use-package simple+ :ensure t :defer 0))
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
