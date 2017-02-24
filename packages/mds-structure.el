@@ -396,5 +396,7 @@
 
 (eval-after-load "face-remap" '(use-package face-remap+ :ensure t :defer 0))
 
+(eval-after-load "icomplete" '(use-package icomplete+ :ensure t :defer 0))
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
