@@ -398,5 +398,7 @@
 
 (eval-after-load "icomplete" '(use-package icomplete+ :ensure t :defer 0))
 
+(eval-after-load "pp" '(use-package pp+ :ensure t :defer 0))
+
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
