@@ -15,9 +15,9 @@
 ;;; Code:
 (use-package ess
   :ensure t
+  :load-path "~/Documents/Git/ESS/lisp/"
   :commands R S
   :config
-  (add-to-list 'load-path "~/Documents/Git/ESS/lisp/")
   (load "ess-site"))
 
 (provide 'mds-r-dsl)
