@@ -364,6 +364,12 @@
   :ensure t
   :commands buf-move-up buf-move-down buf-move-left buf-move-right)
 
+(use-package symon
+  :ensure t
+  :commands symon-mode
+  :init
+  (add-hook 'after-init-hook 'symon-mode))
+
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
                             (use-package tramp)
