@@ -202,7 +202,6 @@
                       "g" 'golden-ratio-mode
                       "h" 'hl-todo-mode
                       "l" 'linum-mode
-                      "m" 'selected-global-mode
                       "r" 'read-only-mode
                       "t" 'toggle-truncate-lines
                       "w" 'global-whitespace-mode
