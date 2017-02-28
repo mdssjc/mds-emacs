@@ -19,9 +19,8 @@
 (use-package flycheck
   :ensure t
   :diminish flycheck-mode " ⓢ"
+  :commands flycheck-mode
   :pin melpa
-  :bind
-  (("<f5> s" . flycheck-mode))
   :config
   (setq flycheck-check-syntax-automatically '(save idle-change)
         flycheck-idle-change-delay 10))
@@ -37,16 +36,7 @@
 (use-package flyspell
   :ensure t
   :diminish flyspell-mode " Ⓢ"
-  :bind
-  (("<f5> S" . flyspell-mode)
-   :map flyspell-mode-map
-   ("C-$"   . flyspell-popup-correct)
-   ("C-M-$" . flyspell-correct-word-generic)
-   ("C-M-i" . nil)
-   ("C-TAB" . nil)
-   ("C-;"   . nil)
-   ("C-,"   . nil)
-   ("C-."   . nil))
+  :commands flyspell-mode
   :init
   (setq flyspell-issue-message-flag nil)
   (add-hook 'text-mode-hook 'flyspell-mode))
@@ -72,12 +62,7 @@
 
 (use-package langtool
   :ensure t
-  :bind
-  (("<f8> l c" . langtool-check)
-   ("<f8> l d" . langtool-check-done)
-   ("<f8> l b" . langtool-correct-buffer)
-   ("<f8> l s" . langtool-switch-default-language)
-   ("<f8> l ." . langtool-show-message-at-point))
+  :commands langtool-check langtool-check-done langtool-correct-buffer langtool-switch-default-language langtool-show-message-at-point
   :config
   (setq langtool-language-tool-jar (concat langtool-path "languagetool-commandline.jar")
         langtool-default-language "pt-BR"
@@ -105,8 +90,7 @@
 
 (use-package counsel-dash
   :ensure t
-  :bind
-  (("C-." . counsel-dash-at-point))
+  :commands counsel-dash-at-point
   :preface
   (defun counsel-dash-at-point ()
     "Counsel dash with selected point"
@@ -122,16 +106,7 @@
 
 (use-package engine-mode
   :ensure t
-  :bind
-  (("<f7> b a" . engine/search-amazon)
-   ("<f7> b G" . engine/search-github)
-   ("<f7> b g" . engine/search-google)
-   ("<f7> b s" . engine/search-stack-overflow)
-   ("<f7> b t" . engine/search-twitter)
-   ("<f7> b w" . engine/search-wikipedia)
-   ("<f7> b W" . engine/search-wikipedia-pt)
-   ("<f7> b d" . engine/search-wiktionary)
-   ("<f7> b D" . engine/search-wiktionary-pt))
+  :commands engine/search-amazon engine/search-github engine/search-google engine/search-stack-overflow engine/search-twitter engine/search-wikipedia engine/search-wikipedia-pt engine/search-wiktionary engine/search-wiktionary-pt
   :config
   (defengine amazon
     "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s")
