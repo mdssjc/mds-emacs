@@ -49,7 +49,11 @@
                       "q r" 'restart-emacs
                       "c" 'calc
                       "r" 'R
-                      "g" 'magit-status
+                      "g"   '(:which-key "magit")
+                      "g S" 'magit-stage-file
+                      "g g" 'magit-dispatch-popup
+                      "g s" 'magit-status
+                      "g t" 'git-timemachine-toggle
                       ;; Tabs
                       "t"   '(:which-key "tabs")
                       "t t" 'tabify
@@ -189,12 +193,12 @@
    "<f5> r"     'read-only-mode
    "<f5> t"     'toggle-truncate-lines
    "<f5> w"     'global-whitespace-mode
+   ;; F6 (Toggle Local)
+   ;; ---
    ;; F7 (Aplicações Interna - Internal Applications)
    "<f7> b"     '(:which-key "browser")
    "<f7> b e"   'eww
    "<f7> e"     'eshell
-   "<f7> f"     'keyfreq-show
-   "<f7> p"     '(projectile-command-map :which-key "projectile")
    "<f7> u"     '(:which-key "package-utils")
    "<f7> u a"   'package-utils-install-async
    "<f7> u u"   'package-utils-upgrade-all
