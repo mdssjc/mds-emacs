@@ -44,16 +44,34 @@
   :config
   (setq super-key "<C-M-return>")
   (general-define-key :prefix super-key
-                      "q"   '(:which-key "quit")
-                      "q q" 'save-buffers-kill-terminal
-                      "q r" 'restart-emacs
-                      "c" 'calc
-                      "r" 'R
+                      "b"   '(:which-key "browser")
+                      "b e" 'eww
+                      "b a" 'engine/search-amazon
+                      "b G" 'engine/search-github
+                      "b g" 'engine/search-google
+                      "b s" 'engine/search-stack-overflow
+                      "b t" 'engine/search-twitter
+                      "b w" 'engine/search-wikipedia
+                      "b W" 'engine/search-wikipedia-pt
+                      "b d" 'engine/search-wiktionary
+                      "b D" 'engine/search-wiktionary-pt
+                      "c"   'calc
+                      "e"   'eshell
                       "g"   '(:which-key "magit")
                       "g S" 'magit-stage-file
                       "g g" 'magit-dispatch-popup
                       "g s" 'magit-status
                       "g t" 'git-timemachine-toggle
+                      "n"   '(:which-key "news")
+                      "p"   '(projectile-command-map :which-key "projectile")
+                      "p s r" 'projectile-ripgrep
+                      "r"   'R
+                      "u"   '(:which-key "package-utils")
+                      "u a" 'package-utils-install-async
+                      "u u" 'package-utils-upgrade-all
+                      "q"   '(:which-key "quit")
+                      "q q" 'save-buffers-kill-terminal
+                      "q r" 'restart-emacs
                       ;; Tabs
                       "t"   '(:which-key "tabs")
                       "t t" 'tabify
@@ -64,10 +82,6 @@
                       "C-x x e" '(org-emphasize :which-key "Emphasize"))
   (general-define-key :keymaps 'popup-isearch-keymap
                       "C-'" 'popup-isearch-cancel)
-  (general-define-key :keymaps 'yas-minor-mode-map
-                      "C-c & w" 'aya-create
-                      "C-c & y" 'aya-expand
-                      "C-c & o" 'aya-open-line)
   (general-define-key :keymaps 'projectile-mode-map
                       "C-c p s r" 'projectile-ripgrep)
   (general-define-key
@@ -111,6 +125,7 @@
    "C-&"        'hydra-yasnippet/body
    "C-'"        'counsel-imenu
    "C-:"        'avy-goto-char-timer
+   "C-."        'counsel-dash-at-point
    "C-="        'er/expand-region
    "C-S-f"      'swiper-multi
    "C-c !"      '(:which-key "flycheck")
@@ -178,37 +193,62 @@
    "s-M-<return>" 'mds/insert-lines-below
    "s-S-<return>" 'mds/insert-lines-between
    "<f12>"      'ivy-switch-buffer
-   "S-<f12>"    'ibuffer
-   ;; F5 (Toggle Global)
-   "<f5> -"     'centered-cursor-mode
-   "<f5> W"     'writeroom-mode
-   "<f5> a"     'company-mode
-   "<f5> e"     'global-emojify-mode
-   "<f5> f"     'focus-mode
-   "<f5> F"     'follow-mode
-   "<f5> g"     'golden-ratio-mode
-   "<f5> h"     'hl-todo-mode
-   "<f5> l"     'linum-mode
-   "<f5> m"     'selected-global-mode
-   "<f5> r"     'read-only-mode
-   "<f5> t"     'toggle-truncate-lines
-   "<f5> w"     'global-whitespace-mode
-   ;; F6 (Toggle Local)
-   ;; ---
-   ;; F7 (Aplicações Interna - Internal Applications)
-   "<f7> b"     '(:which-key "browser")
-   "<f7> b e"   'eww
-   "<f7> e"     'eshell
-   "<f7> u"     '(:which-key "package-utils")
-   "<f7> u a"   'package-utils-install-async
-   "<f7> u u"   'package-utils-upgrade-all
-   ;; F8 (Aplicações Externa - Internal Applications)
-   "<f8> l"     '(:which-key "langtool")
-   "<f8> n"     '(:which-key "news")
-   "<f8> s"     '(:which-key "ispell")
-   "<f8> s p"   'ispell-pt-br
-   "<f8> s e"   'ispell-en-us
-   "<f8> s g"   'ispell-en-gb)
+   "S-<f12>"    'ibuffer)
+  ;; Toggles
+  (general-define-key :prefix "<f5>"
+                      "-" 'centered-cursor-mode
+                      "e" 'global-emojify-mode
+                      "f" 'focus-mode
+                      "g" 'golden-ratio-mode
+                      "h" 'hl-todo-mode
+                      "l" 'linum-mode
+                      "m" 'selected-global-mode
+                      "r" 'read-only-mode
+                      "t" 'toggle-truncate-lines
+                      "w" 'global-whitespace-mode
+                      "F" 'follow-mode
+                      "W" 'writeroom-mode)
+  ;; Sintático - Syntatic
+  (general-define-key :prefix "<f6>"
+                      "A" 'abbrev-mode
+                      "a" 'company-mode
+                      "s" '(:which-key "ispell")
+                      "s p" 'ispell-pt-br
+                      "s e" 'ispell-en-us
+                      "s g" 'ispell-en-gb
+                      "y" 'yas-minor-mode)
+  (general-define-key :keymaps 'yas-minor-mode-map
+                      "C-c & w" 'aya-create
+                      "C-c & y" 'aya-expand
+                      "C-c & o" 'aya-open-line)
+  ;; Semântico - Semantic
+  (general-define-key :prefix "<f7>"
+                      "l" '(:which-key "langtool")
+                      "l c" 'langtool-check
+                      "l d" 'langtool-check-done
+                      "l b" 'langtool-correct-buffer
+                      "l s" 'langtool-switch-default-language
+                      "l ." 'langtool-show-message-at-point
+                      "s" 'flycheck-mode
+                      "S" 'flyspell-mode)
+  (general-define-key :keymaps 'flyspell-mode-map
+                      "C-$"   'flyspell-popup-correct
+                      "C-M-$" 'flyspell-correct-word-generic
+                      "C-M-i" 'nil
+                      "C-TAB" 'nil
+                      "C-;"   'nil
+                      "C-,"   'nil
+                      "C-."   'nil)
+  ;; Pragmático - Pragmatic
+  (general-define-key :prefix "<f8>"
+                      "l" 'org-store-link
+                      "a" 'org-agenda
+                      "c" 'org-capture
+                      "b" 'org-iswitchb
+                      "p" 'org-pomodoro
+                      "T" 'tomatinho)
+  ;; Configurações - Configurations
+  (general-define-key :prefix "<f9>")
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   (defalias 'gs 'magit-status "Magit status"))
 
@@ -228,9 +268,9 @@
     "s-P 4   " "find"
     "s-P s   " "search"
     "s-P x   " "execute"
-    "<f8> p 4" "find"
-    "<f8> p s" "search"
-    "<f8> p x" "execute")
+    "<C-M-return> p 4" "find"
+    "<C-M-return> p s" "search"
+    "<C-M-return> p x" "execute")
   (which-key-add-major-mode-key-based-replacements 'c-mode
     "C-c ," "semantic"
     "C-c @" "hide blocks"
