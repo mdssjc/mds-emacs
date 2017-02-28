@@ -42,6 +42,7 @@
                (org-bullets-mode t)
                (worf-mode)
                (embrace-org-mode-hook)
+               (org-table-sticky-header-mode)
                (set-face-attribute 'org-table nil :inherit 'fixed-pitch)))
   :config
   (require 'ob-java)
@@ -93,6 +94,10 @@
 (use-package worf
   :ensure t
   :commands worf-mode)
+
+(use-package org-table-sticky-header
+  :ensure t
+  :commands org-table-sticky-header-mode)
 
 (provide 'mds-pragmatic)
 ;;; mds-pragmatic.el ends here
