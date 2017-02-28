@@ -203,14 +203,8 @@
    "<f7> u a"   'package-utils-install-async
    "<f7> u u"   'package-utils-upgrade-all
    ;; F8 (Aplicações Externa - Internal Applications)
-   "<f8> g"     '(:which-key "magit")
-   "<f8> g S"   'magit-stage-file
-   "<f8> g g"   'magit-dispatch-popup
-   "<f8> g s"   'magit-status
-   "<f8> g t"   'git-timemachine-toggle
    "<f8> l"     '(:which-key "langtool")
    "<f8> n"     '(:which-key "news")
-   "<f8> r"     '(ripgrep-regexp :which-key "ripgrep")
    "<f8> s"     '(:which-key "ispell")
    "<f8> s p"   'ispell-pt-br
    "<f8> s e"   'ispell-en-us
