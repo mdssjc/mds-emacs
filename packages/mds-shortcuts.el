@@ -49,6 +49,7 @@
                       "q r" 'restart-emacs
                       "c" 'calc
                       "r" 'R
+                      "g" 'magit-status
                       ;; Tabs
                       "t"   '(:which-key "tabs")
                       "t t" 'tabify
