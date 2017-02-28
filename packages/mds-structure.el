@@ -370,6 +370,13 @@
   :init
   (add-hook 'after-init-hook 'symon-mode))
 
+(use-package google-this
+  :ensure t
+  :diminish google-this-mode
+  :commands google-this-mode
+  :init
+  (add-hook 'after-init-hook 'google-this-mode))
+
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
                             (use-package tramp)

@@ -113,7 +113,9 @@
    "C-c /"      'counsel-rg
    "C-c I"      'emojify-insert-emoji
    "C-c p"      '(:which-key "projectile")
-   "C-x /"      'ripgrep-regexp
+   "C-x /"      '(:which-key "search")
+   "C-x / g"    'google-this
+   "C-x / r"    'ripgrep-regexp
    "C-x \\"     'align-regexp
    "C-x C-f"    'counsel-find-file
    "C-x C-r"    'counsel-recentf
