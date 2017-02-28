@@ -70,7 +70,7 @@
   (add-hook 'company-mode-hook 'company-statistics-mode)
   :config
   (run-with-idle-timer (* 60 3) t 'company-statistics--save)
-  (setq company-statistics-size 500
+  (setq company-statistics-size 1000
         company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el")
         company-statistics-auto-save nil))
 
