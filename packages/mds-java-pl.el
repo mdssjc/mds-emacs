@@ -21,23 +21,23 @@
   :init
   (add-hook 'java-mode-hook
             '(lambda () (progn
-                          (semantic-mode)
-                          (setq-local company-transformers '(company-sort-by-backend-importance
-                                                             company-sort-prefer-same-case-prefix
-                                                             company-sort-by-statistics))
-                          (setq-local company-backends '((company-yasnippet
-                                                          :with
-                                                          company-keywords
-                                                          company-abbrev
-                                                          company-dabbrev-code
-                                                          company-dabbrev
-                                                          company-dict
-                                                          company-files)))
-                          (flycheck-mode)
-                          (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))
-                          (define-key java-mode-map (kbd "<f6> e") 'eclim-init)
-                          (define-key java-mode-map (kbd "<f6> j") 'jdee-mode)
-                          (define-key java-mode-map (kbd "<f6> m") 'meghanada-mode))))
+                     ;; (semantic-mode)
+                     (setq-local company-transformers '(company-sort-by-backend-importance
+                                                        company-sort-prefer-same-case-prefix
+                                                        company-sort-by-statistics))
+                     (setq-local company-backends '((company-yasnippet
+                                                     :with
+                                                     company-keywords
+                                                     company-abbrev
+                                                     company-dabbrev-code
+                                                     company-dabbrev
+                                                     company-dict
+                                                     company-files)))
+                     (flycheck-mode)
+                     (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))
+                     (define-key java-mode-map (kbd "<f6> e") 'eclim-init)
+                     (define-key java-mode-map (kbd "<f6> j") 'jdee-mode)
+                     (define-key java-mode-map (kbd "<f6> m") 'meghanada-mode))))
   (defun eclim-init ()
     (interactive)
     (setq-local company-backends '((company-emacs-eclim
@@ -57,25 +57,30 @@
     (eclim-mode))
   (add-hook 'jdee-mode-hook
             '(lambda () (progn
-                          (setq-local company-backends '((company-yasnippet
-                                                          :with
-                                                          company-keywords
-                                                          company-abbrev
-                                                          company-dabbrev-code
-                                                          company-dabbrev
-                                                          company-dict
-                                                          company-files))))))
+                     (setq-local company-backends '((company-yasnippet
+                                                     :with
+                                                     company-keywords
+                                                     company-abbrev
+                                                     company-dabbrev-code
+                                                     company-dabbrev
+                                                     company-dict
+                                                     company-files))))))
   (add-hook 'meghanada-mode-hook
             '(lambda () (progn
-                          (setq-local company-backends '((company-meghanada
-                                                          company-yasnippet
-                                                          :with
-                                                          company-keywords
-                                                          company-abbrev
-                                                          company-dabbrev-code
-                                                          company-dabbrev
-                                                          company-dict
-                                                          company-files)))))))
+                     (setq company-meghanada-prefix-length 1
+                           company-occurrence-weight-function 'company-occurrence-prefer-any-closest)
+                     (setq-local company-transformers '(company-sort-prefer-same-case-prefix
+                                                        company-sort-by-backend-importance
+                                                        company-sort-by-statistics))
+                     (setq-local company-backends '((company-meghanada
+                                                     company-yasnippet
+                                                     :with
+                                                     company-keywords
+                                                     company-abbrev
+                                                     company-dabbrev-code
+                                                     company-dabbrev
+                                                     company-dict
+                                                     company-files)))))))
 
 (use-package java-snippets
   :ensure t
