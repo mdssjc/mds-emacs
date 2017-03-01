@@ -219,27 +219,27 @@
                       "W" 'writeroom-mode)
   ;; Sintático - Syntatic
   (general-define-key :prefix "<f6>"
-                      "A" 'abbrev-mode
-                      "a" 'company-mode
-                      "s" '(:which-key "ispell")
+                      "A"   'abbrev-mode
+                      "a"   'company-mode
+                      "s"   '(:which-key "ispell")
                       "s p" 'ispell-pt-br
                       "s e" 'ispell-en-us
                       "s g" 'ispell-en-gb
-                      "y" 'yas-minor-mode)
+                      "y"   'yas-minor-mode)
   (general-define-key :keymaps 'yas-minor-mode-map
                       "C-c & w" 'aya-create
                       "C-c & y" 'aya-expand
                       "C-c & o" 'aya-open-line)
   ;; Semântico - Semantic
   (general-define-key :prefix "<f7>"
-                      "l" '(:which-key "langtool")
+                      "l"   '(:which-key "langtool")
                       "l c" 'langtool-check
                       "l d" 'langtool-check-done
                       "l b" 'langtool-correct-buffer
                       "l s" 'langtool-switch-default-language
                       "l ." 'langtool-show-message-at-point
-                      "s" 'flycheck-mode
-                      "S" 'flyspell-mode)
+                      "s"   'flycheck-mode
+                      "S"   'flyspell-mode)
   (general-define-key :keymaps 'flyspell-mode-map
                       "C-$"   'flyspell-popup-correct
                       "C-M-$" 'flyspell-correct-word-generic
@@ -272,13 +272,13 @@
   :config
   (setq which-key-idle-delay 0.1)
   (which-key-add-key-based-replacements
-    "C-x a   " "abbrev"
-    "C-c p 4 " "find"
-    "C-c p s " "search"
-    "C-c p x " "execute"
-    "s-P 4   " "find"
-    "s-P s   " "search"
-    "s-P x   " "execute"
+    "C-x a  " "abbrev"
+    "C-c p 4" "find"
+    "C-c p s" "search"
+    "C-c p x" "execute"
+    "s-P 4  " "find"
+    "s-P s  " "search"
+    "s-P x  " "execute"
     "<C-M-return> p 4" "find"
     "<C-M-return> p s" "search"
     "<C-M-return> p x" "execute")
