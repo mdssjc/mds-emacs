@@ -210,7 +210,7 @@
    "s-SPC"         'avy-goto-char-in-line
    "s-c i"         'ciel-ci
    "s-c o"         'ciel-co
-   "s-p"           'projectile-speedbar-open-current-buffer-in-tree
+   "s-p"           'projectile-speedbar-toggle
    "s-s"           'hydra-embrace/body
    "s-v"           'hydra-expand-region/body)
   ;; Toggles
