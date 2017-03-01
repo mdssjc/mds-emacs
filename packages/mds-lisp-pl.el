@@ -14,30 +14,6 @@
 ;; ELisp (Emacs Lisp), Racket, Clojure e LFE.
 
 ;;; Code:
-(use-package parinfer
-  :ensure t
-  :commands parinfer-mode parinfer-toggle-mode
-  :config
-  (setq parinfer-extensions '(defaults pretty-parens smart-yank smart-tab paredit lispy one)
-        parinfer-preview-cursor-scope t
-        parinfer-lighters '(" P:>>" . "P:()")))
-
-(use-package paredit
-  :ensure t
-  :commands enable-paredit-mode)
-
-(use-package rainbow-delimiters
-  :ensure t
-  :commands rainbow-delimiters-mode)
-
-(use-package lispy
-  :ensure t
-  :diminish lispy-mode
-  :commands lispy-mode
-  :init
-  (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression)
-                                            (lispy-mode 1)))))
-
 (use-package emacs-lisp-mode
   :mode
   ("\\.el$" . emacs-lisp-mode)
@@ -74,21 +50,6 @@
         prettify-symbols-alist lisp-prettify-symbols-alist
         prettify-symbols-unprettify-at-point 'right-edge))
 
-(use-package litable
-  :ensure t
-  :commands litable-mode
-  :diminish litable-mode " Ⓣ")
-
-(use-package flycheck-package
-  :ensure t
-  :commands flycheck-package-setup)
-
-(use-package erefactor
-  :ensure t
-  :defer t
-  :config
-  (define-key emacs-lisp-mode-map "\C-crv" erefactor-map))
-
 (use-package racket-mode
   :ensure t
   :mode
@@ -121,10 +82,6 @@
         prettify-symbols-alist lisp-prettify-symbols-alist
         prettify-symbols-unprettify-at-point 'right-edge))
 
-(use-package dr-racket-like-unicode
-  :ensure t
-  :commands dr-racket-like-unicode-mode)
-
 (use-package clojure-mode
   :ensure t
   :mode
@@ -142,14 +99,57 @@
                                                      company-files)))
                      (setq-local counsel-dash-docsets '("Clojure"))))))
 
-(use-package cider
-  :ensure t
-  :after clojure-mode)
-
 (use-package lfe-mode
   :ensure t
   :mode
   ("\\.lfe\\(s\\|sh\\)?\\'" . lfe-mode))
+
+(use-package parinfer
+  :ensure t
+  :commands parinfer-mode parinfer-toggle-mode
+  :config
+  (setq parinfer-extensions '(defaults pretty-parens smart-yank smart-tab paredit lispy one)
+        parinfer-preview-cursor-scope t
+        parinfer-lighters '(" P:>>" . "P:()")))
+
+(use-package paredit
+  :ensure t
+  :commands enable-paredit-mode)
+
+(use-package rainbow-delimiters
+  :ensure t
+  :commands rainbow-delimiters-mode)
+
+(use-package lispy
+  :ensure t
+  :diminish lispy-mode
+  :commands lispy-mode
+  :init
+  (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression)
+                                            (lispy-mode 1)))))
+
+(use-package litable
+  :ensure t
+  :commands litable-mode
+  :diminish litable-mode " Ⓣ")
+
+(use-package flycheck-package
+  :ensure t
+  :commands flycheck-package-setup)
+
+(use-package erefactor
+  :ensure t
+  :defer t
+  :config
+  (define-key emacs-lisp-mode-map "\C-crv" erefactor-map))
+
+(use-package dr-racket-like-unicode
+  :ensure t
+  :commands dr-racket-like-unicode-mode)
+
+(use-package cider
+  :ensure t
+  :after clojure-mode)
 
 (provide 'mds-lisp-pl)
 ;;; mds-lisp-pl.el ends here
