@@ -261,6 +261,11 @@
                       "C-c e"   'macrostep-expand
                       "C-c r e" 'emr-show-refactor-menu)
   (general-define-key :keymaps 'racket-mode-map
+                      "<f9> p"   'parinfer-mode
+                      "<f9> P"   'enable-paredit-mode
+                      "<f9> l"   'lispy-mode
+                      "<f9> r"   'rainbow-delimiters-mode
+                      "<f9> t"   'litable-mode
                       "<f5>"     'nil
                       "M-C-<f5>" 'nil
                       "C-<f5>"   'nil
