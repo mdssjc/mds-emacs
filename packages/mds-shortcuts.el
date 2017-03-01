@@ -42,22 +42,6 @@
    ("\\v" . hydra-expand-region/body)
    ("/v"  . hydra-expand-region/body))
   :config
-  (general-define-key :keymaps 'isearch-mode-map
-                      "<C-'>" 'avy-isearch)
-  (general-define-key :keymaps 'org-mode-map
-                      "C-x x e" '(org-emphasize :which-key "Emphasize"))
-  (general-define-key :keymaps 'popup-isearch-keymap
-                      "C-'" 'popup-isearch-cancel)
-  (general-define-key :keymaps 'projectile-mode-map
-                      "C-c p s r" 'projectile-ripgrep)
-  (general-define-key :keymaps 'dumb-jump-mode-map
-                      "M-g o" 'dumb-jump-go-other-window
-                      "M-g j" 'dumb-jump-go
-                      "M-g b" 'dumb-jump-back
-                      "M-g q" 'dumb-jump-quick-look
-                      "C-M-g" 'nil
-                      "C-M-p" 'nil
-                      "C-M-q" 'nil)
   ;; Super-key laucher
   (general-define-key
    :prefix "<C-M-return>"
@@ -264,7 +248,36 @@
                       "p" 'org-pomodoro
                       "T" 'tomatinho)
   ;; Configurações - Configurations
-  (general-define-key :prefix "<f9>")
+  (general-define-key :keymaps 'parinfer-mode-map
+                      "C-c <return>" 'parinfer-toggle-mode)
+  (general-define-key :keymaps 'emacs-lisp-mode-map
+                      "<f9> t"  'litable-mode
+                      "M-."     'find-function-at-point
+                      "M-&"     'complete-symbol
+                      "C-c e"   'macrostep-expand
+                      "C-c r e" 'emr-show-refactor-menu)
+  (general-define-key :keymaps racket-mode-map
+                      "<f5>"     'nil
+                      "M-C-<f5>" 'nil
+                      "C-<f5>"   'nil
+                      "C-c c"    'racket-run-and-switch-to-repl
+                      "C-c C-s"  'racket-racket)
+  (general-define-key :keymaps 'dumb-jump-mode-map
+                      "M-g o" 'dumb-jump-go-other-window
+                      "M-g j" 'dumb-jump-go
+                      "M-g b" 'dumb-jump-back
+                      "M-g q" 'dumb-jump-quick-look
+                      "C-M-g" 'nil
+                      "C-M-p" 'nil
+                      "C-M-q" 'nil)
+  (general-define-key :keymaps 'isearch-mode-map
+                      "<C-'>" 'avy-isearch)
+  (general-define-key :keymaps 'org-mode-map
+                      "C-x x e" '(org-emphasize :which-key "Emphasize"))
+  (general-define-key :keymaps 'popup-isearch-keymap
+                      "C-'" 'popup-isearch-cancel)
+  (general-define-key :keymaps 'projectile-mode-map
+                      "C-c p s r" 'projectile-ripgrep)
   ;; Chords
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   ;; Alias
