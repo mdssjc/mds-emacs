@@ -38,16 +38,9 @@
   :init
   (add-hook 'after-init-hook 'mode-icons-mode))
 
-(use-package major-mode-icons
-  :ensure t
-  :diminish major-mode-icons-mode
-  :commands major-mode-icons-mode
-  :init
-  (add-hook 'after-init-hook 'major-mode-icons-mode))
-
 (use-package all-the-icons
   :ensure t
-  :defer t)
+  :defer 0)
 
 (use-package all-the-icons-dired
   :ensure t
@@ -55,6 +48,13 @@
   :commands all-the-icons-dired-mode
   :init
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+
+(use-package major-mode-icons
+  :ensure t
+  :diminish major-mode-icons-mode
+  :commands major-mode-icons-mode
+  :init
+  (add-hook 'after-init-hook 'major-mode-icons-mode))
 
 (use-package beacon
   :ensure t
