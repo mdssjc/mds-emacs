@@ -256,7 +256,7 @@
                       "M-&"     'complete-symbol
                       "C-c e"   'macrostep-expand
                       "C-c r e" 'emr-show-refactor-menu)
-  (general-define-key :keymaps racket-mode-map
+  (general-define-key :keymaps 'racket-mode-map
                       "<f5>"     'nil
                       "M-C-<f5>" 'nil
                       "C-<f5>"   'nil
