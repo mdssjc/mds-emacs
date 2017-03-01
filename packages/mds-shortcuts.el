@@ -64,6 +64,8 @@
    "g s"   'magit-status
    "g t"   'git-timemachine-toggle
    "n"     '(:which-key "news")
+   "n f"   'elfeed
+   "n t"   'twit
    "p"     '(projectile-command-map :which-key "projectile")
    "p s r" 'projectile-ripgrep
    "r"     'R
@@ -75,7 +77,8 @@
    "q r"   'restart-emacs
    "t"     '(:which-key "tabs")
    "t t"   'tabify
-   "t u"   'untabify)
+   "t u"   'untabify
+   "w"     'wttrin)
   ;; C-x
   (general-define-key
    :prefix "C-x"
@@ -291,6 +294,46 @@
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'projectile-mode-map
                       "C-c p s r" 'projectile-ripgrep)
+  (general-define-key :keymaps 'twittering-mode-map
+                      "\\"        'hydra-twittering/body
+                      "q"         'twittering-kill-buffer
+                      "Q"         'twittering-edit-mode
+                      "j"         'twittering-goto-next-status
+                      "k"         'twittering-goto-previous-status
+                      "h"         'twittering-switch-to-next-timeline
+                      "l"         'twittering-switch-to-previous-timeline
+                      "g"         'beginning-of-buffer
+                      "G"         'end-of-buffer
+                      "t"         'twittering-update-status-interactive
+                      "X"         'twittering-delete-status
+                      "RET"       'twittering-reply-to-user
+                      "r"         'twittering-native-retweet
+                      "R"         'twittering-organic-retweet
+                      "d"         'twittering-direct-message
+                      "u"         'twittering-current-timeline
+                      "b"         'twittering-favorite
+                      "B"         'twittering-unfavorite
+                      "f"         'twittering-follow
+                      "F"         'twittering-unfollow
+                      "i"         'twittering-view-user-page
+                      "/"         'twittering-search
+                      "."         'twittering-visit-timeline
+                      "@"         'twittering-other-user-timeline
+                      "T"         'twittering-toggle-or-retrieve-replied-statuses
+                      "o"         'twittering-click
+                      "TAB"       'twittering-goto-next-thing
+                      "<backtab>" 'twittering-goto-previous-thing
+                      "n"         'twittering-goto-next-status-of-user
+                      "p"         'twittering-goto-previous-status-of-user
+                      "SPC"       'twittering-scroll-up
+                      "S-SPC"     'twittering-scroll-down
+                      "y"         'twittering-push-uri-onto-kill-ring
+                      "Y"         'twittering-push-tweet-onto-kill-ring
+                      "a"         'twittering-toggle-activate-buffer)
+  (general-define-key :keymaps 'elfeed-show-mode-map
+                      "j" 'next-line
+                      "k" 'previous-lin
+                      "u" 'elfeed-update)
   ;; Chords
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   ;; Alias
