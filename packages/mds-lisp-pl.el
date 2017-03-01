@@ -1,6 +1,6 @@
 ;;; mds-lisp-pl.el --- Linguagem de Programação Lisp (Lisp Programming Language)
 ;;
-;; Copyright (C) 2016-2016 Marcelo dos Santos
+;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
 ;; author: Marcelo dos Santos <mds>
 ;; URL: https://github.com/mdssjc/mds-emacs
@@ -10,22 +10,29 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Configurações para a linguagem Lisp, nos dialetos: ELisp (Emacs Lisp), Racket e Clojure.
+;; Configurações para a linguagem Lisp, nos dialetos:
+;; ELisp (Emacs Lisp), Racket, Clojure e LFE.
 
 ;;; Code:
 (use-package parinfer
   :ensure t
   :commands parinfer-mode parinfer-toggle-mode
   :config
-  (setq parinfer-extensions '(defaults pretty-parens lispy smart-tab smart-yank one paredit)
-        parinfer-preview-cursor-scope t))
+  (setq parinfer-extensions '(defaults
+                              pretty-parens
+                              smart-yank
+                              smart-tab
+                              paredit
+                              lispy
+                              one)
+        parinfer-preview-cursor-scope t
+        parinfer-lighters '(" P:>>" . "P:()")))
 
 (use-package lispy
   :ensure t
   :diminish lispy-mode
   :commands lispy-mode
   :init
-  (add-hook 'parinfer-mode-enable-hook 'lispy-mode)
   (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression)
                                             (lispy-mode 1)))))
 
