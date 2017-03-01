@@ -42,40 +42,6 @@
    ("\\v" . hydra-expand-region/body)
    ("/v"  . hydra-expand-region/body))
   :config
-  (setq super-key "<C-M-return>")
-  (general-define-key :prefix super-key
-                      "b"   '(:which-key "browser")
-                      "b e" 'eww
-                      "b a" 'engine/search-amazon
-                      "b G" 'engine/search-github
-                      "b g" 'engine/search-google
-                      "b s" 'engine/search-stack-overflow
-                      "b t" 'engine/search-twitter
-                      "b w" 'engine/search-wikipedia
-                      "b W" 'engine/search-wikipedia-pt
-                      "b d" 'engine/search-wiktionary
-                      "b D" 'engine/search-wiktionary-pt
-                      "c"   'calc
-                      "e"   'eshell
-                      "g"   '(:which-key "magit")
-                      "g S" 'magit-stage-file
-                      "g g" 'magit-dispatch-popup
-                      "g s" 'magit-status
-                      "g t" 'git-timemachine-toggle
-                      "n"   '(:which-key "news")
-                      "p"   '(projectile-command-map :which-key "projectile")
-                      "p s r" 'projectile-ripgrep
-                      "r"   'R
-                      "u"   '(:which-key "package-utils")
-                      "u a" 'package-utils-install-async
-                      "u u" 'package-utils-upgrade-all
-                      "q"   '(:which-key "quit")
-                      "q q" 'save-buffers-kill-terminal
-                      "q r" 'restart-emacs
-                      ;; Tabs
-                      "t"   '(:which-key "tabs")
-                      "t t" 'tabify
-                      "t u" 'untabify)
   (general-define-key :keymaps 'isearch-mode-map
                       "<C-'>" 'avy-isearch)
   (general-define-key :keymaps 'org-mode-map
@@ -84,76 +50,145 @@
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'projectile-mode-map
                       "C-c p s r" 'projectile-ripgrep)
+  ;; Super-key laucher
   (general-define-key
-   "<C-return>"    'mds/insert-lines-above
-   "<C-tab>"       'cycle-spacing
-   "<M-return>"    'mds/insert-lines-below
-   "<S-C-return>"  'mds/insert-lines-between
-   "C-x x"         '(:which-key "text")
-   "C-x x c"       '(capitalize-region :which-key "capitalize")
-   "C-x x l"       '(downcase-region   :which-key "downcase")
-   "C-x x u"       '(upcase-region     :which-key "upcase")
-   "C-x x a"       '(:which-key "align")
-   "C-x x a a"     '(align :which-key "align")
-   "C-x x a c"     '(align-current :which-key "align current")
-   "C-x x a r"     '(align-regexp  :which-key "align regexp")
-   "C-x x r"       'ciel-copy-to-register
-   "C-x x s"       '(:which-key "sorts")
-   "C-x x s P"     '(sort-pages   :which-key "sort pages")
-   "C-x x s c"     '(sort-columns :which-key "sort columns")
-   "C-x x s f"     '(sort-fields  :which-key "sort fields")
-   "C-x x s n"     '(sort-numeric-fields :which-key "sort numeric fields")
-   "C-x x s p"     '(sort-paragraphs     :which-key "sort paragraphs")
-   "C-x x s r"     '(reverse-region      :which-key "reverse lines")
-   "C-x x s r"     '(sort-regexp-fields  :which-key "sort regexp fields")
-   "C-x x s s"     '(sort-lines          :which-key "sort lines")
-   "C-x x t"       '(:which-key "transpose")
-   "C-x x t c"     '(transpose-chars :which-key "chars")
-   "C-x x t l"     '(transpose-lines :which-key "lines")
-   "C-x x t p"     '(transpose-paragraphs :which-key "paragraphs")
-   "C-x x t s"     '(transpose-sentences  :which-key "sentences")
-   "C-x x t w"     '(transpose-words :which-key "words")
-   "C-x x w"       '(:which-key "words")
-   "C-x x w c"     '(mds/capitalized-words :which-key "capitalized")
-   "C-x x w d"     '(mds/dashed-words      :which-key "dashed")
-   "C-x x w i"     '(mds/word-initials     :which-key "initials")
-   "C-x x w l"     '(mds/lower-camel-case  :which-key "lower")
-   "C-x x w s"     '(mds/snake-case        :which-key "snake")
-   "C-x x w t"     '(mds/titleized-words   :which-key "titleized")
-   "C-x x w u"     '(mds/upper-camel-case  :which-key "upper")
-   "C-x x w w"     '(mds/split-words       :which-key "split")
+   :prefix "<C-M-return>"
+   "b"     '(:which-key "browser")
+   "b e"   'eww
+   "b a"   'engine/search-amazon
+   "b G"   'engine/search-github
+   "b g"   'engine/search-google
+   "b s"   'engine/search-stack-overflow
+   "b t"   'engine/search-twitter
+   "b w"   'engine/search-wikipedia
+   "b W"   'engine/search-wikipedia-pt
+   "b d"   'engine/search-wiktionary
+   "b D"   'engine/search-wiktionary-pt
+   "c"     'calc
+   "e"     'eshell
+   "g"     '(:which-key "magit")
+   "g S"   'magit-stage-file
+   "g g"   'magit-dispatch-popup
+   "g s"   'magit-status
+   "g t"   'git-timemachine-toggle
+   "n"     '(:which-key "news")
+   "p"     '(projectile-command-map :which-key "projectile")
+   "p s r" 'projectile-ripgrep
+   "r"     'R
+   "u"     '(:which-key "package-utils")
+   "u a"   'package-utils-install-async
+   "u u"   'package-utils-upgrade-all
+   "q"     '(:which-key "quit")
+   "q q"   'save-buffers-kill-terminal
+   "q r"   'restart-emacs
+   "t"     '(:which-key "tabs")
+   "t t"   'tabify
+   "t u"   'untabify)
+  ;; Super-key hotkey
+  (general-define-key
+   :prefix "s"
+   "/"           'counsel-grep-or-swiper
+   "7"           'hydra-yasnippet/body
+   "<down>"      'md/move-lines-down
+   "<return>"    'icy-mode
+   "<up>"        'md/move-lines-up
+   "C-<down>"    'enlarge-window
+   "C-<left>"    'shrink-window-horizontally
+   "C-<return>"  'mds/insert-lines-above
+   "C-<right>"   'enlarge-window-horizontally
+   "C-<up>"      'shrink-window
+   "C-M-<down>"  'buf-move-down
+   "C-M-<left>"  'buf-move-left
+   "C-M-<right>" 'buf-move-right
+   "C-M-<up>"    'buf-move-up
+   "M-<down>"    'windmove-down
+   "M-<left>"    'windmove-left
+   "M-<return>"  'mds/insert-lines-below
+   "M-<right>"   'windmove-right
+   "M-<up>"      'windmove-up
+   "P"           'projectile-command-map
+   "S-<down>"    'md/duplicate-down
+   "S-<return>"  'mds/insert-lines-between
+   "S-<up>"      'md/duplicate-up
+   "SPC"         'avy-goto-char-in-line
+   "c i"         'ciel-ci
+   "c o"         'ciel-co
+   "p"           'projectile-speedbar-open-current-buffer-in-tree
+   "s"           'hydra-embrace/body
+   "v"           'hydra-expand-region/body)
+  ;; C-x
+  (general-define-key
+   :prefix "C-x"
+   "/ g"   'google-this
+   "/ r"   'ripgrep-regexp
+   "/"     '(                      :which-key "search")
+   "C-f"   'counsel-find-file
+   "C-r"   'counsel-recentf
+   "F"     'find-file-at-point
+   "Q q"   'save-buffers-kill-terminal
+   "Q r"   'restart-emacs
+   "Q"     '(                      :which-key "quit/restart")
+   "S"     'embrace-commander
+   "V"     'hydra-expand-region/body
+   "\\"    'align-regexp
+   "g"     'magit-status
+   "x a a" '(align                 :which-key "align")
+   "x a c" '(align-current         :which-key "align current")
+   "x a r" '(align-regexp          :which-key "align regexp")
+   "x a"   '(                      :which-key "align")
+   "x c"   '(capitalize-region     :which-key "capitalize")
+   "x l"   '(downcase-region       :which-key "downcase")
+   "x r"   'ciel-copy-to-register
+   "x s P" '(sort-pages            :which-key "sort pages")
+   "x s c" '(sort-columns          :which-key "sort columns")
+   "x s f" '(sort-fields           :which-key "sort fields")
+   "x s n" '(sort-numeric-fields   :which-key "sort numeric fields")
+   "x s p" '(sort-paragraphs       :which-key "sort paragraphs")
+   "x s r" '(reverse-region        :which-key "reverse lines")
+   "x s r" '(sort-regexp-fields    :which-key "sort regexp fields")
+   "x s s" '(sort-lines            :which-key "sort lines")
+   "x s"   '(                      :which-key "sorts")
+   "x t c" '(transpose-chars       :which-key "chars")
+   "x t l" '(transpose-lines       :which-key "lines")
+   "x t p" '(transpose-paragraphs  :which-key "paragraphs")
+   "x t s" '(transpose-sentences   :which-key "sentences")
+   "x t w" '(transpose-words       :which-key "words")
+   "x t"   '(                      :which-key "transpose")
+   "x u"   '(upcase-region         :which-key "upcase")
+   "x w c" '(mds/capitalized-words :which-key "capitalized")
+   "x w d" '(mds/dashed-words      :which-key "dashed")
+   "x w i" '(mds/word-initials     :which-key "initials")
+   "x w l" '(mds/lower-camel-case  :which-key "lower")
+   "x w s" '(mds/snake-case        :which-key "snake")
+   "x w t" '(mds/titleized-words   :which-key "titleized")
+   "x w u" '(mds/upper-camel-case  :which-key "upper")
+   "x w w" '(mds/split-words       :which-key "split")
+   "x w"   '(                      :which-key "words")
+   "x"     '(                      :which-key "text"))
+  (general-define-key
+   "<f12>"         'ivy-switch-buffer
    "C-&"           'hydra-yasnippet/body
-   "C-             '"        'counsel-imenu
-   "C-:"           'avy-goto-char-timer
+   "C-'"           'counsel-imenu
    "C-."           'counsel-dash-at-point
+   "C-:"           'avy-goto-char-timer
+   "C-<return>"    'mds/insert-lines-above
+   "C-<tab>"       'cycle-spacing
    "C-="           'er/expand-region
+   "C-M-#"         'anzu-query-replace-at-cursor-thing
+   "C-M-%"         'anzu-query-replace-regexp
+   "C-M-*"         'vr/query-replace
    "C-S-f"         'swiper-multi
    "C-c !"         '(:which-key "flycheck")
    "C-c &"         '(:which-key "yasnippet")
    "C-c /"         'counsel-rg
    "C-c I"         'emojify-insert-emoji
    "C-c p"         '(:which-key "projectile")
-   "C-x /"         '(:which-key "search")
-   "C-x / g"       'google-this
-   "C-x / r"       'ripgrep-regexp
-   "C-x \\"        'align-regexp
-   "C-x C-f"       'counsel-find-file
-   "C-x C-r"       'counsel-recentf
-   "C-x F"         'find-file-at-point
-   "C-x Q"         '(:which-key "quit/restart")
-   "C-x Q q"       'save-buffers-kill-terminal
-   "C-x Q r"       'restart-emacs
-   "C-x S"         'embrace-commander
-   "C-x V"         'hydra-expand-region/body
-   "C-x g"         'magit-status
-   "M-%"           'anzu-query-replace
-   "C-M-%"         'anzu-query-replace-regexp
    "M-#"           'anzu-replace-at-cursor-thing
-   "C-M-#"         'anzu-query-replace-at-cursor-thing
+   "M-%"           'anzu-query-replace
    "M-*"           'vr/replace
-   "C-M-*"         'vr/query-replace
    "M-/"           'hippie-expand
    "M-<down>"      'md/move-lines-down
+   "M-<return>"    'mds/insert-lines-below
    "M-<up>"        'md/move-lines-up
    "M-g c"         'avy-goto-char
    "M-g i"         'avy-goto-char-in-line
@@ -163,43 +198,14 @@
    "M-s h"         '(:which-key "highlight")
    "M-x"           'counsel-M-x
    "M-y"           'counsel-yank-pop
+   "S-<f12>"       'ibuffer
+   "S-C-<return>"  'mds/insert-lines-between
    "S-C-j"         'join-line
    "S-C-s"         'counsel-grep-or-swiper
    "S-M-<down>"    'md/duplicate-down
    "S-M-<up>"      'md/duplicate-up
    "S-M-t"         'swap-regions
-   "S-SPC"         'cycle-spacing
-   "s-/"           'counsel-grep-or-swiper
-   "s-7"           'hydra-yasnippet/body
-   "s-<down>"      'md/move-lines-down
-   "s-<up>"        'md/move-lines-up
-   "s-S-<down>"    'md/duplicate-down
-   "s-S-<up>"      'md/duplicate-up
-   "s-SPC"         'avy-goto-char-in-line
-   "s-s"           'hydra-embrace/body
-   "s-c i"         'ciel-ci
-   "s-c o"         'ciel-co
-   "s-v"           'hydra-expand-region/body
-   "s-P"           'projectile-command-map
-   "s-p"           'projectile-speedbar-open-current-buffer-in-tree
-   "<s-return>"    'icy-mode
-   "s-C-<up>"      'shrink-window
-   "s-C-<down>"    'enlarge-window
-   "s-C-<left>"    'shrink-window-horizontally
-   "s-C-<right>"   'enlarge-window-horizontally
-   "s-M-<up>"      'windmove-up
-   "s-M-<down>"    'windmove-down
-   "s-M-<left>"    'windmove-left
-   "s-M-<right>"   'windmove-right
-   "s-C-M-<up>"    'buf-move-up
-   "s-C-M-<down>"  'buf-move-down
-   "s-C-M-<left>"  'buf-move-left
-   "s-C-M-<right>" 'buf-move-right
-   "s-C-<return>"  'mds/insert-lines-above
-   "s-M-<return>"  'mds/insert-lines-below
-   "s-S-<return>"  'mds/insert-lines-between
-   "<f12>"         'ivy-switch-buffer
-   "S-<f12>"       'ibuffer)
+   "S-SPC"         'cycle-spacing)
   ;; Toggles
   (general-define-key :prefix "<f5>"
                       "-" 'centered-cursor-mode
@@ -254,7 +260,9 @@
                       "T" 'tomatinho)
   ;; Configurações - Configurations
   (general-define-key :prefix "<f9>")
+  ;; Chords
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
+  ;; Alias
   (defalias 'gs 'magit-status "Magit status"))
 
 (use-package which-key
