@@ -292,6 +292,7 @@
   :config
   (setq which-key-idle-delay 0.1)
   (which-key-add-key-based-replacements
+    "C-c /  " "google"
     "C-x a  " "abbrev"
     "C-c p 4" "find"
     "C-c p s" "search"
