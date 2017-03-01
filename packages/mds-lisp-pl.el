@@ -18,15 +18,17 @@
   :ensure t
   :commands parinfer-mode parinfer-toggle-mode
   :config
-  (setq parinfer-extensions '(defaults
-                              pretty-parens
-                              smart-yank
-                              smart-tab
-                              paredit
-                              lispy
-                              one)
+  (setq parinfer-extensions '(defaults pretty-parens smart-yank smart-tab paredit lispy one)
         parinfer-preview-cursor-scope t
         parinfer-lighters '(" P:>>" . "P:()")))
+
+(use-package paredit
+  :ensure t
+  :commands enable-paredit-mode)
+
+(use-package rainbow-delimiters
+  :ensure t
+  :commands rainbow-delimiters-mode)
 
 (use-package lispy
   :ensure t
@@ -35,10 +37,6 @@
   :init
   (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression)
                                             (lispy-mode 1)))))
-
-(use-package rainbow-delimiters
-  :ensure t
-  :commands rainbow-delimiters-mode)
 
 (use-package emacs-lisp-mode
   :mode
