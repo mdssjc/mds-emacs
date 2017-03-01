@@ -31,26 +31,26 @@
                                                company-abbrev
                                                company-dabbrev-code
                                                company-dabbrev
-                                               company-files)))))
-  (add-hook 'c-mode-hook 'flycheck-mode)
-  (add-hook 'c-mode-hook 'irony-mode)
-  (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-  (add-hook 'irony-mode-hook 'flycheck-irony-setup)
-  (add-hook 'irony-mode-hook 'irony-eldoc)
+                                               company-files)))
+               (setq-local counsel-dash-docsets '("C"))
+               (flycheck-mode)
+               (function-args-mode)
+               (fa-config-default)
+               (hs-minor-mode)
+               (electric-spacing-mode)
+               (electric-pair-mode)
+               (show-paren-mode)
+               (irony-mode)))
   (add-hook 'irony-mode-hook
-            '(lambda () (progn)
+            '(lambda ()
+               (company-irony-setup-begin-commands)
+               (flycheck-irony-setup)
+               (irony-eldoc)
                (define-key irony-mode-map [remap completion-at-point]
                  'irony-completion-at-point-async)
                (define-key irony-mode-map [remap complete-symbol]
-                 'irony-completion-at-point-async)))
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  (add-hook 'c-mode-hook 'function-args-mode)
-  (add-hook 'c-mode-hook 'fa-config-default)
-  (add-hook 'c-mode-hook 'hs-minor-mode)
-  (add-hook 'c-mode-hook 'electric-spacing-mode)
-  (add-hook 'c-mode-hook 'electric-pair-mode)
-  (add-hook 'c-mode-hook 'show-paren-mode)
-  (add-hook 'c-mode-hook (lambda () (setq-local counsel-dash-docsets '("C"))))
+                 'irony-completion-at-point-async)
+               (irony-mode-hook 'irony-cdb-autosetup-compile-options)))
   :config
   (setq company-backends (remove 'company-clang company-backends)
         c-default-style "linux"
