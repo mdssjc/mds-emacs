@@ -95,27 +95,27 @@
   ;; C-x
   (general-define-key
    :prefix "C-x"
-   "/ g"   'google-this
-   "/ r"   'ripgrep-regexp
-   "/"     '(                      :which-key "search")
+   "/"     'ripgrep-regexp
    "C-f"   'counsel-find-file
    "C-r"   'counsel-recentf
    "F"     'find-file-at-point
+   "Q"     '(:which-key "quit/restart")
    "Q q"   'save-buffers-kill-terminal
    "Q r"   'restart-emacs
-   "Q"     '(                      :which-key "quit/restart")
    "S"     'embrace-commander
    "V"     'hydra-expand-region/body
    "\\"    'align-regexp
    "g"     'magit-status
    "t"     'tabbar-ruler-move
+   "x"     '(:which-key "text")
+   "x a"   '(:which-key "align")
    "x a a" '(align                 :which-key "align")
    "x a c" '(align-current         :which-key "align current")
    "x a r" '(align-regexp          :which-key "align regexp")
-   "x a"   '(                      :which-key "align")
    "x c"   '(capitalize-region     :which-key "capitalize")
    "x l"   '(downcase-region       :which-key "downcase")
    "x r"   'ciel-copy-to-register
+   "x s"   '(:which-key "sorts")
    "x s P" '(sort-pages            :which-key "sort pages")
    "x s c" '(sort-columns          :which-key "sort columns")
    "x s f" '(sort-fields           :which-key "sort fields")
@@ -124,14 +124,14 @@
    "x s r" '(reverse-region        :which-key "reverse lines")
    "x s r" '(sort-regexp-fields    :which-key "sort regexp fields")
    "x s s" '(sort-lines            :which-key "sort lines")
-   "x s"   '(                      :which-key "sorts")
+   "x t"   '(:which-key "transpose")
    "x t c" '(transpose-chars       :which-key "chars")
    "x t l" '(transpose-lines       :which-key "lines")
    "x t p" '(transpose-paragraphs  :which-key "paragraphs")
    "x t s" '(transpose-sentences   :which-key "sentences")
    "x t w" '(transpose-words       :which-key "words")
-   "x t"   '(                      :which-key "transpose")
    "x u"   '(upcase-region         :which-key "upcase")
+   "x w"   '(:which-key "words")
    "x w c" '(mds/capitalized-words :which-key "capitalized")
    "x w d" '(mds/dashed-words      :which-key "dashed")
    "x w i" '(mds/word-initials     :which-key "initials")
@@ -139,9 +139,7 @@
    "x w s" '(mds/snake-case        :which-key "snake")
    "x w t" '(mds/titleized-words   :which-key "titleized")
    "x w u" '(mds/upper-camel-case  :which-key "upper")
-   "x w w" '(mds/split-words       :which-key "split")
-   "x w"   '(                      :which-key "words")
-   "x"     '(                      :which-key "text"))
+   "x w w" '(mds/split-words       :which-key "split"))
   (general-define-key
    "<f12>"         'ivy-switch-buffer
    "C-&"           'hydra-yasnippet/body
@@ -157,7 +155,7 @@
    "C-S-f"         'swiper-multi
    "C-c !"         '(:which-key "flycheck")
    "C-c &"         '(:which-key "yasnippet")
-   "C-c /"         'counsel-rg
+   "C-c C-/"       'counsel-rg
    "C-c I"         'emojify-insert-emoji
    "C-c p"         '(:which-key "projectile")
    "M-#"           'anzu-replace-at-cursor-thing
