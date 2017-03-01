@@ -233,17 +233,16 @@
 
 (use-package anzu
   :ensure t
-  :commands global-anzu-mode
-  :bind
-  (("M-%"   . anzu-query-replace)
-   ("C-M-%" . anzu-query-replace-regexp)
-   ("M-#"   . anzu-replace-at-cursor-thing)
-   ("C-M-#" . anzu-query-replace-at-cursor-thing))
+  :commands global-anzu-mode anzu-query-replace anzu-query-replace-regexp anzu-replace-at-cursor-thing anzu-query-replace-at-cursor-thing
   :init
   (add-hook 'spaceline-pre-hook 'global-anzu-mode)
   :config
   (setq anzu-mode-lighter ""
         anzu-replace-to-string-separator " => "))
+
+(use-package visual-regexp-steroids
+  :ensure visual-regexp
+  :commands vr/replace vr/query-replace)
 
 (use-package eww
   :commands eww eww-mode
