@@ -15,53 +15,15 @@
 ;;; Code:
 (use-package wttrin
   :ensure t
-  :bind
-  (("<f8> w" . wttrin))
-  :init
+  :commands wttrin
+  :config
   (setq wttrin-default-cities (cons user-city nil)))
 
 (use-package twittering-mode
   :ensure t
-  :bind
-  (("<f8> nt" . twit)
-   :map twittering-mode-map
-   ("\\"        . hydra-twittering/body)
-   ("q"         . twittering-kill-buffer)
-   ("Q"         . twittering-edit-mode)
-   ("j"         . twittering-goto-next-status)
-   ("k"         . twittering-goto-previous-status)
-   ("h"         . twittering-switch-to-next-timeline)
-   ("l"         . twittering-switch-to-previous-timeline)
-   ("g"         . beginning-of-buffer)
-   ("G"         . end-of-buffer)
-   ("t"         . twittering-update-status-interactive)
-   ("X"         . twittering-delete-status)
-   ("RET"       . twittering-reply-to-user)
-   ("r"         . twittering-native-retweet)
-   ("R"         . twittering-organic-retweet)
-   ("d"         . twittering-direct-message)
-   ("u"         . twittering-current-timeline)
-   ("b"         . twittering-favorite)
-   ("B"         . twittering-unfavorite)
-   ("f"         . twittering-follow)
-   ("F"         . twittering-unfollow)
-   ("i"         . twittering-view-user-page)
-   ("/"         . twittering-search)
-   ("."         . twittering-visit-timeline)
-   ("@"         . twittering-other-user-timeline)
-   ("T"         . twittering-toggle-or-retrieve-replied-statuses)
-   ("o"         . twittering-click)
-   ("TAB"       . twittering-goto-next-thing)
-   ("<backtab>" . twittering-goto-previous-thing)
-   ("n"         . twittering-goto-next-status-of-user)
-   ("p"         . twittering-goto-previous-status-of-user)
-   ("SPC"       . twittering-scroll-up)
-   ("S-SPC"     . twittering-scroll-down)
-   ("y"         . twittering-push-uri-onto-kill-ring)
-   ("Y"         . twittering-push-tweet-onto-kill-ring)
-   ("a"         . twittering-toggle-activate-buffer))
+  :commands twit
   :init
-  (add-hook 'twittering-edit-mode-hook (lambda () (flyspell-mode)))
+  (add-hook 'twittering-edit-mode-hook '(lambda () (flyspell-mode)))
   :config
   (setq twittering-use-master-password t
         twittering-private-info-file (concat user-emacs-directory ".cache/twittering-mode.gpg")
@@ -136,12 +98,7 @@
 
 (use-package elfeed
   :ensure t
-  :bind
-  (("<f8> nf" . elfeed)
-   :map elfeed-show-mode-map
-   ("j" . next-line)
-   ("k" . previous-line)
-   ("u" . elfeed-update))
+  :commands elfeed
   :config
   (setq elfeed-use-curl t
         elfeed-feeds '(;; Blogs
