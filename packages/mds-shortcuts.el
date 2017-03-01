@@ -84,38 +84,6 @@
    "t"     '(:which-key "tabs")
    "t t"   'tabify
    "t u"   'untabify)
-  ;; Super-key hotkey
-  (general-define-key
-   :prefix "s"
-   "/"           'counsel-grep-or-swiper
-   "7"           'hydra-yasnippet/body
-   "<down>"      'md/move-lines-down
-   "<return>"    'icy-mode
-   "<up>"        'md/move-lines-up
-   "C-<down>"    'enlarge-window
-   "C-<left>"    'shrink-window-horizontally
-   "C-<return>"  'mds/insert-lines-above
-   "C-<right>"   'enlarge-window-horizontally
-   "C-<up>"      'shrink-window
-   "C-M-<down>"  'buf-move-down
-   "C-M-<left>"  'buf-move-left
-   "C-M-<right>" 'buf-move-right
-   "C-M-<up>"    'buf-move-up
-   "M-<down>"    'windmove-down
-   "M-<left>"    'windmove-left
-   "M-<return>"  'mds/insert-lines-below
-   "M-<right>"   'windmove-right
-   "M-<up>"      'windmove-up
-   "P"           'projectile-command-map
-   "S-<down>"    'md/duplicate-down
-   "S-<return>"  'mds/insert-lines-between
-   "S-<up>"      'md/duplicate-up
-   "SPC"         'avy-goto-char-in-line
-   "c i"         'ciel-ci
-   "c o"         'ciel-co
-   "p"           'projectile-speedbar-open-current-buffer-in-tree
-   "s"           'hydra-embrace/body
-   "v"           'hydra-expand-region/body)
   ;; C-x
   (general-define-key
    :prefix "C-x"
@@ -205,7 +173,37 @@
    "S-M-<down>"    'md/duplicate-down
    "S-M-<up>"      'md/duplicate-up
    "S-M-t"         'swap-regions
-   "S-SPC"         'cycle-spacing)
+   "S-SPC"         'cycle-spacing
+   ;; Super-key hotkey
+   "s-/"           'counsel-grep-or-swiper
+   "s-7"           'hydra-yasnippet/body
+   "s-<down>"      'md/move-lines-down
+   "s-<return>"    'icy-mode
+   "s-<up>"        'md/move-lines-up
+   "s-C-<down>"    'enlarge-window
+   "s-C-<left>"    'shrink-window-horizontally
+   "s-C-<return>"  'mds/insert-lines-above
+   "s-C-<right>"   'enlarge-window-horizontally
+   "s-C-<up>"      'shrink-window
+   "s-C-M-<down>"  'buf-move-down
+   "s-C-M-<left>"  'buf-move-left
+   "s-C-M-<right>" 'buf-move-right
+   "s-C-M-<up>"    'buf-move-up
+   "s-M-<down>"    'windmove-down
+   "s-M-<left>"    'windmove-left
+   "s-M-<return>"  'mds/insert-lines-below
+   "s-M-<right>"   'windmove-right
+   "s-M-<up>"      'windmove-up
+   "s-P"           'projectile-command-map
+   "s-S-<down>"    'md/duplicate-down
+   "s-S-<return>"  'mds/insert-lines-between
+   "s-S-<up>"      'md/duplicate-up
+   "s-SPC"         'avy-goto-char-in-line
+   "s-c i"         'ciel-ci
+   "s-c o"         'ciel-co
+   "s-p"           'projectile-speedbar-open-current-buffer-in-tree
+   "s-s"           'hydra-embrace/body
+   "s-v"           'hydra-expand-region/body)
   ;; Toggles
   (general-define-key :prefix "<f5>"
                       "-" 'centered-cursor-mode
