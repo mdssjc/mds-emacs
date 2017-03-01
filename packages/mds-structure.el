@@ -240,9 +240,11 @@
   (setq anzu-mode-lighter ""
         anzu-replace-to-string-separator " => "))
 
-(use-package visual-regexp-steroids
-  :ensure visual-regexp
-  :commands vr/replace vr/query-replace)
+(use-package visual-regexp
+  :ensure t
+  :commands vr/replace vr/query-replace
+  :config
+  (use-package visual-regexp-steroids :ensure t))
 
 (use-package eww
   :commands eww eww-mode
@@ -367,6 +369,7 @@
   :init
   (add-hook 'after-init-hook 'google-this-mode))
 
+;; Plus
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
                             (use-package tramp)
@@ -404,6 +407,7 @@
 (eval-after-load "simple" '(use-package simple+ :ensure t :defer 0))
 
 (eval-after-load "hl-line" '(use-package hl-line+ :ensure t :defer 0))
+;; ---
 
 (provide 'mds-structure)
 ;;; mds-structure.el ends here
