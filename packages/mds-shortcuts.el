@@ -262,6 +262,10 @@
                       "C-<f5>"   'nil
                       "C-c c"    'racket-run-and-switch-to-repl
                       "C-c C-s"  'racket-racket)
+  (general-define-key :keymaps 'c-mode-map
+                      "C-c r e" 'emr-show-refactor-menu
+                      "C-c r s" 'srefactor-refactor-at-point
+                      ";"       'maio/electric-semicolon)
   (general-define-key :keymaps 'dumb-jump-mode-map
                       "M-g o" 'dumb-jump-go-other-window
                       "M-g j" 'dumb-jump-go

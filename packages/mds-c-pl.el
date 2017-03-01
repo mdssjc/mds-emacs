@@ -1,6 +1,6 @@
 ;;; mds-c-pl.el --- Linguagem de Programação C (C Programming Language)
 ;;
-;; Copyright (C) 2016-2016 Marcelo dos Santos
+;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
 ;; author: Marcelo dos Santos <mds>
 ;; URL: https://github.com/mdssjc/mds-emacs
@@ -17,11 +17,6 @@
   :mode
   ("\\.c$" . c-mode)
   ("\\.h$" . c-mode)
-  :bind
-  (:map c-mode-map
-        ("C-c r e" . emr-show-refactor-menu)
-        ("C-c r s" . srefactor-refactor-at-point)
-        (";"       . maio/electric-semicolon))
   :init
   (setq irony-user-dir (concat user-emacs-directory ".cache/irony"))
   (add-hook 'c-mode-hook
