@@ -1,6 +1,6 @@
 ;;; mds-terminal.el --- Terminal (Terminal)
 ;;
-;; Copyright (C) 2016-2016 Marcelo dos Santos
+;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
 ;; author: Marcelo dos Santos <mds>
 ;; URL: https://github.com/mdssjc/mds-emacs
@@ -17,17 +17,16 @@
   :ensure nil
   :commands eshell
   :init
+  (add-hook 'eshell-mode-hook
+            '(lambda ()
+               (setq-local company-transformers
+                           '(company-sort-prefer-same-case-prefix
+                             company-sort-by-statistics))
+               (setq-local company-backends
+                           '((company-capf
+                              company-files)))
+               (company-mode)))
   (add-hook 'eshell-mode-hook 'eshell-fringe-status-mode)
-  (add-hook 'eshell-mode-hook '(lambda ()
-                                 (set (make-local-variable 'company-transformers)
-                                      '(company-sort-prefer-same-case-prefix
-                                        company-sort-by-statistics))
-                                 (set (make-local-variable 'company-backends)
-                                      '((company-capf
-                                         company-abbrev
-                                         company-dabbrev
-                                         company-files)))
-                                 (company-mode)))
   :config
   (setq eshell-history-size 10000
         eshell-save-history-on-exit t
