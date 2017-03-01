@@ -1,6 +1,6 @@
 ;;; mds-shortcuts.el --- Atalhos (Shortcuts)
 ;;
-;; Copyright (C) 2016-2016 Marcelo dos Santos
+;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
 ;; author: Marcelo dos Santos <mds>
 ;; URL: https://github.com/mdssjc/mds-emacs
@@ -251,6 +251,10 @@
   (general-define-key :keymaps 'parinfer-mode-map
                       "C-c <return>" 'parinfer-toggle-mode)
   (general-define-key :keymaps 'emacs-lisp-mode-map
+                      "<f9> p"  'parinfer-mode
+                      "<f9> P"  'enable-paredit-mode
+                      "<f9> l"  'lispy-mode
+                      "<f9> r"  'rainbow-delimiters-mode
                       "<f9> t"  'litable-mode
                       "M-."     'find-function-at-point
                       "M-&"     'complete-symbol
