@@ -21,25 +21,25 @@
   ("emacs" . emacs-lisp-mode)
   :init
   (add-hook 'emacs-lisp-mode-hook
-            '(lambda () (progn
-                     (parinfer-mode)
-                     (prettify-symbols-mode)
-                     (eldoc-mode)
-                     (erefactor-lazy-highlight-turn-on)
-                     (require 'ert)
-                     (ert--activate-font-lock-keywords)
-                     (add-to-list 'completion-styles 'initials t)
-                     (setq-local company-backends '((company-elisp
-                                                     company-yasnippet
-                                                     :with
-                                                     company-capf
-                                                     company-abbrev
-                                                     company-dabbrev-code
-                                                     company-dabbrev
-                                                     company-files)))
-                     (flycheck-mode)
-                     (eval-after-load 'flycheck '(flycheck-package-setup))
-                     (setq-local counsel-dash-docsets '("Emacs_Lisp")))))
+            '(lambda ()
+               (parinfer-mode)
+               (prettify-symbols-mode)
+               (eldoc-mode)
+               (erefactor-lazy-highlight-turn-on)
+               (require 'ert)
+               (ert--activate-font-lock-keywords)
+               (add-to-list 'completion-styles 'initials t)
+               (setq-local company-backends '((company-elisp
+                                               company-yasnippet
+                                               :with
+                                               company-capf
+                                               company-abbrev
+                                               company-dabbrev-code
+                                               company-dabbrev
+                                               company-files)))
+               (flycheck-mode)
+               (eval-after-load 'flycheck '(flycheck-package-setup))
+               (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit
         lisp-prettify-symbols-alist   '(("lambda" . ?λ)
@@ -58,19 +58,19 @@
   ("racket" . racket-mode)
   :init
   (add-hook 'racket-mode-hook
-            '(lambda () (progn
-                     (parinfer-mode)
-                     (prettify-symbols-mode)
-                     (dr-racket-like-unicode-mode)
-                     ;; (racket-unicode-input-method-enable)
-                     (setq-local company-backends '((company-capf
-                                                     :with
-                                                     company-abbrev
-                                                     company-dabbrev-code
-                                                     company-dabbrev
-                                                     company-files)))
-                     (flycheck-mode)
-                     (setq-local counsel-dash-docsets '("Racket")))))
+            '(lambda ()
+               (parinfer-mode)
+               (prettify-symbols-mode)
+               (dr-racket-like-unicode-mode)
+               ;; (racket-unicode-input-method-enable)
+               (setq-local company-backends '((company-capf
+                                               :with
+                                               company-abbrev
+                                               company-dabbrev-code
+                                               company-dabbrev
+                                               company-files)))
+               (flycheck-mode)
+               (setq-local counsel-dash-docsets '("Racket"))))
   (add-hook 'racket-repl-mode-hook 'racket-unicode-input-method-enable)
   :config
   (setq racket-smart-open-bracket-enable t
@@ -88,21 +88,24 @@
   ("\\.cjr\\'" . clojure-mode)
   :init
   (add-hook 'clojure-mode-hook
-            '(lambda () (progn
-                     (parinfer-mode)
-                     (setq-local company-backends '((company-capf
-                                                     company-yasnippet
-                                                     :with
-                                                     company-abbrev
-                                                     company-dabbrev-code
-                                                     company-dabbrev
-                                                     company-files)))
-                     (setq-local counsel-dash-docsets '("Clojure"))))))
+            '(lambda ()
+               (parinfer-mode)
+               (setq-local company-backends '((company-capf
+                                               company-yasnippet
+                                               :with
+                                               company-abbrev
+                                               company-dabbrev-code
+                                               company-dabbrev
+                                               company-files)))
+               (setq-local counsel-dash-docsets '("Clojure")))))
 
 (use-package lfe-mode
   :ensure t
   :mode
-  ("\\.lfe\\(s\\|sh\\)?\\'" . lfe-mode))
+  ("\\.lfe\\(s\\|sh\\)?\\'" . lfe-mode)
+  :init
+  (add-hook 'lfe-mode-hook
+            '() (parinfer-mode)))
 
 (use-package parinfer
   :ensure t
