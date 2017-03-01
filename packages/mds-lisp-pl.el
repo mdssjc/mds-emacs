@@ -15,10 +15,7 @@
 ;;; Code:
 (use-package parinfer
   :ensure t
-  :commands parinfer-mode
-  :bind
-  (:map parinfer-mode-map
-        ("C-c <return>" . parinfer-toggle-mode))
+  :commands parinfer-mode parinfer-toggle-mode
   :config
   (setq parinfer-extensions '(defaults pretty-parens lispy smart-tab smart-yank one paredit)
         parinfer-preview-cursor-scope t))
@@ -41,41 +38,34 @@
   ("\\.el$" . emacs-lisp-mode)
   :interpreter
   ("emacs" . emacs-lisp-mode)
-  :bind
-  (:map emacs-lisp-mode-map
-        ("<f6> t"  . litable-mode)
-        ("M-."     . find-function-at-point)
-        ("M-&"     . complete-symbol)
-        ("C-c e"   . macrostep-expand)
-        ("C-c r e" . emr-show-refactor-menu))
   :init
   (add-hook 'emacs-lisp-mode-hook
             '(lambda () (progn
-                          (parinfer-mode)
-                          (prettify-symbols-mode)
-                          (eldoc-mode)
-                          (erefactor-lazy-highlight-turn-on)
-                          (require 'ert)
-                          (ert--activate-font-lock-keywords)
-                          (add-to-list 'completion-styles 'initials t)
-                          (setq-local company-backends '((company-elisp
-                                                          company-yasnippet
-                                                          :with
-                                                          company-capf
-                                                          company-abbrev
-                                                          company-dabbrev-code
-                                                          company-dabbrev
-                                                          company-files)))
-                          (flycheck-mode)
-                          (eval-after-load 'flycheck '(flycheck-package-setup))
-                          (setq-local counsel-dash-docsets '("Emacs_Lisp")))))
+                     (parinfer-mode)
+                     (prettify-symbols-mode)
+                     (eldoc-mode)
+                     (erefactor-lazy-highlight-turn-on)
+                     (require 'ert)
+                     (ert--activate-font-lock-keywords)
+                     (add-to-list 'completion-styles 'initials t)
+                     (setq-local company-backends '((company-elisp
+                                                     company-yasnippet
+                                                     :with
+                                                     company-capf
+                                                     company-abbrev
+                                                     company-dabbrev-code
+                                                     company-dabbrev
+                                                     company-files)))
+                     (flycheck-mode)
+                     (eval-after-load 'flycheck '(flycheck-package-setup))
+                     (setq-local counsel-dash-docsets '("Emacs_Lisp")))))
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit
-        lisp-prettify-symbols-alist '(("lambda" . ?λ)
-                                      ("->"     . ?→)
-                                      ("=>"     . ?⇒)
-                                      ("map"    . ?↦)
-                                      ("."      . ?•))
+        lisp-prettify-symbols-alist   '(("lambda" . ?λ)
+                                        ("->"     . ?→)
+                                        ("=>"     . ?⇒)
+                                        ("map"    . ?↦)
+                                        ("."      . ?•))
         prettify-symbols-alist lisp-prettify-symbols-alist
         prettify-symbols-unprettify-at-point 'right-edge))
 
@@ -100,28 +90,21 @@
   ("\\.rkt\\'" . racket-mode)
   :interpreter
   ("racket" . racket-mode)
-  :bind
-  (:map racket-mode-map
-        ("<f5>"     . nil)
-        ("M-C-<f5>" . nil)
-        ("C-<f5>"   . nil)
-        ("C-c c"    . racket-run-and-switch-to-repl)
-        ("C-c C-s"  . racket-racket))
   :init
   (add-hook 'racket-mode-hook
             '(lambda () (progn
-                          (parinfer-mode)
-                          (prettify-symbols-mode)
-                          (dr-racket-like-unicode-mode)
-                          ;; (racket-unicode-input-method-enable)
-                          (setq-local company-backends '((company-capf
-                                                          :with
-                                                          company-abbrev
-                                                          company-dabbrev-code
-                                                          company-dabbrev
-                                                          company-files)))
-                          (flycheck-mode)
-                          (setq-local counsel-dash-docsets '("Racket")))))
+                     (parinfer-mode)
+                     (prettify-symbols-mode)
+                     (dr-racket-like-unicode-mode)
+                     ;; (racket-unicode-input-method-enable)
+                     (setq-local company-backends '((company-capf
+                                                     :with
+                                                     company-abbrev
+                                                     company-dabbrev-code
+                                                     company-dabbrev
+                                                     company-files)))
+                     (flycheck-mode)
+                     (setq-local counsel-dash-docsets '("Racket")))))
   (add-hook 'racket-repl-mode-hook 'racket-unicode-input-method-enable)
   :config
   (setq racket-smart-open-bracket-enable t
@@ -144,15 +127,15 @@
   :init
   (add-hook 'clojure-mode-hook
             '(lambda () (progn
-                          (parinfer-mode)
-                          (setq-local company-backends '((company-capf
-                                                          company-yasnippet
-                                                          :with
-                                                          company-abbrev
-                                                          company-dabbrev-code
-                                                          company-dabbrev
-                                                          company-files)))
-                          (setq-local counsel-dash-docsets '("Clojure"))))))
+                     (parinfer-mode)
+                     (setq-local company-backends '((company-capf
+                                                     company-yasnippet
+                                                     :with
+                                                     company-abbrev
+                                                     company-dabbrev-code
+                                                     company-dabbrev
+                                                     company-files)))
+                     (setq-local counsel-dash-docsets '("Clojure"))))))
 
 (use-package cider
   :ensure t
