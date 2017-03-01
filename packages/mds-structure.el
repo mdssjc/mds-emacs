@@ -266,8 +266,7 @@
 (use-package tabbar-ruler
   :ensure t
   :after tabbar
-  :bind
-  (("C-x t" . tabbar-ruler-move))
+  :commands tabbar-ruler-move
   :config
   (setq tabbar-use-images nil
         tabbar-ruler-global-tabbar t
@@ -325,15 +324,7 @@
 
 (use-package dumb-jump
   :ensure t
-  :bind
-  (:map dumb-jump-mode-map
-        ("M-g o" . dumb-jump-go-other-window)
-        ("M-g j" . dumb-jump-go)
-        ("M-g b" . dumb-jump-back)
-        ("M-g q" . dumb-jump-quick-look)
-        ("C-M-g" . nil)
-        ("C-M-p" . nil)
-        ("C-M-q" . nil))
+  :commands dumb-jump-mode
   :init
   (add-hook 'prog-mode-hook 'dumb-jump-mode)
   :config

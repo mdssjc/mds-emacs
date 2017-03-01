@@ -50,6 +50,14 @@
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'projectile-mode-map
                       "C-c p s r" 'projectile-ripgrep)
+  (general-define-key :keymaps 'dumb-jump-mode-map
+                      "M-g o" 'dumb-jump-go-other-window
+                      "M-g j" 'dumb-jump-go
+                      "M-g b" 'dumb-jump-back
+                      "M-g q" 'dumb-jump-quick-look
+                      "C-M-g" 'nil
+                      "C-M-p" 'nil
+                      "C-M-q" 'nil)
   ;; Super-key laucher
   (general-define-key
    :prefix "<C-M-return>"
@@ -100,6 +108,7 @@
    "V"     'hydra-expand-region/body
    "\\"    'align-regexp
    "g"     'magit-status
+   "t"     'tabbar-ruler-move
    "x a a" '(align                 :which-key "align")
    "x a c" '(align-current         :which-key "align current")
    "x a r" '(align-regexp          :which-key "align regexp")
