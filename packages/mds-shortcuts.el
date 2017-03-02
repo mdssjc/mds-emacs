@@ -340,6 +340,52 @@
                       "<f9> p" 'emmet-preview-mode)
   (general-define-key :keymaps 'emmet-mode-keymap
                       "C-<return>" 'nil)
+  (general-define-key :keymaps 'haskell-mode-map
+                      "<f9> s"    'structured-haskell-mode
+                      "M-<right>" 'haskell-move-nested-right
+                      "M-<left>"  'haskell-move-nested-left
+                      "C-c ."     'counsel-dash-at-point
+                      ;; Debug
+                      "C-c d a"   'haskell-debug/abandon
+                      "C-c d b"   'haskell-debug/break-on-function
+                      "C-c d B"   'haskell-debug/delete
+                      "C-c d c"   'haskell-debug/continue
+                      "C-c d d"   'haskell-debug
+                      "C-c d n"   'haskell-debug/next
+                      "C-c d N"   'haskell-debug/previous
+                      "C-c d p"   'haskell-debug/previous
+                      "C-c d r"   'haskell-debug/refresh
+                      "C-c d s"   'haskell-debug/step
+                      "C-c d t"   'haskell-debug/trace
+                      ;; Editing
+                      "C-c e j"   'haskell-navigate-imports
+                      "C-c e f"   'haskell-mode-format-imports
+                      "C-c e s"   'haskell-sort-imports
+                      "C-c e a"   'haskell-align-imports
+                      "C-c e S"   'haskell-mode-stylish-haskell
+                      ;; Compilation
+                      "C-c c"     'haskell-compile
+                      ;; Interpreter
+                      "C-c '"     'haskell-interactive-bring
+                      "C-c i z"   'switch-to-haskell
+                      "C-c i b"   'switch-to-haskell
+                      "C-c i l"   'inferior-haskell-load-file
+                      "C-c i t"   'inferior-haskell-type
+                      "C-c i i"   'inferior-haskell-info
+                      "C-c i d"   'inferior-haskell-find-definition
+                      "C-c i c"   'haskell-interactive-mode-clear
+                      ;; Lookup
+                      "C-c l t"   'haskell-process-do-type
+                      "C-c l i"   'haskell-process-do-info
+                      ;; Refactor - Hare
+                      "C-c r d m" 'hare-refactor-demote
+                      "C-c r d d" 'hare-refactor-dupdef
+                      "C-c r i c" 'hare-refactor-iftocase
+                      "C-c r l o" 'hare-refactor-lift-one
+                      "C-c r l t" 'hare-refactor-lifttotop
+                      "C-c r r"   'hare-refactor-rename
+                      "C-c r t"   'hare-refactor-roundtrip
+                      "C-c r s h" 'hare-refactor-show)
   ;; Chords
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   ;; Alias

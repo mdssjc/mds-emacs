@@ -21,97 +21,50 @@
   ("\\.hsc\\'"   . haskell-mode)
   ("\\.cpphs\\'" . haskell-mode)
   ("\\.c2hs\\'"  . haskell-mode)
-  :bind
-  (:map haskell-mode-map
-        ("<f6> s" . structured-haskell-mode)
-        ("M-<right>" . haskell-move-nested-right)
-        ("M-<left>"  . haskell-move-nested-left)
-        ("C-c ."     . counsel-dash-at-point)
-        ;; Debug
-        ("C-c d a" . haskell-debug/abandon)
-        ("C-c d b" . haskell-debug/break-on-function)
-        ("C-c d B" . haskell-debug/delete)
-        ("C-c d c" . haskell-debug/continue)
-        ("C-c d d" . haskell-debug)
-        ("C-c d n" . haskell-debug/next)
-        ("C-c d N" . haskell-debug/previous)
-        ("C-c d p" . haskell-debug/previous)
-        ("C-c d r" . haskell-debug/refresh)
-        ("C-c d s" . haskell-debug/step)
-        ("C-c d t" . haskell-debug/trace)
-        ;; Editing
-        ("C-c e j" . haskell-navigate-imports)
-        ("C-c e f" . haskell-mode-format-imports)
-        ("C-c e s" . haskell-sort-imports)
-        ("C-c e a" . haskell-align-imports)
-        ("C-c e S" . haskell-mode-stylish-haskell)
-        ;; Compilation
-        ("C-c c"   . haskell-compile)
-        ;; Interpreter
-        ("C-c '"   . haskell-interactive-bring)
-        ("C-c i z" . switch-to-haskell)
-        ("C-c i b" . switch-to-haskell)
-        ("C-c i l" . inferior-haskell-load-file)
-        ("C-c i t" . inferior-haskell-type)
-        ("C-c i i" . inferior-haskell-info)
-        ("C-c i d" . inferior-haskell-find-definition)
-        ("C-c i c" . haskell-interactive-mode-clear)
-        ;; Lookup
-        ("C-c l t" . haskell-process-do-type)
-        ("C-c l i" . haskell-process-do-info)
-        ;; Refactor - Hare
-        ("C-c r d m" . hare-refactor-demote)
-        ("C-c r d d" . hare-refactor-dupdef)
-        ("C-c r i c" . hare-refactor-iftocase)
-        ("C-c r l o" . hare-refactor-lift-one)
-        ("C-c r l t" . hare-refactor-lifttotop)
-        ("C-c r r"   . hare-refactor-rename)
-        ("C-c r t"   . hare-refactor-roundtrip)
-        ("C-c r s h" . hare-refactor-show))
   :init
   (add-hook 'haskell-mode-hook
-            '(lambda () (progn
-                          (intero-mode)
-                          (intero-mode-whitelist)
-                          (intero-mode-blacklist)
-                          (hlint-refactor-mode)
-                          (haskell-decl-scan-mode)
-                          (flyckeck-haskell-configure)
-                          (turn-on-haskell-doc-mode)
-                          (haskell-indentation-mode)
-                          (electric-indent-local-mode -1)
-                          (rainbow-delimiters-mode)
-                          (speedbar-add-supported-extension ".hs")
-                          (lambda () (ghc-init) (hare-init))
-                          (setq-local company-transformers '(company-sort-by-backend-importance
-                                                             company-sort-prefer-same-case-prefix
-                                                             company-sort-by-statistics))
-                          (setq-local counsel-dash-docsets '("Haskell")))))
+            '(lambda ()
+               (intero-mode)
+               (intero-mode-whitelist)
+               (intero-mode-blacklist)
+               (hlint-refactor-mode)
+               (haskell-decl-scan-mode)
+               (flyckeck-haskell-configure)
+               (turn-on-haskell-doc-mode)
+               (haskell-indentation-mode)
+               (electric-indent-local-mode -1)
+               (rainbow-delimiters-mode)
+               (speedbar-add-supported-extension ".hs")
+               (lambda () (ghc-init) (hare-init))
+               (setq-local company-transformers '(company-sort-by-backend-importance
+                                                  company-sort-prefer-same-case-prefix
+                                                  company-sort-by-statistics))
+               (setq-local counsel-dash-docsets '("Haskell"))))
   (add-hook 'intero-mode-hook
-            '(lambda () (progn
-                          (setq-local company-backends '((company-intero
-                                                          company-yasnippet
-                                                          :with
-                                                          company-cabal
-                                                          company-ghci
-                                                          company-ghc
-                                                          company-abbrev
-                                                          company-dabbrev-code
-                                                          company-dabbrev
-                                                          company-files))))))
+            '(lambda ()
+               (setq-local company-backends '((company-intero
+                                               company-yasnippet
+                                               :with
+                                               company-cabal
+                                               company-ghci
+                                               company-ghc
+                                               company-abbrev
+                                               company-dabbrev-code
+                                               company-dabbrev
+                                               company-files)))))
   (add-hook 'haskell-interactive-mode-hook
-            '(lambda () (progn
-                          (setq-local company-transformers '(company-sort-by-backend-importance
-                                                             company-sort-prefer-same-case-prefix
-                                                             company-sort-by-statistics))
-                          (setq-local company-backends '((company-ghci
-                                                          company-capf
-                                                          company-yasnippet
-                                                          :with
-                                                          company-abbrev
-                                                          company-dabbrev-code
-                                                          company-dabbrev
-                                                          company-files))))))
+            '(lambda ()
+               (setq-local company-transformers '(company-sort-by-backend-importance
+                                                  company-sort-prefer-same-case-prefix
+                                                  company-sort-by-statistics))
+               (setq-local company-backends '((company-ghci
+                                               company-capf
+                                               company-yasnippet
+                                               :with
+                                               company-abbrev
+                                               company-dabbrev-code
+                                               company-dabbrev
+                                               company-files)))))
   :config
   ;; GHC
   (add-to-list 'load-path "~/.cabal/share/x86_64-linux-ghc-8.0.1/ghc-mod-5.6.0.0/elisp")
