@@ -19,9 +19,9 @@
   ("\\.plantuml\\'" . plantuml-mode)
   :init
   (add-hook 'plantuml-mode-hook
-            '(lambda () (progn
-                     (flycheck-mode)
-                     (eval-after-load 'flycheck '(flycheck-plantuml-setup)))))
+            '(lambda ()
+               (flycheck-mode)
+               (eval-after-load 'flycheck '(flycheck-plantuml-setup))))
   :config
   (setq plantuml-jar-path "~/java/plantuml.jar"))
 
