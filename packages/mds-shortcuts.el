@@ -147,6 +147,8 @@
    "C-c p"         '(:which-key "projectile")
    "M-#"           'anzu-replace-at-cursor-thing
    "M-%"           'anzu-query-replace
+   "M-+"           'shift-number-up
+   "M-_"           'shift-number-down
    "M-*"           'vr/replace
    "M-/"           'hippie-expand
    "M-<down>"      'md/move-lines-down

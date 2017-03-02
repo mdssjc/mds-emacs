@@ -369,6 +369,10 @@
   :init
   (add-hook 'after-init-hook 'google-this-mode))
 
+(use-package shift-number
+  :ensure t
+  :commands shift-number-up shift-number-down)
+
 ;; Plus
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
