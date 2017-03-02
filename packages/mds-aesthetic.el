@@ -17,30 +17,25 @@
   :ensure t
   :defer 0
   :config
-  (use-package spacemacs-theme :ensure t :defer 0)
   (require 'spaceline-config)
+  (use-package spacemacs-theme :ensure t :defer 0
+    :config
+    (setq spacemacs-theme-org-highlight t))
+  (add-hook 'prog-mode-hook 'linum-mode)
   (setq spaceline-workspace-numbers-unicode t
         spaceline-window-numbers-unicode t
         Info-fontify-angle-bracketed-flag nil)
   (tabbar-mode)
+  (global-hl-line-mode t)
+  (set-frame-font "Source Code Pro-10" nil t)
   (spaceline-emacs-theme)
   (spaceline-info-mode)
-  (global-hl-line-mode t)
-  (add-hook 'prog-mode-hook 'linum-mode)
-  (set-frame-font "Source Code Pro-10" nil t)
   (load-theme 'spacemacs-dark t)
   (toggle-frame-maximized))
 
-(use-package mode-icons
-  :ensure t
-  :disabled t
-  :commands mode-icons-mode
-  :init
-  (add-hook 'after-init-hook 'mode-icons-mode))
-
 (use-package all-the-icons
   :ensure t
-  :defer 0)
+  :defer t)
 
 (use-package all-the-icons-dired
   :ensure t
