@@ -90,6 +90,7 @@
 
 (use-package org-table-sticky-header
   :ensure t
+  :diminish org-table-sticky-header-mode
   :commands org-table-sticky-header-mode)
 
 (provide 'mds-pragmatic)
