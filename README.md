@@ -89,11 +89,11 @@ Listagem dos comandos fundamentais:
 * `F2` - Alterações de coluna
 * `F3` - Inicia/Incrementa a gravação de macro
 * `F4` - Finaliza/Executa a macro
-* `F5` - *Toggle* Global
-* `F6` - *Toggle* do Modo Maior
-* `F7` - Aplicações Interna
-* `F8` - Aplicações Externa
-* `F9` - Planejamento
+* `F5` - *Toggle*
+* `F6` - Sintático
+* `F7` - Semântico
+* `F8` - Pragmático
+* `F9` - Configurações
 * `F10` - Menu do Modo Maior
 * `F11` - Ativa o *Fullscreen*
 * `F12` - *IBuffer*
