@@ -336,6 +336,10 @@
                       "j" 'next-line
                       "k" 'previous-lin
                       "u" 'elfeed-update)
+  (general-define-key :keymaps 'web-mode-map
+                      "<f9> p" 'emmet-preview-mode)
+  (general-define-key :keymaps 'emmet-mode-keymap
+                      "C-<return>" 'nil)
   ;; Chords
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   ;; Alias

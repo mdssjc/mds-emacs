@@ -20,25 +20,22 @@
   ("\\.htm$"  . web-mode)
   ("\\.css$"  . web-mode)
   ("\\.scss$" . web-mode)
-  :bind
-  (:map web-mode-map
-        ("<f6> p" . emmet-preview-mode))
   :init
   (add-hook 'web-mode-hook
-            '(lambda () (progn
-                     (emmet-mode)
-                     (setq-local company-transformers '(company-sort-by-backend-importance
-                                                        company-sort-prefer-same-case-prefix
-                                                        company-sort-by-statistics))
-                     (setq-local company-backends '((company-web-html
-                                                     company-yasnippet
-                                                     :with
-                                                     company-abbrev
-                                                     company-dabbrev-code
-                                                     company-dabbrev
-                                                     company-files)))
-                     (flycheck-mode)
-                     (setq-local counsel-dash-docsets '("HTML" "CSS" "Sass")))))
+            '(lambda ()
+               (emmet-mode)
+               (setq-local company-transformers '(company-sort-by-backend-importance
+                                                  company-sort-prefer-same-case-prefix
+                                                  company-sort-by-statistics))
+               (setq-local company-backends '((company-web-html
+                                               company-yasnippet
+                                               :with
+                                               company-abbrev
+                                               company-dabbrev-code
+                                               company-dabbrev
+                                               company-files)))
+               (flycheck-mode)
+               (setq-local counsel-dash-docsets '("HTML" "CSS" "Sass"))))
   :config
   (require 'html-mode-expansions)
   (require 'css-mode-expansions)
@@ -60,10 +57,7 @@
 
 (use-package emmet-mode
   :ensure t
-  :commands emmet-mode
-  :bind
-  (:map emmet-mode-keymap
-        ("<C-return>" . nil)))
+  :commands emmet-mode)
 
 (use-package company-web
   :ensure t
