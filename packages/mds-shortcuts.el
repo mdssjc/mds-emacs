@@ -386,6 +386,8 @@
                       "C-c r r"   'hare-refactor-rename
                       "C-c r t"   'hare-refactor-roundtrip
                       "C-c r s h" 'hare-refactor-show)
+  (general-define-key :keymaps 'undo-tree-map
+                      "M-_" 'nil)
   ;; Chords
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   ;; Alias
