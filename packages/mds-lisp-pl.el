@@ -25,6 +25,7 @@
                (parinfer-mode)
                (prettify-symbols-mode)
                (eldoc-mode)
+               (emr-initialize)
                (erefactor-lazy-highlight-turn-on)
                (require 'ert)
                (ert--activate-font-lock-keywords)
@@ -140,9 +141,13 @@
   :ensure t
   :commands flycheck-package-setup)
 
+(use-package emr
+  :ensure t
+  :commands emr-initialize emr-show-refactor-menu)
+
 (use-package erefactor
   :ensure t
-  :defer t
+  :commands erefactor-lazy-highlight-turn-on
   :config
   (define-key emacs-lisp-mode-map "\C-crv" erefactor-map))
 
