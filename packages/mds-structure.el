@@ -227,6 +227,9 @@
   (setq speedbar-show-unknown-files t
         speedbar-use-images nil))
 
+(use-package rg
+  :ensure t)
+
 (use-package ripgrep
   :ensure t
   :commands ripgrep-regexp projectile-ripgrep)
@@ -388,8 +391,8 @@
 
 (eval-after-load "info" '(use-package info+ :ensure t :defer 0))
 
-;(eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0))
-;(eval-after-load "isearch" '(use-package isearch-prop :ensure t :defer 0))
+(eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0))
+(eval-after-load "isearch" '(use-package isearch-prop :ensure t :defer 0))
 
 (eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
                                :init
