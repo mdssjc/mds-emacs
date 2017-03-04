@@ -50,7 +50,7 @@
                  'irony-completion-at-point-async)
                (define-key irony-mode-map [remap complete-symbol]
                  'irony-completion-at-point-async)
-               (irony-mode-hook 'irony-cdb-autosetup-compile-options)))
+               (irony-cdb-autosetup-compile-options)))
   :config
   (setq company-backends (remove 'company-clang company-backends)
         c-default-style "linux"
