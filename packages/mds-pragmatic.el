@@ -32,10 +32,10 @@
                (company-mode)
                (flyspell-mode -1)
                (yas-minor-mode)
-               (org-bullets-mode t)
+               ;(org-bullets-mode t)
                (worf-mode)
                (embrace-org-mode-hook)
-               (org-table-sticky-header-mode)
+               ;(org-table-sticky-header-mode)
                (set-face-attribute 'org-table nil :inherit 'fixed-pitch)))
   :config
   (require 'ob-java)
@@ -65,15 +65,16 @@
         org-src-window-setup 'current-window
         org-ditaa-jar-path    (expand-file-name "~/java/ditaa.jar")
         org-plantuml-jar-path (expand-file-name "~/java/plantuml.jar"))
-  (org-babel-do-load-languages 'org-babel-do-load-languages '((emacs-lisp . t)
-                                                              (java       . t)
-                                                              (c          . t)
-                                                              (ditaa      . t)
-                                                              (plantuml   . t)))
+  (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
+                                                           (java       . t)
+                                                           (C          . t)
+                                                           (ditaa      . t)
+                                                           (plantuml   . t)))
   (add-to-list 'org-src-lang-modes '("plantuml" . plantuml)))
 
 (use-package org-bullets
   :ensure t
+  :disabled t
   :commands org-bullets-mode)
 
 (use-package org-pomodoro
@@ -90,6 +91,7 @@
 
 (use-package org-table-sticky-header
   :ensure t
+  :disabled t
   :diminish org-table-sticky-header-mode
   :commands org-table-sticky-header-mode)
 
