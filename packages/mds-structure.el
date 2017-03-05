@@ -228,11 +228,16 @@
         speedbar-use-images nil))
 
 (use-package rg
-  :ensure t)
+  :ensure t
+  :commands rg)
 
 (use-package ripgrep
   :ensure t
   :commands ripgrep-regexp projectile-ripgrep)
+
+(use-package wgrep
+  :ensure t
+  :defer 0)
 
 (use-package anzu
   :ensure t
