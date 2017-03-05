@@ -388,20 +388,23 @@
                             :config
                             (setq diredp-image-preview-in-tooltip t)))
 
-(eval-after-load "replace" '(use-package replace+ :ensure t :defer 0))
-
 (eval-after-load "mouse" '(use-package mouse+ :ensure t :defer 0))
 
-(eval-after-load "menu-bar" '(use-package menu-bar+ :ensure t :defer 0))
-
 (eval-after-load "info" '(use-package info+ :ensure t :defer 0))
-
-(eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0))
-(eval-after-load "isearch" '(use-package isearch-prop :ensure t :defer 0))
 
 (eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
                                :init
                                (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
+
+(eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0
+                              :config
+                              (isearchp-toggle-lazy-highlighting)))
+
+(eval-after-load "isearch" '(use-package isearch-prop :ensure t :defer 0))
+
+(eval-after-load "replace" '(use-package replace+ :ensure t :defer 0))
+
+(eval-after-load "menu-bar" '(use-package menu-bar+ :ensure t :defer 0))
 
 (use-package imenu
   :init
