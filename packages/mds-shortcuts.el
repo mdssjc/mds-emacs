@@ -82,7 +82,8 @@
   ;; C-x
   (general-define-key
    :prefix "C-x"
-   "/"     'ripgrep-regexp
+   "/"     'rg
+   "C-/"   'ripgrep-regexp
    "C-f"   'counsel-find-file
    "C-r"   'counsel-recentf
    "F"     'find-file-at-point
