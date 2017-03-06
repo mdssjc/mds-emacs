@@ -352,6 +352,7 @@
 (use-package highlight
   :ensure t
   :commands global-hi-lock-mode
+  :diminish global-hi-lock-mode
   :init
   (add-hook 'after-init-hook 'global-hi-lock-mode))
 
