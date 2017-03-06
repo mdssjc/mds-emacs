@@ -93,12 +93,12 @@
   (setq git-gutter-fr:side 'right-fringe
         git-gutter:update-interval 5))
 
-(add-to-list 'load-path (concat user-emacs-directory "temp/magithub"))
-
 (use-package magithub
+  :load-path (lambda () (concat user-emacs-directory "temp/magithub"))
   :after magit
   :config
   (require 'magithub))
+
 (use-package avy
   :ensure t
   :commands avy-goto-char-timer
