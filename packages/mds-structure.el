@@ -357,6 +357,8 @@
 
 (use-package highlight-thing
   :ensure t
+  :commands highlight-thing-mode
+  :diminish highlight-thing-mode
   :init
   (add-hook 'prog-mode-hook 'highlight-thing-mode))
 
