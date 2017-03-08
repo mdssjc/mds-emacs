@@ -384,6 +384,10 @@
   :ensure t
   :commands shift-number-up shift-number-down)
 
+(use-package lacarte
+  :ensure t
+  :commands lacarte-execute-command)
+
 ;; Plus
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init

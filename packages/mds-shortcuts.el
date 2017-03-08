@@ -129,6 +129,7 @@
    "x w u" '(mds/upper-camel-case  :which-key "upper")
    "x w w" '(mds/split-words       :which-key "split"))
   (general-define-key
+   "<f10>"         'lacarte-execute-command
    "<f12>"         'ivy-switch-buffer
    "C-&"           'hydra-yasnippet/body
    "C-'"           'counsel-imenu
