@@ -395,7 +395,8 @@
   :commands lacarte-execute-command)
 
 (use-package multiple-cursors
-  :ensure t)
+  :ensure t
+  :defer 0)
 
 ;; Plus
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
