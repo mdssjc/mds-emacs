@@ -202,6 +202,19 @@
    "s-SPC"         'avy-goto-char-in-line
    "s-c i"         'ciel-ci
    "s-c o"         'ciel-co
+   "s-m t"         'mc/mark-all-like-this
+   "s-m l"         'mc/mark-all-like-this-dwim
+   "s-m d"         'mc/mark-all-like-this-in-defun
+   "s-m e"         'mc/edit-lines
+   "s-m a"         'mc/edit-beginnings-of-lines
+   "s-m r"         'mc/mark-all-in-region-regexp
+   "s-m s"         'mc/mark-sgml-tag-pair
+   "s-m n"         'mc/mark-next-like-this
+   "s-m N"         'mc/skip-to-next-like-this
+   "s-m u n"       'mc/unmark-next-like-this
+   "s-m p"         'mc/mark-previous-like-this
+   "s-m P"         'mc/skip-to-previous-like-this
+   "s-m u p"       'mc/unmark-previous-like-this
    "s-p"           'projectile-speedbar-toggle
    "s-s"           'hydra-embrace/body
    "s-v"           'hydra-expand-region/body)
