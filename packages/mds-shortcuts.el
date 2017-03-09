@@ -202,13 +202,17 @@
    "s-SPC"         'avy-goto-char-in-line
    "s-c i"         'ciel-ci
    "s-c o"         'ciel-co
+   "s-m ."         'mc/mark-all-dwim
    "s-m t"         'mc/mark-all-like-this
    "s-m l"         'mc/mark-all-like-this-dwim
    "s-m d"         'mc/mark-all-like-this-in-defun
    "s-m e"         'mc/edit-lines
    "s-m a"         'mc/edit-beginnings-of-lines
+   "s-m z"         'mc/edit-ends-of-lines
    "s-m r"         'mc/mark-all-in-region-regexp
    "s-m s"         'mc/mark-sgml-tag-pair
+   "s-m i"         'mc/insert-numbers
+   "s-m I"         'mc/insert-letters
    "s-m n"         'mc/mark-next-like-this
    "s-m N"         'mc/skip-to-next-like-this
    "s-m u n"       'mc/unmark-next-like-this
