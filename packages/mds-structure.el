@@ -380,6 +380,10 @@
   :init
   (add-hook 'after-init-hook 'google-this-mode))
 
+(use-package google-translate
+  :ensure t
+  :after google-this)
+
 (use-package shift-number
   :ensure t
   :commands shift-number-up shift-number-down)

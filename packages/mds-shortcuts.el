@@ -144,6 +144,9 @@
    "C-S-f"         'swiper-multi
    "C-c !"         '(:which-key "flycheck")
    "C-c &"         '(:which-key "yasnippet")
+   "C-c / ."       'google-translate-at-point
+   "C-c / S"       'google-translate-smooth-translate
+   "C-c / T"       'google-translate-query-translate
    "C-c C-/"       'counsel-rg
    "C-c I"         'emojify-insert-emoji
    "C-c p"         '(:which-key "projectile")
