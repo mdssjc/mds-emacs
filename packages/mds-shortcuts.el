@@ -138,6 +138,7 @@
    "C-<return>"    'mds/insert-lines-above
    "C-<tab>"       'cycle-spacing
    "C-="           'er/expand-region
+   "C-M-."         'mc/mark-all-dwim
    "C-M-#"         'anzu-query-replace-at-cursor-thing
    "C-M-%"         'anzu-query-replace-regexp
    "C-M-*"         'vr/query-replace
@@ -202,7 +203,7 @@
    "s-SPC"         'avy-goto-char-in-line
    "s-c i"         'ciel-ci
    "s-c o"         'ciel-co
-   "s-m ."         'mc/mark-all-dwim
+   "s-."           'mc/mark-all-dwim
    "s-m t"         'mc/mark-all-like-this
    "s-m l"         'mc/mark-all-like-this-dwim
    "s-m d"         'mc/mark-all-like-this-in-defun
