@@ -382,7 +382,9 @@
 
 (use-package google-translate
   :ensure t
-  :after google-this)
+  :after google-this
+  :config
+  (setq google-translate-show-phonetic t))
 
 (use-package shift-number
   :ensure t
@@ -391,6 +393,9 @@
 (use-package lacarte
   :ensure t
   :commands lacarte-execute-command)
+
+(use-package multiple-cursors
+  :ensure t)
 
 ;; Plus
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
