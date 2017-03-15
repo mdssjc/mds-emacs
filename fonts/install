@@ -8,11 +8,8 @@ Objetivo:
 Entre no diretórios fonts:
   cd ~/.emacs.d/fonts
 
-Configure os arquivos com o chmod para 755:
-  chmod 755 *.ttf
-
-Copie os arquivos para o diretório /usr/share/fonts/TTF/:
-  sudo cp *.ttf /usr/share/fonts/TTF
+Copie os arquivos para o diretório ~/.local/share/fonts/:
+  cp *.ttf ~/.local/share/fonts/
 
 Execute o comando fc-cache:
-  sudo fc-cache
+  fc-cache -fv
