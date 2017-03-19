@@ -104,7 +104,8 @@
   :commands avy-goto-char-timer
   :config
   (setq avy-timeout-seconds 0.3
-        avy-background t))
+        avy-background t
+        avy-case-fold-search nil))
 
 (use-package hydra
   :ensure t)
