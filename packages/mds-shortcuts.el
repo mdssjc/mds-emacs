@@ -160,10 +160,11 @@
    "M-+"           'shift-number-up
    "M-_"           'shift-number-down
    "M-/"           'hippie-expand
+   "M-Z"           'avy-goto-char-in-line
    "S-C-j"         'join-line
    "C-'"           'counsel-imenu
    "C-."           'counsel-dash-at-point
-   "C-S-f"         'swiper-multi
+   "S-C-f"         'swiper-multi
    "S-C-s"         'counsel-grep-or-swiper
    "M-x"           'counsel-M-x
    "M-y"           'counsel-yank-pop
@@ -197,7 +198,6 @@
    "s-C-M-<down>"  'buf-move-down
    "s-C-M-<left>"  'buf-move-left
    "s-C-M-<right>" 'buf-move-right
-   "s-SPC"         'avy-goto-char-in-line
    "s-7"           'hydra-yasnippet/body
    "s-/"           'counsel-grep-or-swiper
    "s-c i"         'ciel-ci
