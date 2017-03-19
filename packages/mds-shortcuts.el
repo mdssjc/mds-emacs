@@ -131,18 +131,19 @@
   (general-define-key
    "<f10>"         'lacarte-execute-command
    "<f12>"         'ivy-switch-buffer
+   "S-<f12>"       'ibuffer
    "C-&"           'hydra-yasnippet/body
-   "C-'"           'counsel-imenu
-   "C-."           'counsel-dash-at-point
-   "C-:"           'avy-goto-char-timer
-   "C-<return>"    'mds/insert-lines-above
-   "C-<tab>"       'cycle-spacing
-   "C-="           'er/expand-region
+   "C->"           'mc/mark-next-like-this
+   "C-<"           'mc/mark-previous-like-this
    "C-M-."         'mc/mark-all-dwim
+   "C-M-,"         'mc/mark-all-in-region-regexp
+   "C-="           'er/expand-region
+   "M-#"           'anzu-replace-at-cursor-thing
    "C-M-#"         'anzu-query-replace-at-cursor-thing
+   "M-%"           'anzu-query-replace
    "C-M-%"         'anzu-query-replace-regexp
+   "M-*"           'vr/replace
    "C-M-*"         'vr/query-replace
-   "C-S-f"         'swiper-multi
    "C-c !"         '(:which-key "flycheck")
    "C-c &"         '(:which-key "yasnippet")
    "C-c / ."       'google-translate-at-point
@@ -151,76 +152,62 @@
    "C-c C-/"       'counsel-rg
    "C-c I"         'emojify-insert-emoji
    "C-c p"         '(:which-key "projectile")
-   "M-#"           'anzu-replace-at-cursor-thing
-   "M-%"           'anzu-query-replace
-   "M-+"           'shift-number-up
-   "M-_"           'shift-number-down
-   "M-*"           'vr/replace
-   "M-/"           'hippie-expand
-   "M-<down>"      'md/move-lines-down
-   "M-<return>"    'mds/insert-lines-below
-   "M-<up>"        'md/move-lines-up
+   "C-:"           'avy-goto-char-timer
    "M-g c"         'avy-goto-char
    "M-g i"         'avy-goto-char-in-line
    "M-g l"         'avy-goto-line
    "M-g r"         'avy-resume
    "M-g w"         'avy-goto-word-0
    "M-s h"         '(:which-key "highlight")
+   "M-+"           'shift-number-up
+   "M-_"           'shift-number-down
+   "M-/"           'hippie-expand
+   "S-C-j"         'join-line
+   "C-'"           'counsel-imenu
+   "C-."           'counsel-dash-at-point
+   "C-S-f"         'swiper-multi
+   "S-C-s"         'counsel-grep-or-swiper
    "M-x"           'counsel-M-x
    "M-y"           'counsel-yank-pop
-   "S-<f12>"       'ibuffer
-   "S-C-<return>"  'mds/insert-lines-between
-   "S-C-j"         'join-line
-   "S-C-s"         'counsel-grep-or-swiper
-   "S-M-<down>"    'md/duplicate-down
-   "S-M-<up>"      'md/duplicate-up
    "S-M-t"         'swap-regions
    "S-SPC"         'cycle-spacing
+   "M-<up>"        'md/move-lines-up
+   "M-<down>"      'md/move-lines-down
+   "S-M-<up>"      'md/duplicate-up
+   "S-M-<down>"    'md/duplicate-down
+   "C-<return>"    'mds/insert-lines-above
+   "S-C-<return>"  'mds/insert-lines-between
+   "M-<return>"    'mds/insert-lines-below
    ;; Super-key hotkey
-   "s-/"           'counsel-grep-or-swiper
-   "s-7"           'hydra-yasnippet/body
-   "s-<down>"      'md/move-lines-down
    "s-<return>"    'icy-mode
    "s-<up>"        'md/move-lines-up
+   "s-<down>"      'md/move-lines-down
+   "s-S-<up>"      'md/duplicate-up
+   "s-S-<down>"    'md/duplicate-down
+   "s-C-<return>"  'mds/insert-lines-above
+   "s-S-<return>"  'mds/insert-lines-between
+   "s-M-<return>"  'mds/insert-lines-below
+   "s-C-<up>"      'shrink-window
    "s-C-<down>"    'enlarge-window
    "s-C-<left>"    'shrink-window-horizontally
-   "s-C-<return>"  'mds/insert-lines-above
    "s-C-<right>"   'enlarge-window-horizontally
-   "s-C-<up>"      'shrink-window
+   "s-M-<up>"      'windmove-up
+   "s-M-<down>"    'windmove-down
+   "s-M-<left>"    'windmove-left
+   "s-M-<right>"   'windmove-right
+   "s-C-M-<up>"    'buf-move-up
    "s-C-M-<down>"  'buf-move-down
    "s-C-M-<left>"  'buf-move-left
    "s-C-M-<right>" 'buf-move-right
-   "s-C-M-<up>"    'buf-move-up
-   "s-M-<down>"    'windmove-down
-   "s-M-<left>"    'windmove-left
-   "s-M-<return>"  'mds/insert-lines-below
-   "s-M-<right>"   'windmove-right
-   "s-M-<up>"      'windmove-up
-   "s-P"           'projectile-command-map
-   "s-S-<down>"    'md/duplicate-down
-   "s-S-<return>"  'mds/insert-lines-between
-   "s-S-<up>"      'md/duplicate-up
    "s-SPC"         'avy-goto-char-in-line
+   "s-7"           'hydra-yasnippet/body
+   "s-/"           'counsel-grep-or-swiper
    "s-c i"         'ciel-ci
    "s-c o"         'ciel-co
    "s-."           'mc/mark-all-dwim
-   "s-m t"         'mc/mark-all-like-this
-   "s-m l"         'mc/mark-all-like-this-dwim
-   "s-m d"         'mc/mark-all-like-this-in-defun
-   "s-m e"         'mc/edit-lines
-   "s-m a"         'mc/edit-beginnings-of-lines
-   "s-m z"         'mc/edit-ends-of-lines
-   "s-m r"         'mc/mark-all-in-region-regexp
-   "s-m s"         'mc/mark-sgml-tag-pair
-   "s-m i"         'mc/insert-numbers
-   "s-m I"         'mc/insert-letters
-   "s-m n"         'mc/mark-next-like-this
-   "s-m N"         'mc/skip-to-next-like-this
-   "s-m u n"       'mc/unmark-next-like-this
-   "s-m p"         'mc/mark-previous-like-this
-   "s-m P"         'mc/skip-to-previous-like-this
-   "s-m u p"       'mc/unmark-previous-like-this
+   "s-,"           'mc/mark-all-in-region-regexp
    "s-p"           'projectile-speedbar-toggle
+   "s-P"           'projectile-command-map
    "s-s"           'hydra-embrace/body
    "s-v"           'hydra-expand-region/body)
   ;; Toggles
