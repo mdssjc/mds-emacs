@@ -350,9 +350,7 @@
 
 (use-package symon
   :ensure t
-  :commands symon-mode
-  :init
-  (add-hook 'after-init-hook 'symon-mode))
+  :commands symon-mode)
 
 (use-package google-this
   :ensure t

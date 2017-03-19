@@ -45,6 +45,8 @@
   ;; Super-key laucher
   (general-define-key
    :prefix "<C-M-return>"
+   "a"     '(:which-key "applications")
+   "a s"   'symon-mode
    "b"     '(:which-key "browser")
    "b e"   'eww
    "b a"   'engine/search-amazon
