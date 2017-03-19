@@ -82,6 +82,11 @@
         avy-background t
         avy-case-fold-search nil))
 
+(use-package zop-to-char
+  :ensure t
+  :init
+  (global-set-key [remap zap-to-char] 'zop-to-char))
+
 (use-package hydra
   :ensure t)
 
