@@ -153,11 +153,9 @@
    "C-c I"         'emojify-insert-emoji
    "C-c p"         '(:which-key "projectile")
    "C-:"           'avy-goto-char-timer
-   "M-g c"         'avy-goto-char
    "M-g i"         'avy-goto-char-in-line
    "M-g l"         'avy-goto-line
    "M-g r"         'avy-resume
-   "M-g w"         'avy-goto-word-0
    "M-s h"         '(:which-key "highlight")
    "M-+"           'shift-number-up
    "M-_"           'shift-number-down
@@ -398,6 +396,8 @@
                       "C-c r s h" 'hare-refactor-show)
   (general-define-key :keymaps 'undo-tree-map
                       "M-_" 'nil)
+  (general-define-key :keymaps 'isearch-mode-map
+                      "C-'" 'avy-isearch)
   ;; Chords
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   ;; Alias
