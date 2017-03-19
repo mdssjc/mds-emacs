@@ -32,10 +32,10 @@
                (company-mode)
                (flyspell-mode -1)
                (yas-minor-mode)
-               ;(org-bullets-mode t)
+               (org-bullets-mode t)
                (worf-mode)
                (embrace-org-mode-hook)
-               ;(org-table-sticky-header-mode)
+               (org-table-sticky-header-mode)
                (set-face-attribute 'org-table nil :inherit 'fixed-pitch)))
   :config
   (require 'ob-java)
@@ -74,7 +74,6 @@
 
 (use-package org-bullets
   :ensure t
-  :disabled t
   :commands org-bullets-mode)
 
 (use-package org-pomodoro
@@ -91,7 +90,6 @@
 
 (use-package org-table-sticky-header
   :ensure t
-  :disabled t
   :diminish org-table-sticky-header-mode
   :commands org-table-sticky-header-mode)
 
