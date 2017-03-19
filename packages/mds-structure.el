@@ -10,32 +10,7 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Conjunto estrutural de melhorias/funcionalidades para o ambiente:
-;;  - saveplace: automaticamente salva a última posição do buffer visitado;
-;;  - recentf: listagem dos buffers mais recentes;
-;;  - restart-emacs: reinicialização do ambiente;
-;;  - undo-tree: visualização da árvore de modificações do buffer;
-;;  - magit: controle de versão pelo Git com Time Machine, Fringe e Hub;
-;;  - pacotes Abo-abo: Avy, Hydra, Ivy, Swiper e Counsel;
-;;  - smex: histórico de comandos;
-;;  - expand-region: seleção de regiões;
-;;  - embrace: manipulação de símbolos entre seleção;
-;;  - projectile: navegador de projetos;
-;;  - ripgrep: ferramenta de busca Ripgrep (rg);
-;;  - eww: browser interno;
-;;  - popup-imenu: popup do imenu;
-;;  - move-dup: move e/ou duplica linhas;
-;;  - swap-regions: intercambia regiões;
-;;  - tabbar: abas com os buffers;
-;;  - package-utils: atualização automática e assíncrona dos pacotes;
-;;  - exec-path-from-shell: variáveis ambiente do shell;
-;;  - dashboard: quadro com o resumo do ambiente;
-;;  - electric-spacing: espaço entre operadores, conforme modo maior;
-;;  - golden-ratio: taxa de redimensionamento para o buffer ativo;
-;;  - centered-cursor: manter o cursor no centro do buffer;
-;;  - writeroom: ambiente sem distração visual;
-;;  - focus: prioriza a região de edição ativa;
-;;  - plus: dired+, replace+, mouse+, menu-bar+, info+, isearch+ e bookmark+.
+;; Conjunto estrutural de melhorias/funcionalidades para o ambiente.
 
 ;;; Code:
 (winner-mode)
