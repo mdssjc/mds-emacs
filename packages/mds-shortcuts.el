@@ -129,34 +129,34 @@
    "x w u" '(mds/upper-camel-case  :which-key "upper")
    "x w w" '(mds/split-words       :which-key "split"))
   (general-define-key
+   "C-c !"         '(:which-key "flycheck")
+   "C-c &"         '(:which-key "yasnippet")
+   "C-c p"         '(:which-key "projectile")
+   "M-s h"         '(:which-key "highlight")
    "<f10>"         'lacarte-execute-command
    "<f12>"         'ivy-switch-buffer
    "S-<f12>"       'ibuffer
    "C-&"           'hydra-yasnippet/body
+   "C-="           'er/expand-region
    "C->"           'mc/mark-next-like-this
    "C-<"           'mc/mark-previous-like-this
    "C-M-."         'mc/mark-all-dwim
    "C-M-,"         'mc/mark-all-in-region-regexp
-   "C-="           'er/expand-region
    "M-#"           'anzu-replace-at-cursor-thing
    "C-M-#"         'anzu-query-replace-at-cursor-thing
    "M-%"           'anzu-query-replace
    "C-M-%"         'anzu-query-replace-regexp
    "M-*"           'vr/replace
    "C-M-*"         'vr/query-replace
-   "C-c !"         '(:which-key "flycheck")
-   "C-c &"         '(:which-key "yasnippet")
    "C-c / ."       'google-translate-at-point
    "C-c / S"       'google-translate-smooth-translate
    "C-c / T"       'google-translate-query-translate
    "C-c C-/"       'counsel-rg
    "C-c I"         'emojify-insert-emoji
-   "C-c p"         '(:which-key "projectile")
    "C-:"           'avy-goto-char-timer
    "M-g i"         'avy-goto-char-in-line
    "M-g l"         'avy-goto-line
    "M-g r"         'avy-resume
-   "M-s h"         '(:which-key "highlight")
    "M-+"           'shift-number-up
    "M-_"           'shift-number-down
    "M-/"           'hippie-expand
