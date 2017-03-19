@@ -327,15 +327,15 @@
 
 (use-package highlight
   :ensure t
-  :commands global-hi-lock-mode
   :diminish global-hi-lock-mode
+  :commands global-hi-lock-mode
   :init
   (add-hook 'after-init-hook 'global-hi-lock-mode))
 
 (use-package highlight-thing
   :ensure t
-  :commands highlight-thing-mode
   :diminish highlight-thing-mode
+  :commands highlight-thing-mode
   :init
   (add-hook 'prog-mode-hook 'highlight-thing-mode))
 
