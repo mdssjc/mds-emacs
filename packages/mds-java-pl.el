@@ -20,39 +20,39 @@
   ("java" . java-mode)
   :init
   (add-hook 'java-mode-hook
-            '(lambda () (progn
-                     (flycheck-mode)
-                     (meghanada-mode)
-                     (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX")))))
+            '(lambda ()
+               (flycheck-mode)
+               (meghanada-mode)
+               (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))))
   (add-hook 'meghanada-mode-hook
-            '(lambda () (progn
-                     (setq company-meghanada-prefix-length 1
-                           company-occurrence-weight-function 'company-occurrence-prefer-any-closest)
-                     (setq-local company-transformers '(company-sort-prefer-same-case-prefix
-                                                        company-sort-by-backend-importance
-                                                        company-sort-by-statistics))
-                     (setq-local company-backends '((company-meghanada
-                                                     company-yasnippet
-                                                     :with
-                                                     company-keywords
-                                                     company-abbrev
-                                                     company-dabbrev-code
-                                                     company-dabbrev
-                                                     company-dict
-                                                     company-files))))))
+            '(lambda ()
+               (setq company-meghanada-prefix-length 1
+                     company-occurrence-weight-function 'company-occurrence-prefer-any-closest)
+               (setq-local company-transformers '(company-sort-prefer-same-case-prefix
+                                                  company-sort-by-backend-importance
+                                                  company-sort-by-statistics))
+               (setq-local company-backends '((company-meghanada
+                                               company-yasnippet
+                                               :with
+                                               company-keywords
+                                               company-abbrev
+                                               company-dabbrev-code
+                                               company-dabbrev
+                                               company-dict
+                                               company-files)))))
   (add-hook 'jdee-mode-hook
-            '(lambda () (progn
-                     (setq-local company-transformers '(company-sort-by-backend-importance
-                                                        company-sort-prefer-same-case-prefix
-                                                        company-sort-by-statistics))
-                     (setq-local company-backends '((company-yasnippet
-                                                     :with
-                                                     company-keywords
-                                                     company-abbrev
-                                                     company-dabbrev-code
-                                                     company-dabbrev
-                                                     company-dict
-                                                     company-files)))))))
+            '(lambda ()
+               (setq-local company-transformers '(company-sort-by-backend-importance
+                                                  company-sort-prefer-same-case-prefix
+                                                  company-sort-by-statistics))
+               (setq-local company-backends '((company-yasnippet
+                                               :with
+                                               company-keywords
+                                               company-abbrev
+                                               company-dabbrev-code
+                                               company-dabbrev
+                                               company-dict
+                                               company-files))))))
 
 (use-package java-snippets
   :ensure t
