@@ -21,7 +21,6 @@
   :init
   (add-hook 'java-mode-hook
             '(lambda () (progn
-                     ;; (semantic-mode)
                      (setq-local company-transformers '(company-sort-by-backend-importance
                                                         company-sort-prefer-same-case-prefix
                                                         company-sort-by-statistics))
@@ -35,26 +34,8 @@
                                                      company-files)))
                      (flycheck-mode)
                      (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))
-                     (define-key java-mode-map (kbd "<f6> e") 'eclim-init)
                      (define-key java-mode-map (kbd "<f6> j") 'jdee-mode)
                      (define-key java-mode-map (kbd "<f6> m") 'meghanada-mode))))
-  (defun eclim-init ()
-    (interactive)
-    (setq-local company-backends '((company-emacs-eclim
-                                    company-yasnippet
-                                    :with
-                                    company-keywords
-                                    company-abbrev
-                                    company-dabbrev-code
-                                    company-dabbrev
-                                    company-dict
-                                    company-files)))
-    (setq help-at-pt-display-when-idle t
-          help-at-pt-timer-delay 0.1
-          eclim-interactive-completion-function 'ivy-completing-read
-          eclim-problems-show-pos t)
-    (help-at-pt-set-timer)
-    (eclim-mode))
   (add-hook 'jdee-mode-hook
             '(lambda () (progn
                      (setq-local company-backends '((company-yasnippet
@@ -97,20 +78,6 @@
   :commands jdee-mode
   :config
   (setq jdee-server-dir (concat user-emacs-directory ".cache/jdee/")))
-
-(use-package eclim
-  :ensure t
-  :commands global-eclim-mode eclim-mode
-  :bind
-  (:map eclim-mode-map
-        ("C-c C-d s" . start-eclimd)
-        ("C-c C-d k" . stop-eclimd))
-  :config
-  (use-package company-emacs-eclim
-    :ensure t
-    :commands company-emacs-eclim)
-  (use-package eclimd
-    :commands start-eclimd))
 
 (provide 'mds-java-pl)
 ;;; mds-java-pl.el ends here
