@@ -440,8 +440,8 @@
     "C-c C-r" "refactor"
     "C-c C-v" "project"))
 
-(add-to-list 'load-path (concat user-emacs-directory "temp/right-click-context"))
 (use-package right-click-context
+  :load-path (lambda () (concat user-emacs-directory "temp/right-click-context"))
   :diminish right-click-context-mode
   :commands right-click-context-mode
   :init
