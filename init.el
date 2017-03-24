@@ -13,26 +13,22 @@
 ;; Arquivo de inicialização do ambiente.
 
 ;;; Code:
-(setq gc-cons-threshold 104857600
-      load-prefer-newer t
-      first-boot (file-exists-p (concat user-emacs-directory "elpa")))
+(setq gc-cons-threshold (* 100 1024 1024))
 
-;; Bootstrap `use-package'
 (require 'package)
 
 (setq package-enable-at-startup nil
       package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
+
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; Init
 (let ((file-name-handler-alist))
-  (eval-when-compile
-    (require 'use-package))
+  (eval-when-compile (require 'use-package))
   (require 'diminish)
   (require 'bind-key)
 
@@ -47,8 +43,8 @@
   (setq initial-major-mode 'fundamental-mode
         column-number-mode t
         visible-bell t
+        load-prefer-newer t
         ;; Garbage Collect
-        gc-cons-threshold (* 100 1024 1024) ; 100 MB
         jit-lock-defer-time nil
         jit-lock-stealth-nice 0.1
         jit-lock-stealth-time 0.2
@@ -91,14 +87,10 @@
   (set-selection-coding-system 'utf-8)
   (prefer-coding-system        'utf-8)
   (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
-  ;; --
-
-  (add-to-list 'load-path (concat user-emacs-directory "core"))
-  (add-to-list 'load-path (concat user-emacs-directory "packages"))
   ;; ---
 
   ;; Hooks
-  (add-hook 'before-save-hook  'delete-trailing-whitespace)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
   (mouse-avoidance-mode 'animate)
   (fset 'yes-or-no-p 'y-or-n-p)
@@ -115,19 +107,21 @@
   ;; OS
   (when (eq system-type 'gnu/linux)
     (setq x-gtk-use-system-tooltips t))
-  ;; --
+  ;; ---
 
   ;; Segredos (Secrets)
   (load (concat user-emacs-directory "secrets/secrets"))
   ;; ---
 
   ;; Pacotes Essenciais (Essential Packages)
+  (add-to-list 'load-path (concat user-emacs-directory "core"))
+  (add-to-list 'load-path (concat user-emacs-directory "packages"))
   (require 'mds-core-funcs)
 
   (use-package esup
     :ensure t
     :commands esup)
-  ;; --
+  ;; ---
 
   ;; Pacotes (Packages)
   ;; Estético (Aesthetic)
@@ -159,12 +153,7 @@
   (require 'mds-r-dsl)
   (require 'mds-plantuml-dsl)
   ;; Serviços
-  (require 'mds-news)
-  ;; ---
-
-  (if first-boot
-      (byte-recompile-directory (expand-file-name "~/.emacs.d/packages") 0)
-    (restart-emacs)))
+  (require 'mds-news))
 
 ;; Automático (Automatic)
 (custom-set-variables
@@ -175,7 +164,7 @@
  '(custom-enabled-themes (quote (wombat)))
  '(package-selected-packages
    (quote
-    (wgrep rg isearch-prop isearch+ zeal-at-point wttrin writeroom-mode worf which-key web-mode volatile-highlights visual-regexp-steroids use-package-chords undo-tree twittering-mode tomatinho tabbar-ruler symon swap-regions srefactor spacemacs-theme spaceline smex simple+ shm shift-number restart-emacs replace+ rainbow-delimiters racket-mode projectile-speedbar projectile-ripgrep pp+ plantuml-mode parinfer package-utils org-pomodoro move-dup mouse+ menu-bar+ meghanada markdown-mode major-mode-icons magit litable lispy lfe-mode langtool jdee java-snippets ivy-rich ivy-hydra irony-eldoc intero info+ imenu+ icomplete+ icicles hlint-refactor hl-line+ highlight-thing highlight haskell-snippets guess-language google-this golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell face-remap+ exec-path-from-shell esup ess eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing dumb-jump dr-racket-like-unicode dired+ dashboard counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghci company-ghc company-emacs-eclim company-dict company-cabal ciel cider centered-cursor-mode buffer-move bookmark+ beacon auto-yasnippet anzu all-the-icons-dired))))
+    (org-pomodoro zop-to-char zeal-at-point wttrin writeroom-mode worf which-key wgrep web-mode volatile-highlights visual-regexp-steroids use-package-chords undo-tree twittering-mode tomatinho tabbar-ruler symon swap-regions srefactor spacemacs-theme spaceline smex simple+ shm shift-number rg restart-emacs replace+ rainbow-delimiters racket-mode projectile-speedbar projectile-ripgrep pp+ plantuml-mode parinfer package-utils multiple-cursors move-dup mouse+ menu-bar+ meghanada markdown-mode major-mode-icons magit litable lispy lfe-mode langtool lacarte jdee java-snippets ivy-rich ivy-hydra irony-eldoc intero info+ imenu+ icomplete+ icicles hlint-refactor hl-line+ highlight-thing highlight haskell-snippets guess-language google-translate google-this golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell face-remap+ exec-path-from-shell esup ess eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing dumb-jump dr-racket-like-unicode dired+ dashboard counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghci company-ghc company-emacs-eclim company-dict company-cabal ciel cider centered-cursor-mode buffer-move bookmark+ beacon auto-yasnippet anzu all-the-icons-dired alert))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
