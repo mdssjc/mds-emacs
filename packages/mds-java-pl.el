@@ -23,9 +23,7 @@
             '(lambda () (progn
                      (flycheck-mode)
                      (meghanada-mode)
-                     (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))
-                     (define-key java-mode-map (kbd "<f9> j") 'jdee-mode)
-                     (define-key java-mode-map (kbd "<f9> m") 'meghanada-mode))))
+                     (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX")))))
   (add-hook 'meghanada-mode-hook
             '(lambda () (progn
                      (setq company-meghanada-prefix-length 1

@@ -400,6 +400,9 @@
                       "M-_" 'nil)
   (general-define-key :keymaps 'isearch-mode-map
                       "C-'" 'avy-isearch)
+  (general-define-key :keymaps 'java-mode-map
+                      "<f9> j" 'jdee-mode
+                      "<f9> m" 'meghanada-mode)
   ;; Chords
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   ;; Alias
