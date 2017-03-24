@@ -21,32 +21,11 @@
   :init
   (add-hook 'java-mode-hook
             '(lambda () (progn
-                     (setq-local company-transformers '(company-sort-by-backend-importance
-                                                        company-sort-prefer-same-case-prefix
-                                                        company-sort-by-statistics))
-                     (setq-local company-backends '((company-yasnippet
-                                                     :with
-                                                     company-keywords
-                                                     company-abbrev
-                                                     company-dabbrev-code
-                                                     company-dabbrev
-                                                     company-dict
-                                                     company-files)))
                      (flycheck-mode)
-                     (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))
                      (meghanada-mode)
+                     (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))
                      (define-key java-mode-map (kbd "<f9> j") 'jdee-mode)
                      (define-key java-mode-map (kbd "<f9> m") 'meghanada-mode))))
-  (add-hook 'jdee-mode-hook
-            '(lambda () (progn
-                     (setq-local company-backends '((company-yasnippet
-                                                     :with
-                                                     company-keywords
-                                                     company-abbrev
-                                                     company-dabbrev-code
-                                                     company-dabbrev
-                                                     company-dict
-                                                     company-files))))))
   (add-hook 'meghanada-mode-hook
             '(lambda () (progn
                      (setq company-meghanada-prefix-length 1
@@ -56,6 +35,19 @@
                                                         company-sort-by-statistics))
                      (setq-local company-backends '((company-meghanada
                                                      company-yasnippet
+                                                     :with
+                                                     company-keywords
+                                                     company-abbrev
+                                                     company-dabbrev-code
+                                                     company-dabbrev
+                                                     company-dict
+                                                     company-files))))))
+  (add-hook 'jdee-mode-hook
+            '(lambda () (progn
+                     (setq-local company-transformers '(company-sort-by-backend-importance
+                                                        company-sort-prefer-same-case-prefix
+                                                        company-sort-by-statistics))
+                     (setq-local company-backends '((company-yasnippet
                                                      :with
                                                      company-keywords
                                                      company-abbrev
