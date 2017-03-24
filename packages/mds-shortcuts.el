@@ -434,7 +434,11 @@
     "C-c r" "refactor")
   (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
     "C-c r v" "erefactor"
-    "C-c r"   "refactor"))
+    "C-c r"   "refactor")
+  (which-key-add-major-mode-key-based-replacements 'java-mode
+    "C-c C-c" "compile"
+    "C-c C-r" "refactor"
+    "C-c C-v" "project"))
 
 (add-to-list 'load-path (concat user-emacs-directory "temp/right-click-context"))
 (use-package right-click-context
