@@ -35,8 +35,8 @@
                      (flycheck-mode)
                      (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))
                      (meghanada-mode)
-                     (define-key java-mode-map (kbd "<f6> j") 'jdee-mode)
-                     (define-key java-mode-map (kbd "<f6> m") 'meghanada-mode))))
+                     (define-key java-mode-map (kbd "<f9> j") 'jdee-mode)
+                     (define-key java-mode-map (kbd "<f9> m") 'meghanada-mode))))
   (add-hook 'jdee-mode-hook
             '(lambda () (progn
                      (setq-local company-backends '((company-yasnippet
