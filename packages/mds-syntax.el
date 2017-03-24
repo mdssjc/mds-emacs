@@ -107,7 +107,8 @@
         ispell-dictionary "pt_BR"
         ispell-really-aspell t
         ispell-complete-word-dict (concat (expand-file-name user-emacs-directory) "dict/pt_BR.dic")
-        ispell-choices-win-default-height 5))
+        ispell-choices-win-default-height 5
+        ispell-lazy-highlight nil))
 ;; ---
 
 ;; Abreviação (Abbreviation)
