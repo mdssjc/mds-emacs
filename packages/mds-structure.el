@@ -369,6 +369,11 @@
   :ensure t
   :defer 0)
 
+(use-package page-break-lines
+  :ensure t
+  :diminish page-break-lines-mode
+  :commands page-break-lines-mode)
+
 ;; Plus
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
