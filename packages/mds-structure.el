@@ -35,6 +35,20 @@
         recentf-auto-cleanup 600
         recentf-exclude '("/elpa/" "/.cache/")))
 
+(use-package savehist
+  :ensure t
+  :commands savehist-mode
+  :init
+  (add-hook 'after-init-hook 'savehist-mode)
+  :config
+  (setq history-length t)
+  (setq history-delete-duplicates t)
+  (setq savehist-save-minibuffer-history 1)
+  (setq savehist-additional-variables '(kill-ring
+                                        search-ring
+                                        regexp-search-ring))
+  (setq savehist-file (concat user-emacs-directory ".cache/savehist")))
+
 (use-package restart-emacs
   :ensure t
   :commands restart-emacs)
