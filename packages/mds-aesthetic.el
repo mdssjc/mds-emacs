@@ -19,17 +19,16 @@
   (setq spacemacs-theme-org-highlight t)
   (load-theme 'spacemacs-dark t))
 
-(use-package spaceline
-  :ensure t
-  :defer t
+(use-package spaceline-config
+  :ensure spaceline
+  :defer 0
   :config
   (add-hook 'prog-mode-hook 'linum-mode)
   (setq spaceline-workspace-numbers-unicode t
         spaceline-window-numbers-unicode t
         Info-fontify-angle-bracketed-flag nil)
-  (require 'spaceline-config)
   (spaceline-emacs-theme)
-  (spaceline-info-mode)
+  (eval-after-load "info+" '(spaceline-info-mode))
   (tabbar-mode)
   (global-hl-line-mode t)
   (set-frame-font "Source Code Pro-10" nil t)
