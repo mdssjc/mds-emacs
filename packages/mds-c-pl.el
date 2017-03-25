@@ -26,20 +26,20 @@
                                                   company-sort-by-statistics))
                (setq-local company-backends '((company-irony-c-headers
                                                company-irony
-                                               company-yasnippet
                                                :with
+                                               company-yasnippet
                                                company-abbrev
                                                company-dabbrev-code
                                                company-dabbrev
                                                company-files)))
                (setq-local counsel-dash-docsets '("C"))
-               (flycheck-mode)
                (function-args-mode)
                (fa-config-default)
                (hs-minor-mode)
                (electric-spacing-mode)
                (electric-pair-mode)
                (show-paren-mode)
+               (flycheck-mode)
                (irony-mode)))
   (add-hook 'irony-mode-hook
             '(lambda ()
