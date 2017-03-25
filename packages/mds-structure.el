@@ -276,14 +276,6 @@
   :config
   (setq exec-path-from-shell-check-startup-files nil))
 
-(use-package dashboard
-  :ensure t
-  :config
-  (setq dashboard-items '((recents   . 5)
-                          (bookmarks . 5)
-                          (projects  . 5)))
-  (dashboard-setup-startup-hook))
-
 (use-package electric-spacing
   :ensure t
   :diminish electric-spacing-mode

@@ -33,6 +33,16 @@
   (load-theme 'spacemacs-dark t)
   (toggle-frame-maximized))
 
+(use-package dashboard
+  :ensure t
+  :init
+  (dashboard-setup-startup-hook)
+  :config
+  (setq dashboard-items '((recents   . 5)
+                          (bookmarks . 5)
+                          (projects  . 5))
+        dashboard-banner-logo-title "Welcome to MDS Emacs"))
+
 (use-package all-the-icons
   :ensure t
   :defer t)
