@@ -18,7 +18,7 @@
   :mode ("\\.org\\'" . org-mode)
   :init
   (add-hook 'org-mode-hook
-            '(lambda () (progn)
+            '(lambda ()
                (setq-local company-minimum-prefix-length 3)
                (setq-local company-transformers '(company-sort-by-occurrence
                                                   company-sort-prefer-same-case-prefix
