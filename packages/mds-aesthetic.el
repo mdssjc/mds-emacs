@@ -13,6 +13,10 @@
 ;; Estilo ergonômico e sem distrações/ruídos - tema dark e linha de status com ícones.
 
 ;;; Code:
+(use-package tao-theme
+  :ensure t
+  :defer t)
+
 (use-package spacemacs-common
   :ensure spacemacs-theme
   :config
