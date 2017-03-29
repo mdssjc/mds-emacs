@@ -388,6 +388,10 @@
   :diminish page-break-lines-mode
   :commands page-break-lines-mode)
 
+(use-package popup-imenu
+  :ensure t
+  :commands popup-imenu)
+
 ;; Plus
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init

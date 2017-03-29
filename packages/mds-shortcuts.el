@@ -164,7 +164,7 @@
    "M-/"           'hippie-expand
    "M-Z"           'avy-goto-char-in-line
    "S-C-j"         'join-line
-   "C-'"           'counsel-imenu
+   "C-'"           'popup-imenu
    "C-."           'counsel-dash-at-point
    "S-C-f"         'swiper-multi
    "S-C-s"         'counsel-grep-or-swiper
