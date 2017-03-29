@@ -403,6 +403,8 @@
   (general-define-key :keymaps 'java-mode-map
                       "<f9> j" 'jdee-mode
                       "<f9> m" 'meghanada-mode)
+  (general-define-key :keymaps 'popup-isearch-keymap
+                      "C-'" 'popup-isearch-cancel)
   ;; Chords
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   ;; Alias
