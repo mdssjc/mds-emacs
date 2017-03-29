@@ -440,12 +440,11 @@
     "C-c C-r" "refactor"
     "C-c C-v" "project"))
 
-(use-package right-click-context
-  :load-path (lambda () (concat user-emacs-directory "temp/right-click-context"))
-  :diminish right-click-context-mode
-  :commands right-click-context-mode
-  :init
-  (add-hook 'after-init-hook 'right-click-context-mode))
+(use-package popup-edit-menu
+  :ensure t
+  :commands popup-edit-menu
+  :bind
+  (("<mouse-3>" . popup-edit-menu)))
 
 (provide 'mds-shortcuts)
 ;;; mds-shortcuts.el ends here
