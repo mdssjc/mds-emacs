@@ -92,6 +92,7 @@
   (add-hook 'clojure-mode-hook
             '(lambda ()
                (parinfer-mode)
+               (cider-mode)
                (subword-mode)
                (eldoc-mode)
                (setq-local company-backends '((company-capf
@@ -160,7 +161,7 @@
 
 (use-package cider
   :ensure t
-  :after clojure-mode
+  :commands cider-mode
   :init
   (add-hook 'cider-mode-hook 'clj-refactor-mode)
   :config
@@ -179,7 +180,7 @@
 
 (use-package clj-refactor
   :ensure t
-  :after clojure-mode
+  :commands clj-refactor-mode
   :diminish clj-refactor-mode
   :config
   (cljr-add-keybindings-with-prefix "C-c C-m"))
