@@ -170,7 +170,10 @@
   :ensure t
   :commands cider-mode
   :init
-  (add-hook 'cider-mode-hook 'clj-refactor-mode)
+  (add-hook 'cider-mode-hook
+            '(lambda ()
+               (clj-refactor-mode)
+               (cider-hydra-on)))
   (add-hook 'cider-repl-mode-hook 'eldoc-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook
             '(lambda ()
@@ -200,6 +203,10 @@
   :diminish clj-refactor-mode
   :config
   (cljr-add-keybindings-with-prefix "C-c C-m"))
+
+(use-package cider-hydra
+  :ensure t
+  :commands cider-hydra-on)
 ;; ---
 
 (provide 'mds-lisp-pl)
