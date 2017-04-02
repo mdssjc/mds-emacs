@@ -14,6 +14,9 @@
 
 ;;; Code:
 (use-package sql
+  :mode
+  (("\\.sql\\'"  . sql-mode)
+   ("\\.zsql\\'" . sql-mode))
   :init
   (add-hook 'sql-mode-hook 'sqlup-mode)
   (add-hook 'sql-interactive-mode-hook 'sqlup-mode)
@@ -23,6 +26,11 @@
 (use-package sqlup-mode
   :ensure t
   :commands sqlup-mode)
+
+(use-package sql-indent
+  :ensure t
+  :config
+  (eval-after-load "sql" '(load-library "sql-indent")))
 
 (provide 'mds-sql-dsl)
 ;;; mds-sql-dsl.el ends here
