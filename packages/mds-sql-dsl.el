@@ -19,9 +19,7 @@
    ("\\.zsql\\'" . sql-mode))
   :init
   (add-hook 'sql-mode-hook 'sqlup-mode)
-  (add-hook 'sql-interactive-mode-hook 'sqlup-mode)
-  :config
-  (global-set-key (kbd "C-c u") 'sqlup-capitalize-keywords-in-region))
+  (add-hook 'sql-interactive-mode-hook 'sqlup-mode))
 
 (use-package sqlup-mode
   :ensure t

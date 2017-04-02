@@ -405,6 +405,8 @@
                       "<f9> m" 'meghanada-mode)
   (general-define-key :keymaps 'popup-isearch-keymap
                       "C-'" 'popup-isearch-cancel)
+  (general-define-key :keymaps 'sql-mode-map
+                      "C-c u" 'sqlup-capitalize-keywords-in-region)
   ;; Chords
   (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   ;; Alias
