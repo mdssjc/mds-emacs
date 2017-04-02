@@ -165,6 +165,10 @@
   :init
   (add-hook 'cider-mode-hook 'clj-refactor-mode)
   (add-hook 'cider-repl-mode-hook 'eldoc-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook
+            '(lambda ()
+               (parinfer-mode)
+               (eldoc-mode)))
   :config
   (setq nrepl-log-messages t
         cider-repl-display-in-current-window t
