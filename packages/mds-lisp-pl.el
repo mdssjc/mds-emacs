@@ -124,7 +124,7 @@
 
 (use-package paredit
   :ensure t
-  :commands enable-paredit-mode)
+  :commands paredit-mode enable-paredit-mode)
 
 (use-package rainbow-delimiters
   :ensure t
