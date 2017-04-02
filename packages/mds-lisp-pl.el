@@ -183,7 +183,9 @@
 
 (use-package cider-eval-sexp-fu
   :ensure t
-  :after clojure-mode)
+  :after clojure-mode
+  :init
+  (with-eval-after-load 'eval-sexp-fu (require 'cider-eval-sexp-fu)))
 
 (use-package clj-refactor
   :ensure t
