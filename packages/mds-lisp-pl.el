@@ -86,8 +86,10 @@
 (use-package clojure-mode
   :ensure t
   :mode
-  (("\\.clj\\'" . clojure-mode)
-   ("\\.edn\\'" . clojure-mode))
+  (("\\.clj\\'"  . clojure-mode)
+   ("\\.edn\\'"  . clojure-mode)
+   ("\\.cljc\\'" . clojurec-mode)
+   ("\\.cljx\\'" . clojurex-mode))
   :init
   (add-hook 'clojure-mode-hook
             '(lambda ()
