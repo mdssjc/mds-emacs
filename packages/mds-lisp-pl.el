@@ -114,6 +114,7 @@
   (add-hook 'lfe-mode-hook
             '() (parinfer-mode)))
 
+;; General
 (use-package parinfer
   :ensure t
   :commands parinfer-mode parinfer-toggle-mode
@@ -156,11 +157,15 @@
   :commands erefactor-lazy-highlight-turn-on
   :config
   (define-key emacs-lisp-mode-map "\C-crv" erefactor-map))
+;; ---
 
+;; Racket
 (use-package dr-racket-like-unicode
   :ensure t
   :commands dr-racket-like-unicode-mode)
+;; ---
 
+;; Clojure
 (use-package cider
   :ensure t
   :commands cider-mode
@@ -195,6 +200,7 @@
   :diminish clj-refactor-mode
   :config
   (cljr-add-keybindings-with-prefix "C-c C-m"))
+;; ---
 
 (provide 'mds-lisp-pl)
 ;;; mds-lisp-pl.el ends here
