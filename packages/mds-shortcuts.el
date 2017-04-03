@@ -206,6 +206,7 @@
    "s-c o"         'ciel-co
    "s-."           'mc/mark-all-dwim
    "s-,"           'mc/mark-all-in-region-regexp
+   "s-:"           'avy-goto-char-timer
    "s-p"           'projectile-speedbar-toggle
    "s-P"           'projectile-command-map
    "s-s"           'hydra-embrace/body
