@@ -74,11 +74,6 @@
                                                  (let ((msg (langtool-details-error-message overlays)))
                                                    (popup-tip msg)))))))
 
-(use-package eldoc
-  :ensure t
-  :commands eldoc-mode
-  :diminish eldoc-mode)
-
 (use-package zeal-at-point
   :ensure t
   :defer t)
