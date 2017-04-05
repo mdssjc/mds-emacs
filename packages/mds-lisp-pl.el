@@ -96,10 +96,9 @@
                (parinfer-mode)
                (cider-mode)
                (subword-mode)
-               (eldoc-mode)
                (setq-local company-backends '((company-capf
-                                               company-yasnippet
                                                :with
+                                               company-yasnippet
                                                company-abbrev
                                                company-dabbrev-code
                                                company-dabbrev
@@ -173,8 +172,11 @@
   (add-hook 'cider-mode-hook
             '(lambda ()
                (clj-refactor-mode)
-               (cider-hydra-on)))
-  (add-hook 'cider-repl-mode-hook 'eldoc-mode)
+               (eldoc-mode)))
+  (add-hook 'cider-repl-mode-hook
+            '(lambda ()
+               (eldoc-mode)
+               (subword-mode)))
   (add-hook 'eval-expression-minibuffer-setup-hook
             '(lambda ()
                (parinfer-mode)
@@ -188,7 +190,8 @@
         cider-prompt-save-file-on-load 'always-save
         cider-font-lock-dynamically '(macro core function var)
         nrepl-hide-special-buffers t
-        cider-overlays-use-font-lock t)
+        cider-overlays-use-font-lock t
+        cider-eval-result-prefix ";; => ")
   (cider-repl-toggle-pretty-printing))
 
 (use-package cider-eval-sexp-fu
@@ -206,6 +209,7 @@
 
 (use-package cider-hydra
   :ensure t
+  :disabled t
   :commands cider-hydra-on)
 ;; ---
 
