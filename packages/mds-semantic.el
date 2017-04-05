@@ -77,13 +77,7 @@
 (use-package eldoc
   :ensure t
   :commands eldoc-mode
-  :diminish eldoc-mode
-  :config
-  (defun my-eldoc-display-message (format-string &rest args)
-    "Display eldoc message near point."
-    (when format-string
-      (pos-tip-show (apply 'format format-string args))))
-  (setq eldoc-message-function 'my-eldoc-display-message))
+  :diminish eldoc-mode)
 
 (use-package zeal-at-point
   :ensure t
