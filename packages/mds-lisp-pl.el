@@ -97,8 +97,8 @@
                (cider-mode)
                (subword-mode)
                (setq-local company-backends '((company-capf
-                                               :with
                                                company-yasnippet
+                                               :with
                                                company-abbrev
                                                company-dabbrev-code
                                                company-dabbrev
