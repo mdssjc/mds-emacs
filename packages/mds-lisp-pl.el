@@ -23,7 +23,6 @@
   (add-hook 'emacs-lisp-mode-hook
             '(lambda ()
                (parinfer-mode)
-               (prettify-symbols-mode)
                (eldoc-mode)
                (emr-initialize)
                (erefactor-lazy-highlight-turn-on)
@@ -42,14 +41,7 @@
                (eval-after-load 'flycheck '(flycheck-package-setup))
                (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
   :config
-  (setq flycheck-emacs-lisp-load-path 'inherit
-        lisp-prettify-symbols-alist   '(("lambda" . ?λ)
-                                        ("->"     . ?→)
-                                        ("=>"     . ?⇒)
-                                        ("map"    . ?↦)
-                                        ("."      . ?•))
-        prettify-symbols-alist lisp-prettify-symbols-alist
-        prettify-symbols-unprettify-at-point 'right-edge))
+  (setq flycheck-emacs-lisp-load-path 'inherit))
 
 (use-package racket-mode
   :ensure t
@@ -61,7 +53,6 @@
   (add-hook 'racket-mode-hook
             '(lambda ()
                (parinfer-mode)
-               (prettify-symbols-mode)
                (dr-racket-like-unicode-mode)
                ;; (racket-unicode-input-method-enable)
                (setq-local company-backends '((company-capf
@@ -74,14 +65,7 @@
                (setq-local counsel-dash-docsets '("Racket"))))
   (add-hook 'racket-repl-mode-hook 'racket-unicode-input-method-enable)
   :config
-  (setq racket-smart-open-bracket-enable t
-        lisp-prettify-symbols-alist '(("lambda" . ?λ)
-                                      ("->"     . ?→)
-                                      ("=>"     . ?⇒)
-                                      ("map"    . ?↦)
-                                      ("."      . ?•))
-        prettify-symbols-alist lisp-prettify-symbols-alist
-        prettify-symbols-unprettify-at-point 'right-edge))
+  (setq racket-smart-open-bracket-enable t))
 
 (use-package clojure-mode
   :ensure t
@@ -117,10 +101,19 @@
 (use-package parinfer
   :ensure t
   :commands parinfer-mode parinfer-toggle-mode
+  :init
+  (add-hook 'parinfer-mode-enable-hook
+            '(lambda ()
+               (show-paren-mode 1)
+               (push '("->"  . ?→) prettify-symbols-alist)
+               (push '("=>"  . ?⇒) prettify-symbols-alist)
+               (push '("map" . ?↦) prettify-symbols-alist)
+               (push '("."   . ?•) prettify-symbols-alist)
+               (prettify-symbols-mode 1)))
   :config
   (setq parinfer-extensions '(defaults pretty-parens smart-yank smart-tab paredit lispy one)
-        parinfer-preview-cursor-scope t
-        parinfer-lighters '(" P:>>" . "P:()")))
+        parinfer-lighters '(" P:>>" . "P:()")
+        prettify-symbols-unprettify-at-point 'right-edge))
 
 (use-package paredit
   :ensure t
@@ -135,8 +128,8 @@
   :diminish lispy-mode
   :commands lispy-mode
   :init
-  (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression)
-                                            (lispy-mode 1)))))
+  (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression))
+                                            (lispy-mode 1))))
 
 (use-package litable
   :ensure t
