@@ -15,8 +15,8 @@
 ;;; Code:
 (use-package cc-mode
   :mode
-  ("\\.c$" . c-mode)
-  ("\\.h$" . c-mode)
+  (("\\.c$" . c-mode)
+   ("\\.h$" . c-mode))
   :init
   (setq irony-user-dir (concat user-emacs-directory ".cache/irony"))
   (add-hook 'c-mode-hook
@@ -32,6 +32,7 @@
                                                company-dabbrev-code
                                                company-dabbrev
                                                company-files)))
+               (setq company-backends (remove 'company-clang company-backends))
                (setq-local counsel-dash-docsets '("C"))
                (function-args-mode)
                (fa-config-default)
@@ -52,8 +53,7 @@
                  'irony-completion-at-point-async)
                (irony-cdb-autosetup-compile-options)))
   :config
-  (setq company-backends (remove 'company-clang company-backends)
-        c-default-style "linux"
+  (setq c-default-style "linux"
         speedbar-show-unknow-files t))
 
 (use-package irony
