@@ -113,7 +113,8 @@
   :config
   (setq parinfer-extensions '(defaults pretty-parens smart-yank smart-tab paredit lispy one)
         parinfer-lighters '(" P:>>" . "P:()")
-        prettify-symbols-unprettify-at-point 'right-edge))
+        prettify-symbols-unprettify-at-point 'right-edge
+        show-paren-style 'mixed))
 
 (use-package paredit
   :ensure t
@@ -128,8 +129,8 @@
   :diminish lispy-mode
   :commands lispy-mode
   :init
-  (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression))
-                                            (lispy-mode 1))))
+  (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression)
+                                            (lispy-mode 1)))))
 
 (use-package litable
   :ensure t
