@@ -86,9 +86,10 @@
   :commands function-args-mode fa-config-default)
 
 (defun maio/electric-semicolon ()
+  "Insert a semicolon in expression."
   (interactive)
   (end-of-line)
-  (when (not (looking-back ";"))
+  (when (not (looking-back ";" 0))
     (insert ";")))
 
 (provide 'mds-c-pl)
