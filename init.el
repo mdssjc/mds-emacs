@@ -13,7 +13,8 @@
 ;; Arquivo de inicialização do ambiente.
 
 ;;; Code:
-(setq gc-cons-threshold (* 100 1024 1024))
+(setq gc-cons-threshold (* 100 1024 1024)
+      debug-on-error nil)
 
 (require 'package)
 
@@ -95,6 +96,7 @@
   (mouse-avoidance-mode 'animate)
   (fset 'yes-or-no-p 'y-or-n-p)
   (fset 'display-buffer-in-major-side-window 'window--make-major-side-window)
+  (fset 'cl--copy-slot-descriptor-1 'copy-sequence)
 
   (defun display-extended-command-shorter (command)
     "Display information on a shorter way to M-x a command."
