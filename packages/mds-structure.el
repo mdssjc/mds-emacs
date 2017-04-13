@@ -326,10 +326,6 @@
   :ensure t
   :commands writeroom-mode)
 
-(use-package focus
-  :ensure t
-  :commands focus-mode)
-
 (use-package emr
   :ensure t
   :commands emr-initialize emr-show-refactor-menu
@@ -359,13 +355,6 @@
   :commands global-hi-lock-mode
   :init
   (add-hook 'after-init-hook 'global-hi-lock-mode))
-
-(use-package highlight-thing
-  :ensure t
-  :diminish highlight-thing-mode
-  :commands highlight-thing-mode
-  :init
-  (add-hook 'prog-mode-hook 'highlight-thing-mode))
 
 (use-package buffer-move
   :ensure t
