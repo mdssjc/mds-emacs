@@ -18,8 +18,10 @@
 
 (require 'package)
 
-(setq package-enable-at-startup nil
+(setq load-prefer-newer t
+      package-enable-at-startup nil
       package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
+                         ("org"   . "http://orgmode.org/elpa/")
                          ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
@@ -42,15 +44,16 @@
                 c-basic-offset 2
                 tab-stop-list '(2 4 6 8 10 12))
   (setq initial-major-mode 'fundamental-mode
+        inhibit-startup-screen t
         column-number-mode t
         visible-bell t
-        load-prefer-newer t
         ;; Garbage Collect
         jit-lock-defer-time nil
         jit-lock-stealth-nice 0.1
         jit-lock-stealth-time 0.2
         jit-lock-stealth-verbose nil
         ;; Newline
+        indicate-empty-lines t
         require-final-newline t
         next-line-extends-end-of-buffer nil
         next-line-add-newlines nil
@@ -61,21 +64,6 @@
         scroll-conservatively 101
         scroll-margin 0
         scroll-preserve-screen-position 't
-        ;; Backups
-        backup-directory-alist `(("." . ,(concat user-emacs-directory ".cache/backups")))
-        make-backup-files t
-        backup-by-copying t
-        version-control t
-        delete-old-versions t
-        delete-by-moving-to-trash t
-        kept-old-versions 6
-        kept-new-versions 9
-        ;; Autosave
-        auto-save-file-name-transforms `((".*" ,(concat user-emacs-directory ".cache/auto-save")))
-        auto-save-list-file-prefix (concat user-emacs-directory ".cache/auto-save-list/.saves-")
-        auto-save-default t
-        auto-save-timeout 60
-        auto-save-interval 50
         ;; Bookmark
         bmkp-last-as-first-bookmark-file (concat user-emacs-directory ".cache/bookmarks")
         bookmark-default-file (concat user-emacs-directory ".cache/bookmarks"))
@@ -83,10 +71,11 @@
   ;; Sistema de Codificação (Coding System)
   (set-charset-priority        'unicode)
   (set-default-coding-systems  'utf-8)
+  (prefer-coding-system        'utf-8)
+  (set-language-environment    'utf-8)
   (set-terminal-coding-system  'utf-8)
   (set-keyboard-coding-system  'utf-8)
   (set-selection-coding-system 'utf-8)
-  (prefer-coding-system        'utf-8)
   (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
   ;; ---
 
@@ -166,7 +155,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (icomplete+ face-remap+ visual-regexp-steroids zop-to-char zeal-at-point wttrin writeroom-mode worf which-key wgrep web-mode volatile-highlights visual-regexp use-package-chords undo-tree twittering-mode tomatinho tao-theme tabbar-ruler symon swap-regions srefactor sqlup-mode sql-indent spacemacs-theme spaceline smex simple+ shm shift-number rg restart-emacs replace+ rainbow-delimiters racket-mode projectile-speedbar projectile-ripgrep pp+ popup-imenu popup-edit-menu plantuml-mode parinfer package-utils org-table-sticky-header org-pomodoro org-bullets move-dup mouse+ menu-bar+ meghanada markdown-mode major-mode-icons magit litable lispy lfe-mode langtool lacarte jdee java-snippets ivy-rich ivy-hydra isearch-prop isearch+ irony-eldoc intero info+ imenu+ icicles hlint-refactor hl-line+ highlight-thing haskell-snippets guess-language google-translate google-this golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell exec-path-from-shell esup ess eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing dumb-jump dr-racket-like-unicode dired+ dashboard counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghci company-ghc company-dict company-cabal clj-refactor ciel cider-eval-sexp-fu centered-cursor-mode buffer-move bookmark+ beacon auto-yasnippet anzu all-the-icons-dired))))
+    (color-identifiers-mode icomplete+ face-remap+ visual-regexp-steroids zop-to-char zeal-at-point wttrin writeroom-mode worf which-key wgrep web-mode volatile-highlights visual-regexp use-package-chords undo-tree twittering-mode tomatinho tao-theme tabbar-ruler symon swap-regions srefactor sqlup-mode sql-indent spacemacs-theme spaceline smex simple+ shm shift-number rg restart-emacs replace+ rainbow-delimiters racket-mode projectile-speedbar projectile-ripgrep pp+ popup-imenu popup-edit-menu plantuml-mode parinfer package-utils org-table-sticky-header org-pomodoro org-bullets move-dup mouse+ menu-bar+ meghanada markdown-mode major-mode-icons magit litable lispy lfe-mode langtool lacarte jdee java-snippets ivy-rich ivy-hydra isearch-prop isearch+ irony-eldoc intero info+ imenu+ icicles hlint-refactor hl-line+ highlight-thing haskell-snippets guess-language google-translate google-this golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell exec-path-from-shell esup ess eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing dumb-jump dr-racket-like-unicode dired+ dashboard counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghci company-ghc company-dict company-cabal clj-refactor ciel cider-eval-sexp-fu centered-cursor-mode buffer-move bookmark+ beacon auto-yasnippet anzu all-the-icons-dired))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
