@@ -13,30 +13,47 @@
 ;; Estilo ergonômico e sem distrações/ruídos - tema dark e linha de status com ícones.
 
 ;;; Code:
+(set-frame-font "Source Code Pro-10" nil t)
+(setq line-spacing 0.15)
+
+(add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
+(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'global-hl-line-mode)
+(add-hook 'prog-mode-hook 'color-identifiers-mode)
+
 (use-package tao-theme
   :ensure t
-  :defer t)
-
-(use-package spacemacs-common
-  :ensure spacemacs-theme
-  :config
-  (setq spacemacs-theme-org-highlight t)
-  (load-theme 'spacemacs-dark t))
-
-(use-package spaceline-config
-  :ensure spaceline
   :defer 0
+  :init
+  (load-theme 'tao-yin t)
   :config
-  (add-hook 'prog-mode-hook 'linum-mode)
-  (setq spaceline-workspace-numbers-unicode t
-        spaceline-window-numbers-unicode t
-        Info-fontify-angle-bracketed-flag nil)
-  (spaceline-emacs-theme)
-  (eval-after-load "info+" '(spaceline-info-mode))
-  (tabbar-mode)
-  (global-hl-line-mode t)
-  (set-frame-font "Source Code Pro-10" nil t)
-  (toggle-frame-maximized))
+  (setq Info-fontify-angle-bracketed-flag nil)
+  (tabbar-mode))
+  ;(fringe-mode '(16 . 16)))
+
+(use-package color-identifiers-mode
+  :ensure t
+  :diminish color-identifiers-mode
+  :commands color-identifiers-mode)
+
+;; (use-package spacemacs-common
+;;   :ensure spacemacs-theme
+;;   :disabled t
+;;   :config
+;;   (setq spacemacs-theme-org-highlight t)
+;;   (load-theme 'spacemacs-dark t))
+
+;; (use-package spaceline-config
+;;   :ensure spaceline
+;;   :disabled t
+;;   :defer 0
+;;   :config
+;;   (setq spaceline-workspace-numbers-unicode t
+;;         spaceline-window-numbers-unicode t
+;;         Info-fontify-angle-bracketed-flag nil)
+;;   (spaceline-emacs-theme)
+;;   (eval-after-load "info+" '(spaceline-info-mode))
+;;   (tabbar-mode))
 
 (use-package dashboard
   :ensure t
@@ -67,6 +84,25 @@
   :init
   (add-hook 'after-init-hook 'major-mode-icons-mode))
 
+(use-package focus
+  :ensure t
+  :commands focus-mode
+  :init
+  (add-hook 'prog-mode-hook 'focus-mode))
+
+(use-package highlight-thing
+  :ensure t
+  :diminish highlight-thing-mode
+  :commands highlight-thing-mode
+  :init
+  (add-hook 'prog-mode-hook 'highlight-thing-mode)
+  :config
+  (setq highlight-thing-delay-seconds 0)
+  (set-face-attribute 'highlight-thing nil
+                      :weight 'bold
+                      :foreground "gold1"
+                      :background "black"))
+
 (use-package beacon
   :ensure t
   :commands beacon-mode
@@ -78,20 +114,19 @@
         beacon-blink-when-point-moves-vertically 4
         beacon-color "#FF0000"))
 
-(use-package emojify
-  :ensure t
-  :commands global-emojify-mode
-  :init
-  (add-hook 'after-init-hook 'global-emojify-mode)
-  :config
-  (setq emojify-emojis-dir (concat user-emacs-directory ".cache/emojis")))
-
 (use-package volatile-highlights
   :ensure t
   :commands volatile-highlights-mode
   :diminish volatile-highlights-mode
   :init
   (add-hook 'after-init-hook 'volatile-highlights-mode))
+
+(use-package emojify
+  :ensure t
+  :commands global-emojify-mode
+  :init
+  (setq emojify-emojis-dir (concat user-emacs-directory ".cache/emojis"))
+  (add-hook 'after-init-hook 'global-emojify-mode))
 
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
