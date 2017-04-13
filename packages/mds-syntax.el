@@ -114,12 +114,12 @@
 ;; Abreviação (Abbreviation)
 (use-package abbrev
   :diminish abbrev-mode
-  :commands company-abbrev
+  :commands abbrev-mode
   :init
+  (setq abbrev-file-name (concat user-emacs-directory "dict/abbrevs_defs.el"))
   (setq-default abbrev-mode t)
   :config
-  (setq abbrev-file-name (concat user-emacs-directory "dict/abbrevs_defs.el")
-        save-abbrevs 'silently))
+  (setq save-abbrevs 'silently))
 ;; ---
 
 ;; Modelo (Template)
