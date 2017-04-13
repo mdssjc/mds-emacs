@@ -409,7 +409,7 @@
   (general-define-key :keymaps 'sql-mode-map
                       "C-c u" 'sqlup-capitalize-keywords-in-region)
   ;; Chords
-  (key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
+  ;(key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   ;; Alias
   (defalias 'gs 'magit-status "Magit status"))
 
