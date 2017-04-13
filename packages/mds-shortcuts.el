@@ -265,7 +265,7 @@
                       "T" 'tomatinho)
   ;; Configurações - Configurations
   (general-define-key :keymaps 'parinfer-mode-map
-                      "C-c <return>" 'parinfer-toggle-mode)
+                      "C-c <tab>" 'parinfer-toggle-mode)
   (general-define-key :keymaps 'emacs-lisp-mode-map
                       "<f9> p"  'parinfer-mode
                       "<f9> P"  'enable-paredit-mode
