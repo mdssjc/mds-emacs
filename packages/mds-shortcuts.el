@@ -275,7 +275,7 @@
                       "M-."     'find-function-at-point
                       "M-&"     'complete-symbol
                       "C-c e"   'macrostep-expand
-                      "C-c r e" 'emr-show-refactor-menu)
+                      "C-c C-r e" 'emr-show-refactor-menu)
   (general-define-key :keymaps 'racket-mode-map
                       "<f9> p"   'parinfer-mode
                       "<f9> P"   'enable-paredit-mode
@@ -288,8 +288,8 @@
                       "C-c c"    'racket-run-and-switch-to-repl
                       "C-c C-s"  'racket-racket)
   (general-define-key :keymaps 'c-mode-map
-                      "C-c r e" 'emr-show-refactor-menu
-                      "C-c r s" 'srefactor-refactor-at-point
+                      "C-c C-r e" 'emr-show-refactor-menu
+                      "C-c C-r s" 'srefactor-refactor-at-point
                       ";"       'maio/electric-semicolon)
   (general-define-key :keymaps 'dumb-jump-mode-map
                       "M-g o" 'dumb-jump-go-other-window
@@ -436,10 +436,10 @@
   (which-key-add-major-mode-key-based-replacements 'c-mode
     "C-c ," "semantic"
     "C-c @" "hide blocks"
-    "C-c r" "refactor")
+    "C-c C-r" "refactor")
   (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
-    "C-c r v" "erefactor"
-    "C-c r"   "refactor")
+    "C-c C-r v" "erefactor"
+    "C-c C-r"   "refactor")
   (which-key-add-major-mode-key-based-replacements 'java-mode
     "C-c C-c" "compile"
     "C-c C-r" "refactor"

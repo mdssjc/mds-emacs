@@ -149,7 +149,7 @@
   :ensure t
   :commands erefactor-lazy-highlight-turn-on
   :config
-  (define-key emacs-lisp-mode-map "\C-crv" erefactor-map))
+  (define-key emacs-lisp-mode-map "\C-c\C-rv" erefactor-map))
 ;; ---
 
 ;; Racket
