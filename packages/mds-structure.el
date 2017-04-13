@@ -15,6 +15,23 @@
 ;;; Code:
 (winner-mode)
 
+;; Backups
+(setq backup-directory-alist `(("." . ,(concat user-emacs-directory ".cache/backups")))
+      make-backup-files t
+      backup-by-copying t
+      version-control t
+      delete-old-versions t
+      delete-by-moving-to-trash t
+      kept-old-versions 6
+      kept-new-versions 9)
+
+;; Autosave
+(setq auto-save-file-name-transforms `((".*" ,(concat user-emacs-directory ".cache/auto-save")))
+      auto-save-list-file-prefix (concat user-emacs-directory ".cache/auto-save-list/.saves-")
+      auto-save-default t
+      auto-save-timeout 60
+      auto-save-interval 50)
+
 (use-package saveplace
   :commands save-place-mode
   :init
@@ -39,15 +56,15 @@
   :ensure t
   :commands savehist-mode
   :init
+  (setq savehist-file (concat user-emacs-directory ".cache/savehist"))
   (add-hook 'after-init-hook 'savehist-mode)
   :config
-  (setq history-length t)
-  (setq history-delete-duplicates t)
-  (setq savehist-save-minibuffer-history 1)
-  (setq savehist-additional-variables '(kill-ring
+  (setq history-length t
+        history-delete-duplicates t
+        savehist-save-minibuffer-history 1
+        savehist-additional-variables '(kill-ring
                                         search-ring
-                                        regexp-search-ring))
-  (setq savehist-file (concat user-emacs-directory ".cache/savehist")))
+                                        regexp-search-ring)))
 
 (use-package restart-emacs
   :ensure t
