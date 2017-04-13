@@ -78,8 +78,8 @@
   (add-hook 'clojure-mode-hook
             '(lambda ()
                (parinfer-mode)
-               (cider-mode)
-               (subword-mode)
+               (clj-refactor-mode)
+               (cljr-add-keybindings-with-prefix "C-c C-r .")
                (setq-local company-backends '((company-capf
                                                company-yasnippet
                                                :with
@@ -161,12 +161,12 @@
 ;; Clojure
 (use-package cider
   :ensure t
-  :commands cider-mode
+  :commands cider cider-mode cider-connect cider-jack-in
   :init
   (add-hook 'cider-mode-hook
             '(lambda ()
-               (clj-refactor-mode)
-               (eldoc-mode)))
+               (eldoc-mode)
+               (subword-mode)))
   (add-hook 'cider-repl-mode-hook
             '(lambda ()
                (eldoc-mode)
@@ -190,16 +190,12 @@
 
 (use-package cider-eval-sexp-fu
   :ensure t
-  :after clojure-mode
-  :init
-  (with-eval-after-load 'eval-sexp-fu (require 'cider-eval-sexp-fu)))
+  :after cider)
 
 (use-package clj-refactor
   :ensure t
   :commands clj-refactor-mode
-  :diminish clj-refactor-mode
-  :config
-  (cljr-add-keybindings-with-prefix "C-c C-m"))
+  :diminish clj-refactor-mode)
 
 (use-package cider-hydra
   :ensure t
