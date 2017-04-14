@@ -46,6 +46,7 @@
   (setq initial-major-mode 'fundamental-mode
         inhibit-startup-screen t
         column-number-mode t
+        size-indication-mode t
         visible-bell t
         ;; Garbage Collect
         jit-lock-defer-time nil
@@ -153,9 +154,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (color-identifiers-mode icomplete+ face-remap+ visual-regexp-steroids zop-to-char zeal-at-point wttrin writeroom-mode worf which-key wgrep web-mode volatile-highlights visual-regexp use-package-chords undo-tree twittering-mode tomatinho tao-theme tabbar-ruler symon swap-regions srefactor sqlup-mode sql-indent spacemacs-theme spaceline smex simple+ shm shift-number rg restart-emacs replace+ rainbow-delimiters racket-mode projectile-speedbar projectile-ripgrep pp+ popup-imenu popup-edit-menu plantuml-mode parinfer package-utils org-table-sticky-header org-pomodoro org-bullets move-dup mouse+ menu-bar+ meghanada markdown-mode major-mode-icons magit litable lispy lfe-mode langtool lacarte jdee java-snippets ivy-rich ivy-hydra isearch-prop isearch+ irony-eldoc intero info+ imenu+ icicles hlint-refactor hl-line+ highlight-thing haskell-snippets guess-language google-translate google-this golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell exec-path-from-shell esup ess eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing dumb-jump dr-racket-like-unicode dired+ dashboard counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghci company-ghc company-dict company-cabal clj-refactor ciel cider-eval-sexp-fu centered-cursor-mode buffer-move bookmark+ beacon auto-yasnippet anzu all-the-icons-dired))))
+ )
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
