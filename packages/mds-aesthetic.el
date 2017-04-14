@@ -36,25 +36,6 @@
   :diminish color-identifiers-mode
   :commands color-identifiers-mode)
 
-;; (use-package spacemacs-common
-;;   :ensure spacemacs-theme
-;;   :disabled t
-;;   :config
-;;   (setq spacemacs-theme-org-highlight t)
-;;   (load-theme 'spacemacs-dark t))
-
-;; (use-package spaceline-config
-;;   :ensure spaceline
-;;   :disabled t
-;;   :defer 0
-;;   :config
-;;   (setq spaceline-workspace-numbers-unicode t
-;;         spaceline-window-numbers-unicode t
-;;         Info-fontify-angle-bracketed-flag nil)
-;;   (spaceline-emacs-theme)
-;;   (eval-after-load "info+" '(spaceline-info-mode))
-;;   (tabbar-mode))
-
 (use-package dashboard
   :ensure t
   :init
