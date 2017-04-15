@@ -27,6 +27,7 @@
 
 (use-package sql-indent
   :ensure t
+  :after sql
   :config
   (eval-after-load "sql" '(load-library "sql-indent")))
 
