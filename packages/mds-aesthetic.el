@@ -16,7 +16,7 @@
 (set-frame-font "Source Code Pro-10" nil t)
 (setq line-spacing 0.15)
 
-(add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
+(add-hook 'window-setup-hook 'toggle-frame-maximized)
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'global-hl-line-mode)
 (add-hook 'prog-mode-hook 'color-identifiers-mode)
@@ -29,7 +29,33 @@
   :config
   (setq Info-fontify-angle-bracketed-flag nil)
   (tabbar-mode))
-  ;(fringe-mode '(16 . 16)))
+
+(use-package powerline
+  :ensure t
+  :defer 0
+  :init
+  (setq powerline-default-separator 'slant
+        powerline-height 14
+        powerline-default-separator-dir '(right . right))
+  (display-time-mode))
+
+(use-package spaceline
+  :ensure t
+  :after powerline
+  :config
+  (require 'spaceline-config)
+  (spaceline-info-mode))
+
+(use-package spaceline-all-the-icons
+  :ensure t
+  :after spaceline
+  :config
+  (setq spaceline-all-the-icons-separator-type 'none
+        spaceline-all-the-icons-icon-set-git-stats 'arrows)
+  (spaceline-all-the-icons--setup-anzu)
+  (spaceline-toggle-all-the-icons-buffer-position-on)
+  (spaceline-all-the-icons-theme)
+  (set-face-attribute 'mode-line nil :font "Source Code Pro-10"))
 
 (use-package color-identifiers-mode
   :ensure t
@@ -60,6 +86,7 @@
 
 (use-package major-mode-icons
   :ensure t
+  :disabled t
   :diminish major-mode-icons-mode
   :commands major-mode-icons-mode
   :init
