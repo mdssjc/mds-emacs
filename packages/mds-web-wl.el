@@ -16,10 +16,10 @@
 (use-package web-mode
   :ensure t
   :mode
-  ("\\.html$" . web-mode)
-  ("\\.htm$"  . web-mode)
-  ("\\.css$"  . web-mode)
-  ("\\.scss$" . web-mode)
+  (("\\.html$" . web-mode)
+   ("\\.htm$"  . web-mode)
+   ("\\.css$"  . web-mode)
+   ("\\.scss$" . web-mode))
   :init
   (add-hook 'web-mode-hook
             '(lambda ()
@@ -49,8 +49,8 @@
         web-mode-enable-css-colorization t
         web-mode-enable-auto-expanding t
         emmet-indentation 2
-        emmet-use-css-transform t
-        emmet-use-sass-syntax t
+        emmet-use-css-transform nil
+        emmet-use-sass-syntax nil
         company-minimum-prefix-length 0)
   (er/add-html-mode-expansions)
   (er/add-css-mode-expansions))
