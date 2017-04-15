@@ -75,7 +75,8 @@
   :diminish undo-tree-mode
   :commands global-undo-tree-mode
   :init
-  (add-hook 'after-init-hook 'global-undo-tree-mode)
+  (add-hook 'org-mode-hook  'global-undo-tree-mode)
+  (add-hook 'prog-mode-hook 'global-undo-tree-mode)
   :config
   (setq undo-tree-visualizer-timestamps t
         undo-tree-visualizer-diff t
