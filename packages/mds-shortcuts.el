@@ -447,9 +447,9 @@
 
 (use-package popup-edit-menu
   :ensure t
-  :commands popup-edit-menu
-  :bind
-  (("<mouse-3>" . popup-edit-menu)))
+  :defer 0
+  :config
+  (global-set-key [mouse-3] (popup-edit-menu-stub)))
 
 (provide 'mds-shortcuts)
 ;;; mds-shortcuts.el ends here
