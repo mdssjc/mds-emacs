@@ -154,7 +154,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages
+   (quote
+    (all-the-icons-dired spaceline-all-the-icons spaceline elfeed twittering-mode wttrin plantuml-mode sql-indent sqlup-mode ess markdown-mode company-web emmet-mode web-mode function-args srefactor irony-eldoc flycheck-irony company-irony-c-headers company-irony irony clj-refactor cider-eval-sexp-fu cider dr-racket-like-unicode erefactor flycheck-package litable lispy parinfer lfe-mode clojure-mode racket-mode rainbow-delimiters company-ghc company-ghci company-cabal ghc flycheck-haskell haskell-snippets hlint-refactor shm intero haskell-mode jdee meghanada java-snippets eshell-fringe-status org-table-sticky-header worf tomatinho org-pomodoro org-bullets engine-mode counsel-dash zeal-at-point langtool guess-language flyspell-correct-ivy flyspell-popup flycheck-pos-tip flycheck auto-yasnippet yasnippet company-dict company-statistics company-quickhelp company popup-edit-menu which-key general use-package-chords hl-line+ simple+ pp+ imenu+ menu-bar+ replace+ isearch-prop isearch+ bookmark+ info+ mouse+ dired+ popup-imenu multiple-cursors lacarte shift-number google-translate google-this symon buffer-move highlight icicles dumb-jump emr writeroom-mode centered-cursor-mode golden-ratio electric-spacing exec-path-from-shell package-utils tabbar-ruler tabbar swap-regions move-dup visual-regexp anzu wgrep rg projectile-speedbar counsel-projectile projectile-ripgrep projectile ciel embrace expand-region smex counsel swiper ivy-rich ivy-hydra ivy hydra zop-to-char avy git-gutter-fringe git-timemachine magit undo-tree restart-emacs emojify volatile-highlights beacon highlight-thing focus dashboard color-identifiers-mode tao-theme esup use-package))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
