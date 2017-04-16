@@ -204,12 +204,13 @@
   :ensure t
   :diminish projectile-mode
   :init
-  (projectile-mode t)
-  :config
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
         projectile-sort-order 'recentf
-        projectile-enable-caching t))
+        projectile-enable-caching t
+        projectile-file-exists-local-cache-expire (* 10 60)
+        projectile-completion-system 'ivy)
+  (projectile-mode t))
 
 (use-package projectile-ripgrep
   :ensure t
@@ -219,17 +220,11 @@
   :ensure t
   :commands counsel-projectile-on
   :init
-  (add-hook 'projectile-mode-hook 'counsel-projectile-on)
-  :config
-  (fset 'projectile-find-file        'counsel-projectile-find-file)
-  (fset 'projectile-find-dir         'counsel-projectile-find-dir)
-  (fset 'projectile-switch-to-buffer 'counsel-projectile-switch-to-buffer)
-  (fset 'projectile-ag               'counsel-projectile-ag)
-  (fset 'projectile-switch-project   'counsel-projectile-switch-project))
+  (add-hook 'projectile-mode-hook 'counsel-projectile-on))
 
 (use-package projectile-speedbar
   :ensure t
-  :commands projectile-speedbar-open-current-buffer-in-tree)
+  :commands projectile-speedbar-toggle projectile-speedbar-open-current-buffer-in-tree)
 
 (use-package speedbar
   :defer t
@@ -411,7 +406,7 @@
 (eval-after-load "info" '(use-package info+ :ensure t :defer 0))
 
 (eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0))
-                               ;:init))
+                               ;:init
                                ;(defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
 
 (eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0
