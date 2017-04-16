@@ -264,6 +264,8 @@
                       "p" 'org-pomodoro
                       "T" 'tomatinho)
   ;; Configurações - Configurations
+  (general-define-key :keymaps 'prog-mode-map
+                      "<tab>" 'company-indent-or-complete-common)
   (general-define-key :keymaps 'parinfer-mode-map
                       "C-c <tab>" 'parinfer-toggle-mode)
   (general-define-key :keymaps 'emacs-lisp-mode-map
