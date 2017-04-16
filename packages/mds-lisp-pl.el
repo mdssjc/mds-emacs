@@ -135,7 +135,9 @@
 (use-package litable
   :ensure t
   :commands litable-mode
-  :diminish litable-mode " Ⓣ")
+  :diminish litable-mode " Ⓣ"
+  :config
+  (setq litable-list-file (concat user-emacs-directory ".cache/.litable-lists.el")))
 
 (use-package flycheck-package
   :ensure t
