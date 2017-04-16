@@ -93,8 +93,8 @@ Listagem dos comandos fundamentais:
 * `F6` - Sintático
 * `F7` - Semântico
 * `F8` - Pragmático
-* `F9` - Configurações
-* `F10` - Menu do Modo Maior
+* `F9` - Configurações do modo maior
+* `F10` - Comandos LaCarte
 * `F11` - Ativa o *Fullscreen*
 * `F12` - *IBuffer*
 * `Ctrl + x` - comandos para o ambiente
