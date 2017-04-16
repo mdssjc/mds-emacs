@@ -429,9 +429,9 @@
     "C-c p 4" "find"
     "C-c p s" "search"
     "C-c p x" "execute"
-    "s-P 4  " "find"
-    "s-P s  " "search"
-    "s-P x  " "execute"
+    "s-p 4  " "find"
+    "s-p s  " "search"
+    "s-p x  " "execute"
     "<C-M-return> p 4" "find"
     "<C-M-return> p s" "search"
     "<C-M-return> p x" "execute")
