@@ -111,17 +111,6 @@
                       :foreground "gold1"
                       :background "black"))
 
-(use-package beacon
-  :ensure t
-  :commands beacon-mode
-  :diminish beacon-mode
-  :init
-  (add-hook 'after-init-hook 'beacon-mode)
-  :config
-  (setq beacon-blink-when-focused t
-        beacon-blink-when-point-moves-vertically 4
-        beacon-color "#FF0000"))
-
 (use-package volatile-highlights
   :ensure t
   :commands volatile-highlights-mode
