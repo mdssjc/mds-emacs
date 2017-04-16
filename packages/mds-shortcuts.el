@@ -207,8 +207,8 @@
    "s-."           'mc/mark-all-dwim
    "s-,"           'mc/mark-all-in-region-regexp
    "s-:"           'avy-goto-char-timer
-   "s-p"           'projectile-speedbar-toggle
-   "s-P"           'projectile-command-map
+   "s-p"           'projectile-command-map
+   "s-P"           'projectile-speedbar-toggle
    "s-s"           'hydra-embrace/body
    "s-v"           'hydra-expand-region/body)
   ;; Toggles
