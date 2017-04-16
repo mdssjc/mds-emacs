@@ -73,15 +73,15 @@
 (use-package undo-tree
   :ensure t
   :diminish undo-tree-mode
-  :commands global-undo-tree-mode
+  :commands undo-tree-mode global-undo-tree-mode
   :init
-  (add-hook 'org-mode-hook  'global-undo-tree-mode)
-  (add-hook 'prog-mode-hook 'global-undo-tree-mode)
+  (setq undo-tree-history-directory-alist `(("." . ,(concat user-emacs-directory ".cache/undo-tree"))))
+  (add-hook 'org-mode-hook  'undo-tree-mode)
+  (add-hook 'prog-mode-hook 'undo-tree-mode)
   :config
   (setq undo-tree-visualizer-timestamps t
         undo-tree-visualizer-diff t
-        undo-tree-auto-save-history t
-        undo-tree-history-directory-alist `(("." . ,(concat user-emacs-directory ".cache/undo-tree")))))
+        undo-tree-auto-save-history t))
 
 (use-package magit
   :ensure t
@@ -298,8 +298,8 @@
   :ensure t
   :commands exec-path-from-shell-initialize
   :init
-  (add-hook 'after-init-hook '(lambda () (when (memq window-system '(mac ns x))
-                                      (exec-path-from-shell-initialize))))
+  (add-hook 'after-init-hook '(lambda () (when (memq window-system '(mac ns x)))
+                                      (exec-path-from-shell-initialize)))
   :config
   (setq exec-path-from-shell-check-startup-files nil))
 
