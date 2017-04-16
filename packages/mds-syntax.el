@@ -44,15 +44,15 @@
                             company-files))
         company-transformers '(company-sort-by-occurrence)
         company-minimum-prefix-length 1
-        company-idle-delay 0.1
-        company-tooltip-idle-delay 0.1
+        company-idle-delay 0
+        company-tooltip-idle-delay 0
         company-show-numbers t
         company-occurrence-weight-function 'company-occurrence-prefer-any-closest
         company-search-regexp-function 'company-search-flex-regexp
         company-require-match nil
         company-dabbrev-ignore-case nil
         company-dabbrev-downcase nil
-        company-dabbrev-minimum-length 2))
+        company-dabbrev-minimum-length 1))
 
 (use-package company-quickhelp
   :ensure t
