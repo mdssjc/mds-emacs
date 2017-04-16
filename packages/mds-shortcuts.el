@@ -264,6 +264,8 @@
                       "p" 'org-pomodoro
                       "T" 'tomatinho)
   ;; Configurações - Configurations
+  (general-define-key :keymaps 'global-map
+                      "M-SPC" 'counsel-projectile-drop-to-switch-project)
   (general-define-key :keymaps 'prog-mode-map
                       "<tab>" 'company-indent-or-complete-common)
   (general-define-key :keymaps 'parinfer-mode-map
