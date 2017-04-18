@@ -10,130 +10,117 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Atalhos do ambiente.
+;; Atalhos do ambiente Emacs.
 
 ;;; Code:
-(use-package use-package-chords
-  :ensure t
-  :init
-  (add-hook 'after-init-hook '(lambda () (key-chord-mode t)))
-  :config
-  (setq key-chord-two-keys-delay 0.15
-        key-chord-one-key-delay  0.15))
-
 (use-package general
   :ensure t
-  :chords
-  (("qq" . save-buffers-kill-terminal)
-   ("qr" . restart-emacs)
-   ("xb" . ivy-switch-buffer)
-   ("xs" . save-buffer)
-   ("xk" . kill-this-buffer)
-   ("xm" . counsel-M-x)
-   ("xf" . counsel-find-file)
-   ("xr" . counsel-recentf)
-   ("gs" . magit-status)
-   ("\\7" . hydra-yasnippet/body)
-   ("/7"  . hydra-yasnippet/body)
-   ("\\g" . avy-goto-char-in-line)
-   ("/g"  . avy-goto-char-in-line)
-   ("\\s" . hydra-embrace/body)
-   ("/s"  . hydra-embrace/body)
-   ("\\v" . hydra-expand-region/body)
-   ("/v"  . hydra-expand-region/body))
   :config
   ;; Super-key laucher
-  (general-define-key
-   :prefix "<C-M-return>"
-   "a"     '(:which-key "applications")
-   "a s"   'symon-mode
-   "b"     '(:which-key "browser")
-   "b e"   'eww
-   "b a"   'engine/search-amazon
-   "b G"   'engine/search-github
-   "b g"   'engine/search-google
-   "b s"   'engine/search-stack-overflow
-   "b t"   'engine/search-twitter
-   "b w"   'engine/search-wikipedia
-   "b W"   'engine/search-wikipedia-pt
-   "b d"   'engine/search-wiktionary
-   "b D"   'engine/search-wiktionary-pt
-   "c"     'calc
-   "e"     'eshell
-   "g"     '(:which-key "magit")
-   "g S"   'magit-stage-file
-   "g g"   'magit-dispatch-popup
-   "g s"   'magit-status
-   "g t"   'git-timemachine-toggle
-   "n"     '(:which-key "news")
-   "n f"   'elfeed
-   "n t"   'twit
-   "p"     '(projectile-command-map :which-key "projectile")
-   "p s r" 'projectile-ripgrep
-   "r"     'R
-   "u"     '(:which-key "package-utils")
-   "u a"   'package-utils-install-async
-   "u u"   'package-utils-upgrade-all
-   "q"     '(:which-key "quit")
-   "q q"   'save-buffers-kill-terminal
-   "q r"   'restart-emacs
-   "t"     '(:which-key "tabs")
-   "t t"   'tabify
-   "t u"   'untabify
-   "w"     'wttrin)
+  (general-define-key :prefix "<C-M-return>"
+                      "a"     '(:which-key "applications")
+                      "a c"   'calc
+                      "a e"   'esup
+                      "a r"   'R
+                      "a s"   'symon-mode
+                      "a w"   'wttrin
+                      "b"     '(:which-key "buffer")
+                      "b b"   'ivy-switch-buffer
+                      "b f"   'counsel-find-file
+                      "b k"   'kill-this-buffer
+                      "b r"   'counsel-recentf
+                      "b s"   'save-buffer
+                      "B"     '(:which-key "browser")
+                      "B e"   'eww
+                      "B a"   'engine/search-amazon
+                      "B G"   'engine/search-github
+                      "B g"   'engine/search-google
+                      "B s"   'engine/search-stack-overflow
+                      "B t"   'engine/search-twitter
+                      "B w"   'engine/search-wikipedia
+                      "B W"   'engine/search-wikipedia-pt
+                      "B d"   'engine/search-wiktionary
+                      "B D"   'engine/search-wiktionary-pt
+                      "e"     'eshell
+                      "g"     '(:which-key "magit")
+                      "g S"   'magit-stage-file
+                      "g g"   'magit-dispatch-popup
+                      "g s"   'magit-status
+                      "g t"   'git-timemachine-toggle
+                      "n"     '(:which-key "news")
+                      "n f"   'elfeed
+                      "n t"   'twit
+                      "p"     '(projectile-command-map :which-key "projectile")
+                      "p 4"   '(projectile-command-map :which-key "find")
+                      "p s"   '(projectile-command-map :which-key "search")
+                      "p x"   '(projectile-command-map :which-key "execute")
+                      "p s r" 'projectile-ripgrep
+                      "u"     '(:which-key "package-utils")
+                      "u a"   'package-utils-install-async
+                      "u u"   'package-utils-upgrade-all
+                      "q"     '(:which-key "quit")
+                      "q q"   'save-buffers-kill-terminal
+                      "q r"   'restart-emacs
+                      "t"     '(:which-key "tabs")
+                      "t t"   'tabify
+                      "t u"   'untabify)
   ;; C-x
+  (general-define-key :prefix "C-x"
+                      "a"     '(:ignore t :which-key "abbrev")
+                      "/"     'rg
+                      "C-/"   'ripgrep-regexp
+                      "C-f"   'counsel-find-file
+                      "C-r"   'counsel-recentf
+                      "F"     'find-file-at-point
+                      "Q"     '(:which-key "quit/restart")
+                      "Q q"   'save-buffers-kill-terminal
+                      "Q r"   'restart-emacs
+                      "S"     'embrace-commander
+                      "V"     'hydra-expand-region/body
+                      "\\"    'align-regexp
+                      "g"     'magit-status
+                      "t"     'tabbar-ruler-move
+                      "x"     '(:which-key "text")
+                      "x a"   '(:which-key "align")
+                      "x a a" '(align                 :which-key "align")
+                      "x a c" '(align-current         :which-key "align current")
+                      "x a r" '(align-regexp          :which-key "align regexp")
+                      "x c"   '(capitalize-region     :which-key "capitalize")
+                      "x l"   '(downcase-region       :which-key "downcase")
+                      "x r"   'ciel-copy-to-register
+                      "x s"   '(:which-key "sorts")
+                      "x s P" '(sort-pages            :which-key "sort pages")
+                      "x s c" '(sort-columns          :which-key "sort columns")
+                      "x s f" '(sort-fields           :which-key "sort fields")
+                      "x s n" '(sort-numeric-fields   :which-key "sort numeric fields")
+                      "x s p" '(sort-paragraphs       :which-key "sort paragraphs")
+                      "x s r" '(reverse-region        :which-key "reverse lines")
+                      "x s r" '(sort-regexp-fields    :which-key "sort regexp fields")
+                      "x s s" '(sort-lines            :which-key "sort lines")
+                      "x t"   '(:which-key "transpose")
+                      "x t c" '(transpose-chars       :which-key "chars")
+                      "x t l" '(transpose-lines       :which-key "lines")
+                      "x t p" '(transpose-paragraphs  :which-key "paragraphs")
+                      "x t s" '(transpose-sentences   :which-key "sentences")
+                      "x t w" '(transpose-words       :which-key "words")
+                      "x u"   '(upcase-region         :which-key "upcase")
+                      "x w"   '(:which-key "words")
+                      "x w c" '(mds/capitalized-words :which-key "capitalized")
+                      "x w d" '(mds/dashed-words      :which-key "dashed")
+                      "x w i" '(mds/word-initials     :which-key "initials")
+                      "x w l" '(mds/lower-camel-case  :which-key "lower")
+                      "x w s" '(mds/snake-case        :which-key "snake")
+                      "x w t" '(mds/titleized-words   :which-key "titleized")
+                      "x w u" '(mds/upper-camel-case  :which-key "upper")
+                      "x w w" '(mds/split-words       :which-key "split"))
   (general-define-key
-   :prefix "C-x"
-   "/"     'rg
-   "C-/"   'ripgrep-regexp
-   "C-f"   'counsel-find-file
-   "C-r"   'counsel-recentf
-   "F"     'find-file-at-point
-   "Q"     '(:which-key "quit/restart")
-   "Q q"   'save-buffers-kill-terminal
-   "Q r"   'restart-emacs
-   "S"     'embrace-commander
-   "V"     'hydra-expand-region/body
-   "\\"    'align-regexp
-   "g"     'magit-status
-   "t"     'tabbar-ruler-move
-   "x"     '(:which-key "text")
-   "x a"   '(:which-key "align")
-   "x a a" '(align                 :which-key "align")
-   "x a c" '(align-current         :which-key "align current")
-   "x a r" '(align-regexp          :which-key "align regexp")
-   "x c"   '(capitalize-region     :which-key "capitalize")
-   "x l"   '(downcase-region       :which-key "downcase")
-   "x r"   'ciel-copy-to-register
-   "x s"   '(:which-key "sorts")
-   "x s P" '(sort-pages            :which-key "sort pages")
-   "x s c" '(sort-columns          :which-key "sort columns")
-   "x s f" '(sort-fields           :which-key "sort fields")
-   "x s n" '(sort-numeric-fields   :which-key "sort numeric fields")
-   "x s p" '(sort-paragraphs       :which-key "sort paragraphs")
-   "x s r" '(reverse-region        :which-key "reverse lines")
-   "x s r" '(sort-regexp-fields    :which-key "sort regexp fields")
-   "x s s" '(sort-lines            :which-key "sort lines")
-   "x t"   '(:which-key "transpose")
-   "x t c" '(transpose-chars       :which-key "chars")
-   "x t l" '(transpose-lines       :which-key "lines")
-   "x t p" '(transpose-paragraphs  :which-key "paragraphs")
-   "x t s" '(transpose-sentences   :which-key "sentences")
-   "x t w" '(transpose-words       :which-key "words")
-   "x u"   '(upcase-region         :which-key "upcase")
-   "x w"   '(:which-key "words")
-   "x w c" '(mds/capitalized-words :which-key "capitalized")
-   "x w d" '(mds/dashed-words      :which-key "dashed")
-   "x w i" '(mds/word-initials     :which-key "initials")
-   "x w l" '(mds/lower-camel-case  :which-key "lower")
-   "x w s" '(mds/snake-case        :which-key "snake")
-   "x w t" '(mds/titleized-words   :which-key "titleized")
-   "x w u" '(mds/upper-camel-case  :which-key "upper")
-   "x w w" '(mds/split-words       :which-key "split"))
-  (general-define-key
+   "C-c /"         '(:which-key "google")
    "C-c !"         '(:which-key "flycheck")
    "C-c &"         '(:which-key "yasnippet")
    "C-c p"         '(:which-key "projectile")
+   "C-c p 4"       '(:which-key "find")
+   "C-c p s"       '(:which-key "search")
+   "C-c p x"       '(:which-key "execute")
    "M-s h"         '(:which-key "highlight")
    "<f10>"         'lacarte-execute-command
    "<f12>"         'ivy-switch-buffer
@@ -180,6 +167,9 @@
    "S-C-<return>"  'mds/insert-lines-between
    "M-<return>"    'mds/insert-lines-below
    ;; Super-key hotkey
+   "s-p 4"         '(:which-key "find")
+   "s-p s"         '(:which-key "search")
+   "s-p x"         '(:which-key "execute")
    "s-<return>"    'icy-mode
    "s-<up>"        'md/move-lines-up
    "s-<down>"      'md/move-lines-down
@@ -207,6 +197,7 @@
    "s-."           'mc/mark-all-dwim
    "s-,"           'mc/mark-all-in-region-regexp
    "s-:"           'avy-goto-char-timer
+   "s-g"           'avy-goto-char-in-line
    "s-p"           'projectile-command-map
    "s-P"           'projectile-speedbar-toggle
    "s-s"           'hydra-embrace/body
@@ -271,14 +262,16 @@
   (general-define-key :keymaps 'parinfer-mode-map
                       "C-c <tab>" 'parinfer-toggle-mode)
   (general-define-key :keymaps 'emacs-lisp-mode-map
-                      "<f9> p"  'parinfer-mode
-                      "<f9> P"  'enable-paredit-mode
-                      "<f9> l"  'lispy-mode
-                      "<f9> r"  'rainbow-delimiters-mode
-                      "<f9> t"  'litable-mode
-                      "M-."     'find-function-at-point
-                      "M-&"     'complete-symbol
-                      "C-c e"   'macrostep-expand
+                      "<f9> p"    'parinfer-mode
+                      "<f9> P"    'enable-paredit-mode
+                      "<f9> l"    'lispy-mode
+                      "<f9> r"    'rainbow-delimiters-mode
+                      "<f9> t"    'litable-mode
+                      "M-."       'find-function-at-point
+                      "M-&"       'complete-symbol
+                      "C-c e"     'macrostep-expand
+                      "C-c C-r"   '(:ignore t :which-key "refactor")
+                      "C-c C-r v" '(:ignore t :which-key "erefactor")
                       "C-c C-r e" 'emr-show-refactor-menu)
   (general-define-key :keymaps 'racket-mode-map
                       "<f9> p"   'parinfer-mode
@@ -292,9 +285,12 @@
                       "C-c c"    'racket-run-and-switch-to-repl
                       "C-c C-s"  'racket-racket)
   (general-define-key :keymaps 'c-mode-map
+                      "C-c ,"     '(:ignore t :which-key "semantic")
+                      "C-c @"     '(:ignore t :which-key "hide blocks")
+                      "C-c C-r"   '(:ignore t :which-key "refactor")
                       "C-c C-r e" 'emr-show-refactor-menu
                       "C-c C-r s" 'srefactor-refactor-at-point
-                      ";"       'maio/electric-semicolon)
+                      ";"         'maio/electric-semicolon)
   (general-define-key :keymaps 'dumb-jump-mode-map
                       "M-g o" 'dumb-jump-go-other-window
                       "M-g j" 'dumb-jump-go
@@ -406,14 +402,15 @@
   (general-define-key :keymaps 'isearch-mode-map
                       "C-'" 'avy-isearch)
   (general-define-key :keymaps 'java-mode-map
-                      "<f9> j" 'jdee-mode
-                      "<f9> m" 'meghanada-mode)
+                      "<f9> j"  'jdee-mode
+                      "<f9> m"  'meghanada-mode
+                      "C-c C-c" '(:ignore t :which-key "compile")
+                      "C-c C-r" '(:ignore t :which-key "refactor")
+                      "C-c C-v" '(:ignore t :which-key "project"))
   (general-define-key :keymaps 'popup-isearch-keymap
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'sql-mode-map
                       "C-c u" 'sqlup-capitalize-keywords-in-region)
-  ;; Chords
-  ;(key-chord-define emacs-lisp-mode-map "xe" 'eval-last-sexp)
   ;; Alias
   (defalias 'gs 'magit-status "Magit status"))
 
@@ -424,34 +421,10 @@
   :init
   (add-hook 'after-init-hook 'which-key-mode)
   :config
-  (setq which-key-idle-delay 0.1)
-  (which-key-add-key-based-replacements
-    "C-c /  " "google"
-    "C-x a  " "abbrev"
-    "C-c p 4" "find"
-    "C-c p s" "search"
-    "C-c p x" "execute"
-    "s-p 4  " "find"
-    "s-p s  " "search"
-    "s-p x  " "execute"
-    "<C-M-return> p 4" "find"
-    "<C-M-return> p s" "search"
-    "<C-M-return> p x" "execute")
-  (which-key-add-major-mode-key-based-replacements 'c-mode
-    "C-c ," "semantic"
-    "C-c @" "hide blocks"
-    "C-c C-r" "refactor")
-  (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
-    "C-c C-r v" "erefactor"
-    "C-c C-r"   "refactor")
-  (which-key-add-major-mode-key-based-replacements 'java-mode
-    "C-c C-c" "compile"
-    "C-c C-r" "refactor"
-    "C-c C-v" "project"))
+  (setq which-key-idle-delay 0))
 
 (use-package popup-edit-menu
   :ensure t
-  :defer 0
   :config
   (global-set-key [mouse-3] (popup-edit-menu-stub)))
 
