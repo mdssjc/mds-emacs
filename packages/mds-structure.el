@@ -114,11 +114,6 @@
         avy-background t
         avy-case-fold-search nil))
 
-(use-package zop-to-char
-  :ensure t
-  :init
-  (global-set-key [remap zap-to-char] 'zop-to-char))
-
 (use-package hydra
   :ensure t)
 
@@ -127,42 +122,72 @@
   :diminish ivy-mode
   :commands ivy-mode
   :init
-  (add-hook 'after-init-hook 'ivy-mode)
+  (ivy-mode)
   :config
   (setq ivy-height 12
         ivy-count-format "(%d/%d) "
         ivy-use-virtual-buffers t
-        ivy-re-builders-alist '((t . ivy--regex-plus))
+        ivy-re-builders-alist '((read-file-name-internal . ivy--regex-fuzzy)
+                                (t . ivy--regex-plus))
         ivy-virtual-abbreviate 'full
+        ivy-wrap t
         projectile-completion-system   'ivy
         magit-completing-read-function 'ivy-completing-read
         smex-completion-method         'ivy))
 
 (use-package ivy-hydra
-  :ensure t
-  :after ivy)
+  :ensure t)
 
 (use-package ivy-rich
   :ensure t
-  :after ivy
   :config
   (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer))
 
 (use-package swiper
   :ensure t
-  :defer t
   :config
   (setq swiper-include-line-number-in-search t))
 
 (use-package counsel
   :ensure t
-  :defer t)
+  :config
+  (setq counsel-mode-override-describe-bindings t
+        counsel-find-file-at-point t))
 
 (use-package smex
   :ensure t
-  :defer t
-  :config
+  :init
   (setq smex-save-file (concat user-emacs-directory ".cache/smex-items")))
+
+(use-package projectile
+  :ensure t
+  :diminish projectile-mode
+  :init
+  (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
+        projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
+        projectile-sort-order 'recentf
+        projectile-enable-caching t
+        projectile-file-exists-local-cache-expire (* 10 60)
+        projectile-completion-system 'ivy)
+  (projectile-mode)
+  (counsel-projectile-on))
+
+(use-package projectile-ripgrep
+  :ensure t
+  :commands projectile-ripgrep)
+
+(use-package counsel-projectile
+  :ensure t
+  :commands counsel-projectile-on)
+
+(use-package projectile-speedbar
+  :ensure t
+  :commands projectile-speedbar-toggle projectile-speedbar-open-current-buffer-in-tree)
+
+(use-package zop-to-char
+  :ensure t
+  :init
+  (global-set-key [remap zap-to-char] 'zop-to-char))
 
 (use-package expand-region
   :ensure t
@@ -199,32 +224,6 @@
 (use-package ciel
   :ensure t
   :commands ciel-ci ciel-co ciel-copy-to-register)
-
-(use-package projectile
-  :ensure t
-  :diminish projectile-mode
-  :init
-  (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
-        projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
-        projectile-sort-order 'recentf
-        projectile-enable-caching t
-        projectile-file-exists-local-cache-expire (* 10 60)
-        projectile-completion-system 'ivy)
-  (projectile-mode t))
-
-(use-package projectile-ripgrep
-  :ensure t
-  :commands projectile-ripgrep)
-
-(use-package counsel-projectile
-  :ensure t
-  :commands counsel-projectile-on
-  :init
-  (add-hook 'projectile-mode-hook 'counsel-projectile-on))
-
-(use-package projectile-speedbar
-  :ensure t
-  :commands projectile-speedbar-toggle projectile-speedbar-open-current-buffer-in-tree)
 
 (use-package speedbar
   :defer t
@@ -405,9 +404,9 @@
 
 (eval-after-load "info" '(use-package info+ :ensure t :defer 0))
 
-;; (eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
-;;                                :init
-;;                                (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
+(eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
+                               :init
+                               (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
 
 (eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0
                               :config
