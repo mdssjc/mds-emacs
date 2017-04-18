@@ -10,19 +10,17 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Arquivo de inicialização do ambiente.
+;; Arquivo de inicialização do ambiente Emacs.
 
 ;;; Code:
 (setq gc-cons-threshold (* 100 1024 1024)
+      load-prefer-newer t
       debug-on-error nil)
 
 (require 'package)
-
-(setq load-prefer-newer t
-      package-enable-at-startup nil
-      package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
-                         ("org"   . "http://orgmode.org/elpa/")
-                         ("melpa" . "https://melpa.org/packages/")))
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/"))
 
 (package-initialize)
 
@@ -31,10 +29,6 @@
   (package-install 'use-package))
 
 (let ((file-name-handler-alist))
-  (eval-when-compile (require 'use-package))
-  (require 'diminish)
-  (require 'bind-key)
-
   ;; Configurações Globais (Global Settings)
   (setq-default tab-always-indent 'complete
                 ;; Indentation
@@ -43,6 +37,7 @@
                 tab-width 2
                 c-basic-offset 2
                 tab-stop-list '(2 4 6 8 10 12))
+
   (setq initial-major-mode 'fundamental-mode
         inhibit-startup-screen t
         column-number-mode t
@@ -66,8 +61,8 @@
         scroll-margin 0
         scroll-preserve-screen-position 't
         ;; Bookmark
-        bmkp-last-as-first-bookmark-file (concat user-emacs-directory ".cache/bookmarks")
-        bookmark-default-file (concat user-emacs-directory ".cache/bookmarks"))
+        bookmark-default-file (concat user-emacs-directory ".cache/bookmarks")
+        bmkp-last-as-first-bookmark-file nil)
 
   ;; Sistema de Codificação (Coding System)
   (set-charset-priority        'unicode)
@@ -85,7 +80,7 @@
 
   (mouse-avoidance-mode 'animate)
   (fset 'yes-or-no-p 'y-or-n-p)
-  (fset 'display-buffer-in-major-side-window 'window--make-major-side-window)
+  ;;(fset 'display-buffer-in-major-side-window 'window--make-major-side-window)
   (fset 'cl--copy-slot-descriptor-1 'copy-sequence)
 
   (defun display-extended-command-shorter (command)
@@ -154,9 +149,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (all-the-icons-dired spaceline-all-the-icons spaceline elfeed twittering-mode wttrin plantuml-mode sql-indent sqlup-mode ess markdown-mode company-web emmet-mode web-mode function-args srefactor irony-eldoc flycheck-irony company-irony-c-headers company-irony irony clj-refactor cider-eval-sexp-fu cider dr-racket-like-unicode erefactor flycheck-package litable lispy parinfer lfe-mode clojure-mode racket-mode rainbow-delimiters company-ghc company-ghci company-cabal ghc flycheck-haskell haskell-snippets hlint-refactor shm intero haskell-mode jdee meghanada java-snippets eshell-fringe-status org-table-sticky-header worf tomatinho org-pomodoro org-bullets engine-mode counsel-dash zeal-at-point langtool guess-language flyspell-correct-ivy flyspell-popup flycheck-pos-tip flycheck auto-yasnippet yasnippet company-dict company-statistics company-quickhelp company popup-edit-menu which-key general use-package-chords hl-line+ simple+ pp+ imenu+ menu-bar+ replace+ isearch-prop isearch+ bookmark+ info+ mouse+ dired+ popup-imenu multiple-cursors lacarte shift-number google-translate google-this symon buffer-move highlight icicles dumb-jump emr writeroom-mode centered-cursor-mode golden-ratio electric-spacing exec-path-from-shell package-utils tabbar-ruler tabbar swap-regions move-dup visual-regexp anzu wgrep rg projectile-speedbar counsel-projectile projectile-ripgrep projectile ciel embrace expand-region smex counsel swiper ivy-rich ivy-hydra ivy hydra zop-to-char avy git-gutter-fringe git-timemachine magit undo-tree restart-emacs emojify volatile-highlights beacon highlight-thing focus dashboard color-identifiers-mode tao-theme esup use-package))))
+ )
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
