@@ -117,7 +117,8 @@
   (avy-setup-default))
 
 (use-package hydra
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package ivy
   :ensure t
