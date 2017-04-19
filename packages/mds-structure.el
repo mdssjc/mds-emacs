@@ -169,27 +169,31 @@
 
 (use-package projectile
   :ensure t
+  :defer t
   :diminish projectile-mode
   :init
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
-        projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
-        projectile-sort-order 'recentf
+        projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld")))
+  (add-hook 'after-init-hook 'projectile-mode)
+  (add-hook 'projectile-mode-hook 'counsel-projectile-on)
+  :config
+  (setq projectile-sort-order 'recentf
         projectile-enable-caching t
-        projectile-file-exists-local-cache-expire (* 10 60)
-        projectile-completion-system 'ivy)
-  (projectile-mode)
-  (counsel-projectile-on))
+        projectile-file-exists-local-cache-expire (* 10 60)))
 
 (use-package projectile-ripgrep
   :ensure t
+  :after projectile
   :commands projectile-ripgrep)
 
 (use-package counsel-projectile
   :ensure t
+  :after projectile
   :commands counsel-projectile-on)
 
 (use-package projectile-speedbar
   :ensure t
+  :after projectile
   :commands projectile-speedbar-toggle projectile-speedbar-open-current-buffer-in-tree)
 
 (use-package zop-to-char

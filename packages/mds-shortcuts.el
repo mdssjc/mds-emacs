@@ -50,11 +50,6 @@
                       "n"     '(:which-key "news")
                       "n f"   'elfeed
                       "n t"   'twit
-                      "p"     '(projectile-command-map :which-key "projectile")
-                      "p 4"   '(projectile-command-map :which-key "find")
-                      "p s"   '(projectile-command-map :which-key "search")
-                      "p x"   '(projectile-command-map :which-key "execute")
-                      "p s r" 'projectile-ripgrep
                       "u"     '(:which-key "package-utils")
                       "u a"   'package-utils-install-async
                       "u u"   'package-utils-upgrade-all
@@ -117,10 +112,6 @@
    "C-c /"         '(:which-key "google")
    "C-c !"         '(:which-key "flycheck")
    "C-c &"         '(:which-key "yasnippet")
-   "C-c p"         '(:which-key "projectile")
-   "C-c p 4"       '(:which-key "find")
-   "C-c p s"       '(:which-key "search")
-   "C-c p x"       '(:which-key "execute")
    "M-s h"         '(:which-key "highlight")
    "<f10>"         'lacarte-execute-command
    "<f12>"         'ivy-switch-buffer
@@ -167,9 +158,6 @@
    "S-C-<return>"  'mds/insert-lines-between
    "M-<return>"    'mds/insert-lines-below
    ;; Super-key hotkey
-   "s-p 4"         '(:which-key "find")
-   "s-p s"         '(:which-key "search")
-   "s-p x"         '(:which-key "execute")
    "s-<return>"    'icy-mode
    "s-<up>"        'md/move-lines-up
    "s-<down>"      'md/move-lines-down
@@ -198,8 +186,6 @@
    "s-,"           'mc/mark-all-in-region-regexp
    "s-:"           'avy-goto-char-timer
    "s-g"           'avy-goto-char-in-line
-   "s-p"           'projectile-command-map
-   "s-P"           'projectile-speedbar-toggle
    "s-s"           'hydra-embrace/body
    "s-v"           'hydra-expand-region/body)
   ;; Toggles
@@ -255,8 +241,6 @@
                       "p" 'org-pomodoro
                       "T" 'tomatinho)
   ;; Configurações - Configurations
-  (general-define-key :keymaps 'global-map
-                      "M-SPC" 'counsel-projectile-drop-to-switch-project)
   (general-define-key :keymaps 'prog-mode-map
                       "<tab>" 'company-indent-or-complete-common)
   (general-define-key :keymaps 'parinfer-mode-map
@@ -304,7 +288,22 @@
   (general-define-key :keymaps 'popup-isearch-keymap
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'projectile-mode-map
-                      "C-c p s r" 'projectile-ripgrep)
+                      "<C-M-return> p"     '(projectile-command-map :which-key "projectile")
+                      "<C-M-return> p 4"   '(projectile-command-map :which-key "find")
+                      "<C-M-return> p s"   '(projectile-command-map :which-key "search")
+                      "<C-M-return> p x"   '(projectile-command-map :which-key "execute")
+                      "<C-M-return> p s r" 'projectile-ripgrep
+                      "C-c p"     '(:ignore t :which-key "projectile")
+                      "C-c p 4"   '(:ignore t :which-key "find")
+                      "C-c p s"   '(:ignore t :which-key "search")
+                      "C-c p x"   '(:ignore t :which-key "execute")
+                      "C-c p s r" 'projectile-ripgrep
+                      "s-p"   'projectile-command-map
+                      "s-p 4" '(:ignore t :which-key "find")
+                      "s-p s" '(:ignore t :which-key "search")
+                      "s-p x" '(:ignore t :which-key "execute")
+                      "s-P"   'projectile-speedbar-toggle
+                      "M-SPC" 'counsel-projectile-drop-to-switch-project)
   (general-define-key :keymaps 'twittering-mode-map
                       "\\"        'hydra-twittering/body
                       "q"         'twittering-kill-buffer
