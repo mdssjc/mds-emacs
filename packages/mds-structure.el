@@ -102,7 +102,7 @@
   (add-hook 'after-init-hook 'global-git-gutter-mode)
   :config
   (setq git-gutter-fr:side 'right-fringe
-        git-gutter:update-interval 5)
+        git-gutter:update-interval 0)
   (set-face-foreground 'git-gutter-fr:added    "green")
   (set-face-foreground 'git-gutter-fr:modified "blue")
   (set-face-foreground 'git-gutter-fr:deleted  "red"))
