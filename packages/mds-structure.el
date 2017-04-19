@@ -109,11 +109,12 @@
 
 (use-package avy
   :ensure t
-  :commands avy-goto-char-timer
+  :defer t
   :config
   (setq avy-timeout-seconds 0.3
         avy-background t
-        avy-case-fold-search nil))
+        avy-case-fold-search nil)
+  (avy-setup-default))
 
 (use-package hydra
   :ensure t)

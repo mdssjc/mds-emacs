@@ -299,8 +299,6 @@
                       "C-M-g" 'nil
                       "C-M-p" 'nil
                       "C-M-q" 'nil)
-  (general-define-key :keymaps 'isearch-mode-map
-                      "<C-'>" 'avy-isearch)
   (general-define-key :keymaps 'org-mode-map
                       "C-x x e" '(org-emphasize :which-key "Emphasize"))
   (general-define-key :keymaps 'popup-isearch-keymap
@@ -399,8 +397,6 @@
                       "C-c r s h" 'hare-refactor-show)
   (general-define-key :keymaps 'undo-tree-map
                       "M-_" 'nil)
-  (general-define-key :keymaps 'isearch-mode-map
-                      "C-'" 'avy-isearch)
   (general-define-key :keymaps 'java-mode-map
                       "<f9> j"  'jdee-mode
                       "<f9> m"  'meghanada-mode
