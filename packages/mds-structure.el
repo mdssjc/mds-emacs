@@ -10,11 +10,9 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Conjunto estrutural de melhorias/funcionalidades para o ambiente.
+;; Conjunto estrutural de melhorias/funcionalidades para o ambiente Emacs.
 
 ;;; Code:
-(winner-mode)
-
 ;; Backups
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory ".cache/backups")))
       make-backup-files t
@@ -32,15 +30,6 @@
       auto-save-timeout 60
       auto-save-interval 50)
 
-(use-package saveplace
-  :commands save-place-mode
-  :init
-  (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places")))
-  (add-hook 'after-init-hook 'save-place-mode)
-  :config
-  (setq save-place-forget-unreadable-files nil
-        save-place-limit 500))
-
 (use-package recentf
   :commands recentf-mode
   :init
@@ -51,6 +40,15 @@
         recentf-max-menu-items 15
         recentf-auto-cleanup 600
         recentf-exclude '("/elpa/" "/.cache/")))
+
+(use-package saveplace
+  :commands save-place-mode
+  :init
+  (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places")))
+  (add-hook 'after-init-hook 'save-place-mode)
+  :config
+  (setq save-place-forget-unreadable-files nil
+        save-place-limit 500))
 
 (use-package savehist
   :ensure t
@@ -85,26 +83,29 @@
 
 (use-package magit
   :ensure t
-  :commands magit-status)
-
-(use-package git-timemachine
-  :ensure t
-  :after magit)
-
-(use-package git-gutter-fringe
-  :ensure t
-  :diminish git-gutter-mode
-  :init
-  (add-hook 'after-init-hook 'global-git-gutter-mode)
-  :config
-  (setq git-gutter-fr:side 'right-fringe
-        git-gutter:update-interval 5))
+  :defer 3)
 
 (use-package magithub
   :load-path (lambda () (concat user-emacs-directory "temp/magithub"))
   :after magit
   :config
-  (require 'magithub))
+  (magithub-feature-autoinject t))
+
+(use-package git-timemachine
+  :ensure t
+  :commands git-timemachine-mode git-timemachine-toggle)
+
+(use-package git-gutter-fringe
+  :ensure git-gutter
+  :diminish git-gutter-mode
+  :init
+  (add-hook 'after-init-hook 'global-git-gutter-mode)
+  :config
+  (setq git-gutter-fr:side 'right-fringe
+        git-gutter:update-interval 5)
+  (set-face-foreground 'git-gutter-fr:added    "green")
+  (set-face-foreground 'git-gutter-fr:modified "blue")
+  (set-face-foreground 'git-gutter-fr:deleted  "red"))
 
 (use-package avy
   :ensure t
@@ -265,6 +266,11 @@
   :commands eww eww-mode
   :config
   (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
+
+(use-package winner-mode
+  :commands winner-mode
+  :init
+  (add-hook 'after-init-hook 'winner-mode))
 
 (use-package move-dup
   :ensure t
