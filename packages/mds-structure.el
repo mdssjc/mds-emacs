@@ -125,7 +125,7 @@
   :diminish ivy-mode
   :commands ivy-mode
   :init
-  (ivy-mode)
+  (add-hook 'after-init-hook 'ivy-mode)
   :config
   (setq ivy-height 12
         ivy-count-format "(%d/%d) "
@@ -139,26 +139,31 @@
         smex-completion-method         'ivy))
 
 (use-package ivy-hydra
-  :ensure t)
+  :ensure t
+  :after ivy)
 
 (use-package ivy-rich
   :ensure t
+  :after ivy
   :config
   (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer))
 
 (use-package swiper
   :ensure t
+  :defer t
   :config
   (setq swiper-include-line-number-in-search t))
 
 (use-package counsel
   :ensure t
+  :defer t
   :config
   (setq counsel-mode-override-describe-bindings t
         counsel-find-file-at-point t))
 
 (use-package smex
   :ensure t
+  :after counsel
   :init
   (setq smex-save-file (concat user-emacs-directory ".cache/smex-items")))
 
