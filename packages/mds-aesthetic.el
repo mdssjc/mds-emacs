@@ -13,13 +13,10 @@
 ;; Estilo ergonômico e sem distrações/ruídos - tema dark e linha de status com ícones.
 
 ;;; Code:
-(set-frame-font "Source Code Pro-10" nil t)
-(setq line-spacing 0.15)
-
 (add-hook 'window-setup-hook 'toggle-frame-maximized)
-(add-hook 'prog-mode-hook 'linum-mode)
-(add-hook 'prog-mode-hook 'global-hl-line-mode)
-(add-hook 'prog-mode-hook 'color-identifiers-mode)
+(add-hook 'prog-mode-hook    'linum-mode)
+(add-hook 'prog-mode-hook    'global-hl-line-mode)
+(add-hook 'prog-mode-hook    'color-identifiers-mode)
 
 (use-package tao-theme
   :ensure t
@@ -28,12 +25,13 @@
   (load-theme 'tao-yin t)
   :config
   (setq Info-fontify-angle-bracketed-flag nil)
-  (tabbar-mode))
+  (set-frame-font "Source Code Pro-10" nil t)
+  (setq line-spacing 0.15))
 
 (use-package powerline
   :ensure t
   :defer 0
-  :init
+  :config
   (setq powerline-default-separator 'slant
         powerline-height 14
         powerline-default-separator-dir '(right . right))
@@ -41,6 +39,7 @@
 
 (use-package spaceline
   :ensure t
+  :defer 0
   :after powerline
   :config
   (require 'spaceline-config)
@@ -48,6 +47,7 @@
 
 (use-package spaceline-all-the-icons
   :ensure t
+  :defer 0
   :after spaceline
   :config
   (setq spaceline-all-the-icons-separator-type 'none
@@ -56,11 +56,6 @@
   (spaceline-toggle-all-the-icons-buffer-position-on)
   (spaceline-all-the-icons-theme)
   (set-face-attribute 'mode-line nil :font "Source Code Pro-10"))
-
-(use-package color-identifiers-mode
-  :ensure t
-  :diminish color-identifiers-mode
-  :commands color-identifiers-mode)
 
 (use-package dashboard
   :ensure t
@@ -73,9 +68,14 @@
         dashboard-banner-logo-title "Welcome to MDS Emacs"
         dashboard-startup-banner dashboard-banner-logo-png))
 
+(use-package color-identifiers-mode
+  :ensure t
+  :diminish color-identifiers-mode
+  :commands color-identifiers-mode)
+
 (use-package all-the-icons
   :ensure t
-  :defer t)
+  :defer 0)
 
 (use-package all-the-icons-dired
   :ensure t
@@ -84,19 +84,11 @@
   :init
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
-(use-package major-mode-icons
-  :ensure t
-  :disabled t
-  :diminish major-mode-icons-mode
-  :commands major-mode-icons-mode
-  :init
-  (add-hook 'after-init-hook 'major-mode-icons-mode))
-
 (use-package focus
   :ensure t
   :commands focus-mode
   :init
-  (add-hook 'prog-mode-hook 'focus-mode))
+  (add-hook 'after-init-hook 'focus-mode))
 
 (use-package highlight-thing
   :ensure t
@@ -120,10 +112,28 @@
 
 (use-package emojify
   :ensure t
-  :commands global-emojify-mode
+  :commands emojify-mode global-emojify-mode
   :init
   (setq emojify-emojis-dir (concat user-emacs-directory ".cache/emojis"))
   (add-hook 'after-init-hook 'global-emojify-mode))
+
+(use-package tabbar
+  :ensure t
+  :commands tabbar-mode
+  :init
+  (add-hook 'after-init-hook 'tabbar-mode)
+  :config
+  (setq tabbar-use-images nil))
+
+(use-package tabbar-ruler
+  :ensure t
+  :after tabbar
+  :config
+  (setq tabbar-ruler-global-tabbar t
+        tabbar-ruler-global-ruler t
+        tabbar-ruler-popup-menu t
+        tabbar-ruler-popup-toolbar t
+        tabbar-ruler-popup-scrollbar t))
 
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
