@@ -130,7 +130,7 @@
   :config
   (setq tabbar-ruler-global-tabbar t
         tabbar-ruler-global-ruler t
-        tabbar-ruler-popup-menu t
+        tabbar-ruler-popup-menu nil
         tabbar-ruler-popup-toolbar t
         tabbar-ruler-popup-scrollbar t))
 
