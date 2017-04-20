@@ -15,7 +15,8 @@
 ;;; Code:
 (setq gc-cons-threshold (* 100 1024 1024)
       load-prefer-newer t
-      debug-on-error nil)
+      debug-on-error nil
+      use-package-verbose nil)
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -80,7 +81,7 @@
 
   (mouse-avoidance-mode 'animate)
   (fset 'yes-or-no-p 'y-or-n-p)
-  ;;(fset 'display-buffer-in-major-side-window 'window--make-major-side-window)
+  (fset 'display-buffer-in-major-side-window 'window--make-major-side-window)
   (fset 'cl--copy-slot-descriptor-1 'copy-sequence)
 
   (defun display-extended-command-shorter (command)
@@ -149,7 +150,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages
+   (quote
+    (zop-to-char zeal-at-point wttrin writeroom-mode worf which-key wgrep web-mode volatile-highlights visual-regexp use-package undo-tree twittering-mode tomatinho tao-theme tabbar-ruler symon swap-regions srefactor sqlup-mode sql-indent spaceline-all-the-icons smex simple+ shm shift-number rg restart-emacs replace+ rainbow-delimiters racket-mode projectile-speedbar projectile-ripgrep pp+ popup-imenu popup-edit-menu plantuml-mode parinfer package-utils org-table-sticky-header org-pomodoro org-bullets move-dup mouse+ menu-bar+ meghanada markdown-mode magit litable lispy lfe-mode langtool lacarte jdee java-snippets ivy-rich ivy-hydra isearch-prop isearch+ irony-eldoc intero info+ imenu+ icicles hlint-refactor hl-line+ highlight-thing haskell-snippets guess-language google-translate google-this golden-ratio git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell face-remap+ exec-path-from-shell esup ess eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing dumb-jump dr-racket-like-unicode dired+ dashboard counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghci company-ghc company-dict company-cabal color-identifiers-mode clj-refactor ciel cider-eval-sexp-fu centered-cursor-mode bug-hunter buffer-move bookmark+ auto-yasnippet anzu all-the-icons-dired))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
