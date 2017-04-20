@@ -105,7 +105,10 @@
         git-gutter:update-interval 0)
   (set-face-foreground 'git-gutter-fr:added    "green")
   (set-face-foreground 'git-gutter-fr:modified "blue")
-  (set-face-foreground 'git-gutter-fr:deleted  "red"))
+  (set-face-foreground 'git-gutter-fr:deleted  "red")
+  (add-hook 'git-gutter:update-hooks 'magit-revert-buffer-hook)
+  (add-hook 'git-gutter:update-hooks 'magit-after-revert-hook)
+  (add-hook 'git-gutter:update-hooks 'magit-not-reverted-hook))
 
 (use-package avy
   :ensure t
