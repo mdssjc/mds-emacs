@@ -104,15 +104,17 @@
   :init
   (add-hook 'parinfer-mode-enable-hook
             '(lambda ()
-               (show-paren-mode 1)
+               (show-paren-mode)
+               (electric-pair-mode)
                (push '("->"  . ?→) prettify-symbols-alist)
                (push '("=>"  . ?⇒) prettify-symbols-alist)
                (push '("map" . ?↦) prettify-symbols-alist)
                (push '("."   . ?•) prettify-symbols-alist)
-               (prettify-symbols-mode 1)))
+               (prettify-symbols-mode)))
   :config
   (setq parinfer-extensions '(defaults pretty-parens smart-yank smart-tab paredit lispy one)
         parinfer-lighters '(" P:>>" . "P:()")
+        parinfer--mode 'indent
         prettify-symbols-unprettify-at-point 'right-edge
         show-paren-style 'mixed))
 
