@@ -52,7 +52,7 @@
   :config
   (setq spaceline-all-the-icons-separator-type 'none
         spaceline-all-the-icons-icon-set-git-stats 'arrows)
-  (spaceline-all-the-icons--setup-anzu)
+  ;(spaceline-all-the-icons--setup-anzu)
   (spaceline-toggle-all-the-icons-buffer-position-on)
   (spaceline-all-the-icons-theme)
   (set-face-attribute 'mode-line nil :font "Source Code Pro-10"))
