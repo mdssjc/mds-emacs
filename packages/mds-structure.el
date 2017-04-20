@@ -295,29 +295,10 @@
   :init
   (add-hook 'spaceline-pre-hook 'swap-regions-mode))
 
-(use-package package-utils
-  :ensure t
-  :commands package-utils-install-async package-utils-upgrade-all)
-
-(use-package exec-path-from-shell
-  :ensure t
-  :commands exec-path-from-shell-initialize
-  :init
-  (add-hook 'after-init-hook '(lambda () (when (memq window-system '(mac ns x))
-                                      (exec-path-from-shell-initialize))))
-  :config
-  (setq exec-path-from-shell-check-startup-files nil))
-
 (use-package electric-spacing
   :ensure t
   :diminish electric-spacing-mode
   :commands electric-spacing-mode)
-
-(use-package emr
-  :ensure t
-  :commands emr-initialize emr-show-refactor-menu
-  :init
-  (add-hook 'prog-mode-hook 'emr-initialize))
 
 (use-package dumb-jump
   :ensure t
@@ -339,15 +320,6 @@
   :init
   (add-hook 'after-init-hook 'global-hi-lock-mode))
 
-(use-package eww
-  :commands eww eww-mode
-  :config
-  (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
-
-(use-package symon
-  :ensure t
-  :commands symon-mode)
-
 (use-package google-this
   :ensure t
   :diminish google-this-mode
@@ -365,14 +337,6 @@
   :ensure t
   :commands shift-number-up shift-number-down)
 
-(use-package icicles
-  :ensure t
-  :commands icy-mode)
-
-(use-package lacarte
-  :ensure t
-  :commands lacarte-execute-command)
-
 (use-package multiple-cursors
   :ensure t
   :defer 0)
@@ -382,9 +346,45 @@
   :diminish page-break-lines-mode
   :commands page-break-lines-mode)
 
+(use-package emr
+  :ensure t
+  :commands emr-initialize emr-show-refactor-menu
+  :init
+  (add-hook 'prog-mode-hook 'emr-initialize))
+
 (use-package popup-imenu
   :ensure t
   :commands popup-imenu)
+
+(use-package icicles
+  :ensure t
+  :commands icy-mode)
+
+(use-package lacarte
+  :ensure t
+  :commands lacarte-execute-command)
+
+(use-package package-utils
+  :ensure t
+  :commands package-utils-install-async package-utils-upgrade-all)
+
+(use-package exec-path-from-shell
+  :ensure t
+  :commands exec-path-from-shell-initialize
+  :init
+  (add-hook 'after-init-hook '(lambda () (when (memq window-system '(mac ns x))
+                                      (exec-path-from-shell-initialize))))
+  :config
+  (setq exec-path-from-shell-check-startup-files nil))
+
+(use-package eww
+  :commands eww eww-mode
+  :config
+  (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
+
+(use-package symon
+  :ensure t
+  :commands symon-mode)
 
 ;; Plus
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
