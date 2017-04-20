@@ -134,5 +134,19 @@
         tabbar-ruler-popup-toolbar t
         tabbar-ruler-popup-scrollbar t))
 
+(use-package golden-ratio
+  :ensure t
+  :diminish " φ"
+  :commands golden-ratio-mode)
+
+(use-package centered-cursor-mode
+  :ensure t
+  :diminish " ⊝"
+  :commands centered-cursor-mode)
+
+(use-package writeroom-mode
+  :ensure t
+  :commands writeroom-mode)
+
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here

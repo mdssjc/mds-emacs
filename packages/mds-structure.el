@@ -199,10 +199,14 @@
   :after projectile
   :commands projectile-speedbar-toggle projectile-speedbar-open-current-buffer-in-tree)
 
-(use-package zop-to-char
-  :ensure t
-  :init
-  (global-set-key [remap zap-to-char] 'zop-to-char))
+(use-package speedbar
+  :defer t
+  :commands speedbar
+  :config
+  (add-hook 'speedbar-after-create-hook  '(lambda () (global-set-key (kbd "C-c C-SPC") 'speedbar-get-focus)))
+  (add-hook 'speedbar-before-delete-hook '(lambda () (global-unset-key (kbd "C-c C-SPC"))))
+  (setq speedbar-show-unknown-files t
+        speedbar-use-images nil))
 
 (use-package expand-region
   :ensure t
@@ -212,7 +216,7 @@
 
 (use-package embrace
   :ensure t
-  :defer 0
+  :after expand-region
   :init
   (setq semantics-units '((?w . er/mark-word)
                           (?s . er/mark-symbol)
@@ -240,14 +244,10 @@
   :ensure t
   :commands ciel-ci ciel-co ciel-copy-to-register)
 
-(use-package speedbar
-  :defer t
-  :commands speedbar
-  :config
-  (add-hook 'speedbar-after-create-hook  '(lambda () (global-set-key (kbd "C-c C-SPC") 'speedbar-get-focus)))
-  (add-hook 'speedbar-before-delete-hook '(lambda () (global-unset-key (kbd "C-c C-SPC"))))
-  (setq speedbar-show-unknown-files t
-        speedbar-use-images nil))
+(use-package zop-to-char
+  :ensure t
+  :init
+  (global-set-key [remap zap-to-char] 'zop-to-char))
 
 (use-package rg
   :ensure t
@@ -276,15 +276,14 @@
   :config
   (use-package visual-regexp-steroids :ensure t))
 
-(use-package eww
-  :commands eww eww-mode
-  :config
-  (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
-
 (use-package winner-mode
   :commands winner-mode
   :init
   (add-hook 'after-init-hook 'winner-mode))
+
+(use-package buffer-move
+  :ensure t
+  :commands buf-move-up buf-move-down buf-move-left buf-move-right)
 
 (use-package move-dup
   :ensure t
@@ -314,20 +313,6 @@
   :diminish electric-spacing-mode
   :commands electric-spacing-mode)
 
-(use-package golden-ratio
-  :ensure t
-  :diminish " φ"
-  :commands golden-ratio-mode)
-
-(use-package centered-cursor-mode
-  :ensure t
-  :diminish " ⊝"
-  :commands centered-cursor-mode)
-
-(use-package writeroom-mode
-  :ensure t
-  :commands writeroom-mode)
-
 (use-package emr
   :ensure t
   :commands emr-initialize emr-show-refactor-menu
@@ -347,10 +332,6 @@
   :init
   (add-hook 'prog-mode-hook 'which-function-mode))
 
-(use-package icicles
-  :ensure t
-  :commands icy-mode)
-
 (use-package highlight
   :ensure t
   :diminish global-hi-lock-mode hi-lock-mode
@@ -358,9 +339,10 @@
   :init
   (add-hook 'after-init-hook 'global-hi-lock-mode))
 
-(use-package buffer-move
-  :ensure t
-  :commands buf-move-up buf-move-down buf-move-left buf-move-right)
+(use-package eww
+  :commands eww eww-mode
+  :config
+  (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
 
 (use-package symon
   :ensure t
@@ -382,6 +364,10 @@
 (use-package shift-number
   :ensure t
   :commands shift-number-up shift-number-down)
+
+(use-package icicles
+  :ensure t
+  :commands icy-mode)
 
 (use-package lacarte
   :ensure t
