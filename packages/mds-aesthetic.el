@@ -59,7 +59,7 @@
   :ensure t
   :commands focus-mode
   :init
-  (add-hook 'after-init-hook 'focus-mode))
+  (add-hook 'prog-mode-hook 'focus-mode))
 
 (use-package highlight-thing
   :ensure t
