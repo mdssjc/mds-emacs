@@ -1,4 +1,4 @@
-;;; mds-pragmatic.el --- Pragmático (Pragmatic)
+;;; mds-pragmatic.el --- Pragmático (Pragmatic) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -10,19 +10,18 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Organização do trabalho.
+;; Organização do trabalho com Org.
 
 ;;; Code:
 (use-package org
   :ensure t
-  :mode ("\\.org\\'" . org-mode)
+  :mode
+  (("\\.org\\'" . org-mode))
   :init
   (add-hook 'org-mode-hook
             '(lambda ()
-               (setq-local company-minimum-prefix-length 3)
-               (setq-local company-transformers '(company-sort-by-occurrence
-                                                  company-sort-prefer-same-case-prefix
-                                                  company-sort-by-statistics))
+               ;(setq-local company-minimum-prefix-length 1)
+               ;(setq-local company-transformers '(company-sort-by-occurrence))
                (setq-local company-backends '((company-capf
                                                company-abbrev
                                                company-dabbrev
@@ -32,9 +31,10 @@
                (company-mode)
                (flyspell-mode -1)
                (yas-minor-mode)
-               (org-bullets-mode t)
-               (worf-mode)
                (embrace-org-mode-hook)
+               (worf-mode)
+               (org-bullets-mode t)
+               (org-sticky-header-mode)
                (org-table-sticky-header-mode)
                (set-face-attribute 'org-table nil :inherit 'fixed-pitch)))
   :config
@@ -87,6 +87,10 @@
 (use-package worf
   :ensure t
   :commands worf-mode)
+
+(use-package org-sticky-header
+  :ensure t
+  :commands org-sticky-header-mode)
 
 (use-package org-table-sticky-header
   :ensure t
