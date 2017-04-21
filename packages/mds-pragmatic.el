@@ -90,7 +90,9 @@
 
 (use-package org-sticky-header
   :ensure t
-  :commands org-sticky-header-mode)
+  :commands org-sticky-header-mode
+  :config
+  (setq org-sticky-header-full-path 'full))
 
 (use-package org-table-sticky-header
   :ensure t
