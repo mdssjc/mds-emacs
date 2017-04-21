@@ -31,14 +31,13 @@
 
 (use-package dashboard
   :ensure t
-  :init
-  (dashboard-setup-startup-hook)
   :config
   (setq dashboard-items '((recents   . 5)
                           (bookmarks . 5)
                           (projects  . 5))
         dashboard-banner-logo-title "Welcome to MDS Emacs"
-        dashboard-startup-banner dashboard-banner-logo-png))
+        dashboard-startup-banner dashboard-banner-logo-png)
+  (dashboard-setup-startup-hook))
 
 (use-package color-identifiers-mode
   :ensure t
