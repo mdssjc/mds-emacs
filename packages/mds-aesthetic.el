@@ -1,4 +1,4 @@
-;;; mds-aesthetic.el --- Estético (Aesthetic)
+;;; mds-aesthetic.el --- Estético (Aesthetic) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -26,35 +26,8 @@
   :config
   (setq Info-fontify-angle-bracketed-flag nil)
   (set-frame-font "Source Code Pro-10" nil t)
-  (setq line-spacing 0.15))
-
-(use-package powerline
-  :ensure t
-  :defer 0
-  :config
-  (setq powerline-default-separator 'slant
-        powerline-height 14
-        powerline-default-separator-dir '(right . right))
-  (display-time-mode))
-
-(use-package spaceline
-  :ensure t
-  :defer 0
-  :after powerline
-  :config
-  (require 'spaceline-config)
-  (spaceline-info-mode))
-
-(use-package spaceline-all-the-icons
-  :ensure t
-  :defer 0
-  :after spaceline
-  :config
-  (setq spaceline-all-the-icons-separator-type 'none
-        spaceline-all-the-icons-icon-set-git-stats 'arrows)
-  (spaceline-toggle-all-the-icons-buffer-position-on)
-  (spaceline-all-the-icons-theme)
-  (set-face-attribute 'mode-line nil :font "Source Code Pro-10"))
+  (setq line-spacing 0.15)
+  (require 'mds-aesthetic-modeline))
 
 (use-package dashboard
   :ensure t
