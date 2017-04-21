@@ -197,16 +197,14 @@
 (use-package projectile-speedbar
   :ensure t
   :after projectile
-  :commands projectile-speedbar-toggle projectile-speedbar-open-current-buffer-in-tree)
+  :commands projectile-speedbar-open-current-buffer-in-tree)
 
 (use-package speedbar
   :defer t
-  :commands speedbar
+  :ensure sr-speedbar
   :config
-  (add-hook 'speedbar-after-create-hook  '(lambda () (global-set-key (kbd "C-c C-SPC") 'speedbar-get-focus)))
-  (add-hook 'speedbar-before-delete-hook '(lambda () (global-unset-key (kbd "C-c C-SPC"))))
   (setq speedbar-show-unknown-files t
-        speedbar-use-images nil))
+        sr-speedbar-right-side nil))
 
 (use-package expand-region
   :ensure t

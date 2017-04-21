@@ -302,7 +302,7 @@
                       "s-p 4" '(:ignore t :which-key "find")
                       "s-p s" '(:ignore t :which-key "search")
                       "s-p x" '(:ignore t :which-key "execute")
-                      "s-P"   'projectile-speedbar-toggle
+                      "s-P"   'projectile-speedbar-open-current-buffer-in-tree
                       "M-SPC" 'counsel-projectile-drop-to-switch-project)
   (general-define-key :keymaps 'twittering-mode-map
                       "\\"        'hydra-twittering/body
