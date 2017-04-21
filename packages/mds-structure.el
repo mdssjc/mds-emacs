@@ -1,4 +1,4 @@
-;;; mds-structure.el --- Estrutura (Structure)
+;;; mds-structure.el --- Estrutura (Structure) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -304,7 +304,8 @@
   :init
   (add-hook 'prog-mode-hook 'dumb-jump-mode)
   :config
-  (setq dumb-jump-selector 'ivy))
+  (setq dumb-jump-selector 'ivy
+        dumb-jump-prefer-searcher 'rg))
 
 (use-package which-func
   :commands which-function-mode

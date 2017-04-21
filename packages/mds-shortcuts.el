@@ -1,4 +1,4 @@
-;;; mds-shortcuts.el --- Atalhos (Shortcuts)
+;;; mds-shortcuts.el --- Atalhos (Shortcuts) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -251,7 +251,6 @@
                       "<f9> l"    'lispy-mode
                       "<f9> r"    'rainbow-delimiters-mode
                       "<f9> t"    'litable-mode
-                      "M-."       'find-function-at-point
                       "M-&"       'complete-symbol
                       "C-c e"     'macrostep-expand
                       "C-c C-r"   '(:ignore t :which-key "refactor")
@@ -276,10 +275,7 @@
                       "C-c C-r s" 'srefactor-refactor-at-point
                       ";"         'maio/electric-semicolon)
   (general-define-key :keymaps 'dumb-jump-mode-map
-                      "M-g o" 'dumb-jump-go-other-window
-                      "M-g j" 'dumb-jump-go
-                      "M-g b" 'dumb-jump-back
-                      "M-g q" 'dumb-jump-quick-look
+                      "M-."   'hydra-dumb-jump/body
                       "C-M-g" 'nil
                       "C-M-p" 'nil
                       "C-M-q" 'nil)

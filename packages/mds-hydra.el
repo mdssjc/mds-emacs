@@ -1,4 +1,4 @@
-;;; mds-hydra.el --- Hydra (Hydra)
+;;; mds-hydra.el --- Hydra (Hydra) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -70,6 +70,16 @@ Add (_a_), change (_c_) or delete (_d_) a pair.
   ("c" aya-create)
   ("x" aya-expand)
   ("o" aya-open-line))
+;; ---
+
+;; Dumb Jump
+(defhydra hydra-dumb-jump (:color blue)
+    "Dumb Jump"
+    ("<ESC>" nil "quit")
+    ("g" dumb-jump-go              "Jump to def")
+    ("p" dumb-jump-back            "Jump back")
+    ("q" dumb-jump-quick-look      "Quick look")
+    ("o" dumb-jump-go-other-window "Jump in other window"))
 ;; ---
 
 (provide 'mds-hydra)
