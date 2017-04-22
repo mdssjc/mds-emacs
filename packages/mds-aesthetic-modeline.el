@@ -24,7 +24,6 @@
 
 (use-package spaceline
   :ensure t
-  :defer 0
   :after powerline
   :config
   (require 'spaceline-config)
@@ -32,7 +31,6 @@
 
 (use-package spaceline-all-the-icons
   :ensure t
-  :defer 0
   :after spaceline
   :config
   (setq spaceline-all-the-icons-separator-type 'none
