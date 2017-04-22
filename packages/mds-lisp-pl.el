@@ -104,6 +104,9 @@
   :init
   (add-hook 'parinfer-mode-enable-hook
             '(lambda ()
+               (define-key parinfer-mode-map (kbd "C-1") 'lispy-describe-inline)
+               (define-key parinfer-mode-map (kbd "C-2") 'lispy-arglist-inline)
+               (define-key parinfer-mode-map (kbd "C-8") 'lispy-parens-down)
                (show-paren-mode)
                (electric-pair-mode)
                (push '("->"  . ?→) prettify-symbols-alist)
@@ -114,17 +117,8 @@
   :config
   (setq parinfer-extensions '(defaults pretty-parens smart-yank smart-tab paredit lispy one)
         parinfer-lighters '(" P:>>" . "P:()")
-        parinfer--mode 'indent
         prettify-symbols-unprettify-at-point 'right-edge
         show-paren-style 'mixed))
-
-(use-package paredit
-  :ensure t
-  :commands paredit-mode enable-paredit-mode)
-
-(use-package rainbow-delimiters
-  :ensure t
-  :commands rainbow-delimiters-mode)
 
 (use-package lispy
   :ensure t
@@ -133,6 +127,14 @@
   :init
   (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression)
                                             (lispy-mode 1)))))
+
+(use-package paredit
+  :ensure t
+  :commands paredit-mode enable-paredit-mode)
+
+(use-package rainbow-delimiters
+  :ensure t
+  :commands rainbow-delimiters-mode)
 
 (use-package litable
   :ensure t
