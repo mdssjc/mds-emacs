@@ -108,6 +108,8 @@
             '(lambda ()
                (define-key parinfer-mode-map (kbd "C-1") 'lispy-describe-inline)
                (define-key parinfer-mode-map (kbd "C-2") 'lispy-arglist-inline)
+               (define-key parinfer-mode-map (kbd "C-3") 'lispy-right)
+               (define-key parinfer-mode-map (kbd "C-4") 'lispy-x)
                (define-key parinfer-mode-map (kbd "C-8") 'lispy-parens-down)
                (show-paren-mode)
                (electric-pair-mode)
