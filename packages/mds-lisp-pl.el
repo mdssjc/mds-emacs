@@ -70,16 +70,18 @@
 (use-package clojure-mode
   :ensure t
   :mode
-  (("\\.clj\\'"  . clojure-mode)
-   ("\\.edn\\'"  . clojure-mode)
-   ("\\.cljc\\'" . clojurec-mode)
-   ("\\.cljx\\'" . clojurex-mode))
+  (("\\.\\(clj\\|dtm\\|edn\\)\\'"       . clojure-mode)
+   ("\\(?:build\\|profile\\)\\.boot\\'" . clojure-mode)
+   ("\\.cljc\\'"                        . clojurec-mode)
+   ("\\.cljx\\'"                        . clojurex-mode)
+   ("\\.cljs\\'"                        . clojurescript-mode))
   :init
   (add-hook 'clojure-mode-hook
             '(lambda ()
                (parinfer-mode)
                (clj-refactor-mode)
                (cljr-add-keybindings-with-prefix "C-c C-r .")
+               (clojure-font-lock-setup)
                (setq-local company-backends '((company-capf
                                                company-yasnippet
                                                :with
