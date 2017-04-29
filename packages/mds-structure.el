@@ -359,6 +359,10 @@
   :ensure t
   :commands icy-mode)
 
+(use-package doremi
+  :ensure t
+  :after icicles)
+
 (use-package lacarte
   :ensure t
   :commands lacarte-execute-command)
