@@ -137,7 +137,6 @@
                                 (t . ivy--regex-plus))
         ivy-virtual-abbreviate 'full
         ivy-wrap t
-        projectile-completion-system   'ivy
         magit-completing-read-function 'ivy-completing-read
         smex-completion-method         'ivy))
 
@@ -180,23 +179,22 @@
   (add-hook 'after-init-hook 'projectile-mode)
   (add-hook 'projectile-mode-hook 'counsel-projectile-on)
   :config
-  (setq projectile-sort-order 'recentf
-        projectile-enable-caching t
-        projectile-file-exists-local-cache-expire (* 10 60)))
+  (setq projectile-completion-system 'ivy
+        projectile-sort-order 'recentf
+        projectile-enable-caching nil
+        projectile-file-exists-local-cache-expire (* 10 60)
+        projectile-find-dir-includes-top-level))
 
 (use-package projectile-ripgrep
   :ensure t
-  :after projectile
   :commands projectile-ripgrep)
 
 (use-package counsel-projectile
   :ensure t
-  :after projectile
   :commands counsel-projectile-on)
 
 (use-package projectile-speedbar
   :ensure t
-  :after projectile
   :commands projectile-speedbar-open-current-buffer-in-tree)
 
 (use-package speedbar
