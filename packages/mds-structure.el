@@ -182,8 +182,7 @@
   (setq projectile-completion-system 'ivy
         projectile-sort-order 'recentf
         projectile-enable-caching nil
-        projectile-file-exists-local-cache-expire (* 10 60)
-        projectile-find-dir-includes-top-level))
+        projectile-file-exists-local-cache-expire (* 10 60)))
 
 (use-package projectile-ripgrep
   :ensure t
