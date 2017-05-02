@@ -84,7 +84,9 @@
 
 (use-package magit
   :ensure t
-  :defer 3)
+  :defer 3
+  :config
+  (setq magit-completing-read-function 'ivy-completing-read))
 
 (use-package magithub
   :load-path (lambda () (concat user-emacs-directory "temp/magithub"))
@@ -138,8 +140,7 @@
                                 (t . ivy--regex-plus))
         ivy-virtual-abbreviate 'full
         ivy-wrap t
-        magit-completing-read-function 'ivy-completing-read
-        smex-completion-method         'ivy))
+        ivy-initial-inputs-alist nil))
 
 (use-package ivy-hydra
   :ensure t
@@ -153,13 +154,13 @@
 
 (use-package swiper
   :ensure t
-  :defer t
+  :commands swiper swiper-all
   :config
   (setq swiper-include-line-number-in-search t))
 
 (use-package counsel
   :ensure t
-  :defer t
+  :after ivy
   :config
   (setq counsel-mode-override-describe-bindings t
         counsel-find-file-at-point t))
@@ -168,7 +169,10 @@
   :ensure t
   :after counsel
   :init
-  (setq smex-save-file (concat user-emacs-directory ".cache/smex-items")))
+  (setq smex-save-file (concat user-emacs-directory ".cache/smex-items"))
+  :config
+  (setq smex-completion-method 'ivy)
+  (smex-initialize))
 
 (use-package projectile
   :ensure t
