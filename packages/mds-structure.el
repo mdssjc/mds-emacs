@@ -383,6 +383,10 @@
   :config
   (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
 
+(use-package esup
+  :ensure t
+  :commands esup)
+
 (use-package symon
   :ensure t
   :commands symon-mode)

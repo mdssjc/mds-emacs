@@ -108,10 +108,6 @@
   (add-to-list 'load-path (concat user-emacs-directory "core"))
   (add-to-list 'load-path (concat user-emacs-directory "packages"))
   (require 'mds-core-funcs)
-
-  (use-package esup
-    :ensure t
-    :commands esup)
   ;; ---
 
   ;; Pacotes (Packages)
