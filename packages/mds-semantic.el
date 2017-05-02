@@ -29,6 +29,8 @@
   :ensure t
   :after flycheck
   :config
+  (setq flycheck-pos-tip-timeout 10
+        flycheck-display-errors-delay 0.5)
   (flycheck-pos-tip-mode))
 ;; ---
 
