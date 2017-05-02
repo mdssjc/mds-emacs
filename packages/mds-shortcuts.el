@@ -403,7 +403,9 @@
   (general-define-key :keymaps 'sql-mode-map
                       "C-c u" 'sqlup-capitalize-keywords-in-region)
   ;; Alias
-  (defalias 'gs 'magit-status "Magit status"))
+  (defalias 'gs 'magit-status               "Magit status")
+  (defalias 'qq 'save-buffers-kill-terminal "Quit")
+  (defalias 'qr 'restart-emacs              "Restart"))
 
 (use-package which-key
   :ensure t
