@@ -57,9 +57,9 @@
   (setq savehist-file (concat user-emacs-directory ".cache/savehist"))
   (add-hook 'after-init-hook 'savehist-mode)
   :config
-  (setq history-length t
+  (setq history-length 250
         history-delete-duplicates t
-        savehist-save-minibuffer-history 1
+        savehist-save-minibuffer-history t
         savehist-additional-variables '(kill-ring
                                         search-ring
                                         regexp-search-ring)))
