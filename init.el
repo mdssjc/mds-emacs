@@ -13,10 +13,14 @@
 ;; Arquivo de inicialização do ambiente Emacs.
 
 ;;; Code:
-(setq gc-cons-threshold (* 100 1024 1024)
+(setq gc-cons-threshold (* 200 1024 1024)
+      gc-cons-percentage 0.6
       load-prefer-newer t
       debug-on-error nil
       use-package-verbose nil)
+
+(add-hook 'window-setup-hook '(lambda () (setq gc-cons-threshold (* 20 1024 1024)
+                                          gc-cons-percentage 0.1)))
 
 (require 'package)
 (setq package-enable-at-startup nil)
