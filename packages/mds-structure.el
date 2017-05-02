@@ -172,8 +172,8 @@
 
 (use-package projectile
   :ensure t
-  :defer t
   :diminish projectile-mode
+  :commands projectile-mode
   :init
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld")))
@@ -182,7 +182,9 @@
   :config
   (setq projectile-completion-system 'ivy
         projectile-sort-order 'recentf
-        projectile-enable-caching nil
+        projectile-indexing-method 'alien
+        projectile-enable-caching (not noninteractive)
+        projectile-file-exists-remote-cache-expire nil
         projectile-file-exists-local-cache-expire (* 10 60)))
 
 (use-package projectile-ripgrep
