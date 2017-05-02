@@ -39,6 +39,7 @@
   (setq recentf-max-saved-items 1000
         recentf-max-menu-items 15
         recentf-auto-cleanup 600
+        recentf-filename-handlers '(abbreviate-file-name)
         recentf-exclude '("/elpa/" "/.cache/")))
 
 (use-package saveplace
