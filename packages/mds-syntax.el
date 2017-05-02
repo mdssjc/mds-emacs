@@ -129,13 +129,16 @@
   :commands yas-minor-mode yas-global-mode
   :init
   (add-hook 'prog-mode-hook 'yas-minor-mode)
+  (add-hook 'org-mode-hook  'yas-minor-mode)
   :config
-  (setq yas-prompt-functions '(yas-x-prompt yas-dropdown-prompt))
+  (setq yas-prompt-functions '(yas-completing-prompt yas-dropdown-prompt))
   (yas-reload-all))
 
 (use-package auto-yasnippet
   :ensure t
-  :commands aya-create aya-expand aya-open-line)
+  :commands aya-create aya-expand aya-open-line aya-persist-snippet
+  :init
+  (setq aya-persist-snippets-dir (concat user-emacs-directory ".cache/auto-snippets/")))
 
 (use-package autoinsert
   :init

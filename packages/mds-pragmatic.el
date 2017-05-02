@@ -30,7 +30,6 @@
                                                company-ispell)))
                (company-mode)
                (flyspell-mode -1)
-               (yas-minor-mode)
                (embrace-org-mode-hook)
                (worf-mode)
                (org-bullets-mode t)
