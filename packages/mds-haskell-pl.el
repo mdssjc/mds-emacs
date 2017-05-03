@@ -1,4 +1,4 @@
-;;; mds-haskell-pl.el --- Linguagem de Programação Haskell (Haskell Programming Language)
+;;; mds-haskell-pl.el --- Linguagem de Programação Haskell (Haskell Programming Language) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -16,11 +16,11 @@
 (use-package haskell-mode
   :ensure t
   :mode
-  ("\\.hs$"      . haskell-mode)
-  ("\\.lhs\\'"   . literate-haskell-mode)
-  ("\\.hsc\\'"   . haskell-mode)
-  ("\\.cpphs\\'" . haskell-mode)
-  ("\\.c2hs\\'"  . haskell-mode)
+  (("\\.hs$"      . haskell-mode)
+   ("\\.lhs\\'"   . literate-haskell-mode)
+   ("\\.hsc\\'"   . haskell-mode)
+   ("\\.cpphs\\'" . haskell-mode)
+   ("\\.c2hs\\'"  . haskell-mode))
   :init
   (add-hook 'haskell-mode-hook
             '(lambda ()
@@ -107,7 +107,7 @@
 
 (use-package haskell-snippets
   :ensure t
-  :defer t)
+  :after haskell-mode)
 
 (use-package flycheck-haskell
   :ensure t
