@@ -158,7 +158,7 @@
 
 (use-package smex
   :ensure t
-  :after counsel
+  :commands smex smex-major-mode-commands
   :init
   (setq smex-save-file (concat user-emacs-directory ".cache/smex-items"))
   :config
