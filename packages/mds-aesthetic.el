@@ -14,9 +14,8 @@
 
 ;;; Code:
 (add-hook 'window-setup-hook 'toggle-frame-maximized)
-(add-hook 'prog-mode-hook    'linum-mode)
+;(add-hook 'prog-mode-hook    'linum-mode)
 (add-hook 'prog-mode-hook    'global-hl-line-mode)
-(add-hook 'prog-mode-hook    'color-identifiers-mode)
 
 (use-package tao-theme
   :ensure t
@@ -42,11 +41,13 @@
 (use-package color-identifiers-mode
   :ensure t
   :diminish color-identifiers-mode
-  :commands color-identifiers-mode)
+  :commands color-identifiers-mode
+  :init
+  (add-hook 'prog-mode-hook 'color-identifiers-mode))
 
 (use-package all-the-icons
   :ensure t
-  :defer 0)
+  :defer t)
 
 (use-package all-the-icons-dired
   :ensure t
@@ -81,12 +82,39 @@
   :init
   (add-hook 'after-init-hook 'volatile-highlights-mode))
 
+(use-package git-gutter
+  :ensure t
+  :diminish git-gutter-mode
+  :commands git-gutter-mode
+  :init
+  (defun git-gutter-maybe ()
+    (when (and (buffer-file-name)
+               (not (file-remote-p (buffer-file-name))))
+      (git-gutter-mode +1)))
+  (add-hook 'prog-mode-hook 'git-gutter-maybe)
+  (add-hook 'text-mode-hook 'git-gutter-maybe)
+  (add-hook 'org-mode-hook  'git-gutter-maybe))
+
+(use-package git-gutter-fringe
+  :ensure t
+  :after git-gutter
+  :config
+  (setq git-gutter-fr:side 'right-fringe
+        git-gutter:update-interval 0)
+  (set-face-foreground 'git-gutter-fr:added    "green")
+  (set-face-foreground 'git-gutter-fr:modified "blue")
+  (set-face-foreground 'git-gutter-fr:deleted  "red")
+  (add-hook 'focus-in-hook 'git-gutter:update-all-windows)
+  (add-hook 'git-gutter:update-hooks 'magit-revert-buffer-hook)
+  (add-hook 'git-gutter:update-hooks 'magit-after-revert-hook)
+  (add-hook 'git-gutter:update-hooks 'magit-not-reverted-hook))
+
 (use-package emojify
   :ensure t
   :commands emojify-mode global-emojify-mode
   :init
   (setq emojify-emojis-dir (concat user-emacs-directory ".cache/emojis"))
-  (add-hook 'after-init-hook 'global-emojify-mode))
+  (add-hook 'text-mode-hook 'global-emojify-mode))
 
 (use-package tabbar
   :ensure t
@@ -105,6 +133,12 @@
         tabbar-ruler-popup-menu nil
         tabbar-ruler-popup-toolbar t
         tabbar-ruler-popup-scrollbar t))
+
+(use-package nlinum
+  :ensure
+  :commands nlinum-mode
+  :init
+  (add-hook 'prog-mode-hook 'nlinum-mode))
 
 (use-package golden-ratio
   :ensure t
