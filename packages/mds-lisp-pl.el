@@ -211,6 +211,10 @@
   :ensure t
   :disabled t
   :commands cider-hydra-on)
+
+(use-package clojure-snippets
+  :ensure t
+  :after clojure-mode)
 ;; ---
 
 (provide 'mds-lisp-pl)
