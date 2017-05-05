@@ -15,7 +15,7 @@
 ;;; Code:
 (use-package java-mode
   :mode
-  ("\\.java$" . java-mode)
+  (("\\.java$" . java-mode))
   :interpreter
   ("java" . java-mode)
   :init
@@ -60,14 +60,12 @@
 
 (use-package meghanada
   :ensure t
-  :defer t
   :commands meghanada-mode
   :config
   (setq meghanada-server-install-dir (concat user-emacs-directory ".cache/meghanada/")))
 
 (use-package jdee
   :ensure t
-  :defer t
   :commands jdee-mode
   :config
   (setq jdee-server-dir (concat user-emacs-directory ".cache/jdee/")))
