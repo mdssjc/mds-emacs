@@ -88,6 +88,11 @@
   :config
   (setq magit-completing-read-function 'ivy-completing-read))
 
+(use-package gitignore-mode
+  :ensure t
+  :mode
+  (("\\.gitignore$" . gitignore-mode)))
+
 (use-package magithub
   :load-path (lambda () (concat user-emacs-directory "temp/magithub"))
   :after magit
@@ -97,21 +102,6 @@
 (use-package git-timemachine
   :ensure t
   :commands git-timemachine-mode git-timemachine-toggle)
-
-(use-package git-gutter-fringe
-  :ensure git-gutter
-  :diminish git-gutter-mode
-  :init
-  (add-hook 'after-init-hook 'global-git-gutter-mode)
-  :config
-  (setq git-gutter-fr:side 'right-fringe
-        git-gutter:update-interval 0)
-  (set-face-foreground 'git-gutter-fr:added    "green")
-  (set-face-foreground 'git-gutter-fr:modified "blue")
-  (set-face-foreground 'git-gutter-fr:deleted  "red")
-  (add-hook 'git-gutter:update-hooks 'magit-revert-buffer-hook)
-  (add-hook 'git-gutter:update-hooks 'magit-after-revert-hook)
-  (add-hook 'git-gutter:update-hooks 'magit-not-reverted-hook))
 
 (use-package avy
   :ensure t
