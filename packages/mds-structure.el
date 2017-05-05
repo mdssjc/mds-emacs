@@ -153,7 +153,8 @@
   :after ivy
   :config
   (setq counsel-mode-override-describe-bindings t
-        counsel-find-file-at-point t))
+        counsel-find-file-at-point t
+        confirm-nonexistent-file-or-buffer t))
 
 (use-package smex
   :ensure t
