@@ -84,7 +84,7 @@
 
 (use-package magit
   :ensure t
-  :defer 3
+  :commands magit-status
   :config
   (setq magit-completing-read-function 'ivy-completing-read))
 
