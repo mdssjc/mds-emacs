@@ -403,11 +403,11 @@
                                :init
                                (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
 
-(eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0
-                              :config
-                              (isearchp-toggle-lazy-highlighting)))
+;;(eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0
+;;                              :config
+;;                              (isearchp-toggle-lazy-highlighting)))
 
-(eval-after-load "isearch" '(use-package isearch-prop :ensure t :defer 0))
+;;(eval-after-load "isearch" '(use-package isearch-prop :ensure t :defer 0))
 
 (eval-after-load "replace" '(use-package replace+ :ensure t :defer 0))
 
