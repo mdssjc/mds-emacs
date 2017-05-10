@@ -97,10 +97,24 @@
         counsel-dash-enable-debugging nil))
 
 (use-package eww
-  :defer t
+  :commands eww eww-mode
   :config
   (setq eww-search-prefix "https://www.google.com/search?q="
-        eww-download-directory "~/downloads"))
+        eww-download-directory "~/downloads"
+        url-configuration-directory (concat user-emacs-directory ".cache/url")))
+
+(use-package google-this
+  :ensure t
+  :diminish google-this-mode
+  :commands google-this-mode
+  :init
+  (add-hook 'after-init-hook 'google-this-mode))
+
+(use-package google-translate
+  :ensure t
+  :after google-this
+  :config
+  (setq google-translate-show-phonetic t))
 
 (use-package engine-mode
   :ensure t

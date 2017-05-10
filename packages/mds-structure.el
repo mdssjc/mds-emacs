@@ -314,19 +314,6 @@
   :init
   (add-hook 'after-init-hook 'global-hi-lock-mode))
 
-(use-package google-this
-  :ensure t
-  :diminish google-this-mode
-  :commands google-this-mode
-  :init
-  (add-hook 'after-init-hook 'google-this-mode))
-
-(use-package google-translate
-  :ensure t
-  :after google-this
-  :config
-  (setq google-translate-show-phonetic t))
-
 (use-package shift-number
   :ensure t
   :commands shift-number-up shift-number-down)
@@ -374,11 +361,6 @@
                                       (exec-path-from-shell-initialize))))
   :config
   (setq exec-path-from-shell-check-startup-files nil))
-
-(use-package eww
-  :commands eww eww-mode
-  :config
-  (setq url-configuration-directory (concat user-emacs-directory ".cache/url")))
 
 (use-package esup
   :ensure t
