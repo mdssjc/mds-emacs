@@ -78,7 +78,7 @@
 
 (use-package zeal-at-point
   :ensure t
-  :defer t)
+  :commands zeal-at-point)
 
 (use-package counsel-dash
   :ensure t
