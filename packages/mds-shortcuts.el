@@ -143,7 +143,6 @@
    "M-Z"           'avy-goto-char-in-line
    "S-C-j"         'join-line
    "C-'"           'popup-imenu
-   "C-."           'counsel-dash-at-point
    "S-C-f"         'swiper-multi
    "S-C-s"         'counsel-grep-or-swiper
    "M-x"           'counsel-M-x
@@ -242,7 +241,8 @@
                       "T" 'tomatinho)
   ;; Configurações - Configurations
   (general-define-key :keymaps 'prog-mode-map
-                      "<tab>" 'company-indent-or-complete-common)
+                      "<tab>" 'company-indent-or-complete-common
+                      "C-."   'counsel-dash-at-point)
   (general-define-key :keymaps 'parinfer-mode-map
                       "C-c <tab>" 'parinfer-toggle-mode)
   (general-define-key :keymaps 'emacs-lisp-mode-map
