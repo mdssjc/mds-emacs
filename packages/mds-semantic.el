@@ -96,6 +96,12 @@
         counsel-dash-browser-func 'eww
         counsel-dash-enable-debugging nil))
 
+(use-package eww
+  :defer t
+  :config
+  (setq eww-search-prefix "https://www.google.com/search?q="
+        eww-download-directory "~/downloads"))
+
 (use-package engine-mode
   :ensure t
   :commands engine/search-amazon engine/search-github engine/search-google engine/search-stack-overflow engine/search-twitter engine/search-wikipedia engine/search-wikipedia-pt engine/search-wiktionary engine/search-wiktionary-pt
