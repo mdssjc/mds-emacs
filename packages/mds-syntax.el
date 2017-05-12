@@ -150,7 +150,8 @@
     (yas-expand-snippet (buffer-string) (point-min) (point-max)))
   (setq auto-insert-directory (concat user-emacs-directory "templates")
         auto-insert-query nil)
-  (define-auto-insert "\\.c$" ["template-c" autoinsert-yas-expand]))
+  (define-auto-insert "\\.c$"   ["template-c" autoinsert-yas-expand])
+  (define-auto-insert "\\.rkt$" ["template-racket" autoinsert-yas-expand]))
 ;; ---
 
 (provide 'mds-syntax)
