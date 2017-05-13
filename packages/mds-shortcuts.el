@@ -299,7 +299,7 @@
                       "s-p 4" '(:ignore t :which-key "find")
                       "s-p s" '(:ignore t :which-key "search")
                       "s-p x" '(:ignore t :which-key "execute")
-                      "s-P"   'projectile-speedbar-open-current-buffer-in-tree
+                      "s-P"   'mds/speedbar-toggle
                       "M-SPC" 'counsel-projectile-drop-to-switch-project)
   (general-define-key :keymaps 'twittering-mode-map
                       "\\"        'hydra-twittering/body
@@ -421,6 +421,12 @@
   :ensure t
   :config
   (global-set-key [mouse-3] (popup-edit-menu-stub)))
+
+(defun mds/speedbar-toggle ()
+  (interactive)
+  (if (sr-speedbar-exist-p)
+      (sr-speedbar-close)
+    (projectile-speedbar-open-current-buffer-in-tree)))
 
 (provide 'mds-shortcuts)
 ;;; mds-shortcuts.el ends here

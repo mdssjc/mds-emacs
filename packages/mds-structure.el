@@ -196,9 +196,9 @@
   :config
   (setq projectile-speedbar-projectile-speedbar-enable nil))
 
-(use-package speedbar
-  :defer t
-  :ensure sr-speedbar
+(use-package sr-speedbar
+  :ensure t
+  :commands sr-speedbar-exist-p
   :config
   (setq speedbar-show-unknown-files t
         sr-speedbar-right-side nil))
