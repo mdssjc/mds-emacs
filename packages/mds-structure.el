@@ -192,7 +192,9 @@
 
 (use-package projectile-speedbar
   :ensure t
-  :commands projectile-speedbar-open-current-buffer-in-tree)
+  :commands projectile-speedbar-open-current-buffer-in-tree
+  :config
+  (setq projectile-speedbar-projectile-speedbar-enable nil))
 
 (use-package speedbar
   :defer t
