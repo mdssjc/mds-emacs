@@ -139,6 +139,7 @@
   (setq aya-persist-snippets-dir (concat user-emacs-directory ".cache/auto-snippets/")))
 
 (use-package autoinsert
+  :commands auto-insert-mode
   :init
   (add-hook 'after-init-hook 'auto-insert-mode)
   (add-hook 'find-file-hook  'auto-insert)
