@@ -271,7 +271,7 @@
   :config
   (use-package visual-regexp-steroids :ensure t))
 
-(use-package winner-mode
+(use-package winner
   :commands winner-mode
   :init
   (add-hook 'after-init-hook 'winner-mode))
