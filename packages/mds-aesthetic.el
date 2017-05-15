@@ -14,7 +14,7 @@
 
 ;;; Code:
 (add-hook 'window-setup-hook 'toggle-frame-maximized)
-;(add-hook 'prog-mode-hook    'linum-mode)
+(add-hook 'prog-mode-hook    'linum-mode)
 (add-hook 'prog-mode-hook    'global-hl-line-mode)
 
 (use-package tao-theme
@@ -38,13 +38,6 @@
         dashboard-startup-banner dashboard-banner-logo-png)
   (dashboard-setup-startup-hook))
 
-(use-package color-identifiers-mode
-  :ensure t
-  :diminish color-identifiers-mode
-  :commands color-identifiers-mode
-  :init
-  (add-hook 'prog-mode-hook 'color-identifiers-mode))
-
 (use-package all-the-icons
   :ensure t
   :defer t)
@@ -56,11 +49,18 @@
   :init
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
-(use-package focus
+(use-package color-identifiers-mode
   :ensure t
-  :commands focus-mode
+  :diminish color-identifiers-mode
+  :commands color-identifiers-mode
   :init
-  (add-hook 'prog-mode-hook 'focus-mode))
+  (add-hook 'prog-mode-hook 'color-identifiers-mode))
+
+(use-package hlinum
+  :ensure t
+  :commands hlinum-activate
+  :init
+  (add-hook 'after-init-hook 'hlinum-activate))
 
 (use-package highlight-thing
   :ensure t
@@ -74,6 +74,12 @@
                       :weight 'bold
                       :foreground "gold1"
                       :background "black"))
+
+(use-package focus
+  :ensure t
+  :commands focus-mode
+  :init
+  (add-hook 'prog-mode-hook 'focus-mode))
 
 (use-package volatile-highlights
   :ensure t
@@ -133,12 +139,6 @@
         tabbar-ruler-popup-menu nil
         tabbar-ruler-popup-toolbar t
         tabbar-ruler-popup-scrollbar t))
-
-(use-package nlinum
-  :ensure
-  :commands nlinum-mode
-  :init
-  (add-hook 'prog-mode-hook 'nlinum-mode))
 
 (use-package golden-ratio
   :ensure t
