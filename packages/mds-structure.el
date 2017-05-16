@@ -94,7 +94,7 @@
   (("\\.gitignore$" . gitignore-mode)))
 
 (use-package magithub
-  :load-path (lambda () (concat user-emacs-directory "temp/magithub"))
+  :ensure t
   :after magit
   :config
   (magithub-feature-autoinject t))
