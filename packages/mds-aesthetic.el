@@ -28,7 +28,7 @@
   (doom-themes-nlinum-config)
   (setq Info-fontify-angle-bracketed-flag nil)
   (set-frame-font "Source Code Pro-10" nil t)
-  (setq line-spacing 0.15)
+  (setq line-spacing 0.20)
   (require 'mds-aesthetic-modeline))
 
 (use-package dashboard
