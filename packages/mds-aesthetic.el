@@ -17,12 +17,15 @@
 (add-hook 'prog-mode-hook    'linum-mode)
 (add-hook 'prog-mode-hook    'global-hl-line-mode)
 
-(use-package tao-theme
+(use-package doom-themes
   :ensure t
-  :defer 0
   :init
-  (load-theme 'tao-yin t)
+  (add-hook 'find-file-hook            'doom-buffer-mode-maybe)
+  (add-hook 'after-revert-hook         'doom-buffer-mode-maybe)
+  (add-hook 'ediff-prepare-buffer-hook 'doom-buffer-mode)
+  (load-theme 'doom-one t)
   :config
+  (doom-themes-nlinum-config)
   (setq Info-fontify-angle-bracketed-flag nil)
   (set-frame-font "Source Code Pro-10" nil t)
   (setq line-spacing 0.15)
@@ -48,13 +51,6 @@
   :commands all-the-icons-dired-mode
   :init
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
-
-(use-package color-identifiers-mode
-  :ensure t
-  :diminish color-identifiers-mode
-  :commands color-identifiers-mode
-  :init
-  (add-hook 'prog-mode-hook 'color-identifiers-mode))
 
 (use-package hlinum
   :ensure t
