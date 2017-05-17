@@ -36,8 +36,9 @@
   (setq spaceline-all-the-icons-separator-type 'none
         spaceline-all-the-icons-icon-set-git-stats 'arrows)
   (spaceline-toggle-all-the-icons-buffer-position-on)
+  (spaceline-all-the-icons--setup-anzu)
   (spaceline-all-the-icons-theme)
-  (set-face-attribute 'mode-line nil :font "Source Code Pro-10"))
+  (set-face-attribute 'mode-line nil :font "Source Code Pro-8"))
 
 (provide 'mds-aesthetic-modeline)
 ;;; mds-aesthetic-modeline.el ends here
