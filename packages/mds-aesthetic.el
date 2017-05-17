@@ -67,9 +67,8 @@
   :config
   (setq highlight-thing-delay-seconds 0)
   (set-face-attribute 'highlight-thing nil
-                      :weight 'bold
-                      :foreground "gold1"
-                      :background "black"))
+                      :foreground "gold"
+                      :background "#23272e"))
 
 (use-package focus
   :ensure t
