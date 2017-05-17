@@ -97,6 +97,7 @@
   :ensure t
   :after magit
   :config
+  (setq magithub-cache t)
   (magithub-feature-autoinject t))
 
 (use-package git-timemachine
