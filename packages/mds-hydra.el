@@ -76,11 +76,13 @@ Add (_a_), change (_c_) or delete (_d_) a pair.
 (defhydra hydra-dumb-jump (:color blue :hint nil)
   "Dumb Jump"
   ("<ESC>" nil nil)
-  ("<SPC>" dumb-jump-go-prompt   "Prompt")
-  ("g" dumb-jump-go              "Go")
-  ("p" dumb-jump-back            "Back")
-  ("q" dumb-jump-quick-look      "Quick Look")
-  ("o" dumb-jump-go-other-window "Other Window"))
+  ("<SPC>" dumb-jump-go-prompt                   "Prompt")
+  ("g" dumb-jump-go                              "Go")
+  ("b" dumb-jump-back                            "Back")
+  ("q" dumb-jump-quick-look                      "Quick Look")
+  ("o" dumb-jump-go-other-window                 "Other Window")
+  ("x" dumb-jump-go-prefer-external              "External")
+  ("z" dumb-jump-go-prefer-external-other-window "External Window"))
 ;; ---
 
 (provide 'mds-hydra)
