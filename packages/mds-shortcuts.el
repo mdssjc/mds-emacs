@@ -109,6 +109,8 @@
                       "x w u" '(mds/upper-camel-case  :which-key "upper")
                       "x w w" '(mds/split-words       :which-key "split"))
   (general-define-key
+   "<mouse-9>"     'ibuffer
+   "<mouse-8>"     'er/expand-region
    "C-c /"         '(:which-key "google")
    "C-c !"         '(:which-key "flycheck")
    "C-c &"         '(:which-key "yasnippet")
