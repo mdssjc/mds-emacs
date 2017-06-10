@@ -1,4 +1,4 @@
-;;; mds-java-pl.el --- Linguagem de Programação Java (Java Programming Language)
+;;; mds-java-pl.el --- Linguagem de Programação Java (Java Programming Language) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -22,7 +22,7 @@
   (add-hook 'java-mode-hook
             '(lambda ()
                (flycheck-mode)
-               (meghanada-mode)
+               ;;(meghanada-mode)
                (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))))
   (add-hook 'meghanada-mode-hook
             '(lambda ()
@@ -61,14 +61,16 @@
 (use-package meghanada
   :ensure t
   :commands meghanada-mode
-  :config
+  :init
   (setq meghanada-server-install-dir (concat user-emacs-directory ".cache/meghanada/")))
 
 (use-package jdee
   :ensure t
   :commands jdee-mode
+  :init
+  (setq jdee-server-dir (concat user-emacs-directory ".cache/jdee/"))
   :config
-  (setq jdee-server-dir (concat user-emacs-directory ".cache/jdee/")))
+  (require 'jdee-checkstyle))
 
 (provide 'mds-java-pl)
 ;;; mds-java-pl.el ends here
