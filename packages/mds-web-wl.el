@@ -19,7 +19,8 @@
   (("\\.html$" . web-mode)
    ("\\.htm$"  . web-mode)
    ("\\.css$"  . web-mode)
-   ("\\.scss$" . web-mode))
+   ("\\.scss$" . web-mode)
+   ("\\.jsp$"  . web-mode))
   :init
   (add-hook 'web-mode-hook
             '(lambda ()
