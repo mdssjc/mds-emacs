@@ -31,5 +31,20 @@
   :config
   (eval-after-load "sql" '(load-library "sql-indent")))
 
+;; https://github.com/kostafey/ejc-sql
+(use-package ejc-sql
+  :ensure t
+  :commands ejc-sql-mode ejc-connect
+  :config
+  (ejc-create-connection
+   "MySQL-PGD"
+   :classpath (concat "~/.m2/repository/mysql/mysql-connector-java/5.1.6/"
+                      "mysql-connector-java-5.1.6.jar")
+   :classname "com.mysql.jdbc.Driver"
+   :subprotocol "mysql"
+   :subname "//localhost:3306/picture_gallery_dev"
+   :user "dummy"
+   :password "dummy"))
+
 (provide 'mds-sql-dsl)
 ;;; mds-sql-dsl.el ends here
