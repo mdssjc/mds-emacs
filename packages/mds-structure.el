@@ -402,7 +402,6 @@
 
 (use-package imenu
   :init
-  (add-hook 'prog-mode-hook 'imenu-add-menubar-index)
   (eval-after-load "imenu" '(use-package imenu+ :ensure t))
   :config
   (setq imenu-auto-rescan t))
