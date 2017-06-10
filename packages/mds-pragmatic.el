@@ -20,8 +20,8 @@
   :init
   (add-hook 'org-mode-hook
             '(lambda ()
-               ;(setq-local company-minimum-prefix-length 1)
-               ;(setq-local company-transformers '(company-sort-by-occurrence))
+               ;;(setq-local company-minimum-prefix-length 1)
+               ;;(setq-local company-transformers '(company-sort-by-occurrence))
                (setq-local company-backends '((company-capf
                                                company-abbrev
                                                company-dabbrev
@@ -33,7 +33,7 @@
                (embrace-org-mode-hook)
                (worf-mode)
                (org-bullets-mode t)
-               (org-sticky-header-mode)
+               ;(org-sticky-header-mode)
                (org-table-sticky-header-mode)
                (set-face-attribute 'org-table nil :inherit 'fixed-pitch)))
   :config
@@ -59,7 +59,7 @@
         org-pretty-entities t
         org-hide-emphasis-markers t
         org-startup-align-all-tables t
-        org-src-fontify-natively t
+        org-src-fontify-natively nil
         org-src-tab-acts-natively t
         org-src-window-setup 'current-window
         org-ditaa-jar-path    (expand-file-name "~/java/ditaa.jar")
