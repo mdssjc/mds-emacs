@@ -1,4 +1,4 @@
-;;; mds-web-wl.el --- Linguagem Web (Web Language)
+;;; mds-web-wl.el --- Linguagem Web (Web Language) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -18,8 +18,6 @@
   :mode
   (("\\.html$" . web-mode)
    ("\\.htm$"  . web-mode)
-   ("\\.css$"  . web-mode)
-   ("\\.scss$" . web-mode)
    ("\\.jsp$"  . web-mode))
   :init
   (add-hook 'web-mode-hook
@@ -39,7 +37,7 @@
                (setq-local counsel-dash-docsets '("HTML" "CSS" "Sass"))))
   :config
   (require 'html-mode-expansions)
-  (require 'css-mode-expansions)
+  (er/add-html-mode-expansions)
   (setq web-mode-style-padding 2
         web-mode-script-padding 2
         web-mode-markup-indent-offset 2
@@ -50,11 +48,30 @@
         web-mode-enable-css-colorization t
         web-mode-enable-auto-expanding t
         emmet-indentation 2
-        emmet-use-css-transform nil
-        emmet-use-sass-syntax nil
-        company-minimum-prefix-length 0)
-  (er/add-html-mode-expansions)
-  (er/add-css-mode-expansions))
+        company-minimum-prefix-length 0))
+
+(use-package css-mode
+  :mode
+  (("\\.css$"  . css-mode)
+   ("\\.scss$" . css-mode))
+  :init
+  (add-hook 'css-mode-hook
+            '(lambda ()
+               (emmet-mode)
+               (setq-local imenu-create-index-function
+                           '(lambda () (save-excursion)
+                              (imenu--generic-function '((nil "^ *\\([^ ]+\\) *{ *$" 1)))))
+               (setq-local company-transformers '(company-sort-prefer-same-case-prefix))
+               (setq-local company-backends '((company-css
+                                               company-yasnippet)))
+               (css-eldoc-enable)
+               (setq-local counsel-dash-docsets '("CSS" "Sass"))))
+  :config
+  (require 'css-mode-expansions)
+  (er/add-css-mode-expansions)
+  (setq css-indent-offset 2
+        emmet-indentation 2
+        emmet-preview-default t))
 
 (use-package emmet-mode
   :ensure t
@@ -63,6 +80,10 @@
 (use-package company-web
   :ensure t
   :commands company-web-html)
+
+(use-package css-eldoc
+  :ensure t
+  :after css-mode)
 
 (provide 'mds-web-wl)
 ;;; mds-web-wl.el ends here
