@@ -14,22 +14,34 @@
 
 ;;; Code:
 (add-hook 'window-setup-hook 'toggle-frame-maximized)
-(add-hook 'prog-mode-hook    'linum-mode)
 (add-hook 'prog-mode-hook    'global-hl-line-mode)
 
 (use-package doom-themes
   :ensure t
   :init
-  (add-hook 'find-file-hook            'doom-buffer-mode-maybe)
-  (add-hook 'after-revert-hook         'doom-buffer-mode-maybe)
-  (add-hook 'ediff-prepare-buffer-hook 'doom-buffer-mode)
   (load-theme 'doom-one t)
+  (doom-themes-visual-bell-config)
   :config
-  (doom-themes-nlinum-config)
   (setq Info-fontify-angle-bracketed-flag nil)
   (set-frame-font "Source Code Pro-10" nil t)
   (setq line-spacing 0.20)
   (require 'mds-aesthetic-modeline))
+
+(use-package nlinum-hl
+  :ensure t
+  :commands nlinum-hl-mode
+  :init
+  (add-hook 'prog-mode-hook   'nlinum-mode)
+  (add-hook 'nlinum-mode-hook 'nlinum-hl-mode))
+
+(use-package solaire-mode
+  :ensure t
+  :commands solaire-mode turn-on-solaire-mode solaire-mode-in-minibuffer
+  :init
+  (add-hook 'after-change-major-mode-hook 'turn-on-solaire-mode)
+  (add-hook 'after-revert-hook            'turn-on-solaire-mode)
+  (add-hook 'minibuffer-setup-hook        'solaire-mode-in-minibuffer)
+  (add-hook 'ediff-prepare-buffer-hook    'solaire-mode))
 
 (use-package dashboard
   :ensure t
@@ -51,12 +63,6 @@
   :commands all-the-icons-dired-mode
   :init
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
-
-(use-package hlinum
-  :ensure t
-  :commands hlinum-activate
-  :init
-  (add-hook 'after-init-hook 'hlinum-activate))
 
 (use-package highlight-thing
   :ensure t
