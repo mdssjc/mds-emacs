@@ -54,7 +54,9 @@
             '(lambda ()
                (parinfer-mode)
                (dr-racket-like-unicode-mode)
-               ;; (racket-unicode-input-method-enable)
+               (setq-local company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
+                                               company-preview-if-just-one-frontend
+                                               company-preview-common-frontend))
                (setq-local company-backends '((company-capf
                                                :with
                                                company-abbrev
