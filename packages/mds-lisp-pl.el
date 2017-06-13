@@ -111,6 +111,7 @@
                (define-key parinfer-mode-map (kbd "C-3") 'lispy-right)
                (define-key parinfer-mode-map (kbd "C-4") 'lispy-x)
                (define-key parinfer-mode-map (kbd "C-8") 'lispy-parens-down)
+               (define-key parinfer-mode-map (kbd "t")   'special-lispy-teleport)
                (show-paren-mode)
                (electric-pair-mode)
                (push '("->"  . ?→) prettify-symbols-alist)
