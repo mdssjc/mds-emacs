@@ -22,19 +22,26 @@
 (use-package company
   :ensure t
   :diminish company-mode " ⓐ"
-  :commands company-mode
+  :commands company-mode global-company-mode
   :defines
   company-dabbrev-ignore-case
   company-dabbrev-downcase
   company-dabbrev-minimum-length
   :init
   (add-hook 'after-init-hook 'global-company-mode)
+  (add-hook 'prog-mode-hook
+            '(lambda ()
+               (setq company-frontends '(company-echo-metadata-frontend
+                                         company-pseudo-tooltip-unless-just-one-frontend
+                                         company-preview-if-just-one-frontend
+                                         company-preview-common-frontend))))
+  (add-hook 'text-mode-hook
+            '(lambda ()
+               (setq company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
+                                         company-preview-if-just-one-frontend
+                                         company-preview-common-frontend))))
   :config
-  (setq company-frontends '(company-echo-metadata-frontend
-                            company-pseudo-tooltip-unless-just-one-frontend
-                            company-preview-if-just-one-frontend
-                            company-preview-common-frontend)
-        company-tooltip-limit 10
+  (setq company-tooltip-limit 10
         company-tooltip-minimum 5
         company-tooltip-offset-display 'lines
         company-tooltip-flip-when-above t
