@@ -65,7 +65,7 @@
   :ensure t
   :commands company-quickhelp-mode
   :init
-  (add-hook 'company-mode-hook 'company-quickhelp-mode)
+  (add-hook 'prog-mode-hook 'company-quickhelp-mode)
   :config
   (setq company-quickhelp-delay .25
         company-quickhelp-max-lines 30))
@@ -74,7 +74,7 @@
   :ensure t
   :commands company-statistics-mode
   :init
-  (add-hook 'company-mode-hook 'company-statistics-mode)
+  (add-hook 'prog-mode-hook 'company-statistics-mode)
   :config
   (run-with-idle-timer (* 60 3) t 'company-statistics--save)
   (setq company-statistics-size 1000
