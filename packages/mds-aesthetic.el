@@ -15,6 +15,7 @@
 ;;; Code:
 (add-hook 'window-setup-hook 'toggle-frame-maximized)
 (add-hook 'prog-mode-hook    'global-hl-line-mode)
+(add-hook 'prog-mode-hook    'nlinum-mode)
 
 (use-package doom-themes
   :ensure t
@@ -24,15 +25,13 @@
   :config
   (setq Info-fontify-angle-bracketed-flag nil)
   (set-frame-font "Source Code Pro-10" nil t)
-  (setq line-spacing 0.20)
+  (setq line-spacing 0.20
+        nlinum-highlight-current-line t)
   (require 'mds-aesthetic-modeline))
 
 (use-package nlinum-hl
   :ensure t
-  :commands nlinum-hl-mode
-  :init
-  (add-hook 'prog-mode-hook   'nlinum-mode)
-  (add-hook 'nlinum-mode-hook 'nlinum-hl-mode))
+  :commands nlinum-hl-mode)
 
 (use-package solaire-mode
   :ensure t
