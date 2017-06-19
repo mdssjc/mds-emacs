@@ -1,4 +1,4 @@
-;;; mds-markdown-ml.el --- Linguagem de Marcação Markdown (Markdown Markup Language)
+;;; mds-markdown-ml.el --- Linguagem de Marcação Markdown (Markdown Markup Language) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -10,16 +10,24 @@
 ;;; License: Unlicense
 
 ;;; Commentary:
-;; Markdown: arquivos .md.
+;; Configurações para a linguagem Markdown.
 
 ;;; Code:
 (use-package markdown-mode
   :ensure t
-  :commands markdown-mode gfm-mode
   :mode
   (("README\\.md\\'" . gfm-mode)
    ("\\.md\\'"       . markdown-mode)
    ("\\.markdown\\'" . markdown-mode))
+  :init
+  (add-hook 'markdown-mode-hook
+            '(lambda ()
+               (setq-local company-minimum-prefix-length 4)
+               (setq-local company-backends '((company-capf
+                                               company-abbrev
+                                               company-dabbrev
+                                               :with
+                                               company-ispell)))))
   :config
   (setq tab-width 4))
 
