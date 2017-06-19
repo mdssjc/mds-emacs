@@ -270,7 +270,7 @@
                       "C-<f5>"   'nil
                       "C-c c"    'racket-run-and-switch-to-repl
                       "C-c C-s"  'racket-racket)
-  (general-define-key :keymaps 'c-mode-map
+  (general-define-key :keymaps 'irony-mode-map
                       "C-c ,"     '(:ignore t :which-key "semantic")
                       "C-c @"     '(:ignore t :which-key "hide blocks")
                       "C-c C-r"   '(:ignore t :which-key "refactor")
