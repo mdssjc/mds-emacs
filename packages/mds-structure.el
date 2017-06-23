@@ -301,6 +301,7 @@
   :commands dumb-jump-mode
   :init
   (add-hook 'prog-mode-hook 'dumb-jump-mode)
+  (remove-hook 'emacs-lisp-mode-hook 'dumb-jump-mode)
   :config
   (setq dumb-jump-selector 'ivy
         dumb-jump-prefer-searcher 'rg))
