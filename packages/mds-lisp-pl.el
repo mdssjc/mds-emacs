@@ -1,4 +1,4 @@
-;;; mds-lisp-pl.el --- Linguagem de Programação Lisp (Lisp Programming Language)
+;;; mds-lisp-pl.el --- Linguagem de Programação Lisp (Lisp Programming Language) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -19,6 +19,8 @@
   ("\\.el$" . emacs-lisp-mode)
   :interpreter
   ("emacs" . emacs-lisp-mode)
+  :defines
+  flycheck-emacs-lisp-load-path
   :init
   (add-hook 'emacs-lisp-mode-hook
             '(lambda ()
