@@ -253,7 +253,15 @@
                       "C-3" 'lispy-right
                       "C-4" 'lispy-x
                       "C-8" 'lispy-parens-down
-                      "t" 'special-lispy-teleport)
+                      "t" 'special-lispy-teleport
+                      "/" 'special-lispy-splice
+                      "M-." 'lispy-goto-symbol
+                      "M-k" 'lispy-kill-sentence
+                      "<S-delete>" 'lispy-kill-at-point
+                      "C-+" 'lispy-mark
+                      "E" 'special-lispy-eval-and-insert
+                      "N" 'lispy-narrow
+                      "W" 'lispy-widen)
   (general-define-key :keymaps 'emacs-lisp-mode-map
                       "<f9> p"    'parinfer-mode
                       "<f9> P"    'enable-paredit-mode
