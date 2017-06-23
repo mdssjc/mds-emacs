@@ -1,4 +1,4 @@
-;;; mds-c-pl.el --- Linguagem de Programação C (C Programming Language)
+;;; mds-c-pl.el --- Linguagem de Programação C (C Programming Language) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -17,13 +17,15 @@
   :mode
   (("\\.c$" . c-mode)
    ("\\.h$" . c-mode))
+  :defines
+  irony-user-dir
+  speedbar-show-unknow-files
   :init
   (setq irony-user-dir (concat user-emacs-directory ".cache/irony"))
   (add-hook 'c-mode-hook
             '(lambda ()
                (setq-local company-transformers '(company-sort-by-backend-importance
-                                                  company-sort-prefer-same-case-prefix
-                                                  company-sort-by-statistics))
+                                                  company-sort-prefer-same-case-prefix))
                (setq-local company-backends '((company-irony-c-headers
                                                company-irony
                                                :with
