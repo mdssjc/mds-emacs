@@ -247,7 +247,13 @@
                       "C-."   'counsel-dash-at-point
                       "C-,"   'zeal-at-point)
   (general-define-key :keymaps 'parinfer-mode-map
-                      "C-c <tab>" 'parinfer-toggle-mode)
+                      "C-c <tab>" 'parinfer-toggle-mode
+                      "C-1" 'lispy-describe-inline
+                      "C-2" 'lispy-arglist-inline
+                      "C-3" 'lispy-right
+                      "C-4" 'lispy-x
+                      "C-8" 'lispy-parens-down
+                      "t" 'special-lispy-teleport)
   (general-define-key :keymaps 'emacs-lisp-mode-map
                       "<f9> p"    'parinfer-mode
                       "<f9> P"    'enable-paredit-mode

@@ -101,21 +101,18 @@
   ("\\.lfe\\(s\\|sh\\)?\\'" . lfe-mode)
   :init
   (add-hook 'lfe-mode-hook
-            '() (parinfer-mode)))
+            '(lambda () (parinfer-mode))))
 
 ;; General
 (use-package parinfer
   :ensure t
   :commands parinfer-mode parinfer-toggle-mode
+  :defines
+  prettify-symbols-unprettify-at-point
+  show-paren-style
   :init
   (add-hook 'parinfer-mode-enable-hook
             '(lambda ()
-               (define-key parinfer-mode-map (kbd "C-1") 'lispy-describe-inline)
-               (define-key parinfer-mode-map (kbd "C-2") 'lispy-arglist-inline)
-               (define-key parinfer-mode-map (kbd "C-3") 'lispy-right)
-               (define-key parinfer-mode-map (kbd "C-4") 'lispy-x)
-               (define-key parinfer-mode-map (kbd "C-8") 'lispy-parens-down)
-               (define-key parinfer-mode-map (kbd "t")   'special-lispy-teleport)
                (show-paren-mode)
                (electric-pair-mode)
                (push '("->"  . ?→) prettify-symbols-alist)
