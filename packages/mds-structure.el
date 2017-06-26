@@ -376,6 +376,14 @@
   :ensure t
   :commands symon-mode)
 
+(use-package pandoc-mode
+  :ensure t
+  :bind
+  (:map pandoc-mode-map
+        ("C-c /" . nil)
+        ("<C-M-return> a p" . pandoc-main-hydra/body))
+  :commands pandoc-mode)
+
 ;; Plus
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
