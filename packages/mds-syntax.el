@@ -139,7 +139,9 @@
   (add-hook 'prog-mode-hook 'yas-minor-mode)
   (add-hook 'org-mode-hook  'yas-minor-mode)
   :config
-  (setq yas-prompt-functions '(yas-completing-prompt yas-dropdown-prompt))
+  (setq yas-prompt-functions '(yas-completing-prompt yas-dropdown-prompt)
+        yas-verbosity 1
+        yas-wrap-around-region t)
   (yas-reload-all))
 
 (use-package auto-yasnippet
