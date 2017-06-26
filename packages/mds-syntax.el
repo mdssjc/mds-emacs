@@ -109,10 +109,13 @@
     (ispell-change-dictionary "en_GB"))
   :config
   (setq ispell-program-name "aspell"
+        ispell-really-aspell t
         ispell-extra-args '("--sug-mode=ultra")
         ispell-list-command "--list"
+        ispell-look-p nil
+        ispell-grep-command "rg"
+        ispell-grep-options ""
         ispell-dictionary "pt_BR"
-        ispell-really-aspell t
         ispell-complete-word-dict (concat (expand-file-name user-emacs-directory) "dict/pt_BR.dic")
         ispell-choices-win-default-height 5
         ispell-lazy-highlight nil))
