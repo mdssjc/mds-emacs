@@ -22,14 +22,13 @@
   :init
   (add-hook 'markdown-mode-hook
             '(lambda ()
-               (setq-local company-minimum-prefix-length 4)
                (setq-local company-backends '((company-capf
                                                company-abbrev
                                                company-dabbrev
-                                               :with
                                                company-ispell)))))
   :config
-  (setq tab-width 4))
+  (setq tab-width 2
+        markdown-italic-underscore t))
 
 (provide 'mds-markdown-ml)
 ;;; mds-markdown-ml.el ends here
