@@ -260,8 +260,8 @@
                       "<S-delete>" 'lispy-kill-at-point
                       "C-+" 'lispy-mark
                       "E" 'special-lispy-eval-and-insert
-                      "N" 'lispy-narrow
-                      "W" 'lispy-widen)
+                      "N" 'special-lispy-narrow
+                      "W" 'special-lispy-widen)
   (general-define-key :keymaps 'emacs-lisp-mode-map
                       "<f9> p"    'parinfer-mode
                       "<f9> P"    'enable-paredit-mode
