@@ -15,7 +15,7 @@
 ;;; Code:
 (use-package ess
   :ensure t
-  :load-path "~/Documents/Git/ESS/lisp/"
+  :load-path "~/.emacs.d/git/ESS/lisp/"
   :commands R S
   :config
   (load "ess-site"))
