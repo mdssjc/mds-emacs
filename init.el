@@ -105,7 +105,9 @@
   ;; ---
 
   ;; Segredos (Secrets)
-  (load (concat user-emacs-directory "secrets/secrets"))
+  (if (file-exists-p (concat user-emacs-directory "secrets/secrets.el"))
+      (load (concat user-emacs-directory "secrets/secrets"))
+    (message "Use mds-secrets-template.el as the basis for the secrets.el file."))
   ;; ---
 
   ;; Pacotes Essenciais (Essential Packages)
