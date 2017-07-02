@@ -88,9 +88,8 @@
 
   (mouse-avoidance-mode 'animate)
   (fset 'yes-or-no-p 'y-or-n-p)
-  (if (version<= emacs-version "26")
+  (if (not (version< emacs-version "26"))
       (fset 'display-buffer-in-major-side-window 'window--make-major-side-window))
-  (fset 'display-buffer-in-major-side-window 'window--make-major-side-window)
   (fset 'cl--copy-slot-descriptor-1 'copy-sequence)
 
   (defun display-extended-command-shorter (command)
