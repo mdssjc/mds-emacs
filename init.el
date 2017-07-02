@@ -47,7 +47,12 @@
         inhibit-startup-screen t
         column-number-mode t
         size-indication-mode t
-        visible-bell t
+        ring-bell-function 'ignore
+        visible-bell nil
+        ;; UI
+        bidi-display-reordering nil
+        cursor-in-non-selected-windows nil
+        use-dialog-box nil
         ;; Garbage Collect
         jit-lock-defer-time nil
         jit-lock-stealth-nice 0.1
@@ -66,7 +71,7 @@
         hscroll-step 1
         scroll-conservatively 1001
         scroll-margin 0
-        scroll-preserve-screen-position 't
+        scroll-preserve-screen-position t
         ;; Bookmark
         bookmark-default-file (concat user-emacs-directory ".cache/bookmarks")
         bookmark-save-flag t
@@ -87,6 +92,8 @@
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
   (mouse-avoidance-mode 'animate)
+
+  ;; Alias
   (fset 'yes-or-no-p 'y-or-n-p)
   (if (not (version< emacs-version "26"))
       (fset 'display-buffer-in-major-side-window 'window--make-major-side-window))
@@ -102,7 +109,7 @@
 
   ;; OS
   (when (eq system-type 'gnu/linux)
-    (setq x-gtk-use-system-tooltips t))
+    (setq x-gtk-use-system-tooltips nil))
   ;; ---
 
   ;; Segredos (Secrets)
