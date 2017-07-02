@@ -1,4 +1,4 @@
-;;; mds-r-dsl.el --- Linguagem de Domínio Específico (Domain Specific Language)
+;;; mds-r-dsl.el --- Linguagem de Domínio Específico (Domain Specific Language) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -15,10 +15,7 @@
 ;;; Code:
 (use-package ess
   :ensure t
-  :load-path "~/.emacs.d/git/ESS/lisp/"
-  :commands R S
-  :config
-  (load "ess-site"))
+  :commands R S)
 
 (provide 'mds-r-dsl)
 ;;; mds-r-dsl.el ends here
