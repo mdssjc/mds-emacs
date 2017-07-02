@@ -80,7 +80,7 @@
   :config
   (setq undo-tree-visualizer-timestamps t
         undo-tree-visualizer-diff t
-        undo-tree-auto-save-history t))
+        undo-tree-auto-save-history nil))
 
 (use-package magit
   :ensure t
