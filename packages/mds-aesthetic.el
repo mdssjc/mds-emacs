@@ -13,7 +13,7 @@
 ;; Estilo ergonômico e sem distrações/ruídos - tema dark e linha de status com ícones.
 
 ;;; Code:
-(add-hook 'window-setup-hook 'toggle-frame-maximized)
+;(add-hook 'window-setup-hook 'toggle-frame-maximized)
 (add-hook 'prog-mode-hook    'global-hl-line-mode)
 (add-hook 'prog-mode-hook    'nlinum-mode)
 
@@ -31,7 +31,9 @@
 
 (use-package nlinum-hl
   :ensure t
-  :commands nlinum-hl-mode)
+  :config
+  (add-hook 'focus-in-hook  'nlinum-hl-flush-all-windows)
+  (add-hook 'focus-out-hook 'nlinum-hl-flush-all-windows))
 
 (use-package solaire-mode
   :ensure t
