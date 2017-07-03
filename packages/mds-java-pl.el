@@ -22,7 +22,6 @@
   (add-hook 'java-mode-hook
             '(lambda ()
                (flycheck-mode)
-               ;;(meghanada-mode)
                (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))))
   (add-hook 'meghanada-mode-hook
             '(lambda ()
@@ -42,6 +41,7 @@
                                                company-files)))))
   (add-hook 'jdee-mode-hook
             '(lambda ()
+               (require 'jdee-checkstyle)
                (setq-local company-transformers '(company-sort-by-backend-importance
                                                   company-sort-prefer-same-case-prefix
                                                   company-sort-by-statistics))
@@ -68,9 +68,7 @@
   :ensure t
   :commands jdee-mode
   :init
-  (setq jdee-server-dir (concat user-emacs-directory ".cache/jdee/"))
-  :config
-  (require 'jdee-checkstyle))
+  (setq jdee-server-dir (concat user-emacs-directory ".cache/jdee/")))
 
 (provide 'mds-java-pl)
 ;;; mds-java-pl.el ends here
