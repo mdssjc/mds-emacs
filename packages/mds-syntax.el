@@ -1,4 +1,4 @@
-;;; mds-syntax.el --- Sintaxe (Syntax)
+;;; mds-syntax.el --- Sintaxe (Syntax) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -24,9 +24,13 @@
   :diminish company-mode " ⓐ"
   :commands company-mode global-company-mode
   :defines
+  company-dabbrev-code-modes
+  company-dabbrev-code-everywhere
+  company-dabbrev-code-ignore-case
+  company-dabbrev-minimum-length
   company-dabbrev-ignore-case
   company-dabbrev-downcase
-  company-dabbrev-minimum-length
+  company-dabbrev-ignore-invisible
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   (add-hook 'prog-mode-hook
@@ -41,25 +45,30 @@
                                          company-preview-if-just-one-frontend
                                          company-preview-common-frontend))))
   :config
-  (setq company-tooltip-limit 10
-        company-tooltip-minimum 5
-        company-tooltip-offset-display 'lines
-        company-tooltip-flip-when-above t
-        company-backends '((company-abbrev
-                            company-dabbrev
-                            company-dict
-                            company-files))
-        company-transformers '(company-sort-by-occurrence)
-        company-minimum-prefix-length 1
-        company-idle-delay 0.1
-        company-tooltip-idle-delay 0
+  (setq company-minimum-prefix-length 1
+        company-idle-delay 0
         company-show-numbers t
+        company-selection-wrap-around t
+        company-backends '((company-abbrev company-dabbrev company-files))
+        company-transformers '(company-sort-prefer-same-case-prefix company-sort-by-occurrence)
         company-occurrence-weight-function 'company-occurrence-prefer-any-closest
         company-search-regexp-function 'company-search-flex-regexp
         company-require-match nil
+        ;; Tooltip
+        company-tooltip-limit 10
+        company-tooltip-minimum 5
+        company-tooltip-offset-display 'lines
+        company-tooltip-align-annotations t
+        company-tooltip-idle-delay 0
+        ;; Dabbrev Code
+        company-dabbrev-code-modes '(prog-mode)
+        company-dabbrev-code-everywhere t
+        company-dabbrev-code-ignore-case t
+        ;; Dabbrev
+        company-dabbrev-minimum-length 3
         company-dabbrev-ignore-case nil
         company-dabbrev-downcase nil
-        company-dabbrev-minimum-length 1))
+        company-dabbrev-ignore-invisible t))
 
 (use-package company-quickhelp
   :ensure t
