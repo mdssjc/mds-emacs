@@ -32,9 +32,8 @@
                (ert--activate-font-lock-keywords)
                (add-to-list 'completion-styles 'initials t)
                (setq-local company-backends '((company-elisp
-                                               company-yasnippet
-                                               :with
                                                company-capf
+                                               company-yasnippet
                                                company-abbrev
                                                company-dabbrev-code
                                                company-dabbrev
