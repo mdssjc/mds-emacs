@@ -22,9 +22,13 @@
   :init
   (add-hook 'markdown-mode-hook
             '(lambda ()
+               (setq-local company-minimum-prefix-length 3)
+               (setq-local company-transformers '(company-sort-prefer-same-case-prefix
+                                                  company-sort-by-occurrence))
                (setq-local company-backends '((company-capf
                                                company-abbrev
                                                company-dabbrev
+                                               company-files
                                                company-ispell)))))
   :config
   (setq tab-width 2
