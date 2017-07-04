@@ -49,7 +49,7 @@
         company-idle-delay 0
         company-show-numbers t
         company-selection-wrap-around t
-        company-backends '((company-abbrev company-dabbrev company-files))
+        company-backends '((company-capf company-abbrev company-dabbrev company-files company-ispell))
         company-transformers '(company-sort-prefer-same-case-prefix company-sort-by-occurrence)
         company-occurrence-weight-function 'company-occurrence-prefer-any-closest
         company-search-regexp-function 'company-search-flex-regexp
