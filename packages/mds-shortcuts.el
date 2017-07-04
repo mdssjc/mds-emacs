@@ -149,7 +149,6 @@
    "S-C-s"         'counsel-grep-or-swiper
    "M-x"           'counsel-M-x
    "M-y"           'counsel-yank-pop
-   "S-M-t"         'swap-regions
    "S-SPC"         'cycle-spacing
    "M-<up>"        'md/move-lines-up
    "M-<down>"      'md/move-lines-down
