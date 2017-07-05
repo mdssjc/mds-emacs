@@ -42,6 +42,7 @@
         recentf-filename-handlers '(abbreviate-file-name)
         recentf-exclude '("/elpa/" "/.cache/")))
 
+;; Saveplace
 (use-package saveplace
   :commands save-place-mode
   :init
@@ -51,6 +52,7 @@
   (setq save-place-forget-unreadable-files nil
         save-place-limit 500))
 
+;; Savehist
 (use-package savehist
   :ensure t
   :commands savehist-mode
@@ -61,9 +63,8 @@
   (setq history-length 250
         history-delete-duplicates t
         savehist-save-minibuffer-history t
-        savehist-additional-variables '(kill-ring
-                                        search-ring
-                                        regexp-search-ring)))
+        savehist-autosave-interval nil
+        savehist-additional-variables '(kill-ring search-ring regexp-search-ring)))
 
 (use-package restart-emacs
   :ensure t
@@ -109,6 +110,7 @@
   :defer t
   :config
   (setq avy-timeout-seconds 0.3
+        avy-all-windows nil
         avy-background t
         avy-case-fold-search nil)
   (avy-setup-default))
@@ -206,9 +208,7 @@
 
 (use-package expand-region
   :ensure t
-  :defer 0
-  :config
-  (require 'the-org-mode-expansions))
+  :defer 3)
 
 (use-package embrace
   :ensure t
@@ -216,25 +216,21 @@
   :init
   (setq semantics-units '((?w . er/mark-word)
                           (?s . er/mark-symbol)
-                          (?d . er/mark-defun)
-                          (?P . er/mark-inside-pairs)
-                          (?p . er/mark-outside-pairs)
-                          (?Q . er/mark-inside-quotes)
-                          (?q . er/mark-outside-quotes)
-                          (?. . er/mark-sentence)
-                          (?h . er/mark-paragraph)
                           (?S . er/mark-symbol-with-prefix)
                           (?n . er/mark-next-accessor)
                           (?m . er/mark-method-call)
+                          (?Q . er/mark-inside-quotes)
+                          (?q . er/mark-outside-quotes)
+                          (?P . er/mark-inside-pairs)
+                          (?p . er/mark-outside-pairs)
                           (?c . er/mark-comment)
                           (?u . er/mark-url)
-                          (?e . er/mark-email)))
+                          (?e . er/mark-email)
+                          (?d . er/mark-defun)))
   (add-hook 'text-mode-hook
             '(lambda () (setq embrace-semantic-units-alist semantics-units)))
   (add-hook 'prog-mode-hook
-            '(lambda () (setq embrace-semantic-units-alist semantics-units)))
-  :config
-  (require 'the-org-mode-expansions))
+            '(lambda () (setq embrace-semantic-units-alist semantics-units))))
 
 (use-package ciel
   :ensure t
