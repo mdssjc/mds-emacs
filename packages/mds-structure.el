@@ -208,29 +208,25 @@
 
 (use-package expand-region
   :ensure t
-  :defer 3)
+  :commands expand-region hydra-expand-region/body embrace-commander)
 
 (use-package embrace
   :ensure t
-  :after expand-region
-  :init
-  (setq semantics-units '((?w . er/mark-word)
-                          (?s . er/mark-symbol)
-                          (?S . er/mark-symbol-with-prefix)
-                          (?n . er/mark-next-accessor)
-                          (?m . er/mark-method-call)
-                          (?Q . er/mark-inside-quotes)
-                          (?q . er/mark-outside-quotes)
-                          (?P . er/mark-inside-pairs)
-                          (?p . er/mark-outside-pairs)
-                          (?c . er/mark-comment)
-                          (?u . er/mark-url)
-                          (?e . er/mark-email)
-                          (?d . er/mark-defun)))
-  (add-hook 'text-mode-hook
-            '(lambda () (setq embrace-semantic-units-alist semantics-units)))
-  (add-hook 'prog-mode-hook
-            '(lambda () (setq embrace-semantic-units-alist semantics-units))))
+  :commands embrace-commander
+  :config
+  (setq embrace-semantic-units-alist '((?w . er/mark-word)
+                                       (?s . er/mark-symbol)
+                                       (?S . er/mark-symbol-with-prefix)
+                                       (?n . er/mark-next-accessor)
+                                       (?m . er/mark-method-call)
+                                       (?Q . er/mark-inside-quotes)
+                                       (?q . er/mark-outside-quotes)
+                                       (?P . er/mark-inside-pairs)
+                                       (?p . er/mark-outside-pairs)
+                                       (?c . er/mark-comment)
+                                       (?u . er/mark-url)
+                                       (?e . er/mark-email)
+                                       (?d . er/mark-defun))))
 
 (use-package ciel
   :ensure t

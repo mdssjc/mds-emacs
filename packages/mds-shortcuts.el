@@ -186,7 +186,7 @@
    "s-,"           'mc/mark-all-in-region-regexp
    "s-:"           'avy-goto-char-timer
    "s-g"           'avy-goto-char-in-line
-   "s-s"           'hydra-embrace/body
+   "s-s"           'embrace-commander
    "s-v"           'hydra-expand-region/body)
   ;; Toggles
   (general-define-key :prefix "<f5>"

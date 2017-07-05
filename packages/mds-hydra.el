@@ -34,17 +34,6 @@
   ("d" er/mark-defun              "defun"))
 ;; ---
 
-;; Embrace
-(defhydra hydra-embrace (:color blue :hint nil)
-  "
-Add (_a_), change (_c_) or delete (_d_) a pair.
-  "
-  ("<ESC>" nil "quit")
-  ("a" embrace-add)
-  ("c" embrace-change)
-  ("d" embrace-delete))
-;; ---
-
 ;; YASnippets
 (defhydra hydra-yasnippet (:color blue :hint nil)
   "
