@@ -49,6 +49,7 @@
                (company-irony-setup-begin-commands)
                (flycheck-irony-setup)
                (irony-eldoc)
+               (emr-initialize)
                (define-key irony-mode-map [remap completion-at-point]
                  'irony-completion-at-point-async)
                (define-key irony-mode-map [remap complete-symbol]

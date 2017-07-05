@@ -327,9 +327,7 @@
 
 (use-package emr
   :ensure t
-  :commands emr-initialize emr-show-refactor-menu
-  :init
-  (add-hook 'prog-mode-hook 'emr-initialize))
+  :commands emr-initialize emr-show-refactor-menu)
 
 (use-package popup-imenu
   :ensure t
