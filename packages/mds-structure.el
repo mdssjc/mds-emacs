@@ -13,6 +13,8 @@
 ;; Conjunto estrutural de melhorias/funcionalidades para o ambiente Emacs.
 
 ;;; Code:
+(require 'iedit)
+
 ;; Backups
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory ".cache/backups")))
       make-backup-files t
