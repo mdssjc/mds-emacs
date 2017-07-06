@@ -236,6 +236,7 @@
 
 (use-package zop-to-char
   :ensure t
+  :commands zop-to-char
   :init
   (global-set-key [remap zap-to-char] 'zop-to-char))
 
