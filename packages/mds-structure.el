@@ -279,12 +279,6 @@
   :ensure t
   :commands md/move-lines-up md/move-lines-down md/duplicate-up md/duplicate-down)
 
-(use-package swap-regions
-  :ensure t
-  :commands swap-regions-mode swap-regions
-  :init
-  (add-hook 'spaceline-pre-hook 'swap-regions-mode))
-
 (use-package electric-spacing
   :ensure t
   :diminish electric-spacing-mode
