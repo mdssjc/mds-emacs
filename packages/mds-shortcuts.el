@@ -269,7 +269,6 @@
                       "<f9> t"    'litable-mode
                       "M-&"       'complete-symbol
                       "C-c e"     'macrostep-expand
-                      "C-c C-r"   '(:ignore t :which-key "refactor")
                       "C-c C-r v" '(:ignore t :which-key "erefactor")
                       "C-c C-r e" 'emr-show-refactor-menu)
   (general-define-key :keymaps 'racket-mode-map
@@ -409,11 +408,8 @@
   (general-define-key :keymaps 'undo-tree-map
                       "M-_" 'nil)
   (general-define-key :keymaps 'java-mode-map
-                      "<f9> j"  'jdee-mode
-                      "<f9> m"  'meghanada-mode
-                      "C-c C-c" '(:ignore t :which-key "compile")
-                      "C-c C-r" '(:ignore t :which-key "refactor")
-                      "C-c C-v" '(:ignore t :which-key "project"))
+                      "<f9> m" 'meghanada-mode
+                      "<f9> j" 'jdee-mode)
   (general-define-key :keymaps 'popup-isearch-keymap
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'sql-mode-map
@@ -430,7 +426,13 @@
   :init
   (add-hook 'after-init-hook 'which-key-mode)
   :config
-  (setq which-key-idle-delay 0))
+  (setq which-key-idle-delay 0)
+  (which-key-add-major-mode-key-based-replacements 'java-mode
+    "C-c C-c" "compile"
+    "C-c C-r" "refactor"
+    "C-c C-v" "project")
+  (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
+    "C-c C-r" "refactor"))
 
 (use-package popup-edit-menu
   :ensure t
