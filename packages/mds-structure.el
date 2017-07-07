@@ -13,8 +13,6 @@
 ;; Conjunto estrutural de melhorias/funcionalidades para o ambiente Emacs.
 
 ;;; Code:
-(require 'iedit)
-
 ;; Backups
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory ".cache/backups")))
       make-backup-files t
@@ -234,6 +232,12 @@
   :ensure t
   :commands ciel-ci ciel-co ciel-copy-to-register)
 
+(use-package iedit
+  :ensure t
+  :commands iedit-mode
+  :init
+  (add-hook 'after-init-hook '(lambda () (require 'iedit))))
+
 (use-package zop-to-char
   :ensure t
   :commands zop-to-char
@@ -390,7 +394,9 @@
 
 (eval-after-load "replace" '(use-package replace+ :ensure t :defer 0))
 
-(eval-after-load "menu-bar" '(use-package menu-bar+ :ensure t :defer 0))
+(use-package menu-bar+
+  :ensure t
+  :after menu-bar)
 
 (use-package imenu
   :init
@@ -398,15 +404,18 @@
   :config
   (setq imenu-auto-rescan t))
 
-(eval-after-load "face-remap" '(use-package face-remap+ :ensure t :defer 0))
+(use-package face-remap+
+  :ensure t
+  :after face-remap)
 
 (eval-after-load "icomplete" '(use-package icomplete+ :ensure t :defer 0))
 
-(eval-after-load "pp" '(use-package pp+
-                         :ensure t
-                         :commands pp-eval-expression
-                         :init
-                         (global-set-key [remap eval-expression] 'pp-eval-expression)))
+(use-package pp+
+  :ensure t
+  :after pp
+  :commands pp-eval-expression
+  :init
+  (global-set-key [remap eval-expression] 'pp-eval-expression))
 
 (eval-after-load "simple" '(use-package simple+ :ensure t :defer 0))
 
