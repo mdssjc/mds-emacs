@@ -402,7 +402,11 @@
 
 (eval-after-load "icomplete" '(use-package icomplete+ :ensure t :defer 0))
 
-(eval-after-load "pp" '(use-package pp+ :ensure t :defer 0))
+(eval-after-load "pp" '(use-package pp+
+                         :ensure t
+                         :commands pp-eval-expression
+                         :init
+                         (global-set-key [remap eval-expression] 'pp-eval-expression)))
 
 (eval-after-load "simple" '(use-package simple+ :ensure t :defer 0))
 
