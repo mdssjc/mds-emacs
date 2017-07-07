@@ -355,10 +355,6 @@
   :config
   (setq exec-path-from-shell-check-startup-files nil))
 
-(use-package esup
-  :ensure t
-  :commands esup)
-
 (use-package symon
   :ensure t
   :commands symon-mode)
