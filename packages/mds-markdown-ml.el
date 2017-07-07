@@ -29,6 +29,7 @@
                                                company-abbrev
                                                company-dabbrev
                                                company-files
+                                               :with
                                                company-ispell)))))
   :config
   (setq tab-width 2
