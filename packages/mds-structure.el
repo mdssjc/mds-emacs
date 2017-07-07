@@ -208,7 +208,7 @@
 
 (use-package expand-region
   :ensure t
-  :commands expand-region hydra-expand-region/body embrace-commander)
+  :defer 1)
 
 (use-package embrace
   :ensure t
