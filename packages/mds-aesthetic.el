@@ -13,7 +13,11 @@
 ;; Estilo ergonômico e sem distrações/ruídos - tema dark e linha de status com ícones.
 
 ;;; Code:
-(add-hook 'prog-mode-hook 'global-hl-line-mode)
+(add-hook 'prog-mode-hook 'toggle-display-line-numbers)
+(set-face-attribute 'line-number-current-line nil
+                    :weight 'bold
+                    :foreground "white"
+                    :background "#23272e")
 
 (use-package doom-themes
   :ensure t
@@ -29,25 +33,11 @@
 (use-package hl-line
   :commands hl-line-mode global-hl-line-mode
   :init
-  (add-hook 'linum-mode-hook  'hl-line-mode)
-  (add-hook 'nlinum-mode-hook 'hl-line-mode)
+  (add-hook 'prog-mode-hook 'hl-line-mode)
   (add-hook 'hl-line-mode-hook '(lambda () (remove-overlays (point-min) (point-max) 'face 'hl-line)))
   :config
   (setq hl-line-sticky-flag nil
         global-hl-line-sticky-flag nil))
-
-(use-package nlinum
-  :commands nlinum-mode
-  :init
-  (add-hook 'prog-mode-hook 'nlinum-mode)
-  :config
-  (setq nlinum-highlight-current-line t))
-
-(use-package nlinum-hl
-  :ensure t
-  :config
-  (add-hook 'focus-in-hook  'nlinum-hl-flush-all-windows)
-  (add-hook 'focus-out-hook 'nlinum-hl-flush-all-windows))
 
 (use-package solaire-mode
   :ensure t
