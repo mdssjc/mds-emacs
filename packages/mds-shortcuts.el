@@ -132,6 +132,7 @@
    "C-M-%"         'anzu-query-replace-regexp
    "M-*"           'vr/replace
    "C-M-*"         'vr/query-replace
+   "C-c /"         'counsel-grep-or-swiper
    "C-c C-/"       'counsel-rg
    "C-c I"         'emojify-insert-emoji
    "C-:"           'avy-goto-char-timer
@@ -145,7 +146,6 @@
    "S-C-j"         'join-line
    "C-'"           'popup-imenu
    "S-C-f"         'swiper-multi
-   "S-C-s"         'counsel-grep-or-swiper
    "M-x"           'counsel-M-x
    "M-y"           'counsel-yank-pop
    "S-SPC"         'cycle-spacing
@@ -178,7 +178,6 @@
    "s-C-M-<left>"  'buf-move-left
    "s-C-M-<right>" 'buf-move-right
    "s-7"           'hydra-yasnippet/body
-   "s-/"           'counsel-grep-or-swiper
    "s-c i"         'ciel-ci
    "s-c o"         'ciel-co
    "s-."           'mc/mark-all-dwim
