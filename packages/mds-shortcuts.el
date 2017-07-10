@@ -25,11 +25,13 @@
                       "a s"   'symon-mode
                       "a w"   'wttrin
                       "b"     '(:which-key "buffer")
-                      "b b"   'ivy-switch-buffer
-                      "b f"   'counsel-find-file
-                      "b k"   'kill-this-buffer
-                      "b r"   'counsel-recentf
-                      "b s"   'save-buffer
+                      "b n"   '(find-file         :which-key "new")
+                      "b f"   '(counsel-find-file :which-key "open")
+                      "b s"   '(save-buffer       :which-key "save")
+                      "b S"   '(write-file        :which-key "save as")
+                      "b r"   '(counsel-recentf   :which-key "recentf")
+                      "b b"   '(ivy-switch-buffer :which-key "switch")
+                      "b k"   '(kill-this-buffer  :which-key "kill")
                       "B"     '(:which-key "browser")
                       "B g"   '(:which-key "google")
                       "B e"   'eww
