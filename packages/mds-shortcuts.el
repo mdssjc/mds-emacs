@@ -31,16 +31,19 @@
                       "b r"   'counsel-recentf
                       "b s"   'save-buffer
                       "B"     '(:which-key "browser")
+                      "B g"   '(:which-key "google")
                       "B e"   'eww
                       "B a"   'engine/search-amazon
                       "B G"   'engine/search-github
-                      "B g"   'engine/search-google
                       "B s"   'engine/search-stack-overflow
                       "B t"   'engine/search-twitter
                       "B w"   'engine/search-wikipedia
                       "B W"   'engine/search-wikipedia-pt
                       "B d"   'engine/search-wiktionary
                       "B D"   'engine/search-wiktionary-pt
+                      "B ."   'google-translate-at-point
+                      "B S"   'google-translate-smooth-translate
+                      "B T"   'google-translate-query-translate
                       "e"     'eshell
                       "g"     '(:which-key "magit")
                       "g S"   'magit-stage-file
@@ -111,7 +114,6 @@
   (general-define-key
    "<mouse-9>"     'ibuffer
    "<mouse-8>"     'er/expand-region
-   "C-c /"         '(:which-key "google")
    "C-c !"         '(:which-key "flycheck")
    "C-c &"         '(:which-key "yasnippet")
    "M-s h"         '(:which-key "highlight")
@@ -130,9 +132,6 @@
    "C-M-%"         'anzu-query-replace-regexp
    "M-*"           'vr/replace
    "C-M-*"         'vr/query-replace
-   "C-c / ."       'google-translate-at-point
-   "C-c / S"       'google-translate-smooth-translate
-   "C-c / T"       'google-translate-query-translate
    "C-c C-/"       'counsel-rg
    "C-c I"         'emojify-insert-emoji
    "C-:"           'avy-goto-char-timer

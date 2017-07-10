@@ -108,6 +108,7 @@
   :diminish google-this-mode
   :commands google-this-mode
   :init
+  (setq google-this-keybind (kbd "<C-M-return> B g"))
   (add-hook 'after-init-hook 'google-this-mode))
 
 (use-package google-translate
@@ -118,14 +119,12 @@
 
 (use-package engine-mode
   :ensure t
-  :commands engine/search-amazon engine/search-github engine/search-google engine/search-stack-overflow engine/search-twitter engine/search-wikipedia engine/search-wikipedia-pt engine/search-wiktionary engine/search-wiktionary-pt
+  :commands engine/search-amazon engine/search-github engine/search-stack-overflow engine/search-twitter engine/search-wikipedia engine/search-wikipedia-pt engine/search-wiktionary engine/search-wiktionary-pt
   :config
   (defengine amazon
     "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s")
   (defengine github
     "https://github.com/search?q=%s")
-  (defengine google
-    "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s")
   (defengine stack-overflow
     "https://stackoverflow.com/search?q=%s")
   (defengine twitter
