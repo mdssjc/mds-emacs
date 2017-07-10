@@ -76,7 +76,6 @@
                       "S"     'embrace-commander
                       "V"     'hydra-expand-region/body
                       "\\"    'align-regexp
-                      "g"     'magit-status
                       "t"     'tabbar-ruler-move
                       "x"     '(:which-key "text")
                       "x a"   '(:which-key "align")
