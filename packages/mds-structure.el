@@ -347,6 +347,10 @@
   :ensure t
   :commands popup-imenu)
 
+(use-package underline-with-char
+  :ensure t
+  :commands underline-with-char)
+
 (use-package icicles
   :ensure t
   :commands icy-mode)
