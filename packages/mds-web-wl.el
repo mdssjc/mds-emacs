@@ -85,5 +85,17 @@
   :ensure t
   :after css-mode)
 
+(use-package restclient
+  :ensure t
+  :commands restclient-mode
+  :init
+  (add-hook 'restclient-mode-hook
+            '(lambda ()
+               (setq-local company-backends '((company-restclient))))))
+
+(use-package company-restclient
+  :ensure t
+  :commands company-restclient)
+
 (provide 'mds-web-wl)
 ;;; mds-web-wl.el ends here
