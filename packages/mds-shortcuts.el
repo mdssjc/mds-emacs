@@ -194,7 +194,7 @@
                       "f" 'focus-mode
                       "g" 'golden-ratio-mode
                       "h" 'hl-todo-mode
-                      "l" 'toggle-display-line-numbers
+                      "l" 'display-nume-numbers-mode
                       "r" 'read-only-mode
                       "t" 'toggle-truncate-lines
                       "w" 'global-whitespace-mode

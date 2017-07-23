@@ -13,7 +13,7 @@
 ;; Estilo ergonômico e sem distrações/ruídos - tema dark e linha de status com ícones.
 
 ;;; Code:
-(add-hook 'prog-mode-hook 'toggle-display-line-numbers)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (set-face-attribute 'line-number-current-line nil
                     :weight 'bold
                     :foreground "white"
