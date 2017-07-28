@@ -1,4 +1,4 @@
-;;; mds-sql-dsl.el --- Linguagem de Domínio Específico para Linguagem de Consulta Estruturada (Domain Specific Language for Structured Query Language)
+;;; mds-sql-dsl.el --- Linguagem de Domínio Específico para Linguagem de Consulta Estruturada (Domain Specific Language for Structured Query Language) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2017-2017 Marcelo dos Santos
 ;;
@@ -29,7 +29,7 @@
   :ensure t
   :after sql
   :config
-  (eval-after-load "sql" '(load-library "sql-indent")))
+  (with-eval-after-load 'sql (require 'sql-indent)))
 
 ;; https://github.com/kostafey/ejc-sql
 (use-package ejc-sql
