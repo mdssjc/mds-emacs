@@ -13,27 +13,35 @@
 ;; Organização do trabalho com Org.
 
 ;;; Code:
+(defun my-org-mode-hook ()
+  (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
+(add-hook 'org-mode-hook #'my-org-mode-hook)
+
 (use-package org
   :ensure t
   :mode
   (("\\.org\\'" . org-mode))
+  :defines
+  org-ditaa-jar-path
+  org-plantuml-jar-path
   :init
   (add-hook 'org-mode-hook
             '(lambda ()
-               ;;(setq-local company-minimum-prefix-length 1)
-               ;;(setq-local company-transformers '(company-sort-by-occurrence))
+               (setq-local company-minimum-prefix-length 1)
+               (setq-local company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
+                                               company-preview-if-just-one-frontend
+                                               company-preview-common-frontend))
                (setq-local company-backends '((company-capf
                                                company-abbrev
                                                company-dabbrev
                                                company-yasnippet
-                                               :with
                                                company-ispell)))
                (company-mode)
                (flyspell-mode -1)
                (embrace-org-mode-hook)
                (worf-mode)
                (org-bullets-mode t)
-               ;(org-sticky-header-mode)
+               (org-sticky-header-mode)
                (org-table-sticky-header-mode)
                (set-face-attribute 'org-table nil :inherit 'fixed-pitch)))
   :config
