@@ -226,7 +226,7 @@
 (use-package embrace
   :ensure t
   :commands embrace-commander
-  :config
+  :init
   (setq embrace-semantic-units-alist '((?w . er/mark-word)
                                        (?s . er/mark-symbol)
                                        (?S . er/mark-symbol-with-prefix)
