@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: obditaa
+# key: obditaa
+# --
+#+BEGIN_SRC ditaa :file $1
+  $0
+#+END_SRC

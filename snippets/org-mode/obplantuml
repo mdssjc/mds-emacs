@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: obplantuml
+# key: obplantuml
+# --
+#+BEGIN_SRC plantuml :file $1
+  $0
+#+END_SRC
