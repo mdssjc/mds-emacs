@@ -233,10 +233,11 @@
                       "C-."   'nil)
   ;; Pragmático - Pragmatic
   (general-define-key :prefix "<f8>"
-                      "l" 'org-store-link
                       "a" 'org-agenda
-                      "c" 'org-capture
                       "b" 'org-iswitchb
+                      "c" 'org-capture
+                      "g" 'org-clock-goto
+                      "l" 'org-store-link
                       "p" 'org-pomodoro
                       "T" 'tomatinho)
   ;; Configurações - Configurations
