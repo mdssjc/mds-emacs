@@ -257,6 +257,13 @@
   :init
   (global-set-key [remap zap-to-char] 'zop-to-char))
 
+(use-package wgrep
+  :ensure t
+  :commands wgrep-setup
+  :init
+  (add-hook 'occur-mode-hook 'wgrep-setup)
+  (add-hook 'rg-mode-hook 'wgrep-setup))
+
 (use-package rg
   :ensure t
   :commands rg)
@@ -264,10 +271,6 @@
 (use-package ripgrep
   :ensure t
   :commands ripgrep-regexp projectile-ripgrep)
-
-(use-package wgrep
-  :ensure t
-  :defer 0)
 
 (use-package anzu
   :ensure t
@@ -420,6 +423,10 @@
   (eval-after-load "imenu" '(use-package imenu+ :ensure t))
   :config
   (setq imenu-auto-rescan t))
+
+(use-package imenu-anywhere
+  :ensure t
+  :commands imenu-anywhere)
 
 (use-package face-remap+
   :ensure t
