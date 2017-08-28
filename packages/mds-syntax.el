@@ -45,7 +45,7 @@
                                          company-preview-if-just-one-frontend
                                          company-preview-common-frontend))))
   :config
-  (setq company-minimum-prefix-length 1
+  (setq company-minimum-prefix-length 2
         company-idle-delay 0
         company-show-numbers t
         company-selection-wrap-around t
