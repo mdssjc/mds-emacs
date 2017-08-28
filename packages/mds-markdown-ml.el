@@ -22,7 +22,7 @@
   :init
   (add-hook 'markdown-mode-hook
             '(lambda ()
-               (setq-local company-minimum-prefix-length 3)
+               (setq-local company-minimum-prefix-length 2)
                (setq-local company-transformers '(company-sort-prefer-same-case-prefix
                                                   company-sort-by-occurrence))
                (setq-local company-backends '((company-capf
