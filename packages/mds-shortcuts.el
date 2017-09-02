@@ -289,6 +289,10 @@
                       "C-c C-r e" 'emr-show-refactor-menu
                       "C-c C-r s" 'srefactor-refactor-at-point
                       ";"         'maio/electric-semicolon)
+  (general-define-key :keymaps 'js-mode-map
+                      "M-." 'nil)
+  (general-define-key :keymaps 'js2-mode-map
+                      "C-k" 'js2r-kill)
   (general-define-key :keymaps 'dumb-jump-mode-map
                       "M-."   'hydra-dumb-jump/body
                       "C-M-g" 'nil
