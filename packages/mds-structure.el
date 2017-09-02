@@ -328,6 +328,9 @@
   :ensure t
   :commands shift-number-up shift-number-down)
 
+(use-package number
+  :ensure t)
+
 (use-package multiple-cursors
   :ensure t
   :defer 0)
