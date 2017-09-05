@@ -142,6 +142,7 @@
   (require 'mds-terminal)
   ;; Linguagem de Programação Geral (General Programming Language)
   (require 'mds-java-pl)
+  (require 'mds-javascript-pl)
   (require 'mds-haskell-pl)
   (require 'mds-lisp-pl)
   (require 'mds-c-pl)
@@ -165,7 +166,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages
+   (quote
+    (company-tern number visual-regexp-steroids xref-js2 js2-refactor js2-mode imenu-anywhere smart-mode-line telephone-line esup treemacs company-restclient restclient underline-with-char hl-line+ zop-to-char zeal-at-point wttrin writeroom-mode worf which-key wgrep web-mode volatile-highlights visual-regexp use-package undo-tree twittering-mode tomatinho tabbar-ruler symon srefactor sqlup-mode sql-indent spaceline-all-the-icons solaire-mode smex simple+ shm shift-number rg restart-emacs replace+ rainbow-delimiters racket-mode projectile-speedbar projectile-ripgrep pp+ popup-imenu popup-edit-menu plantuml-mode parinfer pandoc-mode package-utils org-table-sticky-header org-sticky-header org-pomodoro org-bullets move-dup mouse+ menu-bar+ meghanada markdown-mode magithub lsp-java litable lispy lfe-mode langtool lacarte jdee java-snippets ivy-rich ivy-hydra irony-eldoc intero info+ imenu+ icicles hlint-refactor highlight-thing haskell-snippets guess-language google-translate google-this golden-ratio gitignore-mode git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell face-remap+ exec-path-from-shell ess eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing ejc-sql dumb-jump dr-racket-like-unicode doremi doom-themes dired+ dashboard css-eldoc counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghci company-ghc company-dict company-cabal clojure-snippets clj-refactor ciel cider-eval-sexp-fu centered-cursor-mode buffer-move bookmark+ auto-yasnippet anzu all-the-icons-dired))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
