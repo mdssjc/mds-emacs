@@ -17,13 +17,10 @@
   :ensure t
   :commands lsp-mode)
 
-(use-package lsp-java
-  :ensure t
-  :after lsp-mode
-  :config
-  (require 'lsp-java)
-  (require 'lsp-mode)
-  (lsp-mode t))
+;; (use-package lsp-java
+;;   :ensure t
+;;   :config
+;;   (lsp-mode t))
 
 (use-package treemacs
   :ensure t
