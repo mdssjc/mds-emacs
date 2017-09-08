@@ -32,21 +32,6 @@
                                                   company-sort-by-statistics))
                (setq-local company-backends '((company-meghanada
                                                company-yasnippet
-                                               :with
-                                               company-keywords
-                                               company-abbrev
-                                               company-dabbrev-code
-                                               company-dabbrev
-                                               company-dict
-                                               company-files)))))
-  (add-hook 'jdee-mode-hook
-            '(lambda ()
-               (require 'jdee-checkstyle)
-               (setq-local company-transformers '(company-sort-by-backend-importance
-                                                  company-sort-prefer-same-case-prefix
-                                                  company-sort-by-statistics))
-               (setq-local company-backends '((company-yasnippet
-                                               :with
                                                company-keywords
                                                company-abbrev
                                                company-dabbrev-code
@@ -64,11 +49,9 @@
   :init
   (setq meghanada-server-install-dir (concat user-emacs-directory ".cache/meghanada/")))
 
-(use-package jdee
+(use-package lsp-java
   :ensure t
-  :commands jdee-mode
-  :init
-  (setq jdee-server-dir (concat user-emacs-directory ".cache/jdee/")))
+  :commands lsp-mode)
 
 (provide 'mds-java-pl)
 ;;; mds-java-pl.el ends here
