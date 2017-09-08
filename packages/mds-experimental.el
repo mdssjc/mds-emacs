@@ -15,12 +15,10 @@
 ;;; Code:
 (use-package lsp-mode
   :ensure t
-  :commands lsp-mode)
-
-;; (use-package lsp-java
-;;   :ensure t
-;;   :config
-;;   (lsp-mode t))
+  :commands lsp-mode
+  :init
+  (with-eval-after-load 'lsp-mode
+    (require 'lsp-flycheck)))
 
 (use-package treemacs
   :ensure t
