@@ -266,7 +266,7 @@
 
 (use-package rg
   :ensure t
-  :commands rg)
+  :commands rg rg-project rg-dwim)
 
 (use-package ripgrep
   :ensure t
