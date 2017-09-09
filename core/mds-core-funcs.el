@@ -86,5 +86,36 @@
   (mds//text-case #'s-word-initials begin end))
 ;; ---
 
+;; Maio
+(defun maio/electric-semicolon ()
+  "Insert a semicolon in expression."
+  (interactive)
+  (end-of-line)
+  (when (not (looking-back ";" 0))
+    (insert ";")))
+;; ---
+
+;; Xah
+(defun xah-select-current-line ()
+  "Select current line.
+URL `http://ergoemacs.org/emacs/modernization_mark-word.html'
+Version 2016-07-22"
+  (interactive)
+  (end-of-line)
+  (set-mark (line-beginning-position)))
+
+(defun xah-select-line ()
+  "Select current line.
+If region is active, extend selection downward by line.
+URL `http://ergoemacs.org/emacs/modernization_mark-word.html'
+Version 2016-07-22"
+  (interactive)
+  (if (region-active-p)
+      (progn
+        (forward-line 1)
+        (end-of-line))
+    (xah-select-current-line)))
+;; ---
+
 (provide 'mds-core-funcs)
 ;;; mds-core-funcs.el ends here
