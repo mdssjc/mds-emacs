@@ -26,15 +26,19 @@
                (js2-refactor-mode)
                (add-hook 'xref-backend-functions 'xref-js2-xref-backend nil t)
                (tern-mode t)
-               (setq-local company-transformers '(company-sort-by-backend-importance
-                                                  company-sort-prefer-same-case-prefix
+               (electric-pair-mode t)
+               (setq-local company-transformers '(company-sort-prefer-same-case-prefix
+                                                  company-sort-by-backend-importance
                                                   company-sort-by-statistics))
                (setq-local company-backends '((company-tern
-                                               ;;company-capf
-                                               ;;company-abbrev
-                                               ;;company-dabbrev-code
-                                               ;;company-dabbrev
-                                               company-files))))))
+                                               company-capf
+                                               company-abbrev
+                                               company-dabbrev-code
+                                               company-dabbrev
+                                               company-files)))))
+  :config
+  (setq js2-highlight-level 3
+        js-indent-level 2))
 
 (use-package js2-refactor
   :ensure t
