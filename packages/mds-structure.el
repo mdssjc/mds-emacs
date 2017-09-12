@@ -170,7 +170,9 @@
   :config
   (setq counsel-mode-override-describe-bindings t
         counsel-find-file-at-point t
-        confirm-nonexistent-file-or-buffer t))
+        confirm-nonexistent-file-or-buffer t)
+  (fset 'describe-function 'counsel-describe-function)
+  (fset 'describe-variable 'counsel-describe-variable))
 
 (use-package smex
   :ensure t
@@ -436,7 +438,6 @@
 
 (use-package pp+
   :ensure t
-  :after pp
   :commands pp-eval-expression
   :init
   (global-set-key [remap eval-expression] 'pp-eval-expression))
