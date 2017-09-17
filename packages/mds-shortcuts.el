@@ -181,12 +181,14 @@
    "s-7"           'hydra-yasnippet/body
    "s-c i"         'ciel-ci
    "s-c o"         'ciel-co
+   "s-d /"         'rg-dwim
    "s-."           'mc/mark-all-dwim
    "s-,"           'mc/mark-all-in-region-regexp
    "s-:"           'avy-goto-char-timer
    "s-g"           'avy-goto-char-in-line
    "s-s"           'embrace-commander
-   "s-v"           'hydra-expand-region/body)
+   "s-v"           'hydra-expand-region/body
+   "s-V"           'xah-select-line)
   ;; Toggles
   (general-define-key :prefix "<f5>"
                       "-" 'centered-cursor-mode
@@ -233,13 +235,14 @@
                       "C-."   'nil)
   ;; Pragmático - Pragmatic
   (general-define-key :prefix "<f8>"
-                      "a" 'org-agenda
-                      "b" 'org-iswitchb
-                      "c" 'org-capture
-                      "g" 'org-clock-goto
-                      "l" 'org-store-link
-                      "p" 'org-pomodoro
-                      "T" 'tomatinho)
+                      "SPC" 'counsel-org-goto-all
+                      "a"   'org-agenda
+                      "b"   'org-iswitchb
+                      "c"   'org-capture
+                      "g"   'org-clock-goto
+                      "l"   'org-store-link
+                      "p"   'org-pomodoro
+                      "T"   'tomatinho)
   ;; Configurações - Configurations
   (general-define-key :keymaps 'prog-mode-map
                       "<tab>" 'company-indent-or-complete-common
@@ -292,7 +295,13 @@
   (general-define-key :keymaps 'js-mode-map
                       "M-." 'nil)
   (general-define-key :keymaps 'js2-mode-map
-                      "C-k" 'js2r-kill)
+                      "C-k" 'js2r-kill
+                      ";"   'maio/electric-semicolon)
+  (general-define-key :keymaps 'tern-mode-keymap
+                      "M-."     'nil
+                      "M-,"     'nil
+                      "C-c C-r" 'nil
+                      "C-c r"   '(tern-rename-variable :which-key "refactor"))
   (general-define-key :keymaps 'dumb-jump-mode-map
                       "M-."   'hydra-dumb-jump/body
                       "C-M-g" 'nil
@@ -304,19 +313,26 @@
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'projectile-mode-map
                       "<C-M-return> p"     '(projectile-command-map :which-key "projectile")
-                      "<C-M-return> p 4"   '(projectile-command-map :which-key "find")
-                      "<C-M-return> p s"   '(projectile-command-map :which-key "search")
-                      "<C-M-return> p x"   '(projectile-command-map :which-key "execute")
+                      "<C-M-return> p 4"   '(:ignore t :which-key "find")
+                      "<C-M-return> p 5"   '(:ignore t :which-key "find other")
+                      "<C-M-return> p s"   '(:ignore t :which-key "search")
+                      "<C-M-return> p x"   '(:ignore t :which-key "execute")
                       "<C-M-return> p s r" 'projectile-ripgrep
-                      "C-c p"     '(:ignore t :which-key "projectile")
+                      "<C-M-return> p ."   'rg-project
+                      "C-c p"     '(projectile-command-map :which-key "projectile")
                       "C-c p 4"   '(:ignore t :which-key "find")
+                      "C-c p 5"   '(:ignore t :which-key "find other")
                       "C-c p s"   '(:ignore t :which-key "search")
                       "C-c p x"   '(:ignore t :which-key "execute")
                       "C-c p s r" 'projectile-ripgrep
-                      "s-p"   'projectile-command-map
-                      "s-p 4" '(:ignore t :which-key "find")
-                      "s-p s" '(:ignore t :which-key "search")
-                      "s-p x" '(:ignore t :which-key "execute")
+                      "C-c p ."   'rg-project
+                      "s-p"     'projectile-command-map
+                      "s-p 4"   '(:ignore t :which-key "find")
+                      "s-p 5"   '(:ignore t :which-key "find other")
+                      "s-p s"   '(:ignore t :which-key "search")
+                      "s-p x"   '(:ignore t :which-key "execute")
+                      "s-p s r" 'projectile-ripgrep
+                      "s-p ."   'rg-project
                       "s-P"   'mds/speedbar-toggle
                       "M-SPC" 'counsel-projectile-drop-to-switch-project)
   (general-define-key :keymaps 'twittering-mode-map
@@ -364,11 +380,12 @@
   (general-define-key :keymaps 'emmet-mode-keymap
                       "C-<return>" 'nil)
   (general-define-key :keymaps 'haskell-mode-map
-                      "<f9> s"    'structured-haskell-mode
+                      "<f9> l"    'lsp-mode
                       "M-<right>" 'haskell-move-nested-right
                       "M-<left>"  'haskell-move-nested-left
                       "C-c ."     'counsel-dash-at-point
                       ;; Debug
+                      "C-c d"     '(:ignore t :which-key "debug")
                       "C-c d a"   'haskell-debug/abandon
                       "C-c d b"   'haskell-debug/break-on-function
                       "C-c d B"   'haskell-debug/delete
@@ -381,15 +398,18 @@
                       "C-c d s"   'haskell-debug/step
                       "C-c d t"   'haskell-debug/trace
                       ;; Editing
+                      "C-c e"     '(:ignore t :which-key "editing")
                       "C-c e j"   'haskell-navigate-imports
                       "C-c e f"   'haskell-mode-format-imports
                       "C-c e s"   'haskell-sort-imports
                       "C-c e a"   'haskell-align-imports
+                      "C-c e s"   'haskell-mode-stylish-buffer
                       "C-c e S"   'haskell-mode-stylish-haskell
                       ;; Compilation
                       "C-c c"     'haskell-compile
                       ;; Interpreter
                       "C-c '"     'haskell-interactive-bring
+                      "C-c i"     '(:ignore t :which-key "interpreter")
                       "C-c i z"   'switch-to-haskell
                       "C-c i b"   'switch-to-haskell
                       "C-c i l"   'inferior-haskell-load-file
@@ -398,22 +418,14 @@
                       "C-c i d"   'inferior-haskell-find-definition
                       "C-c i c"   'haskell-interactive-mode-clear
                       ;; Lookup
+                      "C-c l"     '(:ignore t :which-key "lookup")
                       "C-c l t"   'haskell-process-do-type
-                      "C-c l i"   'haskell-process-do-info
-                      ;; Refactor - Hare
-                      "C-c r d m" 'hare-refactor-demote
-                      "C-c r d d" 'hare-refactor-dupdef
-                      "C-c r i c" 'hare-refactor-iftocase
-                      "C-c r l o" 'hare-refactor-lift-one
-                      "C-c r l t" 'hare-refactor-lifttotop
-                      "C-c r r"   'hare-refactor-rename
-                      "C-c r t"   'hare-refactor-roundtrip
-                      "C-c r s h" 'hare-refactor-show)
+                      "C-c l i"   'haskell-process-do-info)
   (general-define-key :keymaps 'undo-tree-map
                       "M-_" 'nil)
   (general-define-key :keymaps 'java-mode-map
                       "<f9> m" 'meghanada-mode
-                      "<f9> j" 'jdee-mode)
+                      "<f9> l" 'lsp-mode)
   (general-define-key :keymaps 'popup-isearch-keymap
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'sql-mode-map
