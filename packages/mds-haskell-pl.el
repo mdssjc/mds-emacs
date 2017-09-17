@@ -91,5 +91,9 @@
   :ensure t
   :commands hindent-mode)
 
+(use-package hlint-refactor
+  :ensure t
+  :commands hlint-refactor-refactor-buffer hlint-refactor-refactor-at-point)
+
 (provide 'mds-haskell-pl)
 ;;; mds-haskell-pl.el ends here
