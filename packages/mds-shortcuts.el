@@ -384,6 +384,7 @@
                       "M-<right>" 'haskell-move-nested-right
                       "M-<left>"  'haskell-move-nested-left
                       "C-c ."     'counsel-dash-at-point
+                      "C-c f"     'hindent-reformat-decl
                       ;; Debug
                       "C-c d"     '(:ignore t :which-key "debug")
                       "C-c d a"   'haskell-debug/abandon
