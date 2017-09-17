@@ -424,7 +424,11 @@
                       "C-c l i"   'haskell-process-do-info
                       ;; Refactor
                       "C-c r b"   'hlint-refactor-refactor-buffer
-                      "C-c r r"   'hlint-refactor-refactor-at-point)
+                      "C-c r r"   'hlint-refactor-refactor-at-point
+                      ;; Source
+                      "C-c s b"   'haskell-process-load-file
+                      "C-c s c"   'haskell-interactive-mode-clear
+                      "C-c s s"   'haskell-interactive-switch)
   (general-define-key :keymaps 'undo-tree-map
                       "M-_" 'nil)
   (general-define-key :keymaps 'java-mode-map
