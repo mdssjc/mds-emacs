@@ -100,7 +100,8 @@
   :ensure t
   :commands magit-status
   :config
-  (setq magit-completing-read-function 'ivy-completing-read))
+  (setq magit-completing-read-function 'ivy-completing-read
+        magit-diff-refine-hunk 'all))
 
 (use-package gitignore-mode
   :ensure t
