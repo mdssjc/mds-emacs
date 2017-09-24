@@ -38,18 +38,25 @@
                (setq company-frontends '(company-echo-metadata-frontend
                                          company-pseudo-tooltip-unless-just-one-frontend
                                          company-preview-if-just-one-frontend
-                                         company-preview-common-frontend))))
+                                         company-preview-common-frontend)
+                     company-backends '((company-capf
+                                         company-yasnippet
+                                         company-abbrev
+                                         company-dabbrev-code
+                                         company-dabbrev
+                                         company-files)))))
   (add-hook 'text-mode-hook
             '(lambda ()
                (setq company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
                                          company-preview-if-just-one-frontend
-                                         company-preview-common-frontend))))
+                                         company-preview-common-frontend)
+                     company-search-regexp-function 'regexp-quote)))
   :config
   (setq company-minimum-prefix-length 2
-        company-idle-delay 0
+        company-idle-delay 0.2
         company-show-numbers t
         company-selection-wrap-around t
-        company-backends '((company-capf company-abbrev company-dabbrev company-files :with company-ispell))
+        company-backends '((company-ispell company-abbrev company-dabbrev company-files))
         company-transformers '(company-sort-prefer-same-case-prefix company-sort-by-occurrence)
         company-occurrence-weight-function 'company-occurrence-prefer-any-closest
         company-search-regexp-function 'company-search-flex-regexp
