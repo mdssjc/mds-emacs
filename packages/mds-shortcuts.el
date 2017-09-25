@@ -147,7 +147,6 @@
    "S-C-j"         'join-line
    "C-'"           'popup-imenu
    "S-C-f"         'swiper-multi
-   "M-x"           'counsel-M-x
    "M-y"           'counsel-yank-pop
    "S-SPC"         'cycle-spacing
    "M-<up>"        'md/move-lines-up

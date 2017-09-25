@@ -89,8 +89,9 @@
   :commands undo-tree-mode global-undo-tree-mode
   :init
   (setq undo-tree-history-directory-alist `(("." . ,(concat user-emacs-directory ".cache/undo-tree"))))
-  (add-hook 'org-mode-hook  'undo-tree-mode)
-  (add-hook 'prog-mode-hook 'undo-tree-mode)
+  (add-hook 'after-init-hook 'global-undo-tree-mode)
+  ;;(add-hook 'org-mode-hook  'undo-tree-mode)
+  ;;(add-hook 'prog-mode-hook 'undo-tree-mode)
   :config
   (setq undo-tree-visualizer-timestamps t
         undo-tree-visualizer-diff t
@@ -175,14 +176,25 @@
   (fset 'describe-function 'counsel-describe-function)
   (fset 'describe-variable 'counsel-describe-variable))
 
-(use-package smex
+;; (use-package smex
+;;   :ensure t
+;;   :disabled t
+;;   :commands smex smex-major-mode-commands
+;;   :init
+;;   (setq smex-save-file (concat user-emacs-directory ".cache/smex-items"))
+;;   :config
+;;   (setq smex-completion-method 'ivy)
+;;   (smex-initialize))
+
+(use-package amx
   :ensure t
-  :commands smex smex-major-mode-commands
   :init
-  (setq smex-save-file (concat user-emacs-directory ".cache/smex-items"))
+  (setq amx-save-file (concat user-emacs-directory ".cache/.amx-items"))
+  (add-hook 'after-init-hook 'amx-mode)
   :config
-  (setq smex-completion-method 'ivy)
-  (smex-initialize))
+  (setq amx-auto-update-interval 10
+        amx-history-length 5
+        amx-backend 'ivy))
 
 (use-package projectile
   :ensure t
