@@ -318,22 +318,25 @@
                       "<C-M-return> p x"   '(:ignore t :which-key "execute")
                       "<C-M-return> p s r" 'projectile-ripgrep
                       "<C-M-return> p ."   'rg-project
-                      "C-c p"     '(projectile-command-map :which-key "projectile")
-                      "C-c p 4"   '(:ignore t :which-key "find")
-                      "C-c p 5"   '(:ignore t :which-key "find other")
-                      "C-c p s"   '(:ignore t :which-key "search")
-                      "C-c p x"   '(:ignore t :which-key "execute")
-                      "C-c p s r" 'projectile-ripgrep
-                      "C-c p ."   'rg-project
-                      "s-p"     'projectile-command-map
-                      "s-p 4"   '(:ignore t :which-key "find")
-                      "s-p 5"   '(:ignore t :which-key "find other")
-                      "s-p s"   '(:ignore t :which-key "search")
-                      "s-p x"   '(:ignore t :which-key "execute")
-                      "s-p s r" 'projectile-ripgrep
-                      "s-p ."   'rg-project
-                      "s-P"   'mds/speedbar-toggle
-                      "M-SPC" 'counsel-projectile-drop-to-switch-project)
+                      "<C-M-return> p P"   'treemacs-projectile-toggle
+                      "C-c p"              '(projectile-command-map :which-key "projectile")
+                      "C-c p 4"            '(:ignore t :which-key "find")
+                      "C-c p 5"            '(:ignore t :which-key "find other")
+                      "C-c p s"            '(:ignore t :which-key "search")
+                      "C-c p x"            '(:ignore t :which-key "execute")
+                      "C-c p s r"          'projectile-ripgrep
+                      "C-c p ."            'rg-project
+                      "C-c p P"            'treemacs-projectile-toggle
+                      "s-p"                'projectile-command-map
+                      "s-p 4"              '(:ignore t :which-key "find")
+                      "s-p 5"              '(:ignore t :which-key "find other")
+                      "s-p s"              '(:ignore t :which-key "search")
+                      "s-p x"              '(:ignore t :which-key "execute")
+                      "s-p s r"            'projectile-ripgrep
+                      "s-p ."              'rg-project
+                      "s-p P"              'treemacs-projectile-toggle
+                      "s-P"                'treemacs-projectile-toggle
+                      "M-SPC"              'counsel-projectile-drop-to-switch-project)
   (general-define-key :keymaps 'twittering-mode-map
                       "\\"        'hydra-twittering/body
                       "q"         'twittering-kill-buffer
@@ -461,12 +464,6 @@
   :ensure t
   :config
   (global-set-key [mouse-3] (popup-edit-menu-stub)))
-
-(defun mds/speedbar-toggle ()
-  (interactive)
-  (if (sr-speedbar-exist-p)
-      (sr-speedbar-close)
-    (projectile-speedbar-open-current-buffer-in-tree)))
 
 (provide 'mds-shortcuts)
 ;;; mds-shortcuts.el ends here

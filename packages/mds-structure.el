@@ -221,18 +221,28 @@
   :ensure t
   :commands counsel-projectile-on)
 
-(use-package projectile-speedbar
+(use-package treemacs
   :ensure t
-  :commands projectile-speedbar-open-current-buffer-in-tree
+  :defer t
   :config
-  (setq projectile-speedbar-projectile-speedbar-enable nil))
+  (setq treemacs-follow-after-init          t
+        treemacs-width                      35
+        treemacs-indentation                2
+        treemacs-git-integration            t
+        treemacs-change-root-without-asking nil
+        treemacs-sorting                    'alphabetic-desc
+        treemacs-show-hidden-files          t
+        treemacs-never-persist              nil
+        treemacs-goto-tag-strategy          'refetch-index
+        treemacs-collapse-dirs              3)
+  (treemacs-follow-mode t)
+  (treemacs-filewatch-mode t))
 
-(use-package sr-speedbar
+(use-package treemacs-projectile
   :ensure t
-  :commands sr-speedbar-exist-p
+  :defer t
   :config
-  (setq speedbar-show-unknown-files t
-        sr-speedbar-right-side nil))
+  (setq treemacs-header-function #'treemacs-projectile-create-header))
 
 (use-package expand-region
   :ensure t
