@@ -358,7 +358,9 @@
 
 (use-package multiple-cursors
   :ensure t
-  :defer 0)
+  :commands multiple-cursors-mode
+  :init
+  (add-hook 'after-init-hook 'multiple-cursors-mode))
 
 (use-package page-break-lines
   :ensure t
