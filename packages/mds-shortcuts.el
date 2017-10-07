@@ -123,8 +123,13 @@
    "S-<f12>"       'ibuffer
    "C-&"           'hydra-yasnippet/body
    "C-="           'er/expand-region
+   "M-<mouse-1>"   'mc/add-cursor-on-click
    "C->"           'mc/mark-next-like-this
    "C-<"           'mc/mark-previous-like-this
+   "C-M-<down>"    'mc/mark-next-like-this
+   "C-M-<up>"      'mc/mark-previous-like-this
+   "C-M-<left>"    'mc/mark-previous-like-this-symbol
+   "C-M-<right>"   'mc/mark-next-like-this-symbol
    "C-M-."         'mc/mark-all-dwim
    "C-M-,"         'mc/mark-all-in-region-regexp
    "M-#"           'anzu-replace-at-cursor-thing
@@ -181,10 +186,9 @@
    "s-c i"         'ciel-ci
    "s-c o"         'ciel-co
    "s-d /"         'rg-dwim
-   "s-."           'mc/mark-all-dwim
-   "s-,"           'mc/mark-all-in-region-regexp
    "s-:"           'avy-goto-char-timer
    "s-g"           'avy-goto-char-in-line
+   "s-m"           'mc/mark-more-like-this-extended
    "s-s"           'embrace-commander
    "s-v"           'hydra-expand-region/body
    "s-V"           'xah-select-line)
