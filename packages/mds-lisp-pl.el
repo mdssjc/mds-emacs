@@ -26,7 +26,6 @@
             '(lambda ()
                (parinfer-mode)
                (eldoc-mode)
-               (erefactor-lazy-highlight-turn-on)
                (require 'ert)
                (ert--activate-font-lock-keywords)
                (add-to-list 'completion-styles 'initials t)
@@ -151,12 +150,6 @@
 (use-package flycheck-package
   :ensure t
   :commands flycheck-package-setup)
-
-(use-package erefactor
-  :ensure t
-  :commands erefactor-lazy-highlight-turn-on
-  :config
-  (define-key emacs-lisp-mode-map "\C-c\C-rv" erefactor-map))
 ;; ---
 
 ;; Racket

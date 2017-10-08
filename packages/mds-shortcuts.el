@@ -274,8 +274,7 @@
                       "<f9> r"    'rainbow-delimiters-mode
                       "<f9> t"    'litable-mode
                       "M-&"       'complete-symbol
-                      "C-c e"     'macrostep-expand
-                      "C-c C-r v" '(:ignore t :which-key "erefactor"))
+                      "C-c e"     'macrostep-expand)
   (general-define-key :keymaps 'racket-mode-map
                       "<f9> p"   'parinfer-mode
                       "<f9> P"   'enable-paredit-mode
