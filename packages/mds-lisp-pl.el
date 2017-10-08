@@ -26,7 +26,6 @@
             '(lambda ()
                (parinfer-mode)
                (eldoc-mode)
-               (emr-initialize)
                (erefactor-lazy-highlight-turn-on)
                (require 'ert)
                (ert--activate-font-lock-keywords)
@@ -152,10 +151,6 @@
 (use-package flycheck-package
   :ensure t
   :commands flycheck-package-setup)
-
-(use-package emr
-  :ensure t
-  :commands emr-initialize emr-show-refactor-menu)
 
 (use-package erefactor
   :ensure t

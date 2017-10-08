@@ -275,8 +275,7 @@
                       "<f9> t"    'litable-mode
                       "M-&"       'complete-symbol
                       "C-c e"     'macrostep-expand
-                      "C-c C-r v" '(:ignore t :which-key "erefactor")
-                      "C-c C-r e" 'emr-show-refactor-menu)
+                      "C-c C-r v" '(:ignore t :which-key "erefactor"))
   (general-define-key :keymaps 'racket-mode-map
                       "<f9> p"   'parinfer-mode
                       "<f9> P"   'enable-paredit-mode
@@ -292,7 +291,6 @@
                       "C-c ,"     '(:ignore t :which-key "semantic")
                       "C-c @"     '(:ignore t :which-key "hide blocks")
                       "C-c C-r"   '(:ignore t :which-key "refactor")
-                      "C-c C-r e" 'emr-show-refactor-menu
                       "C-c C-r s" 'srefactor-refactor-at-point
                       ";"         'maio/electric-semicolon)
   (general-define-key :keymaps 'js-mode-map

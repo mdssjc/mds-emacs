@@ -369,10 +369,6 @@
   :init
   (add-hook 'after-init-hook 'global-page-break-lines-mode))
 
-(use-package emr
-  :ensure t
-  :commands emr-initialize emr-show-refactor-menu)
-
 (use-package popup-imenu
   :ensure t
   :commands popup-imenu)
@@ -461,11 +457,12 @@
 
 (eval-after-load "icomplete" '(use-package icomplete+ :ensure t :defer 0))
 
-(use-package pp+
-  :ensure t
-  :commands pp-eval-expression
-  :init
-  (global-set-key [remap eval-expression] 'pp-eval-expression))
+(eval-after-load "pp"
+  '(use-package pp+
+     :ensure t
+     :commands pp-eval-expression
+     :init
+     (global-set-key [remap eval-expression] 'pp-eval-expression)))
 
 (eval-after-load "simple" '(use-package simple+ :ensure t :defer 0))
 

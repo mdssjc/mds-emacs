@@ -24,11 +24,9 @@
   (setq irony-user-dir (concat user-emacs-directory ".cache/irony"))
   (add-hook 'c-mode-hook
             '(lambda ()
-               (setq-local company-transformers '(company-sort-by-backend-importance
-                                                  company-sort-prefer-same-case-prefix))
+               (setq-local company-transformers '(company-sort-prefer-same-case-prefix))
                (setq-local company-backends '((company-irony-c-headers
                                                company-irony
-                                               :with
                                                company-yasnippet
                                                company-abbrev
                                                company-dabbrev-code
@@ -49,7 +47,6 @@
                (company-irony-setup-begin-commands)
                (flycheck-irony-setup)
                (irony-eldoc)
-               (emr-initialize)
                (define-key irony-mode-map [remap completion-at-point]
                  'irony-completion-at-point-async)
                (define-key irony-mode-map [remap complete-symbol]
