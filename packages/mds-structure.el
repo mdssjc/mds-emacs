@@ -412,18 +412,33 @@
 
 ;; Plus
 
-(eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
-                            :init
-                            (use-package tramp)
-                            :config
-                            (setq diredp-image-preview-in-tooltip t)))
-(eval-after-load "mouse" '(use-package mouse+ :ensure t :defer 0))
+(use-package dired
+  :defer 0
+  :config
+  (use-package dired+
+    :ensure t
+    :init
+    (use-package tramp)
+    :config
+    (setq diredp-image-preview-in-tooltip t)))
 
-(eval-after-load "info" '(use-package info+ :ensure t :defer 0))
+(use-package mouse
+  :defer 0
+  :config
+  (use-package mouse+ :ensure t))
 
-(eval-after-load "bookmark" '(use-package bookmark+ :ensure t :defer 0
-                               :init
-                               (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
+(use-package info
+  :defer 0
+  :config
+  (use-package info+ :ensure t))
+
+(use-package bookmark
+  :defer 0
+  :config
+  (use-package bookmark+
+    :ensure t
+    :init
+    (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
 
 ;;(eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0
 ;;                              :config
@@ -431,37 +446,50 @@
 
 ;;(eval-after-load "isearch" '(use-package isearch-prop :ensure t :defer 0))
 
-(eval-after-load "replace" '(use-package replace+ :ensure t :defer 0))
+(use-package replace
+  :defer 0
+  :config
+  (use-package replace+ :ensure t))
 
-(use-package menu-bar+
-  :ensure t
-  :after menu-bar)
+(use-package menu-bar
+  :defer 0
+  :config
+  (use-package menu-bar+ :ensure t))
 
 (use-package imenu
-  :init
-  (eval-after-load "imenu" '(use-package imenu+ :ensure t))
+  :defer 0
   :config
   (setq imenu-auto-rescan t)
-  (use-package popup-imenu
+  (use-package imenu+ :ensure t)
+  (use-package popup-imenu :ensure t :commands popup-imenu))
+
+(use-package face-remap
+  :defer 0
+  :config
+  (use-package face-remap+ :ensure t))
+
+(use-package icomplete
+  :defer 0
+  :config
+  (use-package icomplete+ :ensure t))
+
+(use-package pp
+  :commands pp-eval-expression
+  :config
+  (use-package pp+
     :ensure t
-    :commands popup-imenu))
+    :init
+    (global-set-key [remap eval-expression] 'pp-eval-expression)))
 
-(use-package face-remap+
-  :ensure t
-  :after face-remap)
+(use-package simple
+  :defer 0
+  :config
+  (use-package simple+ :ensure t))
 
-(eval-after-load "icomplete" '(use-package icomplete+ :ensure t :defer 0))
-
-(eval-after-load "pp"
-  '(use-package pp+
-     :ensure t
-     :commands pp-eval-expression
-     :init
-     (global-set-key [remap eval-expression] 'pp-eval-expression)))
-
-(eval-after-load "simple" '(use-package simple+ :ensure t :defer 0))
-
-(eval-after-load "hl-line" '(use-package hl-line+ :ensure t :defer 0))
+(use-package hl-line
+  :defer 0
+  :config
+  (use-package hl-line+ :ensure t))
 ;; ---
 
 (provide 'mds-structure)
