@@ -369,10 +369,6 @@
   :init
   (add-hook 'after-init-hook 'global-page-break-lines-mode))
 
-(use-package popup-imenu
-  :ensure t
-  :commands popup-imenu)
-
 (use-package underline-with-char
   :ensure t
   :commands underline-with-char)
@@ -415,12 +411,12 @@
   :commands pandoc-mode)
 
 ;; Plus
+
 (eval-after-load "dired" '(use-package dired+ :ensure t :defer 0
                             :init
                             (use-package tramp)
                             :config
                             (setq diredp-image-preview-in-tooltip t)))
-
 (eval-after-load "mouse" '(use-package mouse+ :ensure t :defer 0))
 
 (eval-after-load "info" '(use-package info+ :ensure t :defer 0))
@@ -445,11 +441,10 @@
   :init
   (eval-after-load "imenu" '(use-package imenu+ :ensure t))
   :config
-  (setq imenu-auto-rescan t))
-
-(use-package imenu-anywhere
-  :ensure t
-  :commands imenu-anywhere)
+  (setq imenu-auto-rescan t)
+  (use-package popup-imenu
+    :ensure t
+    :commands popup-imenu))
 
 (use-package face-remap+
   :ensure t
