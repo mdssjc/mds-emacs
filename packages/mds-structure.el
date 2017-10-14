@@ -43,6 +43,7 @@
       auto-save-timeout 60
       auto-save-interval 50)
 
+;; Recentf
 (use-package recentf
   :commands recentf-mode
   :init
@@ -175,16 +176,6 @@
         confirm-nonexistent-file-or-buffer t)
   (fset 'describe-function 'counsel-describe-function)
   (fset 'describe-variable 'counsel-describe-variable))
-
-;; (use-package smex
-;;   :ensure t
-;;   :disabled t
-;;   :commands smex smex-major-mode-commands
-;;   :init
-;;   (setq smex-save-file (concat user-emacs-directory ".cache/smex-items"))
-;;   :config
-;;   (setq smex-completion-method 'ivy)
-;;   (smex-initialize))
 
 (use-package amx
   :ensure t
@@ -428,7 +419,7 @@
   (use-package mouse+ :ensure t))
 
 (use-package info
-  :defer 0
+  :commands info
   :config
   (use-package info+ :ensure t))
 
