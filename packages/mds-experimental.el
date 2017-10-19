@@ -16,9 +16,14 @@
 (use-package lsp-mode
   :ensure t
   :commands lsp-mode
-  :init
-  (with-eval-after-load 'lsp-mode
-    (require 'lsp-flycheck)))
+  :config
+  (require 'lsp-flycheck))
+
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp
+  :config
+  (setq company-lsp-cache-candidates t))
 
 (use-package esup
   :ensure t
