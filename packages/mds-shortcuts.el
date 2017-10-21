@@ -249,7 +249,9 @@
                       "T"   'tomatinho)
   ;; Configurações - Configurations
   (general-define-key :keymaps 'prog-mode-map
-                      "<tab>" 'company-indent-or-complete-common
+                      ;; "<tab>" 'company-indent-or-complete-common
+                      "<tab>"     'company-select-next
+                      "<backtab>" 'company-select-previous
                       "C-."   'counsel-dash-at-point
                       "C-,"   'zeal-at-point)
   (general-define-key :keymaps 'parinfer-mode-map
