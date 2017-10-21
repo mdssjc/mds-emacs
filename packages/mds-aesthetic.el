@@ -14,27 +14,48 @@
 
 ;;; Code:
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(set-face-attribute 'line-number-current-line nil
-                    :weight 'bold
-                    :foreground "white"
-                    :background "#23272e")
 
 (use-package doom-themes
   :ensure t
-  :init
-  (load-theme 'doom-one t)
-  (doom-themes-visual-bell-config)
   :config
   (setq Info-fontify-angle-bracketed-flag nil)
-  (set-frame-font "Source Code Pro-10" nil t)
-  (setq line-spacing 0.20)
-  (require 'mds-aesthetic-modeline))
+  (doom-themes-visual-bell-config)
+  (load-theme 'doom-one t)
+  (when (member "DejaVu Sans Mono" (font-family-list)))
+  (progn
+    (set-face-attribute 'default nil :font "DejaVu Sans Mono 12")
+    (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono 10"))
+  (when (member "Source Code Pro" (font-family-list))
+    (progn
+      (set-face-attribute 'default nil :font "Source Code Pro-12")
+      (set-face-attribute 'mode-line nil :font "Source Code Pro-10")))
+  (when (member "Hack" (font-family-list))
+    (progn
+      (set-face-attribute 'default nil :font "Hack 12")
+      (set-face-attribute 'mode-line nil :font "Hack 10")))
+  (setq line-spacing 0.10)
+  (set-face-attribute 'line-number-current-line nil
+                      :weight 'bold
+                      :foreground "white"
+                      :background "#23272e"))
+
+(use-package telephone-line
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'telephone-line-mode)
+  :config
+  (require 'telephone-line-utils)
+  (setq telephone-line-height 22
+        telephone-line-primary-left-separator    'telephone-line-gradient
+        telephone-line-secondary-left-separator  'telephone-line-nil
+        telephone-line-primary-right-separator   'telephone-line-gradient
+        telephone-line-secondary-right-separator 'telephone-line-nil))
 
 (use-package hl-line
   :commands hl-line-mode global-hl-line-mode
   :init
   (add-hook 'prog-mode-hook 'hl-line-mode)
-  (add-hook 'hl-line-mode-hook '(lambda () (remove-overlays (point-min) (point-max) 'face 'hl-line)))
+  (add-hook 'hl-line-mode-hook (lambda () (remove-overlays (point-min) (point-max) 'face 'hl-line)))
   :config
   (setq hl-line-sticky-flag nil
         global-hl-line-sticky-flag nil))
@@ -50,15 +71,16 @@
 
 (use-package dashboard
   :ensure t
+  :init
+  (add-hook 'after-init-hook 'dashboard-setup-startup-hook)
   :config
   (setq dashboard-items '((recents   . 5)
-                          (bookmarks . 5)
-                          (projects  . 5)
-                          (agenda    . 10)
-                          (registers . 5))
+                          ;;(bookmarks . 5)
+                          (projects  . 5))
+                          ;;(agenda    . 10)
+                          ;;(registers . 5))
         dashboard-banner-logo-title "Welcome to MDS Emacs"
-        dashboard-startup-banner dashboard-banner-logo-png)
-  (dashboard-setup-startup-hook))
+        dashboard-startup-banner dashboard-banner-logo-png))
 
 (use-package all-the-icons
   :ensure t
@@ -78,7 +100,9 @@
   :init
   (add-hook 'prog-mode-hook 'highlight-thing-mode)
   :config
-  (setq highlight-thing-delay-seconds 0)
+  (setq highlight-thing-delay-seconds 0
+        highlight-thing-exclude-thing-under-point t
+        highlight-thing-case-sensitive-p t)
   (set-face-attribute 'highlight-thing nil
                       :foreground "gold"
                       :background "#23272e"))
@@ -96,29 +120,25 @@
   :init
   (add-hook 'after-init-hook 'volatile-highlights-mode))
 
-(use-package git-gutter
-  :ensure t
-  :diminish git-gutter-mode
-  :commands git-gutter-mode
-  :init
-  (defun git-gutter-maybe ()
-    (when (and (buffer-file-name)
-               (not (file-remote-p (buffer-file-name))))
-      (git-gutter-mode +1)))
-  (add-hook 'prog-mode-hook 'git-gutter-maybe)
-  (add-hook 'text-mode-hook 'git-gutter-maybe)
-  (add-hook 'org-mode-hook  'git-gutter-maybe))
-
 (use-package git-gutter-fringe
   :ensure t
-  :after git-gutter
+  :commands global-git-gutter-mode
+  :init
+  (add-hook 'after-init-hook 'global-git-gutter-mode)
   :config
-  (setq git-gutter-fr:side 'right-fringe
-        git-gutter:update-interval 0)
-  (add-hook 'focus-in-hook 'git-gutter:update-all-windows)
-  (add-hook 'git-gutter:update-hooks 'magit-revert-buffer-hook)
-  (add-hook 'git-gutter:update-hooks 'magit-after-revert-hook)
-  (add-hook 'git-gutter:update-hooks 'magit-not-reverted-hook))
+  (require 'git-gutter)
+  (setq git-gutter-fr:side 'left-fringe
+        git-gutter:separator-sign "|")
+  (set-face-foreground 'git-gutter:separator "yellow")
+  (fringe-helper-define 'git-gutter-fr:modified nil
+    "X"
+    "X"
+    "X"
+    "X"
+    "X"
+    "X"
+    "X"
+    "X"))
 
 (use-package emojify
   :ensure t
