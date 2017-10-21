@@ -18,13 +18,13 @@
 (use-package doom-themes
   :ensure t
   :config
-  (setq Info-fontify-angle-bracketed-flag nil)
-  (doom-themes-visual-bell-config)
   (load-theme 'doom-one t)
-  (when (member "DejaVu Sans Mono" (font-family-list)))
-  (progn
-    (set-face-attribute 'default nil :font "DejaVu Sans Mono 12")
-    (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono 10"))
+  (doom-themes-visual-bell-config)
+  (doom-themes-org-config)
+  (when (member "DejaVu Sans Mono" (font-family-list))
+    (progn
+      (set-face-attribute 'default nil :font "DejaVu Sans Mono 12")
+      (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono 10")))
   (when (member "Source Code Pro" (font-family-list))
     (progn
       (set-face-attribute 'default nil :font "Source Code Pro-12")
@@ -33,11 +33,14 @@
     (progn
       (set-face-attribute 'default nil :font "Hack 12")
       (set-face-attribute 'mode-line nil :font "Hack 10")))
-  (setq line-spacing 0.10)
   (set-face-attribute 'line-number-current-line nil
                       :weight 'bold
                       :foreground "white"
-                      :background "#23272e"))
+                      :background "#23272e")
+  (setq Info-fontify-angle-bracketed-flag nil
+        doom-themes-enable-bold t
+        doom-themes-enable-italic t
+        line-spacing 0.10))
 
 (use-package telephone-line
   :ensure t
