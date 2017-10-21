@@ -1,4 +1,4 @@
-;;; init.el --- Arquivo init (Init file)
+;;; init.el --- Arquivo init (Init file) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -13,17 +13,16 @@
 ;; Arquivo de inicialização do ambiente Emacs.
 
 ;;; Code:
-(setq gc-cons-threshold (* 200 1024 1024)
-      gc-cons-percentage 0.6
+(setq gc-cons-threshold (* 100 1024 1024)
+      gc-cons-percentage 0.1
+      garbage-collection-messages nil
       load-prefer-newer t
       debug-on-error nil
       use-package-verbose nil)
-
-(add-hook 'window-setup-hook '(lambda () (setq gc-cons-threshold (* 20 1024 1024)
-                                          gc-cons-percentage 0.1)))
+(add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
 
 (require 'package)
-(setq package-enable-at-startup nil)
+(setq package-enable-at-startup t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/"))
 
@@ -96,7 +95,12 @@
   ;; Alias
   (fset 'yes-or-no-p 'y-or-n-p)
   (if (not (version< emacs-version "26"))
-      (fset 'display-buffer-in-major-side-window 'window--make-major-side-window))
+      (progn
+        (fset 'display-buffer-in-major-side-window 'window--make-major-side-window)
+        (fset 'defmethod 'cl-defmethod)
+        (fset 'defgeneric 'cl-defgeneric)
+        (fset 'if-let 'if-let*)
+        (fset 'when-let 'when-let*)))
   (fset 'cl--copy-slot-descriptor-1 'copy-sequence)
 
   (defun display-extended-command-shorter (command)
@@ -168,7 +172,8 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-tern number visual-regexp-steroids xref-js2 js2-refactor js2-mode imenu-anywhere smart-mode-line telephone-line esup treemacs company-restclient restclient underline-with-char hl-line+ zop-to-char zeal-at-point wttrin writeroom-mode worf which-key wgrep web-mode volatile-highlights visual-regexp use-package undo-tree twittering-mode tomatinho tabbar-ruler symon srefactor sqlup-mode sql-indent spaceline-all-the-icons solaire-mode smex simple+ shm shift-number rg restart-emacs replace+ rainbow-delimiters racket-mode projectile-speedbar projectile-ripgrep pp+ popup-imenu popup-edit-menu plantuml-mode parinfer pandoc-mode package-utils org-table-sticky-header org-sticky-header org-pomodoro org-bullets move-dup mouse+ menu-bar+ meghanada markdown-mode magithub lsp-java litable lispy lfe-mode langtool lacarte jdee java-snippets ivy-rich ivy-hydra irony-eldoc intero info+ imenu+ icicles hlint-refactor highlight-thing haskell-snippets guess-language google-translate google-this golden-ratio gitignore-mode git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell face-remap+ exec-path-from-shell ess eshell-fringe-status erefactor engine-mode emr emojify emmet-mode embrace elfeed electric-spacing ejc-sql dumb-jump dr-racket-like-unicode doremi doom-themes dired+ dashboard css-eldoc counsel-projectile counsel-dash company-web company-statistics company-quickhelp company-irony-c-headers company-irony company-ghci company-ghc company-dict company-cabal clojure-snippets clj-refactor ciel cider-eval-sexp-fu centered-cursor-mode buffer-move bookmark+ auto-yasnippet anzu all-the-icons-dired))))
+    (company-lsp lsp-javascript-typescript lsp-javascript doom-themes telephone-line zop-to-char zeal-at-point xref-js2 wttrin writeroom-mode worf which-key wgrep web-mode volatile-highlights visual-regexp use-package undo-tree underline-with-char twittering-mode treemacs-projectile tomatinho tabbar-ruler symon srefactor sqlup-mode sql-indent solaire-mode simple+ shift-number rg restart-emacs replace+ rainbow-delimiters racket-mode projectile-ripgrep pp+ popup-imenu popup-edit-menu plantuml-mode parinfer pandoc-mode package-utils org-table-sticky-header org-sticky-header org-pomodoro org-bullets number move-dup mouse+ menu-bar+ meghanada markdown-mode magithub lsp-mode litable lispy lfe-mode langtool lacarte js2-refactor java-snippets ivy-rich ivy-hydra irony-eldoc intero info+ imenu+ icomplete+ icicles hlint-refactor hl-line+ hindent highlight-thing haskell-snippets guess-language google-translate google-this golden-ratio gitignore-mode git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell face-remap+ exec-path-from-shell esup ess eshell-fringe-status engine-mode emojify emmet-mode embrace elfeed electric-spacing ejc-sql dumb-jump dr-racket-like-unicode doremi dired+ dashboard css-eldoc counsel-projectile counsel-dash company-web company-tern company-statistics company-restclient company-quickhelp company-irony-c-headers company-irony company-ghci company-dict clojure-snippets clj-refactor ciel cider-eval-sexp-fu centered-cursor-mode buffer-move bookmark+ auto-yasnippet anzu amx all-the-icons-dired)))
+ '(tramp-syntax (quote default) nil (tramp)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
