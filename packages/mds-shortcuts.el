@@ -300,12 +300,7 @@
   (general-define-key :keymaps 'js-mode-map
                       "M-." 'nil)
   (general-define-key :keymaps 'js2-mode-map
-                      "C-c r"   'tern-rename-variable
-                      ";"       'maio/electric-semicolon)
-  (general-define-key :keymaps 'tern-mode-keymap
-                      "M-."     'nil
-                      "M-,"     'nil
-                      "C-c C-r" 'nil)
+                      ";" 'maio/electric-semicolon)
   (general-define-key :keymaps 'dumb-jump-mode-map
                       "M-."   'hydra-dumb-jump/body
                       "C-M-g" 'nil
