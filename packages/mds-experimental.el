@@ -17,7 +17,8 @@
   :ensure t
   :commands lsp-mode
   :config
-  (require 'lsp-flycheck))
+  (with-eval-after-load 'flycheck
+    (require 'lsp-flycheck)))
 
 (use-package company-lsp
   :ensure t
