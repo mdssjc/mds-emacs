@@ -23,26 +23,29 @@
    ("\\.c2hs\\'"  . haskell-mode))
   :init
   (add-hook 'haskell-mode-hook
-            '(lambda ()
-               (intero-mode)
-               (hindent-mode)
-               (haskell-doc-mode)
-               (haskell-decl-scan-mode)
-               (electric-pair-mode)
-               (setq-local company-backends '((company-intero
-                                               company-yasnippet
-                                               company-abbrev
-                                               company-dabbrev-code
-                                               company-dabbrev
-                                               company-files)))
-               (flycheck-mode)
-               (flycheck-haskell-setup)
-               (setq-local counsel-dash-docsets '("Haskell"))))
+            (lambda ()
+              (lsp-haskell-enable)
+              (hindent-mode)
+              (haskell-doc-mode)
+              (haskell-decl-scan-mode)
+              (electric-pair-mode)
+              (setq-local company-transformers '(company-sort-prefer-same-case-prefix))
+              (setq-local company-minimum-prefix-length 1)
+              (setq-local company-idle-delay 0)
+              (setq-local company-backends '((company-lsp
+                                              company-yasnippet
+                                              company-abbrev
+                                              company-dabbrev-code
+                                              company-dabbrev
+                                              company-files)))
+              (flycheck-mode)
+              (flycheck-haskell-setup)
+              (setq-local counsel-dash-docsets '("Haskell"))))
   (add-hook 'haskell-interactive-mode-hook
-            '(lambda ()
-               (setq-local company-backends '((company-ghci
-                                               company-dabbrev-code
-                                               company-yasnippet)))))
+            (lambda ()
+              (setq-local company-backends '((company-ghci
+                                              company-dabbrev-code
+                                              company-yasnippet)))))
   :config
   (setq haskell-notify-p t
         haskell-interactive-popup-errors nil
@@ -69,7 +72,7 @@
 
 (use-package lsp-haskell
   :ensure t
-  :commands lsp-mode)
+  :commands lsp-haskell-enable)
 
 (use-package intero
   :ensure t
