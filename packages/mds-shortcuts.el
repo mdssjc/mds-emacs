@@ -382,11 +382,11 @@
   (general-define-key :keymaps 'emmet-mode-keymap
                       "C-<return>" 'nil)
   (general-define-key :keymaps 'haskell-mode-map
-                      "<f9> l"    'lsp-mode
                       "M-<right>" 'haskell-move-nested-right
                       "M-<left>"  'haskell-move-nested-left
                       "C-c ."     'counsel-dash-at-point
                       "C-c f"     'hindent-reformat-decl
+                      "C-SPC"     'lsp-apply-commands
                       ;; Debug
                       "C-c d"     '(:ignore t :which-key "debug")
                       "C-c d a"   'haskell-debug/abandon
@@ -434,8 +434,7 @@
   (general-define-key :keymaps 'undo-tree-map
                       "M-_" 'nil)
   (general-define-key :keymaps 'java-mode-map
-                      "<f9> m" 'meghanada-mode
-                      "<f9> l" 'lsp-mode)
+                      "<f9> m" 'meghanada-mode)
   (general-define-key :keymaps 'popup-isearch-keymap
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'sql-mode-map
