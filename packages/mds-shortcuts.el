@@ -386,7 +386,7 @@
                       "M-<left>"  'haskell-move-nested-left
                       "C-c ."     'counsel-dash-at-point
                       "C-c f"     'hindent-reformat-decl
-                      "C-SPC"     'lsp-apply-commands
+                      "C-c SPC"   'lsp-apply-commands
                       ;; Debug
                       "C-c d"     '(:ignore t :which-key "debug")
                       "C-c d a"   'haskell-debug/abandon
