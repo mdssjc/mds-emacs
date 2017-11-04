@@ -415,16 +415,6 @@
     :config
     (setq diredp-image-preview-in-tooltip t)))
 
-(use-package mouse
-  :defer 0
-  :config
-  (use-package mouse+ :ensure t))
-
-(use-package info
-  :commands info
-  :config
-  (use-package info+ :ensure t))
-
 (use-package bookmark
   :defer 0
   :config
@@ -457,12 +447,10 @@
   (use-package popup-imenu :ensure t :commands popup-imenu))
 
 (use-package face-remap
-  :defer 0
   :config
   (use-package face-remap+ :ensure t))
 
 (use-package icomplete
-  :defer 0
   :config
   (use-package icomplete+ :ensure t))
 
@@ -471,18 +459,8 @@
   :config
   (use-package pp+
     :ensure t
-    :init
+    :config
     (global-set-key [remap eval-expression] 'pp-eval-expression)))
-
-(use-package simple
-  :defer 0
-  :config
-  (use-package simple+ :ensure t))
-
-(use-package hl-line
-  :defer 0
-  :config
-  (use-package hl-line+ :ensure t))
 ;; ---
 
 (provide 'mds-structure)
