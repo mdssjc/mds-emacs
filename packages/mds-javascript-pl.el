@@ -41,6 +41,10 @@
   (setq js2-highlight-level 3
         js-indent-level 2))
 
+(use-package lsp-javascript-typescript
+  :ensure t
+  :commands lsp-javascript-typescript-enable)
+
 (use-package js2-refactor
   :ensure t
   :commands js2-refactor-mode
@@ -49,15 +53,11 @@
 
 (use-package xref-js2
   :ensure t
-  :after js2-mode)
+  :commands xref-js2-xref-backend)
 
 (use-package js-auto-beautify
   :ensure t
   :commands js-auto-beautify-mode)
-
-(use-package lsp-javascript-typescript
-  :ensure t
-  :commands lsp-javascript-typescript-enable)
 
 (provide 'mds-javascript-pl)
 ;;; mds-javascript-pl.el ends here
