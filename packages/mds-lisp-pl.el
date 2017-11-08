@@ -23,22 +23,23 @@
   flycheck-emacs-lisp-load-path
   :init
   (add-hook 'emacs-lisp-mode-hook
-            '(lambda ()
-               (parinfer-mode)
-               (eldoc-mode)
-               (require 'ert)
-               (ert--activate-font-lock-keywords)
-               (add-to-list 'completion-styles 'initials t)
-               (setq-local company-backends '((company-elisp
-                                               company-capf
-                                               company-yasnippet
-                                               company-abbrev
-                                               company-dabbrev-code
-                                               company-dabbrev
-                                               company-files)))
-               (flycheck-mode)
-               (eval-after-load 'flycheck '(flycheck-package-setup))
-               (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
+            (lambda ()
+              (parinfer-mode)
+              (eldoc-mode)
+              (require 'ert)
+              (ert--activate-font-lock-keywords)
+              (add-to-list 'completion-styles 'initials t)
+              (company-statistics-mode)
+              (setq-local company-backends '((company-elisp
+                                              company-capf
+                                              company-yasnippet
+                                              company-abbrev
+                                              company-dabbrev-code
+                                              company-dabbrev
+                                              company-files)))
+              (flycheck-mode)
+              (eval-after-load 'flycheck '(flycheck-package-setup))
+              (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit))
 
