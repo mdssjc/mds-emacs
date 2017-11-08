@@ -13,7 +13,7 @@
 ;; Analisa o texto e/ou código.
 
 ;;; Code:
-(defvar langtool-path "/home/mdssjc/Documents/Git/languagetool/languagetool-standalone/target/LanguageTool-3.9-SNAPSHOT/LanguageTool-3.9-SNAPSHOT/")
+(defvar langtool-path "/home/mdssjc/Documents/Git/languagetool/languagetool-standalone/target/LanguageTool-4.0-SNAPSHOT/LanguageTool-4.0-SNAPSHOT/")
 
 ;; Flycheck
 (use-package flycheck
