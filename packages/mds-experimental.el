@@ -24,7 +24,8 @@
   :ensure t
   :commands company-lsp
   :config
-  (setq company-lsp-cache-candidates t))
+  (setq company-lsp-cache-candidates t
+        company-lsp-async t))
 
 (use-package esup
   :ensure t
