@@ -95,7 +95,6 @@
   :commands company-statistics-mode
   :init
   (setq company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el"))
-  (add-hook 'prog-mode-hook 'company-statistics-mode)
   :config
   ;;(run-with-idle-timer (* 60 3) t 'company-statistics--save)
   (setq company-statistics-size 1000
