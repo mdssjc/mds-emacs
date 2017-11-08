@@ -133,7 +133,7 @@
         ispell-list-command "--list"
         ispell-look-p nil
         ispell-grep-command "rg"
-        ispell-grep-options ""
+        ispell-grep-options "-i"
         ispell-dictionary "pt_BR"
         ispell-complete-word-dict (concat (expand-file-name user-emacs-directory) "dict/pt_BR.dic")
         ispell-choices-win-default-height 5
