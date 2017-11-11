@@ -77,7 +77,7 @@
   (setq history-length 250
         history-delete-duplicates t
         savehist-save-minibuffer-history t
-        savehist-autosave-interval nil
+        savehist-autosave-interval 60
         savehist-additional-variables '(kill-ring search-ring regexp-search-ring)))
 
 (use-package restart-emacs
