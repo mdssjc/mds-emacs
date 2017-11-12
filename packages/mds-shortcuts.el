@@ -130,8 +130,8 @@
    "C-M-<up>"      'mc/mark-previous-like-this
    "C-M-<left>"    'mc/mark-previous-like-this-symbol
    "C-M-<right>"   'mc/mark-next-like-this-symbol
-   "C-M-."         'mc/mark-all-dwim
-   "C-M-,"         'mc/mark-all-in-region-regexp
+   "C-M-<"         'mc/mark-all-dwim
+   "C-M->"         'mc/mark-all-in-region-regexp
    "M-#"           'anzu-replace-at-cursor-thing
    "C-M-#"         'anzu-query-replace-at-cursor-thing
    "M-%"           'anzu-query-replace
