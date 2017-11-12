@@ -18,6 +18,7 @@
 (use-package doom-themes
   :ensure t
   :config
+  (require 'mds-aesthetic-modeline)
   (load-theme 'doom-one t)
   (doom-themes-visual-bell-config)
   (doom-themes-org-config)
@@ -41,18 +42,6 @@
         doom-themes-enable-bold t
         doom-themes-enable-italic t
         line-spacing 0.10))
-
-(use-package telephone-line
-  :ensure t
-  :init
-  (add-hook 'after-init-hook 'telephone-line-mode)
-  :config
-  (require 'telephone-line-utils)
-  (setq telephone-line-height 22
-        telephone-line-primary-left-separator    'telephone-line-gradient
-        telephone-line-secondary-left-separator  'telephone-line-nil
-        telephone-line-primary-right-separator   'telephone-line-gradient
-        telephone-line-secondary-right-separator 'telephone-line-nil))
 
 (use-package hl-line
   :commands hl-line-mode global-hl-line-mode
@@ -86,8 +75,7 @@
         dashboard-startup-banner dashboard-banner-logo-png))
 
 (use-package all-the-icons
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package all-the-icons-dired
   :ensure t
@@ -131,17 +119,18 @@
   :config
   (require 'git-gutter)
   (setq git-gutter-fr:side 'left-fringe
-        git-gutter:separator-sign "|")
+        git-gutter:separator-sign "|"
+        git-gutter:lighter "")
   (set-face-foreground 'git-gutter:separator "yellow")
   (fringe-helper-define 'git-gutter-fr:modified nil
-    "X"
-    "X"
-    "X"
-    "X"
-    "X"
-    "X"
-    "X"
-    "X"))
+                        "X"
+                        "X"
+                        "X"
+                        "X"
+                        "X"
+                        "X"
+                        "X"
+                        "X"))
 
 (use-package emojify
   :ensure t
@@ -181,6 +170,15 @@
 (use-package writeroom-mode
   :ensure t
   :commands writeroom-mode)
+
+(use-package indent-info
+  :ensure t
+  :commands global-indent-info-mode
+  :init
+  (add-hook 'after-init-hook 'global-indent-info-mode)
+  :config
+  (setq indent-info-space-format "SPC[%s]"
+        indent-info-tab-format   "TAB[%s]"))
 
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
