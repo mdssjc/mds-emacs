@@ -284,7 +284,9 @@
 
 (use-package rg
   :ensure t
-  :commands rg rg-project rg-dwim)
+  :commands rg
+  :init
+  (rg-enable-default-bindings (kbd "s-/")))
 
 (use-package ripgrep
   :ensure t

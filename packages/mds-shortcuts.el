@@ -185,7 +185,6 @@
    "s-7"           'hydra-yasnippet/body
    "s-c i"         'ciel-ci
    "s-c o"         'ciel-co
-   "s-d /"         'rg-dwim
    "s-:"           'avy-goto-char-timer
    "s-g"           'avy-goto-char-in-line
    "s-m"           'mc/mark-more-like-this-extended
