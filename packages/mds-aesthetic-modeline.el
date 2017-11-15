@@ -11,11 +11,17 @@
 
 ;;; Commentary:
 ;; Complemento do Estético com as configurações do Modeline.
+(defface rec-face
+  '((t (:background "red" :foreground "white" :weight bold)))
+  "Flag macro recording in mode-line"
+  :group "mds-aesthetic-modeline-faces")
 
 ;;; Code:
 (setq-default mode-line-format
               '(""
                 mode-line-front-space
+                (:eval (if (eq defining-kbd-macro t)
+                           (concat (propertize "[M]" 'face 'rec-face) " ")))
                 mode-line-mule-info
                 ": "
                 mode-name " "
@@ -30,14 +36,15 @@
                 (iedit-mode (:eval
                              (if (= (iedit-counter) 0)
                                  ""
-                               (format (concat " Iedit: " (propertize "%d" 'face 'font-lock-warning-face)) (iedit-counter)))))
+                               (concat
+                                " Iedit: "
+                                (propertize (format "%d" (iedit-counter)) 'face 'font-lock-warning-face)))))
                 (org-agenda-mode (:eval (format "%s" org-agenda-filter)))
                 " "
                 ;;mode-line-modes
                 mode-line-misc-info
                 "::"
                 mode-line-position
-                ;;(:eval 'display-time-string)
                 mode-line-end-spaces))
 
 (display-time-mode)
