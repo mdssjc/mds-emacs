@@ -14,8 +14,10 @@
 
 ;;; Code:
 (setq-default mode-line-format
-              '(" %Z"
+              '(""
                 mode-line-front-space
+                mode-line-mule-info
+                ": "
                 mode-name " "
                 (anzu-mode (:eval (anzu--update-mode-line)))
                 mode-line-modified
@@ -23,13 +25,17 @@
                 mode-line-frame-identification
                 mode-line-buffer-identification
                 " "
+                vc-mode
                 flycheck-mode-line
-                " "
+                (iedit-mode (:eval
+                             (if (= (iedit-counter) 0)
+                                 ""
+                               (format (concat " Iedit: " (propertize "%d" 'face 'font-lock-warning-face)) (iedit-counter)))))
                 (org-agenda-mode (:eval (format "%s" org-agenda-filter)))
                 " "
                 ;;mode-line-modes
                 mode-line-misc-info
-                " :: "
+                "::"
                 mode-line-position
                 ;;(:eval 'display-time-string)
                 mode-line-end-spaces))
