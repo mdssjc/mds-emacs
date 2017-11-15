@@ -265,9 +265,7 @@
 
 (use-package iedit
   :ensure t
-  :commands iedit-mode
-  :init
-  (add-hook 'after-init-hook '(lambda () (require 'iedit))))
+  :defer 0)
 
 (use-package zop-to-char
   :ensure t
