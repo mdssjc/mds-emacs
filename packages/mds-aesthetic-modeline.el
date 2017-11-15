@@ -14,7 +14,7 @@
 (defface rec-face
   '((t (:background "red" :foreground "white" :weight bold)))
   "Flag macro recording in mode-line"
-  :group "mds-aesthetic-modeline-faces")
+  :group 'mds-aesthetic-modeline-faces)
 
 ;;; Code:
 (setq-default mode-line-format
