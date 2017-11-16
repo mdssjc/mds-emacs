@@ -25,7 +25,8 @@
   :commands company-lsp
   :config
   (setq company-lsp-cache-candidates t
-        company-lsp-async t))
+        company-lsp-async t
+        company-lsp-enable-snippet t))
 
 (use-package esup
   :ensure t
