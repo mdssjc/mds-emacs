@@ -284,7 +284,10 @@
   :ensure t
   :commands rg
   :init
-  (rg-enable-default-bindings (kbd "s-/")))
+  (rg-enable-default-bindings (kbd "s-/"))
+  :config
+  (setq rg-group-result t
+        rg-show-columns t))
 
 (use-package ripgrep
   :ensure t
