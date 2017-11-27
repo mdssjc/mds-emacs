@@ -42,6 +42,11 @@
                 (org-agenda-mode (:eval (format "%s" org-agenda-filter)))
                 " "
                 ;;mode-line-modes
+                (:eval (propertize (if overwrite-mode "Ovr" "")
+                                   'face 'font-lock-warning-face
+                                   'help-echo (concat "Buffer is in "
+                                                      (if overwrite-mode "overwrite" "insert") " mode")))
+                (:eval (if overwrite-mode " " ""))
                 mode-line-misc-info
                 "::"
                 mode-line-position
