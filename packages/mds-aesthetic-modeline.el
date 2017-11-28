@@ -11,12 +11,45 @@
 
 ;;; Commentary:
 ;; Complemento do Estético com as configurações do Modeline.
+
+;;; Code:
 (defface rec-face
   '((t (:background "red" :foreground "white" :weight bold)))
   "Flag macro recording in mode-line"
   :group 'mds-aesthetic-modeline-faces)
 
-;;; Code:
+(setq display-time-format "%H:%M"
+      display-time-string-forms
+      '((propertize
+         (format-time-string (or display-time-format
+                                 (if display-time-24hr-format "%H:%M" "%-I:%M%p"))
+                             now)
+         'help-echo (concat (format-time-string "%c; ")
+                            (emacs-uptime "Uptime:%hh")))
+        load
+        (if mail
+            (concat
+             " "
+             (propertize
+              display-time-mail-string
+              'display `(when (and display-time-use-mail-icon
+                                   (display-graphic-p))
+                          ,@display-time-mail-icon
+                          ,@(if (and display-time-mail-face
+                                     (memq (plist-get (cdr display-time-mail-icon)
+                                                      :type)
+                                           '(pbm xbm)))
+                                (let ((bg (face-attribute display-time-mail-face
+                                                          :background)))
+                                  (if (stringp bg)
+                                      (list :background bg)))))
+              'face display-time-mail-face
+              'help-echo "You have new mail; mouse-2: Read mail"
+              'mouse-face 'mode-line-highlight
+              'local-map (make-mode-line-mouse-map 'mouse-2
+                                                   read-mail-command)))
+          "")))
+
 (setq-default mode-line-format
               '(""
                 mode-line-front-space
