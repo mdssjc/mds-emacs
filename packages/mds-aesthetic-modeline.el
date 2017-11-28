@@ -29,7 +29,11 @@
                 mode-line-modified
                 mode-line-directory
                 mode-line-frame-identification
-                mode-line-buffer-identification
+                (:propertize mode-line-buffer-identification
+                             help-echo (concat "Buffer name"
+                                               "\nmouse-1: Previous buffer"
+                                               "\nmouse-3: Next buffer"
+                                               "\n" (buffer-file-name)))
                 " "
                 vc-mode
                 flycheck-mode-line
