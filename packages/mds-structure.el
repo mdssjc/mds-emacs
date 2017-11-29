@@ -45,10 +45,9 @@
 
 ;; Recentf
 (use-package recentf
-  :commands recentf-mode
+  :hook after-init-hook
   :init
   (setq recentf-save-file (expand-file-name (concat user-emacs-directory ".cache/recentf")))
-  (add-hook 'after-init-hook 'recentf-mode)
   :config
   (setq recentf-max-saved-items 1000
         recentf-max-menu-items 15
@@ -58,10 +57,9 @@
 
 ;; Saveplace
 (use-package saveplace
-  :commands save-place-mode
+  :hook after-init-hook
   :init
   (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places")))
-  (add-hook 'after-init-hook 'save-place-mode)
   :config
   (setq save-place-forget-unreadable-files nil
         save-place-limit 500))
@@ -69,10 +67,9 @@
 ;; Savehist
 (use-package savehist
   :ensure t
-  :commands savehist-mode
+  :hook after-init-hook
   :init
   (setq savehist-file (concat user-emacs-directory ".cache/savehist"))
-  (add-hook 'after-init-hook 'savehist-mode)
   :config
   (setq history-length 250
         history-delete-duplicates t
@@ -138,9 +135,7 @@
 (use-package ivy
   :ensure t
   :diminish ivy-mode
-  :commands ivy-mode
-  :init
-  (add-hook 'after-init-hook 'ivy-mode)
+  :hook after-init-hook
   :config
   (setq ivy-height 12
         ivy-count-format "(%d/%d) "
@@ -278,7 +273,7 @@
   :commands wgrep-setup
   :init
   (add-hook 'occur-mode-hook 'wgrep-setup)
-  (add-hook 'rg-mode-hook 'wgrep-setup))
+  (add-hook 'rg-mode-hook    'wgrep-setup))
 
 (use-package rg
   :ensure t
@@ -309,9 +304,7 @@
   (use-package visual-regexp-steroids :ensure t))
 
 (use-package winner
-  :commands winner-mode
-  :init
-  (add-hook 'after-init-hook 'winner-mode))
+  :hook after-init-hook)
 
 (use-package buffer-move
   :ensure t
@@ -334,9 +327,7 @@
         dumb-jump-prefer-searcher 'rg))
 
 (use-package which-func
-  :commands which-function-mode
-  :init
-  (add-hook 'prog-mode-hook 'which-function-mode))
+  :hook prog-mode-hook)
 
 (use-package highlight
   :ensure t
@@ -354,9 +345,7 @@
 
 (use-package multiple-cursors
   :ensure t
-  :commands multiple-cursors-mode
-  :init
-  (add-hook 'after-init-hook 'multiple-cursors-mode))
+  :hook after-init-hook)
 
 (use-package page-break-lines
   :ensure t
