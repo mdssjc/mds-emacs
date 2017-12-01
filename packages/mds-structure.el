@@ -215,7 +215,7 @@
         treemacs-width                      35
         treemacs-indentation                2
         treemacs-git-integration            t
-        treemacs-collapse-dirs              3
+        treemacs-collapse-dirs              (if (executable-find "python") 3 0)
         treemacs-silent-refresh             nil
         treemacs-change-root-without-asking nil
         treemacs-sorting                    'alphabetic-desc
