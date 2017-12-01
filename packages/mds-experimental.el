@@ -32,5 +32,8 @@
   :ensure t
   :commands esup)
 
+(use-package sicp
+  :ensure t)
+
 (provide 'mds-experimental)
 ;;; mds-experimental.el ends here
