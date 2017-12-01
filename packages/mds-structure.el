@@ -319,13 +319,6 @@
   :diminish electric-spacing-mode
   :commands electric-spacing-mode)
 
-(use-package dumb-jump
-  :ensure t
-  :commands dumb-jump-mode
-  :config
-  (setq dumb-jump-selector 'ivy
-        dumb-jump-prefer-searcher 'rg))
-
 (use-package which-func
   :hook prog-mode-hook)
 
