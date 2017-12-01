@@ -45,7 +45,7 @@
 
 ;; Recentf
 (use-package recentf
-  :hook after-init-hook
+  :hook (after-init . recentf-mode)
   :init
   (setq recentf-save-file (expand-file-name (concat user-emacs-directory ".cache/recentf")))
   :config
@@ -57,7 +57,7 @@
 
 ;; Saveplace
 (use-package saveplace
-  :hook after-init-hook
+  :hook (after-init . save-place-mode)
   :init
   (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places")))
   :config
@@ -67,7 +67,7 @@
 ;; Savehist
 (use-package savehist
   :ensure t
-  :hook after-init-hook
+  :hook (after-init . savehist-mode)
   :init
   (setq savehist-file (concat user-emacs-directory ".cache/savehist"))
   :config
@@ -135,7 +135,7 @@
 (use-package ivy
   :ensure t
   :diminish ivy-mode
-  :hook after-init-hook
+  :hook (after-init . ivy-mode)
   :config
   (setq ivy-height 12
         ivy-count-format "(%d/%d) "
@@ -174,9 +174,9 @@
 
 (use-package amx
   :ensure t
+  :hook (after-init . amx-mode)
   :init
   (setq amx-save-file (concat user-emacs-directory ".cache/.amx-items"))
-  (add-hook 'after-init-hook 'amx-mode)
   :config
   (setq amx-auto-update-interval 10
         amx-history-length 5
@@ -304,7 +304,7 @@
   (use-package visual-regexp-steroids :ensure t))
 
 (use-package winner
-  :hook after-init-hook)
+  :hook (after-init . winner-mode))
 
 (use-package buffer-move
   :ensure t
@@ -320,7 +320,7 @@
   :commands electric-spacing-mode)
 
 (use-package which-func
-  :hook prog-mode-hook)
+  :hook (prog-mode . which-function-mode))
 
 (use-package highlight
   :ensure t
@@ -338,7 +338,7 @@
 
 (use-package multiple-cursors
   :ensure t
-  :hook after-init-hook)
+  :hook (after-init . multiple-cursors-mode))
 
 (use-package page-break-lines
   :ensure t
