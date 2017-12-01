@@ -17,21 +17,26 @@
 
 ;; Flycheck
 (use-package flycheck
+  :pin melpa
   :ensure t
   :diminish flycheck-mode " ⓢ"
   :commands flycheck-mode
-  :pin melpa
   :config
   (setq flycheck-check-syntax-automatically '(save idle-change)
-        flycheck-idle-change-delay 10))
+        flycheck-idle-change-delay 10
+        flycheck-highlighting-mode 'lines))
 
 (use-package flycheck-pos-tip
   :ensure t
-  :after flycheck
+  :hook (flycheck-mode . flycheck-pos-tip-mode)
   :config
   (setq flycheck-pos-tip-timeout 10
-        flycheck-display-errors-delay 0.5)
-  (flycheck-pos-tip-mode))
+        flycheck-display-errors-delay 0.5))
+
+(use-package flycheck-color-mode-line
+  :ensure t
+  :hook (flycheck-mode . flycheck-color-mode-line-mode))
+
 ;; ---
 
 ;; Flyspell
