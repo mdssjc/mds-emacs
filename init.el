@@ -170,10 +170,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (company-lsp lsp-javascript-typescript lsp-javascript doom-themes telephone-line zop-to-char zeal-at-point xref-js2 wttrin writeroom-mode worf which-key wgrep web-mode volatile-highlights visual-regexp use-package undo-tree underline-with-char twittering-mode treemacs-projectile tomatinho tabbar-ruler symon srefactor sqlup-mode sql-indent solaire-mode simple+ shift-number rg restart-emacs replace+ rainbow-delimiters racket-mode projectile-ripgrep pp+ popup-imenu popup-edit-menu plantuml-mode parinfer pandoc-mode package-utils org-table-sticky-header org-sticky-header org-pomodoro org-bullets number move-dup mouse+ menu-bar+ meghanada markdown-mode magithub lsp-mode litable lispy lfe-mode langtool lacarte js2-refactor java-snippets ivy-rich ivy-hydra irony-eldoc intero info+ imenu+ icomplete+ icicles hlint-refactor hl-line+ hindent highlight-thing haskell-snippets guess-language google-translate google-this golden-ratio gitignore-mode git-timemachine git-gutter-fringe general function-args focus flyspell-popup flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-irony flycheck-haskell face-remap+ exec-path-from-shell esup ess eshell-fringe-status engine-mode emojify emmet-mode embrace elfeed electric-spacing ejc-sql dumb-jump dr-racket-like-unicode doremi dired+ dashboard css-eldoc counsel-projectile counsel-dash company-web company-tern company-statistics company-restclient company-quickhelp company-irony-c-headers company-irony company-ghci company-dict clojure-snippets clj-refactor ciel cider-eval-sexp-fu centered-cursor-mode buffer-move bookmark+ auto-yasnippet anzu amx all-the-icons-dired)))
- '(tramp-syntax (quote default) nil (tramp)))
+ )
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
