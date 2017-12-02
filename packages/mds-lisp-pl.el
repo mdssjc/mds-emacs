@@ -21,6 +21,8 @@
   ("emacs" . emacs-lisp-mode)
   :defines
   flycheck-emacs-lisp-load-path
+  company-backends
+  counsel-dash-docsets
   :init
   (add-hook 'emacs-lisp-mode-hook
             (lambda ()
@@ -38,7 +40,7 @@
                                               company-dabbrev
                                               company-files)))
               (flycheck-mode)
-              (eval-after-load 'flycheck '(flycheck-package-setup))
+              (flycheck-package-setup)
               (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit))
@@ -130,8 +132,9 @@
   :diminish lispy-mode
   :commands lispy-mode
   :init
-  (add-hook 'minibuffer-setup-hook '(lambda () (when (eq this-command 'eval-expression)
-                                            (lispy-mode 1)))))
+  (add-hook 'minibuffer-setup-hook
+            (lambda () (when (eq this-command 'eval-expression)
+                    (lispy-mode 1)))))
 
 (use-package paredit
   :ensure t
