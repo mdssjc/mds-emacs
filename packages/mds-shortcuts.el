@@ -257,21 +257,23 @@
                       "<tab>"     'company-select-next
                       "<backtab>" 'company-select-previous)
   (general-define-key :keymaps 'parinfer-mode-map
-                      "C-c <tab>" 'parinfer-toggle-mode
-                      "C-1" 'lispy-describe-inline
-                      "C-2" 'lispy-arglist-inline
-                      "C-3" 'lispy-right
-                      "C-4" 'lispy-x
-                      "C-8" 'lispy-parens-down
-                      "t" 'special-lispy-teleport
-                      "/" 'special-lispy-splice
-                      "M-." 'lispy-goto-symbol
-                      "M-k" 'lispy-kill-sentence
-                      "<S-delete>" 'lispy-kill-at-point
-                      "C-+" 'lispy-mark
-                      "E" 'special-lispy-eval-and-insert
-                      "N" 'special-lispy-narrow
-                      "W" 'special-lispy-widen)
+                      "C-c <tab>"  'parinfer-toggle-mode
+                      "C-1"        'lispy-describe-inline
+                      "C-2"        'lispy-arglist-inline
+                      "C-3"        'lispy-right
+                      "C-4"        'lispy-x
+                      "C-8"        'lispy-parens-down
+                      "b"          'special-lispy-back
+                      "t"          'special-lispy-teleport
+                      "/"          'special-lispy-splice
+                      "M-."        'lispy-goto-symbol
+                      "M-k"        'lispy-kill-sentence
+                      "<delete>"   'lispy-delete
+                      "<S-delete>" 'lispy-delete-backward
+                      "C-+"        'lispy-mark
+                      "E"          'special-lispy-eval-and-insert
+                      "N"          'special-lispy-narrow
+                      "W"          'special-lispy-widen)
   (general-define-key :keymaps 'emacs-lisp-mode-map
                       "<f9> p"    'parinfer-mode
                       "<f9> P"    'enable-paredit-mode
