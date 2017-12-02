@@ -112,20 +112,23 @@
   show-paren-style
   :init
   (add-hook 'parinfer-mode-enable-hook
-            '(lambda ()
-               (show-paren-mode)
-               (electric-pair-mode)
-               (push '("->"     . ?→) prettify-symbols-alist)
-               (push '("=>"     . ?⇒) prettify-symbols-alist)
-               (push '("map"    . ?↦) prettify-symbols-alist)
-               (push '("."      . ?•) prettify-symbols-alist)
-               (push '("lambda" . ?λ) prettify-symbols-alist)
-               (prettify-symbols-mode)))
+            (lambda ()
+              (show-paren-mode)
+              (electric-pair-mode)
+              (push '("->"     . ?→) prettify-symbols-alist)
+              (push '("=>"     . ?⇒) prettify-symbols-alist)
+              (push '("map"    . ?↦) prettify-symbols-alist)
+              (push '("."      . ?•) prettify-symbols-alist)
+              (push '("lambda" . ?λ) prettify-symbols-alist)
+              (prettify-symbols-mode)))
   :config
   (setq parinfer-extensions '(defaults pretty-parens smart-yank smart-tab paredit lispy one)
         parinfer-lighters '(" P:>>" . "P:()")
         prettify-symbols-unprettify-at-point 'right-edge
-        show-paren-style 'mixed))
+        show-paren-style 'parenthesis
+        show-paren-ring-bell-on-mismatch t
+        show-paren-when-point-inside-paren t
+        show-paren-when-point-in-periphery t))
 
 (use-package lispy
   :ensure t
