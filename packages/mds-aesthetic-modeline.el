@@ -87,9 +87,14 @@
                 mode-line-misc-info
                 "::"
                 mode-line-position
+                "[" (:eval (format "%d" total-lines)) "]"
                 mode-line-end-spaces))
 
 (display-time-mode)
+
+(use-package total-lines
+  :ensure t
+  :hook (after-init . global-total-lines-mode))
 
 (provide 'mds-aesthetic-modeline)
 ;;; mds-aesthetic-modeline.el ends here
