@@ -110,6 +110,9 @@
   :defines
   prettify-symbols-unprettify-at-point
   show-paren-style
+  show-paren-ring-bell-on-mismatch
+  show-paren-when-point-inside-paren
+  show-paren-when-point-in-periphery
   :init
   (add-hook 'parinfer-mode-enable-hook
             (lambda ()
