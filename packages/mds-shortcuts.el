@@ -194,6 +194,7 @@
   ;; Toggles
   (general-define-key :prefix "<f5>"
                       "-"   'centered-cursor-mode
+                      "a"   'auto-fill-mode
                       "e"   'global-emojify-mode
                       "f"   'focus-mode
                       "g"   'golden-ratio-mode
