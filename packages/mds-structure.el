@@ -185,12 +185,10 @@
 (use-package projectile
   :ensure t
   :diminish projectile-mode
-  :commands projectile-mode
+  :hook (after-init . projectile-mode)
   :init
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld")))
-  (add-hook 'after-init-hook 'projectile-mode)
-  (add-hook 'projectile-mode-hook 'counsel-projectile-on)
   :config
   (setq projectile-completion-system 'ivy
         projectile-sort-order 'recentf
@@ -205,7 +203,7 @@
 
 (use-package counsel-projectile
   :ensure t
-  :commands counsel-projectile-on)
+  :hook (projectile-mode . counsel-projectile-on))
 
 (use-package treemacs
   :ensure t
