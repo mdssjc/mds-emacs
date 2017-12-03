@@ -375,8 +375,9 @@
   :ensure t
   :commands exec-path-from-shell-initialize
   :init
-  (add-hook 'after-init-hook '(lambda () (when (memq window-system '(mac ns x))
-                                      (exec-path-from-shell-initialize))))
+  (add-hook 'after-init-hook
+            (lambda () (when (memq window-system '(mac ns x))
+                    (exec-path-from-shell-initialize))))
   :config
   (setq exec-path-from-shell-check-startup-files nil))
 
