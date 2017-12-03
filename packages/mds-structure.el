@@ -349,9 +349,7 @@
 (use-package page-break-lines
   :ensure t
   :diminish page-break-lines-mode
-  :commands page-break-lines-mode global-page-break-lines-mode
-  :init
-  (add-hook 'after-init-hook 'global-page-break-lines-mode))
+  :hook (after-init . global-page-break-lines-mode))
 
 (use-package underline-with-char
   :ensure t
