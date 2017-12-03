@@ -97,6 +97,7 @@
 
 (use-package magit
   :ensure t
+  :ensure-system-package git
   :commands magit-status
   :config
   (setq magit-completing-read-function 'ivy-completing-read
