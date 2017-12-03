@@ -281,7 +281,8 @@
 
 (use-package rg
   :ensure t
-  :commands rg
+  :ensure-system-package rg
+  :commands rg rg-project
   :init
   (rg-enable-default-bindings (kbd "s-/"))
   :config
