@@ -371,9 +371,6 @@
   :ensure t
   :commands package-utils-install-async package-utils-upgrade-all)
 
-(use-package use-package-ensure-system-package
-  :ensure t)
-
 (use-package exec-path-from-shell
   :ensure t
   :commands exec-path-from-shell-initialize
