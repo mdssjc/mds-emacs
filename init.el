@@ -13,6 +13,10 @@
 ;; Arquivo de inicialização do ambiente Emacs.
 
 ;;; Code:
+(eval-when-compile
+  (add-to-list 'load-path (concat user-emacs-directory "core/use-package/"))
+  (require 'use-package))
+
 (setq gc-cons-threshold (* 100 1024 1024)
       gc-cons-percentage 0.1
       garbage-collection-messages nil
@@ -27,11 +31,8 @@
 (add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/"))
 
 (package-initialize)
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(use-package use-package-ensure-system-package
+(use-package use-package-ensure-system-package)
+(use-package system-packages
   :ensure t)
 
 (let ((file-name-handler-alist))

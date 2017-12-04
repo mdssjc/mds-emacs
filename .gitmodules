@@ -1,0 +1,3 @@
+[submodule "core/use-package"]
+	path = core/use-package
+	url = https://github.com/jwiegley/use-package
