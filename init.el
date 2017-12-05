@@ -79,6 +79,21 @@
         bookmark-save-flag t
         bmkp-last-as-first-bookmark-file nil)
 
+  (when (eq window-system 'w32)
+    (setq w32-pass-lwindow-to-system nil
+          w32-pass-rwindow-to-system nil
+          w32-pass-apps-to-system    nil
+          w32-lwindow-modifier       'super
+          w32-rwindow-modifier       'super
+          w32-apps-modifier          'hyper)
+    (define-key key-translation-map (kbd "<lwindow>") 'event-apply-super-modifier)
+    (define-key key-translation-map (kbd "<rwindow>") 'event-apply-super-modifier)
+    (define-key key-translation-map (kbd "<apps>")    'event-apply-hyper-modifier)
+    (add-hook 'after-init-hook
+              (lambda () (start-process "win" "*win*" (concat user-emacs-directory "core/windows-script.exe"))))
+    (add-hook 'kill-emacs-hook
+              (lambda () (delete-process "win"))))
+
   ;; Sistema de Codificação (Coding System)
   (set-charset-priority        'unicode)
   (set-default-coding-systems  'utf-8)
