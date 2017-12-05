@@ -83,16 +83,12 @@
     (setq w32-pass-lwindow-to-system nil
           w32-pass-rwindow-to-system nil
           w32-pass-apps-to-system    nil
-          w32-lwindow-modifier       'super
-          w32-rwindow-modifier       'super
-          w32-apps-modifier          'hyper)
+          w32-lwindow-modifier       'nil
+          w32-rwindow-modifier       'nil
+          w32-apps-modifier          'nil)
     (define-key key-translation-map (kbd "<lwindow>") 'event-apply-super-modifier)
     (define-key key-translation-map (kbd "<rwindow>") 'event-apply-super-modifier)
-    (define-key key-translation-map (kbd "<apps>")    'event-apply-hyper-modifier)
-    (add-hook 'after-init-hook
-              (lambda () (start-process "win" "*win*" (concat user-emacs-directory "core/windows-script.exe"))))
-    (add-hook 'kill-emacs-hook
-              (lambda () (delete-process "win"))))
+    (define-key key-translation-map (kbd "<apps>")    'event-apply-hyper-modifier))
 
   ;; Sistema de Codificação (Coding System)
   (set-charset-priority        'unicode)
