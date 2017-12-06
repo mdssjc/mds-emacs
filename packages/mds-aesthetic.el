@@ -179,5 +179,9 @@
   (setq indent-info-space-format "SPC[%s]"
         indent-info-tab-format   "TAB[%s]"))
 
+(use-package total-lines
+  :ensure t
+  :hook (after-init . global-total-lines-mode))
+
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
