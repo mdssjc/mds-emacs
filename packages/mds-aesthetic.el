@@ -99,9 +99,7 @@
 
 (use-package focus
   :ensure t
-  :commands focus-mode
-  :init
-  (add-hook 'prog-mode-hook 'focus-mode))
+  :hook (prog-mode . focus-mode))
 
 (use-package volatile-highlights
   :ensure t
