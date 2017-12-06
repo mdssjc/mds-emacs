@@ -63,14 +63,13 @@
 
 (use-package dashboard
   :ensure t
-  :init
-  (add-hook 'after-init-hook 'dashboard-setup-startup-hook)
+  :hook (after-init . dashboard-setup-startup-hook)
   :config
   (setq dashboard-items '((recents   . 5)
-                          ;;(bookmarks . 5)
-                          (projects  . 5))
+                          (bookmarks . 5)
+                          (projects  . 5)
                           ;;(agenda    . 10)
-                          ;;(registers . 5))
+                          (registers . 5))
         dashboard-banner-logo-title "Welcome to MDS Emacs"
         dashboard-startup-banner dashboard-banner-logo-png))
 
