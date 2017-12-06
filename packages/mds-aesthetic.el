@@ -13,10 +13,12 @@
 ;; Estilo ergonômico e sem distrações/ruídos - tema dark e linha de status com ícones.
 
 ;;; Code:
+(load-theme 'wombat)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (use-package doom-themes
   :ensure t
+  :defer 0
   :config
   (require 'mds-aesthetic-modeline)
   (load-theme 'doom-one t)
