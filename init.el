@@ -25,17 +25,17 @@
       use-package-verbose nil)
 (add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
 
-(require 'package)
-(setq package-enable-at-startup t)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/"))
-
-(package-initialize)
+(use-package package
+  :config
+  (setq package-enable-at-startup t)
+  (setq package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
+                           ("melpa" . "https://melpa.org/packages/")
+                           ("org"   . "http://orgmode.org/elpa/")))
+  (package-initialize nil))
 (use-package use-package-ensure-system-package)
-(use-package system-packages
-  :ensure t)
+(use-package system-packages :ensure t)
 
-(let ((file-name-handler-alist))
+;; (let ((file-name-handler-alist))
   ;; Configurações Globais (Global Settings)
   (setq-default tab-always-indent 'complete
                 ;; Indentation
@@ -176,7 +176,7 @@
   ;; Serviços
   (require 'mds-news)
   ;; Experimental
-  (require 'mds-experimental))
+  (require 'mds-experimental)
 
 ;; Automático (Automatic)
 (custom-set-variables
