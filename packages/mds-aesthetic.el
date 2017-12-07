@@ -39,8 +39,12 @@
         doom-themes-enable-bold   t
         doom-themes-enable-italic t
         line-spacing 0.10)
-  ;; ---
-  (add-hook 'prog-mode-hook 'display-line-numbers-mode))
+  ;; Hooks:
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  (add-hook 'after-change-major-mode-hook 'turn-on-solaire-mode)
+  (add-hook 'after-revert-hook            'turn-on-solaire-mode)
+  (add-hook 'minibuffer-setup-hook        'solaire-mode-in-minibuffer)
+  (add-hook 'ediff-prepare-buffer-hook    'solaire-mode))
 
 (use-package hl-line
   :hook (prog-mode . hl-line-mode)
@@ -51,12 +55,7 @@
 
 (use-package solaire-mode
   :ensure t
-  :commands solaire-mode turn-on-solaire-mode solaire-mode-in-minibuffer
-  :init
-  (add-hook 'after-change-major-mode-hook 'turn-on-solaire-mode)
-  (add-hook 'after-revert-hook            'turn-on-solaire-mode)
-  (add-hook 'minibuffer-setup-hook        'solaire-mode-in-minibuffer)
-  (add-hook 'ediff-prepare-buffer-hook    'solaire-mode))
+  :commands solaire-mode turn-on-solaire-mode solaire-mode-in-minibuffer)
 
 (use-package dashboard
   :ensure t
