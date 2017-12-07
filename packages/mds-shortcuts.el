@@ -204,6 +204,7 @@
                       "t"   'toggle-truncate-lines
                       "w"   'global-whitespace-mode
                       "F"   'follow-mode
+                      "H"   'hl-line-mode
                       "W"   'writeroom-mode
                       "SPC" 'treemacs-toggle)
   ;; Sintático - Syntatic
