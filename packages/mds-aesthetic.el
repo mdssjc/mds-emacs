@@ -13,8 +13,6 @@
 ;; Estilo ergonômico e sem distrações/ruídos - tema dark e linha de status com ícones.
 
 ;;; Code:
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-
 (use-package doom-themes
   :ensure t
   :config
@@ -34,23 +32,22 @@
       (set-face-attribute 'mode-line nil :font "Hack 10")))
   (set-face-attribute 'line-number-current-line nil
                       :weight 'bold
-                      :foreground "white"
-                      :background "#23272e")
+                      :foreground "white")
   (doom-themes-visual-bell-config)
   (doom-themes-org-config)
   (setq Info-fontify-angle-bracketed-flag nil
-        doom-themes-enable-bold t
+        doom-themes-enable-bold   t
         doom-themes-enable-italic t
-        line-spacing 0.10))
+        line-spacing 0.10)
+  ;; ---
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode))
 
 (use-package hl-line
-  :commands hl-line-mode global-hl-line-mode
-  :init
-  (add-hook 'prog-mode-hook 'hl-line-mode)
-  (add-hook 'hl-line-mode-hook (lambda () (remove-overlays (point-min) (point-max) 'face 'hl-line)))
+  :hook (prog-mode . hl-line-mode)
   :config
-  (setq hl-line-sticky-flag nil
-        global-hl-line-sticky-flag nil))
+  (setq hl-line-sticky-flag        nil
+        global-hl-line-sticky-flag nil)
+  (remove-overlays (point-min) (point-max) 'face 'hl-line))
 
 (use-package solaire-mode
   :ensure t
