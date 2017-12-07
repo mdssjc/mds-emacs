@@ -17,12 +17,9 @@
 
 (use-package doom-themes
   :ensure t
-  :defer 0
   :config
-  (require 'mds-aesthetic-modeline)
   (load-theme 'doom-one t)
-  (doom-themes-visual-bell-config)
-  (doom-themes-org-config)
+  (require 'mds-aesthetic-modeline)
   (when (member "DejaVu Sans Mono" (font-family-list))
     (progn
       (set-face-attribute 'default nil :font "DejaVu Sans Mono 12")
@@ -39,6 +36,8 @@
                       :weight 'bold
                       :foreground "white"
                       :background "#23272e")
+  (doom-themes-visual-bell-config)
+  (doom-themes-org-config)
   (setq Info-fontify-angle-bracketed-flag nil
         doom-themes-enable-bold t
         doom-themes-enable-italic t
