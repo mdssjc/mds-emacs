@@ -50,6 +50,17 @@
                                                    read-mail-command)))
           "")))
 
+(defun custom-modeline-region-info()
+  (when mark-active
+    (let ((chars (count-matches "." (region-end) (region-beginning)))
+          (lines (count-lines (region-beginning) (region-end))))
+      (concat
+       (propertize (all-the-icons-octicon "pencil")
+                   'face `(:family ,(all-the-icons-octicon-family))
+                   'display '(raise 0.1))
+       (propertize (format " (%s, %s)" chars lines)
+                   'face `(:height 0.9))))))
+
 (setq-default mode-line-format
               '(""
                 mode-line-front-space
@@ -69,6 +80,7 @@
                                                "\n" (buffer-file-name)))
                 " "
                 mode-line-process
+                (:eval (custom-modeline-region-info))
                 vc-mode
                 flycheck-mode-line
                 (iedit-mode (:eval
