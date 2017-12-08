@@ -380,10 +380,6 @@
                       "j" 'next-line
                       "k" 'previous-lin
                       "u" 'elfeed-update)
-  (general-define-key :keymaps 'web-mode-map
-                      "<f9> p" 'emmet-preview-mode)
-  (general-define-key :keymaps 'emmet-mode-keymap
-                      "C-<return>" 'nil)
   (general-define-key :keymaps 'haskell-mode-map
                       "M-<right>" 'haskell-move-nested-right
                       "M-<left>"  'haskell-move-nested-left
