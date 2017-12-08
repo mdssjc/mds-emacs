@@ -68,6 +68,7 @@
                                                "\nmouse-3: Next buffer"
                                                "\n" (buffer-file-name)))
                 " "
+                mode-line-process
                 vc-mode
                 flycheck-mode-line
                 (iedit-mode (:eval

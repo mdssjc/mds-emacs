@@ -13,8 +13,6 @@
 ;; Analisa o texto e/ou código.
 
 ;;; Code:
-(defvar langtool-path "/home/mdssjc/Documents/Git/languagetool/languagetool-standalone/target/LanguageTool-4.0-SNAPSHOT/LanguageTool-4.0-SNAPSHOT/")
-
 ;; Flycheck
 (use-package flycheck
   :pin melpa
@@ -71,9 +69,9 @@
   :ensure t
   :commands langtool-check langtool-check-done langtool-correct-buffer langtool-switch-default-language langtool-show-message-at-point
   :config
-  (setq langtool-language-tool-jar (concat langtool-path "languagetool-commandline.jar")
+  (setq langtool-language-tool-jar (concat user-emacs-directory "core/jars/languagetool-commandline.jar")
         langtool-default-language "pt-BR"
-        langtool-mother-tongue "pt-BR"
+        langtool-mother-tongue    "pt-BR"
         langtool-autoshow-message-function (lambda (overlays)
                                              (when (require 'popup nil t)
                                                (unless (or popup-instances
