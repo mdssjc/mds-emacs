@@ -417,15 +417,23 @@
 
 ;;(eval-after-load "isearch" '(use-package isearch-prop :ensure t :defer 0))
 
-(use-package replace
+;; (use-package replace
+;;   :defer 0
+;;   :config
+;;   (use-package replace+ :ensure t))
+(use-package replace+
+  :ensure t
   :defer 0
-  :config
-  (use-package replace+ :ensure t))
+  :after replace)
 
-(use-package menu-bar
+;; (use-package menu-bar
+;;   :defer 0
+;;   :config
+;;   (use-package menu-bar+ :ensure t))
+(use-package menu-bar+
+  :ensure t
   :defer 0
-  :config
-  (use-package menu-bar+ :ensure t))
+  :after menu-bar)
 
 (use-package imenu
   :defer 0
