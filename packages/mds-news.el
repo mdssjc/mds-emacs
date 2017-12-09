@@ -136,6 +136,11 @@
 (use-package elfeed
   :ensure t
   :commands elfeed
+  :bind
+  (:map elfeed-show-mode-map
+        ("j" . next-line)
+        ("k" . previous-lin)
+        ("u" . elfeed-update))
   :config
   (setq elfeed-use-curl t
         elfeed-feeds '(;; Blogs
