@@ -155,6 +155,7 @@
   :ensure t
   :after ivy
   :config
+  (setq ivy-rich-switch-buffer-align-virtual-buffer t)
   (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer))
 
 (use-package ivy-xref
@@ -162,6 +163,12 @@
   :after ivy
   :config
   (setq xref-show-xrefs-function 'ivy-xref-show-xrefs))
+
+(use-package all-the-icons-ivy
+  :ensure t
+  :after ivy
+  :config
+  (all-the-icons-ivy-setup))
 
 (use-package swiper
   :ensure t
@@ -175,7 +182,8 @@
   :config
   (setq counsel-mode-override-describe-bindings t
         counsel-find-file-at-point t
-        confirm-nonexistent-file-or-buffer t)
+        confirm-nonexistent-file-or-buffer t
+        enable-recursive-minibuffers t)
   (fset 'describe-function 'counsel-describe-function)
   (fset 'describe-variable 'counsel-describe-variable))
 
