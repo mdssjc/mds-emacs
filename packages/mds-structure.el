@@ -214,28 +214,18 @@
 
 (use-package treemacs
   :ensure t
-  :defer t
+  :commands treemacs-toggle treemacs-projectile-toggle
   :config
-  (setq treemacs-follow-after-init          t
-        treemacs-width                      35
-        treemacs-indentation                2
-        treemacs-git-integration            t
-        treemacs-collapse-dirs              (if (executable-find "python") 3 0)
-        treemacs-silent-refresh             nil
-        treemacs-change-root-without-asking nil
-        treemacs-sorting                    'alphabetic-desc
-        treemacs-show-hidden-files          t
-        treemacs-never-persist              nil
-        treemacs-is-never-other-window      nil
-        treemacs-goto-tag-strategy          'refetch-index)
+  (setq treemacs-follow-after-init t
+        treemacs-collapse-dirs     (if (executable-find "python") 3 0))
   (treemacs-follow-mode t)
   (treemacs-filewatch-mode t))
 
 (use-package treemacs-projectile
   :ensure t
-  :defer t
+  :after treemacs
   :config
-  (setq treemacs-header-function #'treemacs-projectile-create-header))
+  (setq treemacs-header-function 'treemacs-projectile-create-header))
 
 (use-package expand-region
   :ensure t
