@@ -164,12 +164,6 @@
   :config
   (setq xref-show-xrefs-function 'ivy-xref-show-xrefs))
 
-(use-package all-the-icons-ivy
-  :ensure t
-  :after ivy
-  :config
-  (all-the-icons-ivy-setup))
-
 (use-package swiper
   :ensure t
   :commands swiper swiper-all
