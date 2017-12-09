@@ -433,7 +433,12 @@
   :defer 0
   :config
   (setq imenu-auto-rescan t)
-  (use-package imenu+ :ensure t)
+  (use-package imenu+
+    :ensure t
+    :config
+    (eval-after-load 'imenu+
+      `(add-to-list 'imenup-emacs-lisp-generic-expression
+                    (list "Packages" ,use-package-form-regexp-eval 2))))
   (use-package popup-imenu :ensure t :commands popup-imenu))
 
 (use-package face-remap
