@@ -269,8 +269,6 @@
                       "/"          'special-lispy-splice
                       "M-."        'lispy-goto-symbol
                       "M-k"        'lispy-kill-sentence
-                      "<delete>"   'lispy-delete
-                      "<S-delete>" 'lispy-delete-backward
                       "C-+"        'lispy-mark
                       "E"          'special-lispy-eval-and-insert
                       "N"          'special-lispy-narrow
