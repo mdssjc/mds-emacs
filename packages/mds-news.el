@@ -1,4 +1,4 @@
-;;; mds-news.el --- Notícias (News)
+;;; mds-news.el --- Notícias (News) -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2016-2017 Marcelo dos Santos
 ;;
@@ -23,7 +23,7 @@
   :ensure t
   :commands twit
   :init
-  (add-hook 'twittering-edit-mode-hook '(lambda () (flyspell-mode)))
+  (add-hook 'twittering-edit-mode-hook 'flyspell-mode)
   :config
   (setq twittering-use-master-password t
         twittering-private-info-file (concat user-emacs-directory ".cache/twittering-mode.gpg")
