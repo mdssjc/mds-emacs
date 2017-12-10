@@ -103,7 +103,7 @@
                 " "
                 (flyspell-mode (:eval (format "%s:%s"
                                               flyspell-mode-line-string
-                                              ispell-current-dictionary)))
+                                              (split-string ispell-current-dictionary "_"))))
                 (iedit-mode (:eval
                              (if (= (iedit-counter) 0)
                                  ""
