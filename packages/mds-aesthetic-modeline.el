@@ -100,6 +100,10 @@
                 (:eval (custom-modeline-region-info))
                 vc-mode
                 (:eval (custom-modeline-flycheck))
+                " "
+                (flyspell-mode (:eval (format "%s:%s"
+                                              flyspell-mode-line-string
+                                              ispell-current-dictionary)))
                 (iedit-mode (:eval
                              (if (= (iedit-counter) 0)
                                  ""
