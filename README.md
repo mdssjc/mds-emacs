@@ -2,7 +2,7 @@
 
 O projeto tem como objetivo ser um modelo de configuração do _Emacs_ para o dia a dia do programador nas seguintes tecnologias: _Lisp_, _Haskell_, _C_, _Java_, _Web_ e Escrita (_Latex_, _R_, _Markdown_, Texto e etc...) - voltado para os amantes em personalização de ferramentas.
 
-Versão do _Emacs_: 26.0.50
+Versão do _Emacs_: _GNU Emacs 27.0.50_
 
 # Instalação
 
@@ -10,7 +10,7 @@ Procedimento para a instalação do projeto.
 
 ## Instalação do Emacs
 
-Versão principal:
+No _Linux_:
 
 ```
 git clone https://github.com/emacs-mirror/emacs
@@ -18,6 +18,15 @@ git clone https://github.com/emacs-mirror/emacs
 ./configure --enable-link-time-optimization --with-modules CFLAGS='-O3'
 make
 sudo make install
+```
+
+No _Windows_:
+
+```
+browse to:   https://alpha.gnu.org/gnu/emacs/pretest/windows/emacs-27/
+download:    <emacs-27.0.50-snapshot-2017-11-30-x86_64.zip | emacs-27.0.50-snapshot-2017-11-30-i686.zip>
+extract to:  X:\emacs
+shortcut to: X:\emacs\bin\runemacs.exe
 ```
 
 ## Clonagem do Projeto
