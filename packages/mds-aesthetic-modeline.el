@@ -52,12 +52,13 @@
 (defun custom-modeline-region-info()
   (when mark-active
     (let ((chars (count-matches "." (region-end) (region-beginning)))
+          (words (count-words-region (region-end) (region-beginning)))
           (lines (count-lines (region-beginning) (region-end))))
       (concat
        (propertize (all-the-icons-octicon "pencil")
                    'face `(:family ,(all-the-icons-octicon-family))
                    'display '(raise 0.1))
-       (propertize (format " (%s, %s)" chars lines)
+       (propertize (format " (%s,%s,%s)" chars words lines)
                    'face `(:height 0.9))))))
 
 (defun custom-modeline-flycheck()
@@ -88,13 +89,12 @@
                 " "
                 (anzu-mode (:eval (anzu--update-mode-line)))
                 mode-line-modified
-                mode-line-directory
-                mode-line-frame-identification
+                ;; mode-line-frame-identification
                 (:propertize mode-line-buffer-identification
                              help-echo (concat "Buffer name"
                                                "\nmouse-1: Previous buffer"
                                                "\nmouse-3: Next buffer"
-                                               "\n" (buffer-file-name)))
+                                               "\npath: " (buffer-file-name)))
                 " "
                 mode-line-process
                 (:eval (custom-modeline-region-info))
@@ -113,6 +113,7 @@
                 (org-agenda-mode (:eval (format "%s" org-agenda-filter)))
                 " "
                 ;; mode-line-modes
+                ;; minor-mode-alist
                 (:eval (custom-modeline-overwrite))
                 (:eval (if overwrite-mode " " ""))
                 mode-line-misc-info
