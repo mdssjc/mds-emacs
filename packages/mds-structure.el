@@ -347,6 +347,10 @@
   :ensure t
   :commands underline-with-char)
 
+(use-package cmds-menu
+  :ensure t
+  :hook (after-init . recent-cmds-menu-mode))
+
 (use-package icicles
   :ensure t
   :commands icy-mode)
