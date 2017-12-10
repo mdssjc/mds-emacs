@@ -46,8 +46,7 @@
               'face display-time-mail-face
               'help-echo "You have new mail; mouse-2: Read mail"
               'mouse-face 'mode-line-highlight
-              'local-map (make-mode-line-mouse-map 'mouse-2
-                                                   read-mail-command)))
+              'local-map (make-mode-line-mouse-map 'mouse-2 read-mail-command)))
           "")))
 
 (defun custom-modeline-region-info()
@@ -84,7 +83,9 @@
                            (concat (propertize "[M]" 'face 'rec-face) " ")))
                 mode-line-mule-info
                 ": "
-                mode-name " "
+                (:propertize mode-name
+                             help-echo (format "%s" major-mode))
+                " "
                 (anzu-mode (:eval (anzu--update-mode-line)))
                 mode-line-modified
                 mode-line-directory
@@ -110,7 +111,6 @@
                 ;; mode-line-modes
                 (:eval (custom-modeline-overwrite))
                 (:eval (if overwrite-mode " " ""))
-
                 mode-line-misc-info
                 "::"
                 mode-line-position
