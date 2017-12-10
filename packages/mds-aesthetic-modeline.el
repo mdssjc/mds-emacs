@@ -61,8 +61,24 @@
        (propertize (format " (%s, %s)" chars lines)
                    'face `(:height 0.9))))))
 
+(defun custom-modeline-flycheck()
+  `(flycheck-mode
+    (:propertize flycheck-mode-line
+                 help-echo (concat "Flycheck"
+                                   "\nmouse-1: Show all errors")
+                 mouse-face 'mode-line-highlight
+                 local-map (keymap (mode-line . (keymap (mouse-1 . flycheck-list-errors)))))))
+
+(defun custom-modeline-overwrite()
+  `(overwrite-mode
+    (:propertize (if overwrite-mode "Ovr" "")
+                 face 'font-lock-warning-face
+                 help-echo (concat "Buffer is in "
+                                   (if overwrite-mode "overwrite" "insert")
+                                   " mode"))))
+
 (setq-default mode-line-format
-              '(""
+              '("%e"
                 mode-line-front-space
                 (:eval (if (eq defining-kbd-macro t)
                            (concat (propertize "[M]" 'face 'rec-face) " ")))
@@ -82,7 +98,7 @@
                 mode-line-process
                 (:eval (custom-modeline-region-info))
                 vc-mode
-                (flycheck-mode flycheck-mode-line)
+                (:eval (custom-modeline-flycheck))
                 (iedit-mode (:eval
                              (if (= (iedit-counter) 0)
                                  ""
@@ -92,11 +108,9 @@
                 (org-agenda-mode (:eval (format "%s" org-agenda-filter)))
                 " "
                 ;; mode-line-modes
-                (:eval (propertize (if overwrite-mode "Ovr" "")
-                                   'face 'font-lock-warning-face
-                                   'help-echo (concat "Buffer is in "
-                                                      (if overwrite-mode "overwrite" "insert") " mode")))
+                (:eval (custom-modeline-overwrite))
                 (:eval (if overwrite-mode " " ""))
+
                 mode-line-misc-info
                 "::"
                 mode-line-position
