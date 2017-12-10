@@ -91,7 +91,7 @@
                                 (propertize (format "%d" (iedit-counter)) 'face 'font-lock-warning-face)))))
                 (org-agenda-mode (:eval (format "%s" org-agenda-filter)))
                 " "
-                ;;mode-line-modes
+                ;; mode-line-modes
                 (:eval (propertize (if overwrite-mode "Ovr" "")
                                    'face 'font-lock-warning-face
                                    'help-echo (concat "Buffer is in "
