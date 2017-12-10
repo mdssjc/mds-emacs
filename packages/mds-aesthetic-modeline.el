@@ -82,7 +82,7 @@
                 mode-line-process
                 (:eval (custom-modeline-region-info))
                 vc-mode
-                flycheck-mode-line
+                (flycheck-mode flycheck-mode-line)
                 (iedit-mode (:eval
                              (if (= (iedit-counter) 0)
                                  ""
