@@ -65,9 +65,12 @@
   `(flycheck-mode
     (:propertize flycheck-mode-line
                  help-echo (concat "Flycheck"
-                                   "\nmouse-1: Show all errors")
+                                   "\nmouse-1: Show all errors"
+                                   "\nmouse-3: Check buffer")
                  mouse-face 'mode-line-highlight
-                 local-map (keymap (mode-line . (keymap (mouse-1 . flycheck-list-errors)))))))
+                 local-map (keymap
+                            (mode-line . (keymap (mouse-1 . flycheck-list-errors)
+                                                 (mouse-3 . flycheck-buffer)))))))
 
 (defun custom-modeline-overwrite()
   `(overwrite-mode
