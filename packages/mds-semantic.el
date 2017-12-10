@@ -23,7 +23,7 @@
   (setq flycheck-check-syntax-automatically '(save idle-change)
         flycheck-idle-change-delay 10
         flycheck-highlighting-mode 'lines
-        flycheck-mode-line-prefix "𝓕"))
+        flycheck-mode-line-prefix  "𝓕"))
 
 (use-package flycheck-pos-tip
   :ensure t
