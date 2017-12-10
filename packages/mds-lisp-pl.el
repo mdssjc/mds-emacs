@@ -126,7 +126,7 @@
               (prettify-symbols-mode)))
   :config
   (setq parinfer-extensions '(defaults pretty-parens smart-yank smart-tab paredit lispy one)
-        parinfer-lighters '(" P:>>" . "P:()")
+        parinfer-lighters '(" 𝓟:>>" . " 𝓟:()")
         prettify-symbols-unprettify-at-point 'right-edge
         show-paren-style 'parenthesis
         show-paren-ring-bell-on-mismatch t

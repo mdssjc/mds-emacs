@@ -99,9 +99,9 @@
                 mode-line-process
                 (:eval (custom-modeline-region-info))
                 vc-mode
+                (parinfer-mode (:eval (parinfer--lighter)))
                 (:eval (custom-modeline-flycheck))
-                " "
-                (flyspell-mode (:eval (format "%s:%s"
+                (flyspell-mode (:eval (format " %s:%s"
                                               flyspell-mode-line-string
                                               (split-string ispell-current-dictionary "_"))))
                 (iedit-mode (:eval
@@ -117,6 +117,9 @@
                 (:eval (custom-modeline-overwrite))
                 (:eval (if overwrite-mode " " ""))
                 mode-line-misc-info
+                "("
+                (company-mode "ⓐ")
+                ") "
                 "::"
                 mode-line-position
                 "[" (:eval (format "%d" total-lines)) "]"
