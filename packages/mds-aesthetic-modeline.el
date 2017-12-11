@@ -49,20 +49,39 @@
               'local-map (make-mode-line-mouse-map 'mouse-2 read-mail-command)))
           "")))
 
+(defun custom-modeline-buffer-identification()
+  '(:propertize mode-line-buffer-identification
+                help-echo (concat "Buffer name"
+                                  "\nmouse-1: Previous buffer"
+                                  "\nmouse-3: Next buffer"
+                                  "\npath: " (buffer-file-name))))
+
 (defun custom-modeline-region-info()
   (when mark-active
     (let ((chars (count-matches "." (region-end) (region-beginning)))
           (words (count-words-region (region-end) (region-beginning)))
           (lines (count-lines (region-beginning) (region-end))))
       (concat
+       " "
        (propertize (all-the-icons-octicon "pencil")
                    'face `(:family ,(all-the-icons-octicon-family))
                    'display '(raise 0.1))
        (propertize (format " (%s,%s,%s)" chars words lines)
                    'face `(:height 0.9))))))
 
+(defun custom-modeline-parinfer()
+  '((parinfer-mode " ")
+    (parinfer-mode
+     (:propertize
+      (:eval (parinfer--lighter))
+      help-echo (concat "Parinfer"
+                        "\nmouse-1: Toggle mode")
+      mouse-face 'mode-line-highlight
+      local-map (keymap
+                 (mode-line . (keymap (mouse-1 . parinfer-toggle-mode))))))))
+
 (defun custom-modeline-flycheck()
-  `(flycheck-mode
+  '(flycheck-mode
     (:propertize flycheck-mode-line
                  help-echo (concat "Flycheck"
                                    "\nmouse-1: Show all errors"
@@ -73,12 +92,13 @@
                                                  (mouse-3 . flycheck-buffer)))))))
 
 (defun custom-modeline-overwrite()
-  `(overwrite-mode
-    (:propertize (if overwrite-mode "Ovr" "")
-                 face 'font-lock-warning-face
-                 help-echo (concat "Buffer is in "
-                                   (if overwrite-mode "overwrite" "insert")
-                                   " mode"))))
+  '((overwrite-mode " ")
+    (overwrite-mode
+     (:propertize (if overwrite-mode "Ovr" "")
+                  face 'font-lock-warning-face
+                  help-echo (concat "Buffer is in "
+                                    (if overwrite-mode "overwrite" "insert")
+                                    " mode")))))
 
 (setq-default mode-line-format
               '("%e"
@@ -93,16 +113,11 @@
                 (anzu-mode (:eval (anzu--update-mode-line)))
                 mode-line-modified
                 ;; mode-line-frame-identification
-                (:propertize mode-line-buffer-identification
-                             help-echo (concat "Buffer name"
-                                               "\nmouse-1: Previous buffer"
-                                               "\nmouse-3: Next buffer"
-                                               "\npath: " (buffer-file-name)))
-                " "
+                (:eval (custom-modeline-buffer-identification))
                 mode-line-process
-                (:eval (custom-modeline-region-info))
                 vc-mode
-                (parinfer-mode (:eval (parinfer--lighter)))
+                (:eval (custom-modeline-region-info))
+                (:eval (custom-modeline-parinfer))
                 (:eval (custom-modeline-flycheck))
                 (flyspell-mode (:eval (format " %s:%s"
                                               flyspell-mode-line-string
@@ -114,11 +129,10 @@
                                 " Iedit: "
                                 (propertize (format "%d" (iedit-counter)) 'face 'font-lock-warning-face)))))
                 (org-agenda-mode (:eval (format "%s" org-agenda-filter)))
-                " "
                 ;; mode-line-modes
                 ;; minor-mode-alist
                 (:eval (custom-modeline-overwrite))
-                (:eval (if overwrite-mode " " ""))
+                " "
                 mode-line-misc-info
                 "("
                 (company-mode "ⓐ")
