@@ -53,12 +53,18 @@
   '(:propertize mode-line-buffer-identification
                 help-echo (concat "Buffer name"
                                   "\nmouse-1: Previous buffer"
+                                  "\nmouse-2: Switch to another buffer"
                                   "\nmouse-3: Next buffer"
-                                  "\npath: " (buffer-file-name))))
+                                  "\npath: " (buffer-file-name))
+                mouse-face 'mode-line-highlight
+                local-map (keymap
+                           (mode-line . (keymap (mouse-1 . previous-buffer)
+                                                (mouse-2 . ivy-switch-buffer)
+                                                (mouse-3 . next-buffer))))))
 
 (defun custom-modeline-region-info()
   (when mark-active
-    (let ((chars (count-matches "." (region-end) (region-beginning)))
+    (let ((chars (count-matches "."  (region-end) (region-beginning)))
           (words (count-words-region (region-end) (region-beginning)))
           (lines (count-lines (region-beginning) (region-end))))
       (concat
