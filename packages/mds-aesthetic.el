@@ -42,6 +42,9 @@
         doom-themes-enable-bold   t
         doom-themes-enable-italic t
         line-spacing 0.10)
+  (setq-default fringes-outside-margins t
+                indicate-buffer-boundaries 'right
+                indicate-empty-lines       'indicate-buffer-boundaries)
   ;; Hooks:
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
   (add-hook 'after-change-major-mode-hook 'turn-on-solaire-mode)
@@ -53,8 +56,7 @@
   :hook (prog-mode . hl-line-mode)
   :config
   (setq hl-line-sticky-flag        nil
-        global-hl-line-sticky-flag nil)
-  (remove-overlays (point-min) (point-max) 'face 'hl-line))
+        global-hl-line-sticky-flag nil))
 
 (use-package solaire-mode
   :ensure t
