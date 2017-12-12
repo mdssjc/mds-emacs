@@ -271,7 +271,7 @@
 
 (use-package rg
   :ensure t
-  :ensure-system-package rg
+  ;; :ensure-system-package ripgrep
   :commands rg rg-project
   :init
   (rg-enable-default-bindings (kbd "s-/"))
@@ -281,6 +281,7 @@
 
 (use-package ripgrep
   :ensure t
+  ;; :ensure-system-package ripgrep
   :commands ripgrep-regexp projectile-ripgrep)
 
 (use-package anzu
@@ -369,8 +370,8 @@
   :commands exec-path-from-shell-initialize
   :init
   (add-hook 'after-init-hook
-            (lambda () (when (memq window-system '(mac ns x)))
-                    (exec-path-from-shell-initialize)))
+            (lambda () (when (memq window-system '(mac ns x))
+                    (exec-path-from-shell-initialize))))
   :config
   (setq exec-path-from-shell-check-startup-files nil))
 
