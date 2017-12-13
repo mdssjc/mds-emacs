@@ -140,7 +140,8 @@
                 (:eval (custom-modeline-overwrite))
                 " "
                 mode-line-misc-info
-                "("
+                celestial-mode-line-string
+                " ("
                 (company-mode "ⓐ")
                 ") "
                 "::"
@@ -149,6 +150,14 @@
                 mode-line-end-spaces))
 
 (display-time-mode)
+
+(use-package celestial-mode-line
+  :ensure t
+  :config
+  (setq calendar-longitude     longitude
+        calendar-latitude      latitude
+        calendar-location-name user-city)
+  (celestial-mode-line-start-timer))
 
 (provide 'mds-aesthetic-modeline)
 ;;; mds-aesthetic-modeline.el ends here
