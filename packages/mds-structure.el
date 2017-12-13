@@ -389,75 +389,56 @@
 
 ;; Plus
 
-(use-package dired
-  :defer 0
-  :config
-  (use-package dired+
-    :ensure t
-    :init
-    (use-package tramp)
-    :config
-    (setq diredp-image-preview-in-tooltip t)))
-
-(use-package bookmark
-  :defer 0
-  :config
-  (use-package bookmark+
-    :ensure t
-    :init
-    (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag)))
-
-;;(eval-after-load "isearch" '(use-package isearch+ :ensure t :defer 0
-;;                              :config
-;;                              (isearchp-toggle-lazy-highlighting)))
-
-;;(eval-after-load "isearch" '(use-package isearch-prop :ensure t :defer 0))
-
-;; (use-package replace
-;;   :defer 0
-;;   :config
-;;   (use-package replace+ :ensure t))
-(use-package replace+
+(use-package face-remap+
   :ensure t
-  :defer 0
-  :after replace)
+  :after face-remap+)
 
-;; (use-package menu-bar
-;;   :defer 0
-;;   :config
-;;   (use-package menu-bar+ :ensure t))
-(use-package menu-bar+
+(use-package bookmark+
   :ensure t
-  :defer 0
-  :after menu-bar)
+  :after bookmark
+  :init
+  (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag))
 
-(use-package imenu
-  :defer 0
+(use-package imenu+
+  :ensure t
+  :after imenu
   :config
   (setq imenu-auto-rescan t)
-  (use-package imenu+
-    :ensure t
-    :config
-    (eval-after-load 'imenu+
-      `(add-to-list 'imenup-emacs-lisp-generic-expression
-                    (list "Packages" ,use-package-form-regexp-eval 2))))
+  (eval-after-load 'imenu+
+    `(add-to-list 'imenup-emacs-lisp-generic-expression
+                  (list "Packages" ,use-package-form-regexp-eval 2)))
   (use-package popup-imenu :ensure t :commands popup-imenu))
 
-(use-package face-remap
-  :config
-  (use-package face-remap+ :ensure t))
+(use-package icomplete+
+  :ensure t
+  :after icomplete)
 
-(use-package icomplete
-  :config
-  (use-package icomplete+ :ensure t))
+(use-package menu-bar+
+  :ensure t
+  :after menu-bar)
 
-(use-package pp
-  :commands pp-eval-expression
+(use-package dired+
+  :ensure t
+  :after dired
   :config
-  (use-package pp+
-    :ensure t
-    :config
-    (global-set-key [remap eval-expression] 'pp-eval-expression)))
+  (use-package tramp)
+  (setq diredp-image-preview-in-tooltip t))
+
+;; (use-package isearch+
+;;   :ensure t
+;;   :config
+;;   (use-package isearch-prop :ensure t)
+;;   (isearchp-toggle-lazy-highlighting))
+
+(use-package replace+
+  :ensure t
+  :after replace)
+
+(use-package pp+
+  :ensure t
+  :after pp
+  :config
+  (global-set-key [remap eval-expression] 'pp-eval-expression))
 ;; ---
 
 (provide 'mds-structure)
