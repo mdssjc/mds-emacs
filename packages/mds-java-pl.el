@@ -21,12 +21,13 @@
   :init
   (add-hook 'java-mode-hook
             (lambda ()
-              (lsp-java-enable)
+              (bind-key "<f9> l" 'lsp-java-enable)
+              (bind-key "<f9> m" 'meghanada-mode)
+              (flycheck-mode)
               (company-statistics-mode)
               (setq-local company-transformers '(company-sort-prefer-same-case-prefix
                                                  company-sort-by-statistics))
-              (setq-local company-backends '((company-lsp
-                                              company-yasnippet
+              (setq-local company-backends '((company-yasnippet
                                               company-keywords
                                               company-abbrev
                                               company-dabbrev-code
@@ -34,13 +35,20 @@
                                               company-dict
                                               company-files)))
               (setq-local counsel-dash-docsets '("Java_SE8" "Java_EE7" "JavaFX"))))
+  (add-hook 'lsp-before-initialize-hook
+            (lambda ()
+              (setq-local company-backends '((company-lsp
+                                              company-yasnippet
+                                              company-keywords
+                                              company-abbrev
+                                              company-dabbrev-code
+                                              company-dabbrev
+                                              company-dict
+                                              company-files)))))
   (add-hook 'meghanada-mode-hook
             (lambda ()
               (setq company-meghanada-prefix-length 1
                     company-occurrence-weight-function 'company-occurrence-prefer-any-closest)
-              (setq-local company-transformers '(company-sort-prefer-same-case-prefix
-                                                 company-sort-by-backend-importance
-                                                 company-sort-by-statistics))
               (setq-local company-backends '((company-meghanada
                                               company-yasnippet
                                               company-keywords
