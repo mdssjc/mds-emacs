@@ -68,7 +68,6 @@
         ;; Dabbrev Code
         company-dabbrev-code-modes '(prog-mode)
         company-dabbrev-code-everywhere t
-        company-dabbrev-code-ignore-case nil
         ;; Dabbrev
         company-dabbrev-minimum-length 3
         company-dabbrev-ignore-case nil
