@@ -21,16 +21,8 @@
 ;; Autocompletar (Autocomplete)
 (use-package company
   :ensure t
-  :diminish company-mode " ⓐ"
+  :diminish company-mode "ⓐ"
   :commands company-mode global-company-mode
-  :defines
-  company-dabbrev-code-modes
-  company-dabbrev-code-everywhere
-  company-dabbrev-code-ignore-case
-  company-dabbrev-minimum-length
-  company-dabbrev-ignore-case
-  company-dabbrev-downcase
-  company-dabbrev-ignore-invisible
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   (add-hook 'prog-mode-hook
@@ -46,25 +38,27 @@
                                         company-dabbrev-code
                                         company-dabbrev
                                         company-files))
-                    company-minimum-prefix-length 1
                     company-transformers '(company-sort-prefer-same-case-prefix)
-                    company-idle-delay 0)))
-  (add-hook 'text-mode-hook
-            (lambda ()
-              (setq company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
-                                        company-preview-if-just-one-frontend
-                                        company-preview-common-frontend)
-                    company-search-regexp-function 'regexp-quote)))
+                    company-minimum-prefix-length 1
+                    company-search-regexp-function 'company-search-flex-regexp)))
   :config
-  (setq company-minimum-prefix-length 2
-        company-idle-delay 0.2
+  (setq company-lighter "ⓐ"
+        company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
+                            company-preview-if-just-one-frontend
+                            company-preview-common-frontend)
+        company-backends '((company-ispell
+                            company-abbrev
+                            company-dabbrev
+                            company-files))
+        company-transformers '(company-sort-prefer-same-case-prefix
+                               company-sort-by-occurrence)
+        company-minimum-prefix-length 2
+        company-idle-delay 0
+        company-occurrence-weight-function 'company-occurrence-prefer-any-closest
+        company-search-regexp-function 'regexp-quote
+        company-require-match nil
         company-show-numbers t
         company-selection-wrap-around t
-        company-backends '((company-ispell company-abbrev company-dabbrev company-files))
-        company-transformers '(company-sort-prefer-same-case-prefix company-sort-by-occurrence)
-        company-occurrence-weight-function 'company-occurrence-prefer-any-closest
-        company-search-regexp-function 'company-search-flex-regexp
-        company-require-match nil
         ;; Tooltip
         company-tooltip-limit 10
         company-tooltip-minimum 5
@@ -83,11 +77,9 @@
 
 (use-package company-quickhelp
   :ensure t
-  :commands company-quickhelp-mode
-  :init
-  (add-hook 'prog-mode-hook 'company-quickhelp-mode)
+  :hook (prog-mode . company-quickhelp-mode)
   :config
-  (setq company-quickhelp-delay .25
+  (setq company-quickhelp-delay     0.25
         company-quickhelp-max-lines 30))
 
 (use-package company-statistics
