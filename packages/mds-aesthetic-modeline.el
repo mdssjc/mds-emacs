@@ -142,7 +142,7 @@
                 mode-line-misc-info
                 celestial-mode-line-string
                 " ("
-                (company-mode "ⓐ")
+                (company-mode company-lighter)
                 ") "
                 "::"
                 mode-line-position
