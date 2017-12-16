@@ -18,21 +18,21 @@
   :config
   (load-theme 'doom-one t)
   (require 'mds-aesthetic-modeline)
-  (when (member "DejaVu Sans Mono" (font-family-list))
-    (progn
-      (set-face-attribute 'default nil :font "DejaVu Sans Mono 12")
-      (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono 10")
-      (set-face-attribute 'mode-line-inactive nil :font "DejaVu Sans Mono 10")))
-  (when (member "Source Code Pro" (font-family-list))
-    (progn
-      (set-face-attribute 'default nil :font "Source Code Pro-12")
-      (set-face-attribute 'mode-line nil :font "Source Code Pro-10")
-      (set-face-attribute 'mode-line-inactive nil :font "Source Code Pro-10")))
-  (when (member "Hack" (font-family-list))
-    (progn
-      (set-face-attribute 'default nil :font "Hack 12")
-      (set-face-attribute 'mode-line nil :font "Hack 10")
-      (set-face-attribute 'mode-line-inactive nil :font "Hack 10")))
+  (cond ((member "DejaVu Sans Mono" (font-family-list))
+         (progn
+           (set-face-attribute 'default nil            :font "DejaVu Sans Mono 12")
+           (set-face-attribute 'mode-line nil          :font "DejaVu Sans Mono 10")
+           (set-face-attribute 'mode-line-inactive nil :font "DejaVu Sans Mono 10")))
+        ((member "Source Code Pro" (font-family-list))
+         (progn
+           (set-face-attribute 'default nil            :font "Source Code Pro-12")
+           (set-face-attribute 'mode-line nil          :font "Source Code Pro-10")
+           (set-face-attribute 'mode-line-inactive nil :font "Source Code Pro-10")))
+        ((member "Hack" (font-family-list))
+         (progn
+           (set-face-attribute 'default nil            :font "Hack 12")
+           (set-face-attribute 'mode-line nil          :font "Hack 10")
+           (set-face-attribute 'mode-line-inactive nil :font "Hack 10"))))
   (set-face-attribute 'line-number-current-line nil
                       :weight 'bold
                       :foreground "white")
