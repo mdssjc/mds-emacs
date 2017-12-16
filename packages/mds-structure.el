@@ -361,9 +361,17 @@
   :ensure t
   :commands lacarte-execute-command)
 
-(use-package package-utils
+(use-package auto-package-update
   :ensure t
-  :commands package-utils-install-async package-utils-upgrade-all)
+  :commands auto-package-update-maybe
+  :init
+  (add-hook 'after-init-hook 'auto-package-update-maybe)
+  (add-hook 'auto-package-update-before-hook
+            (lambda () (message "I will update packages now")))
+  (add-hook 'auto-package-update-after-hook
+            (lambda () (message "Update completed successfully")))
+  :config
+  (setq auto-package-update-prompt-before-update t))
 
 (use-package exec-path-from-shell
   :ensure t

@@ -55,9 +55,6 @@
                       "n"     '(:which-key "news")
                       "n f"   'elfeed
                       "n t"   'twit
-                      "u"     '(:which-key "package-utils")
-                      "u a"   'package-utils-install-async
-                      "u u"   'package-utils-upgrade-all
                       "q"     '(:which-key "quit")
                       "q q"   'save-buffers-kill-terminal
                       "q r"   'restart-emacs
@@ -390,8 +387,6 @@
                       "C-c s s"   'haskell-interactive-switch)
   (general-define-key :keymaps 'undo-tree-map
                       "M-_" 'nil)
-  (general-define-key :keymaps 'java-mode-map
-                      "<f9> m" 'meghanada-mode)
   (general-define-key :keymaps 'popup-isearch-keymap
                       "C-'" 'popup-isearch-cancel)
   (general-define-key :keymaps 'sql-mode-map
@@ -409,16 +404,19 @@
   (add-hook 'after-init-hook 'which-key-mode)
   :config
   (setq which-key-idle-delay 0)
-  (which-key-add-major-mode-key-based-replacements 'java-mode
-    "C-c C-c" "compile"
-    "C-c C-r" "refactor"
-    "C-c C-v" "project")
   (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
     "C-c C-r" "refactor"))
 
+;; (require 'poplife)
+;; (setq poplife-word-flag t)
+;; (setq poplife-url-flag t)
+;; (setq poplife-edit-cottager '(:imenu t :buffer t :frame t :bookmark t :recentf t))
+;; (poplife-mode 1)
+
 (use-package popup-edit-menu
   :ensure t
-  :config
+  :commands popup-edit-menu-stub
+  :init
   (global-set-key [mouse-3] (popup-edit-menu-stub)))
 
 (provide 'mds-shortcuts)
