@@ -18,7 +18,9 @@
   "Flag macro recording in mode-line"
   :group 'mds-aesthetic-modeline-faces)
 
-(setq display-time-format "%H:%M"
+(setq column-number-mode   t
+      size-indication-mode t
+      display-time-format "%H:%M"
       display-time-string-forms
       '((propertize
          (format-time-string (or display-time-format
