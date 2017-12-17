@@ -59,7 +59,7 @@
 (use-package saveplace
   :hook (after-init . save-place-mode)
   :init
-  (setq save-place-file (expand-file-name (concat user-emacs-directory ".cache/places")))
+  (setq save-place-file (concat user-emacs-directory ".cache/places"))
   :config
   (setq save-place-forget-unreadable-files nil
         save-place-limit 500))
