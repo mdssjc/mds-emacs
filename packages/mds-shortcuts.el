@@ -36,6 +36,22 @@
                       "B g"   '(:which-key "google")
                       "B e"   'eww
                       "B a"   'engine/search-amazon
+                      "B g RET" 'google-this-search
+                      "B g SPC" 'google-this-region
+                      "B g t"   'google-this
+                      "B g n"   'google-this-noconfirm
+                      "B g g"   'google-this-lucky-search
+                      "B g i"   'google-this-lucky-and-insert-url
+                      "B g w"   'google-this-word
+                      "B g s"   'google-this-symbol
+                      "B g l"   'google-this-line
+                      "B g e"   'google-this-error
+                      "B g f"   'google-this-forecast
+                      "B g r"   'google-this-cpp-reference
+                      "B g m"   'google-this-maps
+                      "B g a"   'google-this-ray
+                      "B g m"   'google-maps
+                      "B g c"   'google-this-translate-query-or-region
                       "B G"   'engine/search-github
                       "B s"   'engine/search-stack-overflow
                       "B t"   'engine/search-twitter
@@ -399,9 +415,7 @@
 (use-package which-key
   :ensure t
   :diminish which-key-mode
-  :commands which-key-mode
-  :init
-  (add-hook 'after-init-hook 'which-key-mode)
+  :hook (after-init . which-key-mode)
   :config
   (setq which-key-idle-delay 0)
   (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode

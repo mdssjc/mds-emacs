@@ -111,14 +111,15 @@
 (use-package google-this
   :ensure t
   :diminish google-this-mode
-  :commands google-this-mode
+  :commands google-this-mode-submap
   :init
   (setq google-this-keybind (kbd "<C-M-return> B g"))
-  (add-hook 'after-init-hook 'google-this-mode))
+  :config
+  (google-this-mode))
 
 (use-package google-translate
   :ensure t
-  :after google-this
+  :commands google-translate-at-point google-translate-smooth-translate google-translate-query-translate
   :config
   (setq google-translate-show-phonetic t))
 
