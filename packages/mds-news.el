@@ -142,7 +142,8 @@
         ("k" . previous-lin)
         ("u" . elfeed-update))
   :config
-  (setq elfeed-use-curl t
+  (setq elfeed-db-directory (concat user-emacs-directory ".cache/elfeed")
+        elfeed-use-curl t
         elfeed-feeds '(;; Blogs
                        ("https://emacsgifs.github.io/feed.xml" blog emacs)
                        ;; Emacs
