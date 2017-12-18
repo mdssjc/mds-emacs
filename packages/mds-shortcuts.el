@@ -50,7 +50,6 @@
   ;; C-x
   (general-define-key :prefix "C-x"
                       "a"     '(:ignore t :which-key "abbrev")
-                      "/"     'rg
                       "C-/"   'ripgrep-regexp
                       "C-f"   'counsel-find-file
                       "C-r"   'counsel-recentf
@@ -301,7 +300,6 @@
                       "<C-M-return> p s"   '(:ignore t :which-key "search")
                       "<C-M-return> p x"   '(:ignore t :which-key "execute")
                       "<C-M-return> p s r" 'projectile-ripgrep
-                      "<C-M-return> p ."   'rg-project
                       "<C-M-return> p P"   'treemacs-projectile-toggle
                       "C-c p"              '(projectile-command-map :which-key "projectile")
                       "C-c p 4"            '(:ignore t :which-key "find")
@@ -309,7 +307,6 @@
                       "C-c p s"            '(:ignore t :which-key "search")
                       "C-c p x"            '(:ignore t :which-key "execute")
                       "C-c p s r"          'projectile-ripgrep
-                      "C-c p ."            'rg-project
                       "C-c p P"            'treemacs-projectile-toggle
                       "s-p"                'projectile-command-map
                       "s-p 4"              '(:ignore t :which-key "find")
@@ -317,7 +314,6 @@
                       "s-p s"              '(:ignore t :which-key "search")
                       "s-p x"              '(:ignore t :which-key "execute")
                       "s-p s r"            'projectile-ripgrep
-                      "s-p ."              'rg-project
                       "s-p P"              'treemacs-projectile-toggle
                       "s-P"                'treemacs-projectile-toggle
                       "M-SPC"              'counsel-projectile-drop-to-switch-project)
@@ -387,7 +383,8 @@
   :diminish which-key-mode
   :hook (after-init . which-key-mode)
   :config
-  (setq which-key-idle-delay 0)
+  (setq which-key-idle-delay 0
+        which-key-is-verbose t)
   (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
     "C-c C-r" "refactor"))
 
