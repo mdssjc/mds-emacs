@@ -118,8 +118,6 @@
    "C-M-#"         'anzu-query-replace-at-cursor-thing
    "M-%"           'anzu-query-replace
    "C-M-%"         'anzu-query-replace-regexp
-   "M-*"           'vr/replace
-   "C-M-*"         'vr/query-replace
    "C-c /"         'counsel-grep-or-swiper
    "C-c C-/"       'counsel-rg
    "C-c I"         'emojify-insert-emoji

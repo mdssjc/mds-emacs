@@ -303,12 +303,6 @@
   (setq anzu-mode-lighter ""
         anzu-replace-to-string-separator " => "))
 
-(use-package visual-regexp
-  :ensure t
-  :commands vr/replace vr/query-replace
-  :config
-  (use-package visual-regexp-steroids :ensure t))
-
 (use-package winner
   :hook (after-init . winner-mode))
 
@@ -448,9 +442,9 @@
 ;;   (use-package isearch-prop :ensure t)
 ;;   (isearchp-toggle-lazy-highlighting))
 
-(use-package replace+
-  :ensure t
-  :after replace)
+;; (use-package replace+
+;;   :ensure t
+;;   :after replace)
 
 (use-package pp+
   :ensure t
