@@ -271,13 +271,14 @@
 
 (use-package rg
   :ensure t
-  ;; :ensure-system-package ripgrep
   :commands rg rg-project
-  :init
-  (rg-enable-default-bindings (kbd "s-/"))
+  ;; :ensure-system-package ripgrep
+  :bind-keymap
+  ("s-/" . rg-global-map)
   :config
   (setq rg-group-result t
-        rg-show-columns t))
+        rg-show-columns t
+        rg-keymap-prefix "s-/"))
 
 (use-package ripgrep
   :ensure t
