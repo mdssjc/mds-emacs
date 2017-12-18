@@ -118,7 +118,6 @@
                 (:propertize mode-name
                              help-echo (format "%s" major-mode))
                 " "
-                (anzu-mode (:eval (anzu--update-mode-line)))
                 mode-line-modified
                 ;; mode-line-frame-identification
                 (:eval (custom-modeline-buffer-identification))
