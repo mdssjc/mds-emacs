@@ -271,14 +271,23 @@
 
 (use-package rg
   :ensure t
-  :commands rg rg-project
   ;; :ensure-system-package ripgrep
+  :commands rg-enable-default-bindings
   :bind-keymap
   ("s-/" . rg-global-map)
+  :init
+  (add-hook 'after-init-hook
+            (lambda ()
+              (rg-enable-default-bindings "\C-x/")
+              (which-key-add-key-based-replacements "C-x /" "rg")
+              (general-define-key :keymaps 'projectile-mode-map
+                                  "<C-M-return> p ." 'rg-project
+                                  "C-c p ."          'rg-project
+                                  "s-p ."            'rg-project)))
   :config
   (setq rg-group-result t
         rg-show-columns t
-        rg-keymap-prefix "s-/"))
+        rg-keymap-prefix "C-x /"))
 
 (use-package ripgrep
   :ensure t
