@@ -32,36 +32,6 @@
                       "b r"   '(counsel-recentf   :which-key "recentf")
                       "b b"   '(ivy-switch-buffer :which-key "switch")
                       "b k"   '(kill-this-buffer  :which-key "kill")
-                      "B"     '(:which-key "browser")
-                      "B g"   '(:which-key "google")
-                      "B e"   'eww
-                      "B a"   'engine/search-amazon
-                      "B g RET" 'google-this-search
-                      "B g SPC" 'google-this-region
-                      "B g t"   'google-this
-                      "B g n"   'google-this-noconfirm
-                      "B g g"   'google-this-lucky-search
-                      "B g i"   'google-this-lucky-and-insert-url
-                      "B g w"   'google-this-word
-                      "B g s"   'google-this-symbol
-                      "B g l"   'google-this-line
-                      "B g e"   'google-this-error
-                      "B g f"   'google-this-forecast
-                      "B g r"   'google-this-cpp-reference
-                      "B g m"   'google-this-maps
-                      "B g a"   'google-this-ray
-                      "B g m"   'google-maps
-                      "B g c"   'google-this-translate-query-or-region
-                      "B G"   'engine/search-github
-                      "B s"   'engine/search-stack-overflow
-                      "B t"   'engine/search-twitter
-                      "B w"   'engine/search-wikipedia
-                      "B W"   'engine/search-wikipedia-pt
-                      "B d"   'engine/search-wiktionary
-                      "B D"   'engine/search-wiktionary-pt
-                      "B ."   'google-translate-at-point
-                      "B S"   'google-translate-smooth-translate
-                      "B T"   'google-translate-query-translate
                       "e"     'eshell
                       "g"     '(:which-key "magit")
                       "g S"   'magit-stage-file
