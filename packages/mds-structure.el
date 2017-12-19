@@ -204,7 +204,8 @@
         projectile-indexing-method 'alien
         projectile-enable-caching (not noninteractive)
         projectile-file-exists-remote-cache-expire nil
-        projectile-file-exists-local-cache-expire (* 10 60)))
+        projectile-file-exists-local-cache-expire (* 10 60))
+  (counsel-projectile-mode))
 
 (use-package projectile-ripgrep
   :ensure t
@@ -212,7 +213,7 @@
 
 (use-package counsel-projectile
   :ensure t
-  :hook (projectile-mode . counsel-projectile-on))
+  :commands counsel-projectile-mode)
 
 (use-package treemacs
   :ensure t
