@@ -16,8 +16,9 @@
 (setq user-full-name    "<your name>"
       user-mail-address "<user>@<server>"
       user-city         "<your city>"
-      longitude         0.0
-      latitude          0.0)
+      user-longitude    0.0
+      user-latitude     0.0
+      user-password     "123")
 
 ;; Tokens
 ;; (setq service-token "---")

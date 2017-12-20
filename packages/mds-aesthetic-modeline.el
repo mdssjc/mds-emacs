@@ -155,9 +155,9 @@
 (use-package celestial-mode-line
   :ensure t
   :config
-  (setq calendar-longitude     longitude
-        calendar-latitude      latitude
-        calendar-location-name user-city)
+  (setq calendar-location-name user-city
+        calendar-longitude     user-longitude
+        calendar-latitude      user-latitude)
   (celestial-mode-line-start-timer))
 
 (provide 'mds-aesthetic-modeline)
