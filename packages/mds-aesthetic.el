@@ -69,7 +69,7 @@
   (setq dashboard-items '((recents   . 5)
                           (bookmarks . 5)
                           (projects  . 5)
-                          ;;(agenda    . 10)
+                          (agenda    . 10)
                           (registers . 5))
         dashboard-banner-logo-title "Welcome to MDS Emacs"
         dashboard-startup-banner dashboard-banner-logo-png))
