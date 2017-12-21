@@ -52,6 +52,12 @@
   (add-hook 'minibuffer-setup-hook        'solaire-mode-in-minibuffer)
   (add-hook 'ediff-prepare-buffer-hook    'solaire-mode))
 
+(use-package tao-theme
+  :ensure t
+  :disabled t
+  :config
+  (load-theme 'tao-yang t))
+
 (use-package hl-line
   :hook (prog-mode . hl-line-mode)
   :config
