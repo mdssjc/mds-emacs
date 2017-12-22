@@ -142,16 +142,18 @@
                 (:eval (if (eq defining-kbd-macro t)
                            (concat (propertize "[M]" 'face 'rec-face) " ")))
                 mode-line-mule-info
-                ": "
-                (:propertize mode-name
-                             help-echo (format "%s" major-mode))
-                " "
                 mode-line-modified
+
                 ;; mode-line-frame-identification
                 (:eval (custom-modeline-buffer-identification))
                 (:propertize "%n" face font-lock-warning-face)
                 (:eval (custom-modeline-position-info))
                 (:eval (custom-modeline-size-info))
+
+                " "
+                (:propertize mode-name
+                             help-echo (format "%s" major-mode))
+
                 mode-line-process
                 (overwrite-mode   (:eval (custom-modeline-overwrite)))
                 (vc-mode vc-mode)
@@ -162,6 +164,7 @@
                 (flyspell-mode    (:eval (custom-modeline-flyspell)))
                 (indent-info-mode (:eval (indent-info-mode-line)))
                 (org-agenda-mode  (:eval (format "%s" org-agenda-filter)))
+
                 ;; mode-line-modes
                 ;; minor-mode-alist
                 mode-line-misc-info
