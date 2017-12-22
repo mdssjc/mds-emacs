@@ -179,8 +179,8 @@
   :ensure t
   :hook (after-init . global-indent-info-mode)
   :config
-  (setq indent-info-space-format "SPC[%s]"
-        indent-info-tab-format   "TAB[%s]"))
+  (setq indent-info-space-format "⌧(%s)"
+        indent-info-tab-format   "⭾(%s)"))
 
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
