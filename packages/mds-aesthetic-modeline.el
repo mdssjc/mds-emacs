@@ -121,6 +121,23 @@
                 mode-line-modified
                 ;; mode-line-frame-identification
                 (:eval (custom-modeline-buffer-identification))
+                (:propertize "%n" face font-lock-warning-face)
+                " ("
+                (:propertize "%l"
+                             face font-lock-type-face
+                             help-echo (format "%d lines" (count-lines (point-min) (point-max))))
+                ","
+                (:propertize "%c"
+                             face font-lock-type-face
+                             help-echo (format "%d lines" (count-lines (point-min) (point-max))))
+                ") ["
+                (:propertize (-3 "%p")
+                             face font-lock-constant-face)
+                "/"
+                (:propertize "%I"
+                             face font-lock-constant-face)
+                "]"
+                (indent-info-mode (:eval (indent-info-mode-line)))
                 mode-line-process
                 vc-mode
                 (:eval (custom-modeline-region-info))
@@ -145,10 +162,8 @@
                 " ("
                 (company-mode company-lighter)
                 ") "
-                "::"
-                mode-line-position
-                "[" (:eval (format "%d" total-lines)) "]"
-                mode-line-end-spaces))
+                mode-line-end-spaces
+                "%-"))
 
 (display-time-mode)
 
