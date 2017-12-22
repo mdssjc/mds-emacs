@@ -177,16 +177,10 @@
 
 (use-package indent-info
   :ensure t
-  :commands global-indent-info-mode
-  :init
-  (add-hook 'after-init-hook 'global-indent-info-mode)
+  :hook (after-init . global-indent-info-mode)
   :config
   (setq indent-info-space-format "SPC[%s]"
         indent-info-tab-format   "TAB[%s]"))
-
-(use-package total-lines
-  :ensure t
-  :hook (after-init . global-total-lines-mode))
 
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
