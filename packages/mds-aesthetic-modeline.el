@@ -20,6 +20,11 @@
 
 (setq column-number-mode   t
       size-indication-mode t
+      iedit-mode-line `(" Iedit("
+                        (:eval (format ,(propertize "%d"
+                                                    'face 'font-lock-warning-face)
+                                       (iedit-counter)))
+                        ")")
       display-time-format "%H:%M"
       display-time-string-forms
       '((propertize
@@ -58,11 +63,39 @@
                                   "\nmouse-2: Switch to another buffer"
                                   "\nmouse-3: Next buffer"
                                   "\npath: " (buffer-file-name))
-                mouse-face 'mode-line-highlight
+                mouse-face mode-line-highlight
                 local-map (keymap
                            (mode-line . (keymap (mouse-1 . previous-buffer)
                                                 (mouse-2 . ivy-switch-buffer)
                                                 (mouse-3 . next-buffer))))))
+
+(defun custom-modeline-position-info()
+  `(" ("
+    ,(propertize "%l"
+                 'face 'font-lock-type-face
+                 'help-echo (format "%d lines" (count-lines (point-min)
+                                                            (point-max))))
+    ","
+    ,(propertize "%c"
+                 'face 'font-lock-type-face
+                 'help-echo (format "%d lines" (count-lines (point-min)
+                                                            (point-max))))
+    ")"))
+
+(defun custom-modeline-size-info()
+  `(" ["
+    (:propertize (-3 "%p") face font-lock-constant-face)
+    "/"
+    ,(propertize "%I"      'face 'font-lock-constant-face)
+    "]"))
+
+(defun custom-modeline-overwrite()
+  `(,(concat " "
+             (propertize "Ovr"
+                         'face      'font-lock-warning-face
+                         'help-echo (concat "Buffer is in "
+                                            (if overwrite-mode "overwrite" "insert")
+                                            " mode")))))
 
 (defun custom-modeline-region-info()
   (when mark-active
@@ -78,35 +111,30 @@
                    'face `(:height 0.9))))))
 
 (defun custom-modeline-parinfer()
-  '((parinfer-mode " ")
-    (parinfer-mode
-     (:propertize
-      (:eval (parinfer--lighter))
-      help-echo (concat "Parinfer"
-                        "\nmouse-1: Toggle mode")
-      mouse-face 'mode-line-highlight
-      local-map (keymap
-                 (mode-line . (keymap (mouse-1 . parinfer-toggle-mode))))))))
+  '(" "
+    (:propertize
+     (:eval (parinfer--lighter))
+     help-echo (concat "Parinfer"
+                       "\nmouse-1: Toggle mode")
+     mouse-face mode-line-highlight
+     local-map (keymap
+                (mode-line . (keymap (mouse-1 . parinfer-toggle-mode)))))))
 
 (defun custom-modeline-flycheck()
-  '(flycheck-mode
-    (:propertize flycheck-mode-line
-                 help-echo (concat "Flycheck"
-                                   "\nmouse-1: Show all errors"
-                                   "\nmouse-3: Check buffer")
-                 mouse-face 'mode-line-highlight
-                 local-map (keymap
-                            (mode-line . (keymap (mouse-1 . flycheck-list-errors)
-                                                 (mouse-3 . flycheck-buffer)))))))
+  `(,(concat " "
+             (propertize (string-trim (flycheck-mode-line-status-text))
+                         'help-echo  (concat "Flycheck"
+                                             "\nmouse-1: Show all errors"
+                                             "\nmouse-3: Check buffer")
+                         'mouse-face 'mode-line-highlight
+                         'local-map  '(keymap
+                                       (mode-line . (keymap (mouse-1 . flycheck-list-errors)
+                                                            (mouse-3 . flycheck-buffer))))))))
 
-(defun custom-modeline-overwrite()
-  '((overwrite-mode " ")
-    (overwrite-mode
-     (:propertize (if overwrite-mode "Ovr" "")
-                  face 'font-lock-warning-face
-                  help-echo (concat "Buffer is in "
-                                    (if overwrite-mode "overwrite" "insert")
-                                    " mode")))))
+(defun custom-modeline-flyspell()
+  `(,(format " %s:%s"
+             flyspell-mode-line-string
+             (split-string ispell-current-dictionary "_"))))
 
 (setq-default mode-line-format
               '("%e"
@@ -122,41 +150,20 @@
                 ;; mode-line-frame-identification
                 (:eval (custom-modeline-buffer-identification))
                 (:propertize "%n" face font-lock-warning-face)
-                " ("
-                (:propertize "%l"
-                             face font-lock-type-face
-                             help-echo (format "%d lines" (count-lines (point-min) (point-max))))
-                ","
-                (:propertize "%c"
-                             face font-lock-type-face
-                             help-echo (format "%d lines" (count-lines (point-min) (point-max))))
-                ") ["
-                (:propertize (-3 "%p")
-                             face font-lock-constant-face)
-                "/"
-                (:propertize "%I"
-                             face font-lock-constant-face)
-                "]"
-                (indent-info-mode (:eval (indent-info-mode-line)))
+                (:eval (custom-modeline-position-info))
+                (:eval (custom-modeline-size-info))
                 mode-line-process
-                vc-mode
+                (overwrite-mode   (:eval (custom-modeline-overwrite)))
+                (vc-mode vc-mode)
                 (:eval (custom-modeline-region-info))
-                (:eval (custom-modeline-parinfer))
-                (:eval (custom-modeline-flycheck))
-                (flyspell-mode (:eval (format " %s:%s"
-                                              flyspell-mode-line-string
-                                              (split-string ispell-current-dictionary "_"))))
-                (iedit-mode (:eval
-                             (if (= (iedit-counter) 0)
-                                 ""
-                               (concat
-                                " Iedit: "
-                                (propertize (format "%d" (iedit-counter)) 'face 'font-lock-warning-face)))))
-                (org-agenda-mode (:eval (format "%s" org-agenda-filter)))
+                (parinfer-mode    (:eval (custom-modeline-parinfer)))
+                (iedit-mode       iedit-mode-line)
+                (flycheck-mode    (:eval (custom-modeline-flycheck)))
+                (flyspell-mode    (:eval (custom-modeline-flyspell)))
+                (indent-info-mode (:eval (indent-info-mode-line)))
+                (org-agenda-mode  (:eval (format "%s" org-agenda-filter)))
                 ;; mode-line-modes
                 ;; minor-mode-alist
-                (:eval (custom-modeline-overwrite))
-                " "
                 mode-line-misc-info
                 celestial-mode-line-string
                 " ("
