@@ -160,6 +160,7 @@
                 (:eval (custom-modeline-region-info))
                 (parinfer-mode    (:eval (custom-modeline-parinfer)))
                 (iedit-mode       iedit-mode-line)
+                (multiple-cursors-mode mc/mode-line)
                 (flycheck-mode    (:eval (custom-modeline-flycheck)))
                 (flyspell-mode    (:eval (custom-modeline-flyspell)))
                 (indent-info-mode (:eval (indent-info-mode-line)))
