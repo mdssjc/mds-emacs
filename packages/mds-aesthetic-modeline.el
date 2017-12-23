@@ -76,7 +76,7 @@
                  'help-echo (format "%d lines" (count-lines (point-min)
                                                             (point-max))))
     ","
-    ,(propertize "%c"
+    ,(propertize "%C"
                  'face 'font-lock-type-face
                  'help-echo (format "%d lines" (count-lines (point-min)
                                                             (point-max))))
