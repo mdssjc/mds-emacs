@@ -43,10 +43,9 @@
   :ensure t
   :diminish flyspell-mode " Ⓢ"
   :commands flyspell-mode
-  :init
+  :config
   (setq flyspell-issue-message-flag nil
-        flyspell-mode-line-string   "𝓢")
-  (add-hook 'text-mode-hook 'flyspell-mode))
+        flyspell-mode-line-string   "𝓢"))
 
 (use-package flyspell-popup
   :ensure t

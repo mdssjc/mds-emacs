@@ -26,11 +26,15 @@
      (list (line-beginning-position)
            (line-beginning-position 2)))))
 
+;; Submodes
+(electric-indent-mode -1)
+;; ---
+
 ;; Backups
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory ".cache/backups")))
       make-backup-files t
       backup-by-copying t
-      version-control t
+      version-control   t
       delete-old-versions t
       delete-by-moving-to-trash t
       kept-old-versions 6
@@ -39,8 +43,8 @@
 ;; Autosave
 (setq auto-save-file-name-transforms `((".*" ,(concat user-emacs-directory ".cache/auto-save")))
       auto-save-list-file-prefix (concat user-emacs-directory ".cache/auto-save-list/.saves-")
-      auto-save-default t
-      auto-save-timeout 60
+      auto-save-default  t
+      auto-save-timeout  60
       auto-save-interval 50)
 
 ;; Recentf
@@ -50,8 +54,8 @@
   (setq recentf-save-file (expand-file-name (concat user-emacs-directory ".cache/recentf")))
   :config
   (setq recentf-max-saved-items 1000
-        recentf-max-menu-items 15
-        recentf-auto-cleanup 600
+        recentf-max-menu-items  15
+        recentf-auto-cleanup    600
         recentf-filename-handlers '(abbreviate-file-name)
         recentf-exclude '("/elpa/" "/.cache/")))
 
@@ -84,12 +88,9 @@
 (use-package undo-tree
   :ensure t
   :diminish undo-tree-mode
-  :commands undo-tree-mode global-undo-tree-mode
+  :hook (after-init . global-undo-tree-mode)
   :init
   (setq undo-tree-history-directory-alist `(("." . ,(concat user-emacs-directory ".cache/undo-tree"))))
-  (add-hook 'after-init-hook 'global-undo-tree-mode)
-  ;;(add-hook 'org-mode-hook  'undo-tree-mode)
-  ;;(add-hook 'prog-mode-hook 'undo-tree-mode)
   :config
   (setq undo-tree-visualizer-timestamps t
         undo-tree-visualizer-diff t
@@ -194,10 +195,11 @@
 (use-package projectile
   :ensure t
   :diminish projectile-mode
-  :hook (after-init . projectile-mode)
+  ;; :hook (before-init . projectile-mode)
   :init
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld")))
+  (projectile-mode)
   :config
   (setq projectile-completion-system 'ivy
         projectile-sort-order 'recentf

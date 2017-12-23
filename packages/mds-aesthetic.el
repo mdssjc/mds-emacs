@@ -46,7 +46,7 @@
                 indicate-buffer-boundaries 'right
                 indicate-empty-lines       'indicate-buffer-boundaries)
   ;; Hooks:
-  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  (add-hook 'prog-mode-hook               'display-line-numbers-mode)
   (add-hook 'after-change-major-mode-hook 'turn-on-solaire-mode)
   (add-hook 'after-revert-hook            'turn-on-solaire-mode)
   (add-hook 'minibuffer-setup-hook        'solaire-mode-in-minibuffer)
@@ -58,6 +58,18 @@
   :config
   (load-theme 'tao-yang t))
 
+(use-package dashboard
+  :ensure t
+  :config
+  (setq dashboard-items '((recents   . 5)
+                          (projects  . 5)
+                          (bookmarks . 5)
+                          (registers . 5)
+                          (agenda    . 10))
+        dashboard-banner-logo-title "Welcome to MDS Emacs"
+        dashboard-startup-banner     dashboard-banner-logo-png)
+  (dashboard-setup-startup-hook))
+
 (use-package hl-line
   :hook (prog-mode . hl-line-mode)
   :config
@@ -67,18 +79,6 @@
 (use-package solaire-mode
   :ensure t
   :commands solaire-mode turn-on-solaire-mode solaire-mode-in-minibuffer)
-
-(use-package dashboard
-  :ensure t
-  :hook (after-init . dashboard-setup-startup-hook)
-  :config
-  (setq dashboard-items '((recents   . 5)
-                          (bookmarks . 5)
-                          (projects  . 5)
-                          (agenda    . 10)
-                          (registers . 5))
-        dashboard-banner-logo-title "Welcome to MDS Emacs"
-        dashboard-startup-banner dashboard-banner-logo-png))
 
 (use-package all-the-icons
   :ensure t)
