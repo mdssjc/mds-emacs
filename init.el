@@ -136,19 +136,19 @@
 ;; ---
 
 ;; OS
-(when (eq system-type 'gnu/linux)
-  (setq x-gtk-use-system-tooltips nil))
-
-(when (eq window-system 'w32)
-  (setq w32-pass-lwindow-to-system nil
-        w32-pass-rwindow-to-system nil
-        w32-pass-apps-to-system    nil
-        w32-lwindow-modifier       'nil
-        w32-rwindow-modifier       'nil
-        w32-apps-modifier          'nil)
-  (define-key key-translation-map (kbd "<lwindow>") 'event-apply-super-modifier)
-  (define-key key-translation-map (kbd "<rwindow>") 'event-apply-super-modifier)
-  (define-key key-translation-map (kbd "<apps>")    'event-apply-hyper-modifier))
+(cond ((eq system-type 'gnu/linux)
+       (setq x-gtk-use-system-tooltips nil))
+      ((eq window-system 'w32)
+       (progn
+         (setq w32-pass-lwindow-to-system nil
+               w32-pass-rwindow-to-system nil
+               w32-pass-apps-to-system    nil
+               w32-lwindow-modifier       'nil
+               w32-rwindow-modifier       'nil
+               w32-apps-modifier          'nil)
+         (define-key key-translation-map (kbd "<lwindow>") 'event-apply-super-modifier)
+         (define-key key-translation-map (kbd "<rwindow>") 'event-apply-super-modifier)
+         (define-key key-translation-map (kbd "<apps>")    'event-apply-hyper-modifier))))
 ;; ---
 
 ;; Segredos (Secrets)
