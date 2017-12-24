@@ -98,10 +98,9 @@
 (use-package lfe-mode
   :ensure t
   :mode
-  ("\\.lfe\\(s\\|sh\\)?\\'" . lfe-mode)
-  :init
-  (add-hook 'lfe-mode-hook
-            '(lambda () (parinfer-mode))))
+  (("\\.lfe\\(s\\|sh\\)?\\'" . lfe-mode))
+  :config
+  (parinfer-mode))
 
 ;; General
 (use-package parinfer
