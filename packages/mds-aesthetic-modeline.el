@@ -180,6 +180,7 @@
 
 (use-package celestial-mode-line
   :ensure t
+  :if (file-exists-p (concat user-emacs-directory "secrets/secrets.el"))
   :config
   (setq calendar-location-name user-city
         calendar-longitude     user-longitude
