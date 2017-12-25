@@ -406,7 +406,7 @@
 
 (use-package face-remap+
   :ensure t
-  :after face-remap+)
+  :after face-remap)
 
 (use-package bookmark+
   :ensure t
@@ -432,12 +432,13 @@
   :ensure t
   :after menu-bar)
 
-(use-package dired+
-  :ensure t
-  :after dired
-  :config
-  (use-package tramp)
-  (setq diredp-image-preview-in-tooltip t))
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (use-package dired+
+              :ensure t
+              :config
+              (use-package tramp)
+              (setq diredp-image-preview-in-tooltip t))))
 
 ;; (use-package isearch+
 ;;   :ensure t
