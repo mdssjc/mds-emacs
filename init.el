@@ -97,7 +97,9 @@
       ;; Paths
       tramp-persistency-file-name (concat user-emacs-directory ".cache/tramp")
       semanticdb-default-save-directory (concat user-emacs-directory ".cache/semanticdb")
-      url-configuration-directory (concat user-emacs-directory ".cache/url"))
+      url-configuration-directory (concat user-emacs-directory ".cache/url")
+      ;; User Flags
+      user-flag-org-mode-init nil)
 
 ;; Sistema de Codificação (Coding System)
 (set-charset-priority        'unicode)
