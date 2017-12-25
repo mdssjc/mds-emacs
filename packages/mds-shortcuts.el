@@ -313,8 +313,7 @@
                       "s-p x"              '(:ignore t :which-key "execute")
                       "s-p s r"            'projectile-ripgrep
                       "s-p P"              'treemacs-projectile-toggle
-                      "s-P"                'treemacs-projectile-toggle
-                      "M-SPC"              'counsel-projectile-drop-to-switch-project)
+                      "s-P"                'treemacs-projectile-toggle)
   (general-define-key :keymaps 'haskell-mode-map
                       "M-<right>" 'haskell-move-nested-right
                       "M-<left>"  'haskell-move-nested-left
