@@ -36,8 +36,8 @@
   (require 'use-package))
 
 (use-package package
-  :config
-  (setq package-enable-at-startup t
+  :init
+  (setq package-enable-at-startup nil
         package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
                            ("melpa" . "https://melpa.org/packages/")
                            ("org"   . "http://orgmode.org/elpa/"))
