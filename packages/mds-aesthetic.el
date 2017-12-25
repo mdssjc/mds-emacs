@@ -68,7 +68,13 @@
                           (agenda    . 10))
         dashboard-banner-logo-title "Welcome to MDS Emacs"
         dashboard-startup-banner     dashboard-banner-logo-png)
-  (dashboard-setup-startup-hook))
+  (if (< (length command-line-args) 2)
+      (add-hook 'after-init-hook
+                (lambda ()
+                  (dashboard-insert-startupify-lists)
+                  (switch-to-buffer "*dashboard*")
+                  (goto-char (point-min))
+                  (kill-matching-buffers "\\.org" nil t)))))
 
 (use-package hl-line
   :hook (prog-mode . hl-line-mode)
