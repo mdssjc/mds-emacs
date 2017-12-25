@@ -79,29 +79,23 @@
 (use-package hl-line
   :hook (prog-mode . hl-line-mode)
   :config
-  (setq hl-line-sticky-flag        nil
-        global-hl-line-sticky-flag nil))
+  (setq hl-line-sticky-flag nil))
 
 (use-package solaire-mode
   :ensure t
   :commands solaire-mode turn-on-solaire-mode solaire-mode-in-minibuffer)
 
 (use-package all-the-icons
-  :ensure t)
+  :ensure t
+  :defer  0)
 
 (use-package all-the-icons-dired
   :ensure t
-  :diminish all-the-icons-dired-mode
-  :commands all-the-icons-dired-mode
-  :init
-  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+  :hook (dired-mode . all-the-icons-dired-mode))
 
 (use-package highlight-thing
   :ensure t
-  :diminish highlight-thing-mode
-  :commands highlight-thing-mode
-  :init
-  (add-hook 'prog-mode-hook 'highlight-thing-mode)
+  :hook (prog-mode . highlight-thing-mode)
   :config
   (setq highlight-thing-delay-seconds 0
         highlight-thing-exclude-thing-under-point t
@@ -116,21 +110,17 @@
 
 (use-package volatile-highlights
   :ensure t
-  :commands volatile-highlights-mode
-  :diminish volatile-highlights-mode
-  :init
-  (add-hook 'after-init-hook 'volatile-highlights-mode))
+  :hook (after-init . volatile-highlights-mode))
 
 (use-package git-gutter-fringe
   :ensure t
-  :commands global-git-gutter-mode
-  :init
-  (add-hook 'after-init-hook 'global-git-gutter-mode)
+  :hook (after-init . git-gutter-mode)
   :config
   (require 'git-gutter)
   (setq git-gutter-fr:side 'left-fringe
         git-gutter:separator-sign "|"
-        git-gutter:lighter "")
+        git-gutter:lighter ""
+        git-gutter:update-interval 1)
   (set-face-foreground 'git-gutter:separator "yellow")
   (fringe-helper-define 'git-gutter-fr:modified nil
                         "X"
@@ -144,16 +134,13 @@
 
 (use-package emojify
   :ensure t
-  :commands emojify-mode global-emojify-mode
-  :init
-  (setq emojify-emojis-dir (concat user-emacs-directory ".cache/emojis"))
-  (add-hook 'text-mode-hook 'global-emojify-mode))
+  :hook (text-mode . emojify-mode)
+  :config
+  (setq emojify-emojis-dir (concat user-emacs-directory ".cache/emojis")))
 
 (use-package tabbar
   :ensure t
-  :commands tabbar-mode
-  :init
-  (add-hook 'after-init-hook 'tabbar-mode)
+  :hook (after-init . tabbar-mode)
   :config
   (setq tabbar-use-images nil))
 
@@ -161,20 +148,21 @@
   :ensure t
   :after tabbar
   :config
-  (setq tabbar-ruler-global-tabbar t
-        tabbar-ruler-global-ruler t
-        tabbar-ruler-popup-menu nil
-        tabbar-ruler-popup-toolbar t
-        tabbar-ruler-popup-scrollbar t))
+  (setq tabbar-ruler-global-tabbar   t
+        tabbar-ruler-global-ruler    t
+        tabbar-ruler-popup-menu      nil
+        tabbar-ruler-popup-toolbar   t
+        tabbar-ruler-popup-scrollbar t
+        tabbar-ruler-use-mode-icons  nil))
 
 (use-package golden-ratio
   :ensure t
-  :diminish " φ"
+  :diminish "φ"
   :commands golden-ratio-mode)
 
 (use-package centered-cursor-mode
   :ensure t
-  :diminish " ⊝"
+  :diminish "¢"
   :commands centered-cursor-mode)
 
 (use-package writeroom-mode
@@ -183,7 +171,7 @@
 
 (use-package indent-info
   :ensure t
-  :hook (after-init . global-indent-info-mode)
+  :hook (after-init . indent-info-mode)
   :config
   (setq indent-info-space-format "⌧(%s)"
         indent-info-tab-format   "⭾(%s)"))
