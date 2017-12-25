@@ -178,5 +178,14 @@
     "https://pt.wiktionary.org/wiki/%s")
   (setq engine/browser-function 'eww-browse-url))
 
+(use-package lorem-ipsum
+  :ensure t
+  :bind
+  (("C-x x L p" . lorem-ipsum-insert-paragraphs)
+   ("C-x x L s" . lorem-ipsum-insert-sentences)
+   ("C-x x L l" . lorem-ipsum-insert-list))
+  :config
+  (which-key-add-key-based-replacements "C-x x L" "lorem-ipsum"))
+
 (provide 'mds-semantic)
 ;;; mds-semantic.el ends here
