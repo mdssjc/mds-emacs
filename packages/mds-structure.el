@@ -57,7 +57,9 @@
         recentf-max-menu-items  15
         recentf-auto-cleanup    600
         recentf-filename-handlers '(abbreviate-file-name)
-        recentf-exclude '("/elpa/" "/.cache/")))
+        recentf-exclude '("/elpa/"
+                          "/.cache/"
+                          "/usr/local/share/emacs/")))
 
 ;; Saveplace
 (use-package saveplace
