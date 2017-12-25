@@ -297,21 +297,21 @@
                       "<C-M-return> p 5"   '(:ignore t :which-key "find other")
                       "<C-M-return> p s"   '(:ignore t :which-key "search")
                       "<C-M-return> p x"   '(:ignore t :which-key "execute")
-                      "<C-M-return> p s r" 'projectile-ripgrep
+                      "<C-M-return> p s R" 'projectile-ripgrep
                       "<C-M-return> p P"   'treemacs-projectile-toggle
                       "C-c p"              '(projectile-command-map :which-key "projectile")
                       "C-c p 4"            '(:ignore t :which-key "find")
                       "C-c p 5"            '(:ignore t :which-key "find other")
                       "C-c p s"            '(:ignore t :which-key "search")
                       "C-c p x"            '(:ignore t :which-key "execute")
-                      "C-c p s r"          'projectile-ripgrep
+                      "C-c p s R"          'projectile-ripgrep
                       "C-c p P"            'treemacs-projectile-toggle
                       "s-p"                'projectile-command-map
                       "s-p 4"              '(:ignore t :which-key "find")
                       "s-p 5"              '(:ignore t :which-key "find other")
                       "s-p s"              '(:ignore t :which-key "search")
                       "s-p x"              '(:ignore t :which-key "execute")
-                      "s-p s r"            'projectile-ripgrep
+                      "s-p s R"            'projectile-ripgrep
                       "s-p P"              'treemacs-projectile-toggle
                       "s-P"                'treemacs-projectile-toggle)
   (general-define-key :keymaps 'haskell-mode-map
