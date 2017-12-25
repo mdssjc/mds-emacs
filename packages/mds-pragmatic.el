@@ -86,7 +86,6 @@
                                       ("t" "Inbox" entry
                                        (file+headline "~/Documents/GTD/inbox.org" "Things")
                                        "* %i%?\nCreate in %U")))
-
         (require 'ob-java)
         (require 'ob-C)
         (require 'ob-ditaa)
@@ -106,12 +105,12 @@
         (org-crypt-use-before-save-magic)
         (setq org-tags-exclude-from-inheritance (quote ("crypt")))
         ;; GPG key to use for encryption
-        (when (file-exists-p (concat user-emacs-directory
-                                     "secrets/secrets.el"))
+        (when (file-exists-p (concat user-emacs-directory "secrets/secrets.el"))
           (setq org-crypt-key user-password))))))
   :config
-  (setq org-agenda-files (list "~/Documents/GTD/someday-maybe.org"
-                               "~/Documents/GTD/calendar.org")))
+  (setq org-agenda-files (seq-filter (lambda (filename) (file-exists-p filename))
+                                     '("~/Documents/GTD/someday-maybe.org"
+                                       "~/Documents/GTD/calendar.org"))))
 
 (use-package org-bullets
   :ensure t
