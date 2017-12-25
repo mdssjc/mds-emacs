@@ -56,7 +56,7 @@
               'local-map (make-mode-line-mouse-map 'mouse-2 read-mail-command)))
           "")))
 
-(defun custom-modeline-buffer-identification()
+(defun custom-modeline-buffer-identification ()
   '(:propertize mode-line-buffer-identification
                 help-echo (concat "Buffer name"
                                   "\nmouse-1: Previous buffer"
@@ -69,7 +69,7 @@
                                                 (mouse-2 . ivy-switch-buffer)
                                                 (mouse-3 . next-buffer))))))
 
-(defun custom-modeline-position-info()
+(defun custom-modeline-position-info ()
   `(" ("
     ,(propertize "%l"
                  'face 'font-lock-type-face
@@ -82,14 +82,14 @@
                                                             (point-max))))
     ")"))
 
-(defun custom-modeline-size-info()
+(defun custom-modeline-size-info ()
   `(" ["
     (:propertize (-3 "%p") face font-lock-constant-face)
     "/"
     ,(propertize "%I"      'face 'font-lock-constant-face)
     "]"))
 
-(defun custom-modeline-overwrite()
+(defun custom-modeline-overwrite ()
   `(,(concat " "
              (propertize "Ovr"
                          'face      'font-lock-warning-face
@@ -97,7 +97,7 @@
                                             (if overwrite-mode "overwrite" "insert")
                                             " mode")))))
 
-(defun custom-modeline-region-info()
+(defun custom-modeline-region-info ()
   (when mark-active
     (let ((chars (count-matches "."  (region-end) (region-beginning)))
           (words (count-words-region (region-end) (region-beginning)))
@@ -110,7 +110,7 @@
        (propertize (format " (%s,%s,%s)" chars words lines)
                    'face `(:height 0.9))))))
 
-(defun custom-modeline-parinfer()
+(defun custom-modeline-parinfer ()
   '(" "
     (:propertize
      (:eval (parinfer--lighter))
@@ -120,7 +120,7 @@
      local-map (keymap
                 (mode-line . (keymap (mouse-1 . parinfer-toggle-mode)))))))
 
-(defun custom-modeline-flycheck()
+(defun custom-modeline-flycheck ()
   `(,(concat " "
              (propertize (string-trim (flycheck-mode-line-status-text))
                          'help-echo  (concat "Flycheck"
@@ -131,7 +131,7 @@
                                        (mode-line . (keymap (mouse-1 . flycheck-list-errors)
                                                             (mouse-3 . flycheck-buffer))))))))
 
-(defun custom-modeline-flyspell()
+(defun custom-modeline-flyspell ()
   `(,(format " %s:%s"
              flyspell-mode-line-string
              (split-string ispell-current-dictionary "_"))))
@@ -168,6 +168,7 @@
 
                 ;; mode-line-modes
                 ;; minor-mode-alist
+                " "
                 mode-line-misc-info
                 celestial-mode-line-string
                 " ("
