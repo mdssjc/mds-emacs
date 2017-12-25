@@ -114,14 +114,14 @@
 
 (use-package git-gutter-fringe
   :ensure t
-  :hook (after-init . git-gutter-mode)
+  :hook (after-init . global-git-gutter-mode)
   :config
   (require 'git-gutter)
   (setq git-gutter-fr:side 'left-fringe
         git-gutter:separator-sign "|"
         git-gutter:lighter ""
         git-gutter:update-interval 1)
-  (set-face-foreground 'git-gutter:separator "yellow")
+  (set-face-foreground  'git-gutter:separator "yellow")
   (fringe-helper-define 'git-gutter-fr:modified nil
                         "X"
                         "X"
@@ -171,10 +171,11 @@
 
 (use-package indent-info
   :ensure t
-  :hook (after-init . indent-info-mode)
+  :hook (after-init . global-indent-info-mode)
   :config
   (setq indent-info-space-format "⌧(%s)"
-        indent-info-tab-format   "⭾(%s)"))
+        indent-info-tab-format   "⭾(%s)"
+        indent-info-suffix       ""))
 
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
