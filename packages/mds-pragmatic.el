@@ -59,6 +59,7 @@
              org-startup-align-all-tables t
              org-src-fontify-natively nil
              org-src-tab-acts-natively t
+             org-hide-emphasis-markers t
              org-src-window-setup 'current-window
              org-ditaa-jar-path    (expand-file-name "~/java/ditaa.jar")
              org-plantuml-jar-path (expand-file-name "~/java/plantuml.jar")
