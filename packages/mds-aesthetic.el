@@ -177,5 +177,11 @@
         indent-info-tab-format   "⭾(%s)"
         indent-info-suffix       ""))
 
+(use-package fill-column-indicator
+  :ensure t
+  :hook (prog-mode . fci-mode)
+  :config
+  (setq fci-rule-color "#3f444a"))
+
 (provide 'mds-aesthetic)
 ;;; mds-aesthetic.el ends here
