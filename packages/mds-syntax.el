@@ -110,9 +110,7 @@
   :init
   (setq company-statistics-file (concat user-emacs-directory ".cache/company-statistics-cache.el"))
   :config
-  ;;(run-with-idle-timer (* 60 3) t 'company-statistics--save)
-  (setq company-statistics-size 1000
-        company-statistics-auto-save t))
+  (setq company-statistics-size 1000))
 
 (use-package company-dict
   :ensure t
