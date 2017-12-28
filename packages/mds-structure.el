@@ -164,6 +164,7 @@
 
 (use-package ivy-xref
   :ensure t
+  :after ivy
   :config
   (setq xref-show-xrefs-function 'ivy-xref-show-xrefs))
 
