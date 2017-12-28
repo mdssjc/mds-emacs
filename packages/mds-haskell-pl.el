@@ -21,18 +21,62 @@
    ("\\.hsc\\'"   . haskell-mode)
    ("\\.cpphs\\'" . haskell-mode)
    ("\\.c2hs\\'"  . haskell-mode))
+  :bind
+  (:map haskell-mode-map
+        ("M-<right>" . haskell-move-nested-right)
+        ("M-<left>"  . haskell-move-nested-left)
+        ("C-c ."     . counsel-dash-at-point)
+        ("C-c f"     . hindent-reformat-decl)
+        ("C-c SPC"   . lsp-apply-commands)
+        ;; Debug
+        ("C-c d a" . haskell-debug/abandon)
+        ("C-c d b" . haskell-debug/break-on-function)
+        ("C-c d B" . haskell-debug/delete)
+        ("C-c d c" . haskell-debug/continue)
+        ("C-c d d" . haskell-debug)
+        ("C-c d n" . haskell-debug/next)
+        ("C-c d N" . haskell-debug/previous)
+        ("C-c d p" . haskell-debug/previous)
+        ("C-c d r" . haskell-debug/refresh)
+        ("C-c d s" . haskell-debug/step)
+        ("C-c d t" . haskell-debug/trace)
+        ;; Editing
+        ("C-c e j" . haskell-navigate-imports)
+        ("C-c e f" . haskell-mode-format-imports)
+        ("C-c e s" . haskell-sort-imports)
+        ("C-c e a" . haskell-align-imports)
+        ("C-c e s" . haskell-mode-stylish-buffer)
+        ("C-c e S" . haskell-mode-stylish-haskell)
+        ;; Compilation
+        ("C-c c" . haskell-compile)
+        ;; Interpreter
+        ("C-c '"   . haskell-interactive-bring)
+        ("C-c i z" . switch-to-haskell)
+        ("C-c i b" . switch-to-haskell)
+        ("C-c i l" . inferior-haskell-load-file)
+        ("C-c i t" . inferior-haskell-type)
+        ("C-c i i" . inferior-haskell-info)
+        ("C-c i d" . inferior-haskell-find-definition)
+        ("C-c i c" . haskell-interactive-mode-clear)
+        ;; Lookup
+        ("C-c l t" . haskell-process-do-type)
+        ("C-c l i" . haskell-process-do-info)
+        ;; Refactor
+        ("C-c r b" . hlint-refactor-refactor-buffer)
+        ("C-c r r" . hlint-refactor-refactor-at-point)
+        ;; Source
+        ("C-c s b" . haskell-process-load-file)
+        ("C-c s c" . haskell-interactive-mode-clear)
+        ("C-c s s" . haskell-interactive-switch))
   :init
   (add-hook 'haskell-mode-hook
             (lambda ()
-              (lsp-haskell-enable)
+              ;; (lsp-haskell-enable)
               (hindent-mode)
               (haskell-doc-mode)
               (haskell-decl-scan-mode)
               (electric-pair-mode)
-              (setq-local company-transformers '(company-sort-prefer-same-case-prefix))
-              (setq-local company-minimum-prefix-length 1)
-              (setq-local company-idle-delay 0)
-              (setq-local company-backends '((company-lsp
+              (setq-local company-backends '((;company-lsp
                                               company-yasnippet
                                               company-abbrev
                                               company-dabbrev-code
@@ -40,7 +84,12 @@
                                               company-files)))
               (flycheck-mode)
               (flycheck-haskell-setup)
-              (setq-local counsel-dash-docsets '("Haskell"))))
+              (setq-local counsel-dash-docsets '("Haskell"))
+              (which-key-add-major-mode-key-based-replacements 'haskell-mode
+                "C-c d" "debug"
+                "C-c e" "editing"
+                "C-c i" "interpreter"
+                "C-c l" "lookup")))
   (add-hook 'haskell-interactive-mode-hook
             (lambda ()
               (setq-local company-backends '((company-ghci

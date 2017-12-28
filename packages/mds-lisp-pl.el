@@ -15,59 +15,71 @@
 
 ;;; Code:
 (use-package emacs-lisp-mode
-  :mode
-  ("\\.el$" . emacs-lisp-mode)
-  :interpreter
-  ("emacs" . emacs-lisp-mode)
-  :defines
-  flycheck-emacs-lisp-load-path
-  company-backends
-  counsel-dash-docsets
+  :mode        "\\.el$"
+  :interpreter "emacs"
+  :hook (emacs-lisp-mode . emacs-lisp-mode-init)
+  :bind
+  (:map emacs-lisp-mode-map
+        ("<f9> p" . parinfer-mode)
+        ("<f9> P" . enable-paredit-mode)
+        ("<f9> l" . lispy-mode)
+        ("<f9> r" . rainbow-delimiters-mode)
+        ("<f9> t" . litable-mode)
+        ("M-&"    . complete-symbol)
+        ("C-c e"  . macrostep-expand))
   :init
-  (add-hook 'emacs-lisp-mode-hook
-            (lambda ()
-              (parinfer-mode)
-              (eldoc-mode)
-              (require 'ert)
-              (ert--activate-font-lock-keywords)
-              (add-to-list 'completion-styles 'initials t)
-              (company-statistics-mode)
-              (setq-local company-backends '((company-elisp
-                                              company-capf
-                                              company-yasnippet
-                                              company-abbrev
-                                              company-dabbrev-code
-                                              company-dabbrev
-                                              company-files)))
-              (flycheck-mode)
-              (flycheck-package-setup)
-              (setq-local counsel-dash-docsets '("Emacs_Lisp"))))
+  (defun emacs-lisp-mode-init ()
+    (parinfer-mode)
+    (eldoc-mode)
+    (require 'ert)
+    (ert--activate-font-lock-keywords)
+    (add-to-list 'completion-styles 'initials t)
+    (company-statistics-mode)
+    (setq-local company-backends '((company-elisp
+                                    company-capf
+                                    company-yasnippet
+                                    company-abbrev
+                                    company-dabbrev-code
+                                    company-dabbrev
+                                    company-files)))
+    (flycheck-mode)
+    (flycheck-package-setup)
+    (setq-local counsel-dash-docsets '("Emacs_Lisp")))
   :config
   (setq flycheck-emacs-lisp-load-path 'inherit))
 
 (use-package racket-mode
   :ensure t
-  :mode
-  ("\\.rkt\\'" . racket-mode)
-  :interpreter
-  ("racket" . racket-mode)
+  :mode        "\\.rkt\\'"
+  :interpreter "racket"
+  :hook (racket-mode . racket-mode-init)
+  :bind
+  (:map racket-mode-map
+        ("<f9> p"   . parinfer-mode)
+        ("<f9> P"   . enable-paredit-mode)
+        ("<f9> l"   . lispy-mode)
+        ("<f9> r"   . rainbow-delimiters-mode)
+        ("<f9> t"   . litable-mode)
+        ("<f5>"     . nil)
+        ("M-C-<f5>" . nil)
+        ("C-<f5>"   . nil)
+        ("C-c c"    . racket-run-and-switch-to-repl)
+        ("C-c C-s"  . racket-racket))
   :init
-  (add-hook 'racket-mode-hook
-            '(lambda ()
-               (parinfer-mode)
-               (dr-racket-like-unicode-mode)
-               (setq-local company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
-                                               company-preview-if-just-one-frontend
-                                               company-preview-common-frontend))
-               (setq-local company-backends '((company-capf
-                                               :with
-                                               company-abbrev
-                                               company-dabbrev-code
-                                               company-dabbrev
-                                               company-files)))
-               (flycheck-mode)
-               (setq-local counsel-dash-docsets '("Racket"))))
   (add-hook 'racket-repl-mode-hook 'racket-unicode-input-method-enable)
+  (defun racket-mode-init ()
+    (parinfer-mode)
+    (dr-racket-like-unicode-mode)
+    (setq-local company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
+                                    company-preview-if-just-one-frontend
+                                    company-preview-common-frontend))
+    (setq-local company-backends '((company-capf
+                                    company-abbrev
+                                    company-dabbrev-code
+                                    company-dabbrev
+                                    company-files)))
+    (flycheck-mode)
+    (setq-local counsel-dash-docsets '("Racket")))
   :config
   (setq racket-smart-open-bracket-enable t))
 
@@ -79,56 +91,65 @@
    ("\\.cljc\\'"                        . clojurec-mode)
    ("\\.cljx\\'"                        . clojurex-mode)
    ("\\.cljs\\'"                        . clojurescript-mode))
+  :hook (clojure-mode . clojure-mode-init)
   :init
-  (add-hook 'clojure-mode-hook
-            '(lambda ()
-               (parinfer-mode)
-               (clj-refactor-mode)
-               (cljr-add-keybindings-with-prefix "C-c C-r .")
-               (clojure-font-lock-setup)
-               (setq-local company-backends '((company-capf
-                                               company-yasnippet
-                                               :with
-                                               company-abbrev
-                                               company-dabbrev-code
-                                               company-dabbrev
-                                               company-files)))
-               (setq-local counsel-dash-docsets '("Clojure")))))
+  (defun clojure-mode-init ()
+    (parinfer-mode)
+    (clj-refactor-mode)
+    (cljr-add-keybindings-with-prefix "C-c C-r .")
+    (clojure-font-lock-setup)
+    (setq-local company-backends '((company-capf
+                                    company-yasnippet
+                                    company-abbrev
+                                    company-dabbrev-code
+                                    company-dabbrev
+                                    company-files)))
+    (setq-local counsel-dash-docsets '("Clojure"))))
 
 (use-package lfe-mode
   :ensure t
   :mode
   (("\\.lfe\\(s\\|sh\\)?\\'" . lfe-mode))
-  :config
-  (parinfer-mode))
+  :hook (lfe-mode . parinfer-mode))
 
 ;; General
 (use-package parinfer
   :ensure t
-  :commands parinfer-mode parinfer-toggle-mode
-  :defines
-  prettify-symbols-unprettify-at-point
-  show-paren-style
-  show-paren-ring-bell-on-mismatch
-  show-paren-when-point-inside-paren
-  show-paren-when-point-in-periphery
+  :defer t
+  :hook (parinfer-mode-enable . parinfer-mode-init)
+  :bind
+  (:map parinfer-mode-map
+        ("C-c <tab>" . parinfer-toggle-mode)
+        ("C-1"       . lispy-describe-inline)
+        ("C-2"       . lispy-arglist-inline)
+        ("C-3"       . lispy-right)
+        ("C-4"       . lispy-x)
+        ("C-8"       . lispy-parens-down)
+        ("b"         . special-lispy-back)
+        ("t"         . special-lispy-teleport)
+        ("/"         . special-lispy-splice)
+        ("M-."       . lispy-goto-symbol)
+        ("M-k"       . lispy-kill-sentence)
+        ("C-+"       . lispy-mark)
+        ("E"         . special-lispy-eval-and-insert)
+        ("N"         . special-lispy-narrow)
+        ("W"         . special-lispy-widen))
   :init
-  (add-hook 'parinfer-mode-enable-hook
-            (lambda ()
-              (show-paren-mode)
-              (electric-pair-mode)
-              (push '("->"     . ?→) prettify-symbols-alist)
-              (push '("=>"     . ?⇒) prettify-symbols-alist)
-              (push '("map"    . ?↦) prettify-symbols-alist)
-              (push '("."      . ?•) prettify-symbols-alist)
-              (push '("lambda" . ?λ) prettify-symbols-alist)
-              (prettify-symbols-mode)))
+  (defun parinfer-mode-init ()
+    (show-paren-mode)
+    (electric-pair-mode)
+    (push '("->"     . ?→) prettify-symbols-alist)
+    (push '("=>"     . ?⇒) prettify-symbols-alist)
+    (push '("map"    . ?↦) prettify-symbols-alist)
+    (push '("."      . ?•) prettify-symbols-alist)
+    (push '("lambda" . ?λ) prettify-symbols-alist)
+    (prettify-symbols-mode))
   :config
   (setq parinfer-extensions '(defaults pretty-parens smart-yank smart-tab paredit lispy one)
         parinfer-lighters '("𝓟:>>" . "𝓟:()")
         prettify-symbols-unprettify-at-point 'right-edge
         show-paren-style 'parenthesis
-        show-paren-ring-bell-on-mismatch t
+        show-paren-ring-bell-on-mismatch   t
         show-paren-when-point-inside-paren t
         show-paren-when-point-in-periphery t))
 
@@ -173,17 +194,17 @@
   :commands cider cider-mode cider-connect cider-jack-in
   :init
   (add-hook 'cider-mode-hook
-            '(lambda ()
-               (eldoc-mode)
-               (subword-mode)))
+            (lambda ()
+              (eldoc-mode)
+              (subword-mode)))
   (add-hook 'cider-repl-mode-hook
-            '(lambda ()
-               (eldoc-mode)
-               (subword-mode)))
+            (lambda ()
+              (eldoc-mode)
+              (subword-mode)))
   (add-hook 'eval-expression-minibuffer-setup-hook
-            '(lambda ()
-               (parinfer-mode)
-               (eldoc-mode)))
+            (lambda ()
+              (parinfer-mode)
+              (eldoc-mode)))
   :config
   (setq nrepl-log-messages t
         cider-repl-display-in-current-window t

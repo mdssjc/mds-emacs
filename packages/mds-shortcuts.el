@@ -245,41 +245,6 @@
                       "<return>"  nil
                       "<tab>"     'company-select-next
                       "<backtab>" 'company-select-previous)
-  (general-define-key :keymaps 'parinfer-mode-map
-                      "C-c <tab>"  'parinfer-toggle-mode
-                      "C-1"        'lispy-describe-inline
-                      "C-2"        'lispy-arglist-inline
-                      "C-3"        'lispy-right
-                      "C-4"        'lispy-x
-                      "C-8"        'lispy-parens-down
-                      "b"          'special-lispy-back
-                      "t"          'special-lispy-teleport
-                      "/"          'special-lispy-splice
-                      "M-."        'lispy-goto-symbol
-                      "M-k"        'lispy-kill-sentence
-                      "C-+"        'lispy-mark
-                      "E"          'special-lispy-eval-and-insert
-                      "N"          'special-lispy-narrow
-                      "W"          'special-lispy-widen)
-  (general-define-key :keymaps 'emacs-lisp-mode-map
-                      "<f9> p"    'parinfer-mode
-                      "<f9> P"    'enable-paredit-mode
-                      "<f9> l"    'lispy-mode
-                      "<f9> r"    'rainbow-delimiters-mode
-                      "<f9> t"    'litable-mode
-                      "M-&"       'complete-symbol
-                      "C-c e"     'macrostep-expand)
-  (general-define-key :keymaps 'racket-mode-map
-                      "<f9> p"   'parinfer-mode
-                      "<f9> P"   'enable-paredit-mode
-                      "<f9> l"   'lispy-mode
-                      "<f9> r"   'rainbow-delimiters-mode
-                      "<f9> t"   'litable-mode
-                      "<f5>"     'nil
-                      "M-C-<f5>" 'nil
-                      "C-<f5>"   'nil
-                      "C-c c"    'racket-run-and-switch-to-repl
-                      "C-c C-s"  'racket-racket)
   (general-define-key :keymaps 'irony-mode-map
                       "C-c ,"     '(:ignore t :which-key "semantic")
                       "C-c @"     '(:ignore t :which-key "hide blocks")
@@ -322,56 +287,6 @@
                       "s-p s R"            'projectile-ripgrep
                       "s-p P"              'treemacs-projectile-toggle
                       "s-P"                'treemacs-projectile-toggle)
-  (general-define-key :keymaps 'haskell-mode-map
-                      "M-<right>" 'haskell-move-nested-right
-                      "M-<left>"  'haskell-move-nested-left
-                      "C-c ."     'counsel-dash-at-point
-                      "C-c f"     'hindent-reformat-decl
-                      "C-c SPC"   'lsp-apply-commands
-                      ;; Debug
-                      "C-c d"     '(:ignore t :which-key "debug")
-                      "C-c d a"   'haskell-debug/abandon
-                      "C-c d b"   'haskell-debug/break-on-function
-                      "C-c d B"   'haskell-debug/delete
-                      "C-c d c"   'haskell-debug/continue
-                      "C-c d d"   'haskell-debug
-                      "C-c d n"   'haskell-debug/next
-                      "C-c d N"   'haskell-debug/previous
-                      "C-c d p"   'haskell-debug/previous
-                      "C-c d r"   'haskell-debug/refresh
-                      "C-c d s"   'haskell-debug/step
-                      "C-c d t"   'haskell-debug/trace
-                      ;; Editing
-                      "C-c e"     '(:ignore t :which-key "editing")
-                      "C-c e j"   'haskell-navigate-imports
-                      "C-c e f"   'haskell-mode-format-imports
-                      "C-c e s"   'haskell-sort-imports
-                      "C-c e a"   'haskell-align-imports
-                      "C-c e s"   'haskell-mode-stylish-buffer
-                      "C-c e S"   'haskell-mode-stylish-haskell
-                      ;; Compilation
-                      "C-c c"     'haskell-compile
-                      ;; Interpreter
-                      "C-c '"     'haskell-interactive-bring
-                      "C-c i"     '(:ignore t :which-key "interpreter")
-                      "C-c i z"   'switch-to-haskell
-                      "C-c i b"   'switch-to-haskell
-                      "C-c i l"   'inferior-haskell-load-file
-                      "C-c i t"   'inferior-haskell-type
-                      "C-c i i"   'inferior-haskell-info
-                      "C-c i d"   'inferior-haskell-find-definition
-                      "C-c i c"   'haskell-interactive-mode-clear
-                      ;; Lookup
-                      "C-c l"     '(:ignore t :which-key "lookup")
-                      "C-c l t"   'haskell-process-do-type
-                      "C-c l i"   'haskell-process-do-info
-                      ;; Refactor
-                      "C-c r b"   'hlint-refactor-refactor-buffer
-                      "C-c r r"   'hlint-refactor-refactor-at-point
-                      ;; Source
-                      "C-c s b"   'haskell-process-load-file
-                      "C-c s c"   'haskell-interactive-mode-clear
-                      "C-c s s"   'haskell-interactive-switch)
   (general-define-key :keymaps 'undo-tree-map
                       "M-_" 'nil)
   (general-define-key :keymaps 'popup-isearch-keymap
@@ -389,9 +304,7 @@
   :hook (after-init . which-key-mode)
   :config
   (setq which-key-idle-delay 0
-        which-key-is-verbose t)
-  (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
-    "C-c C-r" "refactor"))
+        which-key-is-verbose t))
 
 ;; (require 'poplife)
 ;; (setq poplife-word-flag t)
