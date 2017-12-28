@@ -22,25 +22,24 @@
 (use-package company
   :ensure t
   :diminish company-mode "ⓐ"
-  :commands company-mode global-company-mode
+  :hook (after-init . global-company-mode)
   :init
-  (add-hook 'after-init-hook 'global-company-mode)
   (add-hook 'prog-mode-hook
             (lambda ()
-              (setq company-frontends '(company-tng-frontend
-                                        company-echo-metadata-frontend
-                                        company-pseudo-tooltip-unless-just-one-frontend
-                                        company-preview-if-just-one-frontend
-                                        company-preview-common-frontend)
-                    company-backends '((company-capf
-                                        company-yasnippet
-                                        company-abbrev
-                                        company-dabbrev-code
-                                        company-dabbrev
-                                        company-files))
-                    company-transformers '(company-sort-prefer-same-case-prefix)
-                    company-minimum-prefix-length 1
-                    company-search-regexp-function 'company-search-flex-regexp)))
+              (setq-local company-frontends '(company-tng-frontend
+                                              company-echo-metadata-frontend
+                                              company-pseudo-tooltip-unless-just-one-frontend
+                                              company-preview-if-just-one-frontend
+                                              company-preview-common-frontend))
+              (setq-local company-backends '((company-capf
+                                              company-yasnippet
+                                              company-abbrev
+                                              company-dabbrev-code
+                                              company-dabbrev
+                                              company-files)))
+              (setq-local company-transformers '(company-sort-prefer-same-case-prefix))
+              (setq-local company-minimum-prefix-length 1)
+              (setq-local company-search-regexp-function 'company-search-flex-regexp)))
   :config
   (setq company-lighter "ⓐ"
         company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
@@ -122,9 +121,7 @@
 ;; Correção (Correction)
 (use-package ispell
   :ensure t
-  :commands company-ispell ispell-pt-br ispell-en-us ispell-en-gb
-  :defines
-  ispell-list-command
+  :commands company-ispell
   :preface
   (defun ispell-pt-br ()
     (interactive)
@@ -139,10 +136,14 @@
     (setq ispell-complete-word-dict (concat (expand-file-name user-emacs-directory) "dict/en_GB.dic"))
     (ispell-change-dictionary "en_GB"))
   :config
-  (setq ispell-program-name "aspell"
-        ispell-really-aspell t
-        ispell-extra-args '("--sug-mode=ultra")
-        ispell-list-command "--list"
+  (cond ((executable-find "hunspell")
+         (setq ispell-program-name "hunspell"
+               ispell-really-hunspell t))
+        ((executable-find "aspell")
+         (setq ispell-program-name "aspell"
+               ispell-really-aspell t
+               ispell-extra-args '("--sug-mode=ultra"))))
+  (setq ispell-list-command "--list"
         ispell-look-p nil
         ispell-grep-command "rg"
         ispell-grep-options "-i"
@@ -164,7 +165,7 @@
 ;; Modelo (Template)
 (use-package yasnippet
   :ensure t
-  :diminish yas-minor-mode " ⓨ"
+  :diminish yas-minor-mode "ⓨ"
   :commands yas-minor-mode yas-global-mode
   :init
   (add-hook 'prog-mode-hook 'yas-minor-mode)
@@ -182,18 +183,17 @@
   (setq aya-persist-snippets-dir (concat user-emacs-directory ".cache/auto-snippets/")))
 
 (use-package autoinsert
-  :commands auto-insert-mode
+  :hook (after-init . auto-insert-mode)
   :init
-  (add-hook 'after-init-hook 'auto-insert-mode)
-  (add-hook 'find-file-hook  'auto-insert)
+  (add-hook 'find-file-hook 'auto-insert)
   :config
   (defun autoinsert-yas-expand()
     "Replace text in yasnippet template."
     (yas-expand-snippet (buffer-string) (point-min) (point-max)))
   (setq auto-insert-directory (concat user-emacs-directory "templates")
         auto-insert-query nil)
-  (define-auto-insert "\\.c$"    ["template-c" autoinsert-yas-expand])
-  (define-auto-insert "\\.java$" ["template-java" autoinsert-yas-expand])
+  (define-auto-insert "\\.c$"    ["template-c"      autoinsert-yas-expand])
+  (define-auto-insert "\\.java$" ["template-java"   autoinsert-yas-expand])
   (define-auto-insert "\\.rkt$"  ["template-racket" autoinsert-yas-expand]))
 ;; ---
 
