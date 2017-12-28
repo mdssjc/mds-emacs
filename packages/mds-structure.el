@@ -145,7 +145,8 @@
                                 (t . ivy--regex-plus))
         ivy-virtual-abbreviate 'full
         ivy-wrap t
-        ivy-initial-inputs-alist nil))
+        ivy-initial-inputs-alist nil)
+  (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer))
 
 (use-package hydra
   :ensure t
@@ -157,9 +158,9 @@
 
 (use-package ivy-rich
   :ensure t
+  :commands ivy-switch-buffer
   :config
-  (setq ivy-rich-switch-buffer-align-virtual-buffer t)
-  (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer))
+  (setq ivy-rich-path-style 'abbrev))
 
 (use-package ivy-xref
   :ensure t
