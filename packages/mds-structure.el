@@ -177,7 +177,7 @@
   :ensure t
   :hook (after-init . counsel-mode)
   :bind
-  (("C-S"      . counsel-grep-or-swiper)
+  (("C-S-s"    . counsel-grep-or-swiper)
    ("<f1> SPC" . counsel-find-library)
    ("<f2> i"   . counsel-info-lookup-symbol)
    ("<f2> u"   . counsel-unicode-char))
