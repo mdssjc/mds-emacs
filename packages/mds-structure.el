@@ -100,7 +100,8 @@
 
 (use-package magit
   :ensure t
-  :commands magit-status
+  :defer t
+  ;; :commands magit-status
   :config
   (setq magit-completing-read-function 'ivy-completing-read
         magit-diff-refine-hunk 'all))
@@ -131,14 +132,11 @@
         avy-case-fold-search nil)
   (avy-setup-default))
 
-(use-package hydra
-  :ensure t
-  :defer t)
-
 (use-package ivy
   :ensure t
-  :diminish ivy-mode
   :hook (after-init . ivy-mode)
+  :bind
+  (("M-X" . ivy-resume))
   :config
   (setq ivy-height 12
         ivy-count-format "(%d/%d) "
@@ -149,20 +147,22 @@
         ivy-wrap t
         ivy-initial-inputs-alist nil))
 
+(use-package hydra
+  :ensure t
+  :defer t)
+
 (use-package ivy-hydra
   :ensure t
   :after ivy)
 
 (use-package ivy-rich
   :ensure t
-  :after ivy
   :config
   (setq ivy-rich-switch-buffer-align-virtual-buffer t)
   (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer))
 
 (use-package ivy-xref
   :ensure t
-  :after ivy
   :config
   (setq xref-show-xrefs-function 'ivy-xref-show-xrefs))
 
@@ -174,14 +174,17 @@
 
 (use-package counsel
   :ensure t
-  :after ivy
+  :hook (after-init . counsel-mode)
+  :bind
+  (("C-S"      . counsel-grep-or-swiper)
+   ("<f1> SPC" . counsel-find-library)
+   ("<f2> i"   . counsel-info-lookup-symbol)
+   ("<f2> u"   . counsel-unicode-char))
   :config
   (setq counsel-mode-override-describe-bindings t
-        counsel-find-file-at-point t
-        confirm-nonexistent-file-or-buffer t
-        enable-recursive-minibuffers t)
-  (fset 'describe-function 'counsel-describe-function)
-  (fset 'describe-variable 'counsel-describe-variable))
+        counsel-find-file-at-point              t
+        confirm-nonexistent-file-or-buffer      t
+        enable-recursive-minibuffers            t))
 
 (use-package amx
   :ensure t
@@ -191,12 +194,11 @@
   :config
   (setq amx-auto-update-interval 10
         amx-history-length 5
-        amx-backend 'ivy))
+        amx-backend 'ivy)
+  (defalias 'counsel-M-x 'amx))
 
 (use-package projectile
   :ensure t
-  :diminish projectile-mode
-  ;; :hook (before-init . projectile-mode)
   :init
   (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld")))
