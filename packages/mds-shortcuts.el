@@ -119,6 +119,7 @@
    "M-%"           'anzu-query-replace
    "C-M-%"         'anzu-query-replace-regexp
    "C-c /"         'counsel-grep-or-swiper
+   "C-S-s"         'counsel-grep-or-swiper
    "C-c C-/"       'counsel-rg
    "C-c I"         'emojify-insert-emoji
    "C-:"           'avy-goto-char-timer
@@ -171,6 +172,13 @@
    "s-s"           'embrace-commander
    "s-v"           'hydra-expand-region/body
    "s-V"           'xah-select-line)
+  ;; Help
+  (general-define-key :prefix "<f1>"
+                      "SPC" 'counsel-find-library)
+  ;; Actions
+  (general-define-key :prefix "<f2>"
+                      "i" 'counsel-info-lookup-symbol
+                      "u" 'counsel-unicode-char)
   ;; Toggles
   (general-define-key :prefix "<f5>"
                       "-"   'centered-cursor-mode

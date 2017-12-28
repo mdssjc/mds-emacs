@@ -177,11 +177,6 @@
 (use-package counsel
   :ensure t
   :hook (after-init . counsel-mode)
-  :bind
-  (("C-S-s"    . counsel-grep-or-swiper)
-   ("<f1> SPC" . counsel-find-library)
-   ("<f2> i"   . counsel-info-lookup-symbol)
-   ("<f2> u"   . counsel-unicode-char))
   :config
   (setq counsel-mode-override-describe-bindings t
         counsel-find-file-at-point              t
