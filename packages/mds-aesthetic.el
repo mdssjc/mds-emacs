@@ -60,6 +60,7 @@
 
 (use-package dashboard
   :ensure t
+  :if (< (length command-line-args) 2)
   :config
   (setq dashboard-items '((recents   . 5)
                           (projects  . 5)
@@ -68,13 +69,12 @@
                           (agenda    . 10))
         dashboard-banner-logo-title "Welcome to MDS Emacs"
         dashboard-startup-banner     dashboard-banner-logo-png)
-  (if (< (length command-line-args) 2)
-      (add-hook 'after-init-hook
-                (lambda ()
-                  (dashboard-insert-startupify-lists)
-                  (switch-to-buffer "*dashboard*")
-                  (goto-char (point-min))
-                  (kill-matching-buffers "\\.org" nil t)))))
+  (add-hook 'after-init-hook
+            (lambda ()
+              (dashboard-insert-startupify-lists)
+              (switch-to-buffer "*dashboard*")
+              (goto-char (point-min))
+              (kill-matching-buffers "\\.org" nil t))))
 
 (use-package hl-line
   :hook (prog-mode . hl-line-mode)
