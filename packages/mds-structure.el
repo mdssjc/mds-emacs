@@ -212,9 +212,8 @@
   (setq projectile-cache-file          (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
         projectile-completion-system 'ivy
-        projectile-sort-order        'recentf
-        projectile-indexing-method   'alien
-        projectile-enable-caching (not noninteractive)
+        projectile-sort-order        'modification-time
+        projectile-tags-backend      'xref
         projectile-file-exists-remote-cache-expire nil
         projectile-file-exists-local-cache-expire (* 10 60))
   (projectile-mode)
