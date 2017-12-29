@@ -176,8 +176,9 @@
 
 (use-package counsel
   :ensure t
-  :hook (after-init . counsel-mode)
+  :defer 0
   :config
+  (counsel-mode)
   (setq counsel-mode-override-describe-bindings t
         counsel-find-file-at-point              t
         confirm-nonexistent-file-or-buffer      t
@@ -185,11 +186,10 @@
 
 (use-package amx
   :ensure t
-  :hook (after-init . amx-mode)
-  :init
-  (setq amx-save-file (concat user-emacs-directory ".cache/.amx-items"))
+  :after counsel
   :config
-  (setq amx-auto-update-interval 10
+  (setq amx-save-file (concat user-emacs-directory ".cache/.amx-items")
+        amx-auto-update-interval 10
         amx-history-length 5
         amx-backend 'ivy)
   (defalias 'counsel-M-x 'amx))
