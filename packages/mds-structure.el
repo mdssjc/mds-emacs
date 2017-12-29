@@ -196,18 +196,44 @@
 
 (use-package projectile
   :ensure t
-  :init
-  (setq projectile-cache-file (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
-        projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld")))
-  (projectile-mode)
+  :bind
+  (:map projectile-mode-map
+        ("<C-M-return> p"     . projectile-command-map)
+        ("<C-M-return> p s R" . projectile-ripgrep)
+        ("<C-M-return> p P"   . treemacs-projectile-toggle)
+        ("C-c p"              . projectile-command-map)
+        ("C-c p s R"          . projectile-ripgrep)
+        ("C-c p P"            . treemacs-projectile-toggle)
+        ("s-p"                . projectile-command-map)
+        ("s-p s R"            . projectile-ripgrep)
+        ("s-p P"              . treemacs-projectile-toggle)
+        ("s-P"                . treemacs-projectile-toggle))
   :config
-  (setq projectile-completion-system 'ivy
-        projectile-sort-order 'recentf
-        projectile-indexing-method 'alien
+  (setq projectile-cache-file          (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
+        projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
+        projectile-completion-system 'ivy
+        projectile-sort-order        'recentf
+        projectile-indexing-method   'alien
         projectile-enable-caching (not noninteractive)
         projectile-file-exists-remote-cache-expire nil
         projectile-file-exists-local-cache-expire (* 10 60))
-  (counsel-projectile-mode))
+  (projectile-mode)
+  (counsel-projectile-mode)
+  (which-key-add-prefix-title
+    "<C-M-return> p"   "projectile"
+    "<C-M-return> p 4" "find"
+    "<C-M-return> p 5" "find other"
+    "<C-M-return> p s" "search"
+    "<C-M-return> p x" "execute"
+    "C-c p"            "projectile"
+    "C-c p 4"          "find"
+    "C-c p 5"          "find other"
+    "C-c p s"          "search"
+    "C-c p x"          "execute"
+    "s-p 4"            "find"
+    "s-p 5"            "find other"
+    "s-p s"            "search"
+    "s-p x"            "execute"))
 
 (use-package projectile-ripgrep
   :ensure t
