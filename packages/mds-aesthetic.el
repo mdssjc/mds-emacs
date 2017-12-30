@@ -174,6 +174,11 @@
 (use-package indent-info
   :ensure t
   :hook (after-init . global-indent-info-mode)
+  :bind
+  (:map indent-info-mode-map
+        ("C-M-~" . nil)
+        ("C-M->" . nil)
+        ("C-M-<" . nil))
   :config
   (setq indent-info-space-format "⌧(%s)"
         indent-info-tab-format   "⭾(%s)"
