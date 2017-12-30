@@ -321,8 +321,6 @@
 (use-package anzu
   :ensure t
   :commands global-anzu-mode anzu-query-replace anzu-query-replace-regexp anzu-replace-at-cursor-thing anzu-query-replace-at-cursor-thing
-  :init
-  (add-hook 'spaceline-pre-hook 'global-anzu-mode)
   :config
   (setq anzu-mode-lighter ""
         anzu-replace-to-string-separator " => "))
