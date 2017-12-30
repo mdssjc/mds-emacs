@@ -188,10 +188,6 @@
                       "s e" 'ispell-en-us
                       "s g" 'ispell-en-gb
                       "y"   'yas-minor-mode)
-  (general-define-key :keymaps 'yas-minor-mode-map
-                      "C-c & w" 'aya-create
-                      "C-c & y" 'aya-expand
-                      "C-c & o" 'aya-open-line)
   ;; Semântico - Semantic
   (general-define-key :prefix "<f7>"
                       "l"   '(:which-key "langtool")
@@ -225,10 +221,6 @@
                       "<tab>" 'company-indent-or-complete-common
                       "C-."   'counsel-dash-at-point
                       "C-,"   'zeal-at-point)
-  (general-define-key :keymaps 'company-active-map
-                      "<return>"  nil
-                      "<tab>"     'company-select-next
-                      "<backtab>" 'company-select-previous)
   (general-define-key :keymaps 'irony-mode-map
                       "C-c ,"     '(:ignore t :which-key "semantic")
                       "C-c @"     '(:ignore t :which-key "hide blocks")

@@ -21,8 +21,12 @@
 ;; Autocompletar (Autocomplete)
 (use-package company
   :ensure t
-  :diminish company-mode "ⓐ"
   :hook (after-init . global-company-mode)
+  :bind
+  (:map company-active-map
+        ("<return>"  . nil)
+        ("<tab>"     . company-select-next)
+        ("<backtab>" . company-select-previous))
   :init
   (add-hook 'prog-mode-hook
             (lambda ()
@@ -155,7 +159,6 @@
 
 ;; Abreviação (Abbreviation)
 (use-package abbrev
-  :diminish abbrev-mode
   :commands abbrev-mode
   :init
   (setq abbrev-file-name (concat user-emacs-directory "dict/abbrevs_defs.el"))
@@ -165,8 +168,12 @@
 ;; Modelo (Template)
 (use-package yasnippet
   :ensure t
-  :diminish yas-minor-mode "ⓨ"
   :commands yas-minor-mode yas-global-mode
+  :bind
+  (:map yas-minor-mode-map
+        ("C-c & w" . aya-create)
+        ("C-c & y" . aya-expand)
+        ("C-c & o" . aya-open-line))
   :init
   (add-hook 'prog-mode-hook 'yas-minor-mode)
   (add-hook 'org-mode-hook  'yas-minor-mode)
