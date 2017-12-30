@@ -17,6 +17,9 @@
   :mode
   (("\\.sql\\'"  . sql-mode)
    ("\\.zsql\\'" . sql-mode))
+  :bind
+  (:map sql-mode-map
+        ("C-c u" . sqlup-capitalize-keywords-in-region))
   :init
   (add-hook 'sql-mode-hook 'sqlup-mode)
   (add-hook 'sql-interactive-mode-hook 'sqlup-mode))

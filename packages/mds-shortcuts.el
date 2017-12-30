@@ -229,8 +229,6 @@
                       "M-_" 'nil)
   (general-define-key :keymaps 'popup-isearch-keymap
                       "C-'" 'popup-isearch-cancel)
-  (general-define-key :keymaps 'sql-mode-map
-                      "C-c u" 'sqlup-capitalize-keywords-in-region)
   ;; Alias
   (defalias 'gs 'magit-status               "Magit status")
   (defalias 'qq 'save-buffers-kill-terminal "Quit")
