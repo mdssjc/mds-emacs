@@ -159,9 +159,7 @@
 (use-package golden-ratio
   :ensure t
   ;; :diminish "φ"
-  :commands golden-ratio-mode
-  :config
-  (setq golden-ratio-))
+  :commands golden-ratio-mode)
 
 (use-package centered-cursor-mode
   :ensure t
