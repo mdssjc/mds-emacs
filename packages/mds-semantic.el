@@ -111,7 +111,7 @@
 
 (use-package google-this
   :ensure t
-  :diminish google-this-mode
+  :defer 0
   :bind
   (("<f7> g <return>" . google-this-search)
    ("<f7> g SPC"      . google-this-region)
@@ -131,60 +131,64 @@
    ("<f7> g c"        . google-this-translate-query-or-region))
   :init
   (setq google-this-keybind (kbd "<f7> g"))
-  (which-key-add-key-based-replacements "<f7> g" "google")
   :config
+  (which-key-add-prefix-title "<f7> g" "google")
   (google-this-mode))
 
 (use-package google-translate
   :ensure t
+  :defer 0
   :bind
   (("<f7> t ."   . google-translate-at-point)
    ("<f7> t RET" . google-translate-smooth-translate)
    ("<f7> t SPC" . google-translate-query-translate))
-  :init
-  (which-key-add-key-based-replacements "<f7> t" "translate")
   :config
+  (which-key-add-prefix-title "<f7> t" "translate")
   (setq google-translate-show-phonetic t))
 
 (use-package engine-mode
   :ensure t
-  :bind
-  (("<f7> b a" . engine/search-amazon)
-   ("<f7> b G" . engine/search-github)
-   ("<f7> b s" . engine/search-stack-overflow)
-   ("<f7> b t" . engine/search-twitter)
-   ("<f7> b w" . engine/search-wikipedia)
-   ("<f7> b W" . engine/search-wikipedia-pt)
-   ("<f7> b d" . engine/search-wiktionary)
-   ("<f7> b D" . engine/search-wiktionary-pt))
-  :init
-  (which-key-add-key-based-replacements "<f7> b" "browser")
+  :defer 0
   :config
+  (engine/set-keymap-prefix (kbd "<f7> b"))
+  (engine-mode)
   (defengine amazon
-    "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s")
+    "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s"
+    :keybinding "a")
   (defengine github
-    "https://github.com/search?q=%s")
+    "https://github.com/search?q=%s"
+    :keybinding "g")
+  (defengine reddit
+    "https://www.reddit.com/r/%s"
+    :keybinding "r")
   (defengine stack-overflow
-    "https://stackoverflow.com/search?q=%s")
+    "https://stackoverflow.com/search?q=%s"
+    :keybinding "s")
   (defengine twitter
-    "https://twitter.com/search?q=%s")
+    "https://twitter.com/search?q=%s"
+    :keybinding "t")
   (defengine wikipedia
-    "https://en.wikipedia.org/wiki/%s")
+    "https://en.wikipedia.org/wiki/%s"
+    :keybinding "w")
   (defengine wikipedia-pt
-    "https://pt.wikipedia.org/wiki/%s")
+    "https://pt.wikipedia.org/wiki/%s"
+    :keybinding "W")
   (defengine wiktionary
-    "https://en.wiktionary.org/wiki/%s")
+    "https://en.wiktionary.org/wiki/%s"
+    :keybinding "d")
   (defengine wiktionary-pt
-    "https://pt.wiktionary.org/wiki/%s")
-  (setq engine/browser-function 'eww-browse-url))
+    "https://pt.wiktionary.org/wiki/%s"
+    :keybinding "D")
+  (which-key-add-key-based-replacements "<f7> b" "browser"))
 
 (use-package lorem-ipsum
   :ensure t
+  :defer t
   :bind
   (("C-x x L p" . lorem-ipsum-insert-paragraphs)
    ("C-x x L s" . lorem-ipsum-insert-sentences)
    ("C-x x L l" . lorem-ipsum-insert-list))
-  :config
+  :init
   (which-key-add-key-based-replacements "C-x x L" "lorem-ipsum"))
 
 (provide 'mds-semantic)
