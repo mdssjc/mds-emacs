@@ -16,11 +16,9 @@
 (use-package hydra
   :ensure t
   :defer 0
-  :bind
-  (("<f5>" . hydra-test/body))
   :config
-  ;; <F5>
-  (defhydra hydra-test(:timeout 5 :columns 4 :color red)
+  ;; <F5> - Toggles
+  (defhydra hydra-toggles(:timeout 5 :columns 4 :color red)
     "Toggles"
     ("<ESC>" nil "quit")
     ("-"   centered-cursor-mode      "centered-cursor")

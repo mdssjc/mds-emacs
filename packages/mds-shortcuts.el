@@ -51,8 +51,7 @@
   (general-define-key :prefix "C-x"
                       "a"     '(:ignore t :which-key "abbrev")
                       "C-/"   'ripgrep-regexp
-                      "C-f"   'counsel-find-file
-                      "C-r"   'counsel-recentf
+                      "C-r"   'recentf
                       "F"     'find-file-at-point
                       "Q"     '(:which-key "quit/restart")
                       "Q q"   'save-buffers-kill-terminal
@@ -95,6 +94,7 @@
                       "x w u" '(mds/upper-camel-case  :which-key "upper")
                       "x w w" '(mds/split-words       :which-key "split"))
   (general-define-key
+   "<f5>"          'hydra-toggles/body
    "<mouse-9>"     'ibuffer
    "<mouse-8>"     'er/expand-region
    "C-c !"         '(:which-key "flycheck")
