@@ -231,11 +231,6 @@
                       "M-." 'nil)
   (general-define-key :keymaps 'js2-mode-map
                       ";" 'maio/electric-semicolon)
-  (general-define-key :keymaps 'dumb-jump-mode-map
-                      "M-."   'hydra-dumb-jump/body
-                      "C-M-g" 'nil
-                      "C-M-p" 'nil
-                      "C-M-q" 'nil)
   (general-define-key :keymaps 'org-mode-map
                       "C-x x e" '(org-emphasize :which-key "Emphasize"))
   (general-define-key :keymaps 'popup-isearch-keymap
