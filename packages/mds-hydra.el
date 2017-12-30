@@ -16,7 +16,26 @@
 (use-package hydra
   :ensure t
   :defer 0
+  :bind
+  (("<f5>" . hydra-test/body))
   :config
+  ;; <F5>
+  (defhydra hydra-test(:timeout 5 :columns 4 :color red)
+    "Toggles"
+    ("<ESC>" nil "quit")
+    ("-"   centered-cursor-mode      "centered-cursor")
+    ("a"   auto-fill-mode            "auto-fill")
+    ("e"   global-emojify-mode       "emojify")
+    ("f"   focus-mode                "focus")
+    ("g"   golden-ratio-mode         "golden-ratio")
+    ("l"   display-line-numbers-mode "line-numbers")
+    ("r"   read-only-mode            "read-only")
+    ("t"   toggle-truncate-lines     "truncate-lines")
+    ("w"   global-whitespace-mode    "whitespace")
+    ("F"   follow-mode               "follow")
+    ("H"   hl-line-mode              "hl-line")
+    ("W"   writeroom-mode            "writeroom"))
+
   ;; Expand-Region
   (defhydra hydra-expand-region (:columns 4 :color blue)
     "Mark"
@@ -61,7 +80,33 @@
     ("n" yas-new-snippet)
     ("c" aya-create)
     ("x" aya-expand)
-    ("o" aya-open-line)))
+    ("o" aya-open-line))
+
+  ;; Avy
+  (defhydra hydra-avy-copy (:color blue)
+    "Copy"
+    ("l" avy-copy-line "Line")
+    ("r" avy-copy-region "Region"))
+  (defhydra hydra-avy-move (:color blue)
+    "Move"
+    ("l" avy-move-line "Line")
+    ("r" avy-move-region "Region"))
+  (defhydra hydra-avy-kill (:color blue)
+    "Kill"
+    ("l" avy-kill-whole-line "Line")
+    ("r" avy-kill-region "Region")
+    ("M-l" avy-kill-ring-save-whole-line "Save Line")
+    ("M-r" avy-kill-ring-save-region "Save Region"))
+
+  (defhydra hydra-avy (:color blue :hint nil)
+    "Avy Goto"
+    ("c" avy-goto-char-timer "Characters")
+    ("g" avy-goto-line "Line")
+    ("w" avy-goto-word-1 "Word")
+    ("s" avy-goto-subword-1 "Subword")
+    ("M-w" hydra-avy-copy/body "Copy")
+    ("C-y" hydra-avy-move/body "Move")
+    ("C-w" hydra-avy-kill/body "Kill")))
 
 (provide 'mds-hydra)
 ;;; mds-hydra.el ends here

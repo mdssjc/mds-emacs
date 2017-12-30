@@ -179,22 +179,6 @@
   (general-define-key :prefix "<f2>"
                       "i" 'counsel-info-lookup-symbol
                       "u" 'counsel-unicode-char)
-  ;; Toggles
-  (general-define-key :prefix "<f5>"
-                      "-"   'centered-cursor-mode
-                      "a"   'auto-fill-mode
-                      "e"   'global-emojify-mode
-                      "f"   'focus-mode
-                      "g"   'golden-ratio-mode
-                      "h"   'hl-todo-mode
-                      "l"   'display-line-numbers-mode
-                      "r"   'read-only-mode
-                      "t"   'toggle-truncate-lines
-                      "w"   'global-whitespace-mode
-                      "F"   'follow-mode
-                      "H"   'hl-line-mode
-                      "W"   'writeroom-mode
-                      "SPC" 'treemacs-toggle)
   ;; Sintático - Syntatic
   (general-define-key :prefix "<f6>"
                       "A"   'abbrev-mode
