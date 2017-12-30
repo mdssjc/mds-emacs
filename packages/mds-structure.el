@@ -89,7 +89,6 @@
 
 (use-package undo-tree
   :ensure t
-  :diminish undo-tree-mode
   :hook (after-init . global-undo-tree-mode)
   :init
   (setq undo-tree-history-directory-alist `(("." . ,(concat user-emacs-directory ".cache/undo-tree"))))
@@ -100,8 +99,7 @@
 
 (use-package magit
   :ensure t
-  :defer t
-  ;; :commands magit-status
+  :defer 0
   :config
   (setq magit-completing-read-function 'ivy-completing-read
         magit-diff-refine-hunk 'all))
@@ -134,7 +132,7 @@
 
 (use-package ivy
   :ensure t
-  :hook (after-init . ivy-mode)
+  :defer 0
   :bind
   (("M-X" . ivy-resume))
   :config
@@ -178,7 +176,8 @@
   (setq counsel-mode-override-describe-bindings t
         counsel-find-file-at-point              t
         confirm-nonexistent-file-or-buffer      t
-        enable-recursive-minibuffers            t))
+        enable-recursive-minibuffers            t)
+  (defalias 'recentf 'counsel-recentf))
 
 (use-package amx
   :ensure t
@@ -290,7 +289,7 @@
   :ensure t
   :commands zop-to-char
   :init
-  (global-set-key [remap zap-to-char] 'zop-to-char))
+  (defalias 'zap-to-char 'zop-to-char))
 
 (use-package wgrep
   :ensure t
@@ -298,7 +297,6 @@
 
 (use-package rg
   :ensure t
-  ;; :ensure-system-package ripgrep
   :commands rg-enable-default-bindings
   :bind-keymap
   ("s-/" . rg-global-map)
@@ -318,7 +316,6 @@
 
 (use-package ripgrep
   :ensure t
-  ;; :ensure-system-package ripgrep
   :commands ripgrep-regexp projectile-ripgrep)
 
 (use-package anzu
@@ -343,7 +340,6 @@
 
 (use-package electric-spacing
   :ensure t
-  :diminish electric-spacing-mode
   :commands electric-spacing-mode)
 
 (use-package which-func
@@ -351,7 +347,6 @@
 
 (use-package highlight
   :ensure t
-  :diminish global-hi-lock-mode hi-lock-mode
   :commands global-hi-lock-mode
   :init
   (add-hook 'after-init-hook 'global-hi-lock-mode))
@@ -369,7 +364,6 @@
 
 (use-package page-break-lines
   :ensure t
-  :diminish page-break-lines-mode
   :hook (after-init . global-page-break-lines-mode))
 
 (use-package underline-with-char
