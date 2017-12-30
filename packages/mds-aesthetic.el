@@ -72,9 +72,10 @@
   (add-hook 'after-init-hook
             (lambda ()
               (dashboard-insert-startupify-lists)
+              (kill-matching-buffers "\\.org" nil t)
               (switch-to-buffer "*dashboard*")
               (goto-char (point-min))
-              (kill-matching-buffers "\\.org" nil t))))
+              (redisplay))))
 
 (use-package hl-line
   :hook (prog-mode . hl-line-mode)
