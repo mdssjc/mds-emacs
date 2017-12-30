@@ -189,7 +189,7 @@
    ("C-x x L s" . lorem-ipsum-insert-sentences)
    ("C-x x L l" . lorem-ipsum-insert-list))
   :init
-  (which-key-add-key-based-replacements "C-x x L" "lorem-ipsum"))
+  (which-key-add-prefix-title "C-x x L" "lorem-ipsum"))
 
 (provide 'mds-semantic)
 ;;; mds-semantic.el ends here
