@@ -304,7 +304,7 @@
   (add-hook 'after-init-hook
             (lambda ()
               (rg-enable-default-bindings "\C-x/")
-              (which-key-add-key-based-replacements "C-x /" "rg")
+              (which-key-add-prefix-title "C-x /" "rg")
               (general-define-key :keymaps 'projectile-mode-map
                                   "<C-M-return> p ." 'rg-project
                                   "C-c p ."          'rg-project
