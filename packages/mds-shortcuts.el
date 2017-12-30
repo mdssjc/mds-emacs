@@ -221,12 +221,6 @@
                       "<tab>" 'company-indent-or-complete-common
                       "C-."   'counsel-dash-at-point
                       "C-,"   'zeal-at-point)
-  (general-define-key :keymaps 'irony-mode-map
-                      "C-c ,"     '(:ignore t :which-key "semantic")
-                      "C-c @"     '(:ignore t :which-key "hide blocks")
-                      "C-c C-r"   '(:ignore t :which-key "refactor")
-                      "C-c C-r s" 'srefactor-refactor-at-point
-                      ";"         'maio/electric-semicolon)
   (general-define-key :keymaps 'org-mode-map
                       "C-x x e" '(org-emphasize :which-key "Emphasize"))
   (general-define-key :keymaps 'popup-isearch-keymap

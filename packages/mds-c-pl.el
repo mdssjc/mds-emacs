@@ -17,48 +17,53 @@
   :mode
   (("\\.c$" . c-mode)
    ("\\.h$" . c-mode))
-  :defines
-  irony-user-dir
-  speedbar-show-unknow-files
   :init
-  (setq irony-user-dir (concat user-emacs-directory ".cache/irony"))
   (add-hook 'c-mode-hook
-            '(lambda ()
-               (setq-local company-transformers '(company-sort-prefer-same-case-prefix))
-               (setq-local company-backends '((company-irony-c-headers
-                                               company-irony
-                                               company-yasnippet
-                                               company-abbrev
-                                               company-dabbrev-code
-                                               company-dabbrev
-                                               company-files)))
-               (setq company-backends (remove 'company-clang company-backends))
-               (setq-local counsel-dash-docsets '("C"))
-               (function-args-mode)
-               (fa-config-default)
-               (hs-minor-mode)
-               (electric-spacing-mode)
-               (electric-pair-mode)
-               (show-paren-mode)
-               (flycheck-mode)
-               (irony-mode)))
+            (lambda ()
+              (setq-local company-backends '((company-irony-c-headers
+                                              company-irony
+                                              company-yasnippet
+                                              company-abbrev
+                                              company-dabbrev-code
+                                              company-dabbrev
+                                              company-files)))
+              (setq company-backends (remove 'company-clang company-backends))
+              (setq-local counsel-dash-docsets '("C"))
+              (function-args-mode)
+              (fa-config-default)
+              (hs-minor-mode)
+              ;;(electric-spacing-mode)
+              (electric-pair-mode)
+              (show-paren-mode)
+              (flycheck-mode)
+              (irony-mode)))
   (add-hook 'irony-mode-hook
-            '(lambda ()
-               (company-irony-setup-begin-commands)
-               (flycheck-irony-setup)
-               (irony-eldoc)
-               (define-key irony-mode-map [remap completion-at-point]
-                 'irony-completion-at-point-async)
-               (define-key irony-mode-map [remap complete-symbol]
-                 'irony-completion-at-point-async)
-               (irony-cdb-autosetup-compile-options)))
+            (lambda ()
+              (company-irony-setup-begin-commands)
+              (flycheck-irony-setup)
+              (irony-eldoc)
+              (define-key irony-mode-map [remap completion-at-point]
+                'irony-completion-at-point-async)
+              (define-key irony-mode-map [remap complete-symbol]
+                'irony-completion-at-point-async)
+              (irony-cdb-autosetup-compile-options)))
   :config
   (setq c-default-style "linux"
         speedbar-show-unknow-files t))
 
 (use-package irony
   :ensure t
-  :commands irony-mode)
+  :commands irony-mode
+  :bind
+  (:map irony-mode-map
+        ("C-c C-r s" . srefactor-refactor-at-point)
+        (";"         . maio/electric-semicolon))
+  :config
+  (setq irony-user-dir (concat user-emacs-directory ".cache/irony"))
+  (which-key-add-major-mode-key-based-replacements 'irony-mode-map
+    "C-c ,"   "semantic"
+    "C-c @"   "hide blocks"
+    "C-c C-r" "refactor"))
 
 (use-package company-irony
   :ensure t
