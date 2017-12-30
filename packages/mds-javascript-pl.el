@@ -19,6 +19,11 @@
   (("\\.js\\'" . js2-mode))
   :interpreter
   ("node" . j2-mode)
+  :bind
+  (:map js-mode-map
+        ("M-." . nil)
+        :map js2-mode-map
+        (";" . maio/electric-semicolon))
   :init
   (add-hook 'js2-mode-hook
             (lambda ()
@@ -29,9 +34,6 @@
               (electric-pair-mode)
               (show-paren-mode)
               (add-hook 'xref-backend-functions 'xref-js2-xref-backend nil t)
-              (setq-local company-transformers '(company-sort-prefer-same-case-prefix))
-              (setq-local company-minimum-prefix-length 1)
-              (setq-local company-idle-delay 0)
               (setq-local company-backends '((company-lsp
                                               company-abbrev
                                               company-dabbrev-code

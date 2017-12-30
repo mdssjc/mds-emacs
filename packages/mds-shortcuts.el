@@ -227,10 +227,6 @@
                       "C-c C-r"   '(:ignore t :which-key "refactor")
                       "C-c C-r s" 'srefactor-refactor-at-point
                       ";"         'maio/electric-semicolon)
-  (general-define-key :keymaps 'js-mode-map
-                      "M-." 'nil)
-  (general-define-key :keymaps 'js2-mode-map
-                      ";" 'maio/electric-semicolon)
   (general-define-key :keymaps 'org-mode-map
                       "C-x x e" '(org-emphasize :which-key "Emphasize"))
   (general-define-key :keymaps 'popup-isearch-keymap
