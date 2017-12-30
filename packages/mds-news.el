@@ -59,9 +59,8 @@
         ("y"         . twittering-push-uri-onto-kill-ring)
         ("Y"         . twittering-push-tweet-onto-kill-ring)
         ("a"         . twittering-toggle-activate-buffer))
-  :init
-  (add-hook 'twittering-edit-mode-hook 'flyspell-mode)
   :config
+  (add-hook 'twittering-edit-mode-hook 'flyspell-mode)
   (setq twittering-use-master-password t
         twittering-private-info-file (concat user-emacs-directory ".cache/twittering-mode.gpg")
         twittering-icon-mode t
