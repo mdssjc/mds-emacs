@@ -148,10 +148,6 @@
         ivy-initial-inputs-alist nil)
   (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer))
 
-(use-package hydra
-  :ensure t
-  :defer t)
-
 (use-package ivy-hydra
   :ensure t
   :after ivy)
@@ -208,6 +204,8 @@
         ("s-p s R"            . projectile-ripgrep)
         ("s-p P"              . treemacs-projectile-toggle)
         ("s-P"                . treemacs-projectile-toggle))
+  :init
+  (setq projectile-mode-line nil)
   :config
   (setq projectile-cache-file          (expand-file-name (concat user-emacs-directory ".cache/projectile.cache"))
         projectile-known-projects-file (expand-file-name (concat user-emacs-directory ".cache/projectile-bookmarks.eld"))
@@ -215,7 +213,8 @@
         projectile-sort-order        'modification-time
         projectile-tags-backend      'xref
         projectile-file-exists-remote-cache-expire nil
-        projectile-file-exists-local-cache-expire (* 10 60))
+        projectile-file-exists-local-cache-expire (* 10 60)
+        projectile-mode-line nil)
   (projectile-mode)
   (counsel-projectile-mode)
   (which-key-add-prefix-title
