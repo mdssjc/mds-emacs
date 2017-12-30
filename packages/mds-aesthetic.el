@@ -157,12 +157,14 @@
 
 (use-package golden-ratio
   :ensure t
-  :diminish "φ"
-  :commands golden-ratio-mode)
+  ;; :diminish "φ"
+  :commands golden-ratio-mode
+  :config
+  (setq golden-ratio-))
 
 (use-package centered-cursor-mode
   :ensure t
-  :diminish "¢"
+  ;; :diminish "¢"
   :commands centered-cursor-mode)
 
 (use-package writeroom-mode
