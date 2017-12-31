@@ -99,7 +99,7 @@
 
 (use-package magit
   :ensure t
-  :defer 0
+  :defer t
   :config
   (setq magit-completing-read-function 'ivy-completing-read
         magit-diff-refine-hunk 'all))
@@ -422,10 +422,12 @@
 
 (use-package face-remap+
   :ensure t
+  :defer 0
   :after face-remap)
 
 (use-package bookmark+
   :ensure t
+  :defer 0
   :after bookmark
   :init
   (defvaralias 'bmkp-replace-eww-keys-flag 'bmkp-replace-EWW-keys-flag))
@@ -442,10 +444,12 @@
 
 (use-package icomplete+
   :ensure t
+  :defer 0
   :after icomplete)
 
 (use-package menu-bar+
   :ensure t
+  :defer 0
   :after menu-bar)
 
 (add-hook 'dired-mode-hook
@@ -468,9 +472,10 @@
 
 (use-package pp+
   :ensure t
+  :defer 0
   :after pp
   :config
-  (global-set-key [remap eval-expression] 'pp-eval-expression))
+  (defalias 'eval-expression 'pp-eval-expression))
 ;; ---
 
 (provide 'mds-structure)
