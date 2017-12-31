@@ -72,6 +72,7 @@
              org-refile-use-outline-path 'file
              org-outline-path-complete-in-steps nil
              org-refile-allow-creating-parent-nodes 'confirm
+             completing-read-function 'ivy-completing-read
              org-refile-targets '(("~/Documents/GTD/trash.org"         :maxlevel . 1)
                                   ("~/Documents/GTD/someday-maybe.org" :maxlevel . 1)
                                   ("~/Documents/GTD/reference.org"     :maxlevel . 1)
