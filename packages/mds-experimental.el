@@ -15,25 +15,27 @@
 ;;; Code:
 (use-package lsp-mode
   :ensure t
-  :commands lsp-mode
-  :config
-  (with-eval-after-load 'flycheck
-    (require 'lsp-flycheck)))
+  :commands lsp-mode)
+
+(use-package lsp-ui
+  :load-path (lambda () (concat user-emacs-directory "temp/lsp-ui/"))
+  :hook (lsp-mode . lsp-ui-mode))
 
 (use-package company-lsp
   :ensure t
-  :commands company-lsp
-  :config
-  (setq company-lsp-cache-candidates t
-        company-lsp-async t
-        company-lsp-enable-snippet t))
+  :commands company-lsp)
+  ;:config)
+  ;(setq)) ;company-lsp-cache-candidates t
+        ;company-lsp-async nil))
+        ;company-lsp-enable-snippet t))
 
 (use-package esup
   :ensure t
   :commands esup)
 
 (use-package sicp
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (provide 'mds-experimental)
 ;;; mds-experimental.el ends here
