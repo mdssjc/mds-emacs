@@ -13,19 +13,23 @@
 ;; Arquivo de inicialização do ambiente Emacs.
 
 ;;; Code:
-(setq load-prefer-newer t
+;; ------------------------------
+;; Inicialização (Initialization)
+;; ------------------------------
+(defvar last-file-name-handler-alist file-name-handler-alist)
+
+(setq gc-cons-threshold  402653184
+      gc-cons-percentage 0.6
+      garbage-collection-messages nil
+      file-name-handler-alist nil
+      load-prefer-newer t
       debug-on-error nil)
 
-;; ----------------------
-;; GC: Garbage Collection
-;; ----------------------
-(let ((init-gc-cons-threshold   (* 128 1024 1024))
-      (normal-gc-cons-threshold (*  20 1024 1024)))
-  (setq gc-cons-threshold  init-gc-cons-threshold
-        gc-cons-percentage 0.1
-        garbage-collection-messages nil)
-  (add-hook 'after-init-hook
-            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold  16777216
+                  gc-cons-percentage 0.1
+                  file-name-handler-alist last-file-name-handler-alist)))
 ;; ---
 
 ;; ------------------
@@ -33,11 +37,9 @@
 ;; ------------------
 (eval-when-compile
   (add-to-list 'load-path (concat user-emacs-directory "core/use-package/"))
-  (require 'use-package))
-
-(use-package package
-  :init
-  (setq package-enable-at-startup nil
+  (require 'use-package)
+  (setq package-enable-at-startup  nil
+        package--init-file-ensured t
         package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
                            ("melpa" . "https://melpa.org/packages/")
                            ("org"   . "http://orgmode.org/elpa/"))
@@ -45,9 +47,20 @@
         use-package-compute-statistics t
         use-package-enable-imenu-support t)
   (package-initialize nil))
-(use-package use-package-ensure-system-package)
-(use-package system-packages :ensure t)
-(use-package diminish :ensure t)
+
+;; (use-package package
+;;   :config
+;;   (setq package-enable-at-startup nil
+;;         package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
+;;                            ("melpa" . "https://melpa.org/packages/")
+;;                            ("org"   . "http://orgmode.org/elpa/"))
+;;         use-package-verbose nil
+;;         use-package-compute-statistics t
+;;         use-package-enable-imenu-support t)
+;;   (package-initialize nil))
+;; (use-package use-package-ensure-system-package)
+;; (use-package system-packages :ensure t)
+;; (use-package diminish :ensure t)
 ;; ---
 
 ;; (let ((file-name-handler-alist))
