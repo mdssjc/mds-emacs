@@ -183,7 +183,7 @@
   :ensure t
   :after counsel
   :config
-  (setq amx-save-file (concat user-emacs-directory ".cache/.amx-items")
+  (setq amx-save-file (concat user-emacs-directory ".cache/amx-items")
         amx-auto-update-interval 10
         amx-history-length 5
         amx-backend 'ivy)
