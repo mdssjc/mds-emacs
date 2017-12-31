@@ -1,3 +1,7 @@
 [submodule "core/use-package"]
 	path = core/use-package
 	url = https://github.com/jwiegley/use-package
+
+[submodule "temp/lsp-ui"]
+	path = temp/lsp-ui
+	url = https://github.com/emacs-lsp/lsp-ui
