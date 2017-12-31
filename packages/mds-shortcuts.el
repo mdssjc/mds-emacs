@@ -131,7 +131,7 @@
    "M-/"           'hippie-expand
    "M-Z"           'avy-goto-char-in-line
    "S-C-j"         'join-line
-   "C-'"           'popup-imenu
+   "C-'"           'counsel-semantic-or-imenu
    "S-C-f"         'swiper-multi
    "M-y"           'counsel-yank-pop
    "S-SPC"         'cycle-spacing

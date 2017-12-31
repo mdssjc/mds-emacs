@@ -439,8 +439,7 @@
   (setq imenu-auto-rescan t)
   (eval-after-load 'imenu+
     `(add-to-list 'imenup-emacs-lisp-generic-expression
-                  (list "Packages" ,use-package-form-regexp-eval 2)))
-  (use-package popup-imenu :ensure t :commands popup-imenu))
+                  (list "Packages" ,use-package-form-regexp-eval 2))))
 
 (use-package icomplete+
   :ensure t
