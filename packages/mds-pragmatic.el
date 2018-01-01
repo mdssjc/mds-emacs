@@ -81,7 +81,7 @@
                                   ("~/Documents/GTD/waiting-for.org"   :maxlevel . 1))
              ;; Templates - Capture
              org-capture-templates '(("n" "Notes" entry
-                                      (file+headline (concat user-emacs-directory "org/notes.org") "Notes")
+                                      (file+headline "~/.emacs.d/org/notes.org" "Notes")
                                       "* %i%?")
                                      ("t" "Inbox" entry
                                       (file+headline "~/Documents/GTD/inbox.org" "Things")
