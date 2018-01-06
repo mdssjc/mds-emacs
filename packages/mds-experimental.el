@@ -18,7 +18,7 @@
   :commands lsp-mode)
 
 (use-package lsp-ui
-  :load-path (lambda () (concat user-emacs-directory "temp/lsp-ui/"))
+  :ensure t
   :hook (lsp-mode . lsp-ui-mode))
 
 (use-package company-lsp
