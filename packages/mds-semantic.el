@@ -70,7 +70,7 @@
   :ensure t
   :commands langtool-check langtool-check-done langtool-correct-buffer langtool-switch-default-language langtool-show-message-at-point
   :config
-  (setq langtool-language-tool-jar "~/Documents/Git/languagetool/languagetool-standalone/target/LanguageTool-4.0-SNAPSHOT/LanguageTool-4.0-SNAPSHOT/languagetool-commandline.jar"
+  (setq langtool-language-tool-jar "~/Documents/Git/languagetool/languagetool-standalone/target/LanguageTool-4.1-SNAPSHOT/LanguageTool-4.1-SNAPSHOT/languagetool-commandline.jar"
         langtool-default-language "pt-BR"
         langtool-mother-tongue    "pt-BR"
         langtool-autoshow-message-function (lambda (overlays)
