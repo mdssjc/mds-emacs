@@ -1,6 +1,6 @@
 ;;; mds-aesthetic-modeline.el --- Estético - Modeline (Modeline - Aesthetic) -*- lexical-binding: t -*-
 ;;
-;; Copyright (C) 2017 Marcelo dos Santos
+;; Copyright (C) 2017-2018 Marcelo dos Santos
 ;;
 ;; author: Marcelo dos Santos <mds>
 ;; URL: https://github.com/mdssjc/mds-emacs
@@ -13,11 +13,6 @@
 ;; Complemento do Estético com as configurações do Modeline.
 
 ;;; Code:
-(defface rec-face
-  '((t (:background "red" :foreground "white" :weight bold)))
-  "Flag macro recording in mode-line"
-  :group 'mds-aesthetic-modeline-faces)
-
 (setq column-number-mode   t
       size-indication-mode t
       iedit-mode-line `(" Iedit("
@@ -63,6 +58,7 @@
                                   "\nmouse-2: Switch to another buffer"
                                   "\nmouse-3: Next buffer"
                                   "\npath: " (buffer-file-name))
+                face '((t (:background "grey20" :foreground "white")))
                 mouse-face mode-line-highlight
                 local-map (keymap
                            (mode-line . (keymap (mouse-1 . previous-buffer)
@@ -140,7 +136,7 @@
               '("%e"
                 mode-line-front-space
                 (:eval (if (eq defining-kbd-macro t)
-                           (concat (propertize "[M]" 'face 'rec-face) " ")))
+                           (concat (propertize "[M]" 'face '((t (:background "red" :foreground "white" :weight bold)))) " ")))
                 mode-line-mule-info
                 mode-line-modified
 
@@ -171,9 +167,6 @@
                 " "
                 mode-line-misc-info
                 celestial-mode-line-string
-                " ("
-                (company-mode company-lighter)
-                ") "
                 mode-line-end-spaces
                 "%-"))
 
