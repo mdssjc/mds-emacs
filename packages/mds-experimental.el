@@ -1,6 +1,6 @@
-;;; mds-experimental.el --- Em testes.               -*- lexical-binding: t; -*-
+;;; mds-experimental.el --- Em testes. -*- lexical-binding: t; -*-
 ;;
-;; Copyright (C) 2017  Marcelo dos Santos
+;; Copyright (C) 2017-2018  Marcelo dos Santos
 ;;
 ;; Author: Marcelo dos Santos <mds>
 ;; URL: https://github.com/mdssjc/mds-emacs
