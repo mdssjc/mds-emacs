@@ -359,7 +359,9 @@
 
 (use-package multiple-cursors
   :ensure t
-  :hook (after-init . multiple-cursors-mode))
+  :hook (after-init . multiple-cursors-mode)
+  :config
+  (setq mc/list-file (expand-file-name ".cache/.mc-lists.el" user-emacs-directory)))
 
 (use-package page-break-lines
   :ensure t
