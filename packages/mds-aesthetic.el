@@ -1,6 +1,6 @@
 ;;; mds-aesthetic.el --- Estético (Aesthetic) -*- lexical-binding: t -*-
 ;;
-;; Copyright (C) 2016-2017 Marcelo dos Santos
+;; Copyright (C) 2016-2018 Marcelo dos Santos
 ;;
 ;; author: Marcelo dos Santos <mds>
 ;; URL: https://github.com/mdssjc/mds-emacs
@@ -45,6 +45,7 @@
   (setq-default fringes-outside-margins t
                 indicate-buffer-boundaries 'right
                 indicate-empty-lines       'indicate-buffer-boundaries)
+  (set-window-fringes (minibuffer-window) 0 0 nil)
   ;; Hooks:
   (add-hook 'prog-mode-hook               'display-line-numbers-mode)
   (add-hook 'after-change-major-mode-hook 'turn-on-solaire-mode)
