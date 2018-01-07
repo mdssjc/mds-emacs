@@ -113,7 +113,8 @@
   :ensure t
   :after magit
   :config
-  (setq magithub-cache t)
+  (setq magithub-dir   (expand-file-name ".cache/magithub" user-emacs-directory)
+        magithub-cache t)
   (magithub-feature-autoinject t))
 
 (use-package git-timemachine
