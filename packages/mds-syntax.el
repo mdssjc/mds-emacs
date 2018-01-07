@@ -1,6 +1,6 @@
 ;;; mds-syntax.el --- Sintaxe (Syntax) -*- lexical-binding: t -*-
 ;;
-;; Copyright (C) 2016-2017 Marcelo dos Santos
+;; Copyright (C) 2016-2018 Marcelo dos Santos
 ;;
 ;; author: Marcelo dos Santos <mds>
 ;; URL: https://github.com/mdssjc/mds-emacs
@@ -182,6 +182,10 @@
         yas-verbosity 1
         yas-wrap-around-region t)
   (yas-reload-all))
+
+(use-package yasnippet-snippets
+  :ensure t
+  :after yasnippet)
 
 (use-package auto-yasnippet
   :ensure t
